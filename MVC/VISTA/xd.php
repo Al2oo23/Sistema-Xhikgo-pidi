@@ -1,6 +1,5 @@
-
-<= "homosexual" 
-
+<?=
+ "homosexual"
 ?>
 
 <!doctype html>
