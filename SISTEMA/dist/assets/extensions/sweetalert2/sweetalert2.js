@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v11.7.32
+* sweetalert2 v11.7.28
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -3283,7 +3283,7 @@
    * @returns {boolean}
    */
   const isAnyButtonShown = innerParams => {
-    return !!(innerParams.showConfirmButton || innerParams.showDenyButton || innerParams.showCancelButton || innerParams.showCloseButton);
+    return innerParams.showConfirmButton || innerParams.showDenyButton || innerParams.showCancelButton || innerParams.showCloseButton;
   };
   let ignoreOutsideClick = false;
 
@@ -3293,7 +3293,7 @@
   const handleModalMousedown = domCache => {
     domCache.popup.onmousedown = () => {
       domCache.container.onmouseup = function (e) {
-        domCache.container.onmouseup = () => {};
+        domCache.container.onmouseup = undefined;
         // We only check if the mouseup target is the container because usually it doesn't
         // have any other direct children aside of the popup
         if (e.target === domCache.container) {
@@ -3309,7 +3309,7 @@
   const handleContainerMousedown = domCache => {
     domCache.container.onmousedown = () => {
       domCache.popup.onmouseup = function (e) {
-        domCache.popup.onmouseup = () => {};
+        domCache.popup.onmouseup = undefined;
         // We also need to check if the mouseup target is a child of the popup
         if (e.target === domCache.popup || e.target instanceof HTMLElement && domCache.popup.contains(e.target)) {
           ignoreOutsideClick = true;
@@ -3449,12 +3449,12 @@
    * Increase timer. Returns number of milliseconds of an updated timer.
    * If `timer` parameter isn't set, returns undefined.
    *
-   * @param {number} ms
+   * @param {number} n
    * @returns {number | undefined}
    */
-  const increaseTimer = ms => {
+  const increaseTimer = n => {
     if (globalState.timeout) {
-      const remaining = globalState.timeout.increase(ms);
+      const remaining = globalState.timeout.increase(n);
       animateTimerProgressBar(remaining, true);
       return remaining;
     }
@@ -4270,7 +4270,7 @@
     };
   });
   SweetAlert.DismissReason = DismissReason;
-  SweetAlert.version = '11.7.32';
+  SweetAlert.version = '11.7.28';
 
   const Swal = SweetAlert;
   // @ts-ignore
