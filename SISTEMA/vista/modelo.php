@@ -8,7 +8,7 @@ require('../header.php');
 <div class="col-md-6 col-12 m-auto">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Registro de Modelo de Vehiculo</h4>
+            <h4 class="card-title">Registro del Modelo </h4>
         </div>
         <div class="card-content">
             <div class="card-body">
@@ -42,7 +42,7 @@ require('../header.php');
 
                         <div class="col-12">
                             <div class="col-12 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
                             </div>
                         </div>
                 </form>

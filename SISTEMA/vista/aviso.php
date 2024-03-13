@@ -25,6 +25,11 @@ require('../header.php');
                             </div>
                         </div>
 
+                        <div class="col-12">
+                            <div class="col-12 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
+                            </div>
+                        </div>
 
 <?php
 require('../footer.php');
