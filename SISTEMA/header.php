@@ -16,6 +16,13 @@
   <link rel="stylesheet" href="assets/compiled/css/app.css">
   <link rel="stylesheet" href="assets/compiled/css/app-dark.css">
   <link rel="stylesheet" href="assets/compiled/css/iconly.css">
+
+<style>
+    .no-resize{
+        resize: none !important;
+    }
+</style>
+
 </head>
 
 <body>
