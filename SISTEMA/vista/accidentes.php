@@ -17,7 +17,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Parte Diaria</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Cédula">
+                                        <input type="text" class="form-control" placeholder="Parte Diaria">
                                         <div class="form-control-icon">
                                             <i class="bi bi-calendar-date"></i>
                                         </div>
@@ -220,7 +220,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Cédula del Conductor</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Cédula del Conductor" disabled>
+                                        <input type="text" class="form-control" placeholder="Cédula del Conductor">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-lines-fill"></i>
                                         </div>
@@ -342,22 +342,94 @@ require('../header.php');
                                     <label for="">Autoridades Adicionales en el Sitio</label>
                                     <div class="position-relative">
                                         <label class="form-check-label" for="">PNB</label>
-                                        <input type="checkbox" class="form-check-input" name="pnb" value="pnb" id="pnb">
+                                        <input type="checkbox" class="form-check-input check" name="pnb" value="pnb" id="check1">
 
                                         <label class="form-check-label ms-3" for="">GNB</label>
-                                        <input type="checkbox" class="form-check-input" name="gnb" value="-gnb" id="gnb">
+                                        <input type="checkbox" class="form-check-input check" name="gnb" value="gnb" id="check2">
 
                                         <label class="form-check-label ms-3" for="">INTT</label>
-                                        <input type="checkbox" class="form-check-input" name="intt" value="intt" id="intt">
+                                        <input type="checkbox" class="form-check-input check" name="intt" value="intt" id="check3">
 
                                         <label class="form-check-label ms-3" for="">I.N.V.I.T.Y</label>
-                                        <input type="checkbox" class="form-check-input" name="invity" value="invity" id="invity">
+                                        <input type="checkbox" class="form-check-input check" name="invity" value="invity" id="check4">
 
                                         <label class="form-check-label ms-3" for="">PC</label>
-                                        <input type="checkbox" class="form-check-input" name="pc" value="pc" id="pc">
+                                        <input type="checkbox" class="form-check-input check" name="pc" value="pc" id="check5">
 
                                         <label class="form-check-label ms-3" for="">OTROS</label>
-                                        <input type="checkbox" class="form-check-input" name="otros" value="otros" id="otros">
+                                        <input type="checkbox" class="form-check-input check" name="otros" value="otros" id="check6">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 campoInput" id="campoInput1" style="display: none;">
+                                <div class="form-group has-icon-left">
+                                    <label for="">C.I PNB</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="C.I PNB">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-people"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 campoInput" id="campoInput2" style="display: none;">
+                                <div class="form-group has-icon-left">
+                                    <label for="">C.I GNB</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="C.I GNB">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-people"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 campoInput" id="campoInput3" style="display: none;">
+                                <div class="form-group has-icon-left">
+                                    <label for="">C.I INTT</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="C.I INTT">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-people"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 campoInput" id="campoInput4" style="display: none;">
+                                <div class="form-group has-icon-left">
+                                    <label for="">C.I INVITY</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="C.I INVITY">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-people"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 campoInput" id="campoInput5" style="display: none;">
+                                <div class="form-group has-icon-left">
+                                    <label for="">C.I PC</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="C.I PC">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-people"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 campoInput" id="campoInput6" style="display: none;">
+                                <div class="form-group has-icon-left">
+                                    <label for="">C.I OTROS</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="C.I OTROS">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-people"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -373,6 +445,24 @@ require('../header.php');
     </div>
 </div>
 </div>
+
+<script>
+    var checkboxes = document.querySelectorAll('.check');
+
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            var ischeck = this.checked;
+            var campoInput = document.getElementById('campoInput' + checkbox.id.slice(-1));
+
+            if (ischeck) {
+                campoInput.style.display = 'block';
+            } else {
+                campoInput.style.display = 'none';
+            }
+
+        });
+    });
+</script>
 
 
 
