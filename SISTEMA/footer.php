@@ -9,6 +9,10 @@
     <script src="assets/static/js/pages/form-element-select.js"></script>
     
     <script src="assets/compiled/js/app.js"></script>
+
+    <script src="assets/static/js/pages/horizontal-layout.js"></script>  
+    <script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/static/js/pages/dashboard.js"></script>
     
 </body>
 

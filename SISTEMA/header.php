@@ -48,10 +48,12 @@
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
+                                  <form action="../controlador/ctl_sesion.php" method="post">
                                   <li><a class="dropdown-item" href="#">My Account</a></li>
                                   <li><a class="dropdown-item" href="#">Settings</a></li>
                                   <li><hr class="dropdown-divider"></li>
-                                  <li><a class="dropdown-item" href="auth-login.html">Logout</a></li>
+                                  <li><button type="submit" class="dropdown-item" name="logout" value="logout">Cerrar Sesión</button></li>
+                                  </form>
                                 </ul>
                             </div>
 
