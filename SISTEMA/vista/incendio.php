@@ -1,5 +1,5 @@
 <?php
-$nombrePagina = "Registro de Accidente";
+$nombrePagina = "Registro de Incendio";
 require('../header.php');
 ?>
 
@@ -187,18 +187,6 @@ require('../header.php');
                                     <div class="position-relative">
                                         <select name="marca-vehiculo" class="form-select" id="estado">
                                             <option value="">Seleccione el Estado...</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Localidad</label>
-                                    <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="localidad">
-                                            <option value="">Seleccione la Localidad...</option>
 
                                         </select>
                                     </div>
