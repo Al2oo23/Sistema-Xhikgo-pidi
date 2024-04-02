@@ -6,7 +6,7 @@ require('../header.php');
 <div class="col-md-6 col-12 m-auto">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Registro de Accidente</h4>
+            <h4 class="card-title">Registro de Incendio</h4>
         </div>
         <div class="card-content">
             <div class="card-body">
@@ -24,14 +24,15 @@ require('../header.php');
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
                                     <label for="">Sección</label>
-                                    <div class=" position-relative">
-                                        <input type="text" class="form-control" placeholder="Sección">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-grid"></i>
-                                        </div>
+                                    <div class="position-relative">
+                                        <select name="tipo-aviso" class="form-select" id="seccion">
+                                            <option value="">Seleccione la Sección...</option>
+
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -40,34 +41,10 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Estación</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Estación">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-train-front"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                        <select name="tipo-aviso" class="form-select" id="estacion">
+                                            <option value="">Seleccione la Estación...</option>
 
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Atención de Emergencia</label>
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Atención de Emergencia">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-phone-vibrate"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Inspección</label>
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Inspección">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-eye"></i>
-                                        </div>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -88,10 +65,46 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Solicitante</label>
                                     <div class="position-relative">
-                                        <select name="solicitante" class="form-select" id="solicitante">
-                                            <option value="">Seleccione al Solicitante...</option>
+                                        <input type="text" class="form-control" placeholder="Solicitante">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-hourglass-split"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                                        </select>
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Recibidor</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Recibidor">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-hourglass-split"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Aprobador</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Aprobador">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-hourglass-split"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Causa de Incendio</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Causa de Ignición">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-person-x"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -146,10 +159,10 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Marca del Vehiculo</label>
+                                    <label for="">Localidad</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="marca-vehiculo">
-                                            <option value="">Seleccione la Marca del Vehiculo...</option>
+                                        <select name="marca-vehiculo" class="form-select" id="localidad">
+                                            <option value="">Seleccione la Localidad...</option>
 
                                         </select>
                                     </div>
@@ -158,10 +171,10 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Modelo del Vehiculo</label>
+                                    <label for="">Municipio</label>
                                     <div class="position-relative">
-                                        <select name="modelo-vehiculo" class="form-select" id="modelo-vehiculo">
-                                            <option value="">Seleccione el Modelo del Vehiculo...</option>
+                                        <select name="marca-vehiculo" class="form-select" id="municipio">
+                                            <option value="">Seleccione el Municipio...</option>
 
                                         </select>
                                     </div>
@@ -170,10 +183,10 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Año del Vehiculo</label>
+                                    <label for="">Estado</label>
                                     <div class="position-relative">
-                                        <select name="date-vehiculo" class="form-select" id="date-vehiculo">
-                                            <option value="">Seleccione el Año del Vehiculo...</option>
+                                        <select name="marca-vehiculo" class="form-select" id="estado">
+                                            <option value="">Seleccione el Estado...</option>
 
                                         </select>
                                     </div>
@@ -182,10 +195,10 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Color del Vehiculo</label>
+                                    <label for="">Localidad</label>
                                     <div class="position-relative">
-                                        <select name="color-vehiculo" class="form-select" id="color-vehiculo">
-                                            <option value="">Seleccione el Color del Vehiculo...</option>
+                                        <select name="marca-vehiculo" class="form-select" id="localidad">
+                                            <option value="">Seleccione la Localidad...</option>
 
                                         </select>
                                     </div>
@@ -194,10 +207,10 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Placa del Vehiculo</label>
+                                    <label for="">Dirección</label>
                                     <div class="position-relative">
-                                        <select name="placa-vehiculo" class="form-select" id="placa-vehiculo">
-                                            <option value="">Seleccione la Placa del Vehiculo...</option>
+                                        <select name="marca-vehiculo" class="form-select" id="direccion">
+                                            <option value="">Seleccione la Dirección...</option>
 
                                         </select>
                                     </div>
@@ -206,10 +219,10 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Conductor del Vehiculo</label>
+                                    <label for="">Material de Paredes</label>
                                     <div class="position-relative">
-                                        <select name="conductor-vehiculo" class="form-select" id="conductor-vehiculo">
-                                            <option value="">Seleccione el Conductor del Vehiculo...</option>
+                                        <select name="marca-vehiculo" class="form-select" id="paredes">
+                                            <option value="">Seleccione el Material de las Paredes...</option>
 
                                         </select>
                                     </div>
@@ -218,11 +231,131 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Cédula del Conductor</label>
+                                    <label for="">Material de Techo</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Cédula del Conductor">
+                                        <select name="marca-vehiculo" class="form-select" id="techo">
+                                            <option value="">Seleccione el Material de los Techos...</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Material de Piso</label>
+                                    <div class="position-relative">
+                                        <select name="marca-vehiculo" class="form-select" id="piso">
+                                            <option value="">Seleccione el Material de los Pisos...</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Material de Ventanas</label>
+                                    <div class="position-relative">
+                                        <select name="marca-vehiculo" class="form-select" id="ventanas">
+                                            <option value="">Seleccione el Material de las Ventanas...</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Material de Puertas</label>
+                                    <div class="position-relative">
+                                        <select name="marca-vehiculo" class="form-select" id="puertas">
+                                            <option value="">Seleccione el Material de las Puertas...</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Otros Materiales</label>
+                                    <div class="position-relative">
+                                        <select name="marca-vehiculo" class="form-select" id="otros_materiales">
+                                            <option value="">Seleccione el Material de las Paredes...</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Propietario de la Vivienda</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Propietario de la Vivienda">
                                         <div class="form-control-icon">
-                                            <i class="bi bi-person-lines-fill"></i>
+                                            <i class="bi bi-hourglass-split"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Valor del Inmueble</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Valor del Inmueble">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-hourglass-split"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Número de Residenciados</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Número de Residenciados">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-hourglass-split"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Niños</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Niños">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-hourglass-split"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Adolescentes</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Adolescentes">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-hourglass-split"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Adultos</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Adultos">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-hourglass-split"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -235,24 +368,36 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Hubo Persona(s) Lesionada(s)</label>
+                                    <label for="">Asegurado</label>
                                     <div class="position-relative">
                                         <label class="form-check-label" for="">SI</label>
-                                        <input type="radio" class="form-check-input" name="lesion" value="lesionada" id="lesionada">
+                                        <input type="radio" class="form-check-input" name="asegurado" value="asegurado" id="asegurado">
 
                                         <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="lesion" value="no-lesionada" id="no-lesionada">
+                                        <input type="radio" class="form-check-input" name="asegurado" value="no-asegurado" id="no-asegurado">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Número de Personas Lesionadas</label>
+                                    <label for="">Aseguradora</label>
                                     <div class="position-relative">
-                                        <input type="number" class="form-control" placeholder="Número de Personas Lesionadas">
+                                        <select name="jefe-comision" class="form-select" id="aseguradora">
+                                            <option value="">Seleccione la Aseguradora...</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Número de Poliza de Seguro</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Número de Poliza de Seguro">
                                         <div class="form-control-icon">
-                                            <i class="bi bi-prescription2"></i>
+                                            <i class="bi bi-hourglass-split"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -260,22 +405,106 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Hubo Decesos</label>
+                                    <label for="">Valor Asegurado</label>
                                     <div class="position-relative">
-                                        <label class="form-check-label" for="">SI</label>
-                                        <input type="radio" class="form-check-input" name="deceso" value="deceso" id="deceso">
-
-                                        <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="deceso" value="no-deceso" id="no-deceso">
+                                        <input type="text" class="form-control" placeholder="Número de Decesos">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-person-x"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Número de Decesos</label>
+                                    <label for="">Valor Perdido</label>
                                     <div class="position-relative">
-                                        <input type="number" class="form-control" placeholder="Número de Decesos">
+                                        <input type="text" class="form-control" placeholder="Valor Perdido">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-person-x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Valor Salvado</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Valor Salvado">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-person-x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Fuente de ignición</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Fuente de Ignición">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-person-x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Causa de Incendio</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Causa de Incendio">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-person-x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Lugar de Inicio del Incendio</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Lugar de Inicio del Incendio">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-person-x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Lugar de Fin del Incendio</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Lugar de Fin del Incendio">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-person-x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Reignición</label>
+                                    <div class="position-relative">
+                                        <label class="form-check-label" for="">SI</label>
+                                        <input type="radio" class="form-check-input" name="reignicion" value="reignicion" id="reignicion">
+
+                                        <label class="form-check-label ms-3" for="">NO</label>
+                                        <input type="radio" class="form-check-input" name="reignicion" value="no-reignicion" id="no-reignicion">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Tipo de Combustible</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Tipo de Combustible">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -284,19 +513,19 @@ require('../header.php');
                             </div>
 
                             <div class="form-group">
-                                <label for="" class="form-label">Observaciones</label>
+                                <label for="" class="form-label">Declaración del Incendio</label>
                                 <textarea class="form-control no-resize" id="observaciones" rows="4"></textarea>
                             </div>
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Hubo Incendios</label>
+                                    <label for="">Hubo Lesionados</label>
                                     <div class="position-relative">
                                         <label class="form-check-label" for="">SI</label>
-                                        <input type="radio" class="form-check-input" name="incendio" value="incendio" id="incendio">
+                                        <input type="radio" class="form-check-input" name="lesion" value="lesion" id="lesion">
 
                                         <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="incendio" value="no-incendio" id="no-incendio">
+                                        <input type="radio" class="form-check-input" name="lesion" value="no-lesion" id="no-lesion">
                                     </div>
                                 </div>
                             </div>
@@ -315,24 +544,76 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Efectivo</label>
+                                    <label for="">Número de Lesionados</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Efectivo">
+                                        <input type="text" class="form-control" placeholder="Número de Lesionados">
                                         <div class="form-control-icon">
-                                            <i class="bi bi-people-fill"></i>
+                                            <i class="bi bi-person-x"></i>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AQUI DEBE IR UN FOREACH PARA QUE SE AGREGUEN TANTOS INPUTS COMO CANTIDAD DE LESIONADOS HAYA -->
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Datos del Lesionado</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Datos de Lesionado">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-person-x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-------------------------------------------------------------------------------------------------->
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Unidad</label>
+                                    <div class="position-relative">
+                                        <select name="marca-vehiculo" class="form-select" id="unidades">
+                                            <option value="">Seleccione la Unidad que asistió...</option>
+
+                                        </select>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Número de la Unidad</label>
+                                    <label for="">Recurso Utilizado</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Número de la Unidad">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-car-front-fill"></i>
-                                        </div>
+                                        <select name="marca-vehiculo" class="form-select" id="recurso">
+                                            <option value="">Seleccione el Recurso Utilizado...</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Jefe de Comisión</label>
+                                    <div class="position-relative">
+                                        <select name="marca-vehiculo" class="form-select" id="recurso">
+                                            <option value="">Seleccione el Recurso Utilizado...</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Efectivo</label>
+                                    <div class="position-relative">
+                                        <select name="marca-vehiculo" class="form-select" id="efectivo">
+                                            <option value="">Seleccione el Efectivo que asistió...</option>
+
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -434,6 +715,11 @@ require('../header.php');
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label for="" class="form-label">Observaciones</label>
+                                <textarea class="form-control no-resize" id="info-adicional" rows="4"></textarea>
+                            </div>
+
                             <div class="col-12 d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
                             </div>
@@ -445,26 +731,6 @@ require('../header.php');
     </div>
 </div>
 </div>
-
-<script>
-    var checkboxes = document.querySelectorAll('.check');
-
-    checkboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {
-            var ischeck = this.checked;
-            var campoInput = document.getElementById('campoInput' + checkbox.id.slice(-1));
-
-            if (ischeck) {
-                campoInput.style.display = 'block';
-            } else {
-                campoInput.style.display = 'none';
-            }
-
-        });
-    });
-</script>
-
-
 
 <?php
 require('../footer.php');

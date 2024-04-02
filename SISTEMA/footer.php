@@ -13,6 +13,24 @@
     <script src="assets/static/js/pages/horizontal-layout.js"></script>  
     <script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="assets/static/js/pages/dashboard.js"></script>
+
+    <script>
+    var checkboxes = document.querySelectorAll('.check');
+
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            var ischeck = this.checked;
+            var campoInput = document.getElementById('campoInput' + checkbox.id.slice(-1));
+
+            if (ischeck) {
+                campoInput.style.display = 'block';
+            } else {
+                campoInput.style.display = 'none';
+            }
+
+        });
+    });
+</script>
     
 </body>
 
