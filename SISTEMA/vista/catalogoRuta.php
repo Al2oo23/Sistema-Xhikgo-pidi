@@ -34,7 +34,6 @@ require('../header.php');
                                         <td class="columna">jose34@gmailcom</td>
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                                <div><a href="#" class="btn icon btn-info"><i class="bi bi-search"></i></a></div>
                                                 <div class="flex-item"><a href="#" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a></div>
                                                 <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                             </div>
