@@ -1,0 +1,24 @@
+/* opcion 1 */
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+    background: none;
+  } */
+
+  /* opcion 2 */
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-width: thin;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background-image: url("../../extensions/bootstrap-icons/icons/calendar2-heart.svg");
+    position: absolute;
+    left: 2%;
+}
+input[type="date"]:focus::-webkit-calendar-picker-indicator {
+    background-image: url("../../extensions/bootstrap-icons/icons/calendar2-heart2.svg");
+}
+input::-webkit-datetime-edit {
+    position: relative;
+}

@@ -2,7 +2,6 @@
 $nombrePagina = "Mantenimiento de Unidades";
 require('../header.php');
 ?>
-
 <div class="col-md-6 col-12 m-auto">
     <div class="card">
         <div class="card-header">
@@ -51,11 +50,22 @@ require('../header.php');
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group has-icon-left">
+                        <!-- opcion 1 con incono de bootstrap pero no se puede clickear-->
+                        <!-- <div class="form-group has-icon-left">
                                     <label for="">Fecha</label>
-                                    <div class="position-relative">
-                                        <input type="date" class="form-control" placeholder="Parte Diaria">
+                                    <div class="position-relative" class>
+                                        <input type="date" class="form-control">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-calendar-date"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!-- opcion 2 con icono del propio input y clickeable-->
+                            <div class="form-group has-icon-left">
+                                    <label for="">Fecha</label>
+                                    <div class="position-relative" class>
+                                        <input type="date" class="form-control">
                                     </div>
                                 </div>
                             </div>
