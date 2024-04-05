@@ -173,18 +173,17 @@
                                                 class="submenu-item  ">
                                                 <a href="vehiculo.php"
                                                     class='submenu-link'>Registro de Vehiculos</a>
-
-                                                
                                             </li>
-                                            
-                                        
-                                        
+
                                             <li
                                                 class="submenu-item  ">
                                                 <a href="catalogoMantenimiento.php"
                                                     class='submenu-link'>Cronograma de Mantenimiento</a>
-
-                                                
+                                            </li>
+                                            <li
+                                                class="submenu-item  ">
+                                                <a href="catalogoOR.php"
+                                                    class='submenu-link'>Optimizador de Rutas</a>
                                             </li>
                                         </ul>
                                         
