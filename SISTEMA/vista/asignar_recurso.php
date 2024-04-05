@@ -1,5 +1,5 @@
 <?php
-$nombrePagina = "Asignación de Recurso";
+$nombrePagina = "Agregar Recurso";
 require('../header.php');
 
 ?>
@@ -7,7 +7,7 @@ require('../header.php');
 <div class="col-md-6 col-12 m-auto">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Asignación de Recurso</h4>
+            <h4 class="card-title">Agregar Recurso</h4>
         </div>
         <div class="card-content">
             <div class="card-body">
@@ -21,7 +21,7 @@ require('../header.php');
                                             <label for="">Recurso</label>
                                             <div class="position-relative">
                                                 <select name="jefe-comision" class="form-select" id="recurso">
-                                                    <option value="">Seleccione el Recurso a asignar...</option>
+                                                    <option value="">Seleccione el Recurso a Agregar...</option>
 
                                                 </select>
                                             </div>
@@ -38,7 +38,7 @@ require('../header.php');
                                 </div>
                             </div>
                             <div class="col-12 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary me-1 mb-1">Asignar</button>
+                                <button type="submit" class="btn btn-primary me-1 mb-1">Agregar</button>
                             </div>
                         </div>
                     </div>

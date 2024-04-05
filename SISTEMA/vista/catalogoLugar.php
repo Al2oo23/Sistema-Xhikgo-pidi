@@ -1,5 +1,5 @@
 <?php 
-$nombrePagina = 'Lugar';
+$nombrePagina = 'Catálogo de Lugar';
 require('../header.php');
 include('../modelo/conexion.php');
 
@@ -13,13 +13,13 @@ include('../modelo/conexion.php');
                     <div class="card-content">
                     <div class="card-header">
                         <h4 class="card-title">Lugares</h4>
+                        <a href="#" class="btn icon icon-left btn-success">Nuevo</a>
                     </div>
                         <!-- table hover -->
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="columna">ID</th>
                                         <th class="columna">Tipo de Lugar</th>
                                         <th class="columna">Estado</th>
                                         <th class="columna">Municipio</th>
@@ -29,14 +29,12 @@ include('../modelo/conexion.php');
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="columna">1</td>
-                                        <td class="columnas"></td>
+                                        <td class="columna">?</td>
                                         <td class="columna">Yaracuy</td>
                                         <td class="columna">San Felipe</td>
                                         <td class="columna">5ta Avenida</td>
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                                <div><a href="#" class="btn icon btn-info"><i class="bi bi-search"></i></a></div>
                                                 <div class="flex-item"><a href="#" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a></div>
                                                 <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                             </div>

@@ -1,5 +1,5 @@
 <?php 
-$nombrePagina = 'Modelo de Vehiculos';
+$nombrePagina = 'Catálogo de Modelo';
 require('../header.php');
 include('../modelo/conexion.php');
 
@@ -12,28 +12,26 @@ include('../modelo/conexion.php');
                 <div class="card">
                     <div class="card-content">
                     <div class="card-header">
-                        <h4 class="card-title">Modelos</h4>
+                        <h4 class="card-title">Modelo de Vehiculos</h4>
+                        <a href="modelo.php" class="btn icon icon-left btn-success">Nuevo</a>
                     </div>
                         <!-- table hover -->
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="columna">ID</th>
-                                        <th class="columna">Nombre</th>
+                                        <th class="columna">Modelo</th>
                                         <th class="columna">Marca</th>
                                         <th class="columna">Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="columna">1</td>
                                         <td class="columna">Aveo LT</td>
                                         <td class="columna">Chevrolet</td>
                                         
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <div><a href="#" class="btn icon btn-info"><i class="bi bi-search"></i></a></div>
                                             <div class="flex-item"><a href="#" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a></div>
                                             <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>

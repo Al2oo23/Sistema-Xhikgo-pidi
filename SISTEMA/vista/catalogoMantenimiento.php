@@ -1,5 +1,5 @@
 <?php 
-$nombrePagina = 'Tabla De Mantenimiento de Unidades';
+$nombrePagina = 'Catalogo de Mantenimiento de Unidades';
 require('../header.php');
 // include('../modelo/conexion.php');
 
@@ -7,7 +7,7 @@ require('../header.php');
 // $sentencia->execute();
 // $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
-           <div class="col-12 m-auto">
+           <div class="col-10 m-auto">
                 <div class="card">
                     <div class="card-content">
                     <div class="card-header">
@@ -30,7 +30,7 @@ require('../header.php');
                                         <td class="columna">1234</td>
                                         <td class="columna">Accidente de abejas</td>
                                         <td class="columna">04-03-2024</td>
-                                        <th class="columna">Buenas condiciones </th>
+                                        <td class="columna">Buenas condiciones </td>
                                         <td>
 
                                         <div class="botones" style="justify-content:space-evenly;">

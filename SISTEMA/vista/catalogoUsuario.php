@@ -1,5 +1,5 @@
 <?php 
-$nombrePagina = 'Usuarios';
+$nombrePagina = 'Catálogo de Usuario';
 require('../header.php');
 include('../modelo/conexion.php');
 
@@ -13,6 +13,7 @@ include('../modelo/conexion.php');
                     <div class="card-content">
                     <div class="card-header">
                         <h4 class="card-title">Usuarios</h4>
+                        <a href="#" class="btn icon icon-left btn-success">Nuevo</a>
                     </div>
                         <!-- table hover -->
                         <div class="table-responsive">
@@ -35,9 +36,7 @@ include('../modelo/conexion.php');
                                         <td class="columna">asdasdasdasd</td>
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                        <div><a href="#" class="btn icon btn-info"><i class="bi bi-search"></i></a></div>    
                                             <div class="flex-item"><a href="#" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a></div>
-                                            <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                         </td>
 
