@@ -49,7 +49,7 @@
                 <div class="header-top">
                     <div class="container">
                         <div class="logo">
-                            <a href="index.php"><img src="img/logo_bomberos-removebg.png" alt="Logo"></a>
+                            <a href="index.php"><img src="img/logo_bomberos-removebg.png" style="width: 6rem; height: 3rem;" alt="Logo"></a>
                         </div>
                         <div class="header-top-right">
                             <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
