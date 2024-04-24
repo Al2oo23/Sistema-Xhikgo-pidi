@@ -25,7 +25,7 @@ include("modelo/conexion.php");
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <div class="auth-logo">
-                        <img src="img/logo_bomberos-removebg.png" style="width: 6em; height: 4em;" alt="Logo">
+                        <img src="vista/img/logo_bomberos-removebg.png" style="width: 6em; height: 4em;" alt="Logo">
                         <h5 style="display: inline-block;">Cuerpo Autónomo de Bomberos</h5>
                     </div>
                     <h1 class="auth-title">Inicio de Sesion.</h1>
@@ -49,7 +49,7 @@ include("modelo/conexion.php");
                 </div>
             </div>
             <div class="col-lg-7 d-none d-lg-block">
-                <div id="auth-right" style="background-image: url('img/bomberos.jpg'); background-size: cover; opacity: 0.6;">
+                <div id="auth-right" style="background-image: url('vista/img/bomberos.jpg'); background-size: cover; opacity: 0.6;">
 
                 </div>
             </div>
