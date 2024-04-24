@@ -3,9 +3,9 @@ $nombrePagina = 'Catálogo de Modelo';
 require('../header.php');
 include('../modelo/conexion.php');
 
-// $sentencia = $conexion->prepare("SELECT * FROM marca");
+// $sentencia = $conexion->prepare("SELECT * FROM modelo");
 // $sentencia->execute();
-// $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+// $modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="col-6 m-auto">
@@ -26,18 +26,20 @@ include('../modelo/conexion.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="columna">Aveo LT</td>
+                                    
+                                    <tr class="filas">
+                                        <td class="columna">Aveo</td>
                                         <td class="columna">Chevrolet</td>
                                         
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <div class="flex-item"><a href="#" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a></div>
+                                        <?php include("modalModelo.php");?>
                                             <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                         </td>
 
                                     </tr>
+                                   
                                 </tbody>
                             </table>
                         </div>
@@ -45,6 +47,7 @@ include('../modelo/conexion.php');
                 </div>
             </div>
 
+    <script src="Javascript/modeloModal.js"></script>
 
 <?php 
 require ('../footer.php');

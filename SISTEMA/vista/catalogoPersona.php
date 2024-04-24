@@ -37,7 +37,7 @@ $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                         </thead>
                         <tbody>
                             <?php foreach ($persona as $fila) : ?>
-                                <tr>
+                                <tr class="filas">
                                     <td class="columna"><?= $fila['cedula'] ?></td>
                                     <td class="columna"><?= $fila['nombre'] ?></td>
                                     <td class="columna"><?= $fila['edad'] ?></td>
@@ -51,7 +51,10 @@ $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <td class="columna"><?= $fila['estacion'] ?></td>
                                     <td class="columna">
                                         <div class='d-flex justify-content-around w-100'>
-                                            <div class=""><a href="#" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a></div>
+                                            
+                                         <div class="">
+                                            <?php include("modalPersona.php");?>
+                                         </div>
                                             <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                     </td>
@@ -66,6 +69,7 @@ $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </section>
 
+<script src="Javascript/personaModal.js"></script>
 
 <?php
 require('../footer.php');

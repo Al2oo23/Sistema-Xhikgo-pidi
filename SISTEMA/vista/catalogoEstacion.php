@@ -3,9 +3,9 @@ $nombrePagina = 'Catálogo de Estacion';
 require('../header.php');
 include('../modelo/conexion.php');
 
-// $sentencia = $conexion->prepare("SELECT * FROM marca");
-// $sentencia->execute();
-// $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+$sentencia = $conexion->prepare("SELECT * FROM estacion");
+$sentencia->execute();
+$estacion = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="col-5 m-auto">
@@ -25,15 +25,17 @@ include('../modelo/conexion.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="columna">?</td>
+                                    <tr class="filas">
+                                        <?php foreach ($estacion as $estac) :?>
+                                        <td class="columna"><?= $estac["nombre"]?></td>
+
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <div class="flex-item"><a href="#" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a></div>
+                                           <?php include("modalEstacion.php");?>
                                             <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                         </td>
-
+                                        <?php endforeach;?>
                                     </tr>
                                 </tbody>
                             </table>
@@ -42,6 +44,7 @@ include('../modelo/conexion.php');
                 </div>
             </div>
 
+            <script src="Javascript/estacionModal.js"></script>
 
 <?php 
 require ('../footer.php');

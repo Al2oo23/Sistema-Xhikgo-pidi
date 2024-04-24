@@ -1,11 +1,11 @@
 <?php 
 $nombrePagina = 'Catálogo de Vehiculo';
 require('../header.php');
-// include('../modelo/conexion.php');
+include('../modelo/conexion.php');
 
 // $sentencia = $conexion->prepare("SELECT * FROM vehiculo");
 // $sentencia->execute();
-// $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+// $vehiculo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="col-12 m-auto">
@@ -34,31 +34,36 @@ require('../header.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                   
+                                    <tr class="filas">
+                                        <td class="columna">?</td>
+                                        <td class="columna">?</td>
+                                        <td class="columna">23</td>
+                                        <td class="columna">Chevrolet</td>
+                                        <td class="columna">Aveo</td>
                                         <td class="columna">?</td>
                                         <td class="columna">?</td>
                                         <td class="columna">?</td>
                                         <td class="columna">?</td>
-                                        <td class="columna">?</td>
-                                        <td class="columna">?</td>
-                                        <td class="columna">?</td>
-                                        <td class="columna">?</td>
-                                        <td class="columna">?</td>
-                                        <td class="columna">?</td>
+                                        <td class="columna">12590678</td>
+                                        
                                         <td>
                                             <div class="botones">
-                                                <div class="flex-item"><a href="#" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a></div>
+                                            <?php include("modalVehiculo.php");?>
                                                 <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                             </div>
                                         </td>
 
                                     </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
+
+    <script src="Javascript/vehiculoModal.js"></script>
 
 <?php 
 require ('../footer.php');

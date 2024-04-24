@@ -27,9 +27,19 @@ require('../header.php');
                             </div>
                         </div>
 
-                        
+                        <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Tipo de Aseguradora:</label>
+                                    <div class="position-relative">
+                                        <select name="tipo-aseguradora" class="form-select" id="tipo-aseguradora">
+                                            <option value="">Seleccione un tipo de Asegoradora:</option>
+                                            <option value="vehiculo">Vehiculo</option>
+                                            <option value="hogar">Hogar</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 
-        
                         <div class="col-12 d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
                             </div>

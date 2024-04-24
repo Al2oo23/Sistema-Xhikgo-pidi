@@ -3,12 +3,12 @@ $nombrePagina = 'Catálogo de Usuario';
 require('../header.php');
 include('../modelo/conexion.php');
 
-// $sentencia = $conexion->prepare("SELECT * FROM usuario");
-// $sentencia->execute();
-// $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+$sentencia = $conexion->prepare("SELECT * FROM `usuario`");
+$sentencia->execute();
+$usuario = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="col-10 m-auto">
+<div class="col-8 m-auto">
                 <div class="card">
                     <div class="card-content">
                     <div class="card-header">
@@ -21,26 +21,33 @@ include('../modelo/conexion.php');
                                 <thead>
                                     <tr>
                                         <th class="columna">Cedula</th>
+                                        <th class="columna">Tipo de Usuario</th>
                                         <th class="columna">Nombre</th>
-                                        <th class="columna">Correo</th>
                                         <th class="columna">Estado</th>
                                         <th class="columna">Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        
-                                        <td class="columna">12566488</td>
-                                        <td class="columna">Jose Manuel Perez</td>
-                                        <td class="columna">jose34@gmailcom</td>
-                                        <td class="columna">asdasdasdasd</td>
+                                    <?php foreach ($usuario as $user) : ?>
+
+                                    <tr class="filas">
+                                        <td class="columna"><?= $user["cedula"]?></td>
+                                        <td class="columna"><?= $user["tipo"]?></td>
+                                        <td class="columna"><?= $user["nombre"]?></td>
+                                        <td class="columna" hidden><?= $user["clave"]?></td>
+                                        <td class="columna"><?= $user["estado"]?></td>
                                         <td>
-                                        <div class="botones" style="justify-content:space-evenly;">
-                                            <div class="flex-item"><a href="#" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a></div>
-                                        </div>
+                                        <div class='d-flex justify-content-around w-100'>
+                                            
+                                            <div class="">
+                                               <?php include("modalUsuario.php");?>
+                                            </div>
+
+                                           </div>
                                         </td>
 
                                     </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -48,7 +55,8 @@ include('../modelo/conexion.php');
                 </div>
             </div>
 
+            <script src="Javascript/usuarioModal.js"></script>
 
-<?php 
-require ('../footer.php');
-?>
+        <?php 
+        require ('../footer.php');
+        ?>

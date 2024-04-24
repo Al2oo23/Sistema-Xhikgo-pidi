@@ -3,9 +3,9 @@ $nombrePagina = 'Catálogo de Lugar';
 require('../header.php');
 include('../modelo/conexion.php');
 
-// $sentencia = $conexion->prepare("SELECT * FROM ruta");
+// $sentencia = $conexion->prepare("SELECT * FROM lugar");
 // $sentencia->execute();
-// $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+// $lugar = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="col-8 m-auto">
@@ -13,7 +13,7 @@ include('../modelo/conexion.php');
                     <div class="card-content">
                     <div class="card-header">
                         <h4 class="card-title">Lugares</h4>
-                        <a href="#" class="btn icon icon-left btn-success">Nuevo</a>
+                        <a href="lugar.php" class="btn icon icon-left btn-success">Nuevo</a>
                     </div>
                         <!-- table hover -->
                         <div class="table-responsive">
@@ -28,19 +28,20 @@ include('../modelo/conexion.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    
+                                    <tr class="filas">
                                         <td class="columna">?</td>
                                         <td class="columna">Yaracuy</td>
-                                        <td class="columna">San Felipe</td>
-                                        <td class="columna">5ta Avenida</td>
+                                        <td class="columna">Independencia</td>
+                                        <td class="columna">?</td>
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                                <div class="flex-item"><a href="#" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a></div>
+                                        <?php include("modalLugar.php");?>
                                                 <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                             </div>
                                         </td>
-
                                     </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -48,6 +49,7 @@ include('../modelo/conexion.php');
                 </div>
             </div>
 
+    <script src="Javascript/lugarModal.js"></script>
 
 <?php 
 require ('../footer.php');

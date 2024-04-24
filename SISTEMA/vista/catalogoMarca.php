@@ -5,7 +5,7 @@ include('../modelo/conexion.php');
 
 // $sentencia = $conexion->prepare("SELECT * FROM marca");
 // $sentencia->execute();
-// $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+// $marca = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="col-5 m-auto">
@@ -25,23 +25,28 @@ include('../modelo/conexion.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                   
+                                    <tr class="filas">
                                         <td class="columna">Chevrolet</td>
                                         
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <div class="flex-item"><a href="#" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a></div>
+                                        <?php include("modalMarca.php");?>
                                             <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                         </td>
 
                                     </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
+
+    <script src="Javascript/marcaModal.js"></script>
+
 <?php 
 require ('../footer.php');
 ?>
