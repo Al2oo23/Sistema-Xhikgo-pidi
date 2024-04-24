@@ -1,7 +1,18 @@
 <?php
 $nombrePagina = "Lugar";
 require('../header.php');
+include('../modelo/conexion.php');
 
+$sentencia = $conexion->prepare("SELECT * FROM municipio");
+$sentencia->execute();
+$nmunicipio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+// Para la relacion del municipio con el Estado
+
+$municipiosEstados = array();
+foreach ($nmunicipio as $row) {
+    $municipiosEstados[$row["nombre"]] = $row["estado"];
+}
 ?>
 
 <div class="col-md-6 col-12 m-auto">
@@ -20,7 +31,7 @@ require('../header.php');
                                         <div class="form-group has-icon-left">
                                             <label for="">Tipo de Lugar</label>
                                             <div class="position-relative">
-                                                <select name="jefe-comision" class="form-select" id="recurso_inoperativo">
+                                                <select name="jefe-comision" class="form-select" id="">
                                                     <option value="">Seleccione el Tipo de Lugar...</option>
 
                                                 </select>
@@ -32,21 +43,58 @@ require('../header.php');
                                         <div class="form-group has-icon-left">
                                             <label for="">Municipio</label>
                                             <div class="position-relative">
-                                                <select name="jefe-comision" class="form-select" id="recurso_inoperativo">
-                                                    <option value="">Seleccione el Municipio...</option>
+                                               
+                                                <select name="municipio" class="form-select" id="municipio">
+                                                     
+                                                    <option value="default">Seleccione el Municipio...</option>
 
+                                                        <?php foreach ($nmunicipio as $nmun): 
+                                                            $municipio = $nmun["nombre"];
+                                                        ?>
+
+                                                    <option value="<?=$municipio?>"><?=$municipio?></option>
+
+                                                        <?php endforeach;?> 
                                                 </select>
+                                               
                                             </div>
                                         </div>
                                     </div>
 
                                     <label for="first-name-icon">Nombre del Lugar</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Ingrese la Cantidad Inoperativa del Recurso" id="first-name-icon">
+                                        <input type="text" class="form-control" placeholder="Coloque el nombre del lugar" id="first-name-icon">
                                         <div class="form-control-icon">
                                             <i class="bi bi-postcard"></i>
                                         </div>
                                     </div>
+                                    
+                                  <div class="col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="">Estado</label>
+                                            <div class="position-relative">
+                                                <select name="municipio" class="form-select" id="estado">
+                                                    <option value="">Seleccione el Estado...</option>
+
+                                                        <!-- Para que no se repitan los Estados -->
+
+                                                    <?php  $estadosMostrados = array(); 
+                                                        foreach ($nmunicipio as $est): 
+                                                        
+                                                        $estado = $est["estado"];
+                                                        
+                                                        if (!in_array($estado, $estadosMostrados)):
+                                                        
+                                                            $estadosMostrados[] = $estado; ?>
+
+                                                    <option value="<?=$estado?>"><?=$estado?></option>
+
+                                                    <?php endif; endforeach; ?> 
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
                                 </div>
                             </div>
                             <div class="col-12 d-flex justify-content-end">
@@ -59,6 +107,30 @@ require('../header.php');
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('municipio').addEventListener('change', function() {
+    var municipioSeleccionado = this.value;
+  
+    var estadoDelMunicipio = <?php echo json_encode($municipiosEstados); ?>[municipioSeleccionado];
+    var selectEstado = document.getElementById('estado');
+
+    for(var i = 0; i < selectEstado.options.length; i++) {
+        var option = selectEstado.options[i];
+
+        if(municipioSeleccionado == "default") {
+            option.style.display = 'block';
+        } else {
+            
+            if(option.value == estadoDelMunicipio) {
+                option.style.display = 'block';
+            } else {
+                option.style.display = 'none';
+            }
+        }
+    }
+});
+</script>
 
 <?php
 require('../footer.php');

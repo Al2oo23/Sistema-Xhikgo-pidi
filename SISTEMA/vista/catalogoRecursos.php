@@ -5,7 +5,7 @@ include('../modelo/conexion.php');
 
 // $sentencia = $conexion->prepare("SELECT * FROM recurso");
 // $sentencia->execute();
-// $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+// $recurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="col-8 m-auto">
@@ -27,18 +27,20 @@ include('../modelo/conexion.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                   
+                                    <tr class="filas">
+                                        <td class="columna" hidden>1</td>
                                         <td class="columna">Herramienta</td>
-                                        <td class="columna">Alicate</td>
-                                        <td class="columna">?</td>
+                                        <td class="columna">Llave Inglesa</td>
+                                        <td class="columna">50</td>
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <div class="flex-item"><a href="#" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a></div>
+                                        <?php include("modalRecurso.php");?>
                                             <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                         </td>
-
                                     </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -46,6 +48,7 @@ include('../modelo/conexion.php');
                 </div>
             </div>
 
+    <script src="Javascript/recursoModal.js"></script>
 
 <?php 
 require ('../footer.php');

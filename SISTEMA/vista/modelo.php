@@ -1,6 +1,11 @@
 <?php
 $nombrePagina = "Modelo";
 require('../header.php');
+include('../modelo/conexion.php');
+
+$sentencia = $conexion->prepare("SELECT * FROM marca");
+$sentencia->execute();
+$marca = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -32,8 +37,15 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Marca</label>
                                     <div class="position-relative">
-                                        <select name="tipo-aviso" class="form-select" id="marca">
-                                            <option value="">Seleccione la Marca</option>
+                                         <select name="tipo-aviso" class="form-select" id="marca">
+                                         <option value="default">Seleccione el Modelo...</option>
+                                        <?php foreach ($marca as $marc) : 
+                                            $marca = $marc["nombre"];
+                                        ?>
+
+                                            <option value="<?=$marca?>"><?=$marca?></option>
+
+                                        <?php endforeach;?>
 
                                         </select>
                                     </div>

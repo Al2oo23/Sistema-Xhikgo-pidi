@@ -25,13 +25,11 @@ include('../modelo/conexion.php');
                                         <th class="columna">Hora de Aviso</th>
                                         <th class="columna">Minutos de Salida</th>
                                         <th class="columna">Minutos de Llegada</th>
-                                        <th class="columna">Hora de Regreso</th>
                                         <th class="columna">Tiempo Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="columna">?</td>
                                         <td class="columna">?</td>
                                         <td class="columna">?</td>
                                         <td class="columna">?</td>
