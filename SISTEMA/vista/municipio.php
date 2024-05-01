@@ -15,21 +15,12 @@ require('../header.php');
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-12">
-                                        <div class="form-group has-icon-left">
-                                                <label for="first-name-icon">Nombre del Estado</label>
-                                                
-                                                <div class="position-relative">
-                                                    <input type="text" class="form-control" placeholder="Coloque el Estado" id="first-name-icon">
-                                                    <div class="form-control-icon">
-                                                    <i class="bi bi-bank"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        
+                                            
                                             <div class="form-group has-icon-left">
-                                                <label for="first-name-icon">Nombre del Municipio</label>
-                                                
+                                            
                                                 <div class="position-relative">
-                                                    <input type="text" class="form-control" placeholder="Coloque el nombre del municipio" id="first-name-icon">
+                                                    <input type="text" class="form-control" placeholder="Municipio" id="first-name-icon">
                                                     <div class="form-control-icon">
                                                     <i class="bi bi-shop"></i>
                                                     </div>
