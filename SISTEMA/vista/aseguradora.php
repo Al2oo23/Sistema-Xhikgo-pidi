@@ -10,7 +10,7 @@ require('../header.php');
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-vertical">
+                <form class="form form-vertical" onsubmit="return validarAseguradora()">
                     <div class="form-body">
                         <div class="row">
 
@@ -19,7 +19,7 @@ require('../header.php');
                             <div class="form-group has-icon-left">
                                 <label for="">Nombre de la Aseguradora</label>
                                 <div class="position-relative">
-                                    <input type="text" class="form-control" placeholder="Nombre">
+                                    <input type="text" id="nombre_aseguradora" class="form-control" placeholder="Nombre">
                                     <div class="form-control-icon">
                                     <i class="bi bi-person-hearts"></i>
                                     </div>
@@ -31,8 +31,8 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Tipo de Aseguradora:</label>
                                     <div class="position-relative">
-                                        <select name="tipo-aseguradora" class="form-select" id="tipo-aseguradora">
-                                            <option value="">Seleccione un tipo de Asegoradora:</option>
+                                        <select name="tipo-aseguradora" class="form-select" id="tipo_aseguradora">
+                                            <option value="">Seleccione un tipo de Aseguradora:</option>
                                             <option value="vehiculo">Vehiculo</option>
                                             <option value="hogar">Hogar</option>
                                         </select>

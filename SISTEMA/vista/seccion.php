@@ -11,7 +11,7 @@ require('../header.php');
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-vertical">
+                            <form class="form form-vertical" onsubmit="return validarSeccion()">
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-12">
@@ -19,7 +19,7 @@ require('../header.php');
                                                 <label for="first-name-icon">Nombre de la Sección</label>
                                                 
                                                 <div class="position-relative">
-                                                    <input type="text" class="form-control" placeholder="Coloque el nombre de la sección" id="first-name-icon">
+                                                    <input type="text" class="form-control" placeholder="Coloque el nombre de la sección" id="nombre_seccion">
                                                     <div class="form-control-icon">
                                                     <i class="bi bi-grid"></i>
                                                     </div>

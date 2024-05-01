@@ -159,18 +159,6 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Localidad</label>
-                                    <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="localidad">
-                                            <option value="">Seleccione la Localidad...</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
                                     <label for="">Municipio</label>
                                     <div class="position-relative">
                                         <select name="marca-vehiculo" class="form-select" id="municipio">
@@ -183,26 +171,19 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Estado</label>
+                                    <label for="">Localidad</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="estado">
-                                            <option value="">Seleccione el Estado...</option>
+                                        <select name="marca-vehiculo" class="form-select" id="localidad">
+                                            <option value="">Seleccione la Localidad...</option>
 
                                         </select>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Dirección</label>
-                                    <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="direccion">
-                                            <option value="">Seleccione la Dirección...</option>
-
-                                        </select>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Direccion</label>
+                                <textarea class="form-control no-resize" id="direccion" rows="4"></textarea>
                             </div>
 
                             <div class="col-12">
