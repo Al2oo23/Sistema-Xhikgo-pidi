@@ -4,7 +4,7 @@ require('../header.php');
 
 ?>
 
-<div class="col-md-6 col-12 m-auto">
+<div class="col-sm-12 col-md-8 col-lg-6 m-auto">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Registro de Marca de Vehiculos</h4>

@@ -169,7 +169,6 @@ require('../header.php');
                                 </div>
                             </div>
 
-
                             <div class="form-group">
                                 <label for="" class="form-label">Direccion</label>
                                 <textarea class="form-control no-resize" id="direccion" rows="4"></textarea>
