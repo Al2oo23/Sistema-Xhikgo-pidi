@@ -40,6 +40,8 @@
         }
     </style>
 
+<script src="Javascript/validaciones.js"></script>
+
 </head>
 
 <body>

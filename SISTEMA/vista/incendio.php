@@ -10,14 +10,14 @@ require('../header.php');
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-vertical">
+                <form class="form form-vertical" onsubmit="return validarIncendio()">
                     <div class="form-body">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
                                     <label for="">Parte Diaria</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Parte Diaria">
+                                        <input type="text" class="form-control" id="parte_diaria" placeholder="Parte Diaria">
                                         <div class="form-control-icon">
                                             <i class="bi bi-calendar-date"></i>
                                         </div>
@@ -29,9 +29,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Sección</label>
                                     <div class="position-relative">
-                                        <select name="tipo-aviso" class="form-select" id="seccion">
+                                        <select name="seccion" class="form-select" id="seccion">
                                             <option value="">Seleccione la Sección...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -41,9 +41,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Estación</label>
                                     <div class="position-relative">
-                                        <select name="tipo-aviso" class="form-select" id="estacion">
+                                        <select name="estacion" class="form-select" id="estacion">
                                             <option value="">Seleccione la Estación...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -53,9 +53,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Tipo de Aviso</label>
                                     <div class="position-relative">
-                                        <select name="tipo-aviso" class="form-select" id="tipo-aviso">
+                                        <select name="tipo_aviso" class="form-select" id="tipo_aviso">
                                             <option value="">Seleccione el Tipo de Aviso...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Solicitante</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Solicitante">
+                                        <input type="text" id="solicitante" class="form-control" placeholder="Solicitante">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -75,9 +75,9 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Recibidor</label>
+                                    <label for="">Receptor</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Recibidor">
+                                        <input type="text" id="receptor" class="form-control" placeholder="Receptor">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -89,7 +89,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Aprobador</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Aprobador">
+                                        <input type="text" id="aprobador" class="form-control" placeholder="Aprobador">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -99,21 +99,9 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Causa de Incendio</label>
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Causa de Ignición">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-person-x"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
                                     <label for="">Hora de Aviso</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Hora de Aviso">
+                                        <input type="text" id="hora_aviso" class="form-control" placeholder="Hora de Aviso">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass"></i>
                                         </div>
@@ -125,7 +113,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Salida</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Hora de Salida">
+                                        <input type="text" id="hora_salida" class="form-control" placeholder="Hora de Salida">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-top"></i>
                                         </div>
@@ -137,7 +125,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Llegada</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Hora de Llegada">
+                                        <input type="text" id="hora_llegada" class="form-control" placeholder="Hora de Llegada">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -149,7 +137,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Regreso</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Hora de Regreso">
+                                        <input type="text" id="hora_regreso" class="form-control" placeholder="Hora de Regreso">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-bottom"></i>
                                         </div>
@@ -159,23 +147,11 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Localidad</label>
-                                    <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="localidad">
-                                            <option value="">Seleccione la Localidad...</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
                                     <label for="">Municipio</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="municipio">
+                                        <select name="municipio" class="form-select" id="municipio">
                                             <option value="">Seleccione el Municipio...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -183,35 +159,30 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Estado</label>
+                                    <label for="">Localidad</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="estado">
-                                            <option value="">Seleccione el Estado...</option>
-
+                                        <select name="localidad" class="form-select" id="localidad">
+                                            <option value="">Seleccione la Localidad...</option>
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Dirección</label>
-                                    <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="direccion">
-                                            <option value="">Seleccione la Dirección...</option>
 
-                                        </select>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Direccion</label>
+                                <textarea class="form-control no-resize" id="direccion" rows="4"></textarea>
                             </div>
+
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
                                     <label for="">Material de Paredes</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="paredes">
+                                        <select name="material_paredes" class="form-select" id="material_paredes">
                                             <option value="">Seleccione el Material de las Paredes...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -221,9 +192,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Material de Techo</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="techo">
+                                        <select name="material_techo" class="form-select" id="material_techo">
                                             <option value="">Seleccione el Material de los Techos...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -233,9 +204,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Material de Piso</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="piso">
+                                        <select name="material_piso" class="form-select" id="material_piso">
                                             <option value="">Seleccione el Material de los Pisos...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -245,9 +216,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Material de Ventanas</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="ventanas">
+                                        <select name="material_ventanas" class="form-select" id="material_ventanas">
                                             <option value="">Seleccione el Material de las Ventanas...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -257,9 +228,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Material de Puertas</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="puertas">
+                                        <select name="material_puertas" class="form-select" id="material_puertas">
                                             <option value="">Seleccione el Material de las Puertas...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -269,9 +240,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Otros Materiales</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="otros_materiales">
-                                            <option value="">Seleccione el Material de las Paredes...</option>
-
+                                        <select name="otros_materiales" class="form-select" id="otros_materiales">
+                                            <option value="">Seleccione Otros Materiales que desee agregar...</option>
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -281,7 +252,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Propietario de la Vivienda</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Propietario de la Vivienda">
+                                        <input type="text" id="propietario" class="form-control" placeholder="Propietario de la Vivienda">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -293,7 +264,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Valor del Inmueble</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Valor del Inmueble">
+                                        <input type="text" class="form-control" id="valor_inmueble" placeholder="Valor del Inmueble">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -305,7 +276,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Número de Residenciados</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Número de Residenciados">
+                                        <input type="text" id="residenciados" class="form-control" placeholder="Número de Residenciados">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -317,7 +288,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Niños</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Niños">
+                                        <input type="text" id="ninos" class="form-control" placeholder="Niños">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -329,7 +300,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Adolescentes</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Adolescentes">
+                                        <input type="text" id="adolescentes" class="form-control" placeholder="Adolescentes">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -341,7 +312,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Adultos</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Adultos">
+                                        <input type="text" id="adultos" class="form-control" placeholder="Adultos">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -351,7 +322,7 @@ require('../header.php');
 
                             <div class="form-group">
                                 <label for="" class="form-label">Información Adicional</label>
-                                <textarea class="form-control no-resize" id="info-adicional" rows="4"></textarea>
+                                <textarea class="form-control no-resize" id="informacion_adicional" rows="4"></textarea>
                             </div>
 
                             <div class="col-12">
@@ -362,7 +333,7 @@ require('../header.php');
                                         <input type="radio" class="form-check-input" name="asegurado" value="asegurado" id="asegurado">
 
                                         <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="asegurado" value="no-asegurado" id="no-asegurado">
+                                        <input type="radio" class="form-check-input" name="asegurado" value="no-asegurado" id="no_asegurado">
                                     </div>
                                 </div>
                             </div>
@@ -373,7 +344,7 @@ require('../header.php');
                                     <div class="position-relative">
                                         <select name="jefe-comision" class="form-select" id="aseguradora">
                                             <option value="">Seleccione la Aseguradora...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -383,7 +354,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Número de Poliza de Seguro</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Número de Poliza de Seguro">
+                                        <input type="text" id="numero_poliza" class="form-control" placeholder="Número de Poliza de Seguro">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -395,7 +366,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Valor Asegurado</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Número de Decesos">
+                                        <input type="text" id="valor_asegurado" class="form-control" placeholder="Valor Asegurado">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -407,7 +378,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Valor Perdido</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Valor Perdido">
+                                        <input type="text" id="valor_perdido" class="form-control" placeholder="Valor Perdido">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -419,19 +390,18 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Valor Salvado</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Valor Salvado">
+                                        <input type="text" id="valor_salvado" class="form-control" placeholder="Valor Salvado">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
                                     <label for="">Fuente de ignición</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Fuente de Ignición">
+                                        <input type="text" id="fuente_ignicion" class="form-control" placeholder="Fuente de Ignición">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -443,7 +413,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Causa de Incendio</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Causa de Incendio">
+                                        <input type="text" id="causa_incendio" class="form-control" placeholder="Causa de Incendio">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -455,7 +425,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Lugar de Inicio del Incendio</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Lugar de Inicio del Incendio">
+                                        <input type="text" id="lugar_inicio" class="form-control" placeholder="Lugar de Inicio del Incendio">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -467,7 +437,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Lugar de Fin del Incendio</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Lugar de Fin del Incendio">
+                                        <input type="text" id="lugar_fin" class="form-control" placeholder="Lugar de Fin del Incendio">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -483,7 +453,7 @@ require('../header.php');
                                         <input type="radio" class="form-check-input" name="reignicion" value="reignicion" id="reignicion">
 
                                         <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="reignicion" value="no-reignicion" id="no-reignicion">
+                                        <input type="radio" class="form-check-input" name="reignicion" value="no-reignicion" id="no_reignicion">
                                     </div>
                                 </div>
                             </div>
@@ -492,7 +462,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Tipo de Combustible</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Tipo de Combustible">
+                                        <input type="text" id="tipo_combustible" class="form-control" placeholder="Tipo de Combustible">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -502,7 +472,7 @@ require('../header.php');
 
                             <div class="form-group">
                                 <label for="" class="form-label">Declaración del Incendio</label>
-                                <textarea class="form-control no-resize" id="observaciones" rows="4"></textarea>
+                                <textarea class="form-control no-resize" id="declaracion" rows="4"></textarea>
                             </div>
 
                             <div class="col-12">
@@ -513,19 +483,7 @@ require('../header.php');
                                         <input type="radio" class="form-check-input" name="lesion" value="lesion" id="lesion">
 
                                         <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="lesion" value="no-lesion" id="no-lesion">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Jefe de Comisión</label>
-                                    <div class="position-relative">
-                                        <select name="jefe-comision" class="form-select" id="jefe-comision">
-                                            <option value="">Seleccione al Jefe de Comisión...</option>
-
-                                        </select>
+                                        <input type="radio" class="form-check-input" name="lesion" value="no-lesion" id="no_lesion">
                                     </div>
                                 </div>
                             </div>
@@ -534,7 +492,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Número de Lesionados</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Número de Lesionados">
+                                        <input type="text" id="numero_lesionados" class="form-control" placeholder="Número de Lesionados">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -548,7 +506,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Datos del Lesionado</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Datos de Lesionado">
+                                        <input type="text" id="cedula_lesionado" class="form-control" placeholder="Datos de Lesionado">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -560,11 +518,11 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Unidad</label>
+                                    <label for="">Recurso Utilizado</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="unidades">
-                                            <option value="">Seleccione la Unidad que asistió...</option>
-
+                                        <select name="recurso_utilizado" class="form-select" id="recurso_utilizado">
+                                            <option value="">Seleccione el Recurso Utilizado...</option>
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -572,11 +530,11 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Recurso Utilizado</label>
+                                    <label for="">Unidad</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="recurso">
-                                            <option value="">Seleccione el Recurso Utilizado...</option>
-
+                                        <select name="unidad" class="form-select" id="unidad">
+                                            <option value="">Seleccione la Unidad que asistió...</option>
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -586,9 +544,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Jefe de Comisión</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="recurso">
-                                            <option value="">Seleccione el Recurso Utilizado...</option>
-
+                                        <select name="jefe_comision" class="form-select" id="jefe_comision">
+                                            <option value="">Seleccione el Jefe de comision...</option>
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -598,9 +556,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Efectivo</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="efectivo">
+                                        <select name="efectivo" class="form-select" id="efectivo">
                                             <option value="">Seleccione el Efectivo que asistió...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -705,7 +663,7 @@ require('../header.php');
 
                             <div class="form-group">
                                 <label for="" class="form-label">Observaciones</label>
-                                <textarea class="form-control no-resize" id="info-adicional" rows="4"></textarea>
+                                <textarea class="form-control no-resize" id="observaciones" rows="4"></textarea>
                             </div>
 
                             <div class="col-12 d-flex justify-content-end">
