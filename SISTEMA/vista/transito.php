@@ -10,14 +10,14 @@ require('../header.php');
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-vertical">
+                <form class="form form-vertical" onsubmit="return validarTransito()">
                     <div class="form-body">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
                                     <label for="">Parte Diaria</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Parte Diaria">
+                                        <input type="text" id="parte_diaria" class="form-control" placeholder="Parte Diaria">
                                         <div class="form-control-icon">
                                             <i class="bi bi-calendar-date"></i>
                                         </div>
@@ -29,9 +29,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Sección</label>
                                     <div class="position-relative">
-                                        <select name="tipo-aviso" class="form-select" id="seccion">
+                                        <select name="seccion" class="form-select" id="seccion">
                                             <option value="">Seleccione la Sección...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -41,9 +41,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Estación</label>
                                     <div class="position-relative">
-                                        <select name="tipo-aviso" class="form-select" id="estacion">
+                                        <select name="estacion" class="form-select" id="estacion">
                                             <option value="">Seleccione la Estación...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@ require('../header.php');
                                         <input type="radio" class="form-check-input" name="inspeccion" value="inspeccion" id="inspeccion">
 
                                         <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="inspeccion" value="no-inspeccion" id="no-inspeccion">
+                                        <input type="radio" class="form-check-input" name="inspeccion" value="no_inspeccion" id="no_inspeccion">
                                     </div>
                                 </div>
                             </div>
@@ -66,9 +66,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Tipo de Aviso</label>
                                     <div class="position-relative">
-                                        <select name="tipo-aviso" class="form-select" id="tipo-aviso">
+                                        <select name="tipo_aviso" class="form-select" id="tipo_aviso">
                                             <option value="">Seleccione el Tipo de Aviso...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Solicitante</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Solicitante">
+                                        <input type="text" id="nombre_solicitante" class="form-control" placeholder="Solicitante">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -90,7 +90,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Aviso</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Hora de Aviso">
+                                        <input type="text" id="hora_aviso" class="form-control" placeholder="Hora de Aviso">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass"></i>
                                         </div>
@@ -102,7 +102,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Salida</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Hora de Salida">
+                                        <input type="text" id="hora_salida" class="form-control" placeholder="Hora de Salida">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-top"></i>
                                         </div>
@@ -114,7 +114,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Llegada</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Hora de Llegada">
+                                        <input type="text" id="hora_llegada" class="form-control" placeholder="Hora de Llegada">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -126,7 +126,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Regreso</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Hora de Regreso">
+                                        <input type="text" id="hora_regreso" class="form-control" placeholder="Hora de Regreso">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-bottom"></i>
                                         </div>
@@ -138,9 +138,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Marca de Vehiculo</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="marca">
+                                        <select name="marca_vehiculo" class="form-select" id="marca">
                                             <option value="">Seleccione la Marca del Vehiculo...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -150,9 +150,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Modelo del Vehiculo</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="modelo">
+                                        <select name="modelo_vehiculo" class="form-select" id="modelo">
                                             <option value="">Seleccione el Modelo del Vehiculo...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -164,7 +164,7 @@ require('../header.php');
                                     <div class="position-relative">
                                         <select name="marca-vehiculo" class="form-select" id="year">
                                             <option value="">Seleccione el Año del Vehiculo...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -174,9 +174,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Color</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="color">
+                                        <select name="color_vehiculo" class="form-select" id="color_vehiculo">
                                             <option value="">Seleccione el Color del Vehiculo...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -186,9 +186,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Placa del Vehiculo</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="placa">
+                                        <select name="placa_vehiculo" class="form-select" id="placa_vehiculo">
                                             <option value="">Seleccione la Placa del Vehiculo...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -198,9 +198,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Conductor</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="conductor">
+                                        <select name="conductor_vehiculo" class="form-select" id="conductor_vehiculo">
                                             <option value="">Seleccione el Conductor del Vehiculo...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -210,7 +210,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Cédula del Conductor</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Cédula del Conductor" disabled>
+                                        <input type="text" id="cedula_conductor" class="form-control" placeholder="Cédula del Conductor">
                                         <div class="form-control-icon">
                                             <i class="bi bi-calendar-date"></i>
                                         </div>
@@ -223,10 +223,10 @@ require('../header.php');
                                     <label for="">Hubo Lesionados</label>
                                     <div class="position-relative">
                                         <label class="form-check-label" for="">SI</label>
-                                        <input type="radio" class="form-check-input" name="lesionados" value="lesionados" id="lesionados">
+                                        <input type="radio" class="form-check-input" name="lesionados" value="lesion" id="lesion">
 
                                         <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="lesionados" value="no-lesionados" id="no-lesionados">
+                                        <input type="radio" class="form-check-input" name="lesionados" value="no_lesion" id="no_lesion">
                                     </div>
                                 </div>
                             </div>
@@ -235,7 +235,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Número de Lesionados</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Número de Lesionados">
+                                        <input type="text" id="numero_lesionados" class="form-control" placeholder="Número de Lesionados">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -251,7 +251,7 @@ require('../header.php');
                                         <input type="radio" class="form-check-input" name="occisos" value="occisos" id="occisos">
 
                                         <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="occisos" value="no-occisos" id="no-occisos">
+                                        <input type="radio" class="form-check-input" name="occisos" value="no_occisos" id="no_occisos">
                                     </div>
                                 </div>
                             </div>
@@ -260,7 +260,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Número de Occisos</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Número de Occisos">
+                                        <input type="text" id="numero_occisos" class="form-control" placeholder="Número de Occisos">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -270,7 +270,7 @@ require('../header.php');
 
                             <div class="form-group">
                                 <label for="" class="form-label">Observaciones</label>
-                                <textarea class="form-control no-resize" id="info-adicional" rows="4"></textarea>
+                                <textarea class="form-control no-resize" id="observaciones" rows="4"></textarea>
                             </div>
 
                             <div class="col-12">
@@ -281,7 +281,7 @@ require('../header.php');
                                         <input type="radio" class="form-check-input" name="incendios" value="incendios" id="incendios">
 
                                         <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="incendios" value="no-incendios" id="no-incendios">
+                                        <input type="radio" class="form-check-input" name="incendios" value="no_incendios" id="no_incendios">
                                     </div>
                                 </div>
                             </div>
@@ -290,9 +290,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Jefe de Comisión</label>
                                     <div class="position-relative">
-                                        <select name="jefe-comision" class="form-select" id="jefe-comision">
+                                        <select name="jefe_comision" class="form-select" id="jefe_comision">
                                             <option value="">Seleccione al Jefe de Comisión...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -302,9 +302,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Efectivo</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="efectivo">
+                                        <select name="efectivo" class="form-select" id="efectivo">
                                             <option value="">Seleccione el Efectivo que asistió...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -314,9 +314,9 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Unidad</label>
                                     <div class="position-relative">
-                                        <select name="marca-vehiculo" class="form-select" id="unidades">
+                                        <select name="unidad" class="form-select" id="unidad">
                                             <option value="">Seleccione la Unidad que asistió...</option>
-
+                                            <option value="1">1</option>
                                         </select>
                                     </div>
                                 </div>

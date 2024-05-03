@@ -991,3 +991,204 @@ function validarVehiculo() {
 
     return true;
 }
+
+//Validacion pantalla de Transito
+function validarTransito() {
+    var parte_diaria = document.getElementById('parte_diaria').value;
+    parteRegex = /^[\d]{2}\-[\d]{2}\-[\d]{4}$/;
+
+    if (!parteRegex.test(parte_diaria)) {
+        alert('Debe ingresar una fecha valida con el siguiente formato: DD-MM-YYYY respetando los guiones');
+        return false;
+    }
+
+    var seccion = document.getElementById('seccion').value;
+
+    if (seccion === "") {
+        alert('Debe seleccionar una seccion');
+        return false;
+    }
+
+    var estacion = document.getElementById('estacion').value;
+
+    if (estacion === "") {
+        alert('Debe seleccionar una estacion');
+        return false;
+    }
+
+    var inspeccion = document.getElementById('inspeccion');
+    var no_inspeccion = document.getElementById('no_inspeccion');
+
+    if (!inspeccion.checked && !no_inspeccion.checked) {
+        alert('Debe seleccionar si amerita inspeccion o no');
+        return false;
+    }
+
+    var tipo_aviso = document.getElementById('tipo_aviso').value;
+
+    if (tipo_aviso === "") {
+        alert('Debe seleccionar un tipo aviso');
+        return false;
+    }
+
+    var nombre_solicitante = document.getElementById('nombre_solicitante').value;
+    var solicitanteRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;;
+
+    if (!solicitanteRegex.test(nombre_solicitante)) {
+        alert('Ingrese un Nombre valido');
+        return false;
+    }
+
+    var hora_aviso = document.getElementById('hora_aviso').value;
+    avisoRegex = /^((1[0-2]|0?[1-9]):([0-5][0-9])\s?[AP]M)$/i;
+
+    if (!avisoRegex.test(hora_aviso)) {
+        alert('Debe ingresar una hora valida en formato 12H: 10:24 AM');
+        return false;
+    }
+
+    var hora_salida = document.getElementById('hora_salida').value;
+    salidaRegex = /^((1[0-2]|0?[1-9]):([0-5][0-9])\s?[AP]M)$/i;
+
+    if (!salidaRegex.test(hora_salida)) {
+        alert('Debe ingresar una hora valida en formato 12H: 10:24 AM');
+        return false;
+    }
+
+    var hora_llegada = document.getElementById('hora_llegada').value;
+    llegadaRegex = /^((1[0-2]|0?[1-9]):([0-5][0-9])\s?[AP]M)$/i;
+
+    if (!llegadaRegex.test(hora_llegada)) {
+        alert('Debe ingresar una hora valida en formato 12H: 10:24 AM');
+        return false;
+    }
+
+    var hora_regreso = document.getElementById('hora_regreso').value;
+    regresoRegex = /^((1[0-2]|0?[1-9]):([0-5][0-9])\s?[AP]M)$/i;
+
+    if (!llegadaRegex.test(hora_regreso)) {
+        alert('Debe ingresar una hora valida en formato 12H: 10:24 AM');
+        return false;
+    }
+
+    var marca = document.getElementById('marca').value;
+
+    if (marca === "") {
+        alert('Debe seleccionar una marca de vehiculo');
+        return false;
+    }
+
+    var modelo = document.getElementById('modelo').value;
+
+    if (modelo === "") {
+        alert('Debe seleccionar un modelo de vehiculo');
+        return false;
+    }
+
+    var year = document.getElementById('year').value;
+
+    if (year === "") {
+        alert('Debe seleccionar el año del vehiculo');
+        return false;
+    }
+
+    var color_vehiculo = document.getElementById('color_vehiculo').value;
+
+    if (color_vehiculo === "") {
+        alert('Debe seleccionar el color del vehiculo');
+        return false;
+    }
+
+    var placa_vehiculo = document.getElementById('placa_vehiculo').value;
+
+    if (placa_vehiculo === "") {
+        alert('Debe seleccionar la placa del vehiculo');
+        return false;
+    }
+
+    var conductor_vehiculo = document.getElementById('conductor_vehiculo').value;
+
+    if (conductor_vehiculo === "") {
+        alert('Debe seleccionar al conductor del vehiculo');
+        return false;
+    }
+
+    var cedula_conductor = document.getElementById('cedula_conductor').value;
+    var cedula_conductorRegex = /^[JEVPGjevpg]{1}-\d{6,12}$/;
+
+    if (!cedula_conductorRegex.test(cedula_conductor)) {
+        alert('Cedula invalida, use el siguiente formato de ejemplo: V-1231232')
+        return false;
+    }
+
+    var lesion = document.getElementById('lesion');
+    var no_lesion = document.getElementById('no_lesion');
+
+    if (!lesion.checked && !no_lesion.checked) {
+        alert('Debe seleccionar si hubo lesionados o no');
+        return false;
+    }
+
+    var numero_lesionados = document.getElementById('numero_lesionados').value;
+    var numero_lesionadosRegex = /^\d{1,150}$/;
+
+    if (!numero_lesionadosRegex.test(numero_lesionados)) {
+        alert('Debe ingresar una cantidad de lesionados valida');
+        return false;
+    }
+
+    var occisos = document.getElementById('occisos');
+    var no_occisos = document.getElementById('no_occisos');
+
+    if (!occisos.checked && !no_occisos.checked) {
+        alert('Debe seleccionar si hubo occisos o no');
+        return false;
+    }
+
+    var numero_occisos = document.getElementById('numero_occisos').value;
+    var numero_occisosRegex = /^\d{1,150}$/;
+
+    if (!numero_occisosRegex.test(numero_occisos)) {
+        alert('Debe ingresar una cantidad de occisos valida');
+        return false;
+    }
+
+    var observaciones = document.getElementById('observaciones').value;
+    var observacionesRegex = /^.{1,150}$/;
+
+    if (!observacionesRegex.test(observaciones)) {
+        alert('Observacion Invalida, no debe contener saltos de linea ni estar vacia');
+        return false;
+    }
+
+    var incendios = document.getElementById('incendios');
+    var no_incendios = document.getElementById('no_incendios');
+
+    if (!incendios.checked && !no_incendios.checked) {
+        alert('Debe seleccionar si hubo incendios o no');
+        return false;
+    }
+
+    var jefe_comision = document.getElementById('jefe_comision').value;
+
+    if (jefe_comision === "") {
+        alert('Debe seleccionar un jefe de comision');
+        return false;
+    }
+
+    var efectivo = document.getElementById('efectivo').value;
+
+    if (efectivo === "") {
+        alert('Debe seleccionar un efectivo');
+        return false;
+    }
+
+    var unidad = document.getElementById('unidad').value;
+
+    if (unidad === "") {
+        alert('Debe seleccionar una unidad');
+        return false;
+    }
+
+    return true;
+}
