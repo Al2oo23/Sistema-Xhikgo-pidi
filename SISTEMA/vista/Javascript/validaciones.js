@@ -35,7 +35,7 @@ function validarPersona() {
     }
 
     var nombre_persona = document.getElementById('nombre_persona').value;
-    var personaRegex = /^[a-zA-Z\s]{3,50}$/;
+    var personaRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;;
 
     if (!personaRegex.test(nombre_persona)) {
         alert('Ingrese un Nombre valido');
@@ -687,6 +687,305 @@ function validarIncendio() {
 
     if (!observacionesRegex.test(observaciones)) {
         alert('Observacion Invalida, no debe contener saltos de linea ni estar vacia');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Datos Institucion 
+function validarDatosInstitucion() {
+    var nombre_institucion = document.getElementById('nombre_institucion').value;
+    var nombre_institucionRegex = /^.{3,50}$/;
+
+    if (!nombre_institucionRegex.test(nombre_institucion)) {
+        alert('Debe ingresar un nombre valido para la institucion');
+        return false;
+    }
+
+    var rif = document.getElementById('rif').value;
+    var rifRegex = /^[JVPjvp]{1}-\d{8,9}$/;
+
+    if (!rifRegex.test(rif)) {
+        alert('Debe ingresar un rif valido respetando el ejemplo: J-123123123');
+        return false;
+    }
+
+    var descripcion = document.getElementById('descripcion').value;
+    var descripcionRegex = /^.{1,150}$/;
+
+    if (!descripcionRegex.test(descripcion)) {
+        alert('Descripcion Invalida, no debe contener saltos de linea ni estar vacia');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Lugar
+function validarLugar() {
+    var tipo_lugar = document.getElementById('tipo_lugar').value;
+
+    if (tipo_lugar === "") {
+        alert('Debe seleccionar un tipo de lugar');
+        return false;
+    }
+
+    var municipio = document.getElementById('municipio').value;
+
+    if (municipio === "default") {
+        alert('Debe seleccionar un municipio valido');
+        return false;
+    }
+
+    var nombre_lugar = document.getElementById('nombre_lugar').value;
+    var nombre_lugarRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
+
+    if (!nombre_lugarRegex.test(nombre_lugar)) {
+        alert('Ingrese un Nombre valido');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Marca
+function validarMarca() {
+    var nombre_marca = document.getElementById('nombre_marca').value;
+    var nombre_marcaRegex = /^.{3,50}$/;
+
+    if (!nombre_marcaRegex.test(nombre_marca)) {
+        alert('Debe ingresar un nombre valido');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Modelo
+function validarModelo() {
+    var modelo_vehiculo = document.getElementById('modelo_vehiculo').value;
+    var modelo_vehiculoRegex = /^.{3,50}$/;
+
+    if (!modelo_vehiculoRegex.test(modelo_vehiculo)) {
+        alert('Debe ingresar un modelo de vehiculo valido');
+        return false;
+    }
+
+    var marca_vehiculo = document.getElementById('marca_vehiculo').value;
+
+    if (marca_vehiculo === "default") {
+        alert('Debe seleccionar una marca de vehiculo valida');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Municipio
+function validarMunicipio() {
+    var nombre_municipio = document.getElementById('nombre_municipio').value;
+    var nombre_municipioRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
+
+    if (!nombre_municipioRegex.test(nombre_municipio)) {
+        alert('Debe ingresar un nombre de municipio valido');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Recurso Inoperativo
+function validarRecursoInoperativo() {
+    var recurso_inoperativo = document.getElementById('recurso_inoperativo').value;
+
+    if (recurso_inoperativo === "") {
+        alert('Debe seleccionar un recurso que haya quedado inoperativo');
+        return false;
+    }
+
+    var nombre_recurso = document.getElementById('nombre_recurso').value;
+    var nombre_recursoRegex = /^.{3,50}$/;
+
+    if (!nombre_recursoRegex.test(nombre_recurso)) {
+        alert('Debe ingresar el nombre de un recurso que este inoperativo');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Registrar Recurso 
+function validarRecurso() {
+    var tipo_recurso = document.getElementById('tipo_recurso').value;
+
+    if (tipo_recurso === "") {
+        alert('Debe seleccionar un tipo de recurso');
+        return false;
+    }
+
+    var nombre_recurso = document.getElementById('nombre_recurso').value;
+    var nombre_recursoRegex = /^.{3,50}$/;
+
+    if (!nombre_recursoRegex.test(nombre_recurso)) {
+        alert('Debe ingresar el nombre de un recurso');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Ruta
+function validarRuta() {
+    var municipio = document.getElementById('municipio').value;
+
+    if (municipio === "") {
+        alert('Debe seleccionar un municipio');
+        return false;
+    }
+
+    var nombre_ruta = document.getElementById('nombre_ruta').value;
+    var nombre_rutaRegex = /^.{3,50}$/;
+
+    if (!nombre_rutaRegex.test(nombre_ruta)) {
+        alert('Debe ingresar el nombre de un ruta');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Tipo Persona
+function validarTipoPersona() {
+    var tipo_persona = document.getElementById('tipo_persona').value;
+    var tipo_personaRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;;
+
+    if (!tipo_personaRegex.test(tipo_persona)) {
+        alert('Ingrese un tipo de persona valido');
+        return false;
+    }
+
+    var descripcion = document.getElementById('descripcion').value;
+    var descripcionRegex = /^.{1,150}$/;
+
+    if (!descripcionRegex.test(descripcion)) {
+        alert('Descripcion Invalida, no debe contener saltos de linea ni estar vacia');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Usuario
+function validarUsuario() {
+    var cedula = document.getElementById('cedula').value;
+    var cedulaRegex = /^[JEVPGjevpg]{1}-\d{6,12}$/;
+
+    if (!cedulaRegex.test(cedula)) {
+        alert('Cedula invalida, use el siguiente formato de ejemplo: V-1231232')
+        return false;
+    }
+
+    var tipo_usuario = document.getElementById('tipo_usuario').value;
+
+    if (tipo_usuario === "") {
+        alert('Debe seleccionar el tipo de usuario');
+        return false;
+    }
+
+    var nombre_usuario = document.getElementById('nombre_usuario').value;
+    var nombre_usuarioRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\d]{6,20}$/;
+
+    if (!nombre_usuarioRegex.test(nombre_usuario)) {
+        alert('Ingrese un Nombre de usuario valido');
+        return false;
+    }
+
+    var clave = document.getElementById('clave').value;
+    var claveRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\d]{6,20}$/;
+
+    if (!claveRegex.test(clave)) {
+        alert('Ingrese una clave valida, debe tener entre 6-20 caracteres y no debe tener caracteres especiales');
+        return false;
+    }
+
+    var clave_repetida = document.getElementById('clave_repetida').value;
+
+    if (clave_repetida !== clave) {
+        alert('Las claves no coinciden');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Vehiculo
+function validarVehiculo() {
+    var tipo_vehiculo = document.getElementById('tipo_vehiculo').value;
+
+    if (tipo_vehiculo === "") {
+        alert('Debe seleccionar el tipo de vehiculo');
+        return false;
+    }
+
+    var marca = document.getElementById('marca').value;
+
+    if (marca === "") {
+        alert('Debe seleccionar una marca de vehiculo');
+        return false;
+    }
+
+    var modelo = document.getElementById('modelo').value;
+
+    if (modelo === "") {
+        alert('Debe seleccionar un modelo de vehiculo');
+        return false;
+    }
+
+    var serial = document.getElementById('serial').value;
+    var serialRegex = /^[a-zA-Z\d-_]{3,50}$/;
+
+    if (!serialRegex.test(serial)) {
+        alert('Ingrese un serial valido, debe tener entre 3-50 caracteres y no debe tener caracteres especiales');
+        return false;
+    }
+
+    var identidad_vehicular = document.getElementById('identidad_vehicular').value;
+    var identidad_vehicularRegex = /^[a-zA-Z\d-_]{3,50}$/;
+
+    if (!identidad_vehicularRegex.test(identidad_vehicular)) {
+        alert('Ingrese una identidad vehicular valida');
+        return false;
+    }
+
+    var cilindrada = document.getElementById('cilindrada').value;
+    var cilindradaRegex = /^\d+(CC|cc|HP|hp)$/;
+
+    if (!cilindradaRegex.test(cilindrada)) {
+        alert('Debe especificar la cilindrada del vehiculo con el siguiente patron: 100CC, 100cc, 100HP o 100hp');
+        return false;
+    }
+
+    var carburante = document.getElementById('carburante').value;
+    var carburanteRegex = /^.{3,50}$/;
+
+    if (!carburanteRegex.test(carburante)) {
+        alert('Ingrese un carburante valido');
+        return false;
+    }
+
+    var estado_seguro = document.getElementById('estado_seguro').value;
+
+    if (estado_seguro === "") {
+        alert('Debe seleccionar en que estado se encuentra el seguro del vehiculo');
+        return false;
+    }
+
+    var cedula_propietario = document.getElementById('cedula_propietario').value;
+    var cedula_propietarioRegex = /^[JEVPGjevpg]{1}-\d{6,12}$/;
+
+    if (!cedula_propietarioRegex.test(cedula_propietario)) {
+        alert('Cedula invalida, use el siguiente formato de ejemplo: V-1231232')
         return false;
     }
 

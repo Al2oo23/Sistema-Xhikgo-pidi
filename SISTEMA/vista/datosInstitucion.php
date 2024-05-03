@@ -1,5 +1,5 @@
 <?php
-$nombrePagina="Institucion";
+$nombrePagina = "Institucion";
 require('../header.php');
 
 ?>
@@ -11,58 +11,52 @@ require('../header.php');
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-vertical">
+                <form class="form form-vertical" onsubmit="return validarDatosInstitucion()">
                     <div class="form-body">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
                                     <label for=""> Nombre de la Institucion </label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" id="cedula" placeholder="Nombre">
+                                        <input type="text" class="form-control" id="nombre_institucion" placeholder="Nombre">
                                         <div class="form-control-icon">
-                                        <i class="bi bi-house-heart-fill"></i>
+                                            <i class="bi bi-house-heart-fill"></i>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for=""> Rif </label>
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control" id="cedula" placeholder="Rif">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-card-checklist"></i>
+                                    <div class="form-group has-icon-left">
+                                        <label for=""> Rif </label>
+                                        <div class="position-relative">
+                                            <input type="text" class="form-control" id="rif" placeholder="Rif">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-card-checklist"></i>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Descripcion </label>
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control" id="direccion" placeholder="Descripcion">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-clipboard-fill"></i>
+                                    <div class="form-group">
+                                        <label for="" class="form-label">Descripcion</label>
+                                        <textarea class="form-control no-resize" id="descripcion" rows="4"></textarea>
+                                    </div>
+
+
+                                    <div class="col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for=""> Logo de la Institucion </label>
+                                            <div class="position-relative">
+                                                <input type="file" class="basic-filepond">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-
-                                <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for=""> Logo de la Institucion </label>
-                                    <div class="position-relative">
-                                    <input type="file" class="basic-filepond">
+                                    <div class="col-12">
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Editar</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="col-12">
-                            <div class="col-12 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary me-1 mb-1">Editar</button>
-                            </div>
-                        </div>
-
-<?php
-require('../footer.php');
-?>
+                                    <?php
+                                    require('../footer.php');
+                                    ?>

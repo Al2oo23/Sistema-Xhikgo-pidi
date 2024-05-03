@@ -11,7 +11,7 @@ require('../header.php');
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-vertical">
+                            <form class="form form-vertical" onsubmit="return validarMarca()">
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-12">
@@ -19,7 +19,7 @@ require('../header.php');
                                                 <label for="first-name-icon">Nombre de la Marca</label>
                                                 
                                                 <div class="position-relative">
-                                                    <input type="text" class="form-control" placeholder="Coloque el nombre de la marca del vehiculo" id="first-name-icon">
+                                                    <input type="text" class="form-control" placeholder="Coloque el nombre de la marca del vehiculo" id="nombre_marca">
                                                     <div class="form-control-icon">
                                                     <i class="bi bi-postcard"></i>
                                                     </div>

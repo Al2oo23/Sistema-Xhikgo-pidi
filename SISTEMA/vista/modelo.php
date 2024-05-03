@@ -17,7 +17,7 @@ $marca = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-vertical">
+                <form class="form form-vertical" onsubmit="return validarModelo()">
                     <div class="form-body">
                         <div class="row">
 
@@ -25,7 +25,7 @@ $marca = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             <div class="form-group has-icon-left">
                                 <label for="">Modelo del Vehiculo</label>
                                 <div class="position-relative">
-                                    <input type="text" class="form-control" placeholder="Modelo">
+                                    <input type="text" id="modelo_vehiculo" class="form-control" placeholder="Modelo">
                                     <div class="form-control-icon">
                                         <i class="bi bi-car-front-fill"></i>
                                     </div>
@@ -37,7 +37,7 @@ $marca = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Marca</label>
                                     <div class="position-relative">
-                                         <select name="tipo-aviso" class="form-select" id="marca">
+                                         <select name="marca_vehiculo" class="form-select" id="marca_vehiculo">
                                          <option value="default">Seleccione el Modelo...</option>
                                         <?php foreach ($marca as $marc) : 
                                             $marca = $marc["nombre"];

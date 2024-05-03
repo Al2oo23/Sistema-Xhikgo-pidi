@@ -10,14 +10,14 @@ require('../header.php');
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-vertical">
+                <form class="form form-vertical" onsubmit="return validarUsuario()">
                     <div class="form-body">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
                                     <label for="">Cédula</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Cédula">
+                                        <input type="text" id="cedula" class="form-control" placeholder="Cédula">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-lines-fill"></i>
                                         </div>
@@ -28,7 +28,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Tipo de Usuario</label>
                                     <div class="position-relative">
-                                        <select name="tipo-persona" class="form-select" id="tipo-usuario">
+                                        <select name="tipo_usuario" class="form-select" id="tipo_usuario">
                                             <option value="">Seleccione un tipo de Usuario</option>
                                             <option value="bombero">Supervisor</option>
                                             <option value="usuario">Administrador</option>
@@ -40,7 +40,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Nombre</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Nombre de Usuario">
+                                        <input type="text" id="nombre_usuario" class="form-control" placeholder="Nombre de Usuario">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person"></i>
                                         </div>
@@ -52,7 +52,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Clave</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Clave de Usuario">
+                                        <input type="text" id="clave" class="form-control" placeholder="Clave de Usuario">
                                         <div class="form-control-icon">
                                             <i class="bi bi-lock"></i>
                                         </div>
@@ -64,7 +64,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Repetir Clave</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Repetir la Clave del Usuario">
+                                        <input type="text" id="clave_repetida" class="form-control" placeholder="Repetir la Clave del Usuario">
                                         <div class="form-control-icon">
                                             <i class="bi bi-lock"></i>
                                         </div>

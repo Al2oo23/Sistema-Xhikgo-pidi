@@ -10,15 +10,15 @@ require('../header.php');
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-vertical">
+                <form class="form form-vertical" onsubmit="return validarTipoPersona()">
                     <div class="form-body">
                         <div class="row">
                             
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Tipo:</label>
+                                    <label for="">Tipo de Persona</label>
                                     <div class=" position-relative">
-                                        <input type="text" class="form-control" placeholder="Nombre">
+                                        <input type="text" id="tipo_persona" class="form-control" placeholder="Ingrese el Tipo de Persona que desea registrar">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person"></i>
                                         </div>
@@ -31,9 +31,9 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group">
-                                <label for="exampleFormControlTextarea1" class="form-label">Descripcion:</label>
+                                <label for="" class="form-label">Descripcion</label>
                                     <div class="position-relative">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="height: 97px; resize:none;"></textarea>
+                                        <textarea class="form-control" id="descripcion" rows="4" style="resize:none;"></textarea>
                                     </div>
                                 </div>
                             </div>
