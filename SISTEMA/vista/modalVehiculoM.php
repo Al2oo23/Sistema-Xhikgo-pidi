@@ -7,12 +7,12 @@
         <!--login form Modal -->
         <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                <div class="modal-content" id="modal" style="overflow-y: scroll;">
+                <div class="modal-content" id="modalM" style="overflow-y: scroll;">
 
             <!-- Header del Modal: ----------------------------->
 
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel33">Modificar Incidente</h4>
+                        <h4 class="modal-title" id="myModalLabel33">Modificar Vehiculo</h4>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <i data-feather="x"></i>
                         </button>
@@ -21,61 +21,55 @@
 
                     <form action="#" style="text-align: left;">
                         <div class="modal-body">
-                            <label>Tipo:</label>
+                            <label>Numero de Identidad Vehicular (NIV):</label>
                             <div class="form-group">
-                                <input type="text" value="" id="tipo" class="form-control" >
+                                <input type="text" value="" disabled id="nivM" class="form-control" >
                             </div>
                             
-                            <label>Fecha:</label>
+                            <label>Tipo de Vehiculo:</label>
                             <div class="form-group">
-                                <input type="text" value=""  id="fecha" class="form-control" >
+                                <input type="text" value=""  id="tvehiculoM" class="form-control" >
                             </div>   
 
-                            <label>Seccion:</label>
+                            <label>Numero de Unidad:</label>
                             <div class="form-group">
-                                <input type="text" value="" id="seccion" class="form-control" >
+                                <input type="text" value="" id="nunidadM" class="form-control" >
                             </div>   
 
-                            <label>N° Unidad:</label>
+                            <label>Marca:</label>
                             <div class="form-group">
-                                <input type="text" value="" id="nunidad" class="form-control" >
+                                <input type="text" value="" id="marcaM" class="form-control" >
                             </div>
 
-                            <label >CI Solicitante:</label>
+                            <label >Modelo</label>
                            <div class="form-group">
-                               <input type="text" value="" id="cedula" class="form-control">
+                               <input type="text" value="" id="modeloM" class="form-control">
                            </div>
 
-                           <label>Hora de Aviso:</label>
+                           <label>Serial:</label>
                             <div class="form-group">
-                                <input type="text" value="" id="aviso" class="form-control">
+                                <input type="text" value="" id="serialM" class="form-control">
                             </div>
 
-                            <label>Hora de Salida:</label>
-                            <div class="form-group">
-                                <input type="text" value="" id="salida" class="form-control">
-                            </div>
-
-                            <label>Hora de Llegada:</label>
-                            <div class="form-group">
-                                <input type="text" value="" id="llegada" class="form-control">
-                            </div>
-
-                            <label>Hora de Regreso:</label>
-                            <div class="form-group">
-                                <input type="text" value="" id="regreso" class="form-control">
-                            </div>
-
-                            <label >Municipio:</label>
+                            <label >Cilindrada</label>
                            <div class="form-group">
-                               <input type="text" value="" id="municipio" class="form-control">
+                               <input type="text" value="" id="cilindroM" class="form-control">
                            </div>
 
-                            <label >Direccion:</label>
+                           <label>Carburante:</label>
                            <div class="form-group">
-                               <input type="text" value="" id="direccion" class="form-control">
+                               <input type="text" value="" id="carburanteM" class="form-control">
                            </div>
 
+                           <label>Seguro:</label>
+                            <div class="form-group">
+                                <input type="text" value="" id="seguroM" class="form-control">
+                            </div>
+
+                            <label >CI. del Propietario:</label>
+                           <div class="form-group">
+                               <input type="text" value="" id="cedulaM" class="form-control">
+                           </div>
                         </div>
                        
             <!-- Footer del modal: ------------------------------>

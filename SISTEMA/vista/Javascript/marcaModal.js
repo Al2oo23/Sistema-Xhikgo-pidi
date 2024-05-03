@@ -1,8 +1,8 @@
 "use strict";
 
 const filas = document.querySelectorAll(".filas");
-const marca = document.getElementById("marca");
-const modal = document.getElementById("modal");
+const marca = document.getElementById("marcaM");
+const modal = document.getElementById("modalM");
 
 filas.forEach(fila => {
 

@@ -1,15 +1,13 @@
 "use strict";
 
 const filas = document.querySelectorAll(".filas");
-const municipio = document.getElementById("municipio");
-const estado = document.getElementById("estado");
-const modal = document.getElementById("modal");
+const municipio = document.getElementById("municipioM");
+const modal = document.getElementById("modalM");
 
 filas.forEach(fila => {
     fila.addEventListener("click",(e)=>{
        const columnas = fila.children
        municipio.value = columnas[0].textContent
-       estado.value = columnas[1].textContent
     });
 });
 

@@ -91,6 +91,7 @@
                                 <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
                                     <form action="../controlador/ctl_sesion.php" method="post">
                                         <li><a class="dropdown-item" href="#">My Account</a></li>
+                                        <li><a class="dropdown-item" href="datosInstitucion.php">Institucion</a></li>
                                         <li><a class="dropdown-item" href="#">Settings</a></li>
                                         <li>
                                             <hr class="dropdown-divider">
@@ -115,13 +116,13 @@
 
                             <li class="menu-item  ">
                                 <a href="inicio.php" class='menu-link'>
-                                    <span><i class="bi bi-chevron-double-left"></i>Inicio</span>
+                                    <span><i class="bi bi-house-door-fill"></i>Inicio</span>
                                 </a>
                             </li>
                             
                             <li class="menu-item  has-sub">
                                 <a href="#" class='menu-link'>
-                                    <span><i class="bi bi-houses-fill"></i>Localidades</span>
+                                    <span><i class="bi bi-geo-alt-fill"></i>Localidades</span>
                                 </a>
                                 <div class="submenu ">
                                     <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
@@ -155,7 +156,11 @@
                                             
                                         <li class="submenu-item">
                                                 <a href="catalogoTpersona.php" class='submenu-link'>Tipo de Personas</a>
-                                            </li>
+                                        </li>
+
+                                        <li class="submenu-item">
+                                                <a href="catalogoCargo.php" class='submenu-link'>Cargo de Bomberos</a>
+                                        </li>
 
                                         <li class="submenu-item">
                                                 <a href="catalogoPersona.php" class="submenu-link">Personas</a>
@@ -223,6 +228,10 @@
                                             </li>
                                             <li class="submenu-item  ">
                                                 <a href="catalogoMantenimiento.php" class='submenu-link'>Cronograma de Mantenimiento</a>
+                                            </li>
+
+                                            <li class="submenu-item  ">
+                                                <a href="catalogoHM.php" class='submenu-link'>Historial de Mantenimiento</a>
                                             </li>
 
                                             <!-- <li class="submenu-item  ">

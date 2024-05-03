@@ -13,13 +13,13 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                     <div class="card-content">
                     <div class="card-header">
                         <h4 class="card-title">Usuarios</h4>
-                        <a href="#" class="btn icon icon-left btn-success">Nuevo</a>
+                        <?php include("modalUsuarioR.php");?>
                     </div>
                         <!-- table hover -->
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
-                                    <tr>
+                                    <tr style="text-align: center;">
                                         <th class="columna">Cedula</th>
                                         <th class="columna">Tipo de Usuario</th>
                                         <th class="columna">Nombre</th>
@@ -40,7 +40,7 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                         <div class='d-flex justify-content-around w-100'>
                                             
                                             <div class="">
-                                               <?php include("modalUsuario.php");?>
+                                               <?php include("modalUsuarioM.php");?>
                                             </div>
 
                                            </div>

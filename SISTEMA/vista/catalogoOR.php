@@ -18,7 +18,7 @@ include('../modelo/conexion.php');
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
-                                    <tr>
+                                    <tr style="text-align: center;">
                                         <th class="columna">Tipo de Incidente</th>
                                         <th class="columna">Municipio</th>
                                         <th class="columna">Ruta</th>

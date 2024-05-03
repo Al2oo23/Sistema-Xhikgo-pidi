@@ -1,9 +1,9 @@
 "use strict";
 
 const filas = document.querySelectorAll(".filas");
-const tipo = document.getElementById("tipo");
-const descripcion = document.getElementById("descripcion");
-const modal = document.getElementById("modal");
+const tipo = document.getElementById("tipoM");
+const descripcion = document.getElementById("descripcionM");
+const modal = document.getElementById("modalM");
 
 filas.forEach(fila => {
 

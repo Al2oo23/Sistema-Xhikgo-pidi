@@ -13,13 +13,13 @@ include('../modelo/conexion.php');
                     <div class="card-content">
                     <div class="card-header">
                         <h4 class="card-title">Vehiculos</h4>
-                        <a href="vehiculo.php" class="btn icon icon-left btn-success">Nuevo</a>
+                        <?php include("modalVehiculoR.php");?>
                     </div>
                         <!-- table hover -->
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
-                                    <tr>
+                                    <tr style="text-align: center;">
                                         <th class="columna">NIV</th>
                                         <th class="columna">Tipo</th>
                                         <th class="columna">N° Unidad</th>
@@ -49,7 +49,7 @@ include('../modelo/conexion.php');
                                         
                                         <td>
                                             <div class="botones">
-                                            <?php include("modalVehiculo.php");?>
+                                            <?php include("modalVehiculoM.php");?>
                                                 <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                             </div>
                                         </td>

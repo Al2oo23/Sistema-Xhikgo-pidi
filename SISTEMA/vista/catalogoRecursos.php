@@ -13,13 +13,13 @@ include('../modelo/conexion.php');
                     <div class="card-content">
                     <div class="card-header">
                         <h4 class="card-title">Recursos</h4>
-                        <a href="registrar_recurso.php" class="btn icon icon-left btn-success">Nuevo</a>
+                        <?php include("modalRecursoR.php");?>
                     </div>
                         <!-- table hover -->
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
-                                    <tr>
+                                    <tr style="text-align: center;">
                                         <th class="columna">Tipo</th>
                                         <th class="columna">Nombre</th>
                                         <th class="columna">Cantidad</th>
@@ -35,7 +35,7 @@ include('../modelo/conexion.php');
                                         <td class="columna">50</td>
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                        <?php include("modalRecurso.php");?>
+                                        <?php include("modalRecursoM.php");?>
                                             <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                         </td>

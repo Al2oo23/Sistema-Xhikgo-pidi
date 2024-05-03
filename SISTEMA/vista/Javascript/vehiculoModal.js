@@ -1,17 +1,17 @@
 "use strict";
 
 const filas = document.querySelectorAll(".filas");
-const niv = document.getElementById("niv");
-const tvehiculo = document.getElementById("tvehiculo");
-const nunidad = document.getElementById("nunidad");
-const marca = document.getElementById("marca");
-const modelo = document.getElementById("modelo");
-const serial = document.getElementById("serial");
-const cilindro = document.getElementById("cilindro");
-const carburante = document.getElementById("carburante");
-const seguro = document.getElementById("seguro");
-const cedula = document.getElementById("cedula");
-const modal = document.getElementById("modal");
+const niv = document.getElementById("nivM");
+const tvehiculo = document.getElementById("tvehiculoM");
+const nunidad = document.getElementById("nunidadM");
+const marca = document.getElementById("marcaM");
+const modelo = document.getElementById("modeloM");
+const serial = document.getElementById("serialM");
+const cilindro = document.getElementById("cilindroM");
+const carburante = document.getElementById("carburanteM");
+const seguro = document.getElementById("seguroM");
+const cedula = document.getElementById("cedulaM");
+const modal = document.getElementById("modalM");
 
 filas.forEach(fila => {
      

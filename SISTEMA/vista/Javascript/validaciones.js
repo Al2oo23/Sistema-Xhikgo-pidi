@@ -855,6 +855,18 @@ function validarRuta() {
     return true;
 }
 
+// Validacion de pantalla Cargo de Bomberos
+
+function validarCargo() {
+    var cargo = document.getElementById('cargo').value;
+
+    if(cargo === ""){
+        alert('Ingrese un cargo valido');
+        return false;
+    }
+    return true;
+}
+
 //Validacion pantalla Tipo Persona
 function validarTipoPersona() {
     var tipo_persona = document.getElementById('tipo_persona').value;
@@ -913,6 +925,13 @@ function validarUsuario() {
 
     if (clave_repetida !== clave) {
         alert('Las claves no coinciden');
+        return false;
+    }
+
+    var estado = document.getElementById('estado').value;
+
+    if (estado === "") {
+        alert('Indique un estado al usuario');
         return false;
     }
 

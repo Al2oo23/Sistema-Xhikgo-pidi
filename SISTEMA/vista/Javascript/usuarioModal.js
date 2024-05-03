@@ -1,12 +1,12 @@
 "use strict";
 
 const filas = document.querySelectorAll(".filas");
-const cedula = document.getElementById("cedula");
-const tusuario = document.getElementById("tusuario");
-const nombre = document.getElementById("nombre");
-const clave = document.getElementById("clave");
-const estado = document.getElementById("estado");
-const modal = document.getElementById("modal");
+const cedula = document.getElementById("cedulaM");
+const tusuario = document.getElementById("tusuarioM");
+const nombre = document.getElementById("nombreM");
+const clave = document.getElementById("claveM");
+const estado = document.getElementById("estadoM");
+const modal = document.getElementById("modalM");
 
 filas.forEach(fila => {
      

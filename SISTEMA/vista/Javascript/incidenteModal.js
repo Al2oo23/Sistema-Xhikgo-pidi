@@ -12,7 +12,6 @@ const llegada = document.getElementById("llegada");
 const regreso = document.getElementById("regreso");
 const municipio = document.getElementById("municipio");
 const direccion = document.getElementById("direccion");
-const ruta = document.getElementById("ruta");
 
 
 const modal = document.getElementById("modal");
@@ -33,7 +32,6 @@ filas.forEach(fila => {
        regreso.value = columnas[8].textContent
        municipio.value = columnas[9].textContent
        direccion.value = columnas[10].textContent
-       ruta.value = columnas[11].textContent
        console.log(columnas);
     });
 });

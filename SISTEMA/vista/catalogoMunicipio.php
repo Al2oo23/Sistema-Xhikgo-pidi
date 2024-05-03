@@ -13,15 +13,15 @@ include('../modelo/conexion.php');
                     <div class="card-content">
                     <div class="card-header">
                         <h4 class="card-title">Municipios</h4>
-                        <a href="municipio.php" class="btn icon icon-left btn-success">Nuevo</a>
+                        <?php include("modalMunicipioR.php");?>
                     </div>
                         <!-- table hover -->
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
-                                    <tr>
+                                    <tr style="text-align: center;">
+                                        <th class="columna" hidden>ID</th>
                                         <th class="columna">Municipio</th>
-                                        <th class="columna">Estado</th>
                                         <th class="columna">Accion</th>
                                     </tr>
                                 </thead>
@@ -29,10 +29,9 @@ include('../modelo/conexion.php');
                                     
                                     <tr class="filas">
                                         <td class="columna">Independencia</td>
-                                        <td class="columna">Yaracuy</td>
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <?php include("modalMunicipio.php");?>
+                                            <?php include("modalMunicipioM.php");?>
                                             <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                         </td>

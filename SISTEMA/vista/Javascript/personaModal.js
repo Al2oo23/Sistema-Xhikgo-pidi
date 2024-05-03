@@ -1,18 +1,18 @@
 "use strict";
 
 const filas = document.querySelectorAll(".filas");
-const cedula = document.getElementById("cedula");
-const nombre = document.getElementById("nombre");
-const edad = document.getElementById("edad");
-const correo = document.getElementById("correo");
-const telefono = document.getElementById("telefono");
-const cargo = document.getElementById("cargo");
-const direccion = document.getElementById("direccion");
-const sexo = document.getElementById("sexo");
-const tpersona = document.getElementById("tpersona");
-const seccion = document.getElementById("seccion");
-const estacion = document.getElementById("estacion");
-const modal = document.getElementById("modal");
+const cedula = document.getElementById("cedulaM");
+const nombre = document.getElementById("nombreM");
+const edad = document.getElementById("edadM");
+const correo = document.getElementById("correoM");
+const telefono = document.getElementById("telefonoM");
+const cargo = document.getElementById("cargoM");
+const direccion = document.getElementById("direccionM");
+const sexo = document.getElementById("sexoM");
+const tpersona = document.getElementById("tpersonaM");
+const seccion = document.getElementById("seccionM");
+const estacion = document.getElementById("estacionM");
+const modal = document.getElementById("modalM");
 
 filas.forEach(fila => {
      

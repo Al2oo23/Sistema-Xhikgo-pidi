@@ -12,7 +12,7 @@
             <!-- Header del Modal: ----------------------------->
 
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel33">Modificar Marca</h4>
+                        <h4 class="modal-title" id="myModalLabel33">Modificar Modelo</h4>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <i data-feather="x"></i>
                         </button>
@@ -21,14 +21,13 @@
 
                     <form action="#" style="text-align: left;">
                         <div class="modal-body">
-                            <label>Tipo:</label>
+                            <label>Modelo:</label>
                             <div class="form-group">
-                                <input type="text" value="" id="tipo" class="form-control" >
+                                <input type="text" value="" id="modeloM" class="form-control" >
                             </div>
-
-                            <label>Descripcion:</label>
+                            <label>Marca:</label>
                             <div class="form-group">
-                                <input type="text" value="" id="descripcion" class="form-control" >
+                                <input type="text" value="" id="marcaM" class="form-control" >
                             </div>
                         </div>
                        

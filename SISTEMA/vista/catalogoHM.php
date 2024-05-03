@@ -1,5 +1,5 @@
 <?php 
-$nombrePagina = 'Catalogo de Mantenimiento de Unidades';
+$nombrePagina = 'Historial de Mantenimiento';
 require('../header.php');
 // include('../modelo/conexion.php');
 
@@ -11,7 +11,7 @@ require('../header.php');
                 <div class="card">
                     <div class="card-content">
                     <div class="card-header">
-                        <h4 class="card-title">Cronograma de Mantenimiento</h4>
+                        <h4 class="card-title">Historial de Mantenimiento</h4>
                     </div>
                         <!-- table hover -->
                         <div class="table-responsive">
@@ -21,7 +21,7 @@ require('../header.php');
                                         <th class="columna">N° Unidad</th>
                                         <th class="columna">Incidente Previo</th>
                                         <th class="columna">Fecha</th>
-                                        <th class="columna">Estado Del Mantenimiento</th>
+                                        <th class="columna">Fecha del Mantenimiento</th>
                                         <th class="columna">Accion</th>
                                      </tr>
                                 </thead>
@@ -30,11 +30,11 @@ require('../header.php');
                                         <td class="columna">1234</td>
                                         <td class="columna">Accidente de abejas</td>
                                         <td class="columna">04-03-2024</td>
-                                        <td class="columna">Buenas condiciones </td>
+                                        <td class="columna">04-12-2024</td>
                                         <td>
 
                                         <div class="botones" style="justify-content:space-evenly;">
-                                        <div><a href="#" class="btn icon btn-success"><i class="bi bi-check-lg"></i></a></div>
+                                        <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                             </div>
                                         </td>
 

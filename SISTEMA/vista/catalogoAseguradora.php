@@ -12,13 +12,13 @@ require('../header.php');
                     <div class="card-content">
                     <div class="card-header">
                         <h4 class="card-title">Aseguradoras</h4>
-                        <a href="aseguradora.php" class="btn icon icon-left btn-success">Nuevo</a>
+                        <?php include ("modalAseguradoraR.php");?>
                     </div>
                         <!-- table hover -->
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
-                                    <tr>
+                                    <tr style="text-align: center;">
                                         <th class="columna">Nombre</th>
                                         <th class="columna">Tipo</th>
                                         <th class="columna">Accion</th> 
@@ -31,7 +31,7 @@ require('../header.php');
                                         <td>
 
                                         <div class="botones" style="justify-content:space-evenly;">
-                                                <?php include ("modalAseguradora.php");?>
+                                                <?php include ("modalAseguradoraM.php");?>
                                                 <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                             </div>
                                         </td>
@@ -43,7 +43,7 @@ require('../header.php');
                 </div>
             </div>
 
-            <script src="Javascript/aseguradoraModal.js"></script>
+    <script src="Javascript/aseguradoraModal.js"></script>
 
 <?php 
 require ('../footer.php');

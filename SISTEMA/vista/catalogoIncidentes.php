@@ -42,13 +42,11 @@ include('../modelo/conexion.php');
                                         <th class="columna">Hora de Regreso</th>
                                         <th class="columna">Municipio</th>
                                         <th class="columna">Direccion</th>
-                                        <th class="columna">Ruta</th>
                                         <th class="columna">Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="filas">
-                                        <td class="columna">?</td>
                                         <td class="columna">?</td>
                                         <td class="columna">?</td>
                                         <td class="columna">?</td>
