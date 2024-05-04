@@ -81,19 +81,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Estado del Usuario:</label>
-                                    <div class="position-relative">
-                                        <select name="estado" class="form-select" id="estado">
-                                            <option value="">Seleccione un estado del Usuario...</option>
-                                            <option value="Activo">Activo</option>
-                                            <option value="Inactivo">Inactivo</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                        
             <!-- Footer del modal: ------------------------------>

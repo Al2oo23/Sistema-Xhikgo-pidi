@@ -188,6 +188,29 @@ require('../header.php');
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
+                                    <label for="">Recurso Utilizado</label>
+                                    <div class="position-relative">
+                                        <select name="recurso_utilizado" class="form-select" id="recurso_utilizado">
+                                            <option value="">Seleccione el Recurso Utilizado...</option>
+                                            <option value="1">1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Cantidad de Recurso utilizado</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="cantidad_recurso" class="form-control" placeholder="Número de Recurso">
+                                        <div class="form-control-icon">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
                                     <label for="">Efectivo</label>
                                     <div class="position-relative">
                                         <select name="marca-vehiculo" class="form-select" id="efectivo">

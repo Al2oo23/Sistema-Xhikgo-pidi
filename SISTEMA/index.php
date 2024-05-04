@@ -39,13 +39,16 @@ include("modelo/conexion.php");
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-xl" name="clave" placeholder="Contrasena">
+                            <input type="password" class="form-control form-control-xl" name="clave" placeholder="Contraseña">
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5" name="login" value="login">Iniciar Sesión</button>
                     </form>
+                    <div class="text-center mt-5 text-lg fs-4">
+                <p><a class="" href="vista/preguntas.php">olvidó su contraseña</a></p>
+            </div>
                 </div>
             </div>
             <div class="col-lg-7 d-none d-lg-block">

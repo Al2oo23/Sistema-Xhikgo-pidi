@@ -96,10 +96,13 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">Cargo</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" id="cargo" placeholder="Cargo">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-person-video2"></i>
-                                        </div>
+                                    <div class="position-relative">
+                                        <select name="cargo" class="form-select" id="cargo">
+                                            <option value="">Seleccione un Cargo...</option>
+                                            <option value="comandante">Comandante</option>
+                                            <option value="capitan">Capitan</option>
+                                        </select>
+                                    </div>
                                     </div>
                                 </div>
                             </div>

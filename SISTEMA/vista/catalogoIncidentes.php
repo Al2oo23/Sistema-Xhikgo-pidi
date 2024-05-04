@@ -30,7 +30,7 @@ include('../modelo/conexion.php');
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
-                                    <tr>
+                                    <tr style="text-align: center;">
                                         <th class="columna">Tipo</th>
                                         <th class="columna">Fecha</th>
                                         <th class="columna">Seccion</th>

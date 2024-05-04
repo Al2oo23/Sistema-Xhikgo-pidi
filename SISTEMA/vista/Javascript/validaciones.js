@@ -74,10 +74,9 @@ function validarPersona() {
     }
 
     var cargo = document.getElementById('cargo').value;
-    var cargoRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
 
-    if (!cargoRegex.test(cargo)) {
-        alert('Ingrese un cargo valido');
+    if (cargo === "") {
+        alert('Debe seleccionar un cargo');
         return false;
     }
 
@@ -927,14 +926,6 @@ function validarUsuario() {
         alert('Las claves no coinciden');
         return false;
     }
-
-    var estado = document.getElementById('estado').value;
-
-    if (estado === "") {
-        alert('Indique un estado al usuario');
-        return false;
-    }
-
     return true;
 }
 

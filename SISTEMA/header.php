@@ -84,8 +84,8 @@
                                         <img src="assets/compiled/jpg/1.jpg" alt="Avatar">
                                     </div>
                                     <div class="text">
-                                        <h6 class="user-dropdown-name">John Ducky</h6>
-                                        <p class="user-dropdown-status text-sm text-muted">Member</p>
+                                        <h6 class="user-dropdown-name">oskers</h6>
+                                        <p class="user-dropdown-status text-sm text-muted">Administrador</p>
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
@@ -237,10 +237,7 @@
                                             <!-- <li class="submenu-item  ">
                                                 <a href="catalogoEstacion.php" class='submenu-link'>Estaciones</a>
                                             </li> -->
-                                            
-                                            <li class="submenu-item">
-                                            <a href="catalogoOR.php" class='submenu-link'>Optimizador de Rutas</a>
-                                            </li>
+                                        
 
                                         </ul>
                                         
