@@ -1,8 +1,6 @@
 
 <!-- Button trigger for login form modal -->
-<button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">
-       Nuevo
- </button>
+<button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">Nuevo</button>
 
         <!--login form Modal -->
         <div class="modal fade text-left" id="inlineForm1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
@@ -19,7 +17,7 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="#" style="text-align: left;">
+                    <form action="../controlador/ctl_lugar.php" style="text-align: left;" method="POST">
                         <div class="modal-body">
 
                                     <div class="col-12">
@@ -28,7 +26,7 @@
                                             <div class="position-relative">                                               
                                                 <select name="municipio" class="form-select" id="municipio">                                                     
                                                     <option value="default">Seleccione el Municipio...</option>
-                                                    <option value=""></option>                                                
+                                                    <option value="algo">algo</option><!--borrar esta opcion despues-->                                               
                                                 </select>
                                                
                                             </div>
@@ -37,7 +35,7 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">Nombre del Lugar</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Coloque el nombre del lugar" id="first-name-icon">
+                                        <input type="text" class="form-control" name="nombre" placeholder="Coloque el nombre del lugar" id="first-name-icon">
                                         <div class="form-control-icon">
                                             <i class="bi bi-postcard"></i>
                                         </div>
@@ -46,7 +44,7 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">Distancia</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Coloque la distancia del lugar" id="first-name-icon">
+                                        <input type="text" class="form-control" name="distancia" placeholder="Coloque la distancia del lugar" id="first-name-icon">
                                         <div class="form-control-icon">
                                             <i class="bi bi-postcard"></i>
                                         </div>
@@ -62,7 +60,7 @@
                                     <span class="d-none d-sm-block">Cerrar</span>
                                 </button>
 
-                                <button type="submit" id="registrar" name="registrar" class="btn btn-primary ms-1">
+                                <button type="submit" id="registrar" name="agregar" value="agregar" class="btn btn-primary ms-1">
                                     <i class="bx bx-check d-block d-sm-none"></i>
                                     <span class="d-none d-sm-block">Registrar</span>
                                 </button>

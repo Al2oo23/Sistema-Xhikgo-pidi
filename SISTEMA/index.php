@@ -31,7 +31,7 @@ include("modelo/conexion.php");
                     <h1 class="auth-title" style="margin-top: -7vh;">Inicio de Sesion</h1>
                     <p class="auth-subtitle mb-5">Ingrese sus datos para iniciar sesión</p>
 
-                    <form action="controlador/ctl_sesion.php" method="POST">
+                    <form action="vista/inicio.php" method="POST">
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" class="form-control form-control-xl" name="usuario" placeholder="Usuario">
                             <div class="form-control-icon">
@@ -47,7 +47,7 @@ include("modelo/conexion.php");
                         <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5" name="login" value="login">Iniciar Sesión</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
-                <p><a class="" href="vista/preguntas.php">olvidó su contraseña</a></p>
+                <p><a class="" href="vista/preguntas.php">¿Olvidó su contraseña?</a></p>
             </div>
                 </div>
             </div>
