@@ -24,10 +24,10 @@ $lugares = $preparado->fetchAll(PDO::FETCH_ASSOC);
                             <table class="table table-hover mb-0">
                                 <thead>
                                     <tr style="text-align: center;">
-                                        <th>Municipio</th>
-                                        <th>Nombre</th> 
-                                        <th>Distancia</th>
-                                        <th>Accion</th>
+                                        <th class='fila'>Municipio</th>
+                                        <th class='fila'>Nombre</th> 
+                                        <th class='fila'>Distancia</th>
+                                        <th class='fila'>Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -30,7 +30,7 @@
             margin-right: 2px;
         }
 
-        .columna {
+        .fila {
             text-align: center;
         }
 
