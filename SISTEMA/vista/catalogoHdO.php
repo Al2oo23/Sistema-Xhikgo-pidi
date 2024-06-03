@@ -28,7 +28,7 @@ include('../modelo/conexion.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="fila">
                                         <td class="columna">20588674</td>
                                         <td class="columna">Felipe Perez</td>
                                         <td class="columna">5</td>

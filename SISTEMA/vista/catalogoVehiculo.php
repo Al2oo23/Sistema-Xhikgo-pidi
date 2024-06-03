@@ -1,4 +1,5 @@
 <?php 
+session_start();
 $nombrePagina = 'Catálogo de Vehiculo';
 require('../header.php');
 include('../modelo/conexion.php');
@@ -13,7 +14,7 @@ include('../modelo/conexion.php');
                     <div class="card-content">
                     <div class="card-header">
                         <h4 class="card-title">Vehiculos</h4>
-                        <?php include("modalVehiculoR.php");?>
+                        <?php include("modal/modalVehiculoR.php");?>
                     </div>
                         <!-- table hover -->
                         <div class="table-responsive">
@@ -34,8 +35,10 @@ include('../modelo/conexion.php');
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                <?php //foreach ($vehiculo as $carro) :?>
                                    
-                                    <tr class="filas">
+                                    <tr class="fila">
                                         <td class="columna">?</td>
                                         <td class="columna">?</td>
                                         <td class="columna">23</td>
@@ -49,19 +52,24 @@ include('../modelo/conexion.php');
                                         
                                         <td>
                                             <div class="botones">
-                                            <?php include("modalVehiculoM.php");?>
-                                                <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                            <?php include("modal/modalVehiculoM.php");?>
+                                            <div><a name='eliminar' id='eliminar' href='../controlador/ctl_(nombre).php?txtID=<?= $carro['niv']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                             </div>
                                         </td>
-
                                     </tr>
-                                    
+
+                                    <?php //endforeach; ?>
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <form action="../controlador/ctl_(nombre).php" method="POST" style="display: none;">
+                <input type="hidden" id="idBorrar" name="id">
+            </form>
 
     <script src="Javascript/vehiculoModal.js"></script>
 

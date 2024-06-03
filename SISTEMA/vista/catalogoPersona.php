@@ -1,11 +1,12 @@
 <?php
+session_start();
 $nombrePagina = "Catálogo de Persona";
 require('../header.php');
-include('../modelo/conexion.php');
+// include('../modelo/conexion.php');
 
-$sentencia = $conexion->prepare("SELECT * FROM `persona`");
-$sentencia->execute();
-$persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+// $sentencia = $conexion->prepare("SELECT * FROM `persona`");
+// $sentencia->execute();
+// $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <section class="section">
@@ -14,7 +15,7 @@ $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             <div class="card">
             <div class="card-header">
                         <h4 class="card-title">Personas</h4>
-                        <?php include("modalPersonaR.php");?>
+                        <?php include("modal/modalPersonaR.php");?>
                     </div>
                 <!-- table hover -->
                 <div class="table-responsive">
@@ -36,31 +37,32 @@ $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($persona as $fila) : ?>
-                                <tr class="filas">
-                                    <td class="columna"><?= $fila['cedula'] ?></td>
-                                    <td class="columna"><?= $fila['nombre'] ?></td>
-                                    <td class="columna"><?= $fila['edad'] ?></td>
-                                    <td class="columna"><?= $fila['correo'] ?></td>
-                                    <td class="columna"><?= $fila['telefono'] ?></td>
-                                    <td class="columna"><?= $fila['cargo'] ?></td>
-                                    <td class="columna"><?= $fila['direccion'] ?></td>
-                                    <td class="columna"><?= $fila['sexo'] ?></td>
-                                    <td class="columna"><?= $fila['tipo_persona'] ?></td>
-                                    <td class="columna"><?= $fila['seccion'] ?></td>
-                                    <td class="columna"><?= $fila['estacion'] ?></td>
-                                    <td class="columna">
-                                        <div class='d-flex justify-content-around w-100'>
-                                            
-                                         <div class="">
-                                            <?php include("modalPersonaM.php");?>
-                                         </div>
-                                            <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                        <tbody>
+                                    <?php //foreach ($persona as $per) :?>
+
+                                    <tr class="fila">
+                                    
+                                        <td class="columna">?</td>
+                                        <td class="columna">?</td>
+                                        <td class="columna">?</td>
+                                        <td class="columna">?</td>
+                                        <td class="columna">?</td>
+                                        <td class="columna">?</td>
+                                        <td class="columna">?</td>
+                                        <td class="columna">?</td>
+                                        <td class="columna">?</td>
+                                        <td class="columna">?</td>
+                                        <td class="columna">?</td>
+                                        <td>
+                                        <div class="botones" style="justify-content:space-evenly;">
+                                            <?php include("modal/modalPersonaM.php");?>
+                                            <div><a name='eliminar' id='eliminar' href='../controlador/ctl_(nombre).php?txtID=<?= $per['cedula']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
-                                    </td>
-                                </tr>
-                                
-                            <?php endforeach; ?>
+                                        </td>
+                                    </tr>
+
+                                   <?php //endforeach; ?>
+                                </tbody>
                         </tbody>
                     </table>
                 </div>
@@ -69,6 +71,10 @@ $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     </div>
     </div>
 </section>
+
+            <form action="../controlador/ctl_(nombre).php" method="POST" style="display: none;">
+                <input type="hidden" id="idBorrar" name="id">
+            </form>
 
 <script src="Javascript/personaModal.js"></script>
 

@@ -1,11 +1,12 @@
 "use strict";
 
-const filas = document.querySelectorAll(".filas");
+const filas = document.querySelectorAll(".fila");
+const idborrar = document.getElementById("idBorrar");
+const id = document.getElementById("id");
 const municipio = document.getElementById("municipioM");
 const nombre = document.getElementById("nombreM");
 const distancia = document.getElementById("distanciaM");
 const modal = document.getElementById("modalM");
-const id = document.getElementById("id");
 
 filas.forEach(fila => {
 

@@ -1,6 +1,7 @@
 "use strict";
 
-const filas = document.querySelectorAll(".filas");
+const filas = document.querySelectorAll(".fila");
+const idborrar = document.getElementById("idBorrar");
 const cedula = document.getElementById("cedulaM");
 const tusuario = document.getElementById("tusuarioM");
 const nombre = document.getElementById("nombreM");

@@ -968,6 +968,14 @@ function validarVehiculo() {
         return false;
     }
 
+    var numero_unidad = document.getElementById('nunidad').value;
+    var numero_unidadRegex = /^[a-zA-Z\d-_]{3,50}$/;
+
+    if (!numero_unidadRegex.test(numero_unidad)) {
+        alert('Ingrese un numero de unidad valido');
+        return false;
+    }
+
     var cilindrada = document.getElementById('cilindrada').value;
     var cilindradaRegex = /^\d+(CC|cc|HP|hp)$/;
 

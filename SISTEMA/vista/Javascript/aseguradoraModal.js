@@ -1,6 +1,8 @@
 "use strict";
 
-const filas = document.querySelectorAll(".filas");
+const filas = document.querySelectorAll(".fila");
+const id = document.getElementById("id");
+const idborrar = document.getElementById("idBorrar");
 const nombre = document.getElementById("nombreM");
 const tipo = document.getElementById("tipoM");
 const modal = document.getElementById("modalM");
@@ -9,8 +11,9 @@ filas.forEach(fila => {
 
     fila.addEventListener("click",(e)=>{
        const columnas = fila.children
-       nombre.value = columnas[0].textContent
-       tipo.value = columnas[1].textContent
+       id.value = columnas[0].textContent
+       nombre.value = columnas[1].textContent
+       tipo.value = columnas[2].textContent
        console.log(columnas);
     });
 });

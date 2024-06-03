@@ -1,6 +1,6 @@
 "use strict";
 
-const filas = document.querySelectorAll(".filas");
+const filas = document.querySelectorAll(".fila");
 const niv = document.getElementById("nivM");
 const tvehiculo = document.getElementById("tvehiculoM");
 const nunidad = document.getElementById("nunidadM");

@@ -1,11 +1,12 @@
 <?php 
+session_start();
 $nombrePagina = 'Catálogo de Usuario';
 require('../header.php');
-include('../modelo/conexion.php');
+// include('../modelo/conexion.php');
 
-$sentencia = $conexion->prepare("SELECT * FROM `usuario`");
-$sentencia->execute();
-$usuario = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+// $sentencia = $conexion->prepare("SELECT * FROM `usuario`");
+// $sentencia->execute();
+// $usuario = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="col-8 m-auto">
@@ -13,7 +14,7 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                     <div class="card-content">
                     <div class="card-header">
                         <h4 class="card-title">Usuarios</h4>
-                        <?php include("modalUsuarioR.php");?>
+                        <?php include("modal/modalUsuarioR.php");?>
                     </div>
                         <!-- table hover -->
                         <div class="table-responsive">
@@ -28,32 +29,34 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($usuario as $user) : ?>
+                                     <?php //foreach ($usuario as $usu) :?>
 
-                                    <tr class="filas">
-                                        <td class="columna"><?= $user["cedula"]?></td>
-                                        <td class="columna"><?= $user["tipo"]?></td>
-                                        <td class="columna"><?= $user["nombre"]?></td>
-                                        <td class="columna" hidden><?= $user["clave"]?></td>
-                                        <td class="columna"><?= $user["estado"]?></td>
+                                    <tr class="fila">
+                                        <td class="columna">?</td>
+                                        <td class="columna">?</td>
+                                        <td class="columna">?</td>
+                                        <td class="columna" hidden>?</td> 
+                                        <td class="columna">?</td>
                                         <td>
-                                        <div class='d-flex justify-content-around w-100'>
-                                            
-                                            <div class="">
-                                               <?php include("modalUsuarioM.php");?>
-                                            </div>
-
-                                           </div>
+                                        <div class="botones" style="justify-content:space-evenly;">
+                                            <?php include("modal/modalUsuarioM.php");?>
+                                            <div><a name='eliminar' id='eliminar' href='../controlador/ctl_(nombre).php?txtID=<?= $usu['cedula']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                        </div>
                                         </td>
-
                                     </tr>
-                                    <?php endforeach; ?>
+
+                                   <?php //endforeach; ?>
+            
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <form action="../controlador/ctl_(nombre).php" method="POST" style="display: none;">
+                <input type="hidden" id="idBorrar" name="id">
+            </form>
 
             <script src="Javascript/usuarioModal.js"></script>
 
