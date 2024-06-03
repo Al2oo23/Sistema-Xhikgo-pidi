@@ -31,7 +31,8 @@ try {
    //------------------ MUNICIPIO ------------------
     $SQL = "CREATE TABLE IF NOT EXISTS municipio (
         id INT PRIMARY KEY AUTO_INCREMENT,
-        nombre VARCHAR(25) NOT NULL
+        nombre VARCHAR(25) NOT NULL,
+        codigo VARCHAR(4) NOT NULL
     )";
     $conexion->exec($SQL);
 
@@ -46,18 +47,28 @@ try {
     )";
     $conexion->exec($SQL);
    
-    /*
+    
     //------------------ SECCION ------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS seccion (
-        nombre INT(3) PRIMARY KEY NOT NULL
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        nombre INT(3) NOT NULL
     )";
     $conexion->exec($SQL);
 
     //------------------ ESTACION ------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS estacion (
-        nombre VARCHAR(50) PRIMARY KEY NOT NULL
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        nombre VARCHAR(50) NOT NULL
+    )";
+    $conexion->exec($SQL);
+
+    //------------------ CARGO ------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS cargo (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        nombre VARCHAR(20) NOT NULL
     )";
     $conexion->exec($SQL);
    
@@ -74,9 +85,7 @@ try {
         tipo_persona VARCHAR(20) NOT NULL,
         cargo VARCHAR(20) NOT NULL,
         seccion INT(3) NOT NULL,
-        estacion VARCHAR(20) NOT NULL/*,
-        FOREIGN KEY (seccion) REFERENCES seccion(nombre),
-        FOREIGN KEY (estacion) REFERENCES estacion(nombre) 
+        estacion VARCHAR(20) NOT NULL
     )";
     $conexion->exec($SQL);
 
@@ -105,20 +114,54 @@ try {
     //------------------ MARCA ------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS marca (
-        nombre VARCHAR(20) PRIMARY KEY NOT NULL 
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        nombre VARCHAR(20) NOT NULL 
     )";
     $conexion->exec($SQL);
 
     //------------------ MODELO ------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS modelo (
-        nombre VARCHAR(20) PRIMARY KEY NOT NULL,
-        marca VARCHAR(20) NOT NULL,
-        FOREIGN KEY (marca) REFERENCES marca(nombre)
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        nombre VARCHAR(20) NOT NULL,
+        marca VARCHAR(20) NOT NULL
     )";
     $conexion->exec($SQL);
-    
-*/
+
+     //------------------ ASEGURADORA ------------------
+
+     $SQL = "CREATE TABLE IF NOT EXISTS seguro (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        nombre VARCHAR(20) NOT NULL,
+        tipo VARCHAR(20) NOT NULL
+    )";
+    $conexion->exec($SQL);
+
+     //------------------ RECURSO ------------------
+
+     $SQL = "CREATE TABLE IF NOT EXISTS recurso (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        nombre VARCHAR(20) NOT NULL,
+        tipo VARCHAR(20) NOT NULL,
+        cantidad INT(20) NOT NULL
+    )";
+    $conexion->exec($SQL);
+
+    //------------------ VEHICULO ------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS vehiculo (
+        niv INT(100) PRIMARY KEY,
+        marca VARCHAR(20) NOT NULL,
+        modelo INT(20) NOT NULL,
+        seria INT(20) NOT NULL,
+        carburante VARCHAR(20) NOT NULL,
+        seguro VARCHAR(20) NOT NULL,
+        cedula VARCHAR(20) NOT NULL,
+        tipo VARCHAR(20) NOT NULL,
+        unidad INT(20) NOT NULL
+    )";
+    $conexion->exec($SQL);
+
 
 } catch (PDOException $e) {
     echo $e->getMessage();

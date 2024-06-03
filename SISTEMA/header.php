@@ -89,7 +89,7 @@
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
-                                    <form action="../controlador/ctl_sesion.php" method="post">
+                                    <form action="../index.php" method="post">
                                         <li><a class="dropdown-item" href="#">My Account</a></li>
                                         <li><a class="dropdown-item" href="datosInstitucion.php">Institucion</a></li>
                                         <li><a class="dropdown-item" href="#">Settings</a></li>
