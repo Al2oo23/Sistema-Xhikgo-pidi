@@ -19,14 +19,14 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="controlador/ctl_(nombre).php" method="POST" style="text-align: left;" onsubmit="return validarMarca()">
+                    <form action="../controlador/ctl_marca.php" method="POST" style="text-align: left;" onsubmit="return validarMarca()">
                         <div class="modal-body">
                         <div class="col-12">
                                 <div class="form-group has-icon-left">
                                     <label for="first-name-icon">Nombre de la Marca:</label>
 
                                    <div class="position-relative">
-                                        <input type="text" class="form-control" name="marca" placeholder="Coloque la marca del vehiculo" id="nombre_marca">
+                                        <input type="text" class="form-control" name="nombre" placeholder="Coloque la marca del vehiculo" id="nombre_marca">
                                         <div class="form-control-icon">
                                         <i class="bi bi-postcard"></i>
                                         </div>
@@ -43,7 +43,7 @@
                                     <span class="d-none d-sm-block">Cerrar</span>
                                 </button>
 
-                                <button type="submit" name="agregar" value="agregar" class="btn btn-primary ms-1">
+                                <button type="submit" id="registrar" name="agregar" value="agregar" class="btn btn-primary ms-1">
                                     <i class="bx bx-check d-block d-sm-none"></i>
                                     <span class="d-none d-sm-block">Registrar</span>
                                 </button>

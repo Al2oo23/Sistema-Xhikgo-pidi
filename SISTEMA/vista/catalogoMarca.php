@@ -4,16 +4,17 @@ $nombrePagina = 'Catálogo de Marca';
 require('../header.php');
 include('../modelo/conexion.php');
 
-// $sentencia = $conexion->prepare("SELECT * FROM marca");
-// $sentencia->execute();
-// $marca = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+$SQL = "SELECT * FROM marca";
+$preparado = $conexion->prepare($SQL);
+$preparado->execute();
+$marcas = $preparado->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="col-5 m-auto">
                 <div class="card">
                     <div class="card-content">
                     <div class="card-header">
-                        <h4 class="card-title">Marca de Vehiculos</h4>
+                        <h4 class="card-title">Marcas de Vehiculos</h4>
                         <?php include("modal/modalMarcaR.php");?>
                     </div>
                         <!-- table hover -->
@@ -27,20 +28,20 @@ include('../modelo/conexion.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php //foreach ($marca as $marc) :?>
+                                <?php foreach ($marcas as $marca) :?>
                                     <tr class="fila">
-                                    <td class="columna" hidden>?</td>
-                                        <td class="columna">Chevrolet</td>
+                                    <td class="columna" hidden><?= $marca["id"]?></td>
+                                    <td class="columna"><?= $marca["nombre"]?></td>
                                         
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
                                         <?php include("modal/modalMarcaM.php");?>
-                                        <div><a name='eliminar' id='eliminar' href='../controlador/ctl_(nombre).php?txtID=<?= $marc['id']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                        <div><a name='eliminar' id='eliminar' href='../controlador/ctl_marca.php?txtID=<?= $marca['id']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                         </td>
 
                                     </tr>
-                                <?php //endforeach; ?>   
+                                <?php endforeach;?>   
                                 </tbody>
                             </table>
                         </div>
@@ -48,7 +49,7 @@ include('../modelo/conexion.php');
                 </div>
             </div>
 
-            <form action="../controlador/ctl_(nombre).php" method="POST" style="display: none;">
+            <form action="../controlador/ctl_marca.php" method="POST" style="display: none;">
                 <input type="hidden" id="idBorrar" name="id">
             </form>
 
