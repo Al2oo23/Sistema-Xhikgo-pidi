@@ -162,6 +162,32 @@ try {
     )";
     $conexion->exec($SQL);
 
+        //Abejas
+
+    $SQL = "CREATE TABLE IF NOT EXISTS abejas (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        fecha VARCHAR(100) NOT NULL,
+        seccion VARCHAR(20) NOT NULL,
+        estacion VARCHAR(20) NOT NULL,
+        aviso VARCHAR(20) NOT NULL,
+        hora VARCHAR(20) NOT NULL,
+        salida VARCHAR(20) NOT NULL,
+        llegada VARCHAR(20) NOT NULL,
+        regreso VARCHAR(20) NOT NULL,
+        municipio VARCHAR(20) NOT NULL,
+        localidad VARCHAR(20) NOT NULL,
+        direccion VARCHAR(100) NOT NULL,
+        lugar VARCHAR(20) NOT NULL,
+        inmueble INT(20) NOT NULL,
+        jefe INT(20) NOT NULL,
+        recurso VARCHAR(20) NOT NULL,
+        cantidad INT(20) NOT NULL,
+        efectivo VARCHAR(20) NOT NULL,
+        unidad VARCHAR(20) NOT NULL,
+        autoridades VARCHAR(20) NOT NULL
+    )";
+    $conexion->exec($SQL);
+
 
 } catch (PDOException $e) {
     echo $e->getMessage();

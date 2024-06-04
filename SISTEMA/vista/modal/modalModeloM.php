@@ -7,7 +7,7 @@
         <!--login form Modal -->
         <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                <div class="modal-content" id="modal" style="overflow-y: scroll;">
+                <div class="modal-content" id="modalM" style="overflow-y: scroll;">
 
             <!-- Header del Modal: ----------------------------->
 
@@ -19,14 +19,14 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_(nombre).php" method="POST" style="text-align: left;">
+                    <form action="../controlador/ctl_modelo.php" method="POST" style="text-align: left;">
                         <div class="modal-body">
                             
                         <input type="hidden" id="id" name="id">
 
                             <label>Modelo:</label>
                             <div class="form-group">
-                                <input type="text" value="" name="modelo" id="modeloM" class="form-control" >
+                                <input type="text" value="" name="nombre" id="modeloM" class="form-control" >
                             </div>
                             <label>Marca:</label>
                             <div class="form-group">

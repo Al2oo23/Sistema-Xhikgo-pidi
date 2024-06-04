@@ -19,14 +19,14 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_(nombre).php" style="text-align: left;">
+                    <form action="../controlador/ctl_marca.php" method="POST" style="text-align: left;" >
                         <div class="modal-body">
                             
                         <input type="hidden" id="id" name="id">
 
                             <label>Nombre de la marca:</label>
                             <div class="form-group">
-                                <input type="text" value="" name="marca" id="marcaM" class="form-control" >
+                                <input type="text" value="" name="nombre" id="marcaM" class="form-control" >
                             </div>
                         </div>
                        
