@@ -1,4 +1,11 @@
+<?php
+$SQL="select * from marca" ;
+$preparado= $conexion->prepare($SQL);  
+$preparado->execute();
+$marca = $preparado->fetchAll(PDO::FETCH_ASSOC);
 
+
+?>
     <!-- Button trigger for login form modal -->
     <button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">
         Nuevo
@@ -19,13 +26,13 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_(nombre).php" method="POST" style="text-align: left;" onsubmit="return validarModelo()">
+                    <form action="../controlador/ctl_modelo.php" method="POST" style="text-align: left;" onsubmit="return validarModelo()">
                         <div class="modal-body">
                         <div class="col-12">
                             <div class="form-group has-icon-left">
                                 <label for="">Modelo del Vehiculo</label>
                                 <div class="position-relative">
-                                    <input type="text" class="form-control" id="modelo_vehiculo" name="modelo" placeholder="Modelo">
+                                    <input type="text" class="form-control" id="modelo_vehiculo" name="nombre" placeholder="Modelo">
                                     <div class="form-control-icon">
                                         <i class="bi bi-car-front-fill"></i>
                                     </div>

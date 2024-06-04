@@ -1,6 +1,6 @@
 "use strict";
 
-const filas = document.querySelectorAll(".filas");
+const filas = document.querySelectorAll(".fila");
 const tipo = document.getElementById("tipo");
 const fecha = document.getElementById("fecha");
 const seccion = document.getElementById("seccion");
