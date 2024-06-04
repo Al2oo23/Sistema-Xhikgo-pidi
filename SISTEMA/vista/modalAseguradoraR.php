@@ -55,7 +55,7 @@
                                     <span class="d-none d-sm-block">Cerrar</span>
                                 </button>
 
-                                <button type="button" class="btn btn-primary ms-1" data-bs-dismiss="modal">
+                                <button type="button" id="registrar" name="registrar" class="btn btn-primary ms-1" data-bs-dismiss="modal">
                                     <i class="bx bx-check d-block d-sm-none"></i>
                                     <span class="d-none d-sm-block">Registrar</span>
                                 </button>

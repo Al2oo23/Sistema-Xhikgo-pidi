@@ -19,7 +19,7 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="#" style="text-align: left;">
+                    <form action="../controlador/ctl_Tpersona.php" style="text-align: left;" method="POST">
                         <div class="modal-body">
                             <label>Tipo:</label>
                             <div class="form-group">
@@ -40,7 +40,7 @@
                                     <span class="d-none d-sm-block">Cerrar</span>
                                 </button>
 
-                                <button type="button" class="btn btn-primary ms-1" data-bs-dismiss="modal">
+                                <button type="submit" class="btn btn-primary ms-1" data-bs-dismiss="modal" name="modificar" value="modificar">
                                     <i class="bx bx-check d-block d-sm-none"></i>
                                     <span class="d-none d-sm-block">Modificar</span>
                                 </button>

@@ -19,13 +19,13 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="#" style="text-align: left;" onsubmit="return validarTipoPersona()">
+                    <form style="text-align: left;" onsubmit="return validarTipoPersona()" method="POST" action="../controlador/ctl_Tpersona.php">
                         <div class="modal-body">
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
                                     <label for="">Tipo:</label>
                                     <div class=" position-relative">
-                                        <input type="text" id="tipo_persona" class="form-control" placeholder="Nombre">
+                                        <input type="text" id="tipo_persona" name="tipo" class="form-control" placeholder="Nombre">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person"></i>
                                         </div>
@@ -35,7 +35,7 @@
 
                             <label>Descripcion:</label>
                             <div class="form-group">
-                            <textarea class="form-control" id="descripcion" rows="3" style="height: 97px; resize:none;"></textarea>
+                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" style="height: 97px; resize:none;"></textarea>
                             </div>
                         </div>
                        
@@ -47,7 +47,7 @@
                                     <span class="d-none d-sm-block">Cerrar</span>
                                 </button>
 
-                                <button type="submit" class="btn btn-primary ms-1">
+                                <button type="submit" id="registrar" name="registrar" value="registrar" class="btn btn-primary ms-1">
                                     <i class="bx bx-check d-block d-sm-none"></i>
                                     <span class="d-none d-sm-block">Registrar</span>
                                 </button>

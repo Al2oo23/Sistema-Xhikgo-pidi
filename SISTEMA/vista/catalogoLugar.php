@@ -48,11 +48,7 @@ $lugares = $preparado->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
             </div>
-
-            <form action="../controlador/ctl_lugar.php" method="POST" style="display: none;">
-                <input type="hidden" id="idBorrar" name="id">
-            </form>
-
+            
     <script src="Javascript/lugarModal.js"></script>
 
 <?php 

@@ -1,9 +1,10 @@
 "use strict";
 
-const filas = document.querySelectorAll(".filas");
-const id = document.getElementById("id_recurso");
+const filas = document.querySelectorAll(".fila");
+const id = document.getElementById("id");
 const tipo = document.getElementById("tipoM");
 const nombre = document.getElementById("nombreM");
+const cantidad = document.getElementById("cantidadM");
 const modal = document.getElementById("modalM");
 
 filas.forEach(fila => {
@@ -14,6 +15,7 @@ filas.forEach(fila => {
        id.value = columnas[0].textContent
        tipo.value = columnas[1].textContent
        nombre.value = columnas[2].textContent
+       cantidad.value = columnas[3].textContent
 
        console.log(columnas);
     });

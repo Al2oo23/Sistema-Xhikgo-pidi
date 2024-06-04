@@ -19,25 +19,35 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="#" style="text-align: left;">
+                    <form action="../controlador/ctl_recurso.php" method="POST" style="text-align: left;">
                         <div class="modal-body">
                         <div class="col-12">
                                 <div class="form-group has-icon-left">
+                                   
+                                    <label for="first-name-icon">Nombre del Recurso:</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" placeholder="Ingrese el Nombre del Recurso" name="nombre_recurso" id="nombre_recurso">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-postcard"></i>
+                                        </div>
+                                    </div>
+
                                     <div class="col-12">
                                         <div class="form-group has-icon-left">
                                             <label for="">Tipo de Recurso:</label>
                                             <div class="position-relative">
-                                                <select name="jefe-comision" class="form-select" id="tipo_recurso">
+                                                <select name="tipo_recurso" class="form-select" id="tipo_recurso">
                                                     <option value="">Seleccione el Tipo de Recurso...</option>
-
+                                                    <option value="Reutilizable">Reutilizable</option>
+                                                    <option value="No Reutilizable">No Reutilizable</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <label for="first-name-icon">Nombre del Recurso:</label>
+                                    <label for="first-name-icon">Cantidad del Recurso:</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Ingrese el Nombre del Recurso" id="first-name-icon">
+                                        <input type="text" class="form-control" placeholder="Ingrese el Nombre del Recurso" id="cantidad_recurso" name="cantidad_recurso">
                                         <div class="form-control-icon">
                                             <i class="bi bi-postcard"></i>
                                         </div>
@@ -54,7 +64,7 @@
                                     <span class="d-none d-sm-block">Cerrar</span>
                                 </button>
 
-                                <button type="button" class="btn btn-primary ms-1" data-bs-dismiss="modal">
+                                <button type="submit" name="registrar" id="registrar" value="registrar" class="btn btn-primary ms-1" data-bs-dismiss="modal">
                                     <i class="bx bx-check d-block d-sm-none"></i>
                                     <span class="d-none d-sm-block">Registrar</span>
                                 </button>
