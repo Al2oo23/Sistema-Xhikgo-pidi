@@ -1,4 +1,3 @@
-
     <!-- Button trigger for login form modal -->
     <button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm">
         <i class="bi bi-pencil"></i>
