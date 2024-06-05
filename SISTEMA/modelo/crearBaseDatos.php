@@ -52,7 +52,7 @@ try {
 
     $SQL = "CREATE TABLE IF NOT EXISTS seccion (
         id INT PRIMARY KEY AUTO_INCREMENT,
-        nombre INT(3) NOT NULL
+        numero INT(3) NOT NULL
     )";
     $conexion->exec($SQL);
 
