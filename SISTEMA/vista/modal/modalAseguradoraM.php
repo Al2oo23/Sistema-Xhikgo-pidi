@@ -7,34 +7,43 @@
         <!--login form Modal -->
         <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                <div class="modal-content" id="modalM" style="overflow-y: scroll;">
+                <div class="modal-content" id="modalM">
 
             <!-- Header del Modal: ----------------------------->
 
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel33">Modificar Aseguradora</h4>
+                        <h4 class="modal-title" id="myModalLabel33">Modificar Municipio</h4>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <i data-feather="x"></i>
                         </button>
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_(nombre).php" method="POST" style="text-align: left;">
+                    <form action="../controlador/ctl_aseguradora.php" method="POST" style="text-align: left;">
                         <div class="modal-body">
 
-                        <input type="hidden" id="id" name="id">
+                            <input type="hidden" id="id" name="id">
 
-                            <label>Nombre:</label>
+                            <label>Nombre de la Aseguradora:</label>
                             <div class="form-group">
-                                <input type="text" value="" name="nombre" id="nombreM" class="form-control" >
+                                <input type="text" value="" id="nombreM" name="nombre" class="form-control" >
                             </div>
 
-                            <label>Tipo:</label>
-                            <div class="form-group">
-                                <input type="text" value="" name="tipo_aseguradora" id="tipoM" class="form-control" >
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Tipo de Aseguradora:</label>
+                                    <div class="position-relative">
+                                    <select name="tipo_aseguradora" class="form-select" id="tipoM">
+                                        <option value="Vehiculo">Vehiculo</option>
+                                        <option value="Hogar">Hogar</option>
+                                    </select>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                        
+                        
             <!-- Footer del modal: ------------------------------>
 
                            <div class="modal-footer">
@@ -43,7 +52,7 @@
                                     <span class="d-none d-sm-block">Cerrar</span>
                                 </button>
 
-                                <button type="submit" name="modificar" value="modificar" class="btn btn-primary ms-1" data-bs-dismiss="modal">
+                                <button type="submit" value="modificar" name="modificar" class="btn btn-primary ms-1" data-bs-dismiss="modal">
                                     <i class="bx bx-check d-block d-sm-none"></i>
                                     <span class="d-none d-sm-block">Modificar</span>
                                 </button>

@@ -45,9 +45,9 @@ class recurso{
     public function registrarRecurso($nombre, $tipo, $cantidad){
         include("conexion.php");
 
-        $SQL = "INSERT INTO recurso (nombre, tipo, cantidad) VALUES (?, ?, ?)";
+        $SQL = "INSERT INTO recurso VALUES (?, ?, ?, ?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$nombre, $tipo, $cantidad]);
+        $preparado->execute([null, $nombre, $tipo, $cantidad]);
 
         return $preparado;
     }
@@ -67,11 +67,10 @@ class recurso{
     public function eliminarRecurso ($id){
         include ("conexion.php");
 
-        $SQL = $conexion->prepare("DELETE FROM recurso WHERE id = ?");
+        $SQL = $conexion->prepare("DELETE * FROM recurso WHERE id = ?");
         $SQL->bindParam(1, $id, PDO::PARAM_INT);
         $preparado = $SQL->execute();
 
         return $preparado;
     }
-
 }

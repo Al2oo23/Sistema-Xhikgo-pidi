@@ -19,7 +19,7 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_(nombre).php" method="POST" style="text-align: left;" onsubmit="return validarAseguradora()">
+                    <form action="../controlador/ctl_aseguradora.php" method="POST" style="text-align: left;" onsubmit="return validarAseguradora()">
                         <div class="modal-body">
                         <div class="col-12">
                             <div class="form-group has-icon-left">
@@ -55,7 +55,7 @@
                                     <span class="d-none d-sm-block">Cerrar</span>
                                 </button>
 
-                                <button type="submit" name="agregar" value="agregar" class="btn btn-primary ms-1">
+                                <button type="submit" name="registrar" value="registrar" class="btn btn-primary ms-1">
                                     <i class="bx bx-check d-block d-sm-none"></i>
                                     <span class="d-none d-sm-block">Registrar</span>
                                 </button>

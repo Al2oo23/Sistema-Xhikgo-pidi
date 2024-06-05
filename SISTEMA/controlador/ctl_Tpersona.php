@@ -5,7 +5,7 @@ $Tpersona = new Tpersona();
 
 //REGISTRAR
 if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
-    $Tpersona->setTipo($_POST['tipo']);
+    $Tpersona->setTipo($_POST['tipo_persona']);
     $Tpersona->setDescripcion($_POST['descripcion']);
 
     $resultado = $Tpersona->registrarTpersona($Tpersona->getTipo(), $Tpersona->getDescripcion());
@@ -31,7 +31,7 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
 
     if (!$resultado) {
         echo "<script>alert('No se pudo modificar el Tipo de Persona')</script>";
-        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/modalTpersonaM.php'>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/modal/modalTpersonaM.php'>";
     } else {
         echo "<script>alert('Tipo de Persona modificada con exito')</script>";
         echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoTpersona.php'>";
@@ -39,17 +39,14 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
 }
 
 //ELIMINAR
-if (isset($_GET['txtID'])){
-    $Tpersona->setId($_GET['txtID']);
+if (isset($_GET['txtID'])) {
 
-    $resultado = $Tpersona->eliminarTpersona($Tpersona->getId());
+    $txtID = (isset($_GET['txtID'])) ? $_GET['txtID'] : '';
 
+    $sentencia = $conexion->prepare("DELETE FROM tipo_persona WHERE id = ?");
+    $sentencia->bindParam(1, $txtID, PDO::PARAM_INT);
+    $sentencia->execute();
 
-    if (empty($resultado)) {
-        echo "<script>alert('No se pudo eliminar el Tipo de Persona')</script>";
-        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoTpersona.php'>";
-    } else {
-        echo "<script>alert('Tipo de Persona eliminada con exito')</script>";
-        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoTpersona.php'>";
-    }
+    echo "<script>alert('Tipo de Persona Eliminada con Exito')</script>";
+	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoTpersona.php'>"; 
 }

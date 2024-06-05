@@ -1,39 +1,34 @@
-<!-- Button trigger for login form modal -->
-<button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm">
+
+    <!-- Button trigger for login form modal -->
+    <button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm">
         <i class="bi bi-pencil"></i>
     </button>
+
+
         <!--login form Modal -->
         <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                <div class="modal-content" id="modal">
+                <div class="modal-content" id="modalM">
 
             <!-- Header del Modal: ----------------------------->
 
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel33">Modificar Cargo de Bomberos</h4>
+                        <h4 class="modal-title" id="myModalLabel33">Registrar Estacion</h4>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <i data-feather="x"></i>
                         </button>
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_cargo.php" method="POST" style="text-align: left;">
+                    <form action="../controlador/ctl_estacion.php" method="POST" style="text-align: left;">
                         <div class="modal-body">
-                        <div class="col-12">
 
-                                <input type="hidden" id="id" name="id">
+                        <input type="hidden" id="id" name="id">
 
-                              <div class="form-group has-icon-left">
-                                  <label for="first-name-icon">Nombre del Cargo:</label>
-
-                                  <div class="position-relative">
-                                      <input type="text" class="form-control" name="nombre" id="cargoM">
-                                      <div class="form-control-icon">
-                                      <i class="bi bi-postcard"></i>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
+                            <label>Estacion:</label>
+                            <div class="form-group">
+                                <input type="text" value="" name="nombre" id="estacionM" class="form-control" >
+                            </div>
                         </div>
                        
             <!-- Footer del modal: ------------------------------>
@@ -44,7 +39,7 @@
                                     <span class="d-none d-sm-block">Cerrar</span>
                                 </button>
 
-                                <button type="submit" id="modificar" value="modificar" name="modificar" class="btn btn-primary ms-1">
+                                <button type="submit" name="modificar" value="modificar" class="btn btn-primary ms-1" data-bs-dismiss="modal">
                                     <i class="bx bx-check d-block d-sm-none"></i>
                                     <span class="d-none d-sm-block">Modificar</span>
                                 </button>

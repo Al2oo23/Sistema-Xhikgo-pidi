@@ -1,7 +1,9 @@
-<!-- Button trigger for login form modal -->
-<button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">
-       Nuevo
- </button>
+
+    <!-- Button trigger for login form modal -->
+    <button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">
+        Nuevo
+    </button>
+
 
         <!--login form Modal -->
         <div class="modal fade text-left" id="inlineForm1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
@@ -11,27 +13,19 @@
             <!-- Header del Modal: ----------------------------->
 
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel33">Registrar Cargo de Bomberos</h4>
+                        <h4 class="modal-title" id="myModalLabel33">Registrar Estacion</h4>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <i data-feather="x"></i>
                         </button>
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_cargo.php" method="POST" style="text-align: left;" onsubmit="return validarCargo()">
+                    <form action="../controlador/ctl_estacion.php" method="POST" style="text-align: left;" onsubmit="return validarEstacion()">
                         <div class="modal-body">
-                        <div class="col-12">
-                              <div class="form-group has-icon-left">
-                                  <label for="first-name-icon">Nombre del Cargo:</label>
-
-                                  <div class="position-relative">
-                                      <input type="text" class="form-control" name="nombre" placeholder="Coloque el nombre del cargo del bombero" id="cargo">
-                                      <div class="form-control-icon">
-                                      <i class="bi bi-postcard"></i>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
+                            <label>Estacion:</label>
+                            <div class="form-group">
+                                <input type="text" value="" name="nombre" id="nombre_estacion" class="form-control" >
+                            </div>
                         </div>
                        
             <!-- Footer del modal: ------------------------------>
@@ -42,7 +36,7 @@
                                     <span class="d-none d-sm-block">Cerrar</span>
                                 </button>
 
-                                <button type="submit" id="registrar" value="registrar" name="registrar" class="btn btn-primary ms-1">
+                                <button type="submit" name="registrar" value="registrar" class="btn btn-primary ms-1" data-bs-dismiss="modal">
                                     <i class="bx bx-check d-block d-sm-none"></i>
                                     <span class="d-none d-sm-block">Registrar</span>
                                 </button>

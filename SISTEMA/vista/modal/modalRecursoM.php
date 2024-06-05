@@ -1,6 +1,5 @@
-
-    <!-- Button trigger for login form modal -->
-    <button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm">
+<!-- Button trigger for login form modal -->
+<button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm">
         <i class="bi bi-pencil"></i>
     </button>
 
@@ -12,27 +11,39 @@
             <!-- Header del Modal: ----------------------------->
 
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel33">Modificar Tipo de Persona</h4>
+                        <h4 class="modal-title" id="myModalLabel33">Modificar Recurso</h4>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <i data-feather="x"></i>
                         </button>
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_Tpersona.php" method="POST" style="text-align: left;">
+                    <form action="../controlador/ctl_recurso.php" method="POST" style="text-align: left;">
                         <div class="modal-body">
 
                         <input type="hidden" id="id" name="id">
-
-                            <label>Tipo:</label>
+                            
+                            <label>Nombre del Recurso:</label>
                             <div class="form-group">
-                                <input type="text" value="" name="tipo_persona" id="tipoM" class="form-control" >
+                                <input type="text" value="" name="nombre_recurso" id="nombreM" class="form-control" >
+                            </div>   
+
+                            <div class="col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="">Tipo de Recurso:</label>
+                                            <div class="position-relative">
+                                                <select name="tipo_recurso" class="form-select" id="tipoM">
+                                                    <option value="Reutilizable">Reutilizable</option>
+                                                    <option value="No Reutilizable">No Reutilizable</option>
+                                                </select>
+                                            </div>
+                                        </div>
                             </div>
 
-                            <label>Descripcion:</label>
+                            <label>Cantidad del Recurso:</label>
                             <div class="form-group">
-                            <textarea class="form-control" id="descripcionM" name="descripcion" rows="3" style="height: 97px; resize:none;"></textarea>
-                            </div>
+                                <input type="text" name="cantidad_recurso" value="" id="cantidadM" class="form-control" >
+                            </div>  
                         </div>
                        
             <!-- Footer del modal: ------------------------------>
@@ -43,7 +54,7 @@
                                     <span class="d-none d-sm-block">Cerrar</span>
                                 </button>
 
-                                <button type="submit" value="modificar" name="modificar" class="btn btn-primary ms-1" data-bs-dismiss="modal">
+                                <button type="submit" name="modificar" id="modificar" value="modificar" class="btn btn-primary ms-1" data-bs-dismiss="modal">
                                     <i class="bx bx-check d-block d-sm-none"></i>
                                     <span class="d-none d-sm-block">Modificar</span>
                                 </button>

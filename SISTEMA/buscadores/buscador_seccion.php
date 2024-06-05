@@ -12,7 +12,7 @@ if (isset($_POST['buscar_seccion'])) {
 
     $resultado_array = $resultado->fetchAll(PDO::FETCH_ASSOC);
     $_SESSION['resultado_busqueda_seccion'] = $resultado_array;
-
+    
     echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoSeccion.php'>";
 
 } elseif (isset($_POST['limpiar_seccion']) || empty($_POST['numero_seccion_buscado'])) {

@@ -137,6 +137,14 @@
                                             <li class="submenu-item">
                                                 <a href="catalogoLugar.php" class='submenu-link'>Lugares</a>
                                             </li>
+
+                                            <li class="submenu-item">
+                                                <a href="catalogoEstacion.php" class='submenu-link'>Estaciones</a>
+                                            </li>
+
+                                            <li class="submenu-item">
+                                                <a href="catalogoSeccion.php" class='submenu-link'>Secciones</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>

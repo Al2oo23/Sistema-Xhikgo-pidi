@@ -89,6 +89,15 @@ try {
     )";
     $conexion->exec($SQL);
 
+    //------------------ TIPO DE PERSONA ------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS tipo_persona (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        tipo VARCHAR(20) NOT NULL,
+        descripcion VARCHAR(20) NOT NULL
+    )";
+    $conexion->exec($SQL);
+
     //------------------ USUARIO ------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS usuario (

@@ -55,7 +55,7 @@ if (isset($_SESSION['resultado_busqueda_Tpersona'])) {
             <div class="card-content">
                 <div class="card-header">
                     <h4 class="card-title">Tipos de Persona</h4>
-                    <?php include("modalTpersonaR.php"); ?>
+                    <?php include("modal/modalTpersonaR.php"); ?>
                 </div>
                 <!-- table hover -->
                 <div class="table-responsive">

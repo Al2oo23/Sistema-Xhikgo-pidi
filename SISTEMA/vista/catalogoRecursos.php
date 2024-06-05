@@ -59,7 +59,7 @@ if (isset($_SESSION['resultado_busqueda_recurso'])) {
             <div class="card-content">
                 <div class="card-header">
                     <h4 class="card-title">Recursos</h4>
-                    <?php include("modalRecursoR.php"); ?>
+                    <?php include("modal/modalRecursoR.php"); ?>
                 </div>
                 <!-- table hover -->
                 <div class="table-responsive">
@@ -82,7 +82,7 @@ if (isset($_SESSION['resultado_busqueda_recurso'])) {
                                         <td class="columna"><?= $filtrado['cantidad']; ?></td>
                                         <td>
                                             <div class="botones" style="justify-content:space-evenly;">
-                                                <?php include("modalRecursoM.php"); ?>
+                                                <?php include("modal/modalRecursoM.php"); ?>
                                                 <div><a href='../controlador/ctl_recurso.php?txtID=<?= $filtrado['id']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                             </div>
                                         </td>
