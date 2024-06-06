@@ -1,4 +1,13 @@
-    <!-- Button trigger for login form modal -->
+   <?php 
+   $sentencia = $conexion->prepare("SELECT * FROM marca");
+   $sentencia->execute();
+    $marca = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+   
+   ?>
+   
+   
+   
+   <!-- Button trigger for login form modal -->
     <button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">
         Nuevo
     </button>

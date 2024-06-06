@@ -128,6 +128,17 @@ try {
     )";
     $conexion->exec($SQL);
 
+
+      //------------------ Tipo de Aviso------------------
+
+      $SQL = "CREATE TABLE IF NOT EXISTS aviso (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        aviso VARCHAR(20) NOT NULL 
+    )";
+    $conexion->exec($SQL);
+
+
+
     //------------------ MODELO ------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS modelo (
