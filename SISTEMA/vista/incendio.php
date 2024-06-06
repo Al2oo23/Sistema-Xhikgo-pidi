@@ -10,14 +10,14 @@ require('../header.php');
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-vertical" onsubmit="return validarIncendio()">
+                <form class="form form-vertical" action="../controlador/ctl_incendio.php" method="POST" onsubmit="return validarIncendio()">
                     <div class="form-body">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
                                     <label for="">Parte Diaria</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" id="parte_diaria" placeholder="Parte Diaria">
+                                        <input type="text" class="form-control" name="parte_diaria" id="parte_diaria" placeholder="Parte Diaria">
                                         <div class="form-control-icon">
                                             <i class="bi bi-calendar-date"></i>
                                         </div>
@@ -65,7 +65,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Solicitante</label>
                                     <div class="position-relative">
-                                        <input type="text" id="solicitante" class="form-control" placeholder="Solicitante">
+                                        <input type="text" id="solicitante" name="solicitante" class="form-control" placeholder="Solicitante">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -77,7 +77,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Receptor</label>
                                     <div class="position-relative">
-                                        <input type="text" id="receptor" class="form-control" placeholder="Receptor">
+                                        <input type="text" id="receptor" name="receptor" class="form-control" placeholder="Receptor">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -89,7 +89,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Aprobador</label>
                                     <div class="position-relative">
-                                        <input type="text" id="aprobador" class="form-control" placeholder="Aprobador">
+                                        <input type="text" id="aprobador" name="aprobador" class="form-control" placeholder="Aprobador">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -101,7 +101,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Aviso</label>
                                     <div class="position-relative">
-                                        <input type="text" id="hora_aviso" class="form-control" placeholder="Hora de Aviso">
+                                        <input type="text" id="hora_aviso" name="hora_aviso" class="form-control" placeholder="Hora de Aviso">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass"></i>
                                         </div>
@@ -113,7 +113,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Salida</label>
                                     <div class="position-relative">
-                                        <input type="text" id="hora_salida" class="form-control" placeholder="Hora de Salida">
+                                        <input type="text" id="hora_salida" name="hora_salida" class="form-control" placeholder="Hora de Salida">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-top"></i>
                                         </div>
@@ -125,7 +125,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Llegada</label>
                                     <div class="position-relative">
-                                        <input type="text" id="hora_llegada" class="form-control" placeholder="Hora de Llegada">
+                                        <input type="text" id="hora_llegada" name="hora_llegada" class="form-control" placeholder="Hora de Llegada">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -137,7 +137,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Regreso</label>
                                     <div class="position-relative">
-                                        <input type="text" id="hora_regreso" class="form-control" placeholder="Hora de Regreso">
+                                        <input type="text" id="hora_regreso" name="hora_regreso" class="form-control" placeholder="Hora de Regreso">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-bottom"></i>
                                         </div>
@@ -171,7 +171,7 @@ require('../header.php');
 
                             <div class="form-group">
                                 <label for="" class="form-label">Direccion</label>
-                                <textarea class="form-control no-resize" id="direccion" rows="4"></textarea>
+                                <textarea class="form-control no-resize" id="direccion" name="direccion" rows="4"></textarea>
                             </div>
 
 
@@ -251,7 +251,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Propietario de la Vivienda</label>
                                     <div class="position-relative">
-                                        <input type="text" id="propietario" class="form-control" placeholder="Propietario de la Vivienda">
+                                        <input type="text" id="propietario" name="propietario" class="form-control" placeholder="Propietario de la Vivienda">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -263,7 +263,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Valor del Inmueble</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" id="valor_inmueble" placeholder="Valor del Inmueble">
+                                        <input type="text" name="valor_inmueble" class="form-control" id="valor_inmueble" placeholder="Valor del Inmueble">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -275,7 +275,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Número de Residenciados</label>
                                     <div class="position-relative">
-                                        <input type="text" id="residenciados" class="form-control" placeholder="Número de Residenciados">
+                                        <input type="text" id="residenciados" name="residenciados" class="form-control" placeholder="Número de Residenciados">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -287,7 +287,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Niños</label>
                                     <div class="position-relative">
-                                        <input type="text" id="ninos" class="form-control" placeholder="Niños">
+                                        <input type="text" id="ninos" name="ninos" class="form-control" placeholder="Niños">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -299,7 +299,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Adolescentes</label>
                                     <div class="position-relative">
-                                        <input type="text" id="adolescentes" class="form-control" placeholder="Adolescentes">
+                                        <input type="text" id="adolescentes" name="adolescentes" class="form-control" placeholder="Adolescentes">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -311,7 +311,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Adultos</label>
                                     <div class="position-relative">
-                                        <input type="text" id="adultos" class="form-control" placeholder="Adultos">
+                                        <input type="text" id="adultos" name="adultos" class="form-control" placeholder="Adultos">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -321,7 +321,7 @@ require('../header.php');
 
                             <div class="form-group">
                                 <label for="" class="form-label">Información Adicional</label>
-                                <textarea class="form-control no-resize" id="informacion_adicional" rows="4"></textarea>
+                                <textarea class="form-control no-resize" name="info_adicional" id="informacion_adicional" rows="4"></textarea>
                             </div>
 
                             <div class="col-12">
@@ -341,7 +341,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Aseguradora</label>
                                     <div class="position-relative">
-                                        <select name="jefe-comision" class="form-select" id="aseguradora">
+                                        <select name="aseguradora" class="form-select" id="aseguradora">
                                             <option value="">Seleccione la Aseguradora...</option>
                                             <option value="1">1</option>
                                         </select>
@@ -353,7 +353,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Número de Poliza de Seguro</label>
                                     <div class="position-relative">
-                                        <input type="text" id="numero_poliza" class="form-control" placeholder="Número de Poliza de Seguro">
+                                        <input type="text" id="numero_poliza" name="numero_poliza" class="form-control" placeholder="Número de Poliza de Seguro">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -365,7 +365,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Valor Asegurado</label>
                                     <div class="position-relative">
-                                        <input type="text" id="valor_asegurado" class="form-control" placeholder="Valor Asegurado">
+                                        <input type="text" id="valor_asegurado" name="valor_asegurado" class="form-control" placeholder="Valor Asegurado">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -377,7 +377,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Valor Perdido</label>
                                     <div class="position-relative">
-                                        <input type="text" id="valor_perdido" class="form-control" placeholder="Valor Perdido">
+                                        <input type="text" id="valor_perdido" name="valor_perdido" class="form-control" placeholder="Valor Perdido">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -389,7 +389,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Valor Salvado</label>
                                     <div class="position-relative">
-                                        <input type="text" id="valor_salvado" class="form-control" placeholder="Valor Salvado">
+                                        <input type="text" id="valor_salvado" name="valor_salvado" class="form-control" placeholder="Valor Salvado">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -400,7 +400,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Fuente de ignición</label>
                                     <div class="position-relative">
-                                        <input type="text" id="fuente_ignicion" class="form-control" placeholder="Fuente de Ignición">
+                                        <input type="text" id="fuente_ignicion" name="fuente_ignicion" class="form-control" placeholder="Fuente de Ignición">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -412,7 +412,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Causa de Incendio</label>
                                     <div class="position-relative">
-                                        <input type="text" id="causa_incendio" class="form-control" placeholder="Causa de Incendio">
+                                        <input type="text" id="causa_incendio" name="causa_incendio" class="form-control" placeholder="Causa de Incendio">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -424,7 +424,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Lugar de Inicio del Incendio</label>
                                     <div class="position-relative">
-                                        <input type="text" id="lugar_inicio" class="form-control" placeholder="Lugar de Inicio del Incendio">
+                                        <input type="text" id="lugar_inicio" name="lugar_inicio" class="form-control" placeholder="Lugar de Inicio del Incendio">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -436,7 +436,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Lugar de Fin del Incendio</label>
                                     <div class="position-relative">
-                                        <input type="text" id="lugar_fin" class="form-control" placeholder="Lugar de Fin del Incendio">
+                                        <input type="text" id="lugar_fin" name="lugar_fin" class="form-control" placeholder="Lugar de Fin del Incendio">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -461,7 +461,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Tipo de Combustible</label>
                                     <div class="position-relative">
-                                        <input type="text" id="tipo_combustible" class="form-control" placeholder="Tipo de Combustible">
+                                        <input type="text" id="tipo_combustible" name="tipo_combustible" class="form-control" placeholder="Tipo de Combustible">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -471,7 +471,7 @@ require('../header.php');
 
                             <div class="form-group">
                                 <label for="" class="form-label">Declaración del Incendio</label>
-                                <textarea class="form-control no-resize" id="declaracion" rows="4"></textarea>
+                                <textarea class="form-control no-resize" name="declaracion" id="declaracion" rows="4"></textarea>
                             </div>
 
                             <div class="col-12">
@@ -491,7 +491,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Número de Lesionados</label>
                                     <div class="position-relative">
-                                        <input type="text" id="numero_lesionados" class="form-control" placeholder="Número de Lesionados">
+                                        <input type="text" id="numero_lesionados" name="numero_lesionados" class="form-control" placeholder="Número de Lesionados">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -505,7 +505,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Datos del Lesionado</label>
                                     <div class="position-relative">
-                                        <input type="text" id="cedula_lesionado" class="form-control" placeholder="Datos de Lesionado">
+                                        <input type="text" id="cedula_lesionado" name="cedula_lesionado" class="form-control" placeholder="Datos de Lesionado">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -531,7 +531,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Cantidad de Recurso utilizado</label>
                                     <div class="position-relative">
-                                        <input type="text" id="cantidad_recurso" class="form-control" placeholder="Número de Recurso">
+                                        <input type="text" id="cantidad_recurso" name="cantidad_recurso" class="form-control" placeholder="Número de Recurso">
                                         <div class="form-control-icon">
                                         </div>
                                     </div>
@@ -603,7 +603,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I PNB</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="C.I PNB">
+                                        <input type="text" name="ci_pnb" class="form-control" placeholder="C.I PNB">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -615,7 +615,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I GNB</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="C.I GNB">
+                                        <input type="text" name="ci_gnb" class="form-control" placeholder="C.I GNB">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -627,7 +627,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I INTT</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="C.I INTT">
+                                        <input type="text" name="ci_intt" class="form-control" placeholder="C.I INTT">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -639,7 +639,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I INVITY</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="C.I INVITY">
+                                        <input type="text" name="ci_invity" class="form-control" placeholder="C.I INVITY">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -651,7 +651,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I PC</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="C.I PC">
+                                        <input type="text" name="ci_pc" class="form-control" placeholder="C.I PC">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -663,7 +663,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I OTROS</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="C.I OTROS">
+                                        <input type="text" name="ci_otros" class="form-control" placeholder="C.I OTROS">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -673,11 +673,11 @@ require('../header.php');
 
                             <div class="form-group">
                                 <label for="" class="form-label">Observaciones</label>
-                                <textarea class="form-control no-resize" id="observaciones" rows="4"></textarea>
+                                <textarea class="form-control no-resize" name="observaciones" id="observaciones" rows="4"></textarea>
                             </div>
 
                             <div class="col-12 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                <button type="submit" name="registrar" value="registrar" id="registrar" class="btn btn-primary me-1 mb-1">Registrar</button>
                             </div>
                         </div>
                     </div>
