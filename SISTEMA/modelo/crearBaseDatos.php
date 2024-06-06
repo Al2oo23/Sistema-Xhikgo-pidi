@@ -106,6 +106,35 @@ try {
         nombre VARCHAR(40) NOT NULL,
         clave VARCHAR(40) NOT NULL,
         estado VARCHAR(2) NOT NULL,
+        pregunta VARCHAR(20) NOT NULL,
+        respuesta VARCHAR(20) NOT NULL,
+        FOREIGN KEY (cedula) REFERENCES persona(cedula)  
+    )";
+    $conexion->exec($SQL);
+
+    //------------------ PRIVILEGIO ------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS privilegio (
+        cedula INT(10) PRIMARY KEY NOT NULL,
+        municipio VARCHAR(10) NOT NULL,
+        lugar VARCHAR(10) NOT NULL,
+        persona VARCHAR(10) NOT NULL,
+        tipo VARCHAR(10) NOT NULL,
+        cargo VARCHAR(10) NOT NULL,
+        estacion VARCHAR(10) NOT NULL,
+        seccion VARCHAR(10) NOT NULL,
+        usuarios VARCHAR(10) NOT NULL,
+        aseguradora VARCHAR(10) NOT NULL,
+        marca VARCHAR(10) NOT NULL,
+        modelo VARCHAR(10) NOT NULL,
+        vehiculo VARCHAR(10) NOT NULL,
+        mantenimiento VARCHAR(10) NOT NULL,
+        recurso VARCHAR(10) NOT NULL,
+        agregar VARCHAR(10) NOT NULL,
+        eliminar VARCHAR(10) NOT NULL,
+        incendio VARCHAR(10) NOT NULL,
+        transito VARCHAR(10) NOT NULL,
+        abejas VARCHAR(10) NOT NULL,
         FOREIGN KEY (cedula) REFERENCES persona(cedula)  
     )";
     $conexion->exec($SQL);
@@ -116,9 +145,9 @@ try {
     $preparado = $conexion->prepare($SQL);
     $preparado->execute([0,"Cofla",0,"?",0,"?","?","Supervisor","?",99,"?"]);
 
-    $SQL = "INSERT IGNORE INTO usuario VALUES(?,?,?,?,?)";
+    $SQL = "INSERT IGNORE INTO usuario VALUES(?,?,?,?,?,?,?)";
     $preparado = $conexion->prepare($SQL);
-    $preparado->execute([0,"Supervisor","Cofla","Cofla","A"]);
+    $preparado->execute([0,"Supervisor","Cofla","Cofla","A","que paso","nada"]);
 
     //------------------ MARCA ------------------
 
@@ -215,6 +244,37 @@ try {
     )";
     $conexion->exec($SQL);
 
+    //TRANSITO
+
+     $SQL = "CREATE TABLE IF NOT EXISTS transito (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        fecha VARCHAR(100) NOT NULL,
+        seccion int(7) NOT NULL,
+        estacion VARCHAR(20) NOT NULL,
+        atencion VARCHAR(20) NOT NULL,
+        inspeccion VARCHAR(4) NOT NULL,
+        tipo VARCHAR(20) NOT NULL,
+        solicitante INT(11) NOT NULL,
+        aviso VARCHAR(20) NOT NULL,
+        salida VARCHAR(20) NOT NULL,
+        llegada VARCHAR(20) NOT NULL,
+        regreso VARCHAR(20) NOT NULL,
+        vehiculo VARCHAR(20) NOT NULL,
+        lesionados INT(3) NOT NULL,
+        occisos INT(3) NOT NULL,
+        recurso VARCHAR(20) NOT NULL,
+        cantidad VARCHAR(3) NOT NULL,
+        jefe INT(20) NOT NULL,
+        efectivo VARCHAR(20) NOT NULL,
+        unidad INT(3) NOT NULL,
+        pnb INT(11) NOT NULL,
+        gnb INT(11) NOT NULL,
+        intt INT(11) NOT NULL,
+        invity INT(11) NOT NULL,
+        pc INT(11) NOT NULL,
+        otros INT(11) NOT NULL
+    )";
+    $conexion->exec($SQL);
 
 } catch (PDOException $e) {
     echo $e->getMessage();
