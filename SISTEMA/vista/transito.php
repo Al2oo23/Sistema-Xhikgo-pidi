@@ -15,7 +15,7 @@ $marcas = $preparado->fetchAll(PDO::FETCH_ASSOC);*/
                     <div class="card-content">
                     <div class="card-header">
                         <h4 class="card-title">Incidentes de Transito</h4>
-                        <?php include("modal/transitoModal.php");?>
+                        <?php include("modal/transitoModalR.php");?>
                     </div>
                         <!-- table hover -->
                         <div class="table-responsive">
@@ -40,6 +40,7 @@ $marcas = $preparado->fetchAll(PDO::FETCH_ASSOC);*/
                                         <th class="columna">Observaciones</th>
                                         <th class="columna">Incendio</th>
                                         <th class="columna">Recursos</th>
+                                        <th class="columna">Cantidad</th>
                                         <th class="columna">Jefe Comisión</th>
                                         <th class="columna">Efectivos</th>
                                         <th class="columna">Unidad</th>
@@ -57,6 +58,34 @@ $marcas = $preparado->fetchAll(PDO::FETCH_ASSOC);*/
                                     <tr class="fila">
                                         <td class="columna" hidden></td>
                                         <td class="columna">Diario</td>
+                                        <td class="columna">Seccion</td>
+                                        <td class="columna">Estacion</td>
+                                        <td class="columna">si</td>
+                                        <td class="columna">si</td>
+                                        <td class="columna">choque</td>
+                                        <td class="columna">gemidos</td>
+                                        <td class="columna">10000000</td>
+                                        <td class="columna">3:00</td>
+                                        <td class="columna">3:00</td>
+                                        <td class="columna">3:00</td>
+                                        <td class="columna">3:00</td>
+                                        <td class="columna">ashgfwqf</td>
+                                        <td class="columna">99999999</td>
+                                        <td class="columna">99999999</td>
+                                        <td class="columna">Tuvo hevi</td>
+                                        <td class="columna">muchos</td>
+                                        <td class="columna">penes</td>
+                                        <td class="columna">99999999</td>
+                                        <td class="columna">Gojo Satoru</td>
+                                        <td class="columna">Yuji, Yuta, Choso</td>
+                                        <td class="columna">5</td>
+                                        <td class="columna">Yuki</td>
+                                        <td class="columna">Mei Mei</td>
+                                        <td class="columna">Nanami</td>
+                                        <td class="columna">Kenjaku</td>
+                                        <td class="columna">Sukuna</td>
+                                        <td class="columna">Maldito Gege</td>
+
                                         
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
