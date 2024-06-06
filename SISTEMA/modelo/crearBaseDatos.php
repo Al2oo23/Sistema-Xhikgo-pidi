@@ -138,6 +138,14 @@ try {
     $conexion->exec($SQL);
 
 
+//------------------ TIPO DE INCIDENTE------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS tipo_incidente (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    incidente VARCHAR(20) NOT NULL 
+    )";
+    $conexion->exec($SQL);
+
 
     //------------------ MODELO ------------------
 
