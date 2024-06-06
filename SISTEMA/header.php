@@ -317,7 +317,10 @@
 
                                             <li class="submenu-item  ">
                                                 <a href="catalogoTaviso.php" class='submenu-link'>Tipo de Aviso</a>
+                                            </li>
 
+                                            <li class="submenu-item  ">
+                                                <a href="catalogoTincidente.php" class='submenu-link'>Tipo de Incidente</a>
                                             </li>
 
                                         </ul>
