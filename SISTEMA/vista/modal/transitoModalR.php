@@ -123,6 +123,18 @@
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
+                                    <label for="">Recibido por</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="nombre_solicitante" name="recibido" class="form-control" placeholder="Solicitante">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-hourglass-split"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
                                     <label for="">Hora de Aviso</label>
                                     <div class="position-relative">
                                         <input type="text" id="hora_aviso" name="hora" class="form-control" placeholder="Hora de Aviso">
