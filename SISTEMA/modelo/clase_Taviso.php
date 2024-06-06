@@ -40,7 +40,7 @@ class aviso{
     public function modificarAviso($id, $aviso ){
         include("conexion.php");
 
-        $SQL = "UPDATE aviso SET aviso = ? WHERE id = ?";
+        $SQL = "UPDATE aviso SET nombre = ? WHERE id = ?";
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([$aviso,  $id]);
 

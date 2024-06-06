@@ -2,7 +2,7 @@
 session_start();
 $nombrePagina = "Catálogo de Abejas";
 require('../header.php');
-// include('../modelo/conexion.php');
+include('../modelo/conexion.php');
 
 // $sentencia = $conexion->prepare("SELECT * FROM `persona`");
 // $sentencia->execute();
@@ -15,7 +15,7 @@ require('../header.php');
             <div class="card">
             <div class="card-header">
                         <h4 class="card-title">Incidente de Abejas</h4>
-                        <?php include("modal/modalPersonaR.php");?>
+                        <?php include("modal/modalAbejasR.php");?>
                     </div>
                 <!-- table hover -->
                 <div class="table-responsive">
@@ -25,8 +25,7 @@ require('../header.php');
                                 <th class="columna" style="display: none;">Id</th>
                                 <th class="columna">Fecha</th>
                                 <th class="columna">Seccion</th>
-                                <th class="columna">Municipio</th>
-                                <th class="columna">Localidad</th>
+                                <th class="columna">Ubicacion</th>
                                 <th class="columna">Lugar</th>
                                 <th class="columna"> Dueño Inmueble</th>
                                 <th class="columna">Jefe</th>
@@ -55,12 +54,11 @@ require('../header.php');
                                         <td class="columna">?</td>
                                         <td class="columna">?</td>
                                         <td class="columna">?</td>
-                                        <td class="columna">?</td>
                                     
                                     
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <?php include("modal/modalPersonaM.php");?>
+                                            <?php //include("modal/modalPersonaM.php");?>
                                             <div><a name='eliminar' id='eliminar' href='../controlador/ctl_(nombre).php?txtID=<?= $per['cedula']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                         </td>

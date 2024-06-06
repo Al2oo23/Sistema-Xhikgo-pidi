@@ -133,7 +133,7 @@ try {
 
       $SQL = "CREATE TABLE IF NOT EXISTS aviso (
         id INT PRIMARY KEY AUTO_INCREMENT,
-        aviso VARCHAR(20) NOT NULL 
+        nombre VARCHAR(20) NOT NULL 
     )";
     $conexion->exec($SQL);
 
@@ -194,8 +194,7 @@ try {
         salida VARCHAR(20) NOT NULL,
         llegada VARCHAR(20) NOT NULL,
         regreso VARCHAR(20) NOT NULL,
-        municipio VARCHAR(20) NOT NULL,
-        localidad VARCHAR(20) NOT NULL,
+        panal VARCHAR(20) NOT NULL,
         direccion VARCHAR(100) NOT NULL,
         lugar VARCHAR(20) NOT NULL,
         inmueble INT(20) NOT NULL,

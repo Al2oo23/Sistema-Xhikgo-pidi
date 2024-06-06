@@ -8,16 +8,14 @@ require('../header.php');
 include('../modelo/conexion.php');
 ?>
 
-<div class="col-12 m-auto">
-
-    <div class="row match-height">
-        <div class="card">
-            <h4 class="card-title">Incendios</h4>
-            <div class="card-content card align-items-end">
-                <div class="card-header">
-                    <div><a href="incendio.php" class="btn icon btn-success">Nuevo</a></div>
-                </div>
-            </div>
+<section class="section">
+    <div class="row" id="table-hover-row">
+        <div class="col-12">
+            <div class="card">
+            <div class="card-header">
+                        <h4 class="card-title">Incendios</h4>
+                        <?php //include("modal/modalAbejasR.php");?>
+                    </div>
 
             <!-- table hover -->
             <div class="table-responsive">
@@ -49,7 +47,7 @@ include('../modelo/conexion.php');
                             <td class="columna">?</td>
                             <td>
                                 <div class="botones" style="justify-content:space-evenly;">
-                                    <?php include("modalIncidente.php"); ?>
+                                    <?php //include("modalIncendioM.php"); ?>
                                     <div class="flex-item"><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                     <div><a href="#" class="btn icon btn-dark"><i class="bi bi-clipboard-heart-fill"></i></a></div>
                                 </div>
@@ -59,11 +57,12 @@ include('../modelo/conexion.php');
                     </tbody>
                 </table>
             </div>
-        </div>
+            </div>
     </div>
-</div>
+    </div>
+</section>
 
-<script src="Javascript/tpersonaModal.js"></script>
+<script src="Javascript/incendioModal.js"></script>
 
 <?php
 require('../footer.php');

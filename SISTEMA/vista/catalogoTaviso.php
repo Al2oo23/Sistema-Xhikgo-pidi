@@ -61,7 +61,7 @@ if (isset($_SESSION['resultado_busqueda_aviso'])) {
                                 <?php foreach  ($resultado as $filtrado) : ?>
                                     <tr class="fila">
                                     <td class="columna" hidden><?= $filtrado['id'] ?></td>
-                                        <td class="columna"><?= $filtrado['aviso']; ?></td>
+                                        <td class="columna"><?= $filtrado['nombre']; ?></td>
                                         <td>
                                             <div class="botones" style="justify-content:space-evenly;">
                                                 <?php include("modal/modalTavisoM.php"); ?>

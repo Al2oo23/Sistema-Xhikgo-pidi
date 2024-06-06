@@ -303,16 +303,20 @@
                                             </li>
 
                                             <li class="submenu-item  ">
-                                                <a href="incendio.php" class='submenu-link'>Incendio</a>
+                                                <a href="catalogoIncendio.php" class='submenu-link'>Incendio</a>
                                             </li>
 
                                             <li class="submenu-item  ">
                                                 <a href="transito.php" class='submenu-link'>Transito</a>
                                             </li>
 
+                                            <li class="submenu-item  ">
+                                                <a href="catalogoAbejas.php" class='submenu-link'>Abejas</a>
+
+                                            </li>
 
                                             <li class="submenu-item  ">
-                                                <a href="abejas.php" class='submenu-link'>Abejas</a>
+                                                <a href="catalogoTaviso.php" class='submenu-link'>Tipo de Aviso</a>
 
                                             </li>
 

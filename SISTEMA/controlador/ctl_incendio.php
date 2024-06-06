@@ -124,7 +124,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
 
 
     if (!$datos) {
-        echo "<script>alert('No se pudo registrat el Incendio')</script>";
+        echo "<script>alert('No se pudo registrar el Incendio')</script>";
         echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoIncendio.php'>";
     } else {
         echo "<script>alert('Recurso modificado con exito')</script>";
