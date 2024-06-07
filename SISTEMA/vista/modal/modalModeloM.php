@@ -1,4 +1,10 @@
 
+    <?php 
+        $sentencia = $conexion->prepare("SELECT * FROM marca");
+        $sentencia->execute();
+        $marca = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+   ?>
+    
     <!-- Button trigger for login form modal -->
     <button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm">
         <i class="bi bi-pencil"></i>
@@ -28,10 +34,21 @@
                             <div class="form-group">
                                 <input type="text" value="" name="nombre" id="modeloM" class="form-control" >
                             </div>
+
                             <label>Marca:</label>
-                            <div class="form-group">
-                                <input type="text" value="" name="marca" id="marcaM" class="form-control" >
-                            </div>
+                            <div class="position-relative">
+                                         <select name="marca" class="form-select" id="marca_vehiculo">
+                                         <option value="default">Seleccione la Marca...</option>
+                                        <?php foreach ($marca as $marc) : 
+                                            $marca = $marc["nombre"];
+                                        ?>
+
+                                            <option value="<?=$marca?>"><?=$marca?></option>
+
+                                        <?php endforeach;?>
+
+                                        </select>
+                                    </div>
                         </div>
                        
             <!-- Footer del modal: ------------------------------>

@@ -3,13 +3,15 @@ session_start();
 include("../modelo/conexion.php");
 include("../modelo/clase_transito.php");
 
-$aviso = new transito();
+$transito = new transito();
 
 if(isset($_POST['agregar']) && $_POST['agregar'] == "agregar"){
+
+    print_r($_POST);
     
-    $aviso->setAviso($_POST['aviso']);
+    $transito->setFecha($_POST['fecha']);
  
-    $datos = $aviso->agregarAviso($aviso->getAviso());
+    /*$datos = $aviso->agregarAviso($aviso->getAviso());
 
     if(empty($datos)){
         echo "<script>alert('No se pudo registrar el Tipo de Aviso')</script>";
@@ -17,7 +19,7 @@ if(isset($_POST['agregar']) && $_POST['agregar'] == "agregar"){
     }else{
         echo "<script>alert('Tipo de Aviso registrado con exito')</script>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoTaviso.php'>"; 
-    }
+    }*/
 
 }
 
