@@ -21,7 +21,8 @@
     checkboxes.forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {
             var ischeck = this.checked;
-            var campoInput = document.getElementById('campoInput' + checkbox.id.slice(-1));
+            var checkboxNumber = checkbox.id.replace('check', '');
+            var campoInput = document.getElementById('campoInput' + checkboxNumber);
 
             if (ischeck) {
                 campoInput.style.display = 'block';

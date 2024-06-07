@@ -692,6 +692,380 @@ function validarIncendio() {
     return true;
 }
 
+//Validacion pantalla Incendios Modificar
+function validarIncendioM() {
+    var parte_diaria = document.getElementById('parte_diariaM').value;
+    parteRegex = /^[\d]{2}\-[\d]{2}\-[\d]{4}$/;
+
+    if (!parteRegex.test(parte_diaria)) {
+        alert('Debe ingresar una fecha valida con el siguiente formato: DD-MM-YYYY respetando los guiones');
+        return false;
+    }
+
+    var seccion = document.getElementById('seccionM').value;
+
+    if (seccion === "") {
+        alert('Debe seleccionar una seccion');
+        return false;
+    }
+
+    var estacion = document.getElementById('estacionM').value;
+
+    if (estacion === "") {
+        alert('Debe seleccionar una estacion');
+        return false;
+    }
+
+    var tipo_aviso = document.getElementById('tipo_avisoM').value;
+
+    if (tipo_aviso === "") {
+        alert('Debe seleccionar un tipo aviso');
+        return false;
+    }
+
+    var solicitante = document.getElementById('solicitanteM').value;
+    var solicitanteRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
+
+    if (!solicitanteRegex.test(solicitante)) {
+        alert('Debe ingresar un solicitante valido');
+        return false;
+    }
+
+
+    var receptor = document.getElementById('receptorM').value;
+    var receptorRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
+
+    if (!receptorRegex.test(receptor)) {
+        alert('Debe ingresar un receptor valido');
+        return false;
+    }
+
+    var aprobador = document.getElementById('aprobadorM').value;
+    var aprobadorRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
+
+    if (!aprobadorRegex.test(aprobador)) {
+        alert('Debe ingresar un aprobador valido');
+        return false;
+    }
+
+    var hora_aviso = document.getElementById('hora_avisoM').value;
+    avisoRegex = /^((1[0-2]|0?[1-9]):([0-5][0-9])\s?[AP]M)$/i;
+
+    if (!avisoRegex.test(hora_aviso)) {
+        alert('Debe ingresar una hora valida en formato 12H: 10:24 AM');
+        return false;
+    }
+
+    var hora_salida = document.getElementById('hora_salidaM').value;
+    salidaRegex = /^((1[0-2]|0?[1-9]):([0-5][0-9])\s?[AP]M)$/i;
+
+    if (!salidaRegex.test(hora_salida)) {
+        alert('Debe ingresar una hora valida en formato 12H: 10:24 AM');
+        return false;
+    }
+
+    var hora_llegada = document.getElementById('hora_llegadaM').value;
+    llegadaRegex = /^((1[0-2]|0?[1-9]):([0-5][0-9])\s?[AP]M)$/i;
+
+    if (!llegadaRegex.test(hora_llegada)) {
+        alert('Debe ingresar una hora valida en formato 12H: 10:24 AM');
+        return false;
+    }
+
+    var hora_regreso = document.getElementById('hora_regresoM').value;
+    regresoRegex = /^((1[0-2]|0?[1-9]):([0-5][0-9])\s?[AP]M)$/i;
+
+    if (!llegadaRegex.test(hora_regreso)) {
+        alert('Debe ingresar una hora valida en formato 12H: 10:24 AM');
+        return false;
+    }
+
+    var municipio = document.getElementById('municipioM').value;
+
+    if (municipio === "") {
+        alert('Debe seleccionar un municipio');
+        return false;
+    }
+
+    var localidad = document.getElementById('localidadM').value;
+
+    if (localidad === "") {
+        alert('Debe seleccionar una localidad');
+        return false;
+    }
+
+    var direccion = document.getElementById('direccionM').value;
+    var direccionRegex = /^.{3,100}$/;
+
+    if (!direccionRegex.test(direccion)) {
+        alert('Ingrese una direccion valida');
+        return false;
+    }
+
+    var material_paredes = document.getElementById('material_paredesM').value;
+
+    if (material_paredes === "") {
+        alert('Debe seleccionar un material de paredes valido');
+        return false;
+    }
+
+    var material_techo = document.getElementById('material_techoM').value;
+
+    if (material_techo === "") {
+        alert('Debe seleccionar un material de techo valido');
+        return false;
+    }
+
+    var material_piso = document.getElementById('material_pisoM').value;
+
+    if (material_piso === "") {
+        alert('Debe seleccionar un material de piso valido');
+        return false;
+    }
+
+    var material_ventanas = document.getElementById('material_ventanasM').value;
+
+    if (material_ventanas === "") {
+        alert('Debe seleccionar un material de ventanas valido');
+        return false;
+    }
+
+    var material_puertas = document.getElementById('material_puertasM').value;
+
+    if (material_puertas === "") {
+        alert('Debe seleccionar un material de puertas valido');
+        return false;
+    }
+
+    var otros_materiales = document.getElementById('otros_materialesM').value;
+
+    if (otros_materiales === "") {
+        alert('Debe seleccionar otro material valido');
+        return false;
+    }
+
+    var propietario = document.getElementById('propietarioM').value;
+    var propietarioRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
+
+    if (!propietarioRegex.test(propietario)) {
+        alert('Debe ingresar un propietario valido');
+        return false;
+    }
+
+    var valor_inmueble = document.getElementById('valor_inmuebleM').value;
+    var inmuebleRegex = /^\d+(\s?\$|\s?Bs)$/;
+
+    if (!inmuebleRegex.test(valor_inmueble)) {
+        alert('Debe ingresar un valor inmueble valido debe ser: 23$ o 23Bs');
+        return false;
+    }
+
+    var residenciados = document.getElementById('residenciadosM').value;
+    var residenciadosRegex = /^\d{1,150}$/;
+
+    if (!residenciadosRegex.test(residenciados)) {
+        alert('Debe ingresar una cantidad de residenciados validaM');
+        return false;
+    }
+
+    var ninos = document.getElementById('ninosM').value;
+    var ninosRegex = /^\d{1,150}$/;
+
+    if (!ninosRegex.test(ninos)) {
+        alert('Debe ingresar una cantidad de niños valida');
+        return false;
+    }
+
+    var adolescentes = document.getElementById('adolescentesM').value;
+    var adolescentesRegex = /^\d{1,150}$/;
+
+    if (!adolescentesRegex.test(adolescentes)) {
+        alert('Debe ingresar una cantidad de adolescentes valida');
+        return false;
+    }
+
+    var adultos = document.getElementById('adultosM').value;
+    var adultosRegex = /^\d{1,150}$/;
+
+    if (!adultosRegex.test(adultos)) {
+        alert('Debe ingresar una cantidad de adultos valida');
+        return false;
+    }
+
+    var informacion_adicional = document.getElementById('informacion_adicionalM').value;
+    var informacion_adicionalRegex = /^.{1,150}$/;
+
+    if (!informacion_adicionalRegex.test(informacion_adicional)) {
+        alert('Informacion adicional Invalida, no debe contener saltos de linea ni estar vacia');
+        return false;
+    }
+
+    var asegurado = document.getElementById('aseguradoM');
+    var no_asegurado = document.getElementById('no_aseguradoM');
+
+    if (!asegurado.checked && !no_asegurado.checked) {
+        alert('Debe seleccionar si esta asegurado o no');
+        return false;
+    }
+
+    var aseguradora = document.getElementById('aseguradoraM').value;
+
+    if (aseguradora === "") {
+        alert('Debe seleccionar un aseguradora');
+        return false;
+    }
+
+    var numero_poliza = document.getElementById('numero_polizaM').value;
+    var polizaRegex = /^[\d-_]{1,100}$/;
+
+    if (!polizaRegex.test(numero_poliza)) {
+        alert('Debe ingresar un numero de poliza valido');
+        return false;
+    }
+
+    var valor_asegurado = document.getElementById('valor_aseguradoM').value;
+    var aseguradoRegex = /^\d+(\s?\$|\s?Bs)$/;
+
+    if (!aseguradoRegex.test(valor_asegurado)) {
+        alert('Debe ingresar un valor valido, ejemplo: 28$ o 2800Bs');
+        return false;
+    }
+
+    var valor_perdido = document.getElementById('valor_perdidoM').value;
+    var perdidoRegex = /^\d+(\s?\$|\s?Bs)$/;
+
+    if (!perdidoRegex.test(valor_perdido)) {
+        alert('Debe ingresar un valor valido, ejemplo: 28$ o 2800Bs');
+        return false;
+    }
+
+    var valor_salvado = document.getElementById('valor_salvadoM').value;
+    var salvadoRegex = /^\d+(\s?\$|\s?Bs)$/;
+
+    if (!salvadoRegex.test(valor_salvado)) {
+        alert('Debe ingresar un valor valido, ejemplo: 28$ o 2800Bs');
+        return false;
+    }
+
+    var fuente = document.getElementById('fuente_ignicionM').value;
+    var fuenteRegex = /^[\w\s-_]{3,150}$/;
+
+    if (!fuenteRegex.test(fuente)) {
+        alert('Debe ingresar una fuente de ignicion valida');
+        return false;
+    }
+
+    var causa_incendio = document.getElementById('causa_incendioM').value;
+    var causaRegex = /^[\w\s-_]{3,150}$/;
+
+    if (!causaRegex.test(causa_incendio)) {
+        alert('Debe ingresar una causa de incendio valida');
+        return false;
+    }
+
+    var lugar_inicio = document.getElementById('lugar_inicioM').value;
+    var lugar_inicioRegex = /^[\w\s-_]{3,150}$/;
+
+    if (!lugar_inicioRegex.test(lugar_inicio)) {
+        alert('Debe ingresar un lugar de inicio de la ignicion valida');
+        return false;
+    }
+
+    var lugar_fin = document.getElementById('lugar_finM').value;
+    var lugar_finRegex = /^[\w\s-_]{3,150}$/;
+
+    if (!lugar_finRegex.test(lugar_fin)) {
+        alert('Debe ingresar un lugar de fin de la ignicion valida');
+        return false;
+    }
+
+    var reignicion = document.getElementById('reignicionM');
+    var no_reignicion = document.getElementById('no_reignicionM');
+
+    if (!reignicion.checked && !no_reignicion.checked) {
+        alert('Debe seleccionar si hubo reignicion o no');
+        return false;
+    }
+
+    var tipo_combustible = document.getElementById('tipo_combustibleM').value;
+    var tipo_combustibleRegex = /^[\w\s-_]{3,150}$/;
+
+    if (!tipo_combustibleRegex.test(tipo_combustible)) {
+        alert('Debe ingresar un tipo de combustible valido');
+        return false;
+    }
+
+    var declaracion_incendio = document.getElementById('declaracionM').value;
+    var declaracion_incendioRegex = /^.{1,150}$/;
+
+    if (!declaracion_incendioRegex.test(declaracion_incendio)) {
+        alert('Declaracion Invalida, no debe contener saltos de linea ni estar vacia');
+        return false;
+    }
+
+    var lesion = document.getElementById('lesionM');
+    var no_lesion = document.getElementById('no_lesionM');
+
+    if (!lesion.checked && !no_lesion.checked) {
+        alert('Debe seleccionar si hubo lesionados o no');
+        return false;
+    }
+
+    var numero_lesionados = document.getElementById('numero_lesionadosM').value;
+    var numero_lesionadosRegex = /^\d{1,150}$/;
+
+    if (!numero_lesionadosRegex.test(numero_lesionados)) {
+        alert('Debe ingresar una cantidad de lesionados valida');
+        return false;
+    }
+
+    var cedula_lesionado = document.getElementById('cedula_lesionadoM').value;
+    var cedula_lesionadoRegex = /^[JEVPGjevpg]{1}-\d{6,12}$/;
+
+    if (!cedula_lesionadoRegex.test(cedula_lesionado)) {
+        alert('Cedula invalida, use el siguiente formato de ejemplo: V-1231232')
+        return false;
+    }
+
+    var recurso_utilizado = document.getElementById('recurso_utilizadoM').value;
+
+    if (recurso_utilizado === "") {
+        alert('Debe seleccionar un recurso utilizado');
+        return false;
+    }
+
+    var unidad = document.getElementById('unidadM').value;
+
+    if (unidad === "") {
+        alert('Debe seleccionar una unidad');
+        return false;
+    }
+
+    var jefe_comision = document.getElementById('jefe_comisionM').value;
+
+    if (jefe_comision === "") {
+        alert('Debe seleccionar un jefe de comision');
+        return false;
+    }
+
+    var efectivo = document.getElementById('efectivoM').value;
+
+    if (efectivo === "") {
+        alert('Debe seleccionar un efectivo');
+        return false;
+    }
+
+    var observaciones = document.getElementById('observacionesM').value;
+    var observacionesRegex = /^.{1,150}$/;
+
+    if (!observacionesRegex.test(observaciones)) {
+        alert('Observacion Invalida, no debe contener saltos de linea ni estar vacia');
+        return false;
+    }
+
+    return true;
+}
+
 //Validacion pantalla Datos Institucion 
 function validarDatosInstitucion() {
     var nombre_institucion = document.getElementById('nombre_institucion').value;
