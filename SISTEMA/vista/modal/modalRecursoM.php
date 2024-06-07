@@ -40,10 +40,6 @@
                                         </div>
                             </div>
 
-                            <label>Cantidad del Recurso:</label>
-                            <div class="form-group">
-                                <input type="text" name="cantidad_recurso" value="" id="cantidadM" class="form-control" >
-                            </div>  
                         </div>
                        
             <!-- Footer del modal: ------------------------------>

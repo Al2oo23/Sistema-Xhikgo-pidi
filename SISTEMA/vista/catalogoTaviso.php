@@ -50,7 +50,7 @@ if (isset($_SESSION['resultado_busqueda_aviso'])) {
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
-                                    <tr>
+                                    <tr class="fila">
                                         <th class="columna">Tipo de Aviso</th>
                                         <th class="columna">Accion</th>
                                     </tr>

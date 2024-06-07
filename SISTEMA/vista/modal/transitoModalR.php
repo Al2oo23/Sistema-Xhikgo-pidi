@@ -3,7 +3,23 @@
         
         $sentencia = $conexion->prepare("SELECT * FROM seccion");
         $sentencia->execute();
-        $marca = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+        $secciones = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+        $sentencia = $conexion->prepare("SELECT * FROM estacion");
+        $sentencia->execute();
+        $estaciones = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+        $sentencia = $conexion->prepare("SELECT * FROM estacion");
+        $sentencia->execute();
+        $estaciones = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+        $sentencia = $conexion->prepare("SELECT * FROM tipo_incidente");
+        $sentencia->execute();
+        $tipos = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+        $sentencia = $conexion->prepare("SELECT * FROM aviso");
+        $sentencia->execute();
+        $avisos = $sentencia->fetchAll(PDO::FETCH_ASSOC);
        
     ?>
     
@@ -47,9 +63,14 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">Sección</label>
                                     <div class="position-relative">
-                                        <select name="seccion" name="seccion" class="form-select" id="seccion">
-                                            <option value="">Seleccione la Sección...</option>
-                                            <option value="1">1</option>
+                                         <select name="seccion" class="form-select" id="seccion">
+                                         <option value="">Seleccionar</option>
+                                        <?php foreach ($secciones as $seccion) : ?>
+
+                                            <option value="<?=$seccion["id"]?>"><?=$seccion["numero"]?></option>
+
+                                        <?php endforeach;?>
+
                                         </select>
                                     </div>
                                 </div>
@@ -59,9 +80,14 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">Estación</label>
                                     <div class="position-relative">
-                                        <select name="estacion" name="estacion" class="form-select" id="estacion">
-                                            <option value="">Seleccione la Estación...</option>
-                                            <option value="1">1</option>
+                                         <select name="estacion" class="form-select" id="estacion">
+                                         <option value="">Seleccionar</option>
+                                        <?php foreach ($estaciones as $estacion) : ?>
+
+                                            <option value="<?=$estacion["id"]?>"><?=$estacion["nombre"]?></option>
+
+                                        <?php endforeach;?>
+
                                         </select>
                                     </div>
                                 </div>
@@ -97,9 +123,14 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">Tipo de Incidente</label>
                                     <div class="position-relative">
-                                        <select name="seccion" name="incidente" class="form-select" id="seccion">
-                                            <option value="">Seleccione la Sección...</option>
-                                            <option value="1">1</option>
+                                         <select name="tipo" class="form-select" id="tipo">
+                                         <option value="">Seleccionar</option>
+                                        <?php foreach ($tipos as $tipo) : ?>
+
+                                            <option value="<?=$tipo["id"]?>"><?=$tipo["incidente"]?></option>
+
+                                        <?php endforeach;?>
+
                                         </select>
                                     </div>
                                 </div>
@@ -110,8 +141,12 @@
                                     <label for="">Tipo de Aviso</label>
                                     <div class="position-relative">
                                         <select name="tipo_aviso" name="aviso" class="form-select" id="tipo_aviso">
-                                            <option value="">Seleccione el Tipo de Aviso...</option>
-                                            <option value="1">1</option>
+                                            <option value="">Seleccionar</option>
+                                            <?php foreach ($avisos as $aviso) : ?>
+
+                                                <option value="<?=$aviso["id"]?>"><?=$aviso["nombre"]?></option>
+
+                                            <?php endforeach;?>
                                         </select>
                                     </div>
                                 </div>

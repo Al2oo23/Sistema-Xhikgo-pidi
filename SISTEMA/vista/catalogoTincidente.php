@@ -50,7 +50,7 @@ $resultado = $_SESSION['resultado_busqueda_incidente'];
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
-                                    <tr>
+                                    <tr class="fila">
                                         <th class="columna">Tipo de Incidente</th>
                                         <th class="columna">Accion</th>
                                     </tr>

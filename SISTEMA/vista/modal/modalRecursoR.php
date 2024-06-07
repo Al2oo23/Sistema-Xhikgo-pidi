@@ -45,13 +45,7 @@
                                         </div>
                                     </div>
 
-                                    <label for="first-name-icon">Cantidad del Recurso:</label>
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Ingrese el Nombre del Recurso" id="cantidad_recurso" name="cantidad_recurso">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-postcard"></i>
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>

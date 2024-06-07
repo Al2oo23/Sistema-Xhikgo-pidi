@@ -8,9 +8,8 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
 
     $recurso->setNombre($_POST['nombre_recurso']);
     $recurso->setTipo($_POST['tipo_recurso']);
-    $recurso->setCantidad($_POST['cantidad_recurso']);
 
-    $resultado = $recurso->registrarRecurso($recurso->getNombre(), $recurso->getTipo(), $recurso->getCantidad());
+    $resultado = $recurso->registrarRecurso($recurso->getNombre(), $recurso->getTipo(), 0);
 
     if (!$resultado) {
         echo "<script>alert('No se pudo registrar el Recurso')</script>";
