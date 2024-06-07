@@ -1,4 +1,11 @@
 
+<?php 
+        
+        $sentencia = $conexion->prepare("SELECT * FROM municipio");
+        $sentencia->execute();
+        $municipios = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!-- Button trigger for login form modal -->
 <button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">Nuevo</button>
 
@@ -26,7 +33,11 @@
                                             <div class="position-relative">                                               
                                                 <select name="municipio" class="form-select" id="municipio">                                                     
                                                     <option value="default">Seleccione el Municipio...</option>
-                                                    <option value="algo">algo</option><!--borrar esta opcion despues-->                                               
+                                                    <?php foreach ($municipios as $municipio) : ?>
+
+                                                        <option value="<?=$municipio["id"]?>"><?=$municipio["nombre"]?></option>
+
+                                                    <?php endforeach;?>                                               
                                                 </select>
                                                
                                             </div>

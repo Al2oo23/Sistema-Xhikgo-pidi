@@ -69,10 +69,10 @@ if(isset($_POST['agregar']) && $_POST['agregar'] == "agregar"){
         $transito->getOtro());
 
     if(empty($datos)){
-        echo "<script>alert('Registro Fallido')</script>";
+        echo "<script>alert('No se pudo registrar el Tipo de Aviso')</script>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/transito.php'>"; 
     }else{
-        echo "<script>alert('Registro Exitoso')</script>";
+        echo "<script>alert('Tipo de Aviso registrado con exito')</script>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/transito.php'>"; 
     }
 
