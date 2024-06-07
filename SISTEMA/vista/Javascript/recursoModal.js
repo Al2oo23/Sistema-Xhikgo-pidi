@@ -4,7 +4,7 @@ const filas = document.querySelectorAll(".fila");
 const id = document.getElementById("id");
 const nombre = document.getElementById("nombreM");
 const tipo = document.getElementById("tipoM");
-const modal = document.getElementById("modalM");
+const modal = document.querySelector(".modalM");
 
 filas.forEach(fila => {
      
