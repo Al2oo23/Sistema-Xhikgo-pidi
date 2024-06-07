@@ -192,15 +192,13 @@ class transito{
     }
   
     //Registrar
-    public function agregarTransito($id, $fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro){
+    public function agregarTransito($fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro){
 
         include("conexion.php");
 
-        echo "$id, $fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro";
-
-        $SQL = "INSERT INTO transito VALUES (?,?,?,?,?,?,?,?,?,?  ,?,?,?,?,?,?,?,?,?,? ,?,?,?,?,?,?,?,?,?)";
+        $SQL = "INSERT INTO transito VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null,$fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro]);
+        $preparado->execute([null, $fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro]);
 
         return $preparado;
     }
