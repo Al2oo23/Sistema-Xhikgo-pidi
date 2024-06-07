@@ -2,62 +2,62 @@
 
 class incendio
 {
-    private $id;
-    private $fecha;
-    private $seccion;
-    private $estacion;
-    private $tipo_aviso;
-    private $solicitante;
-    private $receptor;
-    private $aprobador;
-    private $hora_aviso;
-    private $hora_salida;
-    private $hora_llegada;
-    private $hora_regreso;
-    private $municipio;
-    private $localidad;
-    private $direccion;
-    private $paredes;
-    private $techo;
-    private $piso;
-    private $ventanas;
-    private $puertas;
-    private $otros_materiales;
-    private $propietario;
-    private $valor_inmueble;
-    private $num_residenciados;
-    private $ninos;
-    private $adolescentes;
-    private $adultos;
-    private $info_adicional;
-    private $asegurado;
-    private $aseguradora;
-    private $num_poliza;
-    private $valor_asegurado;
-    private $valor_perdido;
-    private $valor_salvado;
-    private $fuente_ignicion;
-    private $causa_incendio;
-    private $lugar_inicio;
-    private $lugar_fin;
-    private $reignicion;
-    private $tipo_combustible;
-    private $declaracion;
-    private $lesionados;
-    private $num_lesionados;
-    private $datos_lesionados;
-    private $recurso_utilizado;
-    private $cantidad_recurso_usado;
-    private $unidad;
-    private $jefe_comision;
-    private $efectivo;
-    private $ci_pnb;
-    private $ci_gnb;
-    private $ci_intt;
-    private $ci_invity;
-    private $ci_pc;
-    private $ci_otro;
-    private $observaciones;
+    private $id; //1 ---> revisado
+    private $fecha; //2 ---> revisado
+    private $seccion; //3 ---> revisado
+    private $estacion; //4 ---> revisado
+    private $tipo_aviso; //5 ---> revisado
+    private $solicitante; //6 ---> revisado
+    private $receptor; //7 ---> revisado
+    private $aprobador; //8 ---> revisado
+    private $hora_aviso; //9 ---> revisado
+    private $hora_salida; //10 ---> revisado
+    private $hora_llegada; //11 ---> revisado
+    private $hora_regreso; //12 ---> revisado
+    private $municipio; //13 ---> revisado
+    private $localidad; //14 ---> revisado
+    private $direccion; //15 ---> revisado
+    private $paredes; //16 ---> revisado
+    private $techo; //17 ---> revisado
+    private $piso; //18 ---> revisado
+    private $ventanas; //19 ---> revisado
+    private $puertas; //20 ---> revisado
+    private $otros_materiales; //21 ---> revisado
+    private $propietario; //22 ---> revisado
+    private $valor_inmueble; //23 ---> revisado
+    private $num_residenciados; //24 ---> revisado
+    private $ninos; //25 ---> revisado
+    private $adolescentes; //26 ---> revisado
+    private $adultos; //27 ---> revisado
+    private $info_adicional; //28 ---> revisado
+    private $asegurado; //29 ---> revisado
+    private $aseguradora; //30 ---> revisado
+    private $num_poliza; //31 ---> revisado
+    private $valor_asegurado; //32 ---> revisado
+    private $valor_perdido; //33 ---> revisado
+    private $valor_salvado; //34 ---> revisado
+    private $fuente_ignicion; //35 ---> revisado
+    private $causa_incendio; //36 ---> revisado
+    private $lugar_inicio; //37 ---> revisado
+    private $lugar_fin; //38 ---> revisado
+    private $reignicion; //39 ---> revisado
+    private $tipo_combustible; //40 ---> revisado
+    private $declaracion; //41 ---> revisado
+    private $lesionados; //42 ---> revisado
+    private $num_lesionados; //43 ---> revisado
+    private $datos_lesionados; //44 ---> revisado
+    private $recurso_utilizado; //45 ---> revisado
+    private $cantidad_recurso_usado; //46 ---> revisado
+    private $unidad; //47 ---> revisado
+    private $jefe_comision; //48 ---> revisado
+    private $efectivo; //49 ---> revisado
+    private $ci_pnb; //50 ---> revisado
+    private $ci_gnb; //51 ---> revisado
+    private $ci_intt; //52 ---> revisado
+    private $ci_invity; //53 ---> revisado
+    private $ci_pc; //54 ---> revisado
+    private $ci_otro; //55 ---> revisado
+    private $observaciones; //56 ---> revisado
 
     public function __construct()
     {
@@ -626,100 +626,19 @@ class incendio
 
 
     //REGISTRAR
-    public function registrarIncendio(
-        $fecha,
-        $seccion,
-        $estacion,
-        $tipo_aviso,
-        $solicitante,
-        $receptor,
-        $aprobador,
-        $hora_aviso,
-        $hora_salida,
-        $hora_llegada,
-        $hora_regreso,
-        $municipio,
-        $localidad,
-        $direccion,
-        $paredes,
-        $techo,
-        $piso,
-        $ventanas,
-        $puertas,
-        $otros_materiales,
-        $propietario,
-        $valor_inmueble,
-        $num_residenciados,
-        $ninos,
-        $adolescentes,
-        $adultos,
-        $info_adicional,
-        $asegurado,
-        $aseguradora,
-        $num_poliza,
-        $valor_asegurado,
-        $valor_perdido,
-        $valor_salvado,
-        $fuente_ignicion,
-        $causa_incendio,
-        $lugar_inicio,
-        $lugar_fin,
-        $reignicion,
-        $tipo_combustible,
-        $declaracion,
-        $lesionados,
-        $num_lesionados,
-        $datos_lesionados,
-        $recurso_utilizado,
-        $cantidad_recurso_usado,
-        $unidad,
-        $jefe_comision,
-        $efectivo,
-        $ci_pnb,
-        $ci_gnb,
-        $ci_intt,
-        $ci_invity,
-        $ci_pc,
-        $ci_otro,
-        $observaciones
-    ) {
-        include("conexion.php");
-    
-        $SQL = "INSERT INTO incendio (
-            fecha, seccion, estacion, tipo_aviso, solicitante, receptor, aprobador, hora_aviso, hora_salida,
-            hora_llegada, hora_regreso, municipio, localidad, direccion, paredes, techo, piso, ventanas,
-            puertas, otros_materiales, propietario, valor_inmueble, num_residenciados, ninos, adolescentes,
-            adultos, info_adicional, asegurado, aseguradora, num_poliza, valor_asegurado, valor_perdido,
-            valor_salvado, fuente_ignicion, causa_incendio, lugar_inicio, lugar_fin, reignicion, tipo_combustible,
-            declaracion, lesionados, num_lesionados, datos_lesionados, recurso_utilizado, cantidad_recurso_usado,
-            unidad, jefe_comision, efectivo, ci_pnb, ci_gnb, ci_intt, ci_invity, ci_pc, ci_otro, observaciones
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    
-        $preparado = $conexion->prepare($SQL);
-        $preparado->execute([
-            null, $fecha, $seccion, $estacion, $tipo_aviso, $solicitante, $receptor, $aprobador, $hora_aviso, $hora_salida,
-            $hora_llegada, $hora_regreso, $municipio, $localidad, $direccion, $paredes, $techo, $piso, $ventanas,
-            $puertas, $otros_materiales, $propietario, $valor_inmueble, $num_residenciados, $ninos, $adolescentes,
-            $adultos, $info_adicional, $asegurado, $aseguradora, $num_poliza, $valor_asegurado, $valor_perdido,
-            $valor_salvado, $fuente_ignicion, $causa_incendio, $lugar_inicio, $lugar_fin, $reignicion, $tipo_combustible,
-            $declaracion, $lesionados, $num_lesionados, $datos_lesionados, $recurso_utilizado, $cantidad_recurso_usado,
-            $unidad, $jefe_comision, $efectivo, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $observaciones
-        ]);
-    
-        return $preparado;
-    }
-    
+    public function registrarIncendio($fecha, $seccion, $estacion, $tipo_aviso, $solicitante, $receptor, $aprobador, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, $municipio, $localidad, $direccion, $paredes, $techo, $piso, $ventanas, $puertas, $otros_materiales, $propietario, $valor_inmueble, $num_residenciados, $ninos, $adolescentes, $adultos, $info_adicional, $asegurado, $aseguradora, $num_poliza, $valor_asegurado, $valor_perdido, $valor_salvado, $fuente_ignicion, $causa_incendio, $lugar_inicio, $lugar_fin, $reignicion, $tipo_combustible, $declaracion, $lesionados, $num_lesionados, $datos_lesionados, $recurso_utilizado, $cantidad_recurso_usado, $unidad, $jefe_comision, $efectivo, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $observaciones) {
 
-
-
-    //Modificar
-    public function modificarMarca($id, $nombre,)
-    {
         include("conexion.php");
 
-        $SQL = "UPDATE marca SET nombre = ? WHERE id = ?";
+        $SQL = "INSERT INTO incendio VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$nombre,  $id]);
+        $preparado->execute([null, $fecha, $seccion, $estacion, $tipo_aviso, $solicitante,
+        $receptor, $aprobador, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, 
+        $municipio, $localidad, $direccion, $paredes, $techo, $piso, $ventanas, $puertas,  
+        $otros_materiales, $propietario, $valor_inmueble, $num_residenciados, $ninos, 
+        $adolescentes, $adultos, $info_adicional, $asegurado, $aseguradora, $num_poliza, 
+        $valor_asegurado, $valor_perdido, $valor_salvado, $fuente_ignicion, $causa_incendio,
+        $lugar_inicio, $lugar_fin, $reignicion, $tipo_combustible, $declaracion, $lesionados, $num_lesionados, $datos_lesionados, $recurso_utilizado, $cantidad_recurso_usado, $unidad, $jefe_comision, $efectivo, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $observaciones]);
 
         return $preparado;
     }
