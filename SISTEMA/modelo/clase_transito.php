@@ -2,7 +2,7 @@
 
 class transito{
 
-    private $id, $fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro;
+    private $id, $fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro;
 
     public function __construct(){
 	}
@@ -28,6 +28,9 @@ class transito{
     }
     public function setIncidente($incidente){
         $this->incidente = $incidente;
+    }
+    public function setTaviso($taviso){
+        $this->taviso = $taviso;
     }
     public function setSolicitante($solicitante){
         $this->solicitante = $solicitante;
@@ -106,6 +109,9 @@ class transito{
     public function getSeccion(){
         return $this->seccion;
     }
+    public function getEstacion(){
+        return $this->estacion;
+    }
     public function getEmergencia(){
         return $this->emergencia;
     }
@@ -114,6 +120,9 @@ class transito{
     }
     public function getIncidente(){
         return $this->incidente;
+    }
+    public function getTaviso(){
+        return $this->taviso;
     }
     public function getSolicitante(){
         return $this->solicitante;
@@ -133,10 +142,10 @@ class transito{
     public function getRegreso(){
         return $this->regreso;
     }
-    public function getVehiculo(){
-        return $this->vehiculo;
+    public function getNiv(){
+        return $this->niv;
     }
-    public function getLesionado(){
+    public function getLesionados(){
         return $this->lesionados;
     }
     public function getOccisos(){
@@ -148,7 +157,7 @@ class transito{
     public function getIncendio(){
         return $this->incendio;
     }
-    public function getRecrusos(){
+    public function getRecursos(){
         return $this->recursos;
     }
     public function getCantidad(){
@@ -183,13 +192,15 @@ class transito{
     }
   
     //Registrar
-    public function agregarTransito($id, $fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro){
-        
+    public function agregarTransito($id, $fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro){
+
         include("conexion.php");
 
-        $SQL = "INSERT INTO aviso VALUES (?,?)";
+        echo "$id, $fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro";
+
+        $SQL = "INSERT INTO transito VALUES (?,?,?,?,?,?,?,?,?,?  ,?,?,?,?,?,?,?,?,?,? ,?,?,?,?,?,?,?,?,?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null,$aviso]);
+        $preparado->execute([null,$fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro]);
 
         return $preparado;
     }

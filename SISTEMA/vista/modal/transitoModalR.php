@@ -20,6 +20,10 @@
         $sentencia = $conexion->prepare("SELECT * FROM aviso");
         $sentencia->execute();
         $avisos = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+        $sentencia = $conexion->prepare("SELECT * FROM recurso");
+        $sentencia->execute();
+        $recursos = $sentencia->fetchAll(PDO::FETCH_ASSOC);
        
     ?>
     
@@ -43,7 +47,7 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_marca.php" method="POST" style="text-align: left;" >
+                    <form action="../controlador/ctl_transito.php" method="POST" style="text-align: left;" >
                         <div class="modal-body">
                         <div class="col-12">
                                 <div class="form-group has-icon-left">
@@ -123,7 +127,7 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">Tipo de Incidente</label>
                                     <div class="position-relative">
-                                         <select name="tipo" class="form-select" id="tipo">
+                                         <select name="incidente" class="form-select" id="tipo">
                                          <option value="">Seleccionar</option>
                                         <?php foreach ($tipos as $tipo) : ?>
 
@@ -140,7 +144,7 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">Tipo de Aviso</label>
                                     <div class="position-relative">
-                                        <select name="tipo_aviso" name="aviso" class="form-select" id="tipo_aviso">
+                                        <select name="taviso" class="form-select" id="tipo_aviso">
                                             <option value="">Seleccionar</option>
                                             <?php foreach ($avisos as $aviso) : ?>
 
@@ -180,7 +184,7 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Aviso</label>
                                     <div class="position-relative">
-                                        <input type="text" id="hora_aviso" name="hora" class="form-control" placeholder="Hora de Aviso">
+                                        <input type="text" id="hora_aviso" name="aviso" class="form-control" placeholder="Hora de Aviso">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass"></i>
                                         </div>
@@ -228,7 +232,7 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">Vehiculo</label>
                                     <div class="position-relative">
-                                        <input type="text" id="niv" name="niv" class="form-control" placeholder="Cédula del Conductor">
+                                        <input type="text" id="niv" name="niv" class="form-control" placeholder="Serial">
                                         <div class="form-control-icon">
                                             <i class="bi bi-calendar-date"></i>
                                         </div>
@@ -252,7 +256,7 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">Número de Occisos</label>
                                     <div class="position-relative">
-                                        <input type="text" id="numero_occisos" class="form-control" placeholder="Número de Occisos">
+                                        <input type="text" id="numero_occisos" name="occisos" class="form-control" placeholder="Número de Occisos">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person-x"></i>
                                         </div>
@@ -262,7 +266,7 @@
 
                             <div class="form-group">
                                 <label for="" class="form-label">Observaciones</label>
-                                <textarea class="form-control no-resize" id="observaciones" name="observaciones "rows="4"></textarea>
+                                <textarea class="form-control no-resize" id="observaciones" name="observaciones" rows="4"></textarea>
                             </div>
 
                             <div class="col-12">
@@ -270,10 +274,10 @@
                                     <label for="">Hubo Incendios</label>
                                     <div class="position-relative">
                                         <label class="form-check-label" for="">SI</label>
-                                        <input type="radio" class="form-check-input" name="incendios" value="Si" id="incendios">
+                                        <input type="radio" class="form-check-input" name="incendio" value="Si" id="incendios">
 
                                         <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="incendios" value="No" id="no_incendios">
+                                        <input type="radio" class="form-check-input" name="incendio" value="No" id="no_incendios">
                                     </div>
                                 </div>
                             </div>
@@ -282,9 +286,13 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">Recurso Utilizado</label>
                                     <div class="position-relative">
-                                        <select name="recurso_utilizado" name="recurso" class="form-select" id="recurso_utilizado">
+                                        <select name="recurso" class="form-select" id="recurso_utilizado">
                                             <option value="">Seleccione el Recurso Utilizado...</option>
-                                            <option value="1">1</option>
+                                            <?php foreach ($recursos as $recurso) : ?>
+
+                                                <option value="<?=$recurso["id"]?>"><?=$recurso["nombre"]?></option>
+
+                                            <?php endforeach;?>
                                         </select>
                                     </div>
                                 </div>
@@ -305,9 +313,9 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">Jefe de Comisión</label>
                                     <div class="position-relative">
-                                        <select name="jefe_comision" name="jefe" class="form-select" id="jefe_comision">
+                                        <select name="jefe" class="form-select" id="jefe_comision">
                                             <option value="">Seleccione al Jefe de Comisión...</option>
-                                            <option value="1">1</option>
+                                            <option value="1000000">Gojo Satoru</option>
                                         </select>
                                     </div>
                                 </div>
@@ -317,9 +325,9 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">Efectivo</label>
                                     <div class="position-relative">
-                                        <select name="efectivo" name="efectivos" class="form-select" id="efectivo">
-                                            <option value="">Seleccione el Efectivo que asistió...</option>
-                                            <option value="1">1</option>
+                                        <select name="efectivos" class="form-select" id="efectivo">
+                                            <option value="">Seleccione el Efectivo</option>
+                                            <option value="1000000">Yuji Itadori</option>
                                         </select>
                                     </div>
                                 </div>
@@ -330,8 +338,8 @@
                                     <label for="">Unidad</label>
                                     <div class="position-relative">
                                         <select name="unidad" name="unidad" class="form-select" id="unidad">
-                                            <option value="">Seleccione la Unidad que asistió...</option>
-                                            <option value="1">1</option>
+                                            <option value="">Seleccione la Unidad que asistió</option>
+                                            <option value="1">Unidad 1</option>
                                         </select>
                                     </div>
                                 </div>
@@ -342,22 +350,22 @@
                                     <label for="">Autoridades Adicionales en el Sitio</label>
                                     <div class="position-relative">
                                         <label class="form-check-label" for="">PNB</label>
-                                        <input type="checkbox" class="form-check-input check" name="pnb" value="pnb" id="check1">
+                                        <input type="checkbox" class="form-check-input check" value="pnb" id="check1">
 
                                         <label class="form-check-label ms-3" for="">GNB</label>
-                                        <input type="checkbox" class="form-check-input check" name="gnb" value="gnb" id="check2">
+                                        <input type="checkbox" class="form-check-input check" value="gnb" id="check2">
 
                                         <label class="form-check-label ms-3" for="">INTT</label>
-                                        <input type="checkbox" class="form-check-input check" name="intt" value="intt" id="check3">
+                                        <input type="checkbox" class="form-check-input check" value="intt" id="check3">
 
                                         <label class="form-check-label ms-3" for="">I.N.V.I.T.Y</label>
-                                        <input type="checkbox" class="form-check-input check" name="invity" value="invity" id="check4">
+                                        <input type="checkbox" class="form-check-input check" value="invity" id="check4">
 
                                         <label class="form-check-label ms-3" for="">PC</label>
-                                        <input type="checkbox" class="form-check-input check" name="pc" value="pc" id="check5">
+                                        <input type="checkbox" class="form-check-input check" value="pc" id="check5">
 
                                         <label class="form-check-label ms-3" for="">OTROS</label>
-                                        <input type="checkbox" class="form-check-input check" name="otros" value="otros" id="check6">
+                                        <input type="checkbox" class="form-check-input check" value="otros" id="check6">
                                     </div>
                                 </div>
                             </div>
@@ -426,7 +434,7 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I OTROS</label>
                                     <div class="position-relative">
-                                        <input type="text" name="otros" class="form-control" placeholder="C.I OTROS">
+                                        <input type="text" name="otro" class="form-control" placeholder="C.I OTROS">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>

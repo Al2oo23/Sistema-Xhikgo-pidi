@@ -254,6 +254,7 @@ try {
         emergencia VARCHAR(40) NOT NULL,
         inspeccion VARCHAR(4) NOT NULL,
         incidente VARCHAR(20) NOT NULL,
+        taviso VARCHAR(20) NOT NULL,
         solicitante INT(11) NOT NULL,
         recibidor INT(11) NOT NULL,
         aviso VARCHAR(20) NOT NULL,
