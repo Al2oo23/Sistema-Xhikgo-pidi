@@ -209,14 +209,15 @@ try {
 
     $SQL = "CREATE TABLE IF NOT EXISTS vehiculo (
         niv INT(100) PRIMARY KEY,
+        tipo VARCHAR(20) NOT NULL,
+        unidad INT(20) NOT NULL,
         marca VARCHAR(20) NOT NULL,
-        modelo INT(20) NOT NULL,
-        seria INT(20) NOT NULL,
+        modelo VARCHAR(20) NOT NULL,
+        serial_vehiculo INT(20) NOT NULL,
+        cilindrada VARCHAR(20) NOT NULL,
         carburante VARCHAR(20) NOT NULL,
         seguro VARCHAR(20) NOT NULL,
-        cedula VARCHAR(20) NOT NULL,
-        tipo VARCHAR(20) NOT NULL,
-        unidad INT(20) NOT NULL
+        cedula VARCHAR(20) NOT NULL
     )";
     $conexion->exec($SQL);
 

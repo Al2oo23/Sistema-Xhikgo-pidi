@@ -1,4 +1,16 @@
+<?php 
 
+// LLAMAR MARCA VEHICULO
+$sentencia = $conexion->prepare("SELECT nombre FROM marca");
+$sentencia->execute();
+$marca = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+// LLAMAR MODELO VEHICULO
+$sentencia = $conexion->prepare("SELECT nombre FROM modelo");
+$sentencia->execute();
+$modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+?>
     <!-- Button trigger for login form modal -->
     <button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm">
         <i class="bi bi-pencil"></i>
@@ -19,57 +31,133 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_(nombre).php" method="POST" style="text-align: left;">
+                    <form action="../controlador/ctl_vehiculo.php" method="POST" style="text-align: left;">
                         <div class="modal-body">
-                            <label>Numero de Identidad Vehicular (NIV):</label>
-                            <div class="form-group">
-                                <input type="text" value="" name="niv" disabled id="nivM" class="form-control" >
-                            </div>
-                            
-                            <label>Tipo de Vehiculo:</label>
-                            <div class="form-group">
-                                <input type="text" value="" name="tipo_vehiculo" id="tvehiculoM" class="form-control" >
-                            </div>   
+                        <div class="col-12">
 
-                            <label>Numero de Unidad:</label>
-                            <div class="form-group">
-                                <input type="text" value="" name="nunidad" id="nunidadM" class="form-control" >
-                            </div>   
-
-                            <label>Marca:</label>
-                            <div class="form-group">
-                                <input type="text" value="" name="marca" id="marcaM" class="form-control" >
+                                <div class="form-group has-icon-left">
+                                    <label for="">Numero de Identidad Vehicular (NIV):</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" name="niv" id="nivM" placeholder="Identidad Vehicular">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-postcard"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <label >Modelo</label>
-                           <div class="form-group">
-                               <input type="text" value="" name="modelo" id="modeloM" class="form-control">
-                           </div>
-
-                           <label>Serial:</label>
-                            <div class="form-group">
-                                <input type="text" value="" name="serial" id="serialM" class="form-control">
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="first-name-icon"> Tipo de Vehiculo</label>
+                                    <select class="form-select" name="tipo" id="tvehiculoM">
+                                        <option value="Unidad">Unidad</option>
+                                        <option value="Particular">Vehiculo Particular</option>
+                                    </select>
+                                </div>
                             </div>
 
-                            <label >Cilindrada</label>
-                           <div class="form-group">
-                               <input type="text" value="" name="cilindrada" id="cilindroM" class="form-control">
-                           </div>
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Numero de Unidad:</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" name="unidad" id="nunidadM" placeholder="Numero de Unidad">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-car-front-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
 
-                           <label>Carburante:</label>
-                           <div class="form-group">
-                               <input type="text" value="" name="carburante" id="carburanteM" class="form-control">
-                           </div>
-
-                           <label>Seguro:</label>
-                            <div class="form-group">
-                                <input type="text" value="" name="estado_seguro" id="seguroM" class="form-control">
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="first-name-icon">Marca:</label>
+                                    <select class="form-select" name="marca" id="marcaM">
+                                        <?php foreach ($marca as $marc) : 
+                                        $marca = $marc["nombre"];
+                                        ?>
+                                        <option value="<?= $marca?>"><?= $marca?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
                             </div>
 
-                            <label >CI. del Propietario:</label>
-                           <div class="form-group">
-                               <input type="text" value="" name="cedula_propietario" id="cedulaM" class="form-control">
-                           </div>
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Modelo:</label>
+                                    <div class="position-relative">
+                                        <select name="modelo" class="form-select" id="modeloM">
+                                            <?php foreach ($modelo as $model) : 
+                                            $modelo = $model["nombre"];
+                                            ?>
+
+                                            <option value="<?= $modelo?>"><?= $modelo?></option>
+
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Serial:</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" name="serial" id="serialM" placeholder="Serial">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-card-checklist"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Cilindrada:</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" name="cilindrada" id="cilindroM" placeholder="Cilindrada">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-car-front-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Carburante:</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" name="carburante" id="carburanteM" placeholder="Carburante">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-car-front-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Estado del Seguro:</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" name="seguro" id="seguroM" placeholder="Estado del Seguro">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-postcard"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Identificacion del Propietario (Cedula):</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" name="propietario" id="cedulaM" placeholder="Cedula">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-person-lines-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                        
             <!-- Footer del modal: ------------------------------>

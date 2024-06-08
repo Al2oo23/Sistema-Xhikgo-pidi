@@ -4,9 +4,9 @@ $nombrePagina = 'Catálogo de Vehiculo';
 require('../header.php');
 include('../modelo/conexion.php');
 
-// $sentencia = $conexion->prepare("SELECT * FROM vehiculo");
-// $sentencia->execute();
-// $vehiculo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+$sentencia = $conexion->prepare("SELECT * FROM vehiculo");
+$sentencia->execute();
+$vehiculo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="col-12 m-auto">
@@ -36,29 +36,29 @@ include('../modelo/conexion.php');
                                 </thead>
                                 <tbody>
 
-                                <?php //foreach ($vehiculo as $carro) :?>
+                                <?php foreach ($vehiculo as $carro) :?>
                                    
                                     <tr class="fila">
-                                        <td class="columna">?</td>
-                                        <td class="columna">?</td>
-                                        <td class="columna">23</td>
-                                        <td class="columna">Chevrolet</td>
-                                        <td class="columna">Aveo</td>
-                                        <td class="columna">?</td>
-                                        <td class="columna">?</td>
-                                        <td class="columna">?</td>
-                                        <td class="columna">?</td>
-                                        <td class="columna">12590678</td>
+                                        <td class="columna"><?= $carro['niv']?></td>
+                                        <td class="columna"><?=$carro['tipo']?></td>
+                                        <td class="columna"><?=$carro['unidad']?></td>
+                                        <td class="columna"><?=$carro['marca']?></td>
+                                        <td class="columna"><?=$carro['modelo']?></td>
+                                        <td class="columna"><?=$carro['serial_vehiculo']?></td>
+                                        <td class="columna"><?=$carro['cilindrada']?></td>
+                                        <td class="columna"><?=$carro['carburante']?></td>
+                                        <td class="columna"><?=$carro['seguro']?></td>
+                                        <td class="columna"><?=$carro['cedula']?></td>
                                         
                                         <td>
                                             <div class="botones">
                                             <?php include("modal/modalVehiculoM.php");?>
-                                            <div><a name='eliminar' id='eliminar' href='../controlador/ctl_(nombre).php?txtID=<?= $carro['niv']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                            <div><a name='eliminar' id='eliminar' href='../controlador/ctl_vehiculo.php?txtID=<?= $carro['niv']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                             </div>
                                         </td>
                                     </tr>
 
-                                    <?php //endforeach; ?>
+                                    <?php endforeach; ?>
 
                                 </tbody>
                             </table>
@@ -67,7 +67,7 @@ include('../modelo/conexion.php');
                 </div>
             </div>
 
-            <form action="../controlador/ctl_(nombre).php" method="POST" style="display: none;">
+            <form action="../controlador/ctl_vehiculo.php" method="POST" style="display: none;">
                 <input type="hidden" id="idBorrar" name="id">
             </form>
 
