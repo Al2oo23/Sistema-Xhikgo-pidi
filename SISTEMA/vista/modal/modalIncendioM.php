@@ -607,6 +607,7 @@ $n_recurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             <div class="position-relative">
                                 <input type="text" id="cantidad_recursoM" name="cantidad_recurso" class="form-control" placeholder="Número de Recurso">
                                 <div class="form-control-icon">
+                                <i class="bi bi-tools"></i>
                                 </div>
                             </div>
                         </div>

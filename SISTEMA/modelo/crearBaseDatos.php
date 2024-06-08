@@ -89,6 +89,7 @@ try {
     )";
     $conexion->exec($SQL);
 
+
     //------------------ TIPO DE PERSONA ------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS tipo_persona (
@@ -158,7 +159,7 @@ try {
     $conexion->exec($SQL);
 
 
-      //------------------ Tipo de Aviso------------------
+      //------------------ TIPO DE AVISO ------------------
 
       $SQL = "CREATE TABLE IF NOT EXISTS aviso (
         id INT PRIMARY KEY AUTO_INCREMENT,
@@ -219,7 +220,7 @@ try {
     )";
     $conexion->exec($SQL);
 
-        //Abejas
+        //-------------- ABEJAS ----------------------
 
         $SQL = "CREATE TABLE IF NOT EXISTS abejas (
             id INT PRIMARY KEY AUTO_INCREMENT,
@@ -249,7 +250,7 @@ try {
         )";
     $conexion->exec($SQL);
 
-    //TRANSITO
+    //------------------ TRANSITO -------------------
 
      $SQL = "CREATE TABLE IF NOT EXISTS transito (
         id INT PRIMARY KEY AUTO_INCREMENT,
@@ -285,10 +286,71 @@ try {
     )";
     $conexion->exec($SQL);
 
+    //------------------ INCENDIO -------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS `incendio` (
+        `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        `fecha` varchar(100) NOT NULL,
+        `seccion` varchar(100) NOT NULL,
+        `estacion` varchar(100) NOT NULL,
+        `tipo_aviso` varchar(100) NOT NULL,
+        `solicitante` varchar(100) NOT NULL,
+        `receptor` varchar(100) NOT NULL,
+        `aprobador` varchar(100) NOT NULL,
+        `hora_aviso` varchar(100) NOT NULL,
+        `hora_salida` varchar(100) NOT NULL,
+        `hora_llegada` varchar(100) NOT NULL,
+        `hora_regreso` varchar(100) NOT NULL,
+        `municipio` varchar(100) NOT NULL,
+        `localidad` varchar(100) NOT NULL,
+        `direccion` varchar(100) NOT NULL,
+        `paredes` varchar(100) NOT NULL,
+        `techo` varchar(100) NOT NULL,
+        `piso` varchar(100) NOT NULL,
+        `ventanas` varchar(100) NOT NULL,
+        `puertas` varchar(100) NOT NULL,
+        `otros_materiales` varchar(100) NOT NULL,
+        `propietario` varchar(100) NOT NULL,
+        `valor_inmueble` varchar(100) NOT NULL,
+        `num_residenciados` varchar(100) NOT NULL,
+        `ninos` varchar(100) NOT NULL,
+        `adolescentes` varchar(100) NOT NULL,
+        `adultos` varchar(100) NOT NULL,
+        `info_adicional` varchar(100) NOT NULL,
+        `asegurado` varchar(100) NOT NULL,
+        `aseguradora` varchar(100) NOT NULL,
+        `num_poliza` varchar(100) NOT NULL,
+        `valor_asegurado` varchar(100) NOT NULL,
+        `valor_perdido` varchar(100) NOT NULL,
+        `valor_salvado` varchar(100) NOT NULL,
+        `fuente_ignicion` varchar(100) NOT NULL,
+        `causa_incendio` varchar(100) NOT NULL,
+        `lugar_inicio` varchar(100) NOT NULL,
+        `lugar_fin` varchar(100) NOT NULL,
+        `reignicion` varchar(100) NOT NULL,
+        `tipo_combustible` varchar(100) NOT NULL,
+        `declaracion` varchar(100) NOT NULL,
+        `lesionados` varchar(100) NOT NULL,
+        `num_lesionados` varchar(100) NOT NULL,
+        `datos_lesionados` varchar(100) NOT NULL,
+        `recurso_utilizado` varchar(100) NOT NULL,
+        `cantidad_recurso_usado` varchar(100) NOT NULL,
+        `unidad` varchar(100) NOT NULL,
+        `jefe_comision` varchar(100) NOT NULL,
+        `efectivo` varchar(100) NOT NULL,
+        `ci_pnb` varchar(100) DEFAULT NULL,
+        `ci_gnb` varchar(100) DEFAULT NULL,
+        `ci_intt` varchar(100) DEFAULT NULL,
+        `ci_invity` varchar(100) DEFAULT NULL,
+        `ci_pc` varchar(100) DEFAULT NULL,
+        `ci_otro` varchar(100) DEFAULT NULL,
+        `observaciones` varchar(100) NOT NULL
+      )";
+      $conexion->exec($SQL);
+
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
-
 
 // $servidor = "localhost";
 // $puerto = "5432";
