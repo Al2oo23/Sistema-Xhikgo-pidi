@@ -13,10 +13,10 @@ filas.forEach(fila => {
     fila.addEventListener("click",(e)=>{
        const columnas = fila.children;
        id.value = columnas[0].textContent;
-       municipio.value = columnas[1].textContent; 
-       nombre.value = columnas[2].textContent;
+       nombre.value = columnas[1].textContent;
+       municipio.value = columnas[2].textContent; 
        distancia.value = columnas[3].textContent;
-       console.log(columnas[0]);
+       console.log(columnas);
        
     });
 });

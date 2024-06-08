@@ -1,11 +1,12 @@
+<?php
+// LLAMAR AL MUNICIPIO:
 
-<?php 
-        
-        $sentencia = $conexion->prepare("SELECT * FROM municipio");
-        $sentencia->execute();
-        $municipios = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+$sentencia = $conexion->prepare("SELECT nombre FROM municipio");
+$sentencia->execute();
+$municipio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+
 ?>
-
 <!-- Button trigger for login form modal -->
 <button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">Nuevo</button>
 
@@ -27,22 +28,6 @@
                     <form action="../controlador/ctl_lugar.php" style="text-align: left;" method="POST">
                         <div class="modal-body">
 
-                                    <div class="col-12">
-                                        <div class="form-group has-icon-left">
-                                            <label for="">Municipio</label>
-                                            <div class="position-relative">                                               
-                                                <select name="municipio" class="form-select" id="municipio">                                                     
-                                                    <option value="default">Seleccione el Municipio...</option>
-                                                    <?php foreach ($municipios as $municipio) : ?>
-
-                                                        <option value="<?=$municipio["id"]?>"><?=$municipio["nombre"]?></option>
-
-                                                    <?php endforeach;?>                                               
-                                                </select>
-                                               
-                                            </div>
-                                        </div>
-                                    </div>
                                 <div class="form-group has-icon-left">
                                     <label for="">Nombre del Lugar</label>
                                     <div class="position-relative">
@@ -52,6 +37,25 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="">Municipio</label>
+                                            <div class="position-relative">                                               
+                                                <select name="municipio" class="form-select" id="municipio">                                                     
+                                                    <option value="default">Seleccione el Municipio...</option>
+                                                    <?php foreach ($municipio as $mun) : 
+                                                $municipio = $mun["nombre"];
+                                                ?>
+                                            <option value="<?=$municipio?>"><?=$municipio?></option>
+
+                                                 <?php endforeach;?>                                              
+                                                </select>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                
                                 <div class="form-group has-icon-left">
                                     <label for="">Distancia</label>
                                     <div class="position-relative">

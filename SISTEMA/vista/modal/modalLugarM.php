@@ -1,4 +1,12 @@
+<?php
+// LLAMAR AL MUNICIPIO:
 
+$sentencia = $conexion->prepare("SELECT nombre FROM municipio");
+$sentencia->execute();
+$municipio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
     <!-- Button trigger for login form modal -->
     <button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm">
         <i class="bi bi-pencil"></i>
@@ -21,15 +29,29 @@
 
                     <form action="../controlador/ctl_lugar.php" style="text-align: left;" method="POST">
                         <div class="modal-body">
-                            <label>Municipio:</label>
-                            <div class="form-group">
-                                <input type="text" value="" id="municipioM" class="form-control" name="municipio">
-                            </div>
 
-                            <label>Nombre:</label>
+                        <label>Nombre:</label>
                             <div class="form-group">
                                 <input type="text" value="" id="nombreM" class="form-control" name="nombre">
-                            </div>
+                        </div>
+
+                            <div class="col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="">Municipio</label>
+                                            <div class="position-relative">                                               
+                                                <select name="municipio" class="form-select" id="municipioM">                                                     
+                                                    <?php foreach ($municipio as $mun) : 
+                                                $municipio = $mun["nombre"];
+                                                ?>
+                                            <option value="<?=$municipio?>"><?=$municipio?></option>
+
+                                                 <?php endforeach;?>                                              
+                                                </select>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                             <label>Distancia:</label>
                             <div class="form-group">
                                 <input type="text" value="" id="distanciaM" class="form-control" name="distancia">

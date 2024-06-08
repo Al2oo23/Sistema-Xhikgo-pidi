@@ -24,8 +24,8 @@ if (isset($_POST['agregar']) && $_POST['agregar'] == "agregar") {
 if (isset($_POST['modificar']) && $_POST['modificar'] == "modificar") {
 
     $lugar->setId($_POST['id']);
-    $lugar->setMunicipio($_POST['municipio']);
     $lugar->setNombre($_POST['nombre']);
+    $lugar->setMunicipio($_POST['municipio']);
     $lugar->setDistancia($_POST['distancia']);
 
     $datos = $lugar->modificarLugar($lugar->getId(), $lugar->getNombre(), $lugar->getMunicipio(), $lugar->getDistancia());
