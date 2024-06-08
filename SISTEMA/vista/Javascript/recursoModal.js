@@ -14,7 +14,8 @@ filas.forEach(fila => {
        id.value = columnas[0].textContent
        nombre.value = columnas[1].textContent
        tipo.value = columnas[2].textContent
-
+       cantidad.value = columnas[3].textContent
+    
        console.log(columnas);
     });
 });

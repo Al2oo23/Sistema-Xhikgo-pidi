@@ -2,9 +2,8 @@
 session_start();
 include("../modelo/conexion.php");
 
-//RECURSOS
+// BUSCAR RECURSO
 if (isset($_POST['buscar_recurso'])) {
-
     $nombre_recurso_buscado = $_POST['nombre_recurso_buscado'];
     $tipo_recurso_buscado = $_POST['tipo_recurso_buscado'];
     $cantidad_recurso_buscado = $_POST['cantidad_recurso_buscado'];
@@ -16,15 +15,27 @@ if (isset($_POST['buscar_recurso'])) {
     $_SESSION['resultado_busqueda_recurso'] = $resultado_array;
 
     echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoRecursos.php'>";
+}
 
-} elseif (isset($_POST['limpiar_recurso']) || empty($_POST['nombre_recurso_buscado']) && empty($_POST['tipo_recurso_buscado']) && empty($_POST['cantidad_recurso_buscado'])) {
-
+// LIMPIAR RECURSO
+elseif (isset($_POST['limpiar_recurso'])) {
     $resultado = $conexion->query("SELECT * FROM recurso");
-
-    $_SESSION['resultado_busqueda_recurso'] = $resultado;
 
     $resultado_array = $resultado->fetchAll(PDO::FETCH_ASSOC);
     $_SESSION['resultado_busqueda_recurso'] = $resultado_array;
 
     echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoRecursos.php'>";
 }
+
+// CONSULTA PREDETERMINADA
+else {
+    if (!isset($_SESSION['resultado_busqueda_recurso'])) {
+        $resultado = $conexion->query("SELECT * FROM recurso");
+
+        $resultado_array = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        $_SESSION['resultado_busqueda_recurso'] = $resultado_array;
+    }
+
+    echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoRecursos.php'>";
+}
+?>

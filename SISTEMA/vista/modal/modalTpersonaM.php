@@ -19,7 +19,7 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_Tpersona.php" method="POST" style="text-align: left;">
+                    <form action="../controlador/ctl_Tpersona.php" method="POST" style="text-align: left;" onsubmit="return validarTipoPersonaM()">
                         <div class="modal-body">
 
                         <input type="hidden" id="id" name="id">

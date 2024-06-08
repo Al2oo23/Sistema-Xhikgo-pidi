@@ -1190,6 +1190,15 @@ function validarRecursoInoperativo() {
 
 //Validacion pantalla Registrar Recurso 
 function validarRecurso() {
+
+    var nombre_recurso = document.getElementById('nombre_recurso').value;
+    var nombre_recursoRegex = /^.{3,50}$/;
+
+    if (!nombre_recursoRegex.test(nombre_recurso)) {
+        alert('Debe ingresar el nombre de un recurso');
+        return false;
+    }
+
     var tipo_recurso = document.getElementById('tipo_recurso').value;
 
     if (tipo_recurso === "") {
@@ -1197,11 +1206,23 @@ function validarRecurso() {
         return false;
     }
 
-    var nombre_recurso = document.getElementById('nombre_recurso').value;
+    return true;
+}
+
+//Validacion pantalla Registrar Recurso Modficar
+function validarRecurso() {
+    var nombre_recurso = document.getElementById('nombreM').value;
     var nombre_recursoRegex = /^.{3,50}$/;
 
     if (!nombre_recursoRegex.test(nombre_recurso)) {
         alert('Debe ingresar el nombre de un recurso');
+        return false;
+    }
+
+    var tipo_recurso = document.getElementById('tipoM').value;
+
+    if (tipo_recurso === "") {
+        alert('Debe seleccionar un tipo de recurso');
         return false;
     }
 
@@ -1233,7 +1254,7 @@ function validarRuta() {
 function validarCargo() {
     var cargo = document.getElementById('cargo').value;
 
-    if(cargo === ""){
+    if (cargo === "") {
         alert('Ingrese un cargo valido');
         return false;
     }
@@ -1251,6 +1272,27 @@ function validarTipoPersona() {
     }
 
     var descripcion = document.getElementById('descripcion').value;
+    var descripcionRegex = /^.{1,150}$/;
+
+    if (!descripcionRegex.test(descripcion)) {
+        alert('Descripcion Invalida, no debe contener saltos de linea ni estar vacia');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Tipo Persona Modificar
+function validarTipoPersonaM() {
+    var tipo_persona = document.getElementById('tipoM').value;
+    var tipo_personaRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;;
+
+    if (!tipo_personaRegex.test(tipo_persona)) {
+        alert('Ingrese un tipo de persona valido');
+        return false;
+    }
+
+    var descripcion = document.getElementById('descripcionM').value;
     var descripcionRegex = /^.{1,150}$/;
 
     if (!descripcionRegex.test(descripcion)) {

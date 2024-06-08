@@ -66,20 +66,20 @@ if (isset($_SESSION['resultado_busqueda_recurso'])) {
                     <table class="table table-hover mb-0">
                         <thead>
                             <tr style="text-align: center;">
-                                <th class="columna">Nombre</th>
-                                <th class="columna">Tipo</th>
-                                <th class="columna">Cantidad</th>
-                                <th class="columna">Accion</th>
+                                <th class="columnas">Nombre</th>
+                                <th class="columnas">Tipo</th>
+                                <th class="columnas">Cantidad</th>
+                                <th class="columnas">Accion</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if (isset($resultado)) : ?>
                                 <?php foreach ($resultado as $filtrado) : ?>
                                     <tr class="fila">
-                                        <td class="columna" hidden><?= $filtrado['id'] ?></td>
-                                        <td class="columna"><?= $filtrado['nombre']; ?></td>
-                                        <td class="columna"><?= $filtrado['tipo']; ?></td>
-                                        <td class="columna"><?= $filtrado['cantidad']; ?></td>
+                                        <td class="columnas" hidden><?= $filtrado['id'] ?></td>
+                                        <td class="columnas"><?= $filtrado['nombre']; ?></td>
+                                        <td class="columnas"><?= $filtrado['tipo']; ?></td>
+                                        <td class="columnas"><?= $filtrado['cantidad']; ?></td>
                                         <td>
                                             <div class="botones" style="justify-content:space-evenly;">
                                                 <?php include("modal/modalRecursoM.php"); ?>

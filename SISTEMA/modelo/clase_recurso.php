@@ -67,7 +67,7 @@ class recurso{
     public function eliminarRecurso ($id){
         include ("conexion.php");
 
-        $SQL = $conexion->prepare("DELETE * FROM recurso WHERE id = ?");
+        $SQL = $conexion->prepare("DELETE FROM recurso WHERE id = ?");
         $SQL->bindParam(1, $id, PDO::PARAM_INT);
         $preparado = $SQL->execute();
 

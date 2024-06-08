@@ -1,6 +1,6 @@
 <?php
 // LLAMAR SECCION:
-$sentencia = $conexion->prepare("SELECT nombre FROM seccion");
+$sentencia = $conexion->prepare("SELECT numero FROM seccion");
 $sentencia->execute();
 $seccion = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
@@ -12,7 +12,7 @@ $estacion = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 // LLAMAR AL TIPO DE AVISO:
 
-$sentencia = $conexion->prepare("SELECT aviso FROM aviso");
+$sentencia = $conexion->prepare("SELECT nombre FROM aviso");
  $sentencia->execute();
  $aviso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
@@ -69,7 +69,7 @@ $n_recurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                          <select name="seccion" class="form-select" id="seccion">
                                          <option value="default">Seleccione la Seccion...</option>
                                         <?php foreach ($seccion as $sec) : 
-                                            $seccion = $sec['nombre'];
+                                            $seccion = $sec['numero'];
                                         ?>
                                             <option value="<?=$seccion?>"><?=$seccion?></option>
 
@@ -105,7 +105,7 @@ $n_recurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                         <select name="tipo_aviso" class="form-select" id="tipo_aviso">
                                             <option value="">Seleccione el Tipo de Aviso...</option>
                                             <?php foreach ($aviso as $avis) : 
-                                            $aviso = $avis['aviso'];
+                                            $aviso = $avis['nombre'];
                                         ?>
                                             <option value="<?=$aviso?>"><?=$aviso?></option>
 
