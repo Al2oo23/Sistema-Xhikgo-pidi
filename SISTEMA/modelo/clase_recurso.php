@@ -1,7 +1,7 @@
 <?php 
 
 class recurso{
-    private $id, $nombre, $tipo, $cantidad;
+    private $id, $nombre, $tipo;
 
     public function __construct(){
 	}
@@ -19,10 +19,6 @@ class recurso{
         $this->tipo = $tipo;
     }
 
-    public function setCantidad($cantidad){
-        $this->cantidad = $cantidad;
-    }
-
 
     //getters
     public function getId(){
@@ -37,28 +33,24 @@ class recurso{
         return $this->tipo;
     }
 
-    public function getCantidad(){
-        return $this->cantidad;
-    }
-
     //REGISTRAR 
-    public function registrarRecurso($nombre, $tipo, $cantidad){
+    public function registrarRecurso($nombre, $tipo){
         include("conexion.php");
 
         $SQL = "INSERT INTO recurso VALUES (?, ?, ?, ?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null, $nombre, $tipo, $cantidad]);
+        $preparado->execute([null, $nombre, $tipo]);
 
         return $preparado;
     }
 
     //MODIFICAR
-    public function modificarRecurso($id, $nombre, $tipo, $cantidad){
+    public function modificarRecurso($id, $nombre, $tipo){
         include("conexion.php");
     
-        $SQL = "UPDATE recurso SET nombre = ?, tipo = ?, cantidad = ? WHERE id = ?";
+        $SQL = "UPDATE recurso SET nombre = ?, tipo = ? WHERE id = ?";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$nombre, $tipo, $cantidad, $id]);
+        $preparado->execute([$nombre, $tipo, $id]);
     
         return $preparado;
     }

@@ -33,8 +33,8 @@
                             <label for="">Tipo de Recurso:</label>
                             <div class="position-relative">
                                 <select name="tipo_recurso" class="form-select" id="tipoM">
-                                    <option value="Reutilizable">Reutilizable</option>
-                                    <option value="No Reutilizable">No Reutilizable</option>
+                                    <option value="SI">Reutilizable</option>
+                                    <option value="NO">No Reutilizable</option>
                                 </select>
                             </div>
                         </div>

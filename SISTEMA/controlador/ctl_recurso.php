@@ -26,9 +26,8 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
     $recurso->setId($_POST['id']);
     $recurso->setNombre($_POST['nombre_recurso']);
     $recurso->setTipo($_POST['tipo_recurso']);
-    $recurso->setCantidad($_POST['cantidad_recurso']);
 
-    $resultado = $recurso->modificarRecurso($recurso->getId(), $recurso->getNombre(), $recurso->getTipo(), $recurso->getCantidad());
+    $resultado = $recurso->modificarRecurso($recurso->getId(), $recurso->getNombre(), $recurso->getTipo());
 
     if (!$resultado) {
         echo "<script>alert('No se pudo modificar el Recurso')</script>";

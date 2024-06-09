@@ -1188,8 +1188,17 @@ function validarRecursoInoperativo() {
     return true;
 }
 
-//Validacion pantalla Registrar Recurso 
+//Validacion pantalla Recurso 
 function validarRecurso() {
+
+    var nombre_recurso = document.getElementById('nombre_recurso').value;
+    var nombre_recursoRegex = /^.{3,50}$/;
+
+    if (!nombre_recursoRegex.test(nombre_recurso)) {
+        alert('Debe ingresar el nombre de un recurso');
+        return false;
+    }
+
     var tipo_recurso = document.getElementById('tipo_recurso').value;
 
     if (tipo_recurso === "") {
@@ -1197,11 +1206,24 @@ function validarRecurso() {
         return false;
     }
 
-    var nombre_recurso = document.getElementById('nombre_recurso').value;
+    return true;
+}
+
+//Validacion pantalla Recurso Modificar
+function validarRecursoM() {
+
+    var nombre_recurso = document.getElementById('nombreM').value;
     var nombre_recursoRegex = /^.{3,50}$/;
 
     if (!nombre_recursoRegex.test(nombre_recurso)) {
         alert('Debe ingresar el nombre de un recurso');
+        return false;
+    }
+    
+    var tipo_recurso = document.getElementById('tipoM').value;
+
+    if (tipo_recurso === "") {
+        alert('Debe seleccionar un tipo de recurso');
         return false;
     }
 

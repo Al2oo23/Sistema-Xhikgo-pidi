@@ -1,58 +1,51 @@
 <?php
-session_start();
 $nombrePagina = 'Catálogo de Recursos';
 require('../header.php');
 include('../modelo/conexion.php');
 
-if (isset($_SESSION['resultado_busqueda_recurso'])) {
-    $resultado = $_SESSION['resultado_busqueda_recurso'];
-}
+$sentencia = $conexion->prepare("SELECT * FROM recurso");
+$sentencia->execute();
+$resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="col-8 m-auto">
 
-    <div class="row match-height">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Buscador</h4>
-                </div>
-                <div class="card-content">
-                    <div class="card-body">
-                        <form class="form" method="post" action="../buscadores/buscador_recurso.php">
-                            <div class="row">
-
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="nombre_recurso_buscado">Nombre del Recurso</label>
-                                        <input type="text" id="nombre_recurso_buscado" class="form-control" placeholder="Nombre del Recurso" name="nombre_recurso_buscado" value="<?= isset($_POST['nombre_recurso_buscado']) ? $_POST['nombre_recurso_buscado'] : '' ?>">
+<div class="row match-height">
+            <div class="col-md-6 col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Buscador</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <form class="form form-horizontal">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="nombre_recurso_buscador">Nombre del Recurso</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" id="nombre_recurso_buscador" class="form-control" placeholder="Nombre del Recurso Buscado">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="tipo_recurso_buscador">Tipo de Recurso</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" id="tipo_recurso_buscador" class="form-control" placeholder="Tipo de Recurso Buscado">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="cantidad_recurso_buscador">Cantidad de Recurso</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" id="cantidad_recurso_buscador" class="form-control" placeholder="Cantidad de Recurso Buscado">
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="tipo_recurso_buscado">Tipo de Recurso</label>
-                                        <input type="text" id="tipo_recurso_buscado" class="form-control" placeholder="Tipo del Recurso" name="tipo_recurso_buscado" value="<?= isset($_POST['tipo_recurso_buscado']) ? $_POST['tipo_recurso_buscado'] : '' ?>">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="cantidad_recurso_buscado">Cantidad del Recurso</label>
-                                        <input type="text" id="cantidad_recurso_buscado" class="form-control" placeholder="Cantidad del Recurso" name="cantidad_recurso_buscado" value="<?= isset($_POST['cantidad_recurso_buscado']) ? $_POST['cantidad_recurso_buscado'] : '' ?>">
-                                    </div>
-                                </div>
-
-                                <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" id="limpiar_recurso" name="limpiar_recurso" class="btn btn-danger me-1 mb-1">Limpiar</button>
-                                    <button type="submit" id="buscar_recurso" name="buscar_recurso" class="btn btn-primary me-1 mb-1">Buscar</button>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
         <div class="card">
@@ -63,7 +56,7 @@ if (isset($_SESSION['resultado_busqueda_recurso'])) {
                 </div>
                 <!-- table hover -->
                 <div class="table-responsive">
-                    <table class="table table-hover mb-0">
+                    <table class="table table-hover mb-0" id="tabla_recursos">
                         <thead>
                             <tr style="text-align: center;">
                                 <th class="columnas">Nombre</th>
@@ -73,22 +66,20 @@ if (isset($_SESSION['resultado_busqueda_recurso'])) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (isset($resultado)) : ?>
-                                <?php foreach ($resultado as $filtrado) : ?>
+                                <?php foreach ($resultado as $recurso) : ?>
                                     <tr class="fila">
-                                        <td class="columnas" hidden><?= $filtrado['id'] ?></td>
-                                        <td class="columnas"><?= $filtrado['nombre']; ?></td>
-                                        <td class="columnas"><?= $filtrado['tipo']; ?></td>
-                                        <td class="columnas"><?= $filtrado['cantidad']; ?></td>
+                                        <td class="columnas" hidden><?= $recurso['id'] ?></td>
+                                        <td class="columnas"><?= $recurso['nombre']; ?></td>
+                                        <td class="columnas"><?= $recurso['tipo']; ?></td>
+                                        <td class="columnas"><?= $recurso['cantidad']; ?></td>
                                         <td>
                                             <div class="botones" style="justify-content:space-evenly;">
                                                 <?php include("modal/modalRecursoM.php"); ?>
-                                                <div><a href='../controlador/ctl_recurso.php?txtID=<?= $filtrado['id']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                                <div><a href='../controlador/ctl_recurso.php?txtID=<?= $recurso['id']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                             </div>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
-                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
