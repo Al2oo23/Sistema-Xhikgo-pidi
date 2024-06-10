@@ -1251,14 +1251,28 @@ function validarRuta() {
 }
 
 // Validacion de pantalla Cargo de Bomberos
-
 function validarCargo() {
     var cargo = document.getElementById('cargo').value;
+    var cargoRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
 
-    if(cargo === ""){
-        alert('Ingrese un cargo valido');
+    if (!cargoRegex.test(cargo)) {
+        alert('Debe ingresar un Cargo valido');
         return false;
     }
+
+    return true;
+}
+
+// Validacion de pantalla Cargo de Bomberos Modificar
+function validarCargoM() {
+    var cargo = document.getElementById('cargoM').value;
+    var cargoRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
+
+    if (!cargoRegex.test(cargo)) {
+        alert('Debe ingresar un Cargo valido');
+        return false;
+    }
+
     return true;
 }
 
@@ -1282,6 +1296,28 @@ function validarTipoPersona() {
 
     return true;
 }
+
+//Validacion pantalla Tipo Persona Modificar
+function validarTipoPersonaM() {
+    var tipo_persona = document.getElementById('tipoM').value;
+    var tipo_personaRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;;
+
+    if (!tipo_personaRegex.test(tipo_persona)) {
+        alert('Ingrese un tipo de persona valido');
+        return false;
+    }
+
+    var descripcion = document.getElementById('descripcionM').value;
+    var descripcionRegex = /^.{1,150}$/;
+
+    if (!descripcionRegex.test(descripcion)) {
+        alert('Descripcion Invalida, no debe contener saltos de linea ni estar vacia');
+        return false;
+    }
+
+    return true;
+}
+
 
 //Validacion pantalla Usuario
 function validarUsuario() {

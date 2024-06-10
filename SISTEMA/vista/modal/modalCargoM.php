@@ -5,7 +5,7 @@
         <!--login form Modal -->
         <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                <div class="modal-content" id="modal">
+                <div class="modal-content" id="modalM">
 
             <!-- Header del Modal: ----------------------------->
 
@@ -17,7 +17,7 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_cargo.php" method="POST" style="text-align: left;">
+                    <form action="../controlador/ctl_cargo.php" method="POST" style="text-align: left;" onsubmit="return validarCargoM()">
                         <div class="modal-body">
                         <div class="col-12">
 

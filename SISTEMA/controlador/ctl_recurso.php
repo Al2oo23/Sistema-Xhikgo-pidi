@@ -49,7 +49,7 @@ if (isset($_GET['txtID'])){
         echo "<script>alert('No se pudo eliminar el Recurso')</script>";
         echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoRecursos.php'>";
     } else {
-        echo "<script>alert('Tipo de Persona eliminada con exito')</script>";
+        echo "<script>alert('Recurso eliminado con exito')</script>";
         echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoRecursos.php'>";
     }
 }

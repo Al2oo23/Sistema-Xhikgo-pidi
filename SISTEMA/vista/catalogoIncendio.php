@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 $nombrePagina = 'Catálogo Incendios';
 require('../header.php');
 include('../modelo/conexion.php');
@@ -12,68 +10,66 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="col-12 m-auto">
 
-    <div class="col-md-6 col-12">
+    <div class="col-12">
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Buscador</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
-                    <form class="form form-horizontal">
-                        <div class="form-body">
-                            <div class="row">
-                                <div class="col-md-4">
+                    <form class="form">
+                        <div class="row">
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
                                     <label for="fecha_incendio_buscador">Fecha</label>
-                                </div>
-                                <div class="col-md-8 form-group">
                                     <input type="text" id="fecha_incendio_buscador" class="form-control" placeholder="Fecha Buscada">
                                 </div>
-                                <div class="col-md-4">
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
                                     <label for="seccion_incendio_buscador">Seccion</label>
-                                </div>
-                                <div class="col-md-8 form-group">
                                     <input type="text" id="seccion_incendio_buscador" class="form-control" placeholder="Seccion Buscada">
                                 </div>
-                                <div class="col-md-4">
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
                                     <label for="municipio_incendio_buscador">Municipio</label>
-                                </div>
-                                <div class="col-md-8 form-group">
                                     <input type="text" id="municipio_incendio_buscador" class="form-control" placeholder="Municipio Buscado">
                                 </div>
-                                <div class="col-md-4">
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
                                     <label for="localidad_incendio_buscador">Localidad</label>
-                                </div>
-                                <div class="col-md-8 form-group">
                                     <input type="text" id="localidad_incendio_buscador" class="form-control" placeholder="Localidad Buscada">
                                 </div>
-                                <div class="col-md-4">
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
                                     <label for="propietario_incendio_buscador">Propietario</label>
-                                </div>
-                                <div class="col-md-8 form-group">
                                     <input type="text" id="propietario_incendio_buscador" class="form-control" placeholder="Propietario Buscado">
                                 </div>
-                                <div class="col-md-4">
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
                                     <label for="valor_inmueble_incendio_buscador">Valor Inmueble</label>
-                                </div>
-                                <div class="col-md-8 form-group">
                                     <input type="text" id="valor_inmueble_incendio_buscador" class="form-control" placeholder="Valor Inmueble Buscado">
                                 </div>
-                                <div class="col-md-4">
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
                                     <label for="num_residenciados_incendio_buscador">Numero de Residenciados</label>
-                                </div>
-                                <div class="col-md-8 form-group">
                                     <input type="text" id="num_residenciados_incendio_buscador" class="form-control" placeholder="Numero de Residenciados Buscado">
                                 </div>
-                                <div class="col-md-4">
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
                                     <label for="fuente_ignicion_incendio_buscador">Fuente de Ignicion</label>
-                                </div>
-                                <div class="col-md-8 form-group">
                                     <input type="text" id="fuente_ignicion_incendio_buscador" class="form-control" placeholder="Fuente de Ignicion Buscada">
                                 </div>
-                                <div class="col-md-4">
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
                                     <label for="causa_incendio_buscador">Causa Incendio</label>
-                                </div>
-                                <div class="col-md-8 form-group">
                                     <input type="text" id="causa_incendio_buscador" class="form-control" placeholder="Causa Incendio Buscada">
                                 </div>
                             </div>
@@ -83,7 +79,6 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
-
 
     <div class="row" id="table-hover-row">
         <div class="col-12">
