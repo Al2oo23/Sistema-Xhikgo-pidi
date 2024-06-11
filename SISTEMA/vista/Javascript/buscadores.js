@@ -353,3 +353,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+//BUSCADOR USUARIO
+document.addEventListener('DOMContentLoaded', () => {
+
+    const cedula_usuario_buscador = document.getElementById('cedula_usuario_buscador');
+    const tipo_usuario_buscador = document.getElementById('tipo_usuario_buscador');
+    const nombre_usuario_buscador = document.getElementById('nombre_usuario_buscador');
+    const estado_usuario_buscador = document.getElementById('estado_usuario_buscador');
+    const tabla = document.getElementById('tabla_usuario');
+    const rows = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+
+    [cedula_usuario_buscador, tipo_usuario_buscador, nombre_usuario_buscador, estado_usuario_buscador].forEach((input) => {
+        input.addEventListener('keyup', () => {
+
+            const filtro1 = cedula_usuario_buscador.value.toLowerCase();
+            const filtro2 = tipo_usuario_buscador.value.toLowerCase();
+            const filtro3 = nombre_usuario_buscador.value.toLowerCase();
+            const filtro4 = estado_usuario_buscador.value.toLowerCase();
+
+            for (let i = 0; i < rows.length; i++) {
+                let row = rows[i];
+                let cell1 = row.getElementsByTagName('td')[0].textContent.toLowerCase();
+                let cell2 = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+                let cell3 = row.getElementsByTagName('td')[2].textContent.toLowerCase();
+                let cell4 = row.getElementsByTagName('td')[4].textContent.toLowerCase();
+
+                let match1 = !filtro1 || cell1.includes(filtro1);
+                let match2 = !filtro2 || cell2.includes(filtro2);
+                let match3 = !filtro3 || cell3.includes(filtro3);
+                let match4 = !filtro4 || cell4.includes(filtro4);
+
+
+                if (match1 && match2 && match3 && match4) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    });
+});

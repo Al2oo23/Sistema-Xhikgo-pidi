@@ -79,7 +79,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
-    <div class="row" id="table-hover-row">
+    <div class="row" >
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
