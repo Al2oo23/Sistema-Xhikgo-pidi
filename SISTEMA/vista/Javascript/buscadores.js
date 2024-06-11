@@ -334,3 +334,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+//BUSCADOR PERSONA
+document.addEventListener('DOMContentLoaded', () => {
+
+    const cedula_persona_buscador = document.getElementById('cedula_persona_buscador');
+    const nombre_persona_buscador = document.getElementById('nombre_persona_buscador');
+    const edad_persona_buscador = document.getElementById('edad_persona_buscador');
+    const telefono_persona_buscador = document.getElementById('telefono_persona_buscador');
+    const sexo_persona_buscador = document.getElementById('sexo_persona_buscador');
+    const tipo_persona_buscador = document.getElementById('tipo_persona_buscador');
+    const cargo_persona_buscador = document.getElementById('cargo_persona_buscador');
+    const seccion_persona_buscador = document.getElementById('seccion_persona_buscador');
+    const estacion_persona_buscador = document.getElementById('estacion_persona_buscador');
+
+    const tabla = document.getElementById('tabla_persona');
+    const rows = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+
+    [cedula_persona_buscador, nombre_persona_buscador, edad_persona_buscador, telefono_persona_buscador, sexo_persona_buscador, tipo_persona_buscador, cargo_persona_buscador, seccion_persona_buscador, estacion_persona_buscador].forEach((input) => {
+        input.addEventListener('keyup', () => {
+
+            const filtro1 = cedula_persona_buscador.value.toLowerCase();
+            const filtro2 = nombre_persona_buscador.value.toLowerCase();
+            const filtro3 = edad_persona_buscador.value.toLowerCase();
+            const filtro4 = telefono_persona_buscador.value.toLowerCase();
+            const filtro5 = sexo_persona_buscador.value.toLowerCase();
+            const filtro6 = tipo_persona_buscador.value.toLowerCase();
+            const filtro7 = cargo_persona_buscador.value.toLowerCase();
+            const filtro8 = seccion_persona_buscador.value.toLowerCase();
+            const filtro9 = estacion_persona_buscador.value.toLowerCase();
+
+            for (let i = 0; i < rows.length; i++) {
+                let row = rows[i];
+                let cell1 = row.getElementsByTagName('td')[0].textContent.toLowerCase();
+                let cell2 = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+                let cell3 = row.getElementsByTagName('td')[2].textContent.toLowerCase();
+                let cell4 = row.getElementsByTagName('td')[4].textContent.toLowerCase();
+                let cell5 = row.getElementsByTagName('td')[6].textContent.toLowerCase();
+                let cell6 = row.getElementsByTagName('td')[7].textContent.toLowerCase();
+                let cell7 = row.getElementsByTagName('td')[8].textContent.toLowerCase();
+                let cell8 = row.getElementsByTagName('td')[9].textContent.toLowerCase();
+                let cell9 = row.getElementsByTagName('td')[10].textContent.toLowerCase();
+
+                let match1 = !filtro1 || cell1.includes(filtro1);
+                let match2 = !filtro2 || cell2.includes(filtro2);
+                let match3 = !filtro3 || cell3.includes(filtro3);
+                let match4 = !filtro4 || cell4.includes(filtro4);
+                let match5 = !filtro5 || cell5.includes(filtro5);
+                let match6 = !filtro6 || cell6.includes(filtro6);
+                let match7 = !filtro7 || cell7.includes(filtro7);
+                let match8 = !filtro8 || cell8.includes(filtro8);
+                let match9 = !filtro9 || cell9.includes(filtro9);
+
+                if (match1 && match2 && match3 && match4 && match5 && match6 && match7 && match8 && match9) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    });
+});
