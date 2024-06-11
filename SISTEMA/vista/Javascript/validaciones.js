@@ -112,6 +112,94 @@ function validarPersona() {
     return true;
 }
 
+//Validacion de Pantalla Persona Modificar
+function validarPersonaM() {
+    var cedula = document.getElementById('cedulaM').value;
+    var cedulaRegex = /^[JEVPGjevpg]{1}-\d{6,12}$/;
+
+    if (!cedulaRegex.test(cedula)) {
+        alert('Cedula invalida, use el siguiente formato de ejemplo: V-1231232')
+        return false;
+    }
+
+    var nombre_persona = document.getElementById('nombreM').value;
+    var personaRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;;
+
+    if (!personaRegex.test(nombre_persona)) {
+        alert('Ingrese un Nombre valido');
+        return false;
+    }
+
+    var edad = document.getElementById('edadM').value;
+    var edadRegex = /^\d{1,3}$/;
+
+    if (!edadRegex.test(edad)) {
+        alert('Ingrese una Edad valida');
+        return false;
+    }
+
+    var correo = document.getElementById('correoM').value;
+    var correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!correoRegex.test(correo)) {
+        alert('Ingrese un correo valido');
+        return false;
+    }
+
+    var telefono = document.getElementById('telefonoM').value;
+    var telefonoRegex = /^\+[\d]{2,3}\s[\d]{10}$/;
+
+    if (!telefonoRegex.test(telefono)) {
+        alert('Ingrese un numero de telefono valido, debe tener el siguiente formato de ejemplo: +58 1234567890');
+        return false;
+    }
+
+    var direccion = document.getElementById('direccionM').value;
+    var direccionRegex = /^.{3,100}$/;
+
+    if (!direccionRegex.test(direccion)) {
+        alert('Ingrese una direccion valida');
+        return false;
+    }
+
+    var genero = document.getElementById('generoM').value;
+
+    if (genero === "") {
+        alert('Debe seleccionar un genero');
+        return false;
+    }
+
+    var tipo_persona = document.getElementById('tipo_personaM').value;
+
+    if (tipo_persona === "") {
+        alert('Debe seleccionar el tipo de persona');
+        return false;
+    }
+
+    var cargo = document.getElementById('cargoM').value;
+
+    if (cargo === "") {
+        alert('Debe seleccionar un cargo');
+        return false;
+    }
+
+    var seccion = document.getElementById('seccionM').value;
+
+    if (seccion === "") {
+        alert('Debe seleccionar una seccion');
+        return false;
+    }
+
+    var estacion = document.getElementById('estacionM').value;
+
+    if (estacion === "") {
+        alert('Debe seleccionar una estacion');
+        return false;
+    }
+
+    return true;
+}
+
 //Validacion de Pantalla Aseguradora
 function validarAseguradora() {
     var aseguradora = document.getElementById('nombre_aseguradora').value;
