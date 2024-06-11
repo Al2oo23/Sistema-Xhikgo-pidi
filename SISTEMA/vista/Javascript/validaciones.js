@@ -66,20 +66,6 @@ function validarPersona() {
         return false;
     }
 
-    var tipo_persona = document.getElementById('tipo_persona').value;
-
-    if (tipo_persona === "") {
-        alert('Debe seleccionar el tipo de persona');
-        return false;
-    }
-
-    var cargo = document.getElementById('cargo').value;
-
-    if (cargo === "") {
-        alert('Debe seleccionar un cargo');
-        return false;
-    }
-
     var direccion = document.getElementById('direccion').value;
     var direccionRegex = /^.{3,100}$/;
 
@@ -92,6 +78,20 @@ function validarPersona() {
 
     if (genero === "") {
         alert('Debe seleccionar un genero');
+        return false;
+    }
+
+    var tipo_persona = document.getElementById('tipo_persona').value;
+
+    if (tipo_persona === "") {
+        alert('Debe seleccionar el tipo de persona');
+        return false;
+    }
+
+    var cargo = document.getElementById('cargo').value;
+
+    if (cargo === "") {
+        alert('Debe seleccionar un cargo');
         return false;
     }
 

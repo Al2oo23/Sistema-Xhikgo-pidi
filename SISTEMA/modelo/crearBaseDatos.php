@@ -75,16 +75,16 @@ try {
     //------------------ PERSONA ------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS persona (
-        cedula INT(10) PRIMARY KEY NOT NULL,
+        cedula VARCHAR(10) PRIMARY KEY NOT NULL,
         nombre VARCHAR(100) NOT NULL,
         edad INT(4) NOT NULL,
         correo VARCHAR(40) NOT NULL,
-        telefono INT(15) NOT NULL,
+        telefono VARCHAR(15) NOT NULL,
         direccion VARCHAR(100) NOT NULL,
         sexo VARCHAR(2) NOT NULL,
         tipo_persona VARCHAR(20) NOT NULL,
         cargo VARCHAR(20) NOT NULL,
-        seccion INT(3) NOT NULL,
+        seccion VARCHAR(3) NOT NULL,
         estacion VARCHAR(20) NOT NULL
     )";
     $conexion->exec($SQL);
@@ -102,7 +102,7 @@ try {
     //------------------ USUARIO ------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS usuario (
-        cedula INT(10) PRIMARY KEY NOT NULL,
+        cedula VARCHAR(10) PRIMARY KEY NOT NULL,
         tipo VARCHAR(25) NOT NULL,
         nombre VARCHAR(40) NOT NULL,
         clave VARCHAR(40) NOT NULL,
@@ -116,7 +116,7 @@ try {
     //------------------ PRIVILEGIO ------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS privilegio (
-        cedula INT(10) PRIMARY KEY NOT NULL,
+        cedula VARCHAR(10) PRIMARY KEY NOT NULL,
         municipio VARCHAR(10) NOT NULL,
         lugar VARCHAR(10) NOT NULL,
         persona VARCHAR(10) NOT NULL,
