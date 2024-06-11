@@ -5,7 +5,7 @@ $userMySQL = "root";
 $passwordMySQL = "";
 $baseDatos = "chicago_fire";
 
-/*=============================CREAR BASE DE DATOS=================================*/
+/*============================= CREAR BASE DE DATOS =================================*/
 
 try {
 
@@ -21,7 +21,7 @@ try {
     die();
 }
 
-/*==============================================CREAR TABLAS=================================================*/
+/*============================================== CREAR TABLAS =================================================*/
 
 try {
 
@@ -210,7 +210,7 @@ try {
     $SQL = "CREATE TABLE IF NOT EXISTS vehiculo (
         niv INT(100) PRIMARY KEY,
         tipo VARCHAR(20) NOT NULL,
-        unidad INT(20) NOT NULL,
+        unidad VARCHAR(20) NOT NULL,
         marca VARCHAR(20) NOT NULL,
         modelo VARCHAR(20) NOT NULL,
         serial_vehiculo INT(20) NOT NULL,

@@ -31,7 +31,7 @@ $modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_vehiculo.php" method="POST" style="text-align: left;">
+                    <form action="../controlador/ctl_vehiculo.php" method="POST" style="text-align: left;" onsubmit="return validarVehiculoM()">
                         <div class="modal-body">
                         <div class="col-12">
 
@@ -49,7 +49,7 @@ $modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
                                     <label for="first-name-icon"> Tipo de Vehiculo</label>
-                                    <select class="form-select" name="tipo" id="tvehiculoM">
+                                    <select class="form-select" name="tipo" id="tipoM">
                                         <option value="Unidad">Unidad</option>
                                         <option value="Particular">Vehiculo Particular</option>
                                     </select>
@@ -115,7 +115,7 @@ $modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Cilindrada:</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" name="cilindrada" id="cilindroM" placeholder="Cilindrada">
+                                        <input type="text" class="form-control" name="cilindrada" id="cilindradaM" placeholder="Cilindrada">
                                         <div class="form-control-icon">
                                         <i class="bi bi-car-front-fill"></i>
                                         </div>

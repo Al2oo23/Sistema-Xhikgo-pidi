@@ -39,7 +39,7 @@ class recurso{
 
         $SQL = "INSERT INTO recurso VALUES (?, ?, ?, ?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null, $nombre, $tipo]);
+        $preparado->execute([null, $nombre, $tipo, 0]);
 
         return $preparado;
     }

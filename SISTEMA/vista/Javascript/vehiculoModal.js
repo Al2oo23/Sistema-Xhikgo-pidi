@@ -2,12 +2,12 @@
 
 const filas = document.querySelectorAll(".fila");
 const niv = document.getElementById("nivM");
-const tvehiculo = document.getElementById("tvehiculoM");
+const tvehiculo = document.getElementById("tipoM");
 const nunidad = document.getElementById("nunidadM");
 const marca = document.getElementById("marcaM");
 const modelo = document.getElementById("modeloM");
 const serial = document.getElementById("serialM");
-const cilindro = document.getElementById("cilindroM");
+const cilindro = document.getElementById("cilindradaM");
 const carburante = document.getElementById("carburanteM");
 const seguro = document.getElementById("seguroM");
 const cedula = document.getElementById("cedulaM");

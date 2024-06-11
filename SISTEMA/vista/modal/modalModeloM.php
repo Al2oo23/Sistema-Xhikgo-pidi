@@ -25,7 +25,7 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_modelo.php" method="POST" style="text-align: left;">
+                    <form action="../controlador/ctl_modelo.php" method="POST" style="text-align: left;" onsubmit="return validarModeloM()">
                         <div class="modal-body">
                             
                         <input type="hidden" id="id" name="id">
@@ -37,7 +37,7 @@
 
                             <label>Marca:</label>
                             <div class="position-relative">
-                                         <select name="marca" class="form-select" id="marca_vehiculo">
+                                         <select name="marca" class="form-select" id="marcaM">
                                          <option value="default">Seleccione la Marca...</option>
                                         <?php foreach ($marca as $marc) : 
                                             $marca = $marc["nombre"];

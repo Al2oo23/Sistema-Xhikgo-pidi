@@ -75,63 +75,63 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
-</div>
 
-<div class="row" id="table-hover-row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Personas</h4>
-                <?php include("modal/modalPersonaR.php"); ?>
-            </div>
-            <!-- table hover -->
-            <div class="table-responsive">
-                <table class="table table-hover mb-0" id="tabla_persona">
-                    <thead>
-                        <tr style="text-align: center;">
-                            <th class="columnas">Cedula</th>
-                            <th class="columnas">Nombre</th>
-                            <th class="columnas">Edad</th>
-                            <th class="columnas" hidden>Correo</th>
-                            <th class="columnas">Telefono</th>
-                            <th class="columnas" hidden>Direccion</th>
-                            <th class="columnas">Sexo</th>
-                            <th class="columnas">Tipo</th>
-                            <th class="columnas">Cargo</th>
-                            <th class="columnas">Seccion</th>
-                            <th class="columnas">Estacion</th>
-                            <th class="columnas">Accion</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($resultado as $persona) : ?>
-                            <tr class="fila">
-                                <td class="columnas"><?= $persona['cedula']; ?></td>
-                                <td class="columnas"><?= $persona['nombre']; ?></td>
-                                <td class="columnas"><?= $persona['edad']; ?></td>
-                                <td class="columnas" hidden><?= $persona['correo']; ?></td>
-                                <td class="columnas"><?= $persona['telefono']; ?></td>
-                                <td class="columnas" hidden><?= $persona['direccion']; ?></td>
-                                <td class="columnas"><?= $persona['sexo']; ?></td>
-                                <td class="columnas"><?= $persona['tipo_persona']; ?></td>
-                                <td class="columnas"><?= $persona['cargo']; ?></td>
-                                <td class="columnas"><?= $persona['seccion']; ?></td>
-                                <td class="columnas"><?= $persona['estacion']; ?></td>
-                                <td>
-                                    <div class="botones" style="justify-content:space-evenly;">
-                                        <?php include("modal/modalPersonaM.php"); ?>
-                                        <div><a name='eliminar' id='eliminar' href='../controlador/ctl_persona.php?txtID=<?= $persona['cedula']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
-                                    </div>
-                                </td>
+
+    <div class="row" id="table-hover-row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Personas</h4>
+                    <?php include("modal/modalPersonaR.php"); ?>
+                </div>
+                <!-- table hover -->
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" id="tabla_persona">
+                        <thead>
+                            <tr style="text-align: center;">
+                                <th class="columnas">Cedula</th>
+                                <th class="columnas">Nombre</th>
+                                <th class="columnas">Edad</th>
+                                <th class="columnas" hidden>Correo</th>
+                                <th class="columnas">Telefono</th>
+                                <th class="columnas" hidden>Direccion</th>
+                                <th class="columnas">Sexo</th>
+                                <th class="columnas">Tipo</th>
+                                <th class="columnas">Cargo</th>
+                                <th class="columnas">Seccion</th>
+                                <th class="columnas">Estacion</th>
+                                <th class="columnas">Accion</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($resultado as $persona) : ?>
+                                <tr class="fila">
+                                    <td class="columnas"><?= $persona['cedula']; ?></td>
+                                    <td class="columnas"><?= $persona['nombre']; ?></td>
+                                    <td class="columnas"><?= $persona['edad']; ?></td>
+                                    <td class="columnas" hidden><?= $persona['correo']; ?></td>
+                                    <td class="columnas"><?= $persona['telefono']; ?></td>
+                                    <td class="columnas" hidden><?= $persona['direccion']; ?></td>
+                                    <td class="columnas"><?= $persona['sexo']; ?></td>
+                                    <td class="columnas"><?= $persona['tipo_persona']; ?></td>
+                                    <td class="columnas"><?= $persona['cargo']; ?></td>
+                                    <td class="columnas"><?= $persona['seccion']; ?></td>
+                                    <td class="columnas"><?= $persona['estacion']; ?></td>
+                                    <td>
+                                        <div class="botones" style="justify-content:space-evenly;">
+                                            <?php include("modal/modalPersonaM.php"); ?>
+                                            <div><a name='eliminar' id='eliminar' href='../controlador/ctl_persona.php?txtID=<?= $persona['cedula']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 <script src="Javascript/personaModal.js"></script>
 
 <?php

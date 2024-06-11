@@ -1,67 +1,57 @@
-<?php 
-session_start();
+<?php
 $nombrePagina = 'Catálogo de Marca';
 require('../header.php');
 include('../modelo/conexion.php');
 
-if (isset($_SESSION['resultado_busqueda_marca'])) {
-    $resultado = $_SESSION['resultado_busqueda_marca'];
-}
+$sentencia = $conexion->prepare("SELECT * FROM marca");
+$sentencia->execute();
+$resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="col-5 m-auto">
-
-    <div class="row match-height">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Buscador</h4>
-                </div>
-                <div class="card-content">
-                    <div class="card-body">
-                        <form class="form" method="post" action="../buscadores/buscador_marca.php">
-                            <div class="row">
-
-                                <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="nombre_marca_buscado">Nombre de la Marca</label>
-                                        <input type="text" id="nombre_marca_buscado" class="form-control" placeholder="Nombre de la Marca" name="nombre_marca_buscado" value="<?= isset($_POST['nombre_marca_buscado']) ? $_POST['nombre_marca_buscado'] : '' ?>">
-                                    </div>
-                                </div>
-
-                                <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" id="limpiar_marca" name="limpiar_marca" class="btn btn-danger me-1 mb-1">Limpiar</button>
-                                    <button type="submit" id="buscar_marca" name="buscar_marca" class="btn btn-primary me-1 mb-1">Buscar</button>
-                                </div>
+<div class="col-6 m-auto">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Buscador</h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <form class="form form-horizontal">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="nombre_marca_buscador">Nombre de la Marca</label>
                             </div>
-                        </form>
+                            <div class="col-md-8 form-group">
+                                <input type="text" id="nombre_marca_buscador" class="form-control" placeholder="Nombre de la Marca Buscada">
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
 
-                <div class="card">
-                    <div class="card-content">
-                    <div class="card-header">
-                        <h4 class="card-title">Marcas</h4>
-                        <?php include("modal/modalMarcaR.php"); ?>
-                    </div>
-                        <!-- table hover -->
-                        <div class="table-responsive">
-                            <table class="table table-hover mb-0">
-                                <thead>
-                                    <tr class="fila">
-                                        <th class="columna">Nombre</th>
-                                        <th class="columna">Accion</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
-                                    <?php if (isset($resultado)) : ?>
+        <div class="card">
+            <div class="card-content">
+                <div class="card-header">
+                    <h4 class="card-title">Marcas</h4>
+                    <?php include("modal/modalMarcaR.php"); ?>
+                </div>
+                <!-- table hover -->
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" id="tabla_marca">
+                        <thead>
+                            <tr class="fila">
+                                <th class="columnas" hidden>ID</th>
+                                <th class="columnas">Nombre</th>
+                                <th class="columnas">Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (isset($resultado)) : ?>
                                 <?php foreach ($resultado as $filtrado) : ?>
                                     <tr class="fila">
-                                        <td class="columna" hidden><?= $filtrado['id'] ?></td>
-                                        <td class="columna"><?= $filtrado['nombre']; ?></td>
+                                        <td class="columnas" hidden><?= $filtrado['id'] ?></td>
+                                        <td class="columnas"><?= $filtrado['nombre']; ?></td>
                                         <td>
                                             <div class="botones" style="justify-content:space-evenly;">
                                                 <?php include("modal/modalMarcaM.php"); ?>
@@ -71,16 +61,16 @@ if (isset($_SESSION['resultado_busqueda_marca'])) {
                                     </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>
-                                   
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
-            <script src="Javascript/marcaModal.js"></script>
+<script src="Javascript/marcaModal.js"></script>
 
-<?php 
-require ('../footer.php');
+<?php
+require('../footer.php');
 ?>

@@ -396,3 +396,163 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+//BUSCADOR ASEGURADORA
+document.addEventListener('DOMContentLoaded', () => {
+
+    const nombre_aseguradora_buscador = document.getElementById('nombre_aseguradora_buscador');
+    const tipo_aseguradora_buscador = document.getElementById('tipo_aseguradora_buscador');
+
+    const tabla = document.getElementById('tabla_aseguradora');
+    const rows = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+
+    [nombre_aseguradora_buscador, tipo_aseguradora_buscador].forEach((input) => {
+        input.addEventListener('keyup', () => {
+
+            const filtro1 = nombre_aseguradora_buscador.value.toLowerCase();
+            const filtro2 = tipo_aseguradora_buscador.value.toLowerCase();
+
+            for (let i = 0; i < rows.length; i++) {
+                let row = rows[i];
+                let cell1 = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+                let cell2 = row.getElementsByTagName('td')[2].textContent.toLowerCase();
+
+                let match1 = !filtro1 || cell1.includes(filtro1);
+                let match2 = !filtro2 || cell2.includes(filtro2);
+
+                if (match1 && match2) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    });
+});
+
+//BUSCADOR MARCA
+document.addEventListener('DOMContentLoaded', () => {
+
+    const nombre_marca_buscador = document.getElementById('nombre_marca_buscador');
+
+    const tabla = document.getElementById('tabla_marca');
+    const rows = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+
+    [nombre_marca_buscador].forEach((input) => {
+        input.addEventListener('keyup', () => {
+
+            const filtro1 = nombre_marca_buscador.value.toLowerCase();
+
+            for (let i = 0; i < rows.length; i++) {
+                let row = rows[i];
+                let cell1 = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+
+                let match1 = !filtro1 || cell1.includes(filtro1);
+
+                if (match1) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    });
+});
+
+//BUSCADOR MODELO
+document.addEventListener('DOMContentLoaded', () => {
+
+    const nombre_modelo_vehiculo = document.getElementById('nombre_modelo_vehiculo');
+    const marca_modelo_vehiculo = document.getElementById('marca_modelo_vehiculo');
+
+    const tabla = document.getElementById('tabla_modelo');
+    const rows = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+
+    [nombre_modelo_vehiculo, marca_modelo_vehiculo].forEach((input) => {
+        input.addEventListener('keyup', () => {
+
+            const filtro1 = nombre_modelo_vehiculo.value.toLowerCase();
+            const filtro2 = marca_modelo_vehiculo.value.toLowerCase();
+
+            for (let i = 0; i < rows.length; i++) {
+                let row = rows[i];
+                let cell1 = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+                let cell2 = row.getElementsByTagName('td')[2].textContent.toLowerCase();
+
+                let match1 = !filtro1 || cell1.includes(filtro1);
+                let match2 = !filtro2 || cell2.includes(filtro2);
+
+                if (match1 && match2) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    });
+});
+
+//BUSCADOR VEHICULO
+document.addEventListener('DOMContentLoaded', () => {
+
+    const niv_vehiculo_buscador = document.getElementById('niv_vehiculo_buscador');
+    const numero_vehiculo_buscador = document.getElementById('numero_vehiculo_buscador');
+    const marca_vehiculo_buscador = document.getElementById('marca_vehiculo_buscador');
+    const modelo_vehiculo_buscador = document.getElementById('modelo_vehiculo_buscador');
+    const serial_vehiculo_buscador = document.getElementById('serial_vehiculo_buscador');
+    const cilindrada_vehiculo_buscador = document.getElementById('cilindrada_vehiculo_buscador');
+    const carburante_vehiculo_buscador = document.getElementById('carburante_vehiculo_buscador');
+    const seguro_vehiculo_buscador = document.getElementById('seguro_vehiculo_buscador');
+    const propietario_vehiculo_buscador = document.getElementById('propietario_vehiculo_buscador');
+
+    const tabla = document.getElementById('tabla_vehiculo');
+    const rows = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+
+    [niv_vehiculo_buscador, numero_vehiculo_buscador, marca_vehiculo_buscador, modelo_vehiculo_buscador, serial_vehiculo_buscador, cilindrada_vehiculo_buscador, carburante_vehiculo_buscador, seguro_vehiculo_buscador, propietario_vehiculo_buscador].forEach((input) => {
+        input.addEventListener('keyup', () => {
+
+            const filtro1 = niv_vehiculo_buscador.value.toLowerCase();
+            const filtro2 = numero_vehiculo_buscador.value.toLowerCase();
+            const filtro3 = marca_vehiculo_buscador.value.toLowerCase();
+            const filtro4 = modelo_vehiculo_buscador.value.toLowerCase();
+            const filtro5 = serial_vehiculo_buscador.value.toLowerCase();
+            const filtro6 = cilindrada_vehiculo_buscador.value.toLowerCase();
+            const filtro7 = carburante_vehiculo_buscador.value.toLowerCase();
+            const filtro8 = seguro_vehiculo_buscador.value.toLowerCase();
+            const filtro9 = propietario_vehiculo_buscador.value.toLowerCase();
+
+            for (let i = 0; i < rows.length; i++) {
+                let row = rows[i];
+                let cell1 = row.getElementsByTagName('td')[0].textContent.toLowerCase();
+                let cell2 = row.getElementsByTagName('td')[2].textContent.toLowerCase();
+                let cell3 = row.getElementsByTagName('td')[3].textContent.toLowerCase();
+                let cell4 = row.getElementsByTagName('td')[4].textContent.toLowerCase();
+                let cell5 = row.getElementsByTagName('td')[5].textContent.toLowerCase();
+                let cell6 = row.getElementsByTagName('td')[6].textContent.toLowerCase();
+                let cell7 = row.getElementsByTagName('td')[7].textContent.toLowerCase();
+                let cell8 = row.getElementsByTagName('td')[8].textContent.toLowerCase();
+                let cell9 = row.getElementsByTagName('td')[9].textContent.toLowerCase();
+
+                let match1 = !filtro1 || cell1.includes(filtro1);
+                let match2 = !filtro2 || cell2.includes(filtro2);
+                let match3 = !filtro3 || cell3.includes(filtro3);
+                let match4 = !filtro4 || cell4.includes(filtro4);
+                let match5 = !filtro5 || cell5.includes(filtro5);
+                let match6 = !filtro6 || cell6.includes(filtro6);
+                let match7 = !filtro7 || cell7.includes(filtro7);
+                let match8 = !filtro8 || cell8.includes(filtro8);
+                let match9 = !filtro9 || cell9.includes(filtro9);
+
+                if (match1 && match2 && match3 && match4 && match5 && match6 && match7 && match8 && match9) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    });
+});

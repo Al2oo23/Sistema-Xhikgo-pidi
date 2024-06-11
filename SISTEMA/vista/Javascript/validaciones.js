@@ -220,6 +220,26 @@ function validarAseguradora() {
     return true;
 }
 
+//Validacion de Pantalla Aseguradora Modificar
+function validarAseguradoraM() {
+    var aseguradora = document.getElementById('nombreM').value;
+    var aseguradoraRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
+
+    if (!aseguradoraRegex.test(aseguradora)) {
+        alert('Ingrese un nombre valido');
+        return false;
+    }
+
+    var tipo_aseguradora = document.getElementById('tipoM').value;
+
+    if (tipo_aseguradora === "") {
+        alert('Debe seleccionar un tipo aseguradora');
+        return false;
+    }
+
+    return true;
+}
+
 //Validacion de Pantalla Abejas
 function validarAbejas() {
     var parte_diaria = document.getElementById('parte_diaria').value;
@@ -1223,6 +1243,19 @@ function validarMarca() {
     return true;
 }
 
+//Validacion pantalla Marca Modificar
+function validarMarcaM() {
+    var nombre_marca = document.getElementById('marcaM').value;
+    var nombre_marcaRegex = /^.{3,50}$/;
+
+    if (!nombre_marcaRegex.test(nombre_marca)) {
+        alert('Debe ingresar un nombre valido');
+        return false;
+    }
+
+    return true;
+}
+
 //Validacion pantalla Modelo
 function validarModelo() {
     var modelo_vehiculo = document.getElementById('modelo_vehiculo').value;
@@ -1234,6 +1267,26 @@ function validarModelo() {
     }
 
     var marca_vehiculo = document.getElementById('marca_vehiculo').value;
+
+    if (marca_vehiculo === "default") {
+        alert('Debe seleccionar una marca de vehiculo valida');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Modelo Modificar
+function validarModeloM() {
+    var modelo_vehiculo = document.getElementById('modeloM').value;
+    var modelo_vehiculoRegex = /^.{3,50}$/;
+
+    if (!modelo_vehiculoRegex.test(modelo_vehiculo)) {
+        alert('Debe ingresar un modelo de vehiculo valido');
+        return false;
+    }
+
+    var marca_vehiculo = document.getElementById('marcaM').value;
 
     if (marca_vehiculo === "default") {
         alert('Debe seleccionar una marca de vehiculo valida');
@@ -1530,6 +1583,89 @@ function validarVehiculo() {
 
     return true;
 }
+
+//Validacion pantalla Vehiculo Modificar
+function validarVehiculoM() {
+
+    var identidad_vehicular = document.getElementById('nivM').value;
+    var identidad_vehicularRegex = /^[a-zA-Z\d-_]{3,50}$/;
+
+    if (!identidad_vehicularRegex.test(identidad_vehicular)) {
+        alert('Ingrese una identidad vehicular valida');
+        return false;
+    }
+
+    var tipo_vehiculo = document.getElementById('tipoM').value;
+
+    if (tipo_vehiculo === "") {
+        alert('Debe seleccionar el tipo de vehiculo');
+        return false;
+    }
+
+    var numero_unidad = document.getElementById('nunidadM').value;
+    var numero_unidadRegex = /^[a-zA-Z\d-_]{3,50}$/;
+
+    if (!numero_unidadRegex.test(numero_unidad)) {
+        alert('Ingrese un numero de unidad valido');
+        return false;
+    }
+
+    var marca = document.getElementById('marcaM').value;
+
+    if (marca === "") {
+        alert('Debe seleccionar una marca de vehiculo');
+        return false;
+    }
+
+    var modelo = document.getElementById('modeloM').value;
+
+    if (modelo === "") {
+        alert('Debe seleccionar un modelo de vehiculo');
+        return false;
+    }
+
+    var serial = document.getElementById('serialM').value;
+    var serialRegex = /^[a-zA-Z\d-_]{3,50}$/;
+
+    if (!serialRegex.test(serial)) {
+        alert('Ingrese un serial valido, debe tener entre 3-50 caracteres y no debe tener caracteres especiales');
+        return false;
+    }
+
+    var cilindrada = document.getElementById('cilindradaM').value;
+    var cilindradaRegex = /^\d+(CC|cc|HP|hp)$/;
+
+    if (!cilindradaRegex.test(cilindrada)) {
+        alert('Debe especificar la cilindrada del vehiculo con el siguiente patron: 100CC, 100cc, 100HP o 100hp');
+        return false;
+    }
+
+    var carburante = document.getElementById('carburanteM').value;
+    var carburanteRegex = /^.{3,50}$/;
+
+    if (!carburanteRegex.test(carburante)) {
+        alert('Ingrese un carburante valido');
+        return false;
+    }
+
+    var estado_seguro = document.getElementById('seguroM').value;
+
+    if (estado_seguro === "") {
+        alert('Debe seleccionar en que estado se encuentra el seguro del vehiculo');
+        return false;
+    }
+
+    var cedula_propietario = document.getElementById('cedulaM').value;
+    var cedula_propietarioRegex = /^[JEVPGjevpg]{1}-\d{6,12}$/;
+
+    if (!cedula_propietarioRegex.test(cedula_propietario)) {
+        alert('Cedula invalida, use el siguiente formato de ejemplo: V-1231232')
+        return false;
+    }
+
+    return true;
+}
+
 
 //Validacion pantalla de Transito
 function validarTransito() {
