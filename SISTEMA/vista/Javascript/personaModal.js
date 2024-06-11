@@ -25,10 +25,10 @@ filas.forEach(fila => {
        edad.value = columnas[2].textContent
        correo.value = columnas[3].textContent
        telefono.value = columnas[4].textContent
-       cargo.value = columnas[5].textContent
-       direccion.value = columnas[6].textContent
-       sexo.value = columnas[7].textContent
-       tpersona.value = columnas[8].textContent
+       direccion.value = columnas[5].textContent
+       sexo.value = columnas[6].textContent
+       tpersona.value = columnas[7].textContent
+       cargo.value = columnas[8].textContent
        seccion.value = columnas[9].textContent
        estacion.value = columnas[10].textContent
        console.log(columnas);

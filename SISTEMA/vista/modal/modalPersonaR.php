@@ -1,4 +1,25 @@
- <!-- Button trigger for login form modal -->
+<?php 
+// LLAMAR AL TIPO DE PERSONA
+$sentencia = $conexion->prepare("SELECT tipo FROM tipo_persona");
+$sentencia->execute();
+$tpersona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+// LLAMAR AL CARGO
+$sentencia = $conexion->prepare("SELECT nombre FROM cargo");
+$sentencia->execute();
+$cargo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+// LLAMAR A LA SECCION
+$sentencia = $conexion->prepare("SELECT numero FROM seccion");
+$sentencia->execute();
+$seccion = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+// LLAMAR A LA ESTACION
+$sentencia = $conexion->prepare("SELECT nombre FROM estacion");
+$sentencia->execute();
+$estacion = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+?>
+<!-- Button trigger for login form modal -->
  <button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">
        Nuevo
  </button>
@@ -18,7 +39,7 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_(nombre).php" method="POST" style="text-align: left;" onsubmit="return validarPersona()">
+                    <form action="../controlador/ctl_persona.php" method="POST" style="text-align: left;" onsubmit="return validarPersona()">
                         <div class="modal-body">
                         
                         <div class="col-12">
@@ -81,34 +102,6 @@
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Tipo de Persona</label>
-                                    <div class="position-relative">
-                                        <select name="tipo-persona" class="form-select" id="tipo_persona">
-                                            <option value="">Seleccione un tipo de Persona...</option>
-                                            <option value="bombero">Bombero</option>
-                                            <option value="usuario">Usuario</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Cargo</label>
-                                    <div class="position-relative">
-                                    <div class="position-relative">
-                                        <select name="cargo" class="form-select" id="cargo">
-                                            <option value="">Seleccione un Cargo...</option>
-                                            <option value="comandante">Comandante</option>
-                                            <option value="capitan">Capitan</option>
-                                        </select>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
                                     <label for="">Dirección</label>
                                     <div class="position-relative">
                                         <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Dirección">
@@ -125,9 +118,45 @@
                                     <div class="position-relative">
                                         <select name="genero" class="form-select" id="genero">
                                             <option value="">Seleccione un Genero...</option>
-                                            <option value="masculino">Masculino</option>
-                                            <option value="usuario">Femenino</option>
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Femenino</option>
                                         </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Tipo de Persona</label>
+                                    <div class="position-relative">
+                                        <select name="tipo_persona" class="form-select" id="tipo_persona">
+                                            <option value="">Seleccione un tipo de Persona...</option>
+                                            <?php foreach ($tpersona as $tipo) : 
+                                            $tpersona = $tipo["tipo"];
+                                        ?>
+                                            <option value="<?=$tpersona?>"><?=$tpersona?></option>
+
+                                        <?php endforeach;?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Cargo</label>
+                                    <div class="position-relative">
+                                    <div class="position-relative">
+                                        <select name="cargo" class="form-select" id="cargo">
+                                            <option value="">Seleccione un Cargo...</option>
+                                            <?php foreach ($cargo as $carg) : 
+                                            $cargo = $carg["nombre"];
+                                        ?>
+                                            <option value="<?=$cargo?>"><?=$cargo?></option>
+
+                                        <?php endforeach;?>
+                                        </select>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -138,8 +167,12 @@
                                     <div class="position-relative">
                                         <select name="seccion" class="form-select" id="seccion">
                                             <option value="">Seleccione una Seccion...</option>
-                                            <option value="algo">Algo</option>
-                                            <option value="otro">Otro</option>
+                                            <?php foreach ($seccion as $secc) : 
+                                            $seccion = $secc["numero"];
+                                        ?>
+                                            <option value="<?=$seccion?>"><?=$seccion?></option>
+
+                                        <?php endforeach;?>
                                         </select>
                                     </div>
                                 </div>
@@ -151,8 +184,12 @@
                                     <div class="position-relative">
                                         <select name="estacion" class="form-select" id="estacion">
                                             <option value="">Seleccione una Estacion...</option>
-                                            <option value="uno">Uno</option>
-                                            <option value="dos">Dos</option>
+                                            <?php foreach ($estacion as $estac) : 
+                                            $estacion = $estac["nombre"];
+                                        ?>
+                                            <option value="<?=$estacion?>"><?=$estacion?></option>
+
+                                        <?php endforeach;?>
                                         </select>
                                     </div>
                                 </div>
@@ -169,7 +206,7 @@
                                     <span class="d-none d-sm-block">Cerrar</span>
                                 </button>
 
-                                <button type="submit" name="agregar" value="agregar" class="btn btn-primary ms-1">
+                                <button type="submit" name="registrar" value="registrar" class="btn btn-primary ms-1">
                                     <i class="bx bx-check d-block d-sm-none"></i>
                                     <span class="d-none d-sm-block">Registrar</span>
                                 </button>
