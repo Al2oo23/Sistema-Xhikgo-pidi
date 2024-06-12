@@ -28,7 +28,7 @@
 
                             <label>Nombre:</label>
                             <div class="form-group">
-                                <input type="text" value="" name="nombre_usuario" id="nombreM" class="form-control" >
+                                <input type="text" value="" name="nombre" id="nombreM" class="form-control" >
                             </div>   
 
                             <label>Clave:</label>
@@ -37,7 +37,7 @@
                             </div>
                             <label>Estado:</label>
                             <div class="form-group">
-                                <input type="text" value="" name="clave_repetida" id="estadoM" class="form-control" >
+                                <input type="text" value="" name="estado" id="estadoM" class="form-control" >
                             </div>
                         </div>
                        

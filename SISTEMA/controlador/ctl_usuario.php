@@ -7,19 +7,23 @@ $usuario = new usuario();
 //REGISTRAR
 if (isset($_POST['agregar']) && $_POST['agregar'] == 'agregar') {
 
-    print_r($_SESSION["datosUsuarioR"]);
-    print_r($_POST);
+    $usuario->setCedula($_SESSION["datosUsuarioR"]["cedula"]);
+    $usuario->setNombre($_SESSION["datosUsuarioR"]["nombre"]);
+    $usuario->setClave($_SESSION["datosUsuarioR"]["clave"]);
+    $usuario->setPregunta($_POST["pregunta"]);
+    $usuario->setRespuesta($_POST["respuesta"]);
 
-/*
-    $resultado = $Tpersona->registrarTpersona($Tpersona->getTipo(), $Tpersona->getDescripcion());
 
-    if (!$resultado) {
-        echo "<script>alert('No se pudo registrar el Tipo de Persona')</script>";
-        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/modalTpersonaR.php'>";
+
+    $resultado = $usuario->agregarUsuario($usuario->getCedula(), $usuario->getNombre(), $usuario->getClave(), "A",$usuario->getPregunta(), $usuario->getRespuesta());
+
+    if (empty($resultado)){
+        echo "<script>alert('Registro Fallido')</script>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoUsuario.php'>";
     } else {
-        echo "<script>alert('Tipo de Persona registrado con exito')</script>";
-        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoTpersona.php'>";
-    }*/
+        echo "<script>alert('Registro Exitoso!')</script>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoUsuario.php'>";
+    }
 }
 
 

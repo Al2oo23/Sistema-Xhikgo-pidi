@@ -75,7 +75,7 @@ try {
     //------------------ PERSONA ------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS persona (
-        cedula VARCHAR(10) PRIMARY KEY NOT NULL,
+        cedula VARCHAR(15) PRIMARY KEY NOT NULL,
         nombre VARCHAR(100) NOT NULL,
         edad INT(4) NOT NULL,
         correo VARCHAR(40) NOT NULL,
@@ -102,7 +102,7 @@ try {
     //------------------ USUARIO ------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS usuario (
-        cedula VARCHAR(10) PRIMARY KEY NOT NULL,
+        cedula VARCHAR(15) PRIMARY KEY NOT NULL,
         nombre VARCHAR(40) NOT NULL,
         clave VARCHAR(40) NOT NULL,
         estado VARCHAR(2) NOT NULL,

@@ -37,7 +37,7 @@
                                 <div class="form-group has-icon-left">
                                     <label for="">Nombre</label>
                                     <div class=" position-relative">
-                                        <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre">
+                                        <input type="text" class="form-control" name="nombre" id="nombre_usuario" placeholder="Nombre">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person"></i>
                                         </div>
