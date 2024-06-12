@@ -145,7 +145,7 @@ try {
     $preparado = $conexion->prepare($SQL);
     $preparado->execute(["0","Cofla",0,"?",0,"?","?","Supervisor","?",99,"?"]);
 
-    $SQL = "INSERT IGNORE INTO usuario VALUES(?,?,?,?,?,?,?)";
+    $SQL = "INSERT IGNORE INTO usuario VALUES(?,?,?,?,?,?)";
     $preparado = $conexion->prepare($SQL);
     $preparado->execute(["0","Cofla","Cofla","A","que paso","nada"]);
 

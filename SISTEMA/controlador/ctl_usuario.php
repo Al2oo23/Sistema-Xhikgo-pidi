@@ -1,0 +1,55 @@
+<?php
+session_start();
+include('../modelo/conexion.php');
+include('../modelo/clase_usuario.php');
+$usuario = new usuario();
+
+//REGISTRAR
+if (isset($_POST['agregar']) && $_POST['agregar'] == 'agregar') {
+
+    print_r($_SESSION["datosUsuarioR"]);
+    print_r($_POST);
+
+/*
+    $resultado = $Tpersona->registrarTpersona($Tpersona->getTipo(), $Tpersona->getDescripcion());
+
+    if (!$resultado) {
+        echo "<script>alert('No se pudo registrar el Tipo de Persona')</script>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/modalTpersonaR.php'>";
+    } else {
+        echo "<script>alert('Tipo de Persona registrado con exito')</script>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoTpersona.php'>";
+    }*/
+}
+
+
+//MODIFICAR
+if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
+
+    $Tpersona->setId($_POST['id']);
+    $Tpersona->setTipo($_POST['tipo_persona']);
+    $Tpersona->setDescripcion($_POST['descripcion']);
+
+    $resultado = $Tpersona->modificarTpersona($Tpersona->getId(), $Tpersona->getTipo(), $Tpersona->getDescripcion());
+
+    if (!$resultado) {
+        echo "<script>alert('No se pudo modificar el Tipo de Persona')</script>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/modal/modalTpersonaM.php'>";
+    } else {
+        echo "<script>alert('Tipo de Persona modificada con exito')</script>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoTpersona.php'>";
+    }
+}
+
+//ELIMINAR
+if (isset($_GET['txtID'])) {
+
+    $txtID = (isset($_GET['txtID'])) ? $_GET['txtID'] : '';
+
+    $sentencia = $conexion->prepare("DELETE FROM tipo_persona WHERE id = ?");
+    $sentencia->bindParam(1, $txtID, PDO::PARAM_INT);
+    $sentencia->execute();
+
+    echo "<script>alert('Tipo de Persona Eliminada con Exito')</script>";
+	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoTpersona.php'>"; 
+}

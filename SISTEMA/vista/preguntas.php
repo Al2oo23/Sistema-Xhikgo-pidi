@@ -1,6 +1,9 @@
 <?php
+session_start();
 $nombrePagina = "Preguntas de Seguridad";
 require('../header.php');
+
+$_SESSION["datosUsuarioR"] = $_POST;
 ?>
 
 <div class="col-md-6 col-12 m-auto">
@@ -18,7 +21,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Formular Pregunta de seguridad</label>
                                     <div class="position-relative">
-                                        <input type="text" id="clave" class="form-control" placeholder="Pregunta">
+                                        <input type="text" id="pregunta" name="pregunta" class="form-control" placeholder="Pregunta">
                                         <div class="form-control-icon">
                                             <i class="bi bi-lock"></i>
                                         </div>
@@ -30,7 +33,7 @@ require('../header.php');
                                 <div class="form-group has-icon-left">
                                     <label for="">Respueta</label>
                                     <div class="position-relative">
-                                        <input type="text" id="clave_repetida" class="form-control" placeholder="Respuesta">
+                                        <input type="text" id="respuesta" name="respuesta" class="form-control" placeholder="Respuesta">
                                         <div class="form-control-icon">
                                             <i class="bi bi-lock"></i>
                                         </div>
@@ -38,7 +41,7 @@ require('../header.php');
                                 </div>
                             </div>
                             <div class="col-12 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary me-1 mb-1">Registrar</button>
+                                <button type="submit" name="agregar" value="agregar" class="btn btn-primary me-1 mb-1">Registrar</button>
                             </div>
                         </div>
                     </div>
