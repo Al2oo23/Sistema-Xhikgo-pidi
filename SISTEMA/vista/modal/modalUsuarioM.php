@@ -19,26 +19,45 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_(usuario).php" method="POST" style="text-align: left;">
+                    <form action="../controlador/ctl_usuario.php" method="POST" style="text-align: left;">
                         <div class="modal-body">
                             <label>Cedula:</label>
                             <div class="form-group">
-                                <input type="text" value="" name="cedula" disabled id="cedulaM" class="form-control" >
+                                <input type="text" name="cedula" id="cedulaM" class="form-control" onfocus="this.blur()">
                             </div>
 
                             <label>Nombre:</label>
                             <div class="form-group">
-                                <input type="text" value="" name="nombre" id="nombreM" class="form-control" >
+                                <input type="text" name="nombre" id="nombreM" class="form-control" placeholder="Nombre del Usuario">
                             </div>   
 
                             <label>Clave:</label>
                             <div class="form-group">
-                                <input type="text" value="" name="clave" id="claveM" class="form-control" >
+                                <input type="text" name="clave" id="claveM" class="form-control" placeholder="Clave">
                             </div>
-                            <label>Estado:</label>
+
+                            <label>Pregunta:</label>
                             <div class="form-group">
-                                <input type="text" value="" name="estado" id="estadoM" class="form-control" >
+                                <input type="text" name="pregunta" id="preguntaM" class="form-control" placeholder="Pregunta de Seguridad">
                             </div>
+
+                            <label>Respuesta:</label>
+                            <div class="form-group">
+                                <input type="text" name="respuesta" id="respuestaM" class="form-control" placeholder="Respuesta a la Pregunta">
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Estado</label>
+                                    <div class="position-relative">
+                                         <select name="estado" class="form-select" id="estadoM">
+                                            <option value="A">Activo</option>
+                                            <option value="I">Inactivo</option>                  
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                        
             <!-- Footer del modal: ------------------------------>

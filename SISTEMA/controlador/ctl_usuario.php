@@ -30,18 +30,21 @@ if (isset($_POST['agregar']) && $_POST['agregar'] == 'agregar') {
 //MODIFICAR
 if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
 
-    $Tpersona->setId($_POST['id']);
-    $Tpersona->setTipo($_POST['tipo_persona']);
-    $Tpersona->setDescripcion($_POST['descripcion']);
+    $usuario->setCedula($_POST["cedula"]);
+    $usuario->setNombre($_POST["nombre"]);
+    $usuario->setClave($_POST["clave"]);
+    $usuario->setEstado($_POST["estado"]);
+    $usuario->setPregunta($_POST["pregunta"]);
+    $usuario->setRespuesta($_POST["respuesta"]);
 
-    $resultado = $Tpersona->modificarTpersona($Tpersona->getId(), $Tpersona->getTipo(), $Tpersona->getDescripcion());
+    $resultado = $usuario->modificarUsuario($usuario->getNombre(), $usuario->getClave(), $usuario->getEstado(), $usuario->getPregunta(), $usuario->getRespuesta(), $usuario->getCedula());
 
-    if (!$resultado) {
-        echo "<script>alert('No se pudo modificar el Tipo de Persona')</script>";
-        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/modal/modalTpersonaM.php'>";
+    if (empty($resultado)){
+        echo "<script>alert('No se pudo modificar el Usuario')</script>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/modal/catalogoUsuario.php'>";
     } else {
-        echo "<script>alert('Tipo de Persona modificada con exito')</script>";
-        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoTpersona.php'>";
+        echo "<script>alert('Usuario modificado con exito')</script>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoUsuario.php'>";
     }
 }
 

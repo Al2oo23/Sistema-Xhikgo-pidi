@@ -70,13 +70,12 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <td class="columnas"><?= $usuario['cedula']; ?></td>
                                     <td class="columnas"><?= $usuario['nombre']; ?></td>
                                     <td class="columnas" hidden><?= $usuario['clave']; ?></td>
-                                    <td class="columnas"><?= $usuario['estado']; ?></td>
                                     <td class="columnas" hidden><?= $usuario['pregunta']; ?></td>
                                     <td class="columnas" hidden><?= $usuario['respuesta']; ?></td>
+                                    <td class="columnas"><?= $usuario['estado']; ?></td>                                
                                     <td>
                                         <div class="botones" style="justify-content:space-evenly;">
                                             <?php include("modal/modalUsuarioM.php"); ?>
-                                            <div><a name='eliminar' id='eliminar' href='../controlador/ctl_(nombre).php?txtID=<?= $usuario['cedula']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                     </td>
                                 </tr>

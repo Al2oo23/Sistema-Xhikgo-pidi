@@ -1,25 +1,22 @@
 "use strict";
 
 const filas = document.querySelectorAll(".fila");
-const idborrar = document.getElementById("idBorrar");
 const cedula = document.getElementById("cedulaM");
-const tusuario = document.getElementById("tusuarioM");
 const nombre = document.getElementById("nombreM");
 const clave = document.getElementById("claveM");
-const estado = document.getElementById("estadoM");
+const pregunta = document.getElementById("preguntaM");
+const respuesta = document.getElementById("respuestaM");
 const modal = document.getElementById("modalM");
 
 filas.forEach(fila => {
      
-
     fila.addEventListener("click",(e)=>{
        const columnas = fila.children
        cedula.value = columnas[0].textContent
-       tusuario.value = columnas[1].textContent
-       nombre.value = columnas[2].textContent
-       clave.value = columnas[3].textContent
-       estado.value = columnas[4].textContent
-       console.log(columnas);
+       nombre.value = columnas[1].textContent
+       clave.value = columnas[2].textContent
+       pregunta.value = columnas[3].textContent
+       respuesta.value = columnas[4].textContent
     });
 });
 

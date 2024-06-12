@@ -59,12 +59,12 @@ class usuario{
     }
 
     //MODIFICAR
-    public function modificarTpersona($id, $tipo, $descripcion){
+    public function modificarUsuario($nombre, $clave, $estado, $pregunta, $respuesta, $cedula){
         include("conexion.php");
     
-        $SQL = "UPDATE tipo_persona SET tipo = ?, descripcion = ? WHERE id = ?";
+        $SQL = "UPDATE usuario SET nombre = ?, clave = ?, estado = ?, pregunta = ?, respuesta = ? WHERE cedula = ?";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$tipo, $descripcion, $id]);
+        $preparado->execute([$nombre, $clave, $estado, $pregunta, $respuesta, $cedula]);
     
         return $preparado;
     }
