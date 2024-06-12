@@ -32,19 +32,6 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Tipo de Usuario:</label>
-                                    <div class="position-relative">
-                                        <select name="tipo-usuario" class="form-select" id="tipo_usuario">
-                                            <option value="">Seleccione un tipo de Usuario...</option>
-                                            <option value="bombero">Supervisor</option>
-                                            <option value="usuario">Administrador</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">

@@ -1,5 +1,5 @@
 <?php
-$nombrePagina = "Registro de Usuario";
+$nombrePagina = "Preguntas de Seguridad";
 require('../header.php');
 ?>
 
@@ -10,7 +10,7 @@ require('../header.php');
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-vertical" action="catalogoUsuario.php">
+                <form class="form form-vertical" method="POST" action="../controlador/ctl_usuario.php">
                     <div class="form-body">
                         <div class="row">
 

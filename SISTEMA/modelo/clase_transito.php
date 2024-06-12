@@ -204,22 +204,25 @@ class transito{
     }
 
     //Modificar
-    public function modificarAviso($id, $aviso ){
+    public function modificarTransito($id, $fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro){
+    
         include("conexion.php");
 
-        $SQL = "UPDATE aviso SET nombre = ? WHERE id = ?";
+        $SQL = "UPDATE transito SET fecha = ?, seccion = ?, estacion = ?, emergencia = ?, inspeccion = ?, incidente = ?, taviso = ?, solicitante = ?, recibidor = ?, aviso = ?, salida = ?, llegada = ?, regreso = ?, vehiculo = ?, lesionados = ?, occisos = ?, observaciones = ?, incendio = ?, recurso = ?, cantidad = ?, jefe = ?, efectivo = ?, unidad = ?, pnb = ?, gnb = ?, intt = ?, invity = ?, pc = ?, otros = ?  WHERE id = ?";
+
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$aviso,  $id]);
+
+        $preparado->execute([$fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro, $id]);
 
         return $preparado;
     }
 
     
     //ELIMINAR
-    public function eliminarAviso ($id){
+    public function eliminarTransito ($id){
         include ("conexion.php");
 
-        $SQL = $conexion->prepare("DELETE FROM aviso WHERE id = ?");
+        $SQL = $conexion->prepare("DELETE FROM transito WHERE id = ?");
         $SQL->bindParam(1, $id, PDO::PARAM_INT);
         $preparado = $SQL->execute();
 

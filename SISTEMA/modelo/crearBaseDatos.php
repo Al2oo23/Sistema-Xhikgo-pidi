@@ -103,13 +103,12 @@ try {
 
     $SQL = "CREATE TABLE IF NOT EXISTS usuario (
         cedula VARCHAR(10) PRIMARY KEY NOT NULL,
-        tipo VARCHAR(25) NOT NULL,
         nombre VARCHAR(40) NOT NULL,
         clave VARCHAR(40) NOT NULL,
         estado VARCHAR(2) NOT NULL,
         pregunta VARCHAR(20) NOT NULL,
-        respuesta VARCHAR(20) NOT NULL,
-        FOREIGN KEY (cedula) REFERENCES persona(cedula)  
+        respuesta VARCHAR(20) NOT NULL/*,
+        FOREIGN KEY (cedula) REFERENCES persona(cedula) */ 
     )";
     $conexion->exec($SQL);
 
@@ -135,8 +134,8 @@ try {
         eliminar VARCHAR(10) NOT NULL,
         incendio VARCHAR(10) NOT NULL,
         transito VARCHAR(10) NOT NULL,
-        abejas VARCHAR(10) NOT NULL,
-        FOREIGN KEY (cedula) REFERENCES persona(cedula)  
+        abejas VARCHAR(10) NOT NULL/*,
+        FOREIGN KEY (cedula) REFERENCES persona(cedula)  */
     )";
     $conexion->exec($SQL);
 
@@ -144,11 +143,11 @@ try {
 
     $SQL = "INSERT IGNORE INTO persona VALUES(?,?,?,?,?,?,?,?,?,?,?)";
     $preparado = $conexion->prepare($SQL);
-    $preparado->execute([0,"Cofla",0,"?",0,"?","?","Supervisor","?",99,"?"]);
+    $preparado->execute(["0","Cofla",0,"?",0,"?","?","Supervisor","?",99,"?"]);
 
     $SQL = "INSERT IGNORE INTO usuario VALUES(?,?,?,?,?,?,?)";
     $preparado = $conexion->prepare($SQL);
-    $preparado->execute([0,"Supervisor","Cofla","Cofla","A","que paso","nada"]);
+    $preparado->execute(["0","Cofla","Cofla","A","que paso","nada"]);
 
     //------------------ MARCA ------------------
 
@@ -262,8 +261,8 @@ try {
         inspeccion VARCHAR(4) NOT NULL,
         incidente VARCHAR(20) NOT NULL,
         taviso VARCHAR(20) NOT NULL,
-        solicitante INT(11) NOT NULL,
-        recibidor INT(11) NOT NULL,
+        solicitante VARCHAR(11) NOT NULL,
+        recibidor VARCHAR(11) NOT NULL,
         aviso VARCHAR(20) NOT NULL,
         salida VARCHAR(20) NOT NULL,
         llegada VARCHAR(20) NOT NULL,
@@ -275,7 +274,7 @@ try {
         incendio VARCHAR(3) NOT NULL,
         recurso VARCHAR(20) NOT NULL,
         cantidad VARCHAR(3) NOT NULL,
-        jefe INT(20) NOT NULL,
+        jefe VARCHAR(20) NOT NULL,
         efectivo VARCHAR(20) NOT NULL,
         unidad INT(3) NOT NULL,
         pnb INT(11) NOT NULL,

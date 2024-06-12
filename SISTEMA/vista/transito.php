@@ -4,10 +4,11 @@ $nombrePagina = 'Catálogo Incidentes de Transito';
 require('../header.php');
 include('../modelo/conexion.php');
 
-/*$SQL = "SELECT * FROM marca";
+$SQL = "SELECT * FROM transito";
 $preparado = $conexion->prepare($SQL);
 $preparado->execute();
-$marcas = $preparado->fetchAll(PDO::FETCH_ASSOC);*/
+$resultados = $preparado->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <div class="col-10 m-auto">
@@ -55,49 +56,49 @@ $marcas = $preparado->fetchAll(PDO::FETCH_ASSOC);*/
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php //foreach ($marcas as $marca) :?>
+                                <?php foreach ($resultados as $resultado) :?>
                                     <tr class="fila">
-                                        <td class="columna" hidden></td>
-                                        <td class="columna">Diario</td>
-                                        <td class="columna">Seccion</td>
-                                        <td class="columna">Estacion</td>
-                                        <td class="columna">si</td>
-                                        <td class="columna">si</td>
-                                        <td class="columna">choque</td>
-                                        <td class="columna">gemidos</td>
-                                        <td class="columna">10000000</td>
-                                        <td class="columna">10000000</td>
-                                        <td class="columna">3:00</td>
-                                        <td class="columna">3:00</td>
-                                        <td class="columna">3:00</td>
-                                        <td class="columna">3:00</td>
-                                        <td class="columna">ashgfwqf</td>
-                                        <td class="columna">99999999</td>
-                                        <td class="columna">99999999</td>
-                                        <td class="columna">Tuvo hevi</td>
-                                        <td class="columna">muchos</td>
-                                        <td class="columna">penes</td>
-                                        <td class="columna">99999999</td>
-                                        <td class="columna">Gojo Satoru</td>
-                                        <td class="columna">Yuji, Yuta, Choso</td>
-                                        <td class="columna">5</td>
-                                        <td class="columna">Yuki</td>
-                                        <td class="columna">Mei Mei</td>
-                                        <td class="columna">Nanami</td>
-                                        <td class="columna">Kenjaku</td>
-                                        <td class="columna">Sukuna</td>
-                                        <td class="columna">Maldito Gege</td>
+                                        <td class="columna" hidden><?= $resultado['id']?></td>
+                                        <td class="columna"><?= $resultado['fecha']?></td>
+                                        <td class="columna"><?= $resultado['seccion']?></td>
+                                        <td class="columna"><?= $resultado['estacion']?></td>
+                                        <td class="columna"><?= $resultado['inspeccion']?></td>
+                                        <td class="columna"><?= $resultado['emergencia']?></td>
+                                        <td class="columna"><?= $resultado['incidente']?></td>
+                                        <td class="columna"><?= $resultado['taviso']?></td>
+                                        <td class="columna"><?= $resultado['solicitante']?></td>
+                                        <td class="columna"><?= $resultado['recibidor']?></td>
+                                        <td class="columna"><?= $resultado['aviso']?></td>
+                                        <td class="columna"><?= $resultado['salida']?></td>
+                                        <td class="columna"><?= $resultado['llegada']?></td>
+                                        <td class="columna"><?= $resultado['regreso']?></td>
+                                        <td class="columna"><?= $resultado['vehiculo']?></td>
+                                        <td class="columna"><?= $resultado['lesionados']?></td>
+                                        <td class="columna"><?= $resultado['occisos']?></td>
+                                        <td class="columna"><?= $resultado['observaciones']?></td>
+                                        <td class="columna"><?= $resultado['incendio']?></td>
+                                        <td class="columna"><?= $resultado['recurso']?></td>
+                                        <td class="columna"><?= $resultado['cantidad']?></td>
+                                        <td class="columna"><?= $resultado['jefe']?></td>
+                                        <td class="columna"><?= $resultado['efectivo']?></td>
+                                        <td class="columna"><?= $resultado['unidad']?></td>
+                                        <td class="columna"><?= $resultado['pnb']?></td>
+                                        <td class="columna"><?= $resultado['gnb']?></td>
+                                        <td class="columna"><?= $resultado['intt']?></td>
+                                        <td class="columna"><?= $resultado['invity']?></td>
+                                        <td class="columna"><?= $resultado['pc']?></td>
+                                        <td class="columna"><?= $resultado['otros']?></td>
 
                                         
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                        <?php include("modal/modalMarcaM.php");?>
-                                        <div><a name='eliminar' id='eliminar' href='../controlador/ctl_marca.php?txtID=<?= $marca['id']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                        <?php include("modal/transitoModalM.php");?>
+                                        <div><a name='eliminar' id='eliminar' href='../controlador/ctl_transito.php?txtID=<?= $resultado['id']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                         </td>
 
                                     </tr>
-                                <?php //endforeach;?>   
+                                <?php endforeach;?>   
                                 </tbody>
                             </table>
                         </div>
@@ -109,7 +110,7 @@ $marcas = $preparado->fetchAll(PDO::FETCH_ASSOC);*/
                 <input type="hidden" id="idBorrar" name="id">
             </form>
 
-    <script src="Javascript/marcaModal.js"></script>
+    <script src="Javascript/transitoModal.js"></script>
 
 <?php 
 require ('../footer.php');

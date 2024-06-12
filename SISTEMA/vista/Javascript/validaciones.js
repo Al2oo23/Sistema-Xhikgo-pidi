@@ -1470,13 +1470,6 @@ function validarUsuario() {
         return false;
     }
 
-    var tipo_usuario = document.getElementById('tipo_usuario').value;
-
-    if (tipo_usuario === "") {
-        alert('Debe seleccionar el tipo de usuario');
-        return false;
-    }
-
     var nombre_usuario = document.getElementById('nombre_usuario').value;
     var nombre_usuarioRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\d]{6,20}$/;
 

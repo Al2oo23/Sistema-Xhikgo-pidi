@@ -25,11 +25,6 @@
                             <div class="form-group">
                                 <input type="text" value="" name="cedula" disabled id="cedulaM" class="form-control" >
                             </div>
-                            
-                            <label>Tipo de Usuario:</label>
-                            <div class="form-group">
-                                <input type="text" value="" name="tipo_usuario"  id="tusuarioM" class="form-control" >
-                            </div>   
 
                             <label>Nombre:</label>
                             <div class="form-group">

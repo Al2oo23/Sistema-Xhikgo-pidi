@@ -26,12 +26,6 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <input type="text" id="cedula_usuario_buscador" class="form-control" placeholder="Cedula Buscada">
                             </div>
                             <div class="col-md-4">
-                                <label for="tipo_usuario_buscador">Tipo de Usuario</label>
-                            </div>
-                            <div class="col-md-8 form-group">
-                                <input type="text" id="tipo_usuario_buscador" class="form-control" placeholder="Tipo de Usuario Buscado">
-                            </div>
-                            <div class="col-md-4">
                                 <label for="nombre_usuario_buscador">Nombre de Usuario</label>
                             </div>
                             <div class="col-md-8 form-group">
@@ -61,7 +55,6 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                         <thead>
                             <tr style="text-align: center;">
                                 <th class="columnas">Cedula</th>
-                                <th class="columnas">Tipo de Usuario</th>
                                 <th class="columnas">Nombre</th>
                                 <th class="columnas" hidden>Clave</th>
                                 <th class="columnas">Estado</th>
@@ -75,7 +68,6 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             ?>
                                 <tr class="fila">
                                     <td class="columnas"><?= $usuario['cedula']; ?></td>
-                                    <td class="columnas"><?= $usuario['tipo']; ?></td>
                                     <td class="columnas"><?= $usuario['nombre']; ?></td>
                                     <td class="columnas" hidden><?= $usuario['clave']; ?></td>
                                     <td class="columnas"><?= $usuario['estado']; ?></td>
@@ -97,11 +89,6 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-
-<form action="../controlador/ctl_(nombre).php" method="POST" style="display: none;">
-    <input type="hidden" id="idBorrar" name="id">
-</form>
-
 <script src="Javascript/usuarioModal.js"></script>
 
 <?php
