@@ -16,7 +16,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-horizontal">
+                <form id="formBusqueda" action="reportes/reporte_recurso.php" method="POST">
                     <div class="form-body">
                         <div class="row">
                             <div class="col-md-4">
@@ -36,6 +36,9 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="col-md-8 form-group">
                                 <input type="text" id="cantidad_recurso_buscador" class="form-control" placeholder="Cantidad de Recurso Buscado">
+                            </div>
+                            <div class="col-md-12 form-group d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">Generar PDF</button>
                             </div>
                         </div>
                     </div>
