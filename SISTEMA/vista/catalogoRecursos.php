@@ -16,26 +16,26 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form id="formBusqueda" action="reportes/reporte_recurso.php" method="POST">
+                <form action="reportes/reporte_recurso.php" method="POST">
                     <div class="form-body">
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="nombre_recurso_buscador">Nombre del Recurso</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="nombre_recurso_buscador" class="form-control" placeholder="Nombre del Recurso Buscado">
+                                <input type="text" id="nombre_recurso_buscador" name="nombre_recurso_buscador" class="form-control" placeholder="Nombre del Recurso Buscado">
                             </div>
                             <div class="col-md-4">
                                 <label for="tipo_recurso_buscador">Tipo de Recurso</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="tipo_recurso_buscador" class="form-control" placeholder="Tipo de Recurso Buscado">
+                                <input type="text" id="tipo_recurso_buscador" name="tipo_recurso_buscador" class="form-control" placeholder="Tipo de Recurso Buscado">
                             </div>
                             <div class="col-md-4">
                                 <label for="cantidad_recurso_buscador">Cantidad de Recurso</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="cantidad_recurso_buscador" class="form-control" placeholder="Cantidad de Recurso Buscado">
+                                <input type="text" id="cantidad_recurso_buscador" name="cantidad_recurso_buscador" class="form-control" placeholder="Cantidad de Recurso Buscado">
                             </div>
                             <div class="col-md-12 form-group d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary">Generar PDF</button>

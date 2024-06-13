@@ -6,31 +6,27 @@ use Dompdf\Dompdf;
 
 try {
     // Obtener filtros del formulario
-    $filtro_nombre = isset($_POST['nombre_recurso_buscador']) ? '%' . $_POST['nombre_recurso_buscador'] . '%' : '%';
-    $filtro_tipo = isset($_POST['tipo_recurso_buscador']) ? '%' . $_POST['tipo_recurso_buscador'] . '%' : '%';
-    $filtro_cantidad = isset($_POST['cantidad_recurso_buscador']) ? '%' . $_POST['cantidad_recurso_buscador'] . '%' : '%';
+    $filtro_nombre = isset($_POST['nombre_estacion_buscador']) ? '%' . $_POST['nombre_estacion_buscador'] . '%' : '%';
 
     // Preparar y ejecutar la consulta SQL con los filtros aplicados
-    $stmt = $conexion->prepare("SELECT * FROM recurso WHERE nombre LIKE :nombre AND tipo LIKE :tipo AND cantidad LIKE :cantidad");
+    $stmt = $conexion->prepare("SELECT * FROM estacion WHERE nombre LIKE :nombre");
     $stmt->bindParam(':nombre', $filtro_nombre, PDO::PARAM_STR);
-    $stmt->bindParam(':tipo', $filtro_tipo, PDO::PARAM_STR);
-    $stmt->bindParam(':cantidad', $filtro_cantidad, PDO::PARAM_STR);
     $stmt->execute();
-    $recurso = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $estacion = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Función para generar el contenido HTML del reporte de recursos
-    function generarHTMLReporteRecurso($datosRecurso)
+    // Función para generar el contenido HTML del reporte de estacion
+    function generarHTMLReporteEstacion($datosEstacion)
     {
         ob_start(); // Iniciar el buffer de salida
 
-        // Construir el HTML del reporte de recursos
+        // Construir el HTML del reporte de estacion
 ?>
         <!DOCTYPE html>
         <html lang="es">
 
         <head>
             <meta charset="UTF-8">
-            <title>Reporte de Recursos</title>
+            <title>Reporte de estacion</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -73,23 +69,19 @@ try {
                 <img src="../img/logo_bomberos-removebg.png" alt="Logo de la Institución" width="150">
             </div>
             <h1>Cuerpo Autonomo de Bomberos</h1>
-            <h2>Reporte de Recursos</h2>
+            <h2>Reporte de estacion</h2>
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
-                        <th>Tipo</th>
-                        <th>Cantidad</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($datosRecurso as $recurso) : ?>
+                    <?php foreach ($datosEstacion as $estacion) : ?>
                         <tr>
-                            <td><?= ($recurso['id']) ?></td>
-                            <td><?= ($recurso['nombre']) ?></td>
-                            <td><?= ($recurso['tipo']) ?></td>
-                            <td><?= ($recurso['cantidad']) ?></td>
+                            <td><?= ($estacion['id']) ?></td>
+                            <td><?= ($estacion['nombre']) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -104,10 +96,10 @@ try {
 
     // Configurar Dompdf
     $dompdf = new Dompdf();
-    $dompdf->loadHtml(generarHTMLReporteRecurso($recurso));
+    $dompdf->loadHtml(generarHTMLReporteEstacion($estacion));
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
-    $dompdf->stream('reporte_recurso.pdf', array('Attachment' => 0));
+    $dompdf->stream('reporte_estacion.pdf', array('Attachment' => 0));
 } catch (PDOException $e) {
     die("Error en la conexión: " . $e->getMessage());
 }

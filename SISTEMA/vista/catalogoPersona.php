@@ -15,61 +15,64 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form">
+                <form class="form" action="reportes/reporte_persona.php" method="POST">
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="cedula_persona_buscador">Cedula</label>
-                                <input type="text" id="cedula_persona_buscador" class="form-control" placeholder="Cedula Buscada">
+                                <input type="text" id="cedula_persona_buscador" name="cedula_persona_buscador" class="form-control" placeholder="Cedula Buscada">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="nombre_persona_buscador">Nombre</label>
-                                <input type="text" id="nombre_persona_buscador" class="form-control" placeholder="Nombre Buscado">
+                                <input type="text" id="nombre_persona_buscador" name="nombre_persona_buscador" class="form-control" placeholder="Nombre Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="edad_persona_buscador">Edad</label>
-                                <input type="text" id="edad_persona_buscador" class="form-control" placeholder="Edad Buscada">
+                                <input type="text" id="edad_persona_buscador" name="edad_persona_buscador" class="form-control" placeholder="Edad Buscada">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="telefono_persona_buscador">Telefono</label>
-                                <input type="text" id="telefono_persona_buscador" class="form-control" placeholder="Telefono Buscado">
+                                <input type="text" id="telefono_persona_buscador" name="telefono_persona_buscador" class="form-control" placeholder="Telefono Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="sexo_persona_buscador">Sexo</label>
-                                <input type="text" id="sexo_persona_buscador" class="form-control" placeholder="Sexo Buscado">
+                                <input type="text" id="sexo_persona_buscador" name="sexo_persona_buscador" class="form-control" placeholder="Sexo Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="tipo_persona_buscador">Tipo de Persona</label>
-                                <input type="text" id="tipo_persona_buscador" class="form-control" placeholder="Tipo de Persona Buscada">
+                                <input type="text" id="tipo_persona_buscador" name="tipo_persona_buscador" class="form-control" placeholder="Tipo de Persona Buscada">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="cargo_persona_buscador">Cargo</label>
-                                <input type="text" id="cargo_persona_buscador" class="form-control" placeholder="Cargo Buscado">
+                                <input type="text" id="cargo_persona_buscador" name="cargo_persona_buscador" class="form-control" placeholder="Cargo Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="seccion_persona_buscador">Seccion</label>
-                                <input type="text" id="seccion_persona_buscador" class="form-control" placeholder="Seccion Buscada">
+                                <input type="text" id="seccion_persona_buscador" name="seccion_persona_buscador" class="form-control" placeholder="Seccion Buscada">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="estacion_persona_buscador">Estacion</label>
-                                <input type="text" id="estacion_persona_buscador" class="form-control" placeholder="Estacion Buscada">
+                                <input type="text" id="estacion_persona_buscador" name="estacion_persona_buscador" class="form-control" placeholder="Estacion Buscada">
                             </div>
+                        </div>
+                        <div class="col-md-12 form-group d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Generar PDF</button>
                         </div>
                 </form>
             </div>

@@ -229,19 +229,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-//BUSCADOR ESTACION
+//BUSCADOR SECCION
 document.addEventListener('DOMContentLoaded', () => {
 
-    const nombre_seccion_buscador = document.getElementById('nombre_seccion_buscador');
+    const numero_seccion_buscador = document.getElementById('numero_seccion_buscador');
 
     const tabla = document.getElementById('tabla_seccion');
     const rows = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
 
 
-    [nombre_seccion_buscador].forEach((input) => {
+    [numero_seccion_buscador].forEach((input) => {
         input.addEventListener('keyup', () => {
 
-            const filtro1 = nombre_seccion_buscador.value.toLowerCase();
+            const filtro1 = numero_seccion_buscador.value.toLowerCase();
 
             for (let i = 0; i < rows.length; i++) {
                 let row = rows[i];

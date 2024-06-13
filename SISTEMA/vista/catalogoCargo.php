@@ -15,14 +15,17 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-horizontal">
+                <form class="form form-horizontal" action="reportes/reporte_cargo.php" method="POST">
                     <div class="form-body">
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="nombre_cargo_buscador">Cargo</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="nombre_cargo_buscador" class="form-control" placeholder="Cargo Buscado">
+                                <input type="text" id="nombre_cargo_buscador" name="nombre_cargo_buscador" class="form-control" placeholder="Cargo Buscado">
+                            </div>
+                            <div class="col-md-12 form-group d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">Generar PDF</button>
                             </div>
                         </div>
                     </div>

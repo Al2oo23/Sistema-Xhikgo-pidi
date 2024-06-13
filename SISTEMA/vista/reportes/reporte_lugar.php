@@ -1,36 +1,36 @@
 <?php
 require_once '../dompdf/autoload.inc.php';
-require_once '../../modelo/conexion.php';   
+require_once '../../modelo/conexion.php';
 
 use Dompdf\Dompdf;
 
 try {
     // Obtener filtros del formulario
-    $filtro_nombre = isset($_POST['nombre_recurso_buscador']) ? '%' . $_POST['nombre_recurso_buscador'] . '%' : '%';
-    $filtro_tipo = isset($_POST['tipo_recurso_buscador']) ? '%' . $_POST['tipo_recurso_buscador'] . '%' : '%';
-    $filtro_cantidad = isset($_POST['cantidad_recurso_buscador']) ? '%' . $_POST['cantidad_recurso_buscador'] . '%' : '%';
+    $filtro_nombre = isset($_POST['nombre_lugar_buscador']) ? '%' . $_POST['nombre_lugar_buscador'] . '%' : '%';
+    $filtro_municipio = isset($_POST['municipio_lugar_buscador']) ? '%' . $_POST['municipio_lugar_buscador'] . '%' : '%';
+    $filtro_distancia = isset($_POST['distancia_lugar_buscador']) ? '%' . $_POST['distancia_lugar_buscador'] . '%' : '%';
 
     // Preparar y ejecutar la consulta SQL con los filtros aplicados
-    $stmt = $conexion->prepare("SELECT * FROM recurso WHERE nombre LIKE :nombre AND tipo LIKE :tipo AND cantidad LIKE :cantidad");
+    $stmt = $conexion->prepare("SELECT * FROM lugar WHERE nombre LIKE :nombre AND municipio LIKE :municipio AND distancia LIKE :distancia");
     $stmt->bindParam(':nombre', $filtro_nombre, PDO::PARAM_STR);
-    $stmt->bindParam(':tipo', $filtro_tipo, PDO::PARAM_STR);
-    $stmt->bindParam(':cantidad', $filtro_cantidad, PDO::PARAM_STR);
+    $stmt->bindParam(':municipio', $filtro_municipio, PDO::PARAM_STR);
+    $stmt->bindParam(':distancia', $filtro_distancia, PDO::PARAM_STR);
     $stmt->execute();
-    $recurso = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $lugar = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Función para generar el contenido HTML del reporte de recursos
-    function generarHTMLReporteRecurso($datosRecurso)
+    // Función para generar el contenido HTML del reporte de lugar
+    function generarHTMLReporteLugar($datosLugar)
     {
         ob_start(); // Iniciar el buffer de salida
 
-        // Construir el HTML del reporte de recursos
+        // Construir el HTML del reporte de lugar
 ?>
         <!DOCTYPE html>
         <html lang="es">
 
         <head>
             <meta charset="UTF-8">
-            <title>Reporte de Recursos</title>
+            <title>Reporte de Lugar</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -73,7 +73,7 @@ try {
                 <img src="../img/logo_bomberos-removebg.png" alt="Logo de la Institución" width="150">
             </div>
             <h1>Cuerpo Autonomo de Bomberos</h1>
-            <h2>Reporte de Recursos</h2>
+            <h2>Reporte de Lugar</h2>
             <table>
                 <thead>
                     <tr>
@@ -84,12 +84,12 @@ try {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($datosRecurso as $recurso) : ?>
+                    <?php foreach ($datosLugar as $lugar) : ?>
                         <tr>
-                            <td><?= ($recurso['id']) ?></td>
-                            <td><?= ($recurso['nombre']) ?></td>
-                            <td><?= ($recurso['tipo']) ?></td>
-                            <td><?= ($recurso['cantidad']) ?></td>
+                            <td><?= ($lugar['id']) ?></td>
+                            <td><?= ($lugar['nombre']) ?></td>
+                            <td><?= ($lugar['municipio']) ?></td>
+                            <td><?= ($lugar['distancia']) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -104,10 +104,10 @@ try {
 
     // Configurar Dompdf
     $dompdf = new Dompdf();
-    $dompdf->loadHtml(generarHTMLReporteRecurso($recurso));
+    $dompdf->loadHtml(generarHTMLReporteLugar($lugar));
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
-    $dompdf->stream('reporte_recurso.pdf', array('Attachment' => 0));
+    $dompdf->stream('reporte_lugar.pdf', array('Attachment' => 0));
 } catch (PDOException $e) {
     die("Error en la conexión: " . $e->getMessage());
 }
