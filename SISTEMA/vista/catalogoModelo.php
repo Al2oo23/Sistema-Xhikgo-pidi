@@ -17,20 +17,23 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-horizontal">
+                <form class="form form-horizontal" action="reportes/reporte_modelo.php" method="POST">
                     <div class="form-body">
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="nombre_modelo_vehiculo">Nombre del Modelo</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="nombre_modelo_vehiculo" class="form-control" placeholder="Nombre del Modelo Buscado">
+                                <input type="text" id="nombre_modelo_vehiculo" name="nombre_modelo_vehiculo" class="form-control" placeholder="Nombre del Modelo Buscado">
                             </div>
                             <div class="col-md-4">
                                 <label for="marca_modelo_vehiculo">Tipo de Modelo</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="marca_modelo_vehiculo" class="form-control" placeholder="Tipo de Modelo Buscado">
+                                <input type="text" id="marca_modelo_vehiculo" name="marca_modelo_vehiculo" class="form-control" placeholder="Tipo de Modelo Buscado">
+                            </div>
+                            <div class="col-md-12 form-group d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">Generar PDF</button>
                             </div>
                         </div>
                 </form>

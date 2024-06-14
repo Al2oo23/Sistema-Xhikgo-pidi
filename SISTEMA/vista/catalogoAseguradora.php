@@ -15,20 +15,23 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-horizontal">
+                <form class="form form-horizontal" action="reportes/reporte_aseguradora.php" method="POST">
                     <div class="form-body">
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="nombre_aseguradora_buscador">Nombre de la Aseguradora</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="nombre_aseguradora_buscador" class="form-control" placeholder="Nombre del Aseguradora Buscado">
+                                <input type="text" id="nombre_aseguradora_buscador" name="nombre_aseguradora_buscador" class="form-control" placeholder="Nombre del Aseguradora Buscado">
                             </div>
                             <div class="col-md-4">
                                 <label for="tipo_aseguradora_buscador">Tipo de Aseguradora</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="tipo_aseguradora_buscador" class="form-control" placeholder="Tipo de Aseguradora Buscado">
+                                <input type="text" id="tipo_aseguradora_buscador" name="tipo_aseguradora_buscador" class="form-control" placeholder="Tipo de Aseguradora Buscado">
+                            </div>
+                            <div class="col-md-12 form-group d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">Generar PDF</button>
                             </div>
                         </div>
                     </div>
