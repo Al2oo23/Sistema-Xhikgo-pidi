@@ -487,6 +487,68 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// BUSCADOR INCIDENTE DE ABEJAS:
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const fecha_abejas_buscador = document.getElementById('fecha_abejas_buscador');
+    const seccion_abejas_buscador = document.getElementById('seccion_abejas_buscador');
+    const ubicacion_abejas_buscador = document.getElementById('ubicacion_abejas_buscador');
+    const lugar_abejas_buscador = document.getElementById('lugar_abejas_buscador');
+    const dueno_abejas_buscador = document.getElementById('dueno_abejas_buscador');
+    const jefe_abejas_buscador = document.getElementById('jefe_abejas_buscador');
+    const recurso_abejas_buscador = document.getElementById('recurso_abejas_buscador');
+    const cantidad_abejas_buscador = document.getElementById('cantidad_abejas_buscador');
+    const efectivo_abejas_buscador = document.getElementById('efectivo_abejas_buscador');
+
+    const tabla = document.getElementById('tabla_abejas');
+    const rows = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+    [fecha_abejas_buscador, seccion_abejas_buscador, ubicacion_abejas_buscador, lugar_abejas_buscador, dueno_abejas_buscador, jefe_abejas_buscador, recurso_abejas_buscador, cantidad_abejas_buscador, efectivo_abejas_buscador].forEach((input) => {
+        input.addEventListener('keyup', () => {
+
+            const filtro1 = fecha_abejas_buscador.value.toLowerCase();
+            const filtro2 = seccion_abejas_buscador.value.toLowerCase();
+            const filtro3 = ubicacion_abejas_buscador.value.toLowerCase();
+            const filtro4 = lugar_abejas_buscador.value.toLowerCase();
+            const filtro5 = dueno_abejas_buscador.value.toLowerCase();
+            const filtro6 = jefe_abejas_buscador.value.toLowerCase();
+            const filtro7 = recurso_abejas_buscador.value.toLowerCase();
+            const filtro8 = cantidad_abejas_buscador.value.toLowerCase();
+            const filtro9 = efectivo_abejas_buscador.value.toLowerCase();
+
+            for(let i = 0; i < rows.length; i++){
+                let row = rows[i];
+                let cell1 = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+                let cell2 = row.getElementsByTagName('td')[2].textContent.toLowerCase();
+                let cell3 = row.getElementsByTagName('td')[9].textContent.toLowerCase();
+                let cell4 = row.getElementsByTagName('td')[11].textContent.toLowerCase();
+                let cell5 = row.getElementsByTagName('td')[12].textContent.toLowerCase();
+                let cell6 = row.getElementsByTagName('td')[13].textContent.toLowerCase();
+                let cell7 = row.getElementsByTagName('td')[14].textContent.toLowerCase();
+                let cell8 = row.getElementsByTagName('td')[15].textContent.toLowerCase();
+                let cell9 = row.getElementsByTagName('td')[16].textContent.toLowerCase();
+
+                let match1 = !filtro1 || cell1.includes(filtro1);
+                let match2 = !filtro2 || cell2.includes(filtro2);
+                let match3 = !filtro3 || cell3.includes(filtro3);
+                let match4 = !filtro4 || cell4.includes(filtro4);
+                let match5 = !filtro5 || cell5.includes(filtro5);
+                let match6 = !filtro6 || cell6.includes(filtro6);
+                let match7 = !filtro7 || cell7.includes(filtro7);
+                let match8 = !filtro8 || cell8.includes(filtro8);
+                let match9 = !filtro9 || cell9.includes(filtro9);
+
+                if (match1 && match2 && match3 && match4 && match5 && match6 && match7 && match8 && match9) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    });
+});
+
 //BUSCADOR VEHICULO
 document.addEventListener('DOMContentLoaded', () => {
 
