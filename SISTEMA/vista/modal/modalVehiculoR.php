@@ -1,14 +1,14 @@
 <?php 
 
-// LLAMAR MARCA VEHICULO
-$sentencia = $conexion->prepare("SELECT nombre FROM marca");
+// LLAMAR MARCA Y MODELO DEL VEHICULO
+$sentencia = $conexion->prepare("SELECT * FROM modelo");
 $sentencia->execute();
-$marca = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+$vehiculo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
-// LLAMAR MODELO VEHICULO
-$sentencia = $conexion->prepare("SELECT nombre FROM modelo");
-$sentencia->execute();
-$modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+$MarcaModelos = array();
+foreach ($vehiculo as $row) {
+$MarcaModelos[$row["marca"]] = $row["nombre"];
+}
 ?>
     <!-- Button trigger for login form modal -->
     <button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">
@@ -72,12 +72,18 @@ $modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="first-name-icon">Marca:</label>
                                     <select class="form-select" name="marca" id="marca">
-                                        <option value=""> Seleccione la Marca...</option>
-                                        <?php foreach ($marca as $marc) : 
-                                        $marca = $marc["nombre"];
-                                        ?>
-                                        <option value="<?= $marca?>"><?= $marca?></option>
-                                        <?php endforeach; ?>
+                                        <option value="default">Seleccione la Marca...</option>
+                                        
+                                        <?php $marcasMostradas = array();
+                                            foreach ($vehiculo as $marcas) :
+                                                $marca = $marcas["marca"];
+
+                                                if (!in_array($marca, $marcasMostradas)) :
+                                                    $marcasMostradas[] = $marca;
+                                            ?>
+                                                    <option value="<?= $marca?>"><?= $marca?></option>
+                                            <?php endif;
+                                            endforeach; ?>
                                     </select>
                                 </div>
                             </div>
@@ -87,15 +93,18 @@ $modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="">Modelo:</label>
                                     <div class="position-relative">
                                         <select name="modelo" class="form-select" id="modelo">
-                                            <option value="">Seleccione el Modelo...</option>
+                                            <option>Seleccione el Modelo...</option>
 
-                                            <?php foreach ($modelo as $model) : 
-                                            $modelo = $model["nombre"];
+                                            <?php $modelosMostrados = array();
+                                            foreach ($vehiculo as $modelos) :
+                                                $modelo = $modelos["nombre"];
+
+                                                if (!in_array($modelo, $modelosMostrados)) :
+                                                    $modelosMostrados[] = $modelo;
                                             ?>
-
-                                            <option value="<?= $modelo?>"><?= $modelo?></option>
-
-                                            <?php endforeach; ?>
+                                                    <option value="<?= $modelo?>"><?= $modelo?></option>
+                                            <?php endif;
+                                            endforeach; ?>
                                         </select>
                                     </div>
                                 </div>
@@ -181,3 +190,27 @@ $modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
       </div>
+
+      <script>
+    document.getElementById('marca').addEventListener('change', function() {
+    var marcaSeleccionada = this.value;
+  
+    var ModelodeMarca = <?php echo json_encode($MarcaModelos); ?>[marcaSeleccionada];
+    var selectModelo = document.getElementById('modelo');
+
+    for(var i = 0; i < selectModelo.options.length; i++) {
+        var option = selectModelo.options[i];
+
+        if(marcaSeleccionada == "default") {
+            option.style.display = 'block';
+        } else {
+            
+            if(option.value == ModelodeMarca) {
+                option.style.display = 'block';
+            } else {
+                option.style.display = 'none';
+            }
+        }
+    }
+});
+</script>

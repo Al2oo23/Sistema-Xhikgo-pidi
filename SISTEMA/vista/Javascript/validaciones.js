@@ -1258,18 +1258,18 @@ function validarMarcaM() {
 
 //Validacion pantalla Modelo
 function validarModelo() {
+    var marca_vehiculo = document.getElementById('marca_vehiculo').value;
+
+    if (marca_vehiculo === "default") {
+        alert('Debe seleccionar una marca de vehiculo valida');
+        return false;
+    }
+    
     var modelo_vehiculo = document.getElementById('modelo_vehiculo').value;
     var modelo_vehiculoRegex = /^.{3,50}$/;
 
     if (!modelo_vehiculoRegex.test(modelo_vehiculo)) {
         alert('Debe ingresar un modelo de vehiculo valido');
-        return false;
-    }
-
-    var marca_vehiculo = document.getElementById('marca_vehiculo').value;
-
-    if (marca_vehiculo === "default") {
-        alert('Debe seleccionar una marca de vehiculo valida');
         return false;
     }
 

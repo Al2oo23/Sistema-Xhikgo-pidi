@@ -5,11 +5,12 @@ include("../modelo/clase_modelo.php");
 $modelo = new modelo();
 
 if(isset($_POST['agregar']) && $_POST['agregar'] == "agregar"){
-    
-    $modelo->setNombre($_POST['nombre']);
-    $modelo->setMarca($_POST['marca']);
 
-    $datos = $modelo->agregarModelo($modelo->getNombre(), $modelo->getMarca());
+    $modelo->setMarca($_POST['marca']);
+    $modelo->setNombre($_POST['nombre']);
+    
+
+    $datos = $modelo->agregarModelo( $modelo->getMarca(), $modelo->getNombre());
 
     if(empty($datos)){
         echo "<script>alert('No se pudo registrar el Modelo')</script>";
@@ -24,11 +25,10 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
    
 
     $modelo->setId($_POST['id']);
-    $modelo->setNombre($_POST['nombre']);
     $modelo->setMarca($_POST['marca']);
- 
+    $modelo->setNombre($_POST['nombre']);
     
-    $datos = $modelo->modificarModelo($modelo->getId(), $modelo->getNombre(), $modelo->getMarca());
+    $datos = $modelo->modificarModelo($modelo->getId(), $modelo->getMarca(),$modelo->getNombre());
 
 
     if(empty($datos)){

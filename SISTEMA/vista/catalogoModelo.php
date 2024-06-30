@@ -20,17 +20,17 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                 <form class="form form-horizontal" action="reportes/reporte_modelo.php" method="POST">
                     <div class="form-body">
                         <div class="row">
+                        <div class="col-md-4">
+                                <label for="marca_modelo_vehiculo">Nombre de la Marca</label>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                <input type="text" id="marca_modelo_vehiculo" name="marca_modelo_vehiculo" class="form-control" placeholder="Nombre de la Marca Buscada">
+                            </div>
                             <div class="col-md-4">
                                 <label for="nombre_modelo_vehiculo">Nombre del Modelo</label>
                             </div>
                             <div class="col-md-8 form-group">
                                 <input type="text" id="nombre_modelo_vehiculo" name="nombre_modelo_vehiculo" class="form-control" placeholder="Nombre del Modelo Buscado">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="marca_modelo_vehiculo">Tipo de Modelo</label>
-                            </div>
-                            <div class="col-md-8 form-group">
-                                <input type="text" id="marca_modelo_vehiculo" name="marca_modelo_vehiculo" class="form-control" placeholder="Tipo de Modelo Buscado">
                             </div>
                             <div class="col-md-12 form-group d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary">Generar PDF</button>
@@ -53,8 +53,8 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                     <thead>
                         <tr style="text-align: center;">
                             <th class="columnas" hidden>ID</th>
-                            <th class="columnas">Modelo</th>
                             <th class="columnas">Marca</th>
+                            <th class="columnas">Modelo</th>
                             <th class="columnas">Accion</th>
                         </tr>
                     </thead>
@@ -62,8 +62,8 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                         <?php foreach ($resultado as $modelo) : ?>
                             <tr class="fila">
                                 <td class="columnas" hidden><?php echo $modelo["id"] ?></td>
-                                <td class="columnas"><?php echo $modelo["nombre"] ?></td>
                                 <td class="columnas"><?php echo $modelo["marca"] ?></td>
+                                <td class="columnas"><?php echo $modelo["nombre"] ?></td>
                                 <td>
                                     <div class="botones" style="justify-content:space-evenly;">
                                         <?php include("modal/modalModeloM.php"); ?>

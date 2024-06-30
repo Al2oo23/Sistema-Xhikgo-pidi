@@ -1,11 +1,8 @@
    <?php 
    $sentencia = $conexion->prepare("SELECT * FROM marca");
    $sentencia->execute();
-    $marca = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-   
+   $marca = $sentencia->fetchAll(PDO::FETCH_ASSOC);
    ?>
-   
-   
    
    <!-- Button trigger for login form modal -->
     <button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">
@@ -15,7 +12,7 @@
         <!--login form Modal -->
         <div class="modal fade text-left" id="inlineForm1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                <div class="modal-content" id="modal" style="overflow-y: scroll;">
+                <div class="modal-content" id="modal">
 
             <!-- Header del Modal: ----------------------------->
 
@@ -29,22 +26,10 @@
 
                     <form action="../controlador/ctl_modelo.php" method="POST" style="text-align: left;" onsubmit="return validarModelo()">
                         <div class="modal-body">
-                        <div class="col-12">
-                            <div class="form-group has-icon-left">
-                                <label for="">Modelo del Vehiculo</label>
-                                <div class="position-relative">
-                                    <input type="text" class="form-control" id="modelo_vehiculo" name="nombre" placeholder="Modelo">
-                                    <div class="form-control-icon">
-                                        <i class="bi bi-car-front-fill"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Marca</label>
-                                    <div class="position-relative">
+                       
+                                     <label>Marca:</label>
+                            <div class="position-relative">
                                          <select name="marca" class="form-select" id="marca_vehiculo">
                                          <option value="default">Seleccione la Marca...</option>
                                         <?php foreach ($marca as $marc) : 
@@ -56,11 +41,22 @@
                                         <?php endforeach;?>
 
                                         </select>
+                             </div>
+                
+                        
+                        <div class="col-12">
+                            <div class="form-group has-icon-left">
+                                <label for="">Modelo del Vehiculo</label>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control" id="modelo_vehiculo" name="nombre" placeholder="Modelo">
+                                    <div class="form-control-icon">
+                                        <i class="bi bi-car-front-fill"></i>
                                     </div>
                                 </div>
+                                        </div>
                             </div>
                         </div>
-                       
+
             <!-- Footer del modal: ------------------------------>
 
                            <div class="modal-footer">

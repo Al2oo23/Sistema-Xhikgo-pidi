@@ -13,7 +13,7 @@
         <!--login form Modal -->
         <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                <div class="modal-content" id="modalM" style="overflow-y: scroll;">
+                <div class="modal-content" id="modalM">
 
             <!-- Header del Modal: ----------------------------->
 
@@ -29,12 +29,7 @@
                         <div class="modal-body">
                             
                         <input type="hidden" id="id" name="id">
-
-                            <label>Modelo:</label>
-                            <div class="form-group">
-                                <input type="text" value="" name="nombre" id="modeloM" class="form-control" >
-                            </div>
-
+                            
                             <label>Marca:</label>
                             <div class="position-relative">
                                          <select name="marca" class="form-select" id="marcaM">
@@ -48,7 +43,19 @@
                                         <?php endforeach;?>
 
                                         </select>
+                             </div>
+
+                        <div class="col-12">
+                            <div class="form-group has-icon-left">
+                                <label for="">Modelo del Vehiculo</label>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control" id="modeloM" name="nombre" placeholder="Modelo">
+                                    <div class="form-control-icon">
+                                        <i class="bi bi-car-front-fill"></i>
                                     </div>
+                                </div>
+                              </div>
+                            </div>   
                         </div>
                        
             <!-- Footer del modal: ------------------------------>

@@ -456,8 +456,8 @@ document.addEventListener('DOMContentLoaded', () => {
 //BUSCADOR MODELO
 document.addEventListener('DOMContentLoaded', () => {
 
-    const nombre_modelo_vehiculo = document.getElementById('nombre_modelo_vehiculo');
     const marca_modelo_vehiculo = document.getElementById('marca_modelo_vehiculo');
+    const nombre_modelo_vehiculo = document.getElementById('nombre_modelo_vehiculo');
 
     const tabla = document.getElementById('tabla_modelo');
     const rows = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
@@ -466,8 +466,8 @@ document.addEventListener('DOMContentLoaded', () => {
     [nombre_modelo_vehiculo, marca_modelo_vehiculo].forEach((input) => {
         input.addEventListener('keyup', () => {
 
-            const filtro1 = nombre_modelo_vehiculo.value.toLowerCase();
-            const filtro2 = marca_modelo_vehiculo.value.toLowerCase();
+            const filtro1 = marca_modelo_vehiculo.value.toLowerCase();
+            const filtro2 = nombre_modelo_vehiculo.value.toLowerCase();
 
             for (let i = 0; i < rows.length; i++) {
                 let row = rows[i];
