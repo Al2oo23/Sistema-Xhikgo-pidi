@@ -89,7 +89,7 @@
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
-                                    <form action="../index.php" method="post">
+                                    <form action="../controlador/ctl_sesion.php" method="post">
                                         <li><a class="dropdown-item" href="#">My Account</a></li>
                                         <li><a class="dropdown-item" href="datosInstitucion.php">Institucion</a></li>
                                         <li><a class="dropdown-item" href="privilegios.php">Privilegios</a></li>
@@ -299,9 +299,6 @@
 
 
                                         <ul class="submenu-group">
-                                            <li class="submenu-item  ">
-                                                <a href="catalogoIncidentes.php" class='submenu-link'>Incidente General</a>
-                                            </li>
 
                                             <li class="submenu-item  ">
                                                 <a href="catalogoIncendio.php" class='submenu-link'>Incendio</a>

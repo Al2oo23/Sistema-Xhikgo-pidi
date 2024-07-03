@@ -31,7 +31,7 @@ include("modelo/conexion.php");
                     <h1 class="auth-title" style="margin-top: -7vh;">Inicio de Sesion</h1>
                     <p class="auth-subtitle mb-5">Ingrese sus datos para iniciar sesión</p>
 
-                    <form action="vista/inicio.php" method="POST">
+                    <form action="controlador/ctl_sesion.php" method="POST">
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" class="form-control form-control-xl" name="usuario" placeholder="Usuario">
                             <div class="form-control-icon">
