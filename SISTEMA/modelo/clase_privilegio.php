@@ -50,7 +50,7 @@ class privilegio{
         $this->modelo = $modelo;
     }
     public function setVehiculo($vehiculo){
-        $this->vehicul = $vehiculo;
+        $this->vehiculo = $vehiculo;
     }
     public function setMantenimiento($mantenimiento){
         $this->mantenimiento = $mantenimiento;
