@@ -132,19 +132,19 @@
 
                                         <ul class="submenu-group">
                                             <li class="submenu-item">
-                                                <a href="catalogoMunicipio.php" class='submenu-link'>Municipios</a>
+                                                <a href="catalogoMunicipio.php" class='submenu-link'>Municipio</a>
                                             </li>
 
                                             <li class="submenu-item">
-                                                <a href="catalogoLugar.php" class='submenu-link'>Lugares</a>
+                                                <a href="catalogoLugar.php" class='submenu-link'>Lugare</a>
                                             </li>
 
                                             <li class="submenu-item">
-                                                <a href="catalogoEstacion.php" class='submenu-link'>Estaciones</a>
+                                                <a href="catalogoEstacion.php" class='submenu-link'>Estacione</a>
                                             </li>
 
                                             <li class="submenu-item">
-                                                <a href="catalogoSeccion.php" class='submenu-link'>Secciones</a>
+                                                <a href="catalogoSeccion.php" class='submenu-link'>Sección</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -164,24 +164,24 @@
                                         <ul class="submenu-group">
                                             
                                         <li class="submenu-item">
-                                                <a href="catalogoTpersona.php" class='submenu-link'>Tipo de Personas</a>
+                                                <a href="catalogoTpersona.php" class='submenu-link'>Tipo de Persona</a>
                                         </li>
 
                                         <li class="submenu-item">
-                                                <a href="catalogoCargo.php" class='submenu-link'>Cargo de Bomberos</a>
+                                                <a href="catalogoCargo.php" class='submenu-link'>Cargo de Bombero</a>
                                         </li>
 
                                         <li class="submenu-item">
-                                                <a href="catalogoPersona.php" class="submenu-link">Personas</a>
+                                                <a href="catalogoPersona.php" class="submenu-link">Persona</a>
    
                                             </li>
 
                                             <li class="submenu-item">
-                                                <a href="catalogoUsuario.php" class='submenu-link'>Usuarios</a>
+                                                <a href="catalogoUsuario.php" class='submenu-link'>Usuario</a>
                                             </li>
                                         
                                             <li class="submenu-item">
-                                                <a href="catalogoHdO.php" class='submenu-link'>Historial de Operaciones</a>
+                                                <a href="catalogoHdO.php" class='submenu-link'>Historial de Operación</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -198,7 +198,7 @@
 
                             <li class="menu-item active has-sub">
                                 <a href="#" class='menu-link'>
-                                    <span><i class="bi bi-car-front-fill"></i>Vehiculos</span>
+                                    <span><i class="bi bi-car-front-fill"></i>Vehiculo</span>
                                 </a>
                                 <div class="submenu ">
                                     <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
@@ -212,7 +212,7 @@
                                         <ul class="submenu-group">
                                             
                                             <li class="submenu-item  has-sub">
-                                                <a href="#" class="submenu-link">Vehiculos</a>
+                                                <a href="#" class="submenu-link">Vehiculo</a>
 
                                                 
                                                 <!-- 3 Level Submenu -->
@@ -223,13 +223,13 @@
                                             </li>
                                             
                                             <li class="subsubmenu-item  ">
-                                                <a href="catalogoMarca.php" class='subsubmenu-link'>Marca de Vehiculos</a>
+                                                <a href="catalogoMarca.php" class='subsubmenu-link'>Marca de Vehiculo</a>
                                             </li>
                                             <li class="subsubmenu-item  ">
-                                                <a href="catalogoModelo.php" class='subsubmenu-link'>Modelo de Vehiculos</a>
+                                                <a href="catalogoModelo.php" class='subsubmenu-link'>Modelo de Vehiculo</a>
                                             </li>
                                             <li class="subsubmenu-item  ">
-                                                <a href="catalogoVehiculo.php" class='subsubmenu-link'>Registro de Vehiculos</a>
+                                                <a href="catalogoVehiculo.php" class='subsubmenu-link'>Registro de Vehiculo</a>
                                             </li>
 
                                                 </ul>
@@ -261,7 +261,7 @@
 
                             <li class="menu-item active has-sub">
                                 <a href="#" class='menu-link'>
-                                    <span><i class="bi bi-tools"></i>Recursos</span>
+                                    <span><i class="bi bi-tools"></i>Recurso</span>
                                 </a>
                                 <div class="submenu ">
                                     <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
@@ -271,18 +271,18 @@
                                         <ul class="submenu-group">
 
                                             <li class="submenu-item  ">
-                                                <a href="catalogoRecursos.php" class='submenu-link'>Recursos</a>
+                                                <a href="catalogoRecursos.php" class='submenu-link'>Recurso</a>
 
 
                                             </li>
 
                                             <li class="submenu-item  ">
-                                                <a href="asignar_recurso.php" class='submenu-link'>Agregar Recursos</a>
+                                                <a href="asignar_recurso.php" class='submenu-link'>Agregar Recurso</a>
 
 
                                             </li>
                                             <li class="submenu-item  ">
-                                                <a href="recurso_inoperativo.php" class='submenu-link'>Eliminar Recursos</a>
+                                                <a href="recurso_inoperativo.php" class='submenu-link'>Eliminar Recurso</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -291,7 +291,7 @@
 
                             <li class="menu-item has-sub">
                                 <a href="#" class='menu-link'>
-                                    <span><i class="bi bi-prescription2"></i>Incidentes</span>
+                                    <span><i class="bi bi-prescription2"></i>Incidente</span>
                                 </a>
                                 <div class="submenu ">
                                     <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
