@@ -20,21 +20,21 @@
         .no-resize {
             resize: none !important;
         }
-
         .botones {
             display: flex;
             justify-content: space-between;
         }
-
         .flex-item {
             margin-right: 2px;
         }
-
         .fila {
             text-align: center;
         }
-
         .card-header {
+            display: flex;
+            justify-content: space-between;
+        }
+        .checkbox-container{
             display: flex;
             justify-content: space-between;
         }
@@ -92,7 +92,8 @@
                                     <form action="../index.php" method="post">
                                         <li><a class="dropdown-item" href="#">My Account</a></li>
                                         <li><a class="dropdown-item" href="datosInstitucion.php">Institucion</a></li>
-                                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                                        <li><a class="dropdown-item" href="privilegios.php">Privilegios</a></li>
+                                        <li><a class="dropdown-item" href="#">Configuración</a></li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>

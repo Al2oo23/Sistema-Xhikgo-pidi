@@ -55,6 +55,10 @@ class usuario{
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([$cedula, $nombre, $clave, $estado, $pregunta, $respuesta]);
 
+        $SQL = "INSERT INTO privilegio VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $preparado1 = $conexion->prepare($SQL);
+        $preparado1->execute([null, $cedula, "no", "no", "no", "no", "no", "no", "no", "no", "no", "no", "no", "no", "no", "no", "no", "no", "no", ]);
+
         return $preparado;
     }
 
