@@ -28,6 +28,17 @@ try {
     $conexion = new PDO ("mysql:host=$servidor;dbname=$baseDatos",$userMySQL,$passwordMySQL);   
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+ //------------------ INSTITUCION ------------------
+    $SQL = "CREATE TABLE IF NOT EXISTS institucion (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(25) NOT NULL,
+    rif VARCHAR(25) NOT NULL,
+    descripcion TEXT DEFAULT 'Sin descripción',
+    logo VARCHAR(255) DEFAULT 'ruta/logo-por-defecto.png',
+    firma VARCHAR(255) DEFAULT 'ruta/firma-por-defecto.pdf'
+    )";
+    $conexion->exec($SQL);
+
    //------------------ MUNICIPIO ------------------
     $SQL = "CREATE TABLE IF NOT EXISTS municipio (
         id INT PRIMARY KEY AUTO_INCREMENT,
@@ -115,25 +126,26 @@ try {
     //------------------ PRIVILEGIO ------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS privilegio (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        cedula VARCHAR(20) NOT NULL,
-        institucion VARCHAR(3) NOT NULL,
-        configuracion VARCHAR(3) NOT NULL,
-        municipio VARCHAR(3) NOT NULL,
-        lugar VARCHAR(3) NOT NULL,
-        estacion VARCHAR(3) NOT NULL,
-        seccion VARCHAR(3) NOT NULL,
-        tipo_persona VARCHAR(3) NOT NULL,
-        cargo VARCHAR(3) NOT NULL,
-        persona VARCHAR(3) NOT NULL,
-        usuario VARCHAR(3) NOT NULL,
-        aseguradora VARCHAR(3) NOT NULL,
-        marcas VARCHAR(3) NOT NULL,
-        modelo VARCHAR(3) NOT NULL,
-        vehiculo VARCHAR(3) NOT NULL,
-        mantenimiento VARCHAR(3) NOT NULL,
-        recurso VARCHAR(3) NOT NULL,
-        incidente VARCHAR(3) NOT NULL/*,
+        cedula VARCHAR(10) PRIMARY KEY NOT NULL,
+        municipio VARCHAR(10) NOT NULL,
+        lugar VARCHAR(10) NOT NULL,
+        persona VARCHAR(10) NOT NULL,
+        tipo VARCHAR(10) NOT NULL,
+        cargo VARCHAR(10) NOT NULL,
+        estacion VARCHAR(10) NOT NULL,
+        seccion VARCHAR(10) NOT NULL,
+        usuarios VARCHAR(10) NOT NULL,
+        aseguradora VARCHAR(10) NOT NULL,
+        marca VARCHAR(10) NOT NULL,
+        modelo VARCHAR(10) NOT NULL,
+        vehiculo VARCHAR(10) NOT NULL,
+        mantenimiento VARCHAR(10) NOT NULL,
+        recurso VARCHAR(10) NOT NULL,
+        agregar VARCHAR(10) NOT NULL,
+        eliminar VARCHAR(10) NOT NULL,
+        incendio VARCHAR(10) NOT NULL,
+        transito VARCHAR(10) NOT NULL,
+        abejas VARCHAR(10) NOT NULL/*,
         FOREIGN KEY (cedula) REFERENCES persona(cedula)  */
     )";
     $conexion->exec($SQL);
@@ -147,17 +159,6 @@ try {
     $SQL = "INSERT IGNORE INTO usuario VALUES(?,?,?,?,?,?)";
     $preparado = $conexion->prepare($SQL);
     $preparado->execute(["0","Cofla","Cofla","A","que paso","nada"]);
-
-    $SQL = "SELECT * FROM privilegio WHERE cedula = ?";
-    $preparado = $conexion->prepare($SQL);
-    $preparado->execute(["0"]);
-    $resultados = $preparado->fetchAll(PDO::FETCH_ASSOC);
-
-    if(empty($resultados)){
-        $SQL = "INSERT INTO privilegio VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $preparado1 = $conexion->prepare($SQL);
-        $preparado1->execute([null, "0", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si"]);
-    }
 
     //------------------ MARCA ------------------
 

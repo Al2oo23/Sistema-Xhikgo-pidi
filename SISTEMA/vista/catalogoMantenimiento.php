@@ -26,16 +26,15 @@ require('../header.php');
                                      </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="fila">
                                         <td class="columna">1234</td>
                                         <td class="columna">Accidente de abejas</td>
                                         <td class="columna">04-03-2024</td>
-                                        <td class="columna">Buenas condiciones </td>
+                                        <td class="columna">Buenas condiciones</td>
                                         <td>
-
                                         <div class="botones" style="justify-content:space-evenly;">
-                                        <div><a href="#" class="btn icon btn-success"><i class="bi bi-check-lg"></i></a></div>
-                                            </div>
+                                            <div><a href="#" class="btn icon btn-success"><i class="bi bi-check-lg"></i></a></div>
+                                        </div>
                                         </td>
 
 

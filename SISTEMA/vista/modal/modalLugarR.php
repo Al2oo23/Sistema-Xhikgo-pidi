@@ -8,7 +8,7 @@ $municipio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!-- Button trigger for login form modal -->
-<button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">Nuevo</button>
+<button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">Registrar Lugar</button>
 
         <!--login form Modal -->
         <div class="modal fade text-left" id="inlineForm1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">

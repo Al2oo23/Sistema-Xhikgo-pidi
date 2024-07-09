@@ -43,7 +43,7 @@ $lugar = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!-- Button trigger for login form modal -->
 <button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm">
-        Nuevo
+        Registrar Incidente
     </button>
 
         <!--login form Modal -->

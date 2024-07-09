@@ -37,7 +37,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         <div class="card">
             <div class="card-content">
                 <div class="card-header">
-                    <h4 class="card-title">Secciones</h4>
+                    <h4 class="card-title">Seccion</h4>
                     <?php include("modal/modalSeccionR.php"); ?>
                 </div>
                 <!-- table hover -->

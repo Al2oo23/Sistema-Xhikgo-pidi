@@ -83,7 +83,7 @@ $abejas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         <div class="col-12">
             <div class="card">
             <div class="card-header">
-                        <h4 class="card-title">Incidente de Abejas</h4>
+                        <h4 class="card-title">Incidente de Abeja</h4>
                         <?php include("modal/modalAbejasR.php");?>
                     </div>
                 <!-- table hover -->

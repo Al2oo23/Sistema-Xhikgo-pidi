@@ -20,7 +20,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label for="niv_vehiculo_buscador">NIV</label>
+                                <label for="niv_vehiculo_buscador">Numero de Identidad Vehicular</label>
                                 <input type="text" id="niv_vehiculo_buscador" class="form-control" placeholder="NIV Buscado">
                             </div>
                         </div>
@@ -80,7 +80,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     <div class="card">
         <div class="card-content">
             <div class="card-header">
-                <h4 class="card-title">Vehiculos</h4>
+                <h4 class="card-title">Vehiculo</h4>
                 <?php include("modal/modalVehiculoR.php"); ?>
             </div>
             <!-- table hover -->

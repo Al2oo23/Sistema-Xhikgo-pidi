@@ -12,7 +12,7 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
 ?>
     <!-- Button trigger for login form modal -->
     <button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">
-        Nuevo
+        Registrar Vehiculo
     </button>
 
         <!--login form Modal -->

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$nombrePagina = 'Catálogo de Tipos de Aviso';
+$nombrePagina = 'Catálogo de Tipo de Aviso';
 require('../header.php');
 include('../modelo/conexion.php');
 
@@ -43,7 +43,7 @@ if (isset($_SESSION['resultado_busqueda_aviso'])) {
                 <div class="card">
                     <div class="card-content">
                     <div class="card-header">
-                        <h4 class="card-title">Aviso</h4>
+                        <h4 class="card-title">Tipo de Aviso</h4>
                         <?php include("modal/modalTavisoR.php"); ?>
                     </div>
                         <!-- table hover -->

@@ -1,7 +1,7 @@
 
     <!-- Button trigger for login form modal -->
     <button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">
-        Nuevo
+        Registrar Seccion
     </button>
 
         <!--login form Modal -->

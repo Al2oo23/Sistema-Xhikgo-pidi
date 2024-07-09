@@ -43,7 +43,7 @@ $resultado = $_SESSION['resultado_busqueda_incidente'];
                 <div class="card">
                     <div class="card-content">
                     <div class="card-header">
-                        <h4 class="card-title">Tipos de Incidentes</h4>
+                        <h4 class="card-title">Tipo de Incidente</h4>
                         <?php include("modal/modalTincidenteR.php"); ?>
                     </div>
                         <!-- table hover -->

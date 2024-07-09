@@ -29,7 +29,7 @@ include('../modelo/conexion.php');
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="fila">
                                         <td class="columna">?</td>
                                         <td class="columna">?</td>
                                         <td class="columna">?</td>

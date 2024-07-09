@@ -1,5 +1,5 @@
 <?php
-$nombrePagina = 'Catálogo de Recursos';
+$nombrePagina = 'Catálogo de Recurso';
 require('../header.php');
 include('../modelo/conexion.php');
 
@@ -46,13 +46,15 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
 
-
-
         <div class="card">
             <div class="card-content">
                 <div class="card-header">
-                    <h4 class="card-title">Recursos</h4>
-                    <?php include("modal/modalRecursoR.php"); ?>
+                    <h4 class="card-title">Recurso</h4>
+                        <div>
+                            <?php include("modal/modalRecursoR.php"); ?>  
+                            <?php include("modal/modalRecursoAgreg.php"); ?>
+                            <?php include("modal/modalRecursoInop.php"); ?>
+                        </div>
                 </div>
                 <!-- table hover -->
                 <div class="table-responsive">

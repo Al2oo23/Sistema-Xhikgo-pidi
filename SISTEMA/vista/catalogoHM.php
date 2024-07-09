@@ -26,7 +26,7 @@ require('../header.php');
                                      </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="fila">
                                         <td class="columna">1234</td>
                                         <td class="columna">Accidente de abejas</td>
                                         <td class="columna">04-03-2024</td>

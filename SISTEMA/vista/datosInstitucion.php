@@ -11,7 +11,7 @@ require('../header.php');
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-vertical" onsubmit="return validarDatosInstitucion()">
+                <form class="form form-vertical" method="POST" action="../controlador/ctl_institucion.php" onsubmit="return validarDatosInstitucion()">
                     <div class="form-body">
                         <div class="row">
                             <div class="col-12">
@@ -52,11 +52,19 @@ require('../header.php');
                                     </div>
 
                                     <div class="col-12">
-                                        <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">Editar</button>
+                                        <div class="form-group has-icon-left">
+                                            <label for="">Firma</label>
+                                            <div class="position-relative">
+                                                <input type="file" class="basic-filepond">
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <?php
-                                    require('../footer.php');
-                                    ?>
+                                    <div class="col-12">
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" name="editar" value="editar" class="btn btn-primary me-1 mb-1">Editar</button>
+                                        </div>
+                                    </div>
+ <?php
+require('../footer.php');
+?>

@@ -1,5 +1,5 @@
 <?php
-$nombrePagina = 'Catálogo Cargo de Bomberos';
+$nombrePagina = 'Catálogo Cargo de Bombero';
 require('../header.php');
 include('../modelo/conexion.php');
 
@@ -37,7 +37,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         <div class="card">
             <div class="card-content">
                 <div class="card-header">
-                    <h4 class="card-title">Cargo de Bomberos</h4>
+                    <h4 class="card-title">Cargo de Bombero</h4>
                     <?php include("modal/modalCargoR.php"); ?>
                 </div>
                 <!-- table hover -->

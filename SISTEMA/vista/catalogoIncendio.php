@@ -84,7 +84,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Incendios</h4>
+                    <h4 class="card-title">Incendio</h4>
                     <?php include("modal/modalIncendioR.php"); ?>
                 </div>
 
