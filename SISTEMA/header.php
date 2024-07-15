@@ -92,6 +92,7 @@
                                     <form action="../index.php" method="post">
                                         <li><a class="dropdown-item" href="#">My Account</a></li>
                                         <li><a class="dropdown-item" href="datosInstitucion.php">Institucion</a></li>
+                                        <li><a class="dropdown-item" href="../controlador/ctl_respaldo.php">Crear Respaldo</a></li>
                                         <li><a class="dropdown-item" href="#">Settings</a></li>
                                         <li>
                                             <hr class="dropdown-divider">

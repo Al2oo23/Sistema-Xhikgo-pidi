@@ -3,7 +3,8 @@
 session_start(); 
 include("../modelo/conexion.php");
 include("../modelo/clase_sesion.php");
-
+include ("../modelo/clase_respaldo.php");
+$respaldo = new Respaldo();
 $sesion = new sesion();
 
 if(isset($_POST['login']) && $_POST['login']=="login"){
@@ -30,12 +31,12 @@ if(isset($_POST['login']) && $_POST['login']=="login"){
 
 if(isset($_POST['logout']) && $_POST['logout']=="logout"){
     
-    /*date_default_timezone_set('America/Caracas');
+    date_default_timezone_set('America/Caracas');
 
     if(date('d')==27){
-        $sesion->respaldo();
-        $sesion->vaciarBitacora();
-    }*/
+        $respaldo-> crearRespaldo();
+        //$sesion->vaciarBitacora();
+    }
     
 	header("Location: ../index.php");
 
