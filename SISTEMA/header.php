@@ -276,14 +276,6 @@
 
                                             </li>
 
-                                            <li class="submenu-item  ">
-                                                <a href="asignar_recurso.php" class='submenu-link'>Agregar Recurso</a>
-
-
-                                            </li>
-                                            <li class="submenu-item  ">
-                                                <a href="recurso_inoperativo.php" class='submenu-link'>Reportar Recurso</a>
-                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -308,7 +300,7 @@
                                             </li>
 
                                             <li class="submenu-item  ">
-                                                <a href="transito.php" class='submenu-link'>Transito</a>
+                                                <a href="catalogoTransito.php" class='submenu-link'>Transito</a>
                                             </li>
 
                                             <li class="submenu-item  ">

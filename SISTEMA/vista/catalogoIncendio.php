@@ -8,78 +8,76 @@ $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="col-12 m-auto">
-
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Buscador</h4>
-            </div>
-            <div class="card-content">
-                <div class="card-body">
-                    <form class="form">
-                        <div class="row">
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label for="fecha_incendio_buscador">Fecha</label>
-                                    <input type="text" id="fecha_incendio_buscador" class="form-control" placeholder="Fecha Buscada">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label for="seccion_incendio_buscador">Seccion</label>
-                                    <input type="text" id="seccion_incendio_buscador" class="form-control" placeholder="Seccion Buscada">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label for="municipio_incendio_buscador">Municipio</label>
-                                    <input type="text" id="municipio_incendio_buscador" class="form-control" placeholder="Municipio Buscado">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label for="localidad_incendio_buscador">Localidad</label>
-                                    <input type="text" id="localidad_incendio_buscador" class="form-control" placeholder="Localidad Buscada">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label for="propietario_incendio_buscador">Propietario</label>
-                                    <input type="text" id="propietario_incendio_buscador" class="form-control" placeholder="Propietario Buscado">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label for="valor_inmueble_incendio_buscador">Valor Inmueble</label>
-                                    <input type="text" id="valor_inmueble_incendio_buscador" class="form-control" placeholder="Valor Inmueble Buscado">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label for="num_residenciados_incendio_buscador">Numero de Residenciados</label>
-                                    <input type="text" id="num_residenciados_incendio_buscador" class="form-control" placeholder="Numero de Residenciados Buscado">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label for="fuente_ignicion_incendio_buscador">Fuente de Ignicion</label>
-                                    <input type="text" id="fuente_ignicion_incendio_buscador" class="form-control" placeholder="Fuente de Ignicion Buscada">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label for="causa_incendio_buscador">Causa Incendio</label>
-                                    <input type="text" id="causa_incendio_buscador" class="form-control" placeholder="Causa Incendio Buscada">
-                                </div>
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Buscador</h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <form class="form" action="reportes/reporte_incendio.php" method="POST">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label for="fecha_incendio_buscador">Fecha</label>
+                                <input type="text" id="fecha_incendio_buscador" name="fecha_incendio_buscador" class="form-control" placeholder="Fecha Buscada">
                             </div>
                         </div>
-                    </form>
-                </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label for="seccion_incendio_buscador">Seccion</label>
+                                <input type="text" id="seccion_incendio_buscador" name="seccion_incendio_buscador" class="form-control" placeholder="Seccion Buscada">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label for="municipio_incendio_buscador">Municipio</label>
+                                <input type="text" id="municipio_incendio_buscador" name="municipio_incendio_buscador" class="form-control" placeholder="Municipio Buscada">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label for="localidad_incendio_buscador">Localidad</label>
+                                <input type="text" id="localidad_incendio_buscador" name="localidad_incendio_buscador" class="form-control" placeholder="Localidad Buscado">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label for="propietario_incendio_buscador">Propietario Vivienda</label>
+                                <input type="text" id="propietario_incendio_buscador" name="propietario_incendio_buscador" class="form-control" placeholder="Propietario Buscado">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label for="valor_inmueble_incendio_buscador">Valor Inmueble</label>
+                                <input type="text" id="valor_inmueble_incendio_buscador" name="valor_inmueble_incendio_buscador" class="form-control" placeholder="Jefe Buscado">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label for="num_residenciados_incendio_buscador">Número Residenciados</label>
+                                <input type="text" id="num_residenciados_incendio_buscador" name="num_residenciados_incendio_buscador" class="form-control" placeholder="Número de Residenciados Buscado">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label for="fuente_ignicion_incendio_buscador">Fuente Ignición</label>
+                                <input type="text" id="fuente_ignicion_incendio_buscador" name="fuente_ignicion_incendio_buscador" class="form-control" placeholder="Fuente Ignición Buscada">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label for="causa_incendio_buscador">Causa Incendio</label>
+                                <input type="text" id="causa_incendio_buscador" name="causa_incendio_buscador" class="form-control" placeholder="Causa Incendio Buscado">
+                            </div>
+                        </div>
+                        <div class="col-md-12 form-group d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Generar PDF</button>
+                        </div>
+                </form>
             </div>
         </div>
     </div>
-
     <div class="row" id="table-hover-row">
         <div class="col-12">
             <div class="card">

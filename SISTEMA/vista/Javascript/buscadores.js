@@ -487,8 +487,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// BUSCADOR INCIDENTE DE ABEJAS:
 
+
+// BUSCADOR ABEJAS
 document.addEventListener('DOMContentLoaded', () => {
 
     const fecha_abejas_buscador = document.getElementById('fecha_abejas_buscador');
@@ -517,7 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const filtro8 = cantidad_abejas_buscador.value.toLowerCase();
             const filtro9 = efectivo_abejas_buscador.value.toLowerCase();
 
-            for(let i = 0; i < rows.length; i++){
+            for (let i = 0; i < rows.length; i++) {
                 let row = rows[i];
                 let cell1 = row.getElementsByTagName('td')[1].textContent.toLowerCase();
                 let cell2 = row.getElementsByTagName('td')[2].textContent.toLowerCase();
@@ -590,6 +591,69 @@ document.addEventListener('DOMContentLoaded', () => {
                 let cell7 = row.getElementsByTagName('td')[7].textContent.toLowerCase();
                 let cell8 = row.getElementsByTagName('td')[8].textContent.toLowerCase();
                 let cell9 = row.getElementsByTagName('td')[9].textContent.toLowerCase();
+
+                let match1 = !filtro1 || cell1.includes(filtro1);
+                let match2 = !filtro2 || cell2.includes(filtro2);
+                let match3 = !filtro3 || cell3.includes(filtro3);
+                let match4 = !filtro4 || cell4.includes(filtro4);
+                let match5 = !filtro5 || cell5.includes(filtro5);
+                let match6 = !filtro6 || cell6.includes(filtro6);
+                let match7 = !filtro7 || cell7.includes(filtro7);
+                let match8 = !filtro8 || cell8.includes(filtro8);
+                let match9 = !filtro9 || cell9.includes(filtro9);
+
+                if (match1 && match2 && match3 && match4 && match5 && match6 && match7 && match8 && match9) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    });
+});
+
+//BUSCADOR TRANSITO
+document.addEventListener('DOMContentLoaded', () => {
+
+    const fecha_transito_buscador = document.getElementById('fecha_transito_buscador');
+    const seccion_transito_buscador = document.getElementById('seccion_transito_buscador');
+    const estacion_transito_buscador = document.getElementById('estacion_transito_buscador');
+    const emergencia_transito_buscador = document.getElementById('emergencia_transito_buscador');
+    const inspeccion_transito_buscador = document.getElementById('inspeccion_transito_buscador');
+    const tipo_incidente_transito_buscador = document.getElementById('tipo_incidente_transito_buscador');
+    const vehiculo_transito_buscador = document.getElementById('vehiculo_transito_buscador');
+    const occisos_transito_buscador = document.getElementById('occisos_transito_buscador');
+    const incendio_transito_buscador = document.getElementById('incendio_transito_buscador');
+    
+
+    const tabla = document.getElementById('tabla_transito');
+    const rows = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+    [fecha_transito_buscador, seccion_transito_buscador, estacion_transito_buscador, emergencia_transito_buscador, inspeccion_transito_buscador, tipo_incidente_transito_buscador, vehiculo_transito_buscador, occisos_transito_buscador, incendio_transito_buscador].forEach((input) => {
+        input.addEventListener('keyup', () => {
+
+            const filtro1 = fecha_transito_buscador.value.toLowerCase();
+            const filtro2 = seccion_transito_buscador.value.toLowerCase();
+            const filtro3 = estacion_transito_buscador.value.toLowerCase();
+            const filtro4 = emergencia_transito_buscador.value.toLowerCase();
+            const filtro5 = inspeccion_transito_buscador.value.toLowerCase();
+            const filtro6 = tipo_incidente_transito_buscador.value.toLowerCase();
+            const filtro7 = vehiculo_transito_buscador.value.toLowerCase();
+            const filtro8 = occisos_transito_buscador.value.toLowerCase();
+            const filtro9 = incendio_transito_buscador.value.toLowerCase();
+
+
+            for (let i = 0; i < rows.length; i++) {
+                let row = rows[i];
+                let cell1 = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+                let cell2 = row.getElementsByTagName('td')[2].textContent.toLowerCase();
+                let cell3 = row.getElementsByTagName('td')[3].textContent.toLowerCase();
+                let cell4 = row.getElementsByTagName('td')[4].textContent.toLowerCase();
+                let cell5 = row.getElementsByTagName('td')[5].textContent.toLowerCase();
+                let cell6 = row.getElementsByTagName('td')[6].textContent.toLowerCase();
+                let cell7 = row.getElementsByTagName('td')[14].textContent.toLowerCase();
+                let cell8 = row.getElementsByTagName('td')[16].textContent.toLowerCase();
+                let cell9 = row.getElementsByTagName('td')[18].textContent.toLowerCase();
 
                 let match1 = !filtro1 || cell1.includes(filtro1);
                 let match2 = !filtro2 || cell2.includes(filtro2);

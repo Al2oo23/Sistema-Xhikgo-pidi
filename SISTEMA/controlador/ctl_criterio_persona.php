@@ -10,6 +10,7 @@ if (isset($_POST['id_criterio'])) {
         $preparado_persona = $conexion->prepare($SQL_P);
         $preparado_persona->execute();
         $resultados = $preparado_persona->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($resultados);
     } else {
         // Obtener criterio de búsqueda
         $SQL_C = "SELECT * FROM criterio_persona WHERE id = ?";
@@ -32,12 +33,10 @@ if (isset($_POST['id_criterio'])) {
             $preparado_persona = $conexion->prepare($SQL_P);
             $preparado_persona->execute($valores);
             $resultados = $preparado_persona->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($resultados);
         } else {
-            $resultados = [];
+            echo json_encode([]);
         }
     }
-
-    // Devolver resultados como JSON
-    echo json_encode($resultados);
 }
 ?>
