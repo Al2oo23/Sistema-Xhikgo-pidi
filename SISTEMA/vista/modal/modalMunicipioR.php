@@ -24,7 +24,7 @@
                                     <div class="form-group has-icon-left">
                                                 <label>Municipio:</label>
                                              <div class="position-relative">                                                
-                                                 <input type="text" id="nombre_municipio" name="nombre" class="form-control" placeholder="Nombre del Municipio" id="first-name-icon">
+                                                 <input type="text" id="nombre_municipio" name="nombre" class="form-control" placeholder="Nombre del Municipio">
                                                  <div class="form-control-icon">
                                                 <i class="bi bi-shop"></i>
                                              </div>    
@@ -35,7 +35,7 @@
                                     <div class="form-group has-icon-left">
                                                 <label>Codigo Postal:</label>
                                              <div class="position-relative">                                                
-                                                 <input type="text" id="postal" name="codigo" class="form-control" placeholder="Codigo Postal del Municipio" id="first-name-icon">
+                                                 <input type="text" id="codigo_municipio" name="codigo" class="form-control" placeholder="Codigo Postal del Municipio">
                                                  <div class="form-control-icon">
                                                 <i class="bi bi-shop"></i>
                                              </div>    

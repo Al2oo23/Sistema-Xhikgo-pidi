@@ -1264,7 +1264,7 @@ function validarModelo() {
         alert('Debe seleccionar una marca de vehiculo valida');
         return false;
     }
-    
+
     var modelo_vehiculo = document.getElementById('modelo_vehiculo').value;
     var modelo_vehiculoRegex = /^.{3,50}$/;
 
@@ -1305,6 +1305,17 @@ function validarMunicipio() {
         alert('Debe ingresar un nombre de municipio valido');
         return false;
     }
+
+    var codigo_municipio = document.getElementById('codigo_municipio').value;
+    var codigo_municipioRegex = /^\d{4,5}$/;
+
+    if (!codigo_municipioRegex.test(codigo_municipio)) {
+        alert('Debe ingresar un codigo de municipio valido');
+        return false;
+    }
+
+
+
 
     return true;
 }
@@ -1360,7 +1371,7 @@ function validarRecursoM() {
         alert('Debe ingresar el nombre de un recurso');
         return false;
     }
-    
+
     var tipo_recurso = document.getElementById('tipoM').value;
 
     if (tipo_recurso === "") {
