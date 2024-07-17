@@ -38,6 +38,42 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
     }
 }
 
+
+//AGREGAR RECURSO
+if (isset($_POST['agregar']) && $_POST['agregar'] == 'agregar') {
+
+    $recurso->setNombre($_POST['nombre_recurso']);
+    $recurso->setCantidad($_POST['cantidad_recurso']);
+
+    $resultado = $recurso->agregarRecurso($recurso->getNombre(), $recurso->getCantidad());
+
+    if (!$resultado) {
+        echo "<script>alert('No se pudo agregar el Recurso')</script>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoRecursos.php'>";
+    } else {
+        echo "<script>alert('Recurso agregado con exito')</script>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoRecursos.php'>";
+    }
+}
+
+//RESTAR RECURSO
+if (isset($_POST['reportar']) && $_POST['reportar'] == 'reportar') {
+
+    $recurso->setNombre($_POST['recurso_inoperativo']);
+    $recurso->setCantidad($_POST['cantidad_recurso']);
+
+    $resultado = $recurso->restarRecurso($recurso->getNombre(), $recurso->getCantidad());
+
+    if (!$resultado) {
+        echo "<script>alert('Error: La cantidad a restar es superior a la cantidad actual')</script>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoRecursos.php'>";
+    } else {
+        echo "<script>alert('Recurso reportado con exito')</script>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoRecursos.php'>";
+    }
+}
+
+
 //ELIMINAR
 if (isset($_GET['txtID'])){
     $recurso->setId($_GET['txtID']);

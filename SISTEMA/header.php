@@ -124,7 +124,7 @@
                             
                             <li class="menu-item  has-sub">
                                 <a href="#" class='menu-link'>
-                                    <span><i class="bi bi-geo-alt-fill"></i>Localidades</span>
+                                    <span><i class="bi bi-geo-alt-fill"></i>Localidad</span>
                                 </a>
                                 <div class="submenu ">
                                     <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
@@ -137,11 +137,11 @@
                                             </li>
 
                                             <li class="submenu-item">
-                                                <a href="catalogoLugar.php" class='submenu-link'>Lugare</a>
+                                                <a href="catalogoLugar.php" class='submenu-link'>Lugar</a>
                                             </li>
 
                                             <li class="submenu-item">
-                                                <a href="catalogoEstacion.php" class='submenu-link'>Estacione</a>
+                                                <a href="catalogoEstacion.php" class='submenu-link'>Estacion</a>
                                             </li>
 
                                             <li class="submenu-item">
@@ -306,7 +306,7 @@
                                             </li>
 
                                             <li class="submenu-item  ">
-                                                <a href="transito.php" class='submenu-link'>Transito</a>
+                                                <a href="catalogoTransito.php" class='submenu-link'>Transito</a>
                                             </li>
 
                                             <li class="submenu-item  ">

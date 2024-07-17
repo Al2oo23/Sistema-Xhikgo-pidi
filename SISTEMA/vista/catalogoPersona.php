@@ -30,8 +30,9 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <option value="<?= $criterio['id']; ?>"><?= $criterio['nombre']; ?></option>
                                 <?php endforeach; ?>
                             </select>
+                            <button type="button" class="btn btn-primary"><a href="criterioPersona.php" style="text-decoration: none; color:white;">Criterio de Persona</a></button>
                         </div>
-                    </div>
+                    </div>      
                     <input type="submit" value="Buscar" id="buscar" class="btn btn-primary">
                     <button type="button" id="limpiar" class="btn btn-danger">Limpiar</button>
                 </form>

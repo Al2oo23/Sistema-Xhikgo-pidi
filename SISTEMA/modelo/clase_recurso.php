@@ -1,7 +1,7 @@
 <?php 
 
 class recurso{
-    private $id, $nombre, $tipo;
+    private $id, $nombre, $tipo, $cantidad;
 
     public function __construct(){
 	}
@@ -19,6 +19,10 @@ class recurso{
         $this->tipo = $tipo;
     }
 
+    public function setCantidad($cantidad){
+        $this->cantidad = $cantidad;
+    }
+
 
     //getters
     public function getId(){
@@ -31,6 +35,10 @@ class recurso{
 
     public function getTipo(){
         return $this->tipo;
+    }
+
+    public function getCantidad(){
+        return $this->cantidad;
     }
 
     //REGISTRAR 
@@ -54,6 +62,53 @@ class recurso{
     
         return $preparado;
     }
+
+    //AGREGAR
+    public function agregarRecurso($nombre, $cantidad){
+        include("conexion.php");
+    
+       // Obtener la cantidad actual del recurso
+    $consultaCantidad = "SELECT cantidad FROM recurso WHERE nombre = ?";
+    $CantidadActual = $conexion->prepare($consultaCantidad);
+    $CantidadActual->execute([$nombre]);
+    $cantidadActual = $CantidadActual->fetchColumn();
+
+    // Calcular la nueva cantidad sumando la actual con la proporcionada
+    $nuevaCantidad = $cantidadActual + $cantidad;
+
+    // Actualizar la cantidad en la base de datos
+    $SQL = "UPDATE recurso SET cantidad = ? WHERE nombre = ?";
+    $preparado = $conexion->prepare($SQL);
+    $preparado->execute([$nuevaCantidad, $nombre]);
+
+    return $preparado;
+}
+
+// RESTAR
+
+public function restarRecurso($nombre, $cantidad){
+    include("conexion.php");
+
+    // Obtener la cantidad actual del recurso
+    $consultaCantidad = "SELECT cantidad FROM recurso WHERE nombre = ?";
+    $CantidadActual = $conexion->prepare($consultaCantidad);
+    $CantidadActual->execute([$nombre]);
+    $cantidadActual = $CantidadActual->fetchColumn();
+
+    // Verificar si la cantidad actual es mayor que la cantidad a restar
+    if ($cantidadActual >= $cantidad) {
+        // Calcular la nueva cantidad restando la proporcionada
+
+        $nuevaCantidad = max(0, $cantidadActual - $cantidad);
+
+        // Actualizar la cantidad en la base de datos
+        $SQL = "UPDATE recurso SET cantidad = ? WHERE nombre = ?";
+        $preparado = $conexion->prepare($SQL);
+        $preparado->execute([$nuevaCantidad, $nombre]);
+
+        return $preparado;
+    } 
+}
     
     //ELIMINAR
     public function eliminarRecurso ($id){

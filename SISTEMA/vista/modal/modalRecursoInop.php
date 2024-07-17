@@ -1,3 +1,10 @@
+<?php 
+    // LLAMAR AL RECURSO
+   $sentencia = $conexion->prepare("SELECT nombre FROM recurso");
+   $sentencia->execute();
+   $recurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!-- Button trigger for login form modal -->
 <button type="button" class="btn icon btn-danger" data-bs-toggle="modal" data-bs-target="#inlineForm3">
     Reportar Recurso
@@ -29,7 +36,13 @@
                                             <div class="position-relative">
                                                 <select name="recurso_inoperativo" class="form-select" id="recurso_inoperativo">
                                                     <option value="">Seleccione el Recurso que quedó Inoperativo...</option>
-                                                    <option value="1">1</option>
+                                                    <?php foreach ($recurso as $nombre) : 
+                                                        $recurso = $nombre["nombre"];
+                                                     ?>
+
+                                                     <option value="<?=$recurso?>"><?=$recurso?></option>
+
+                                                    <?php endforeach;?>
                                                 </select>
                                             </div>
                                         </div>
@@ -37,7 +50,7 @@
 
                                     <label for="first-name-icon">Cantidad del Recurso</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" placeholder="Ingrese la Cantidad Inoperativa del Recurso" id="cantidad_recurso">
+                                        <input type="text" class="form-control" name="cantidad_recurso" placeholder="Ingrese la Cantidad Inoperativa del Recurso" id="cantidad_recurso">
                                         <div class="form-control-icon">
                                             <i class="bi bi-postcard"></i>
                                         </div>
