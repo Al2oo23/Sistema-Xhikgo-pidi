@@ -21,7 +21,7 @@ $estacion = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!-- Button trigger for login form modal -->
  <button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">
-       Registrar Persona
+       Registrar Criterio
  </button>
 
         <!--login form Modal -->
@@ -32,14 +32,14 @@ $estacion = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             <!-- Header del Modal: ----------------------------->
 
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel33">Registrar Persona</h4>
+                        <h4 class="modal-title" id="myModalLabel33">Registrar Criterio de Persona</h4>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <i data-feather="x"></i>
                         </button>
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_persona.php" method="POST" style="text-align: left;" onsubmit="return validarPersona()">
+                    <form action="../controlador/ctl_criterio_persona.php" method="POST" style="text-align: left;" onsubmit="return validarPersona()">
                         <div class="modal-body">
                         
                         <div class="col-12">
@@ -190,19 +190,6 @@ $estacion = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                             <option value="<?=$estacion?>"><?=$estacion?></option>
 
                                         <?php endforeach;?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Estado</label>
-                                    <div class="position-relative">
-                                         <select name="estado" class="form-select" id="estado">
-                                            <option value="">Seleccione el Estado de la Persona...</option>
-                                            <option value="A">Activo</option>
-                                            <option value="I">Inactivo</option>                  
                                         </select>
                                     </div>
                                 </div>

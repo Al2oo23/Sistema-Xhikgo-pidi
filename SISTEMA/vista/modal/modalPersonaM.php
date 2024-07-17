@@ -189,6 +189,17 @@ $estacion = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                         </div>
                     </div>
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Estado</label>
+                                    <div class="position-relative">
+                                         <select name="estado" class="form-select" id="estadoM">
+                                            <option value="A">Activo</option>
+                                            <option value="I">Inactivo</option>                  
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                 </div>
 
                 <!-- Footer del modal: ------------------------------>

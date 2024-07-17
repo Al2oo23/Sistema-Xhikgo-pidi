@@ -13,6 +13,7 @@ const tpersona = document.getElementById("tipo_personaM");
 const cargo = document.getElementById("cargoM");
 const seccion = document.getElementById("seccionM");
 const estacion = document.getElementById("estacionM");
+const estado = document.getElementById("estadoM");
 const modal = document.getElementById("modalM");
 
 filas.forEach(fila => {
@@ -31,6 +32,7 @@ filas.forEach(fila => {
        cargo.value = columnas[8].textContent
        seccion.value = columnas[9].textContent
        estacion.value = columnas[10].textContent
+       estado.value = columnas[11].textContent
        console.log(columnas);
     });
 });

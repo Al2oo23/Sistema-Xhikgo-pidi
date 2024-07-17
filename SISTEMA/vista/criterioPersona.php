@@ -1,5 +1,5 @@
 <?php
-$nombrePagina = "Catálogo de Persona";
+$nombrePagina = "Criterio de Persona";
 require('../header.php');
 include('../modelo/conexion.php');
 
@@ -7,11 +7,6 @@ include('../modelo/conexion.php');
 $sentencia = $conexion->prepare("SELECT * FROM criterio_persona");
 $sentencia->execute();
 $criterio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-
-// Obtener resultados iniciales
-$sentencia = $conexion->prepare("SELECT * FROM persona");
-$sentencia->execute();
-$resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="col-12">
@@ -21,24 +16,13 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="card-content">
             <div class="card-body">
-               
                 <form id="buscador-form">
-                
-                <div class="form-group has-icon-left">
-                        <div class="position-relative col-4">
-                                <input type="text" class="form-control" placeholder="Buscar">
-                                <div class="form-control-icon">
-                                <i class="bi bi-search"></i>
-                            </div>
-                                <select class="form-select" name="criterio" id="criterio" style="width:200px; display:inline-block;">
-                                    <option value="">Seleccionar Criterio...</option>
-                                    <?php foreach ($criterio as $c) : ?>
-                                        <option value="<?= $c['id']; ?>"><?= $c['nombre']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                           
-                        </div>
-                </div>
+                <select class="form-select" name="criterio" id="criterio" style="width:200px; display:inline-block;">
+                        <option value="">Seleccionar Criterio...</option>
+                        <?php foreach ($criterio as $c) : ?>
+                            <option value="<?= $c['id']; ?>"><?= $c['nombre']; ?></option>
+                        <?php endforeach; ?>
+                </select>
                     <input type="hidden" name="id_criterio" id="id_criterio">
                     <input type="submit" value="Buscar" id="buscar" class="btn btn-primary">
                     <button type="button" id="limpiar" class="btn btn-danger">Limpiar</button>
@@ -51,13 +35,14 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Persona</h4>
-                    <?php include("modal/modalPersonaR.php"); ?>
+                    <h4 class="card-title">Criterio de Persona</h4>
+                    <?php include("modal/modalCriterioPersonaR.php"); ?>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover mb-0" id="tabla_persona">
                         <thead>
                             <tr style="text-align: center;">
+                                <th class="columnas" hidden>id</th>
                                 <th class="columnas">Cedula</th>
                                 <th class="columnas">Nombre</th>
                                 <th class="columnas">Edad</th>
@@ -69,13 +54,13 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <th class="columnas">Cargo</th>
                                 <th class="columnas">Seccion</th>
                                 <th class="columnas">Estacion</th>
-                                <th class="columnas">Estado</th>
                                 <th class="columnas">Accion</th>
                             </tr>
                         </thead>
                         <tbody id="resultados">
-                            <?php foreach ($resultado as $persona) : ?>
+                            <?php foreach ($criterio as $persona) : ?>
                                 <tr class="fila">
+                                    <td class="columnas" hidden><?= $persona['id']; ?></td>
                                     <td class="columnas"><?= $persona['cedula']; ?></td>
                                     <td class="columnas"><?= $persona['nombre']; ?></td>
                                     <td class="columnas"><?= $persona['edad']; ?></td>
@@ -87,10 +72,10 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <td class="columnas"><?= $persona['cargo']; ?></td>
                                     <td class="columnas"><?= $persona['seccion']; ?></td>
                                     <td class="columnas"><?= $persona['estacion']; ?></td>
-                                    <td class="columnas"><?= $persona['estado']; ?></td>
                                     <td>
                                         <div class="botones" style="justify-content:space-evenly;">
                                             <?php include("modal/modalPersonaM.php"); ?>
+                                            <div><a name='eliminar' id='eliminar' href='../controlador/ctl_persona.php?txtID=<?= $persona['cedula']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -130,10 +115,10 @@ document.getElementById('buscador-form').addEventListener('submit', function(e) 
                 <td class="columnas">${persona.cargo}</td>
                 <td class="columnas">${persona.seccion}</td>
                 <td class="columnas">${persona.estacion}</td>
-                <td class="columnas">${persona.estado}</td>
                 <td>
                     <div class="botones" style="justify-content:space-evenly;">
                         <div><a name='modificar' id='modificar' href='#' data-bs-toggle='modal' data-bs-target='#modalPersonaM${persona.cedula}' class="btn icon btn-warning"><i class="bi bi-pencil"></i></a></div>
+                        <div><a name='eliminar' id='eliminar' href='../controlador/ctl_persona.php?txtID=${persona.cedula}' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                     </div>
                     ${generateModalHTML(persona.cedula)}
                 </td>
@@ -172,6 +157,7 @@ document.getElementById('limpiar').addEventListener('click', function() {
                 <td>
                     <div class="botones" style="justify-content:space-evenly;">
                         <div><a name='modificar' id='modificar' href='#' data-bs-toggle='modal' data-bs-target='#modalPersonaM${persona.cedula}' class="btn icon btn-warning"><i class="bi bi-pencil"></i></a></div>
+                        <div><a name='eliminar' id='eliminar' href='../controlador/ctl_persona.php?txtID=${persona.cedula}' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                     </div>
                     ${generateModalHTML(persona.cedula)}
                 </td>
@@ -190,8 +176,6 @@ function generateModalHTML(cedula) {
     `;
 }
 </script>
-
-<script src="Javascript/personaModal.js"></script>
 
 <?php
 require('../footer.php');

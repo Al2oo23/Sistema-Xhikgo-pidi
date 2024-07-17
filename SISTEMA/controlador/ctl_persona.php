@@ -17,6 +17,7 @@ if(isset($_POST['registrar']) && $_POST['registrar'] == "registrar"){
     $persona->setCargo($_POST['cargo']);
     $persona->setSeccion($_POST['seccion']);
     $persona->setEstacion($_POST['estacion']);
+    $persona->setEstado($_POST['estado']);
  
     $datos = $persona->registrarPersona(
         $persona->getCedula(), 
@@ -29,7 +30,8 @@ if(isset($_POST['registrar']) && $_POST['registrar'] == "registrar"){
         $persona->getTpersona(),
         $persona->getCargo(),
         $persona->getSeccion(),
-        $persona->getEstacion()
+        $persona->getEstacion(),
+        $persona->getEstado()
     );
 
     if(empty($datos)){
@@ -55,6 +57,7 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
     $persona->setCargo($_POST['cargo']);
     $persona->setSeccion($_POST['seccion']);
     $persona->setEstacion($_POST['estacion']);
+    $persona->setEstado($_POST['estado']);
     
  
     $datos = $persona->modificarPersona(
@@ -68,7 +71,8 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
         $persona->getTpersona(),
         $persona->getCargo(),
         $persona->getSeccion(),
-        $persona->getEstacion()
+        $persona->getEstacion(),
+        $persona->getEstado()
     );
 
     if(empty($datos)){
@@ -82,16 +86,16 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
 
 // ELIMINAR
 
-if (isset($_GET['txtID'])) {
+// if (isset($_GET['txtID'])) {
 
-    $txtID = (isset($_GET['txtID'])) ? $_GET['txtID'] : '';
+//     $txtID = (isset($_GET['txtID'])) ? $_GET['txtID'] : '';
 
-    $sentencia = $conexion->prepare("DELETE FROM persona WHERE cedula = ?");
-    $sentencia->bindParam(1, $txtID, PDO::PARAM_INT);
-    $sentencia->execute();
+//     $sentencia = $conexion->prepare("DELETE FROM persona WHERE cedula = ?");
+//     $sentencia->bindParam(1, $txtID, PDO::PARAM_INT);
+//     $sentencia->execute();
 
-    echo "<script>alert('Persona Eliminada con Exito')</script>";
-	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoPersona.php'>"; 
-}
+//     echo "<script>alert('Persona Eliminada con Exito')</script>";
+// 	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoPersona.php'>"; 
+// }
 ?>
 

@@ -1,12 +1,17 @@
 <?php
 
-class Persona{
-    private $cedula, $nombre, $edad, $correo, $telefono, $direccion, $genero, $tpersona, $cargo, $seccion, $estacion, $estado;
+class CriterioPer{
+    private $id, $cedula, $nombre, $edad, $correo, $telefono, $direccion, $genero, $tpersona, $cargo, $seccion, $estacion;
 
     public function __construct(){
 	}
 
     //setters
+
+    public function setId($id){
+        $this->id = $id;
+    }
+
     public function setCedula($cedula){
         $this->cedula = $cedula;
     }
@@ -49,12 +54,13 @@ class Persona{
     public function setEstacion($estacion){
         $this->estacion = $estacion;
     }
-
-    public function setEstado($estado){
-        $this->estado = $estado;
-    }
    
     //getters
+
+    public function getId(){
+        return $this->id;
+    }
+
     public function getCedula(){
         return $this->cedula;
     }
@@ -99,30 +105,25 @@ class Persona{
         return $this->estacion;
     }
 
-    public function getEstado(){
-        return $this->estado;
-    }
-
-
     //Registrar Persona
-    public function registrarPersona($cedula, $nombre, $edad, $correo, $telefono, $direccion, $genero, $tpersona, $cargo, $seccion, $estacion, $estado){
+    public function registrarCriterio($cedula, $nombre, $edad, $correo, $telefono, $direccion, $genero, $tpersona, $cargo, $seccion, $estacion){
         include("conexion.php");
 
-        $SQL = "INSERT INTO persona VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        $SQL = "INSERT INTO criterio_persona VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$cedula, $nombre, $edad, $correo, $telefono, $direccion, $genero, $tpersona, $cargo, $seccion, $estacion, $estado]);
+        $preparado->execute([null, $cedula, $nombre, $edad, $correo, $telefono, $direccion, $genero, $tpersona, $cargo, $seccion, $estacion]);
 
         return $preparado;
     }
 
     //Modificar
-    public function modificarPersona($cedula, $nombre, $edad, $correo, $telefono, $direccion, $genero, $tpersona, $cargo, $seccion, $estacion, $estado){
+    public function modificarCriterio($id, $cedula, $nombre, $edad, $correo, $telefono, $direccion, $genero, $tpersona, $cargo, $seccion, $estacion){
         include("conexion.php");
 
-        $SQL = "UPDATE persona SET nombre = ?, edad = ?, correo = ?, telefono = ?, direccion = ?, sexo = ?, tipo_persona = ?, cargo = ?,
-        seccion = ?, estacion = ?, estado = ? WHERE cedula = ?";
+        $SQL = "UPDATE criterio_persona SET nombre = ?, edad = ?, correo = ?, telefono = ?, direccion = ?, sexo = ?, tipo_persona = ?, cargo = ?,
+        seccion = ?, estacion = ? WHERE cedula = ?";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$nombre, $edad, $correo, $telefono, $direccion, $genero, $tpersona, $cargo, $seccion, $estacion, $estado, $cedula]);
+        $preparado->execute([$nombre, $edad, $correo, $telefono, $direccion, $genero, $tpersona, $cargo, $seccion, $estacion, $cedula, $id]);
 
         return $preparado;
     }

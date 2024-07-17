@@ -96,6 +96,25 @@ try {
         tipo_persona VARCHAR(20) NOT NULL,
         cargo VARCHAR(20) NOT NULL,
         seccion VARCHAR(3) NOT NULL,
+        estacion VARCHAR(20) NOT NULL,
+        estado VARCHAR(2) NOT NULL
+    )";
+    $conexion->exec($SQL);
+
+    //------------------ CRITERIO_PERSONA ------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS criterio_persona (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        cedula VARCHAR(15) NOT NULL,
+        nombre VARCHAR(100) NOT NULL,
+        edad INT(4) NOT NULL,
+        correo VARCHAR(40) NOT NULL,
+        telefono VARCHAR(15) NOT NULL,
+        direccion VARCHAR(100) NOT NULL,
+        sexo VARCHAR(2) NOT NULL,
+        tipo_persona VARCHAR(20) NOT NULL,
+        cargo VARCHAR(20) NOT NULL,
+        seccion VARCHAR(3) NOT NULL,
         estacion VARCHAR(20) NOT NULL
     )";
     $conexion->exec($SQL);
@@ -152,9 +171,9 @@ try {
 
     //¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿ COFLA ?????????????????
 
-    $SQL = "INSERT IGNORE INTO persona VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+    $SQL = "INSERT IGNORE INTO persona VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
     $preparado = $conexion->prepare($SQL);
-    $preparado->execute(["0","Cofla",0,"?",0,"?","?","Supervisor","?",99,"?"]);
+    $preparado->execute(["0","Cofla",0,"?",0,"?","?","Supervisor","?",99,"?","A"]);
 
     $SQL = "INSERT IGNORE INTO usuario VALUES(?,?,?,?,?,?)";
     $preparado = $conexion->prepare($SQL);
