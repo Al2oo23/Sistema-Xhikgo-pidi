@@ -20,14 +20,14 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_estacion.php" method="POST" style="text-align: left;">
+                    <form action="../controlador/ctl_estacion.php" method="POST" style="text-align: left;" onsubmit="return validarEstacionM()">
                         <div class="modal-body">
 
                         <input type="hidden" id="id" name="id">
 
-                            <label>Estacion:</label>
+                            <label>Estación</label>
                             <div class="form-group">
-                                <input type="text" value="" name="nombre" id="estacionM" class="form-control" >
+                                <input type="text" value="" name="nombre" id="nombre_estacionM" class="form-control" >
                             </div>
                         </div>
                        

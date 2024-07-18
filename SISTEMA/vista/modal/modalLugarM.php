@@ -27,12 +27,12 @@ $municipio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_lugar.php" style="text-align: left;" method="POST">
+                    <form action="../controlador/ctl_lugar.php" style="text-align: left;" method="POST" onsubmit="return validarLugarM()">
                         <div class="modal-body">
 
-                        <label>Nombre:</label>
+                        <label>Nombre del lugar</label>
                             <div class="form-group">
-                                <input type="text" value="" id="nombreM" class="form-control" name="nombre">
+                                <input type="text" value="" id="nombre_lugarM" class="form-control" name="nombre">
                         </div>
 
                             <div class="col-12">
@@ -52,7 +52,7 @@ $municipio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </div>
                                     
-                            <label>Distancia:</label>
+                            <label>Distancia</label>
                             <div class="form-group">
                                 <input type="text" value="" id="distanciaM" class="form-control" name="distancia">
                             </div>

@@ -7,7 +7,7 @@
         <!--login form Modal -->
         <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                <div class="modal-content" id="modalM">
+                <div class="modal-content" id="modalMs">
 
             <!-- Header del Modal: ----------------------------->
 
@@ -24,12 +24,12 @@
 
                         <input type="hidden" id="id" name="id">
 
-                            <label>Tipo:</label>
+                            <label>Tipo Persona</label>
                             <div class="form-group">
-                                <input type="text" value="" name="tipo_persona" id="tipoM" class="form-control" >
+                                <input type="text" value="" name="tipo_persona" id="tipo_personaM" class="form-control" >
                             </div>
 
-                            <label>Descripcion:</label>
+                            <label>Descripción</label>
                             <div class="form-group">
                             <textarea class="form-control" id="descripcionM" name="descripcion" rows="3" style="height: 97px; resize:none;"></textarea>
                             </div>

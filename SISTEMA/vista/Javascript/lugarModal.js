@@ -4,7 +4,7 @@ const filas = document.querySelectorAll(".fila");
 const idborrar = document.getElementById("idBorrar");
 const id = document.getElementById("id");
 const municipio = document.getElementById("municipioM");
-const nombre = document.getElementById("nombreM");
+const nombre = document.getElementById("nombre_lugarM");
 const distancia = document.getElementById("distanciaM");
 const modal = document.getElementById("modalM");
 

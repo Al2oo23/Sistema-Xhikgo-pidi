@@ -180,7 +180,7 @@ $estacion = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Estacion</label>
+                                    <label for="">Estación</label>
                                     <div class="position-relative">
                                         <select name="estacion" class="form-select" id="estacion">
                                             <option value="">Seleccione una Estacion...</option>

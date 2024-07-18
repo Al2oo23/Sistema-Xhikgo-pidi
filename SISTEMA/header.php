@@ -260,34 +260,11 @@
                                 </div>
                             </li>
 
-                            <li class="menu-item active has-sub">
-                                <a href="#" class='menu-link'>
-                                    <span><i class="bi bi-tools"></i>Recurso</span>
+                            <li class="menu-item">
+                                <a href="catalogoRecursos.php" class='menu-link'>
+                                    <span><i class="bi bi-shield-fill-check"></i>Recurso</span>
                                 </a>
-                                <div class="submenu ">
-                                    <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-                                    <div class="submenu-group-wrapper">
-
-
-                                        <ul class="submenu-group">
-
-                                            <li class="submenu-item  ">
-                                                <a href="catalogoRecursos.php" class='submenu-link'>Recurso</a>
-
-
-                                            </li>
-
-                                            <li class="submenu-item  ">
-                                                <a href="asignar_recurso.php" class='submenu-link'>Agregar Recurso</a>
-
-
-                                            </li>
-                                            <li class="submenu-item  ">
-                                                <a href="recurso_inoperativo.php" class='submenu-link'>Eliminar Recurso</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                               
                             </li>
 
                             <li class="menu-item has-sub">

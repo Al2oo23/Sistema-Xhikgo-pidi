@@ -24,9 +24,9 @@
                             
                         <input type="hidden" id="id" name="id">
 
-                            <label>Nombre de la marca:</label>
+                            <label>Nombre de la marca</label>
                             <div class="form-group">
-                                <input type="text" value="" name="nombre" id="marcaM" class="form-control" >
+                                <input type="text" value="" name="nombre" id="nombre_marcaM" class="form-control" >
                             </div>
                         </div>
                        

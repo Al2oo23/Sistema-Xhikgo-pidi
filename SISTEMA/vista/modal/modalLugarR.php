@@ -25,13 +25,13 @@ $municipio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_lugar.php" style="text-align: left;" method="POST">
+                    <form action="../controlador/ctl_lugar.php" style="text-align: left;" method="POST" onsubmit="return validarLugar()">
                         <div class="modal-body">
 
                                 <div class="form-group has-icon-left">
                                     <label for="">Nombre del Lugar</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" name="nombre" placeholder="Coloque el nombre del lugar" id="first-name-icon">
+                                        <input type="text" class="form-control" name="nombre" placeholder="Coloque el nombre del lugar" id="nombre_lugar">
                                         <div class="form-control-icon">
                                             <i class="bi bi-postcard"></i>
                                         </div>
@@ -59,7 +59,7 @@ $municipio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Distancia</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" name="distancia" placeholder="Coloque la distancia del lugar" id="first-name-icon">
+                                        <input type="text" class="form-control" name="distancia" placeholder="Coloque la distancia del lugar" id="distancia">
                                         <div class="form-control-icon">
                                             <i class="bi bi-postcard"></i>
                                         </div>

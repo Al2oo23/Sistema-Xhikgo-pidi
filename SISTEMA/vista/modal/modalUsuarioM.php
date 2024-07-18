@@ -19,29 +19,29 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_usuario.php" method="POST" style="text-align: left;">
+                    <form action="../controlador/ctl_usuario.php" method="POST" style="text-align: left;" onsubmit="return validarUsuarioM()">
                         <div class="modal-body">
-                            <label>Cedula:</label>
+                            <label>Cédula</label>
                             <div class="form-group">
-                                <input type="text" name="cedula" id="cedulaM" class="form-control" onfocus="this.blur()">
+                                <input type="text" name="cedula" id="cedulaM" class="form-control">
                             </div>
 
-                            <label>Nombre:</label>
+                            <label>Nombre</label>
                             <div class="form-group">
-                                <input type="text" name="nombre" id="nombreM" class="form-control" placeholder="Nombre del Usuario">
+                                <input type="text" name="nombre" id="nombre_usuarioM" class="form-control" placeholder="Nombre de Usuario">
                             </div>   
 
-                            <label>Clave:</label>
+                            <label>Clave</label>
                             <div class="form-group">
                                 <input type="text" name="clave" id="claveM" class="form-control" placeholder="Clave">
                             </div>
 
-                            <label>Pregunta:</label>
+                            <label>Pregunta de Seguridad</label>
                             <div class="form-group">
                                 <input type="text" name="pregunta" id="preguntaM" class="form-control" placeholder="Pregunta de Seguridad">
                             </div>
 
-                            <label>Respuesta:</label>
+                            <label>Respuesta</label>
                             <div class="form-group">
                                 <input type="text" name="respuesta" id="respuestaM" class="form-control" placeholder="Respuesta a la Pregunta">
                             </div>

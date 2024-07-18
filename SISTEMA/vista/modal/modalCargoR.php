@@ -22,7 +22,7 @@
                         <div class="modal-body">
                         <div class="col-12">
                               <div class="form-group has-icon-left">
-                                  <label for="first-name-icon">Nombre del Cargo:</label>
+                                  <label for="first-name-icon">Nombre del Cargo</label>
 
                                   <div class="position-relative">
                                       <input type="text" class="form-control" name="nombre" placeholder="Coloque el nombre del cargo del bombero" id="cargo">

@@ -3,7 +3,7 @@
 const filas = document.querySelectorAll(".fila");
 const idborrar = document.getElementById("idBorrar");
 const id = document.getElementById("id");
-const tipo = document.getElementById("tipoM");
+const tipo = document.getElementById("tipo_personaM");
 const descripcion = document.getElementById("descripcionM");
 const modal = document.getElementById("modalM");
 

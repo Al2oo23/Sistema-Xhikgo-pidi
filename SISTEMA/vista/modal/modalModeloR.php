@@ -28,10 +28,10 @@
                         <div class="modal-body">
 
                        
-                                     <label>Marca:</label>
+                                     <label>Marca</label>
                             <div class="position-relative">
                                          <select name="marca" class="form-select" id="marca_vehiculo">
-                                         <option value="default">Seleccione la Marca...</option>
+                                         <option value="">Seleccione la Marca...</option>
                                         <?php foreach ($marca as $marc) : 
                                             $marca = $marc["nombre"];
                                         ?>

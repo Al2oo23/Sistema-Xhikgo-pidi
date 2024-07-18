@@ -4,7 +4,20 @@ function validarEstacion() {
     var nameRegex = /^.{3,50}$/;
 
     if (!nameRegex.test(nombre_estacion)) {
-        alert('Nombre invalido');
+        alert('Nombre de estación invalido');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion de Pantalla Estacion Modificar
+function validarEstacionM() {
+    var nombre_estacionM = document.getElementById('nombre_estacionM').value;
+    var nameRegex = /^.{3,50}$/;
+
+    if (!nameRegex.test(nombre_estacionM)) {
+        alert('Nombre de estación invalido');
         return false;
     }
 
@@ -13,11 +26,24 @@ function validarEstacion() {
 
 //Validacion de Pantalla Seccion
 function validarSeccion() {
-    var nombre_seccion = document.getElementById('nombre_seccion').value;
-    var seccionRegex = /^.{3,50}$/;
+    var numero_seccion = document.getElementById('numero_seccion').value;
+    var seccionRegex = /^[0-9]{1,5}$/;
 
-    if (!seccionRegex.test(nombre_seccion)) {
-        alert('Ingrese una seccion valida');
+    if (!seccionRegex.test(numero_seccion)) {
+        alert('Ingrese una sección valida');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion de Pantalla Seccion Modificar
+function validarSeccionM() {
+    var numero_seccionM = document.getElementById('numero_seccionM').value;
+    var seccionRegex = /^[0-9]{1,5}$/;
+
+    if (!seccionRegex.test(numero_seccionM)) {
+        alert('Ingrese una sección valida');
         return false;
     }
 
@@ -109,6 +135,13 @@ function validarPersona() {
         return false;
     }
 
+    var estado = document.getElementById('estado').value;
+
+    if (estado === "") {
+        alert('Debe seleccionar el estado de la persona');
+        return false;
+    }
+
     return true;
 }
 
@@ -197,6 +230,14 @@ function validarPersonaM() {
         return false;
     }
 
+    var estadoM = document.getElementById('estadoM').value;
+
+    if (estadoM === "") {
+        alert('Debe seleccionar el estado de la persona');
+        return false;
+    }
+
+
     return true;
 }
 
@@ -222,17 +263,17 @@ function validarAseguradora() {
 
 //Validacion de Pantalla Aseguradora Modificar
 function validarAseguradoraM() {
-    var aseguradora = document.getElementById('nombreM').value;
-    var aseguradoraRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
+    var aseguradoraM = document.getElementById('nombre_aseguradoraM').value;
+    var aseguradoraMRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
 
-    if (!aseguradoraRegex.test(aseguradora)) {
+    if (!aseguradoraMRegex.test(aseguradoraM)) {
         alert('Ingrese un nombre valido');
         return false;
     }
 
-    var tipo_aseguradora = document.getElementById('tipoM').value;
+    var tipo_aseguradoraM = document.getElementById('tipo_aseguradoraMa').value;
 
-    if (tipo_aseguradora === "") {
+    if (tipo_aseguradoraM === "") {
         alert('Debe seleccionar un tipo aseguradora');
         return false;
     }
@@ -381,10 +422,10 @@ function validarAsignacion() {
         return false;
     }
 
-    var cantidad_recurso = document.getElementById('cantidad_recurso').value;
-    var cantidadRegex = /^\d{1,50}$/;
+    var cantidad_recursoA = document.getElementById('cantidad_recursoA').value;
+    var cantidad_recursoARegex = /^\d{1,50}$/;
 
-    if (!cantidadRegex.test(cantidad_recurso)) {
+    if (!cantidad_recursoARegex.test(cantidad_recursoA)) {
         alert('Debe ingresar una cantidad de recurso valida');
         return false;
     }
@@ -1205,10 +1246,11 @@ function validarDatosInstitucion() {
 
 //Validacion pantalla Lugar
 function validarLugar() {
-    var tipo_lugar = document.getElementById('tipo_lugar').value;
+    var nombre_lugar = document.getElementById('nombre_lugar').value;
+    var nombre_lugarRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
 
-    if (tipo_lugar === "") {
-        alert('Debe seleccionar un tipo de lugar');
+    if (!nombre_lugarRegex.test(nombre_lugar)) {
+        alert('Ingrese un Nombre valido');
         return false;
     }
 
@@ -1219,11 +1261,39 @@ function validarLugar() {
         return false;
     }
 
-    var nombre_lugar = document.getElementById('nombre_lugar').value;
+    var distancia = document.getElementById('distancia').value;
+    var distanciaRegex = /^[0-9]+[kmKM/s]{1,50}$/;
+
+    if (!distanciaRegex.test(distancia)) {
+        alert('Debe ingresar una distancia valida, terminando KM o M');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Lugar Modificar
+function validarLugarM() {
+    var nombre_lugar = document.getElementById('nombre_lugarM').value;
     var nombre_lugarRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
 
     if (!nombre_lugarRegex.test(nombre_lugar)) {
         alert('Ingrese un Nombre valido');
+        return false;
+    }
+
+    var municipio = document.getElementById('municipioM').value;
+
+    if (municipio === "default") {
+        alert('Debe seleccionar un municipio valido');
+        return false;
+    }
+
+    var distancia = document.getElementById('distanciaM').value;
+    var distanciaRegex = /^[0-9]+[kmKM/s]{1,50}$/;
+
+    if (!distanciaRegex.test(distancia)) {
+        alert('Debe ingresar una distancia valida, terminando KM o M');
         return false;
     }
 
@@ -1245,10 +1315,10 @@ function validarMarca() {
 
 //Validacion pantalla Marca Modificar
 function validarMarcaM() {
-    var nombre_marca = document.getElementById('marcaM').value;
-    var nombre_marcaRegex = /^.{3,50}$/;
+    var nombre_marcaM = document.getElementById('nombre_marcaM').value;
+    var nombre_marcaMRegex = /^.{3,50}$/;
 
-    if (!nombre_marcaRegex.test(nombre_marca)) {
+    if (!nombre_marcaMRegex.test(nombre_marcaM)) {
         alert('Debe ingresar un nombre valido');
         return false;
     }
@@ -1260,7 +1330,7 @@ function validarMarcaM() {
 function validarModelo() {
     var marca_vehiculo = document.getElementById('marca_vehiculo').value;
 
-    if (marca_vehiculo === "default") {
+    if (marca_vehiculo === "") {
         alert('Debe seleccionar una marca de vehiculo valida');
         return false;
     }
@@ -1278,18 +1348,18 @@ function validarModelo() {
 
 //Validacion pantalla Modelo Modificar
 function validarModeloM() {
-    var modelo_vehiculo = document.getElementById('modeloM').value;
-    var modelo_vehiculoRegex = /^.{3,50}$/;
+    var marca_vehiculoM = document.getElementById('marca_vehiculoM').value;
 
-    if (!modelo_vehiculoRegex.test(modelo_vehiculo)) {
-        alert('Debe ingresar un modelo de vehiculo valido');
+    if (marca_vehiculoM === "") {
+        alert('Debe seleccionar una marca de vehiculo valida');
         return false;
     }
 
-    var marca_vehiculo = document.getElementById('marcaM').value;
+    var modelo_vehiculoM = document.getElementById('modelo_vehiculoM').value;
+    var modelo_vehiculoMRegex = /^.{3,50}$/;
 
-    if (marca_vehiculo === "default") {
-        alert('Debe seleccionar una marca de vehiculo valida');
+    if (!modelo_vehiculoMRegex.test(modelo_vehiculoM)) {
+        alert('Debe ingresar un modelo de vehiculo valido');
         return false;
     }
 
@@ -1329,11 +1399,11 @@ function validarRecursoInoperativo() {
         return false;
     }
 
-    var nombre_recurso = document.getElementById('nombre_recurso').value;
-    var nombre_recursoRegex = /^.{3,50}$/;
+    var cantidad_recursoI = document.getElementById('cantidad_recursoI').value;
+    var cantidad_recursoIRegex = /^.{3,50}$/;
 
-    if (!nombre_recursoRegex.test(nombre_recurso)) {
-        alert('Debe ingresar el nombre de un recurso que este inoperativo');
+    if (!cantidad_recursoIRegex.test(cantidad_recursoI)) {
+        alert('Debe ingresar la cantidad de recurso que este inoperativo');
         return false;
     }
 
@@ -1365,7 +1435,7 @@ function validarRecurso() {
 function validarRecursoM() {
 
     var nombre_recurso = document.getElementById('nombreM').value;
-    var nombre_recursoRegex = /^.{3,50}$/;
+    var nombre_recursoRegex = /^[0-9]{1,50}$/;
 
     if (!nombre_recursoRegex.test(nombre_recurso)) {
         alert('Debe ingresar el nombre de un recurso');
@@ -1417,10 +1487,10 @@ function validarCargo() {
 
 // Validacion de pantalla Cargo de Bomberos Modificar
 function validarCargoM() {
-    var cargo = document.getElementById('cargoM').value;
-    var cargoRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
+    var cargoM = document.getElementById('cargoM').value;
+    var cargoMRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
 
-    if (!cargoRegex.test(cargo)) {
+    if (!cargoMRegex.test(cargoM)) {
         alert('Debe ingresar un Cargo valido');
         return false;
     }
@@ -1451,10 +1521,10 @@ function validarTipoPersona() {
 
 //Validacion pantalla Tipo Persona Modificar
 function validarTipoPersonaM() {
-    var tipo_persona = document.getElementById('tipoM').value;
-    var tipo_personaRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;;
+    var tipo_personaM = document.getElementById('tipo_personaM').value;
+    var tipo_personaMRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;;
 
-    if (!tipo_personaRegex.test(tipo_persona)) {
+    if (!tipo_personaMRegex.test(tipo_personaM)) {
         alert('Ingrese un tipo de persona valido');
         return false;
     }
@@ -1469,7 +1539,6 @@ function validarTipoPersonaM() {
 
     return true;
 }
-
 
 //Validacion pantalla Usuario
 function validarUsuario() {
@@ -1500,6 +1569,41 @@ function validarUsuario() {
     var clave_repetida = document.getElementById('clave_repetida').value;
 
     if (clave_repetida !== clave) {
+        alert('Las claves no coinciden');
+        return false;
+    }
+    return true;
+}
+
+//Validacion pantalla Usuario Modificar
+function validarUsuarioM() {
+    var cedulaM = document.getElementById('cedulaM').value;
+    var cedulaMRegex = /^[JEVPGjevpg]{1}-\d{6,12}$/;
+
+    if (!cedulaMRegex.test(cedulaM)) {
+        alert('Cedula invalida, use el siguiente formato de ejemplo: V-1231232')
+        return false;
+    }
+
+    var nombre_usuarioM = document.getElementById('nombre_usuarioM').value;
+    var nombre_usuarioMRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\d]{6,20}$/;
+
+    if (!nombre_usuarioMRegex.test(nombre_usuarioM)) {
+        alert('Ingrese un Nombre de usuario valido');
+        return false;
+    }
+
+    var claveM = document.getElementById('claveM').value;
+    var claveMRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\d]{6,20}$/;
+
+    if (!claveMRegex.test(claveM)) {
+        alert('Ingrese una clave valida, debe tener entre 6-20 caracteres y no debe tener caracteres especiales');
+        return false;
+    }
+
+    var clave_repetidaM = document.getElementById('clave_repetidaM').value;
+
+    if (clave_repetidaM !== claveM) {
         alert('Las claves no coinciden');
         return false;
     }

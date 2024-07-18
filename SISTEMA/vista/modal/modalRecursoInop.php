@@ -50,7 +50,7 @@
 
                                     <label for="first-name-icon">Cantidad del Recurso</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" name="cantidad_recurso" placeholder="Ingrese la Cantidad Inoperativa del Recurso" id="cantidad_recurso">
+                                        <input type="text" class="form-control" name="cantidad_recurso" placeholder="Ingrese la Cantidad Inoperativa del Recurso" id="cantidad_recursoI">
                                         <div class="form-control-icon">
                                             <i class="bi bi-postcard"></i>
                                         </div>

@@ -2,7 +2,7 @@
 
 const filas = document.querySelectorAll(".fila");
 const id = document.getElementById("id");
-const estacion = document.getElementById("estacionM");
+const estacion = document.getElementById("nombre_estacionM");
 const modal = document.getElementById("modalM");
 
 filas.forEach(fila => {

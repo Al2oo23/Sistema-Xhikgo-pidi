@@ -26,14 +26,14 @@
 
                             <label>Nombre de la Aseguradora:</label>
                             <div class="form-group">
-                                <input type="text" value="" id="nombreM" name="nombre" class="form-control" >
+                                <input type="text" value="" id="nombre_aseguradoraM" name="nombre" class="form-control" >
                             </div>
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
                                     <label for="">Tipo de Aseguradora:</label>
                                     <div class="position-relative">
-                                    <select name="tipo_aseguradora" class="form-select" id="tipoM">
+                                    <select name="tipo_aseguradora" class="form-select" id="tipo_aseguradoraM">
                                         <option value="Vehiculo">Vehiculo</option>
                                         <option value="Hogar">Hogar</option>
                                     </select>

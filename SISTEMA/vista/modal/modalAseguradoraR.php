@@ -39,8 +39,8 @@
                                     <div class="position-relative">
                                         <select name="tipo_aseguradora" class="form-select" id="tipo_aseguradora">
                                             <option value="">Seleccione un tipo de Aseguradora:</option>
-                                            <option value="vehiculo">Vehiculo</option>
-                                            <option value="hogar">Hogar</option>
+                                            <option value="Vehiculo">Vehiculo</option>
+                                            <option value="Hogar">Hogar</option>
                                         </select>
                                     </div>
                                 </div>
