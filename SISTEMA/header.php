@@ -91,6 +91,7 @@
                                 <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
                                     <form action="../controlador/ctl_sesion.php" method="post">
                                         <li><a class="dropdown-item" href="#">My Account</a></li>
+                                        <li><a class="dropdown-item" href="configtam.php">Config-Catalogo</a></li>
                                         <li><a class="dropdown-item" href="datosInstitucion.php">Institucion</a></li>
                                         <li><a class="dropdown-item" href="privilegios.php">Privilegios</a></li>
                                         <li><a class="dropdown-item" href="../controlador/ctl_respaldo.php">Crear Respaldo</a></li>
