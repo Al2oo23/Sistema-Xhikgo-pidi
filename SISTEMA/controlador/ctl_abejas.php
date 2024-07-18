@@ -68,6 +68,8 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
     }   
 }
 
+
+
 // MODIFICAR INCIDENTE DE ABEJAS -------------------------------------------
 
 if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
@@ -149,3 +151,10 @@ if (isset($_GET['txtID'])) {
     echo "<script>alert('Incidente Eliminado con Exito')</script>";
 	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoAbejas.php'>"; 
 }
+
+
+
+
+
+
+

@@ -27,7 +27,15 @@ $lugar = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 $sentencia = $conexion->prepare("SELECT nombre FROM recurso");
 $sentencia->execute();
 $n_recurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+// LLAMAR UNIDAD 
+
+$sentencia = $conexion->prepare("SELECT unidad FROM vehiculo");
+$sentencia->execute();
+$n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
+
 ?>
+
 
 <!-- Button trigger for login form modal -->
 <button type="button" class="btn icon btn-success" data-bs-toggle="modal" data-bs-target="#inlineForm1">
@@ -616,7 +624,12 @@ $n_recurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             <div class="position-relative">
                                 <select name="unidad" class="form-select" id="unidad">
                                     <option value="">Seleccione la Unidad que asistió...</option>
-                                    <option value="1">1</option>
+                                    <?php foreach ($n_unidad as $unidad) : 
+                                            $n_unidad = $unidad["unidad"];
+                                        ?>
+                                            <option value="<?=$n_unidad?>"><?=$n_unidad?></option>
+
+                                        <?php endforeach;?>
                                 </select>
                             </div>
                         </div>

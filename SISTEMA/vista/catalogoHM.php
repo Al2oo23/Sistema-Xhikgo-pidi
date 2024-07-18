@@ -1,11 +1,11 @@
 <?php 
 $nombrePagina = 'Historial de Mantenimiento';
 require('../header.php');
-// include('../modelo/conexion.php');
+include('../modelo/conexion.php');
 
-// $sentencia = $conexion->prepare("SELECT * FROM vehiculo");
-// $sentencia->execute();
-// $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+$sentencia = $conexion->prepare("SELECT * FROM historial");
+$sentencia->execute();
+$historiales = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
            <div class="col-10 m-auto">
                 <div class="card">
@@ -21,25 +21,25 @@ require('../header.php');
                                         <th class="columna">N° Unidad</th>
                                         <th class="columna">Incidente Previo</th>
                                         <th class="columna">Fecha</th>
-                                        <th class="columna">Fecha del Mantenimiento</th>
                                         <th class="columna">Accion</th>
                                      </tr>
                                 </thead>
                                 <tbody>
+                                <?php foreach ($historiales as $historial) : ?>
+                                
                                     <tr class="fila">
-                                        <td class="columna">1234</td>
-                                        <td class="columna">Accidente de abejas</td>
-                                        <td class="columna">04-03-2024</td>
-                                        <td class="columna">04-12-2024</td>
+                                    <td class="columna"><?= $historial['unidad'] ?></td>
+                                    <td class="columna"><?= $historial['incidente'] ?></td>
+                                    <td class="columna"><?= $historial['fecha'] ?></td>
                                         <td>
 
                                         <div class="botones" style="justify-content:space-evenly;">
-                                        <div><a href="#" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                        <div><a name="listo" href="../controlador/ctl_historial.php?txtID=<?= $historial['id']; ?>" class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                             </div>
-                                        </td>
-
-
+                                </td>
+                    
                                     </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

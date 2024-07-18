@@ -211,7 +211,13 @@ class Abejas{
         $preparado->execute([null,$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
         $lugar, $inmueble, $jefe, $recurso, $cantidad, $efectivo, $unidad, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro]);
         
+
+        $SQL = "INSERT INTO mantenimiento VALUES (?,?,?,?,?)";
+        $preparado = $conexion->prepare($SQL);
+        $preparado->execute([null, $unidad,"abejas", $fecha,"pendiente"]);
+        
         return $preparado;
+        
     }
 
     //Modificar

@@ -1,12 +1,12 @@
 <?php 
 $nombrePagina = 'Catalogo de Mantenimiento de Unidades';
 require('../header.php');
-// include('../modelo/conexion.php');
+include('../modelo/conexion.php');
 
-// $sentencia = $conexion->prepare("SELECT * FROM vehiculo");
-// $sentencia->execute();
-// $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-?>
+ $sentencia = $conexion->prepare("SELECT * FROM mantenimiento");
+ $sentencia->execute();
+ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+ ?>
            <div class="col-10 m-auto">
                 <div class="card">
                     <div class="card-content">
@@ -26,19 +26,22 @@ require('../header.php');
                                      </tr>
                                 </thead>
                                 <tbody>
+                                <?php foreach ($resultado as $mantenimiento) : ?>
                                     <tr class="fila">
-                                        <td class="columna">1234</td>
-                                        <td class="columna">Accidente de abejas</td>
-                                        <td class="columna">04-03-2024</td>
-                                        <td class="columna">Buenas condiciones</td>
+                                    <td class="columna"><?= $mantenimiento['unidad'] ?></td>
+                                    <td class="columna"><?= $mantenimiento['incidente'] ?></td>
+                                    <td class="columna"><?= $mantenimiento['fecha'] ?></td>
+                                    <td class="columna"><?= $mantenimiento['estado'] ?></td>
+                                  
                                         <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <div><a href="#" class="btn icon btn-success"><i class="bi bi-check-lg"></i></a></div>
+                                            <div><a name="listo" href="../controlador/ctl_mantenimiento.php?txtID=<?= $mantenimiento['id']; ?>" class="btn icon btn-success"><i class="bi bi-check-lg"></i></a></div>
                                         </div>
                                         </td>
+                                        </tr>
 
-
-                                    </tr>
+                                        <?php endforeach; ?>
+                                       
                                 </tbody>
                             </table>
                         </div>

@@ -642,6 +642,10 @@ class incendio
         $valor_asegurado, $valor_perdido, $valor_salvado, $fuente_ignicion, $causa_incendio,
         $lugar_inicio, $lugar_fin, $reignicion, $tipo_combustible, $declaracion, $lesionados, $num_lesionados, $datos_lesionados, $recurso_utilizado, $cantidad_recurso_usado, $unidad, $jefe_comision, $efectivo, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $observaciones]);
 
+
+        $SQL = "INSERT INTO mantenimiento VALUES (?,?,?,?,?)";
+        $preparado = $conexion->prepare($SQL);
+        $preparado->execute([null, $unidad,"incendio", $fecha,"pendiente"]);
         return $preparado;
     }
 

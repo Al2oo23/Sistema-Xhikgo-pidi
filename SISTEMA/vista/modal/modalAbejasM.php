@@ -40,6 +40,14 @@ $sentencia = $conexion->prepare("SELECT nombre FROM lugar");
 $sentencia->execute();
 $lugar = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
+
+// LLAMAR UNIDAD 
+
+$sentencia = $conexion->prepare("SELECT unidad FROM vehiculo");
+$sentencia->execute();
+$n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
+
+
 ?>
 
 <!-- Button trigger for login form modal -->
@@ -282,8 +290,12 @@ $lugar = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="">Unidad</label>
                                     <div class="position-relative">
                                         <select name="unidad" class="form-select" id="unidadM">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
+                                        <?php foreach ($n_unidad as $unidad) : 
+                                            $n_unidad = $unidad["unidad"];
+                                        ?>
+                                            <option value="<?=$n_unidad?>"><?=$n_unidad?></option>
+
+                                        <?php endforeach;?>
                                         </select>
                                     </div>
                                 </div>

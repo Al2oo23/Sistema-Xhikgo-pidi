@@ -250,6 +250,30 @@ try {
     )";
     $conexion->exec($SQL);
 
+    //------------------ MANTENIMIENTO------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS mantenimiento (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        unidad INT(100) NOT NULL,
+        incidente VARCHAR(20) NOT NULL,
+        fecha VARCHAR(100) NOT NULL,
+        estado VARCHAR(20) NOT NULL
+    )";
+    $conexion->exec($SQL);
+
+    
+    //------------------ Historial------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS historial (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        unidad INT(100) NOT NULL,
+        incidente VARCHAR(20) NOT NULL,
+        fecha VARCHAR(100) NOT NULL
+    )";
+    $conexion->exec($SQL);
+
+
+
         //-------------- ABEJAS ----------------------
 
         $SQL = "CREATE TABLE IF NOT EXISTS abejas (
