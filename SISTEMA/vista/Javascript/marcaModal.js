@@ -3,7 +3,7 @@
 const filas = document.querySelectorAll(".fila");
 const id = document.getElementById("id");
 const idborrar = document.getElementById("idBorrar");
-const marca = document.getElementById("marcaM");
+const marca = document.getElementById("nombre_marcaM");
 const modal = document.getElementById("modalM");
 
 filas.forEach(fila => {

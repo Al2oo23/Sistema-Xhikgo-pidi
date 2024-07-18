@@ -12,21 +12,21 @@
             <!-- Header del Modal: ----------------------------->
 
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel33">Modificar Seccion</h4>
+                        <h4 class="modal-title" id="myModalLabel33">Modificar Sección</h4>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <i data-feather="x"></i>
                         </button>
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_seccion.php" method="POST" style="text-align: left;" >
+                    <form action="../controlador/ctl_seccion.php" method="POST" style="text-align: left;" onsubmit="return validarSeccionM()">
                         <div class="modal-body">
                             
                         <input type="hidden" id="id" name="id">
 
-                            <label>Numero de la Seccion:</label>
+                            <label>Número de la Sección</label>
                             <div class="form-group">
-                                <input type="text" value="" name="numero" id="numeroM" class="form-control" >
+                                <input type="text" value="" name="numero" id="numero_seccionM" class="form-control" >
                             </div>
                         </div>
                        

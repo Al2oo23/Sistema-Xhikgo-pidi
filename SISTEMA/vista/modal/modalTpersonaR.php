@@ -23,7 +23,7 @@
                         <div class="modal-body">
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Tipo:</label>
+                                    <label for="">Tipo Persona</label>
                                     <div class=" position-relative">
                                         <input type="text" id="tipo_persona" name="tipo_persona" class="form-control" placeholder="Nombre">
                                         <div class="form-control-icon">
@@ -33,7 +33,7 @@
                                 </div>
                             </div>     
 
-                            <label>Descripcion:</label>
+                            <label>Descripción</label>
                             <div class="form-group">
                             <textarea class="form-control" id="descripcion" name="descripcion" rows="3" style="height: 97px; resize:none;"></textarea>
                             </div>

@@ -35,7 +35,7 @@
                                         <div class="form-group has-icon-left">
                                             <label for="">Recurso</label>
                                             <div class="position-relative">
-                                                <select name="nombre_recurso" class="form-select" id="recurso">
+                                                <select name="nombre_recurso" class="form-select" id="recurso_asignado">
                                                     <option value="">Seleccione el Recurso a Agregar...</option>
                                                     <?php foreach ($recurso as $nombre) : 
                                                         $recurso = $nombre["nombre"];
@@ -51,7 +51,7 @@
 
                                     <label for="first-name-icon">Cantidad del Recurso</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" name="cantidad_recurso" placeholder="Ingrese la Cantidad del Recurso a asignar" id="first-name-icon">
+                                        <input type="text" class="form-control" name="cantidad_recurso" placeholder="Ingrese la Cantidad del Recurso a asignar" id="cantidad_recursoA">
                                         <div class="form-control-icon">
                                             <i class="bi bi-postcard"></i>
                                         </div>

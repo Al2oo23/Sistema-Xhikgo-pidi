@@ -91,6 +91,7 @@
                                 <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
                                     <form action="../controlador/ctl_sesion.php" method="post">
                                         <li><a class="dropdown-item" href="#">My Account</a></li>
+                                        <li><a class="dropdown-item" href="configtam.php">Config-Catalogo</a></li>
                                         <li><a class="dropdown-item" href="datosInstitucion.php">Institucion</a></li>
                                         <li><a class="dropdown-item" href="privilegios.php">Privilegios</a></li>
                                         <li><a class="dropdown-item" href="../controlador/ctl_respaldo.php">Crear Respaldo</a></li>
@@ -260,34 +261,11 @@
                                 </div>
                             </li>
 
-                            <li class="menu-item active has-sub">
-                                <a href="#" class='menu-link'>
-                                    <span><i class="bi bi-tools"></i>Recurso</span>
+                            <li class="menu-item">
+                                <a href="catalogoRecursos.php" class='menu-link'>
+                                    <span><i class="bi bi-shield-fill-check"></i>Recurso</span>
                                 </a>
-                                <div class="submenu ">
-                                    <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-                                    <div class="submenu-group-wrapper">
-
-
-                                        <ul class="submenu-group">
-
-                                            <li class="submenu-item  ">
-                                                <a href="catalogoRecursos.php" class='submenu-link'>Recurso</a>
-
-
-                                            </li>
-
-                                            <li class="submenu-item  ">
-                                                <a href="asignar_recurso.php" class='submenu-link'>Agregar Recurso</a>
-
-
-                                            </li>
-                                            <li class="submenu-item  ">
-                                                <a href="recurso_inoperativo.php" class='submenu-link'>Eliminar Recurso</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                               
                             </li>
 
                             <li class="menu-item has-sub">

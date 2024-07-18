@@ -179,6 +179,17 @@ try {
     $preparado = $conexion->prepare($SQL);
     $preparado->execute(["0","Cofla","Cofla","A","que paso","nada"]);
 
+    $SQL = "SELECT * FROM privilegio WHERE cedula = ?";
+    $preparado = $conexion->prepare($SQL);
+    $preparado->execute(["0"]);
+    $resultados = $preparado->fetchAll(PDO::FETCH_ASSOC);
+
+    if(empty($resultados)){
+        $SQL = "INSERT INTO privilegio VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $preparado1 = $conexion->prepare($SQL);
+        $preparado1->execute([null, "0", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si"]);
+    }
+
     //------------------ MARCA ------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS marca (

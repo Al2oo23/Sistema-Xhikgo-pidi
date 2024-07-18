@@ -19,12 +19,12 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_seccion.php" method="POST" style="text-align: left;">
+                    <form action="../controlador/ctl_seccion.php" method="POST" style="text-align: left;" onsubmit="return validarSeccion()">
                         <div class="modal-body">
                         <div class="col-12">
                                 <div class="form-group has-icon-left">
                                    
-                                    <label for="first-name-icon">Numero de la Seccion:</label>
+                                    <label for="first-name-icon">Número de Sección</label>
                                     <div class="position-relative">
                                         <input type="text" class="form-control" placeholder="Ingrese el Numero de la Seccion" name="numero_seccion" id="numero_seccion">
                                         <div class="form-control-icon">

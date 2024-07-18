@@ -9,12 +9,11 @@
     <script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/extensions/choices.js/public/assets/scripts/choices.js"></script>
     <script src="assets/static/js/pages/form-element-select.js"></script>
-    
     <script src="assets/compiled/js/app.js"></script>
-
     <script src="assets/static/js/pages/horizontal-layout.js"></script>  
     <script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="assets/static/js/pages/dashboard.js"></script>
+    <script src="Javascript/cambioTamano.js"></script>
 
     <script>
     var checkboxes = document.querySelectorAll('.check');

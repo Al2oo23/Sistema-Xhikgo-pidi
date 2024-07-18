@@ -29,10 +29,10 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
  
     $datos = $seccion->modificarSeccion($seccion->getId(), $seccion->getNumero());
     if(empty($datos)){
-        echo "<script>alert('No se pudo Modificar la Seccion')</script>";
+        echo "<script>alert('No se pudo Modificar la Sección')</script>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoSeccion.php'>"; 
     }else{
-        echo "<script>alert('seccion Modificada con exito')</script>";
+        echo "<script>alert('Sección Modificada con exito')</script>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoSeccion.php'>"; 
     } 
 }

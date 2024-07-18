@@ -2,7 +2,7 @@
 
 const filas = document.querySelectorAll(".fila");
 const cedula = document.getElementById("cedulaM");
-const nombre = document.getElementById("nombreM");
+const nombre = document.getElementById("nombre_usuarioM");
 const clave = document.getElementById("claveM");
 const pregunta = document.getElementById("preguntaM");
 const respuesta = document.getElementById("respuestaM");
