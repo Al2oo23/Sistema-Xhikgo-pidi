@@ -26,6 +26,8 @@ class Respaldo{
      'seguro',
      'recurso',
      'vehiculo',
+     'mantenimiento',
+     'historial',
      'abejas',
      'transito',
      'incendio'
