@@ -146,25 +146,22 @@ try {
 
     $SQL = "CREATE TABLE IF NOT EXISTS privilegio (
         cedula VARCHAR(10) PRIMARY KEY NOT NULL,
+        institucion VARCHAR(10) NOT NULL,
         municipio VARCHAR(10) NOT NULL,
         lugar VARCHAR(10) NOT NULL,
-        persona VARCHAR(10) NOT NULL,
-        tipo VARCHAR(10) NOT NULL,
-        cargo VARCHAR(10) NOT NULL,
         estacion VARCHAR(10) NOT NULL,
         seccion VARCHAR(10) NOT NULL,
-        usuarios VARCHAR(10) NOT NULL,
+        tipo VARCHAR(10) NOT NULL,
+        cargo VARCHAR(10) NOT NULL,   
+        persona VARCHAR(10) NOT NULL, 
+        usuario VARCHAR(10) NOT NULL,
         aseguradora VARCHAR(10) NOT NULL,
         marca VARCHAR(10) NOT NULL,
         modelo VARCHAR(10) NOT NULL,
         vehiculo VARCHAR(10) NOT NULL,
         mantenimiento VARCHAR(10) NOT NULL,
         recurso VARCHAR(10) NOT NULL,
-        agregar VARCHAR(10) NOT NULL,
-        eliminar VARCHAR(10) NOT NULL,
-        incendio VARCHAR(10) NOT NULL,
-        transito VARCHAR(10) NOT NULL,
-        abejas VARCHAR(10) NOT NULL/*,
+        incidente VARCHAR(10) NOT NULL/*,
         FOREIGN KEY (cedula) REFERENCES persona(cedula)  */
     )";
     $conexion->exec($SQL);
@@ -184,10 +181,10 @@ try {
     $preparado->execute(["0"]);
     $resultados = $preparado->fetchAll(PDO::FETCH_ASSOC);
 
-    if(empty($resultados)){
-        $SQL = "INSERT INTO privilegio VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+   if(empty($resultados)){
+        $SQL = "INSERT INTO privilegio VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $preparado1 = $conexion->prepare($SQL);
-        $preparado1->execute([null, "0", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si"]);
+        $preparado1->execute(["0", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si", "si"]);
     }
 
     //------------------ MARCA ------------------

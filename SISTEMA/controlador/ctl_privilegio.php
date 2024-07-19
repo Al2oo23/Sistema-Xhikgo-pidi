@@ -14,11 +14,6 @@ if (isset($_POST['agregar']) && $_POST['agregar'] == 'agregar') {
     }else{
         $privilegio->setInsti("no");
     }
-    if(isset($_POST['confi'])){
-        $privilegio->setConfi("si");
-    }else{
-        $privilegio->setConfi("no");
-    }
     if(isset($_POST['municipio'])){
         $privilegio->setMunicipio("si");
     }else{
@@ -98,7 +93,6 @@ if (isset($_POST['agregar']) && $_POST['agregar'] == 'agregar') {
     $resultado = $privilegio->modificarPriv(
         $privilegio->getCedula(),
         $privilegio->getInsti(),
-        $privilegio->getConfi(),
         $privilegio->getMunicipio(),
         $privilegio->getLugar(),
         $privilegio->getEstacion(),

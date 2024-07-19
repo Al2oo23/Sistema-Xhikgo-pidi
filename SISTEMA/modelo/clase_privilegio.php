@@ -1,7 +1,7 @@
 <?php 
 
 class privilegio{
-    private $cedula, $insti, $confi, $municipio, $lugar, $estacion, $seccion, $tipoPersona, $cargo, $persona, $usuario, $aseguradora, $marca, $modelo, $vehiculo, $mantenimiento, $recurso, $incidente;
+    private $cedula, $insti, $municipio, $lugar, $estacion, $seccion, $tipoPersona, $cargo, $persona, $usuario, $aseguradora, $marca, $modelo, $vehiculo, $mantenimiento, $recurso, $incidente;
 
     public function __construct(){
 	}
@@ -12,9 +12,6 @@ class privilegio{
     }
     public function setInsti($insti){
         $this->insti = $insti;
-    }
-    public function setConfi($confi){
-        $this->confi = $confi;
     }
     public function setMunicipio($municipio){
         $this->municipio = $municipio;
@@ -69,9 +66,6 @@ class privilegio{
     public function getInsti(){
         return $this->insti;
     }
-    public function getConfi(){
-        return $this->confi;
-    }
     public function getMunicipio(){
         return $this->municipio;
     }
@@ -119,12 +113,12 @@ class privilegio{
     }
 
     //MODIFICAR
-    public function modificarPriv($cedula, $insti, $confi, $municipio, $lugar, $estacion, $seccion, $tipoPersona, $cargo, $persona, $usuario, $aseguradora, $marca, $modelo, $vehiculo, $mantenimiento, $recurso, $incidente){
+    public function modificarPriv($cedula, $insti, $municipio, $lugar, $estacion, $seccion, $tipoPersona, $cargo, $persona, $usuario, $aseguradora, $marca, $modelo, $vehiculo, $mantenimiento, $recurso, $incidente){
         include("conexion.php");
        
-        $SQL = "UPDATE privilegio SET institucion = ?, configuracion = ?, municipio = ?, lugar = ?, estacion = ?, seccion = ?, tipo_persona = ?, cargo = ?, persona = ?, usuario = ?, aseguradora = ?, marcas = ?, modelo = ?, vehiculo = ?, mantenimiento = ?, recurso = ?, incidente = ? WHERE cedula = ?";
+        $SQL = "UPDATE privilegio SET institucion = ?, municipio = ?, lugar = ?, estacion = ?, seccion = ?, tipo = ?, cargo = ?, persona = ?, usuario = ?, aseguradora = ?, marca = ?, modelo = ?, vehiculo = ?, mantenimiento = ?, recurso = ?, incidente = ? WHERE cedula = ?";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$insti, $confi, $municipio, $lugar, $estacion, $seccion, $tipoPersona, $cargo, $persona, $usuario, $aseguradora, $marca, $modelo, $vehiculo, $mantenimiento, $recurso, $incidente, $cedula]);
+        $preparado->execute([$insti, $municipio, $lugar, $estacion, $seccion, $tipoPersona, $cargo, $persona, $usuario, $aseguradora, $marca, $modelo, $vehiculo, $mantenimiento, $recurso, $incidente, $cedula]);
     
         return $preparado;
     }

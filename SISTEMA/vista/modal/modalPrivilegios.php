@@ -34,13 +34,6 @@
                             </div>
                             
                             <div class="checkbox-container">
-                                <label class="form-check-label" for="flexSwitchCheckChecked">Gestión de Configuración</label>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" name="confi" value="si" id="flexSwitchCheckChecked" checked>
-                                </div>
-                            </div>         
-
-                            <div class="checkbox-container">
                                 <label class="form-check-label" for="flexSwitchCheckChecked2">Gestión de Municipios</label>
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" name="municipio" value="si" id="flexSwitchCheckChecked2" checked>
