@@ -674,3 +674,63 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+//BUSCADOR TIPO DE AVISO
+document.addEventListener('DOMContentLoaded', () => {
+
+    const tipo_aviso_buscador = document.getElementById('tipo_aviso_buscador');
+
+    const tabla = document.getElementById('tabla_tipo_aviso');
+    const rows = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+
+    [tipo_aviso_buscador].forEach((input) => {
+        input.addEventListener('keyup', () => {
+
+            const filtro1 = tipo_aviso_buscador.value.toLowerCase();
+
+            for (let i = 0; i < rows.length; i++) {
+                let row = rows[i];
+                let cell1 = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+
+                let match1 = !filtro1 || cell1.includes(filtro1);
+
+                if (match1) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    });
+});
+
+//BUSCADOR TIPO DE INCIDENTE
+document.addEventListener('DOMContentLoaded', () => {
+
+    const nombre_incidente_buscador = document.getElementById('tipo_incidente_buscador');
+
+    const tabla = document.getElementById('tabla_tipo_incidente');
+    const rows = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+
+    [nombre_incidente_buscador].forEach((input) => {
+        input.addEventListener('keyup', () => {
+
+            const filtro1 = nombre_incidente_buscador.value.toLowerCase();
+
+            for (let i = 0; i < rows.length; i++) {
+                let row = rows[i];
+                let cell1 = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+
+                let match1 = !filtro1 || cell1.includes(filtro1);
+
+                if (match1) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    });
+});

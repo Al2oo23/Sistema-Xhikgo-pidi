@@ -3,7 +3,7 @@ console.log ("taylor")
 const filas = document.querySelectorAll(".fila");
 const id = document.getElementById("id");
 const idborrar = document.getElementById("idBorrar");
-const incidente = document.getElementById("TincidenteM");
+const incidente = document.getElementById("tipo_incidenteM");
 const modal = document.getElementById("modalM");
 
 filas.forEach(fila => {

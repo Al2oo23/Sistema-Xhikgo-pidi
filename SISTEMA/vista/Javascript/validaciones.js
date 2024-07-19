@@ -435,11 +435,24 @@ function validarAsignacion() {
 
 //Validacion pantalla Aviso
 function validarAviso() {
-    var aviso = document.getElementById('aviso').value;
-    var avisoRegex = /^[a-zA-Z0-9\s]{3,150}$/;
+    var tipo_aviso = document.getElementById('tipo_aviso').value;
+    var tipo_avisoRegex = /^[a-zA-Z0-9\s]{3,150}$/;
 
-    if (!avisoRegex.test(aviso)) {
+    if (!tipo_avisoRegex.test(tipo_aviso)) {
         alert('Debe ingresar un tipo de aviso');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Aviso Modificar
+function validarAvisoM() {
+    var tipo_avisoM = document.getElementById('tipo_avisoM').value;
+    var tipo_avisoMRegex = /^[a-zA-Z0-9\s]{3,150}$/;
+
+    if (!tipo_avisoMRegex.test(tipo_avisoM)) {
+        alert('Debe ingresar un de tipo de aviso');
         return false;
     }
 
@@ -1970,6 +1983,32 @@ function validarTransito() {
 
     if (unidad === "") {
         alert('Debe seleccionar una unidad');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Tipo Incidente
+function validarTipoIncidente() {
+    var tipo_incidente = document.getElementById('tipo_incidente').value;
+    var tipo_incidenteRegex = /^[a-zA-Z0-9\s]{3,150}$/;
+
+    if (!tipo_incidenteRegex.test(tipo_incidente)) {
+        alert('Debe ingresar un tipo de incidente');
+        return false;
+    }
+
+    return true;
+}
+
+//Validacion pantalla Tipo Incidente Modificar
+function validarTipoIncidenteM() {
+    var tipo_incidenteM = document.getElementById('tipo_incidenteM').value;
+    var tipo_incidenteMRegex = /^[a-zA-Z0-9\s]{3,150}$/;
+
+    if (!tipo_incidenteMRegex.test(tipo_incidenteM)) {
+        alert('Debe ingresar un tipo de incidente');
         return false;
     }
 

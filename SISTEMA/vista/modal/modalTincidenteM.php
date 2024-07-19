@@ -19,14 +19,14 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_Tincidente.php" method="POST" style="text-align: left;" >
+                    <form action="../controlador/ctl_Tincidente.php" method="POST" style="text-align: left;" onsubmit="return validarTipoIncidenteM()">
                         <div class="modal-body">
                             
                         <input type="hidden" id="id" name="id">
 
                             <label>Tipo de Incidente </label>
                             <div class="form-group">
-                                <input type="text" value="" name="incidente" id="TincidenteM" class="form-control" >
+                                <input type="text" value="" name="incidente" id="tipo_incidenteM" class="form-control" >
                             </div>
                         </div>
                        

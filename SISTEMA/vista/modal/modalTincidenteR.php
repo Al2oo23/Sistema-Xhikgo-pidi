@@ -19,7 +19,7 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_Tincidente.php" method="POST" style="text-align: left;" onsubmit="return validarAviso()">
+                    <form action="../controlador/ctl_Tincidente.php" method="POST" style="text-align: left;" onsubmit="return validarTipoIncidente()">
                         <div class="modal-body">
                         <div class="col-12">
                                 <div class="form-group has-icon-left">

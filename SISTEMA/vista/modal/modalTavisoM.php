@@ -19,14 +19,14 @@
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_Taviso.php" method="POST" style="text-align: left;" >
+                    <form action="../controlador/ctl_Taviso.php" method="POST" style="text-align: left;" onsubmit="return validarAvisoM()">
                         <div class="modal-body">
                             
                         <input type="hidden" id="id" name="id">
 
                             <label>Tipo de Aviso</label>
                             <div class="form-group">
-                                <input type="text" value="" name="aviso" id="TavisoM" class="form-control" >
+                                <input type="text" value="" name="aviso" id="tipo_avisoM" class="form-control" >
                             </div>
                         </div>
                        
