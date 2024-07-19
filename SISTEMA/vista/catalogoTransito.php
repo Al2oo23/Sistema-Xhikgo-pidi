@@ -1,5 +1,4 @@
 <?php
-session_start();
 $nombrePagina = 'Catálogo Incidentes de Transito';
 require ('../header.php');
 include ('../modelo/conexion.php');
