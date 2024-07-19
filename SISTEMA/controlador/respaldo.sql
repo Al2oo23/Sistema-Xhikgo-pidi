@@ -7,7 +7,7 @@ CREATE TABLE `municipio` (
   `nombre` varchar(25) NOT NULL,
   `codigo` varchar(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -17,7 +17,7 @@ CREATE TABLE `lugar` (
   `municipio` varchar(25) NOT NULL,
   `distancia` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -25,7 +25,7 @@ CREATE TABLE `seccion` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `numero` int(3) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -45,7 +45,7 @@ CREATE TABLE `estacion` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -96,39 +96,39 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `usuario` (`cedula`, `nombre`, `clave`, `estado`, `pregunta`, `respuesta`) VALUES ('0', 'Cofla', 'Cofla', 'A', 'que paso', 'nada');
+INSERT INTO `usuario` (`cedula`, `nombre`, `clave`, `estado`, `pregunta`, `respuesta`) VALUES ('V-10000000', 'GojoSatoru', 'nose123', 'A', 'que paso', 'nada');
 
 
 CREATE TABLE `privilegio` (
   `cedula` varchar(10) NOT NULL,
+  `institucion` varchar(10) NOT NULL,
   `municipio` varchar(10) NOT NULL,
   `lugar` varchar(10) NOT NULL,
-  `persona` varchar(10) NOT NULL,
-  `tipo` varchar(10) NOT NULL,
-  `cargo` varchar(10) NOT NULL,
   `estacion` varchar(10) NOT NULL,
   `seccion` varchar(10) NOT NULL,
-  `usuarios` varchar(10) NOT NULL,
+  `tipo` varchar(10) NOT NULL,
+  `cargo` varchar(10) NOT NULL,
+  `persona` varchar(10) NOT NULL,
+  `usuario` varchar(10) NOT NULL,
   `aseguradora` varchar(10) NOT NULL,
   `marca` varchar(10) NOT NULL,
   `modelo` varchar(10) NOT NULL,
   `vehiculo` varchar(10) NOT NULL,
   `mantenimiento` varchar(10) NOT NULL,
   `recurso` varchar(10) NOT NULL,
-  `agregar` varchar(10) NOT NULL,
-  `eliminar` varchar(10) NOT NULL,
-  `incendio` varchar(10) NOT NULL,
-  `transito` varchar(10) NOT NULL,
-  `abejas` varchar(10) NOT NULL,
+  `incidente` varchar(10) NOT NULL,
   PRIMARY KEY (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `privilegio` (`cedula`, `institucion`, `municipio`, `lugar`, `estacion`, `seccion`, `tipo`, `cargo`, `persona`, `usuario`, `aseguradora`, `marca`, `modelo`, `vehiculo`, `mantenimiento`, `recurso`, `incidente`) VALUES ('0', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si');
+INSERT INTO `privilegio` (`cedula`, `institucion`, `municipio`, `lugar`, `estacion`, `seccion`, `tipo`, `cargo`, `persona`, `usuario`, `aseguradora`, `marca`, `modelo`, `vehiculo`, `mantenimiento`, `recurso`, `incidente`) VALUES ('V-10000000', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si', 'si');
 
 
 CREATE TABLE `marca` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -136,18 +136,16 @@ CREATE TABLE `aviso` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `aviso` (`id`, `nombre`) VALUES ('1', 'Gritoss');
 
 
 CREATE TABLE `tipo_incidente` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `incidente` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `tipo_incidente` (`id`, `incidente`) VALUES ('1', 'Ayudame');
 
 
 CREATE TABLE `modelo` (
@@ -155,7 +153,7 @@ CREATE TABLE `modelo` (
   `marca` varchar(20) NOT NULL,
   `nombre` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -174,7 +172,7 @@ CREATE TABLE `recurso` (
   `tipo` varchar(20) NOT NULL,
   `cantidad` int(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -201,7 +199,7 @@ CREATE TABLE `mantenimiento` (
   `fecha` varchar(100) NOT NULL,
   `estado` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -211,7 +209,7 @@ CREATE TABLE `historial` (
   `incidente` varchar(20) NOT NULL,
   `fecha` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -241,7 +239,7 @@ CREATE TABLE `abejas` (
   `ci_pc` varchar(20) DEFAULT NULL,
   `ci_otro` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -277,7 +275,7 @@ CREATE TABLE `transito` (
   `pc` int(11) NOT NULL,
   `otros` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -339,5 +337,5 @@ CREATE TABLE `incendio` (
   `ci_otro` varchar(100) DEFAULT NULL,
   `observaciones` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

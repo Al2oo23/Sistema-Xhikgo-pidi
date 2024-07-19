@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    print_r($_SESSION['usuarioDatos']);
+
+    $datos = $_SESSION['usuarioDatos'][0];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -92,8 +98,14 @@
                                     <form action="../controlador/ctl_sesion.php" method="post">
                                         <li><a class="dropdown-item" href="#">My Account</a></li>
                                         <li><a class="dropdown-item" href="configtam.php">Config-Catalogo</a></li>
+
+                                        <?php if($datos["institucion"] == "si"):?>
                                         <li><a class="dropdown-item" href="datosInstitucion.php">Institucion</a></li>
+                                        <?php endif;?>
+
+                                        <?php if($datos["usuario"] == "si"):?>
                                         <li><a class="dropdown-item" href="privilegios.php">Privilegios</a></li>
+                                        <?php endif;?>
                                         <li><a class="dropdown-item" href="../controlador/ctl_respaldo.php">Crear Respaldo</a></li>
                                         <li><a class="dropdown-item" href="#">Configuración</a></li>
                                         <li>
@@ -133,21 +145,30 @@
 
 
                                         <ul class="submenu-group">
+
+                                            <?php if($datos["usuario"] == "si"):?>
                                             <li class="submenu-item">
                                                 <a href="catalogoMunicipio.php" class='submenu-link'>Municipio</a>
                                             </li>
+                                            <?php endif;?>
 
+                                            <?php if($datos["lugar"] == "si"):?>
                                             <li class="submenu-item">
                                                 <a href="catalogoLugar.php" class='submenu-link'>Lugar</a>
                                             </li>
+                                            <?php endif;?>
 
+                                            <?php if($datos["estacion"] == "si"):?>
                                             <li class="submenu-item">
                                                 <a href="catalogoEstacion.php" class='submenu-link'>Estacion</a>
                                             </li>
+                                            <?php endif;?>
 
+                                            <?php if($datos["seccion"] == "si"):?>
                                             <li class="submenu-item">
                                                 <a href="catalogoSeccion.php" class='submenu-link'>Sección</a>
                                             </li>
+                                            <?php endif;?>
                                         </ul>
                                     </div>
                                 </div>
@@ -165,22 +186,29 @@
 
                                         <ul class="submenu-group">
                                             
-                                        <li class="submenu-item">
+                                            <?php if($datos["tipo"] == "si"):?>
+                                            <li class="submenu-item">
                                                 <a href="catalogoTpersona.php" class='submenu-link'>Tipo de Persona</a>
-                                        </li>
-
-                                        <li class="submenu-item">
-                                                <a href="catalogoCargo.php" class='submenu-link'>Cargo de Bombero</a>
-                                        </li>
-
-                                        <li class="submenu-item">
-                                                <a href="catalogoPersona.php" class="submenu-link">Persona</a>
-   
                                             </li>
+                                            <?php endif;?>
 
+                                            <?php if($datos["cargo"] == "si"):?>
+                                            <li class="submenu-item">
+                                                <a href="catalogoCargo.php" class='submenu-link'>Cargo de Bombero</a>
+                                            </li>
+                                            <?php endif;?>
+
+                                            <?php if($datos["persona"] == "si"):?>
+                                            <li class="submenu-item">
+                                                <a href="catalogoPersona.php" class="submenu-link">Persona</a>
+                                            </li>
+                                            <?php endif;?>
+
+                                            <?php if($datos["usuario"] == "si"):?>
                                             <li class="submenu-item">
                                                 <a href="catalogoUsuario.php" class='submenu-link'>Usuario</a>
                                             </li>
+                                            <?php endif?>
                                         
                                             <li class="submenu-item">
                                                 <a href="catalogoHdO.php" class='submenu-link'>Historial de Operación</a>
@@ -190,12 +218,13 @@
                                 </div>
                             </li>
                             
+                            <?php if($datos["aseguradora"] == "si"):?>
                             <li class="menu-item">
                                 <a href="catalogoAseguradora.php" class='menu-link'>
                                     <span><i class="bi bi-shield-fill-check"></i>Aseguradora</span>
                                 </a>
-                               
                             </li>
+                            <?php endif;?>
                             
 
                             <li class="menu-item active has-sub">
@@ -209,10 +238,11 @@
                                         <div class="submenu active">
                                     <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
                                     <div class="submenu-group-wrapper">
-                                        
-                                        
+                                                                              
                                         <ul class="submenu-group">
                                             
+                                            
+                                            <?php if($datos["vehiculo"] == "si"):?>
                                             <li class="submenu-item  has-sub">
                                                 <a href="#" class="submenu-link">Vehiculo</a>
 
@@ -224,18 +254,27 @@
                                                 
                                             </li>
                                             
+                                            <?php if($datos["marca"] == "si"):?>
                                             <li class="subsubmenu-item  ">
                                                 <a href="catalogoMarca.php" class='subsubmenu-link'>Marca de Vehiculo</a>
                                             </li>
+                                            <?php endif;?>
+
+                                            <?php if($datos["modelo"] == "si"):?>
                                             <li class="subsubmenu-item  ">
                                                 <a href="catalogoModelo.php" class='subsubmenu-link'>Modelo de Vehiculo</a>
                                             </li>
+                                            <?php endif;?>
+                                            
                                             <li class="subsubmenu-item  ">
                                                 <a href="catalogoVehiculo.php" class='subsubmenu-link'>Registro de Vehiculo</a>
                                             </li>
+                                            
+                                            </ul>
+                                            <?php endif;?>
 
-                                                </ul>
                                                 
+                                            <?php if($datos["mantenimiento"] == "si"):?>
                                             </li>
                                             <li class="submenu-item  ">
                                                 <a href="catalogoMantenimiento.php" class='submenu-link'>Cronograma de Mantenimiento</a>
@@ -244,12 +283,8 @@
                                             <li class="submenu-item  ">
                                                 <a href="catalogoHM.php" class='submenu-link'>Historial de Mantenimiento</a>
                                             </li>
-
-                                            <!-- <li class="submenu-item  ">
-                                                <a href="catalogoEstacion.php" class='submenu-link'>Estaciones</a>
-                                            </li> -->
+                                            <?php endif;?>
                                         
-
                                         </ul>
                                         
                                         
@@ -261,13 +296,15 @@
                                 </div>
                             </li>
 
+                            <?php if($datos["recurso"] == "si"):?>
                             <li class="menu-item">
                                 <a href="catalogoRecursos.php" class='menu-link'>
                                     <span><i class="bi bi-shield-fill-check"></i>Recurso</span>
-                                </a>
-                               
+                                </a>    
                             </li>
+                            <?php endif;?>
 
+                            <?php if($datos["incidente"] == "si"):?>
                             <li class="menu-item has-sub">
                                 <a href="#" class='menu-link'>
                                     <span><i class="bi bi-prescription2"></i>Incidente</span>
@@ -305,6 +342,7 @@
                                     </div>
                                 </div>
                             </li>
+                            <?php endif;?>
                         </ul>
                     </div>
                 </nav>

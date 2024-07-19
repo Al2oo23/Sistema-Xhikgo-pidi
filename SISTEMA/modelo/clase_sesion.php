@@ -26,7 +26,7 @@ class sesion{
     public function verificarUsuario($usuario, $clave){
         include ("conexion.php");
 
-        $SQL = "SELECT * FROM usuario WHERE nombre = ? AND clave = ?";
+        $SQL = "SELECT * FROM usuario u INNER JOIN privilegio p ON p.cedula = u.cedula WHERE u.nombre = ? AND u.clave = ?";
 
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([$usuario, $clave]);
