@@ -1,14 +1,14 @@
 <?php
 $nombrePagina = 'Catálogo Incendios';
-require('../header.php');
-include('../modelo/conexion.php');
+require ('../header.php');
+include ('../modelo/conexion.php');
 
 $sentencia = $conexion->prepare("SELECT * FROM incendio");
 $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="col-12">
+<div class="col-12" id="catalogo">
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">Buscador</h4>
@@ -20,58 +20,86 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="fecha_incendio_buscador">Fecha</label>
-                                <input type="text" id="fecha_incendio_buscador" name="fecha_incendio_buscador" class="form-control" placeholder="Fecha Buscada">
+                                <input type="text" id="fecha_incendio_buscador" name="fecha_incendio_buscador"
+                                    class="form-control" placeholder="Fecha Buscada">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="seccion_incendio_buscador">Seccion</label>
-                                <input type="text" id="seccion_incendio_buscador" name="seccion_incendio_buscador" class="form-control" placeholder="Seccion Buscada">
+                                <input type="text" id="seccion_incendio_buscador" name="seccion_incendio_buscador"
+                                    class="form-control" placeholder="Seccion Buscada">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="municipio_incendio_buscador">Municipio</label>
-                                <input type="text" id="municipio_incendio_buscador" name="municipio_incendio_buscador" class="form-control" placeholder="Municipio Buscada">
+                                <input type="text" id="municipio_incendio_buscador" name="municipio_incendio_buscador"
+                                    class="form-control" placeholder="Municipio Buscada">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="localidad_incendio_buscador">Localidad</label>
-                                <input type="text" id="localidad_incendio_buscador" name="localidad_incendio_buscador" class="form-control" placeholder="Localidad Buscado">
+                                <input type="text" id="localidad_incendio_buscador" name="localidad_incendio_buscador"
+                                    class="form-control" placeholder="Localidad Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="propietario_incendio_buscador">Propietario Vivienda</label>
-                                <input type="text" id="propietario_incendio_buscador" name="propietario_incendio_buscador" class="form-control" placeholder="Propietario Buscado">
+                                <input type="text" id="propietario_incendio_buscador"
+                                    name="propietario_incendio_buscador" class="form-control"
+                                    placeholder="Propietario Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="valor_inmueble_incendio_buscador">Valor Inmueble</label>
-                                <input type="text" id="valor_inmueble_incendio_buscador" name="valor_inmueble_incendio_buscador" class="form-control" placeholder="Jefe Buscado">
+                                <input type="text" id="valor_inmueble_incendio_buscador"
+                                    name="valor_inmueble_incendio_buscador" class="form-control"
+                                    placeholder="Jefe Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="num_residenciados_incendio_buscador">Número Residenciados</label>
-                                <input type="text" id="num_residenciados_incendio_buscador" name="num_residenciados_incendio_buscador" class="form-control" placeholder="Número de Residenciados Buscado">
+                                <input type="text" id="num_residenciados_incendio_buscador"
+                                    name="num_residenciados_incendio_buscador" class="form-control"
+                                    placeholder="Número de Residenciados Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="fuente_ignicion_incendio_buscador">Fuente Ignición</label>
-                                <input type="text" id="fuente_ignicion_incendio_buscador" name="fuente_ignicion_incendio_buscador" class="form-control" placeholder="Fuente Ignición Buscada">
+                                <input type="text" id="fuente_ignicion_incendio_buscador"
+                                    name="fuente_ignicion_incendio_buscador" class="form-control"
+                                    placeholder="Fuente Ignición Buscada">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="causa_incendio_buscador">Causa Incendio</label>
-                                <input type="text" id="causa_incendio_buscador" name="causa_incendio_buscador" class="form-control" placeholder="Causa Incendio Buscado">
+                                <input type="text" id="causa_incendio_buscador" name="causa_incendio_buscador"
+                                    class="form-control" placeholder="Causa Incendio Buscado">
                             </div>
                         </div>
-                        <div class="col-md-12 form-group d-flex justify-content-end">
+                        <div class="col-md-12 form-group d-flex justify-content-between">
+                            <form>
+                                <div class="col-4">
+                                    <div class="form-group has-icon-left">
+                                        <div class="position-relative">
+                                            <select name="tamano" class="form-select" id="tamano"
+                                                onchange="cambiarTamano()">
+                                                <option value="pequeno">Pequeño</option>
+                                                <option value="mediano">Mediano</option>
+                                                <option value="grande">Grande</option>
+                                                <option value="extragrande" selected>Extra Grande</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                             <button type="submit" class="btn btn-primary">Generar PDF</button>
                         </div>
                 </form>
@@ -83,7 +111,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Incendio</h4>
-                    <?php include("modal/modalIncendioR.php"); ?>
+                    <?php include ("modal/modalIncendioR.php"); ?>
                 </div>
 
                 <!-- table hover -->
@@ -151,7 +179,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($resultado as $incendio) : ?>
+                            <?php foreach ($resultado as $incendio): ?>
                                 <tr class="fila">
                                     <td class="columnas" hidden><?= $incendio['id'] ?></td>
                                     <td class="columnas"><?= $incendio['fecha']; ?></td>
@@ -211,8 +239,10 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <td class="columnas" hidden><?= $incendio['observaciones']; ?></td>
                                     <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <?php include("modal/modalIncendioM.php"); ?>
-                                            <div class="flex-item"><a href='../controlador/ctl_incendio.php?txtID=<?= $incendio['id']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                            <?php include ("modal/modalIncendioM.php"); ?>
+                                            <div class="flex-item"><a
+                                                    href='../controlador/ctl_incendio.php?txtID=<?= $incendio['id']; ?>'
+                                                    class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -227,5 +257,5 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     <script src="Javascript/incendioModal.js"></script>
 
     <?php
-    require('../footer.php');
+    require ('../footer.php');
     ?>

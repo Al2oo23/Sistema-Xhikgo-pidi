@@ -1,15 +1,15 @@
 <?php
 session_start();
 $nombrePagina = 'Catálogo de Vehiculo';
-require('../header.php');
-include('../modelo/conexion.php');
+require ('../header.php');
+include ('../modelo/conexion.php');
 
 $sentencia = $conexion->prepare("SELECT * FROM vehiculo");
 $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="col-12 m-auto">
+<div class="col-12 m-auto" id="catalogo">
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">Buscador</h4>
@@ -21,58 +21,83 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="niv_vehiculo_buscador">Numero de Identidad Vehicular</label>
-                                <input type="text" id="niv_vehiculo_buscador" name="niv_vehiculo_buscador" class="form-control" placeholder="NIV Buscado">
+                                <input type="text" id="niv_vehiculo_buscador" name="niv_vehiculo_buscador"
+                                    class="form-control" placeholder="NIV Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="numero_vehiculo_buscador">Numero de Unidad</label>
-                                <input type="text" id="numero_vehiculo_buscador" name="numero_vehiculo_buscador" class="form-control" placeholder="Numero de Unidad Buscado">
+                                <input type="text" id="numero_vehiculo_buscador" name="numero_vehiculo_buscador"
+                                    class="form-control" placeholder="Numero de Unidad Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="marca_vehiculo_buscador">Marca</label>
-                                <input type="text" id="marca_vehiculo_buscador" name="marca_vehiculo_buscador" class="form-control" placeholder="Marca Buscada">
+                                <input type="text" id="marca_vehiculo_buscador" name="marca_vehiculo_buscador"
+                                    class="form-control" placeholder="Marca Buscada">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="modelo_vehiculo_buscador">Modelo</label>
-                                <input type="text" id="modelo_vehiculo_buscador" name="modelo_vehiculo_buscador" class="form-control" placeholder="Modelo Buscado">
+                                <input type="text" id="modelo_vehiculo_buscador" name="modelo_vehiculo_buscador"
+                                    class="form-control" placeholder="Modelo Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="serial_vehiculo_buscador">Serial</label>
-                                <input type="text" id="serial_vehiculo_buscador" name="serial_vehiculo_buscador" class="form-control" placeholder="Serial Buscado">
+                                <input type="text" id="serial_vehiculo_buscador" name="serial_vehiculo_buscador"
+                                    class="form-control" placeholder="Serial Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="cilindrada_vehiculo_buscador">Cilindrada</label>
-                                <input type="text" id="cilindrada_vehiculo_buscador" name="cilindrada_vehiculo_buscador" class="form-control" placeholder="Cilindrada Buscada">
+                                <input type="text" id="cilindrada_vehiculo_buscador" name="cilindrada_vehiculo_buscador"
+                                    class="form-control" placeholder="Cilindrada Buscada">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="carburante_vehiculo_buscador">Carburante</label>
-                                <input type="text" id="carburante_vehiculo_buscador" name="carburante_vehiculo_buscador" class="form-control" placeholder="Carburante Buscado">
+                                <input type="text" id="carburante_vehiculo_buscador" name="carburante_vehiculo_buscador"
+                                    class="form-control" placeholder="Carburante Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="seguro_vehiculo_buscador">Seguro</label>
-                                <input type="text" id="seguro_vehiculo_buscador" name="seguro_vehiculo_buscador" class="form-control" placeholder="Seguro Buscado">
+                                <input type="text" id="seguro_vehiculo_buscador" name="seguro_vehiculo_buscador"
+                                    class="form-control" placeholder="Seguro Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="propietario_vehiculo_buscador">C.I del Propietario</label>
-                                <input type="text" id="propietario_vehiculo_buscador" name="propietario_vehiculo_buscador" class="form-control" placeholder="C.I del Propietario Buscado">
+                                <input type="text" id="propietario_vehiculo_buscador"
+                                    name="propietario_vehiculo_buscador" class="form-control"
+                                    placeholder="C.I del Propietario Buscado">
                             </div>
                         </div>
-                        <div class="col-md-12 form-group d-flex justify-content-end">
+                        <div class="col-md-12 form-group d-flex justify-content-between">
+                            <form>
+                                <div class="col-4">
+                                    <div class="form-group has-icon-left">
+                                        <div class="position-relative">
+                                            <select name="tamano" class="form-select" id="tamano"
+                                                onchange="cambiarTamano()">
+                                                <option value="pequeno">Pequeño</option>
+                                                <option value="mediano">Mediano</option>
+                                                <option value="grande" >Grande</option>
+                                                <option value="extragrande" selected>Extra Grande</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                             <button type="submit" class="btn btn-primary">Generar PDF</button>
                         </div>
                 </form>
@@ -84,7 +109,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         <div class="card-content">
             <div class="card-header">
                 <h4 class="card-title">Vehiculo</h4>
-                <?php include("modal/modalVehiculoR.php"); ?>
+                <?php include ("modal/modalVehiculoR.php"); ?>
             </div>
             <!-- table hover -->
             <div class="table-responsive">
@@ -105,7 +130,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($resultado as $vehiculo) : ?>
+                        <?php foreach ($resultado as $vehiculo): ?>
                             <tr class="fila">
                                 <td class="columna"><?= $vehiculo['niv'] ?></td>
                                 <td class="columna" hidden><?= $vehiculo['tipo'] ?></td>
@@ -119,8 +144,10 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <td class="columna"><?= $vehiculo['cedula'] ?></td>
                                 <td>
                                     <div class="botones">
-                                        <?php include("modal/modalVehiculoM.php"); ?>
-                                        <div><a name='eliminar' id='eliminar' href='../controlador/ctl_vehiculo.php?txtID=<?= $vehiculo['niv']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                        <?php include ("modal/modalVehiculoM.php"); ?>
+                                        <div><a name='eliminar' id='eliminar'
+                                                href='../controlador/ctl_vehiculo.php?txtID=<?= $vehiculo['niv']; ?>'
+                                                class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                     </div>
                                 </td>
                             </tr>
@@ -139,5 +166,5 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 <script src="Javascript/vehiculoModal.js"></script>
 
 <?php
-require('../footer.php');
+require ('../footer.php');
 ?>

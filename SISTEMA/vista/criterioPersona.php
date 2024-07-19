@@ -1,7 +1,7 @@
 <?php
 $nombrePagina = "Criterio de Persona";
-require('../header.php');
-include('../modelo/conexion.php');
+require ('../header.php');
+include ('../modelo/conexion.php');
 
 // Obtener criterios de búsqueda
 $sentencia = $conexion->prepare("SELECT * FROM criterio_persona");
@@ -9,7 +9,7 @@ $sentencia->execute();
 $criterio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="col-12">
+<div class="col-12" id="catalogo">
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">Buscador</h4>
@@ -17,15 +17,30 @@ $criterio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         <div class="card-content">
             <div class="card-body">
                 <form id="buscador-form">
-                <select class="form-select" name="criterio" id="criterio" style="width:200px; display:inline-block;">
+                    <select class="form-select" name="criterio" id="criterio"
+                        style="width:200px; display:inline-block;">
                         <option value="">Seleccionar Criterio...</option>
-                        <?php foreach ($criterio as $c) : ?>
+                        <?php foreach ($criterio as $c): ?>
                             <option value="<?= $c['id']; ?>"><?= $c['nombre']; ?></option>
                         <?php endforeach; ?>
-                </select>
+                    </select>
                     <input type="hidden" name="id_criterio" id="id_criterio">
                     <input type="submit" value="Buscar" id="buscar" class="btn btn-primary">
                     <button type="button" id="limpiar" class="btn btn-danger">Limpiar</button>
+                </form>
+                <form>
+                    <div class="col-4">
+                        <div class="form-group has-icon-left">
+                            <div class="position-relative">
+                                <select name="tamano" class="form-select" id="tamano" onchange="cambiarTamano()">
+                                    <option value="pequeno">Pequeño</option>
+                                    <option value="mediano">Mediano</option>
+                                    <option value="grande" selected>Grande</option>
+                                    <option value="extragrande">Extra Grande</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -36,7 +51,7 @@ $criterio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Criterio de Persona</h4>
-                    <?php include("modal/modalCriterioPersonaR.php"); ?>
+                    <?php include ("modal/modalCriterioPersonaR.php"); ?>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover mb-0" id="tabla_persona">
@@ -58,7 +73,7 @@ $criterio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             </tr>
                         </thead>
                         <tbody id="resultados">
-                            <?php foreach ($criterio as $persona) : ?>
+                            <?php foreach ($criterio as $persona): ?>
                                 <tr class="fila">
                                     <td class="columnas" hidden><?= $persona['id']; ?></td>
                                     <td class="columnas"><?= $persona['cedula']; ?></td>
@@ -74,8 +89,10 @@ $criterio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <td class="columnas"><?= $persona['estacion']; ?></td>
                                     <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <?php include("modal/modalPersonaM.php"); ?>
-                                            <div><a name='eliminar' id='eliminar' href='../controlador/ctl_persona.php?txtID=<?= $persona['cedula']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                            <?php include ("modal/modalPersonaM.php"); ?>
+                                            <div><a name='eliminar' id='eliminar'
+                                                    href='../controlador/ctl_persona.php?txtID=<?= $persona['cedula']; ?>'
+                                                    class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -89,21 +106,21 @@ $criterio = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 <script>
-document.getElementById('buscador-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var idCriterio = document.getElementById('criterio').value;
-    fetch('../controlador/ctl_criterio_persona.php', {
-        method: 'POST',
-        body: new URLSearchParams('id_criterio=' + idCriterio)
-    })
-    .then(response => response.json())
-    .then(data => {
-        var resultados = document.getElementById('resultados');
-        resultados.innerHTML = '';
-        data.forEach(persona => {
-            var row = document.createElement('tr');
-            row.classList.add('fila');
-            row.innerHTML = `
+    document.getElementById('buscador-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var idCriterio = document.getElementById('criterio').value;
+        fetch('../controlador/ctl_criterio_persona.php', {
+            method: 'POST',
+            body: new URLSearchParams('id_criterio=' + idCriterio)
+        })
+            .then(response => response.json())
+            .then(data => {
+                var resultados = document.getElementById('resultados');
+                resultados.innerHTML = '';
+                data.forEach(persona => {
+                    var row = document.createElement('tr');
+                    row.classList.add('fila');
+                    row.innerHTML = `
                 <td class="columnas">${persona.cedula}</td>
                 <td class="columnas">${persona.nombre}</td>
                 <td class="columnas">${persona.edad}</td>
@@ -123,26 +140,26 @@ document.getElementById('buscador-form').addEventListener('submit', function(e) 
                     ${generateModalHTML(persona.cedula)}
                 </td>
             `;
-            resultados.appendChild(row);
-        });
+                    resultados.appendChild(row);
+                });
+            });
     });
-});
 
-document.getElementById('limpiar').addEventListener('click', function() {
-    document.getElementById('criterio').value = '';
-    var idCriterio = '';
-    fetch('../controlador/ctl_criterio_persona.php', {
-        method: 'POST',
-        body: new URLSearchParams('id_criterio=' + idCriterio)
-    })
-    .then(response => response.json())
-    .then(data => {
-        var resultados = document.getElementById('resultados');
-        resultados.innerHTML = '';
-        data.forEach(persona => {
-            var row = document.createElement('tr');
-            row.classList.add('fila');
-            row.innerHTML = `
+    document.getElementById('limpiar').addEventListener('click', function () {
+        document.getElementById('criterio').value = '';
+        var idCriterio = '';
+        fetch('../controlador/ctl_criterio_persona.php', {
+            method: 'POST',
+            body: new URLSearchParams('id_criterio=' + idCriterio)
+        })
+            .then(response => response.json())
+            .then(data => {
+                var resultados = document.getElementById('resultados');
+                resultados.innerHTML = '';
+                data.forEach(persona => {
+                    var row = document.createElement('tr');
+                    row.classList.add('fila');
+                    row.innerHTML = `
                 <td class="columnas">${persona.cedula}</td>
                 <td class="columnas">${persona.nombre}</td>
                 <td class="columnas">${persona.edad}</td>
@@ -162,21 +179,21 @@ document.getElementById('limpiar').addEventListener('click', function() {
                     ${generateModalHTML(persona.cedula)}
                 </td>
             `;
-            resultados.appendChild(row);
-        });
+                    resultados.appendChild(row);
+                });
+            });
     });
-});
 
-function generateModalHTML(cedula) {
-    return `
+    function generateModalHTML(cedula) {
+        return `
         <?php ob_start(); ?>
-        <?php include("modal/modalPersonaM.php"); ?>
+        <?php include ("modal/modalPersonaM.php"); ?>
         <?php $modalContent = ob_get_clean(); ?>
         ${modalContent.replace(/modalPersonaM/g, "modalPersonaM" + cedula)}
     `;
-}
+    }
 </script>
 
 <?php
-require('../footer.php');
+require ('../footer.php');
 ?>

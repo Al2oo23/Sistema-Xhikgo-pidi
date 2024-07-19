@@ -1,8 +1,8 @@
 <?php
 session_start();
 $nombrePagina = 'Catálogo Incidentes de Transito';
-require('../header.php');
-include('../modelo/conexion.php');
+require ('../header.php');
+include ('../modelo/conexion.php');
 
 $SQL = "SELECT * FROM transito";
 $preparado = $conexion->prepare($SQL);
@@ -11,7 +11,7 @@ $resultados = $preparado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<div class="col-12">
+<div class="col-12" id="catalogo">
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">Buscador</h4>
@@ -23,58 +23,83 @@ $resultados = $preparado->fetchAll(PDO::FETCH_ASSOC);
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="fecha_transito_buscador">Fecha</label>
-                                <input type="text" id="fecha_transito_buscador" name="fecha_transito_buscador" class="form-control" placeholder="Fecha Buscada">
+                                <input type="text" id="fecha_transito_buscador" name="fecha_transito_buscador"
+                                    class="form-control" placeholder="Fecha Buscada">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="seccion_transito_buscador">Seccion</label>
-                                <input type="text" id="seccion_transito_buscador" name="seccion_transito_buscador" class="form-control" placeholder="Seccion Buscada">
+                                <input type="text" id="seccion_transito_buscador" name="seccion_transito_buscador"
+                                    class="form-control" placeholder="Seccion Buscada">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="estacion_transito_buscador">Estación</label>
-                                <input type="text" id="estacion_transito_buscador" name="estacion_transito_buscador" class="form-control" placeholder="Estación Buscada">
+                                <input type="text" id="estacion_transito_buscador" name="estacion_transito_buscador"
+                                    class="form-control" placeholder="Estación Buscada">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="emergencia_transito_buscador">Emergencia</label>
-                                <input type="text" id="emergencia_transito_buscador" name="emergencia_transito_buscador" class="form-control" placeholder="Emergencia Buscado">
+                                <input type="text" id="emergencia_transito_buscador" name="emergencia_transito_buscador"
+                                    class="form-control" placeholder="Emergencia Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="inspeccion_transito_buscador">Inspección</label>
-                                <input type="text" id="inspeccion_transito_buscador" name="inspeccion_transito_buscador" class="form-control" placeholder="inspeccion Buscado">
+                                <input type="text" id="inspeccion_transito_buscador" name="inspeccion_transito_buscador"
+                                    class="form-control" placeholder="inspeccion Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="tipo_incidente_transito_buscador">Tipo Incendente</label>
-                                <input type="text" id="tipo_incidente_transito_buscador" name="tipo_incidente_transito_buscador" class="form-control" placeholder="Tipo Incendente Buscado">
+                                <input type="text" id="tipo_incidente_transito_buscador"
+                                    name="tipo_incidente_transito_buscador" class="form-control"
+                                    placeholder="Tipo Incendente Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="vehiculo_transito_buscador">Vehiculo</label>
-                                <input type="text" id="vehiculo_transito_buscador" name="vehiculo_transito_buscador" class="form-control" placeholder="Vehiculo Buscado">
+                                <input type="text" id="vehiculo_transito_buscador" name="vehiculo_transito_buscador"
+                                    class="form-control" placeholder="Vehiculo Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="occisos_transito_buscador">Occisos</label>
-                                <input type="text" id="occisos_transito_buscador" name="occisos_transito_buscador" class="form-control" placeholder="Occisos Buscada">
+                                <input type="text" id="occisos_transito_buscador" name="occisos_transito_buscador"
+                                    class="form-control" placeholder="Occisos Buscada">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="incendio_transito_buscador">Incendio</label>
-                                <input type="text" id="incendio_transito_buscador" name="incendio_transito_buscador" class="form-control" placeholder="Incendio Buscado">
+                                <input type="text" id="incendio_transito_buscador" name="incendio_transito_buscador"
+                                    class="form-control" placeholder="Incendio Buscado">
                             </div>
                         </div>
-                        <div class="col-md-12 form-group d-flex justify-content-end">
+                        <div class="col-md-12 form-group d-flex justify-content-between">
+                            <form>
+                                <div class="col-4">
+                                    <div class="form-group has-icon-left">
+                                        <div class="position-relative">
+                                            <select name="tamano" class="form-select" id="tamano"
+                                                onchange="cambiarTamano()">
+                                                <option value="pequeno">Pequeño</option>
+                                                <option value="mediano">Mediano</option>
+                                                <option value="grande">Grande</option>
+                                                <option value="extragrande" selected>Extra Grande</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                             <button type="submit" class="btn btn-primary">Generar PDF</button>
                         </div>
                 </form>
@@ -86,7 +111,7 @@ $resultados = $preparado->fetchAll(PDO::FETCH_ASSOC);
         <div class="card-content">
             <div class="card-header">
                 <h4 class="card-title">Incidentes de Transito</h4>
-                <?php include("modal/transitoModalR.php"); ?>
+                <?php include ("modal/transitoModalR.php"); ?>
             </div>
             <!-- table hover -->
             <div class="table-responsive">
@@ -127,7 +152,7 @@ $resultados = $preparado->fetchAll(PDO::FETCH_ASSOC);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($resultados as $resultado) : ?>
+                        <?php foreach ($resultados as $resultado): ?>
                             <tr class="fila">
                                 <td class="columnas" hidden><?= $resultado['id'] ?></td>
                                 <td class="columnas"><?= $resultado['fecha'] ?></td>
@@ -161,8 +186,10 @@ $resultados = $preparado->fetchAll(PDO::FETCH_ASSOC);
                                 <td class="columnas" hidden><?= $resultado['otros'] ?></td>
                                 <td>
                                     <div class="botones" style="justify-content:space-evenly;">
-                                        <?php include("modal/transitoModalM.php"); ?>
-                                        <div><a name='eliminar' id='eliminar' href='../controlador/ctl_transito.php?txtID=<?= $resultado['id']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                        <?php include ("modal/transitoModalM.php"); ?>
+                                        <div><a name='eliminar' id='eliminar'
+                                                href='../controlador/ctl_transito.php?txtID=<?= $resultado['id']; ?>'
+                                                class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                     </div>
                                 </td>
 
@@ -181,5 +208,5 @@ $resultados = $preparado->fetchAll(PDO::FETCH_ASSOC);
     <script src="Javascript/transitoModal.js"></script>
 
     <?php
-    require('../footer.php');
+    require ('../footer.php');
     ?>

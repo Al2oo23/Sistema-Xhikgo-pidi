@@ -1,14 +1,14 @@
 <?php
 $nombrePagina = 'Catálogo de Recurso';
-require('../header.php');
-include('../modelo/conexion.php');
+require ('../header.php');
+include ('../modelo/conexion.php');
 
 $sentencia = $conexion->prepare("SELECT * FROM recurso");
 $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="col-8 m-auto">
+<div class="col-9 m-auto" id="catalogo">
 
     <div class="card">
         <div class="card-header">
@@ -23,21 +23,39 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <label for="nombre_recurso_buscador">Nombre del Recurso</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="nombre_recurso_buscador" name="nombre_recurso_buscador" class="form-control" placeholder="Nombre del Recurso Buscado">
+                                <input type="text" id="nombre_recurso_buscador" name="nombre_recurso_buscador"
+                                    class="form-control" placeholder="Nombre del Recurso Buscado">
                             </div>
                             <div class="col-md-4">
                                 <label for="tipo_recurso_buscador">Tipo de Recurso</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="tipo_recurso_buscador" name="tipo_recurso_buscador" class="form-control" placeholder="Tipo de Recurso Buscado">
+                                <input type="text" id="tipo_recurso_buscador" name="tipo_recurso_buscador"
+                                    class="form-control" placeholder="Tipo de Recurso Buscado">
                             </div>
                             <div class="col-md-4">
                                 <label for="cantidad_recurso_buscador">Cantidad de Recurso</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="cantidad_recurso_buscador" name="cantidad_recurso_buscador" class="form-control" placeholder="Cantidad de Recurso Buscado">
+                                <input type="text" id="cantidad_recurso_buscador" name="cantidad_recurso_buscador"
+                                    class="form-control" placeholder="Cantidad de Recurso Buscado">
                             </div>
-                            <div class="col-md-12 form-group d-flex justify-content-end">
+                            <div class="col-md-12 form-group d-flex justify-content-between">
+                                <form>
+                                    <div class="col-4">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <select name="tamano" class="form-select" id="tamano"
+                                                    onchange="cambiarTamano()">
+                                                    <option value="pequeno">Pequeño</option>
+                                                    <option value="mediano">Mediano</option>
+                                                    <option value="grande" selected>Grande</option>
+                                                    <option value="extragrande">Extra Grande</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                                 <button type="submit" class="btn btn-primary">Generar PDF</button>
                             </div>
                         </div>
@@ -50,11 +68,11 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             <div class="card-content">
                 <div class="card-header">
                     <h4 class="card-title">Recurso</h4>
-                        <div>
-                            <?php include("modal/modalRecursoR.php"); ?>  
-                            <?php include("modal/modalRecursoAgreg.php"); ?>
-                            <?php include("modal/modalRecursoInop.php"); ?>
-                        </div>
+                    <div>
+                        <?php include ("modal/modalRecursoR.php"); ?>
+                        <?php include ("modal/modalRecursoAgreg.php"); ?>
+                        <?php include ("modal/modalRecursoInop.php"); ?>
+                    </div>
                 </div>
                 <!-- table hover -->
                 <div class="table-responsive">
@@ -68,7 +86,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($resultado as $recurso) : ?>
+                            <?php foreach ($resultado as $recurso): ?>
                                 <tr class="fila">
                                     <td class="columnas" hidden><?= $recurso['id'] ?></td>
                                     <td class="columnas"><?= $recurso['nombre']; ?></td>
@@ -76,8 +94,9 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <td class="columnas"><?= $recurso['cantidad']; ?></td>
                                     <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <?php include("modal/modalRecursoM.php"); ?>
-                                            <div><a href='../controlador/ctl_recurso.php?txtID=<?= $recurso['id']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                            <?php include ("modal/modalRecursoM.php"); ?>
+                                            <div><a href='../controlador/ctl_recurso.php?txtID=<?= $recurso['id']; ?>'
+                                                    class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -93,5 +112,5 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 <script src="Javascript/recursoModal.js"></script>
 
 <?php
-require('../footer.php');
+require ('../footer.php');
 ?>

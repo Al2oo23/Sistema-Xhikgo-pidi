@@ -1,14 +1,14 @@
 <?php
 $nombrePagina = 'Catálogo de Municipio';
-require('../header.php');
-include('../modelo/conexion.php');
+require ('../header.php');
+include ('../modelo/conexion.php');
 
 $sentencia = $conexion->prepare("SELECT * FROM municipio");
 $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="col-8 m-auto">
+<div class="col-9 m-auto" id="catalogo">
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">Buscador</h4>
@@ -22,15 +22,32 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <label for="nombre_municipio_buscador">Nombre del Municipio</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="nombre_municipio_buscador" name="nombre_municipio_buscador" class="form-control" placeholder="Nombre del Municipio Buscado">
+                                <input type="text" id="nombre_municipio_buscador" name="nombre_municipio_buscador"
+                                    class="form-control" placeholder="Nombre del Municipio Buscado">
                             </div>
                             <div class="col-md-4">
                                 <label for="codigo_municipio_buscador">Codigo del Municipio</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="codigo_municipio_buscador" name="codigo_municipio_buscador" class="form-control" placeholder="Tipo de Recurso Buscado">
+                                <input type="text" id="codigo_municipio_buscador" name="codigo_municipio_buscador"
+                                    class="form-control" placeholder="Tipo de Recurso Buscado">
                             </div>
-                            <div class="col-md-12 form-group d-flex justify-content-end">
+                            <div class="col-md-12 form-group d-flex justify-content-between">
+                                <form>
+                                    <div class="col-4">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <select name="tamano" class="form-select" id="tamano"
+                                                    onchange="cambiarTamano()">
+                                                    <option value="pequeno">Pequeño</option>
+                                                    <option value="mediano">Mediano</option>
+                                                    <option value="grande" selected>Grande</option>
+                                                    <option value="extragrande">Extra Grande</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                                 <button type="submit" class="btn btn-primary">Generar PDF</button>
                             </div>
                         </div>
@@ -43,7 +60,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             <div class="card-content">
                 <div class="card-header">
                     <h4 class="card-title">Municipio</h4>
-                    <?php include("modal/modalMunicipioR.php"); ?>
+                    <?php include ("modal/modalMunicipioR.php"); ?>
                 </div>
                 <!-- table hover -->
                 <div class="table-responsive">
@@ -57,8 +74,8 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (isset($resultado)) : ?>
-                                <?php foreach ($resultado as $municipio) : ?>
+                            <?php if (isset($resultado)): ?>
+                                <?php foreach ($resultado as $municipio): ?>
 
                                     <tr class="fila">
                                         <td class="columna" hidden><?= $municipio["id"]; ?></td>
@@ -66,8 +83,10 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                         <td class="columna"><?= $municipio["codigo"]; ?></td>
                                         <td>
                                             <div class="botones" style="justify-content:space-evenly;">
-                                                <?php include("modal/modalMunicipioM.php"); ?>
-                                                <div><a name='eliminar' id='eliminar' href='../controlador/ctl_municipio.php?txtID=<?= $municipio['id']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                                <?php include ("modal/modalMunicipioM.php"); ?>
+                                                <div><a name='eliminar' id='eliminar'
+                                                        href='../controlador/ctl_municipio.php?txtID=<?= $municipio['id']; ?>'
+                                                        class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                             </div>
                                         </td>
                                     </tr>
@@ -89,5 +108,5 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 <script src="Javascript/municipioModal.js"></script>
 
 <?php
-require('../footer.php');
+require ('../footer.php');
 ?>

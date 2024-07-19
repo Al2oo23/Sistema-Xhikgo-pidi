@@ -1,14 +1,14 @@
 <?php
 $nombrePagina = 'Catálogo Cargo de Bombero';
-require('../header.php');
-include('../modelo/conexion.php');
+require ('../header.php');
+include ('../modelo/conexion.php');
 
 $sentencia = $conexion->prepare("SELECT * FROM cargo");
 $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="col-5 m-auto">
+<div class="col-5 m-auto" id="catalogo">
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">Buscador</h4>
@@ -22,9 +22,25 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <label for="nombre_cargo_buscador">Cargo</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="nombre_cargo_buscador" name="nombre_cargo_buscador" class="form-control" placeholder="Cargo Buscado">
+                                <input type="text" id="nombre_cargo_buscador" name="nombre_cargo_buscador"
+                                    class="form-control" placeholder="Cargo Buscado">
                             </div>
-                            <div class="col-md-12 form-group d-flex justify-content-end">
+                            <div class="col-md-12 form-group d-flex justify-content-between">
+                                <form>
+                                    <div class="col-4">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <select name="tamano" class="form-select" id="tamano"
+                                                    onchange="cambiarTamano()">
+                                                    <option value="pequeno" selected>Pequeño</option>
+                                                    <option value="mediano">Mediano</option>
+                                                    <option value="grande">Grande</option>
+                                                    <option value="extragrande">Extra Grande</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                                 <button type="submit" class="btn btn-primary">Generar PDF</button>
                             </div>
                         </div>
@@ -38,7 +54,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             <div class="card-content">
                 <div class="card-header">
                     <h4 class="card-title">Cargo de Bombero</h4>
-                    <?php include("modal/modalCargoR.php"); ?>
+                    <?php include ("modal/modalCargoR.php"); ?>
                 </div>
                 <!-- table hover -->
                 <div class="table-responsive">
@@ -51,15 +67,17 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (isset($resultado)) : ?>
-                                <?php foreach ($resultado as $cargo) : ?>
+                            <?php if (isset($resultado)): ?>
+                                <?php foreach ($resultado as $cargo): ?>
                                     <tr class="fila">
                                         <td class="columnas" hidden><?= $cargo['id'] ?></td>
                                         <td class="columnas"><?= $cargo['nombre'] ?></td>
                                         <td>
                                             <div class="botones" style="justify-content:space-evenly;">
-                                                <?php include("modal/modalCargoM.php"); ?>
-                                                <div><a name='eliminar' id='eliminar' href='../controlador/ctl_cargo.php?txtID=<?= $cargo['id']; ?>' class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                                <?php include ("modal/modalCargoM.php"); ?>
+                                                <div><a name='eliminar' id='eliminar'
+                                                        href='../controlador/ctl_cargo.php?txtID=<?= $cargo['id']; ?>'
+                                                        class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                             </div>
                                         </td>
                                     </tr>
@@ -80,5 +98,5 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 <script src="Javascript/cargoModal.js"></script>
 
 <?php
-require('../footer.php');
+require ('../footer.php');
 ?>

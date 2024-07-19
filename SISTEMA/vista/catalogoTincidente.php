@@ -9,7 +9,7 @@ if (isset($_SESSION['resultado_busqueda_incidente'])) {
 }
 ?>
 
-<div class="col-5 m-auto">
+<div class="col-5 m-auto" id="catalogo">
 
     <div class="row match-height">
         <div class="col-12">
@@ -31,11 +31,28 @@ if (isset($_SESSION['resultado_busqueda_incidente'])) {
                                     </div>
                                 </div>
 
-                                <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" id="limpiar_Tincidente" name="limpiar_Tincidente"
-                                        class="btn btn-danger me-1 mb-1">Limpiar</button>
-                                    <button type="submit" id="buscar_Tincidente" name="buscar_Tincidente"
-                                        class="btn btn-primary me-1 mb-1">Buscar</button>
+                                <div class="col-12 d-flex justify-content-between">
+                                    <form>
+                                        <div class="col-4">
+                                            <div class="form-group has-icon-left">
+                                                <div class="position-relative">
+                                                    <select name="tamano" class="form-select" id="tamano"
+                                                        onchange="cambiarTamano()">
+                                                        <option value="pequeno" selected>Pequeño</option>
+                                                        <option value="mediano">Mediano</option>
+                                                        <option value="grande">Grande</option>
+                                                        <option value="extragrande">Extra Grande</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div>
+                                        <button type="submit" id="limpiar_Tincidente" name="limpiar_Tincidente"
+                                            class="btn btn-danger me-1 mb-1">Limpiar</button>
+                                        <button type="submit" id="buscar_Tincidente" name="buscar_Tincidente"
+                                            class="btn btn-primary me-1 mb-1">Buscar</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>

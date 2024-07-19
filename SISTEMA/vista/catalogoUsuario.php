@@ -1,15 +1,15 @@
 <?php
 session_start();
 $nombrePagina = 'Catálogo de Usuario';
-require('../header.php');
-include('../modelo/conexion.php');
+require ('../header.php');
+include ('../modelo/conexion.php');
 
 $sentencia = $conexion->prepare("SELECT * FROM usuario");
 $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="col-8 m-auto">
+<div class="col-9 m-auto" id="catalogo">
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">Buscador</h4>
@@ -23,21 +23,39 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <label for="cedula_usuario_buscador">Cedula</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="cedula_usuario_buscador" name="cedula_usuario_buscador" class="form-control" placeholder="Cedula Buscada">
+                                <input type="text" id="cedula_usuario_buscador" name="cedula_usuario_buscador"
+                                    class="form-control" placeholder="Cedula Buscada">
                             </div>
                             <div class="col-md-4">
                                 <label for="nombre_usuario_buscador">Nombre de Usuario</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="nombre_usuario_buscador" name="nombre_usuario_buscador" class="form-control" placeholder="Nombre de Usuario Buscado">
+                                <input type="text" id="nombre_usuario_buscador" name="nombre_usuario_buscador"
+                                    class="form-control" placeholder="Nombre de Usuario Buscado">
                             </div>
                             <div class="col-md-4">
                                 <label for="estado_usuario_buscador">Estado</label>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" id="estado_usuario_buscador" name="estado_usuario_buscador" class="form-control" placeholder="Estado Buscado">
+                                <input type="text" id="estado_usuario_buscador" name="estado_usuario_buscador"
+                                    class="form-control" placeholder="Estado Buscado">
                             </div>
-                            <div class="col-md-12 form-group d-flex justify-content-end">
+                            <div class="col-md-12 form-group d-flex justify-content-between">
+                                <form>
+                                    <div class="col-4">
+                                        <div class="form-group has-icon-left">
+                                            <div class="position-relative">
+                                                <select name="tamano" class="form-select" id="tamano"
+                                                    onchange="cambiarTamano()">
+                                                    <option value="pequeno">Pequeño</option>
+                                                    <option value="mediano">Mediano</option>
+                                                    <option value="grande" selected>Grande</option>
+                                                    <option value="extragrande">Extra Grande</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                                 <button type="submit" class="btn btn-primary">Generar PDF</button>
                             </div>
                         </div>
@@ -50,7 +68,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             <div class="card-content">
                 <div class="card-header">
                     <h4 class="card-title">Usuario</h4>
-                    <?php include("modal/modalUsuarioR.php"); ?>
+                    <?php include ("modal/modalUsuarioR.php"); ?>
                 </div>
                 <!-- table hover -->
                 <div class="table-responsive">
@@ -67,8 +85,8 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($resultado as $usuario) :
-                            ?>
+                            <?php foreach ($resultado as $usuario):
+                                ?>
                                 <tr class="fila">
                                     <td class="columnas"><?= $usuario['cedula']; ?></td>
                                     <td class="columnas"><?= $usuario['nombre']; ?></td>
@@ -78,7 +96,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <td class="columnas"><?= $usuario['estado']; ?></td>
                                     <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <?php include("modal/modalUsuarioM.php"); ?>
+                                            <?php include ("modal/modalUsuarioM.php"); ?>
                                         </div>
                                     </td>
                                 </tr>
@@ -94,5 +112,5 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 <script src="Javascript/usuarioModal.js"></script>
 
 <?php
-require('../footer.php');
+require ('../footer.php');
 ?>
