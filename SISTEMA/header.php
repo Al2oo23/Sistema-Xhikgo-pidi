@@ -96,7 +96,6 @@
                                 <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
                                     <form action="../controlador/ctl_sesion.php" method="post">
                                         <li><a class="dropdown-item" href="#">My Account</a></li>
-                                        <li><a class="dropdown-item" href="configtam.php">Config-Catalogo</a></li>
 
                                         <?php if($datos["institucion"] == "si"):?>
                                         <li><a class="dropdown-item" href="datosInstitucion.php">Institucion</a></li>
