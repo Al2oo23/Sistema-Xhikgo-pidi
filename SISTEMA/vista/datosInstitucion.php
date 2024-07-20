@@ -71,7 +71,6 @@ require ('../header.php');
                                                 <i class="bx bx-check d-block d-sm-none"></i>
                                                 <span class="d-none d-sm-block">Editar</span>
                                             </button>
-                                            <!-- <button type="submit" name="editar" value="editar" class="btn btn-primary me-1 mb-1">Editar</button> -->
                                         </div>
                                     </div>
                                     <?php

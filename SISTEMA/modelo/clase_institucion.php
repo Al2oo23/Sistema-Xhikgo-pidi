@@ -69,4 +69,13 @@ class Institucion
 
         return $preparado;
     }
+    public function obtenerLogo()
+    {
+        include ("conexion.php");
+        $SQL = "SELECT logo FROM institucion ORDER BY id DESC LIMIT 1";
+        $query = $conexion->query($SQL);
+        $data = $query->fetch();
+
+        return $data;
+    }
 }

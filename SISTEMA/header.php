@@ -2,6 +2,10 @@
     session_start();
 
     $datos = $_SESSION['usuarioDatos'][0];
+
+    include('modelo/clase_institucion.php');
+    $institucion = new Institucion();
+    $logo = $institucion->obtenerLogo()[0];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +61,7 @@
                 <div class="header-top">
                     <div class="container">
                         <div class="logo">
-                            <a href="index.php"><img src="img/logo_bomberos-removebg.png" style="width: 5rem; height: 3rem;" alt="Logo"></a>
+                            <a href="index.php"><img src="<?php echo $logo;?>" style="width: 5rem; height: 3rem;" alt="Logo"></a>
                             <h6 style="font-size:15px; display:inline-block;">Cuerpo Autónomo de Bomberos</h6>
                         </div>
                         
