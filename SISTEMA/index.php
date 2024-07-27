@@ -25,7 +25,7 @@ include("modelo/conexion.php");
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <div class="auth-logo">
-                        <img src="vista/img/logo_bomberos-removebg.png" style="width: 6em; height: 4em;" alt="Logo">
+                        <img src="vista/img/logo_bomberos.png" style="width: 6em; height: 4em;" alt="Logo">
                         <h5 style="display: inline-block;">Cuerpo Autónomo de Bomberos</h5>
                     </div>
                     <h1 class="auth-title" style="margin-top: -7vh;">Inicio de Sesion</h1>
