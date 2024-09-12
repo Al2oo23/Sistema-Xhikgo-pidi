@@ -9,10 +9,6 @@
         $sentencia->execute();
         $estaciones = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
-        $sentencia = $conexion->prepare("SELECT * FROM estacion");
-        $sentencia->execute();
-        $estaciones = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-
         $sentencia = $conexion->prepare("SELECT * FROM tipo_incidente");
         $sentencia->execute();
         $tipos = $sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -325,15 +321,21 @@
                             </div>
 
                             <div class="col-12">
-                                <div class="form-group has-icon-left">
+                           
+                                <div class="form-group has-icon-left grand-plus_Container">
                                     <label for="">Efectivo</label>
-                                    <div class="position-relative">
-                                        <input type="text" id="efectivo" name="efectivos" class="form-control" placeholder="Efectivo">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-person-x"></i>
+                                    <div class="plus-container">
+                                        <div class="position-relative first-sibling">
+                                            <input type="text" id="efectivo" name="efectivos" class="form-control" placeholder="Efectivo">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-person-x"></i>
+                                            </div>
                                         </div>
+                                        <a href="#" id="plus" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a>
                                     </div>
+                                    
                                 </div>
+                                
                             </div>
 
                             <div class="col-12">
@@ -470,3 +472,4 @@
                 </div>
             </div>
       </div>
+      <script src="Javascript/plus.js"></script>

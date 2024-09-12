@@ -47,6 +47,13 @@
             display: flex;
             justify-content: space-between;
         }
+        .plus-container{
+            display: flex;
+            justify-content: space-between;
+        }
+        .first-sibling{
+            flex-basis: 85%;
+        }
     </style>
 
 <script src="Javascript/validaciones.js"></script>
