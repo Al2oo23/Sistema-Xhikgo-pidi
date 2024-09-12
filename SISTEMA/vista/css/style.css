@@ -1,0 +1,31 @@
+.no-resize {
+    resize: none !important;
+}
+.botones {
+    display: flex;
+    justify-content: space-between;
+}
+.flex-item {
+    margin-right: 2px;
+}
+.fila {
+    text-align: center;
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+}
+.checkbox-container{
+    display: flex;
+    justify-content: space-between;
+}
+.plus-container{
+    display: flex;
+    justify-content: space-between;
+}
+.first-sibling, .second-sibling, .zero-sibling{
+    flex-basis: 85%;
+}
+#plus-recurso{
+    height: min-content;
+}

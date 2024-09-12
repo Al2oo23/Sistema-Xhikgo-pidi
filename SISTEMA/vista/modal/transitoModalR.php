@@ -282,19 +282,34 @@
                             </div>
 
                             <div class="col-12">
-                                <div class="form-group has-icon-left">
+                           
+                                <div class="form-group has-icon-left grand-plus_Container-recurso">
                                     <label for="">Recurso Utilizado</label>
-                                    <div class="position-relative">
-                                        <select name="recurso" class="form-select" id="recurso_utilizado">
-                                            <option value="">Seleccione el Recurso Utilizado...</option>
-                                            <?php foreach ($recursos as $recurso) : ?>
+                                    <div class="plus-container">
+                                        <div class="position-relative zero-sibling">
+                                            <select name="recurso" class="form-select" id="recurso_utilizado">
+                                                <option value="">Seleccione el Recurso Utilizado...</option>
+                                                <?php foreach ($recursos as $recurso) : ?>
 
-                                                <option value="<?=$recurso["id"]?>"><?=$recurso["nombre"]?></option>
+                                                    <option value="<?=$recurso["id"]?>"><?=$recurso["nombre"]?></option>
 
-                                            <?php endforeach;?>
-                                        </select>
+                                                <?php endforeach;?>
+                                            </select>
+
+                                            <div class="form-group has-icon-left">
+                                                <label for="">Cantidad de Recurso utilizado</label>
+                                                <div class="position-relative">
+                                                    <input type="text" id="cantidad_recurso" name="cantidad" class="form-control" placeholder="Número de Recurso">
+                                                    <div class="form-control-icon"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div id="plus-recurso" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
                                     </div>
+                                    
                                 </div>
+                                
                             </div>
 
                             <div class="col-12">
@@ -322,7 +337,7 @@
 
                             <div class="col-12">
                            
-                                <div class="form-group has-icon-left grand-plus_Container">
+                                <div class="form-group has-icon-left grand-plus_Container-efectivo">
                                     <label for="">Efectivo</label>
                                     <div class="plus-container">
                                         <div class="position-relative first-sibling">
@@ -331,7 +346,7 @@
                                                 <i class="bi bi-person-x"></i>
                                             </div>
                                         </div>
-                                        <a href="#" id="plus" class="btn icon btn-primary"><i class="bi bi-pencil"></i></a>
+                                        <div id="plus-efectivo" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
                                     </div>
                                     
                                 </div>
@@ -339,20 +354,26 @@
                             </div>
 
                             <div class="col-12">
-                                <div class="form-group has-icon-left">
+                           
+                                <div class="form-group has-icon-left grand-plus_Container-unidad">
                                     <label for="">Unidad</label>
-                                    <div class="position-relative">
-                                        <select name="unidad" name="unidad" class="form-select" id="unidad">
-                                            <option value="">Seleccione la Unidad que asistió</option>
+                                    <div class="plus-container">
+                                        <div class="position-relative second-sibling">
+                                            <select name="unidad" name="unidad" class="form-select" id="unidad">
+                                                <option value="">Seleccione la Unidad que asistió</option>
                                             <?php foreach ($n_unidad as $unidad) : 
-                                            $n_unidad = $unidad["unidad"];
-                                        ?>
-                                            <option value="<?=$n_unidad?>"><?=$n_unidad?></option>
+                                                $n_unidad = $unidad["unidad"];
+                                            ?>
+                                                <option value="<?=$n_unidad?>"><?=$n_unidad?></option>
 
-                                        <?php endforeach;?>
-                                        </select>
+                                            <?php endforeach;?>
+                                            </select>
+                                        </div>
+                                        <div id="plus-unidad" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
                                     </div>
+                                    
                                 </div>
+                                
                             </div>
 
                             <div class="col-12">
