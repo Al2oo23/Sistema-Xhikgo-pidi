@@ -299,7 +299,7 @@
                                             <div class="form-group has-icon-left">
                                                 <label for="">Cantidad de Recurso utilizado</label>
                                                 <div class="position-relative">
-                                                    <input type="text" id="cantidad_recurso" name="cantidad" class="form-control" placeholder="Número de Recurso">
+                                                    <input type="text" id="cantidad_recurso" name="cantidad" class="form-control" placeholder="Cantidad">
                                                     <div class="form-control-icon"></div>
                                                 </div>
                                             </div>
@@ -310,17 +310,6 @@
                                     
                                 </div>
                                 
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Cantidad de Recurso utilizado</label>
-                                    <div class="position-relative">
-                                        <input type="text" id="cantidad_recurso" name="cantidad" class="form-control" placeholder="Número de Recurso">
-                                        <div class="form-control-icon">
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
 
                             <div class="col-12">
