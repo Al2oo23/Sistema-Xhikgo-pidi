@@ -23,7 +23,7 @@
     display: flex;
     justify-content: space-between;
 }
-.first-sibling, .second-sibling, .zero-sibling{
+.first-sibling, .second-sibling, .zero-sibling, .forth-sibling{
     flex-basis: 85%;
 }
 #plus-recurso{

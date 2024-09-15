@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 $nombrePagina = 'Catálogo de Seccion';
 require ('../header.php');
 include ('../modelo/conexion.php');

@@ -131,16 +131,11 @@ $resultados = $preparado->fetchAll(PDO::FETCH_ASSOC);
                             <th class="columnas" hidden>Salida</th>
                             <th class="columnas" hidden>Llegada</th>
                             <th class="columnas" hidden>Regreso</th>
-                            <th class="columnas">Vehiculo</th>
                             <th class="columnas" hidden>Lesionados</th>
                             <th class="columnas">Occisos</th>
                             <th class="columnas" hidden>Observaciones</th>
                             <th class="columnas">Incendio</th>
-                            <th class="columnas" hidden>Recursos</th>
-                            <th class="columnas" hidden>Cantidad</th>
                             <th class="columnas" hidden>Jefe Comisión</th>
-                            <th class="columnas" hidden>Efectivos</th>
-                            <th class="columnas" hidden>Unidad</th>
                             <th class="columnas" hidden>PNB</th>
                             <th class="columnas" hidden>GNB</th>
                             <th class="columnas" hidden>INTT</th>
@@ -167,16 +162,14 @@ $resultados = $preparado->fetchAll(PDO::FETCH_ASSOC);
                                 <td class="columnas" hidden><?= $resultado['salida'] ?></td>
                                 <td class="columnas" hidden><?= $resultado['llegada'] ?></td>
                                 <td class="columnas" hidden><?= $resultado['regreso'] ?></td>
-                                <td class="columnas"><?= $resultado['vehiculo'] ?></td>
+                               
                                 <td class="columnas" hidden><?= $resultado['lesionados'] ?></td>
                                 <td class="columnas"><?= $resultado['occisos'] ?></td>
                                 <td class="columnas" hidden><?= $resultado['observaciones'] ?></td>
                                 <td class="columnas"><?= $resultado['incendio'] ?></td>
-                                <td class="columnas" hidden><?= $resultado['recurso'] ?></td>
-                                <td class="columnas" hidden><?= $resultado['cantidad'] ?></td>
+                          
                                 <td class="columnas" hidden><?= $resultado['jefe'] ?></td>
-                                <td class="columnas" hidden><?= $resultado['efectivo'] ?></td>
-                                <td class="columnas" hidden><?= $resultado['unidad'] ?></td>
+                          
                                 <td class="columnas" hidden><?= $resultado['pnb'] ?></td>
                                 <td class="columnas" hidden><?= $resultado['gnb'] ?></td>
                                 <td class="columnas" hidden><?= $resultado['intt'] ?></td>

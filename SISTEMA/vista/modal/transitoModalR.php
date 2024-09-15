@@ -228,15 +228,21 @@
                             </div>
 
                             <div class="col-12">
-                                <div class="form-group has-icon-left">
+                           
+                                <div class="form-group has-icon-left grand-plus_Container-vehiculo">
                                     <label for="">Vehiculo</label>
-                                    <div class="position-relative">
-                                        <input type="text" id="niv" name="niv" class="form-control" placeholder="Serial">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-calendar-date"></i>
+                                    <div class="plus-container">
+                                        <div class="position-relative forth-sibling">
+                                            <input type="text" id="niv" name="niv[]" class="form-control" placeholder="Serial">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-person-x"></i>
+                                            </div>
                                         </div>
+                                        <div id="plus-vehiculo" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
                                     </div>
+                                    
                                 </div>
+                                
                             </div>
 
                             <div class="col-12">
@@ -287,7 +293,7 @@
                                     <label for="">Recurso Utilizado</label>
                                     <div class="plus-container">
                                         <div class="position-relative zero-sibling">
-                                            <select name="recurso" class="form-select" id="recurso_utilizado">
+                                            <select name="recurso[]" class="form-select" id="recurso_utilizado">
                                                 <option value="">Seleccione el Recurso Utilizado...</option>
                                                 <?php foreach ($recursos as $recurso) : ?>
 
@@ -297,9 +303,9 @@
                                             </select>
 
                                             <div class="form-group has-icon-left">
-                                                <label for="">Cantidad de Recurso utilizado</label>
+                                                
                                                 <div class="position-relative">
-                                                    <input type="text" id="cantidad_recurso" name="cantidad" class="form-control" placeholder="Cantidad">
+                                                    <input type="text" id="cantidad_recurso" name="cantidad[]" class="form-control" placeholder="Cantidad">
                                                     <div class="form-control-icon"></div>
                                                 </div>
                                             </div>
@@ -330,7 +336,7 @@
                                     <label for="">Efectivo</label>
                                     <div class="plus-container">
                                         <div class="position-relative first-sibling">
-                                            <input type="text" id="efectivo" name="efectivos" class="form-control" placeholder="Efectivo">
+                                            <input type="text" id="efectivo" name="efectivos[]" class="form-control" placeholder="Efectivo">
                                             <div class="form-control-icon">
                                                 <i class="bi bi-person-x"></i>
                                             </div>
@@ -348,7 +354,7 @@
                                     <label for="">Unidad</label>
                                     <div class="plus-container">
                                         <div class="position-relative second-sibling">
-                                            <select name="unidad" name="unidad" class="form-select" id="unidad">
+                                            <select name="unidad[]" class="form-select" id="unidad">
                                                 <option value="">Seleccione la Unidad que asistió</option>
                                             <?php foreach ($n_unidad as $unidad) : 
                                                 $n_unidad = $unidad["unidad"];

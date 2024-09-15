@@ -329,22 +329,60 @@ try {
         salida VARCHAR(20) NOT NULL,
         llegada VARCHAR(20) NOT NULL,
         regreso VARCHAR(20) NOT NULL,
-        vehiculo VARCHAR(20) NOT NULL,
+       
         lesionados INT(3) NOT NULL,
         occisos INT(3) NOT NULL,
         observaciones VARCHAR(20) NOT NULL,
         incendio VARCHAR(3) NOT NULL,
-        recurso VARCHAR(20) NOT NULL,
-        cantidad VARCHAR(3) NOT NULL,
+        
         jefe VARCHAR(20) NOT NULL,
-        efectivo VARCHAR(20) NOT NULL,
-        unidad INT(3) NOT NULL,
+        
         pnb INT(11) NOT NULL,
         gnb INT(11) NOT NULL,
         intt INT(11) NOT NULL,
         invity INT(11) NOT NULL,
         pc INT(11) NOT NULL,
         otros INT(11) NOT NULL
+    )";
+    $conexion->exec($SQL);
+
+    //------------------ VEHICULO INCIDENTE -------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS vehiculo_incidente (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        id_incidente INT NOT NULL,
+        niv VARCHAR(20) NOT NULL  
+    )";
+    $conexion->exec($SQL);
+
+    //------------------ RECURSO USADO -------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS recurso_asignado (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        id_incidente INT NOT NULL,
+        tipo_incidente VARCHAR(20) NOT NULL,
+        nombre VARCHAR(20) NOT NULL,
+        cantidad INT (100) NOT NULL  
+    )";
+    $conexion->exec($SQL);
+
+    //------------------ EFECTIVO ASIGNADO-------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS efectivo_asignado (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        id_incidente INT NOT NULL,
+        tipo_incidente VARCHAR(20) NOT NULL,
+        cedula VARCHAR(20) NOT NULL  
+    )";
+    $conexion->exec($SQL);
+
+    //------------------ UNIDAD ASIGNADO-------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS unidad_asignada (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        id_incidente INT NOT NULL,
+        tipo_incidente VARCHAR(20) NOT NULL,
+        niv VARCHAR(20) NOT NULL  
     )";
     $conexion->exec($SQL);
 
