@@ -1,8 +1,14 @@
 <?php
 include('../modelo/conexion.php');
 require('../modelo/clase_abejas.php');
+include("../modelo/clase_efectivo.php");
+include("../modelo/clase_recursoAsignado.php");
+include("../modelo/clase_unidadAsignada.php");
 
 $abejas = new Abejas();
+$efectivo = new efectivo();
+$recurso = new recursoAsignado();
+$unidad = new unidad();
 
 // REGISTRAR INCIDENTE DE ABEJAS -------------------------------------------
 
@@ -21,10 +27,6 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
     $abejas->setLugar($_POST['lugar']);
     $abejas->setInmueble($_POST['inmueble']);
     $abejas->setJefe($_POST['jefe']);
-    $abejas->setRecurso($_POST['recurso']);
-    $abejas->setCantidad($_POST['cantidad_recurso']);
-    $abejas->setEfectivo($_POST['efectivo']);
-    $abejas->setUnidad($_POST['unidad']);
     $abejas->setCi_pnb($_POST['ci_pnb']);
     $abejas->setCi_gnb($_POST['ci_gnb']);
     $abejas->setCi_intt($_POST['ci_intt']);
@@ -46,10 +48,6 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         $abejas->getLugar(),
         $abejas->getInmueble(),
         $abejas->getJefe(),
-        $abejas->getRecurso(),
-        $abejas->getCantidad(),
-        $abejas->getEfectivo(),
-        $abejas->getUnidad(),
         $abejas->getCi_pnb(),
         $abejas->getCi_gnb(),
         $abejas->getCi_intt(),
@@ -58,14 +56,67 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         $abejas->getCi_otro()
     );
 
+     //EFECTIVOS
+     foreach ($_POST['efectivos'] as $cedula) {
+        //setters vehiculo incidente
 
-    if (!$datos) {
-        echo "<script>alert('No se pudo registrar el Incidente')</script>";
-        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoAbejas.php'>";
-    } else {
-        echo "<script>alert('Incidente registrado con exito')</script>";
-        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoAbejas.php'>";
-    }   
+        $efectivo->setIdIncidente($datos[1]);
+        $efectivo->setTipo("Transito");
+        $efectivo->setCedula($cedula);
+
+        //getters vehiculo incidente
+
+        $resultadoEfectivo = $efectivo->agregarEfectivo(
+            $efectivo->getIdIncidente(),
+            $efectivo->getTipo(),
+            $efectivo->getCedula()
+        );
+    }
+
+    //RECURSOS
+    for($i = 0; $i<count($_POST['recurso']);$i++){
+        //setters vehiculo incidente
+
+    $recurso->setIdIncidente($datos[1]);
+        $recurso->setTipo("S.E");
+        $recurso->setIdRecurso($_POST['recurso'][$i]);
+        $recurso->setCantidad($_POST['cantidad'][$i]);
+
+        //getters vehiculo incidente
+
+        $resultadoRecurso = $recurso->agregarRecurso(
+            $recurso->getIdIncidente(),
+            $recurso->getTipo(),
+            $recurso->getIdRecurso(),
+            $recurso->getCantidad()
+        );
+    }
+
+    //UNIDAD
+    foreach ($_POST['unidad'] as $niv) {
+        //setters vehiculo incidente
+
+        $unidad->setIdIncidente($datos[1]);
+        $unidad->setTipo("S.E");
+        $unidad->setNiv($niv);
+
+        //getters vehiculo incidente
+
+        $resultadoUnidad = $unidad->agregarUnidad(
+            $unidad->getIdIncidente(),
+            $unidad->getTipo(),
+            $unidad->getNiv()
+        );
+    }
+
+
+    // if (empty($datos[0])) {
+    //     echo "<script>alert('No se pudo registrar el Incidente')</script>";
+    //     echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoAbejas.php'>";
+    // } else {
+    //     echo "<script>alert('Incidente registrado con exito')</script>";
+    //     echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoAbejas.php'>";
+    // }   
 }
 
 
@@ -90,10 +141,6 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
     $abejas->setLugar($_POST['lugar']);
     $abejas->setInmueble($_POST['inmueble']);
     $abejas->setJefe($_POST['jefe']);
-    $abejas->setRecurso($_POST['recurso']);
-    $abejas->setCantidad($_POST['cantidad_recurso']);
-    $abejas->setEfectivo($_POST['efectivo']);
-    $abejas->setUnidad($_POST['unidad']);
     $abejas->setCi_pnb($_POST['ci_pnb']);
     $abejas->setCi_gnb($_POST['ci_gnb']);
     $abejas->setCi_intt($_POST['ci_intt']);
@@ -116,10 +163,6 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         $abejas->getLugar(),
         $abejas->getInmueble(),
         $abejas->getJefe(),
-        $abejas->getRecurso(),
-        $abejas->getCantidad(),
-        $abejas->getEfectivo(),
-        $abejas->getUnidad(),
         $abejas->getCi_pnb(),
         $abejas->getCi_gnb(),
         $abejas->getCi_intt(),

@@ -121,7 +121,7 @@ if(isset($_POST['agregar']) && $_POST['agregar'] == "agregar"){
             );
         }
 
-        //EFECTIVOS
+        //UNIDAD
         foreach ($_POST['unidad'] as $niv) {
             //setters vehiculo incidente
 
@@ -138,13 +138,13 @@ if(isset($_POST['agregar']) && $_POST['agregar'] == "agregar"){
             );
         }
       
-    /*if(empty($datos[0])){
+    if(empty($datos[0])){
         echo "<script>alert('Registro Fallido')</script>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/transito.php'>"; 
     }else{
         echo "<script>alert('Registro Exitoso')</script>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/transito.php'>"; 
-    }*/
+    }
 
 }
 
