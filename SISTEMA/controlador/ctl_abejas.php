@@ -61,7 +61,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         //setters vehiculo incidente
 
         $efectivo->setIdIncidente($datos[1]);
-        $efectivo->setTipo("Transito");
+        $efectivo->setTipo("S.E");
         $efectivo->setCedula($cedula);
 
         //getters vehiculo incidente
@@ -71,6 +71,8 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
             $efectivo->getTipo(),
             $efectivo->getCedula()
         );
+
+
     }
 
     //RECURSOS
