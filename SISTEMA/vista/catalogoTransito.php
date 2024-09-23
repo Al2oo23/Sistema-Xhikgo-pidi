@@ -7,6 +7,7 @@ $SQL = "SELECT * FROM transito";
 $preparado = $conexion->prepare($SQL);
 $preparado->execute();
 $resultados = $preparado->fetchAll(PDO::FETCH_ASSOC);
+include ("modal/transitoModalM.php"); 
 
 ?>
 
@@ -178,7 +179,8 @@ $resultados = $preparado->fetchAll(PDO::FETCH_ASSOC);
                                 <td class="columnas" hidden><?= $resultado['otros'] ?></td>
                                 <td>
                                     <div class="botones" style="justify-content:space-evenly;">
-                                        <?php include ("modal/transitoModalM.php"); ?>
+                                    <button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm"><i class="bi bi-pencil"></i></button>
+    
                                         <div><a name='eliminar' id='eliminar'
                                                 href='../controlador/ctl_transito.php?txtID=<?= $resultado['id']; ?>'
                                                 class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>

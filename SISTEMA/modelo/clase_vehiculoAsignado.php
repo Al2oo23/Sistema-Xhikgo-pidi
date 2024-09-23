@@ -38,4 +38,15 @@ class vehiculoAsignado{
         return $preparado;
 
     }
+
+    public function eliminarVehiculoAsignado($idIncidente){
+        include("conexion.php");
+
+        $SQL = "DELETE FROM vehiculo_incidente WHERE id_incidente = ?";
+        $preparado = $conexion->prepare($SQL);
+        $preparado->execute([$idIncidente]);
+
+        return $preparado;
+
+    }
 }

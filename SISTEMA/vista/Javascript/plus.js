@@ -50,3 +50,57 @@ plusVehiculo.addEventListener("click",(e)=>{
     }
     
 })
+
+/*--------------------------------MODIFICAR--------------------------------- */
+
+const plusVehiculoM = document.getElementById("plus-vehiculoM");
+const forthSiblingM = document.querySelector(".forth-siblingM");
+const grampVehiculoM = document.querySelector(".grand-plus_Container-vehiculoM");
+
+const plusRecursoM = document.getElementById("plus-recursoM");
+const zeroSiblingM = document.querySelector(".zero-siblingM");
+const grampRecursoM = document.querySelector(".zero-siblingM");
+
+const plusEfectivoM = document.getElementById("plus-efectivoM");
+const firtsSiblingM = document.querySelector(".first-siblingM");
+const grampEfectivoM = document.querySelector(".grand-plus_Container-efectivoM");
+
+const plusUnidadM = document.getElementById("plus-unidadM");
+const secondSiblingM = document.querySelector(".second-siblingM");
+const grampUnidadM = document.querySelector(".grand-plus_Container-unidadM");
+
+
+plusVehiculoM.addEventListener("click",(e)=>{
+
+    if(grampVehiculoM.childElementCount <=8){
+        let clon = forthSiblingM.cloneNode(true);    //El true es para copiar sus hijos tambien
+        grampVehiculoM.appendChild(clon);
+    }
+    
+})
+
+plusRecursoM.addEventListener("click",(e)=>{
+
+    if(grampRecursoM.childElementCount <=8){
+        let clon = zeroSiblingM.cloneNode(true);    //El true es para copiar sus hijos tambien
+        grampRecursoM.appendChild(clon);
+    }
+    
+})
+plusEfectivoM.addEventListener("click",(e)=>{
+
+    if(grampEfectivoM.childElementCount <=8){
+        let clon = firtsSiblingM.cloneNode(true);    //El true es para copiar sus hijos tambien
+        grampEfectivoM.appendChild(clon);
+    }
+    
+})
+
+plusUnidadM.addEventListener("click",(e)=>{
+
+    if(grampUnidadM.childElementCount <=8){
+        let clon = secondSiblingM.cloneNode(true);    //El true es para copiar sus hijos tambien
+        grampUnidadM.appendChild(clon);
+    }
+    
+})

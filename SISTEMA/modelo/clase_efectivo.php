@@ -44,4 +44,14 @@ class efectivo{
         return $preparado;
 
     }
+    public function eliminarEfectivo($idIncidente){
+        include("conexion.php");
+
+        $SQL = "DELETE FROM efectivo_asignado WHERE id_incidente = ?";
+        $preparado = $conexion->prepare($SQL);
+        $preparado->execute([$idIncidente]);
+
+        return $preparado;
+
+    }
 }

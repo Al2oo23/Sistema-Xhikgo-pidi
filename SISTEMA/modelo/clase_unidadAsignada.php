@@ -44,4 +44,14 @@ class unidad{
         return $preparado;
 
     }
+    public function eliminarUnidad($idIncidente){
+        include("conexion.php");
+
+        $SQL = "DELETE FROM unidad_asignada WHERE id_incidente = ?";
+        $preparado = $conexion->prepare($SQL);
+        $preparado->execute([$idIncidente]);
+
+        return $preparado;
+
+    }
 }

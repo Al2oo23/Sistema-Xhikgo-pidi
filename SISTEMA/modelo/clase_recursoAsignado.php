@@ -91,4 +91,16 @@ class recursoAsignado{
             return $preparado;
         }
     }
+
+    public function eliminarRecurso($idIncidente){
+        include("conexion.php");
+
+        $SQL = "DELETE FROM recurso_asignado WHERE id_incidente = ?";
+        $preparado = $conexion->prepare($SQL);
+        $preparado->execute([$idIncidente]);
+
+        return $preparado;
+
+    }
+    
 }

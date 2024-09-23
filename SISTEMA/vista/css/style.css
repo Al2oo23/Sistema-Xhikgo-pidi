@@ -26,6 +26,9 @@
 .first-sibling, .second-sibling, .zero-sibling, .forth-sibling{
     flex-basis: 85%;
 }
-#plus-recurso{
+.first-siblingM, .second-siblingM, .zero-siblingM, .forth-siblingM{
+    flex-basis: 85%;
+}
+#plus-recurso, #plus-recursoM{
     height: min-content;
 }
