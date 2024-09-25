@@ -25,29 +25,7 @@
     <link rel="stylesheet" href="assets/compiled/css/iconly.css">
     <link rel="stylesheet" href="assets/extensions/@fortawesome/fontawesome-free/css/all.min.css">
 
-    <style>
-        .no-resize {
-            resize: none !important;
-        }
-        .botones {
-            display: flex;
-            justify-content: space-between;
-        }
-        .flex-item {
-            margin-right: 2px;
-        }
-        .fila {
-            text-align: center;
-        }
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-        }
-        .checkbox-container{
-            display: flex;
-            justify-content: space-between;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 
 <script src="Javascript/validaciones.js"></script>
 

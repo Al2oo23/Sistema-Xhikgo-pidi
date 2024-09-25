@@ -2,7 +2,7 @@
 
 class Abejas{
     private $id, $fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
-    $lugar, $inmueble, $jefe, $recurso, $cantidad, $efectivo, $unidad, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro;
+    $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro;
 
     public function __construct(){
 	}
@@ -62,22 +62,6 @@ class Abejas{
 
     public function setJefe($jefe){
         $this->jefe = $jefe;
-    }
-
-    public function setRecurso($recurso){
-        $this->recurso = $recurso;
-    }
-
-    public function setCantidad($cantidad){
-        $this->cantidad = $cantidad;
-    }
-
-    public function setEfectivo($efectivo){
-        $this->efectivo = $efectivo;
-    }
-    
-    public function setUnidad($unidad){
-        $this->unidad = $unidad;
     }
 
     public function setCi_pnb($ci_pnb){
@@ -161,22 +145,6 @@ class Abejas{
         return $this->jefe;
     }
 
-    public function getRecurso(){
-        return $this->recurso;
-    }
-
-    public function getCantidad(){
-        return $this->cantidad;
-    }
-
-    public function getEfectivo(){
-        return $this->efectivo;
-    }
-
-    public function getUnidad(){
-        return $this->unidad;
-    }
-
     public function getCi_pnb(){
         return $this->ci_pnb;
     }
@@ -203,34 +171,34 @@ class Abejas{
 
     //Registrar
     public function registrarAbejas($fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
-    $lugar, $inmueble, $jefe, $recurso, $cantidad, $efectivo, $unidad, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
+    $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
         include("conexion.php");
 
-        $SQL = "INSERT INTO abejas VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $SQL = "INSERT INTO abejas VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([null,$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
-        $lugar, $inmueble, $jefe, $recurso, $cantidad, $efectivo, $unidad, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro]);
+        $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro]);
         
 
-        $SQL = "INSERT INTO mantenimiento VALUES (?,?,?,?,?)";
-        $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null, $unidad,"abejas", $fecha,"pendiente"]);
+        // $SQL = "INSERT INTO mantenimiento VALUES (?,?,?,?,?)";
+        // $preparado = $conexion->prepare($SQL);
+        // $preparado->execute([null, $unidad,"abejas", $fecha,"pendiente"]);
         
-        return $preparado;
+        return array($preparado,$conexion->lastInsertId());
         
     }
 
     //Modificar
     public function modificarAbejas($id, $fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
-    $lugar, $inmueble, $jefe, $recurso, $cantidad, $efectivo, $unidad, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
+    $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
         include("conexion.php");
 
         $SQL = "UPDATE abejas SET fecha = ?, seccion = ?, estacion = ?, aviso = ?, hora = ?, salida = ?, llegada = ?, regreso = ?, panal = ?, 
-        direccion = ?, lugar = ?, inmueble = ?, jefe = ?, recurso = ?, cantidad = ?, efectivo = ?, unidad = ?, ci_pnb = ?, ci_gnb = ?, ci_intt = ?,
+        direccion = ?, lugar = ?, inmueble = ?, jefe = ?, ci_pnb = ?, ci_gnb = ?, ci_intt = ?,
         ci_invity = ?, ci_pc = ?, ci_otro = ? WHERE id = ?";
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
-        $lugar, $inmueble, $jefe, $recurso, $cantidad, $efectivo, $unidad, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $id]);
+        $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $id]);
 
         return $preparado;
     }

@@ -1,0 +1,34 @@
+.no-resize {
+    resize: none !important;
+}
+.botones {
+    display: flex;
+    justify-content: space-between;
+}
+.flex-item {
+    margin-right: 2px;
+}
+.fila {
+    text-align: center;
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+}
+.checkbox-container{
+    display: flex;
+    justify-content: space-between;
+}
+.plus-container{
+    display: flex;
+    justify-content: space-between;
+}
+.first-sibling, .second-sibling, .zero-sibling, .forth-sibling{
+    flex-basis: 85%;
+}
+.first-siblingM, .second-siblingM, .zero-siblingM, .forth-siblingM{
+    flex-basis: 85%;
+}
+#plus-recurso, #plus-recursoM{
+    height: min-content;
+}

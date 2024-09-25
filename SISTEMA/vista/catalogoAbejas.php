@@ -122,10 +122,6 @@ $abejas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <th class="columna">Lugar</th>
                                 <th class="columna">Dueño Inmueble</th>
                                 <th class="columna">Jefe</th>
-                                <th class="columna">Recursos</th>
-                                <th class="columna">Cantidad</th>
-                                <th class="columna">Efectivo</th>
-                                <th class="columna" hidden>Unidad</th>
                                 <th class="columna">Accion</th>
 
                             </tr>
@@ -148,10 +144,6 @@ $abejas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <td class="columna"><?= $abej["lugar"]; ?></td>
                                     <td class="columna"><?= $abej["inmueble"]; ?></td>
                                     <td class="columna"><?= $abej["jefe"]; ?></td>
-                                    <td class="columna"><?= $abej["recurso"]; ?></td>
-                                    <td class="columna"><?= $abej["cantidad"]; ?></td>
-                                    <td class="columna"><?= $abej["efectivo"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["unidad"]; ?></td>
                                     <td class="columna" hidden><?= $abej["ci_pnb"]; ?></td>
                                     <td class="columna" hidden><?= $abej["ci_gnb"]; ?></td>
                                     <td class="columna" hidden><?= $abej["ci_intt"]; ?></td>

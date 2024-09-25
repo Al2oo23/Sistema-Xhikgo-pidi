@@ -1,5 +1,4 @@
 <?php
-session_start();
 $nombrePagina = 'Catálogo de Vehiculo';
 require ('../header.php');
 include ('../modelo/conexion.php');

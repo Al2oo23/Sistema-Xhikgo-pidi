@@ -192,31 +192,31 @@ class transito{
     }
   
     //Registrar
-    public function agregarTransito($fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro){
+    public function agregarTransito($fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $lesionados, $occisos, $observaciones, $incendio, $jefe, $pnb, $gnb, $intt, $invity, $pc, $otro){
 
         include("conexion.php");
 
-        $SQL = "INSERT INTO transito VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $SQL = "INSERT INTO transito VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null, $fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro]);
+        $preparado->execute([null, $fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $lesionados, $occisos, $observaciones, $incendio, $jefe, $pnb, $gnb, $intt, $invity, $pc, $otro]);
 
-        $SQL = "INSERT INTO mantenimiento VALUES (?,?,?,?,?)";
+        /*$SQL = "INSERT INTO mantenimiento VALUES (?,?,?,?,?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null, $unidad,"transito", $fecha,"pendiente"]);
+        $preparado->execute([null, $unidad,"transito", $fecha,"pendiente"]);*/
 
-        return $preparado;
+        return array($preparado,$conexion->lastInsertId());
     }
 
     //Modificar
-    public function modificarTransito($id, $fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro){
+    public function modificarTransito($id, $fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $lesionados, $occisos, $observaciones, $incendio, $jefe, $pnb, $gnb, $intt, $invity, $pc, $otro){
     
         include("conexion.php");
 
-        $SQL = "UPDATE transito SET fecha = ?, seccion = ?, estacion = ?, emergencia = ?, inspeccion = ?, incidente = ?, taviso = ?, solicitante = ?, recibidor = ?, aviso = ?, salida = ?, llegada = ?, regreso = ?, vehiculo = ?, lesionados = ?, occisos = ?, observaciones = ?, incendio = ?, recurso = ?, cantidad = ?, jefe = ?, efectivo = ?, unidad = ?, pnb = ?, gnb = ?, intt = ?, invity = ?, pc = ?, otros = ?  WHERE id = ?";
+        $SQL = "UPDATE transito SET fecha = ?, seccion = ?, estacion = ?, emergencia = ?, inspeccion = ?, incidente = ?, taviso = ?, solicitante = ?, recibidor = ?, aviso = ?, salida = ?, llegada = ?, regreso = ?, lesionados = ?, occisos = ?, observaciones = ?, incendio = ?, jefe = ?, pnb = ?, gnb = ?, intt = ?, invity = ?, pc = ?, otros = ?  WHERE id = ?";
 
         $preparado = $conexion->prepare($SQL);
 
-        $preparado->execute([$fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $niv, $lesionados, $occisos, $observaciones, $incendio, $recursos, $cantidad, $jefe, $efectivos, $unidad, $pnb, $gnb, $intt, $invity, $pc, $otro, $id]);
+        $preparado->execute([$fecha, $seccion, $estacion, $emergencia, $inspeccion, $incidente, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $lesionados, $occisos, $observaciones, $incendio, $jefe, $pnb, $gnb, $intt, $invity, $pc, $otro, $id]);
 
         return $preparado;
     }
