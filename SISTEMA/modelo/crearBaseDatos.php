@@ -280,8 +280,6 @@ try {
     )";
     $conexion->exec($SQL);
 
-
-
         //-------------- ABEJAS ----------------------
 
         $SQL = "CREATE TABLE IF NOT EXISTS abejas (
