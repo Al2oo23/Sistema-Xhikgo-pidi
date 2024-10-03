@@ -5,7 +5,12 @@
 
     include('modelo/clase_institucion.php');
     $institucion = new Institucion();
-    $logo = $institucion->obtenerLogo()[0];
+
+    if($institucion === true){
+        $logo = $institucion->obtenerLogo()[0];
+    }else{
+        echo "";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

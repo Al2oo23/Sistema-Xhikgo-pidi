@@ -6,6 +6,7 @@ include ('../modelo/conexion.php');
 $sentencia = $conexion->prepare("SELECT * FROM incendio");
 $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+include ("modal/modalIncendioM.php");
 ?>
 
 <div class="col-12" id="catalogo">
@@ -225,11 +226,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <td class="columnas" hidden><?= $incendio['lesionados']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['num_lesionados']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['datos_lesionados']; ?></td>
-                                    <td class="columnas" hidden><?= $incendio['recurso_utilizado']; ?></td>
-                                    <td class="columnas" hidden><?= $incendio['cantidad_recurso_usado']; ?></td>
-                                    <td class="columnas" hidden><?= $incendio['unidad']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['jefe_comision']; ?></td>
-                                    <td class="columnas" hidden><?= $incendio['efectivo']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['ci_pnb']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['ci_gnb']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['ci_intt']; ?></td>
@@ -239,7 +236,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <td class="columnas" hidden><?= $incendio['observaciones']; ?></td>
                                     <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <?php include ("modal/modalIncendioM.php"); ?>
+                                        <button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm"><i class="bi bi-pencil"></i></button>
                                             <div class="flex-item"><a
                                                     href='../controlador/ctl_incendio.php?txtID=<?= $incendio['id']; ?>'
                                                     class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
@@ -255,6 +252,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <script src="Javascript/incendioModal.js"></script>
+    <script src="Javascript/plusIncendio.js"></script>
 
     <?php
     require ('../footer.php');

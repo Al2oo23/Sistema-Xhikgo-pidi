@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../modelo/conexion.php');
 require('../modelo/clase_abejas.php');
 include("../modelo/clase_efectivo.php");
@@ -112,13 +113,13 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
     }
 
 
-    // if (empty($datos[0])) {
-    //     echo "<script>alert('No se pudo registrar el Incidente')</script>";
-    //     echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoAbejas.php'>";
-    // } else {
-    //     echo "<script>alert('Incidente registrado con exito')</script>";
-    //     echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoAbejas.php'>";
-    // }   
+    if (empty($datos[0])) {
+        echo "<script>alert('No se pudo registrar el Incidente')</script>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoAbejas.php'>";
+    } else {
+        echo "<script>alert('Incidente registrado con exito')</script>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoAbejas.php'>";
+    }   
 }
 
 
@@ -127,7 +128,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
 
 if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
 
-    print_r($_POST);
+    // print_r($_POST);
     
     $abejas->setId($_POST['id']);
     $abejas->setFecha($_POST['fecha']);
@@ -172,6 +173,77 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         $abejas->getCi_pc(),
         $abejas->getCi_otro()
     );
+
+     //EFECTIVOS
+     foreach ($_POST['efectivos'] as $cedula) {
+        //setters vehiculo incidente
+
+        $efectivo->setIdIncidente($_POST['id']);
+        $efectivo->setTipo("S.E");
+        $efectivo->setCedula($cedula);
+
+        //getters vehiculo incidente
+
+        $efectivo->eliminarEfectivo($efectivo->getIdIncidente(), $efectivo->getTipo());
+
+        $resultadoEfectivo = $efectivo->agregarEfectivo(
+            $efectivo->getIdIncidente(),
+            $efectivo->getTipo(),
+            $efectivo->getCedula()
+        );
+    }
+
+    //RECURSOS
+
+    $recurso->restauradorRecurso(
+        $_POST['id'],
+        "S.E"
+    );
+
+    for($i = 0; $i<count($_POST['recurso']);$i++){
+        //setters vehiculo incidente
+
+    $recurso->setIdIncidente($_POST['id']);
+        $recurso->setTipo("S.E");
+        $recurso->setIdRecurso($_POST['recurso'][$i]);
+        $recurso->setCantidad($_POST['cantidad'][$i]);
+
+        // getters vehiculo incidente
+
+        $recurso->eliminarRecurso(
+            $recurso->getIdIncidente(),
+            $recurso->getTipo("S.E")
+        );
+
+        $resultadoRecurso = $recurso->agregarRecurso(
+            $recurso->getIdIncidente(),
+            $recurso->getTipo(),
+            $recurso->getIdRecurso(),
+            $recurso->getCantidad()
+        );
+    }
+
+    //UNIDAD
+    foreach ($_POST['unidad'] as $niv) {
+        //setters vehiculo incidente
+
+        $unidad->setIdIncidente($_POST['id']);
+        $unidad->setTipo("S.E");
+        $unidad->setNiv($niv);
+
+        //getters vehiculo incidente
+
+        $unidad->eliminarUnidad(
+            $unidad->getIdIncidente(),
+            $unidad->getTipo()
+        );
+
+        $resultadoUnidad = $unidad->agregarUnidad(
+            $unidad->getIdIncidente(),
+            $unidad->getTipo(),
+            $unidad->getNiv()
+        );
+    }
 
 
 

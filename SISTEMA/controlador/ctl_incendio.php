@@ -1,8 +1,14 @@
 <?php
 include('../modelo/conexion.php');
 require('../modelo/clase_incendio.php');
+include("../modelo/clase_efectivo.php");
+include("../modelo/clase_recursoAsignado.php");
+include("../modelo/clase_unidadAsignada.php");
 
 $incendio = new incendio();
+$efectivo = new efectivo();
+$recurso = new recursoAsignado();
+$unidad = new unidad();
 
 if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
 
@@ -49,11 +55,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
     $incendio->setLesionados($_POST['lesion']); //---> revisado
     $incendio->setNumLesionados($_POST['numero_lesionados']); //---> revisado
     $incendio->setDatosLesionados($_POST['cedula_lesionado']); //---> revisado
-    $incendio->setRecursoUtilizado($_POST['recurso_utilizado']); //---> revisado
-    $incendio->setCantidadRecursoUsado($_POST['cantidad_recurso']); //---> revisado
-    $incendio->setUnidad($_POST['unidad']); //---> revisado
     $incendio->setJefeComision($_POST['jefe_comision']); //---> revisado
-    $incendio->setEfectivo($_POST['efectivo']); //---> revisado
     $incendio->setCIPnb($_POST['ci_pnb']); //---> revisado
     $incendio->setCIGnb($_POST['ci_gnb']); //---> revisado
     $incendio->setCIIntt($_POST['ci_intt']); //---> revisado
@@ -106,11 +108,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         $incendio->getLesionados(), //---> revisado
         $incendio->getNumLesionados(), //---> revisado
         $incendio->getDatosLesionados(), //---> revisado
-        $incendio->getRecursoUtilizado(), //---> revisado
-        $incendio->getCantidadRecursoUsado(), //---> revisado
-        $incendio->getUnidad(), //---> revisado
         $incendio->getJefeComision(), //---> revisado
-        $incendio->getEfectivo(), //---> revisado
         $incendio->getCIPnb(), //---> revisado
         $incendio->getCIGnb(), //---> revisado
         $incendio->getCIIntt(), //---> revisado
@@ -119,6 +117,61 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         $incendio->getCIOtro(), //---> revisado
         $incendio->getObservaciones() //---> revisado
     );
+
+    //EFECTIVOS
+    foreach ($_POST['efectivos'] as $cedula) {
+        //setters vehiculo incidente
+
+        $efectivo->setIdIncidente($datos[1]);
+        $efectivo->setTipo("Incendio");
+        $efectivo->setCedula($cedula);
+
+        //getters vehiculo incidente
+
+        $resultadoEfectivo = $efectivo->agregarEfectivo(
+            $efectivo->getIdIncidente(),
+            $efectivo->getTipo(),
+            $efectivo->getCedula()
+        );
+
+
+    }
+
+    //RECURSOS
+    for($i = 0; $i<count($_POST['recurso']);$i++){
+        //setters vehiculo incidente
+
+    $recurso->setIdIncidente($datos[1]);
+        $recurso->setTipo("Incendio");
+        $recurso->setIdRecurso($_POST['recurso'][$i]);
+        $recurso->setCantidad($_POST['cantidad'][$i]);
+
+        //getters vehiculo incidente
+
+        $resultadoRecurso = $recurso->agregarRecurso(
+            $recurso->getIdIncidente(),
+            $recurso->getTipo(),
+            $recurso->getIdRecurso(),
+            $recurso->getCantidad()
+        );
+    }
+
+    //UNIDAD
+    foreach ($_POST['unidad'] as $niv) {
+        //setters vehiculo incidente
+
+        $unidad->setIdIncidente($datos[1]);
+        $unidad->setTipo("Incendio");
+        $unidad->setNiv($niv);
+
+        //getters vehiculo incidente
+
+        $resultadoUnidad = $unidad->agregarUnidad(
+            $unidad->getIdIncidente(),
+            $unidad->getTipo(),
+            $unidad->getNiv()
+        );
+    }
 
 
     if (!$datos) {
@@ -177,11 +230,7 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
     $incendio->setLesionados($_POST['lesion']); //---> revisado
     $incendio->setNumLesionados($_POST['numero_lesionados']); //---> revisado
     $incendio->setDatosLesionados($_POST['cedula_lesionado']); //---> revisado
-    $incendio->setRecursoUtilizado($_POST['recurso_utilizado']); //---> revisado
-    $incendio->setCantidadRecursoUsado($_POST['cantidad_recurso']); //---> revisado
-    $incendio->setUnidad($_POST['unidad']); //---> revisado
     $incendio->setJefeComision($_POST['jefe_comision']); //---> revisado
-    $incendio->setEfectivo($_POST['efectivo']); //---> revisado
     $incendio->setCIPnb($_POST['ci_pnb']); //---> revisado
     $incendio->setCIGnb($_POST['ci_gnb']); //---> revisado
     $incendio->setCIIntt($_POST['ci_intt']); //---> revisado
@@ -235,11 +284,7 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         $incendio->getLesionados(), //---> revisado
         $incendio->getNumLesionados(), //---> revisado
         $incendio->getDatosLesionados(), //---> revisado
-        $incendio->getRecursoUtilizado(), //---> revisado
-        $incendio->getCantidadRecursoUsado(), //---> revisado
-        $incendio->getUnidad(), //---> revisado
         $incendio->getJefeComision(), //---> revisado
-        $incendio->getEfectivo(), //---> revisado
         $incendio->getCIPnb(), //---> revisado
         $incendio->getCIGnb(), //---> revisado
         $incendio->getCIIntt(), //---> revisado
@@ -248,6 +293,70 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         $incendio->getCIOtro(), //---> revisado
         $incendio->getObservaciones() //---> revisado
     );
+
+    //EFECTIVOS
+    foreach ($_POST['efectivos'] as $cedula) {
+        //setters vehiculo incidente
+
+        $efectivo->setIdIncidente($_POST['id']);
+        $efectivo->setTipo("Incendio");
+        $efectivo->setCedula($cedula);
+
+        //getters vehiculo incidente
+
+        $efectivo->eliminarEfectivo($efectivo->getIdIncidente(), $efectivo->getTipo());
+
+        $resultadoEfectivo = $efectivo->agregarEfectivo(
+            $efectivo->getIdIncidente(),
+            $efectivo->getTipo(),
+            $efectivo->getCedula()
+        );
+    }
+
+    //RECURSOS
+    for($i = 0; $i<count($_POST['recurso']);$i++){
+        //setters vehiculo incidente
+
+    $recurso->setIdIncidente($_POST['id']);
+        $recurso->setTipo("Incendio");
+        $recurso->setIdRecurso($_POST['recurso'][$i]);
+        $recurso->setCantidad($_POST['cantidad'][$i]);
+
+        //getters vehiculo incidente
+
+        $recurso->eliminarRecurso(
+            $recurso->getIdIncidente()
+        );
+
+        $resultadoRecurso = $recurso->agregarRecurso(
+            $recurso->getIdIncidente(),
+            $recurso->getTipo(),
+            $recurso->getIdRecurso(),
+            $recurso->getCantidad()
+        );
+    }
+    //UNIDAD
+    foreach ($_POST['unidad'] as $niv) {
+        //setters vehiculo incidente
+
+        $unidad->setIdIncidente($_POST['id']);
+        $unidad->setTipo("Incendio");
+        $unidad->setNiv($niv);
+
+        //getters vehiculo incidente
+
+        $unidad->eliminarUnidad(
+            $unidad->getIdIncidente(),
+            $unidad->getTipo()
+        );
+
+        $resultadoUnidad = $unidad->agregarUnidad(
+            $unidad->getIdIncidente(),
+            $unidad->getTipo(),
+            $unidad->getNiv()
+        );
+    }
+
 
     if (!$datos) {
         echo "<script>alert('No se pudo modificar el Registro de Incendio')</script>";

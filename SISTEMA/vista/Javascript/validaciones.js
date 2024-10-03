@@ -836,12 +836,12 @@ function validarIncendio() {
         return false;
     }
 
-    var efectivo = document.getElementById('efectivo').value;
+    // var efectivo = document.getElementById('efectivo').value;
 
-    if (efectivo === "") {
-        alert('Debe seleccionar un efectivo');
-        return false;
-    }
+    // if (efectivo === "") {
+    //     alert('Debe seleccionar un efectivo');
+    //     return false;
+    // }
 
     var observaciones = document.getElementById('observaciones').value;
     var observacionesRegex = /^.{1,150}$/;

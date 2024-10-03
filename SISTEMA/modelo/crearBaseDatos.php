@@ -280,6 +280,8 @@ try {
     )";
     $conexion->exec($SQL);
 
+
+
         //-------------- ABEJAS ----------------------
 
         $SQL = "CREATE TABLE IF NOT EXISTS abejas (
@@ -355,7 +357,7 @@ try {
         id INT PRIMARY KEY AUTO_INCREMENT,
         id_incidente INT NOT NULL,
         tipo_incidente VARCHAR(20) NOT NULL,
-        nombre VARCHAR(20) NOT NULL,
+        id_recurso INT NOT NULL,
         cantidad INT (100) NOT NULL  
     )";
     $conexion->exec($SQL);
@@ -427,11 +429,7 @@ try {
         `lesionados` varchar(100) NOT NULL,
         `num_lesionados` varchar(100) NOT NULL,
         `datos_lesionados` varchar(100) NOT NULL,
-        `recurso_utilizado` varchar(100) NOT NULL,
-        `cantidad_recurso_usado` varchar(100) NOT NULL,
-        `unidad` varchar(100) NOT NULL,
         `jefe_comision` varchar(100) NOT NULL,
-        `efectivo` varchar(100) NOT NULL,
         `ci_pnb` varchar(100) DEFAULT NULL,
         `ci_gnb` varchar(100) DEFAULT NULL,
         `ci_intt` varchar(100) DEFAULT NULL,

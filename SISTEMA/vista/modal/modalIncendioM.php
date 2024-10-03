@@ -24,7 +24,7 @@ $lugar = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 // LLAMAR AL NOMBRE RECURSO:
 
-$sentencia = $conexion->prepare("SELECT nombre FROM recurso");
+$sentencia = $conexion->prepare("SELECT * FROM recurso");
 $sentencia->execute();
 $n_recurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
@@ -37,9 +37,9 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
 ?>
 
 <!-- Button trigger for login form modal -->
-<button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm">
+<!-- <button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm">
     <i class="bi bi-pencil"></i>
-</button>
+</button> -->
 
 <!--login form Modal -->
 <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
@@ -592,50 +592,56 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                     <!-------------------------------------------------------------------------------------------------->
 
                     <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="">Recurso Utilizado</label>
-                            <div class="position-relative">
-                                <select name="recurso_utilizado" class="form-select" id="recurso_utilizadoM">
-                                    <option value="">Seleccione el Recurso Utilizado...</option>
-                                    <?php foreach ($n_recurso as $nombre) :
-                                        $n_recurso = $nombre['nombre'];
-                                    ?>
-                                        <option value="<?= $n_recurso ?>"><?= $n_recurso ?></option>
+                           
+                           <div class="form-group has-icon-left grand-plus_Container-recursoM">
+                               <label for="">Recurso Utilizado</label>
+                               <div class="plus-container">
+                                   <div class="position-relative zero-siblingM">
+                                       <select name="recurso[]" class="form-select" id="recurso_utilizado">
+                                           <?php foreach ($n_recurso as $recurso) : ?>
 
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                                               <option value="<?=$recurso["id"]?>"><?=$recurso["nombre"]?></option>
 
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="">Cantidad de Recurso utilizado</label>
-                            <div class="position-relative">
-                                <input type="text" id="cantidad_recursoM" name="cantidad_recurso" class="form-control" placeholder="Número de Recurso">
-                                <div class="form-control-icon">
-                                <i class="bi bi-tools"></i>
+                                           <?php endforeach;?>
+                                       </select>
+
+                                       <div class="form-group has-icon-left">
+                                           
+                                           <div class="position-relative">
+                                               <input type="text" id="cantidad_recurso" name="cantidad[]" class="form-control" placeholder="Cantidad">
+                                               <div class="form-control-icon"></div>
+                                           </div>
+                                       </div>
+
+                                   </div>
+                                   <div id="plus-recursoM" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
+                               </div>
+                               
+                           </div>
+                           
+                       </div>
+
+                       <div class="col-12">
+                           
+                                <div class="form-group has-icon-left grand-plus_Container-unidadM">
+                                    <label for="">Unidad</label>
+                                    <div class="plus-container">
+                                        <div class="position-relative second-siblingM">
+                                            <select name="unidad[]" class="form-select" id="unidad">
+                                            <?php foreach ($n_unidad as $unidad) : 
+                                                $n_unidad = $unidad["unidad"];
+                                            ?>
+                                                <option value="<?=$n_unidad?>"><?=$n_unidad?></option>
+
+                                            <?php endforeach;?>
+                                            </select>
+                                        </div>
+                                        <div id="plus-unidadM" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
+                                    </div>
+                                    
                                 </div>
+                                
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="">Unidad</label>
-                            <div class="position-relative">
-                                <select name="unidad" class="form-select" id="unidadM">
-                                    <option value="">Seleccione la Unidad que asistió...</option>
-                                    <?php foreach ($n_unidad as $unidad) : 
-                                            $n_unidad = $unidad["unidad"];
-                                        ?>
-                                            <option value="<?=$n_unidad?>"><?=$n_unidad?></option>
-
-                                        <?php endforeach;?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="col-12">
                         <div class="form-group has-icon-left">
@@ -650,16 +656,22 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                     </div>
 
                     <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="">Efectivo</label>
-                            <div class="position-relative">
-                                <select name="efectivo" class="form-select" id="efectivoM">
-                                    <option value="">Seleccione el Efectivo que asistió...</option>
-                                    <option value="1">1</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                           
+                           <div class="form-group has-icon-left grand-plus_Container-efectivoM">
+                               <label for="">Efectivo</label>
+                               <div class="plus-container">
+                                   <div class="position-relative first-siblingM">
+                                       <input type="text" id="efectivo" name="efectivos[]" class="form-control" placeholder="Efectivo">
+                                       <div class="form-control-icon">
+                                           <i class="bi bi-person-x"></i>
+                                       </div>
+                                   </div>
+                                   <div id="plus-efectivoM" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
+                               </div>
+                               
+                           </div>
+                           
+                       </div>
 
                     <div class="col-12">
                         <div class="form-group has-icon-left">

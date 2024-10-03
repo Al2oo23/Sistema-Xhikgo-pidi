@@ -6,6 +6,7 @@ include ('../modelo/conexion.php');
 $sentencia = $conexion->prepare("SELECT * FROM `abejas`");
 $sentencia->execute();
 $abejas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+include ("modal/modalAbejasM.php");
 ?>
 
 <div class="col-12" id="catalogo">
@@ -152,8 +153,9 @@ $abejas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <td class="columna" hidden><?= $abej["ci_otro"]; ?></td>
                                     <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <?php include ("modal/modalAbejasM.php"); ?>
-                                            <div><a name='eliminar' id='eliminar'
+                                        <button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm1"><i class="bi bi-pencil"></i></button>
+                                            
+                                        <div><a name='eliminar' id='eliminar'
                                                     href='../controlador/ctl_abejas.php?txtID=<?= $abej['id']; ?>'
                                                     class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
@@ -170,6 +172,7 @@ $abejas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 <script src="Javascript/abejasModal.js"></script>
+<script src="Javascript/plusAbejas.js"></script>
 
 <?php
 require ('../footer.php');

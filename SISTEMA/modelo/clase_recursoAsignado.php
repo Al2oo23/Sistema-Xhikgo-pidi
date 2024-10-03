@@ -92,15 +92,69 @@ class recursoAsignado{
         }
     }
 
-    public function eliminarRecurso($idIncidente){
+    public function eliminarRecurso($idIncidente, $tipo){
         include("conexion.php");
 
-        $SQL = "DELETE FROM recurso_asignado WHERE id_incidente = ?";
+        $SQL = "DELETE FROM recurso_asignado WHERE id_incidente = ? AND tipo_incidente = ?";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$idIncidente]);
+        $preparado->execute([$idIncidente, $tipo]);
 
         return $preparado;
 
+    }
+
+    public function restauradorRecurso($idIncidente, $tipo){
+        include("conexion.php");
+
+        $SQL = "SELECT * FROM recurso_asignado WHERE id_incidente = ? AND tipo_incidente = ?";
+        $preparado = $conexion->prepare($SQL);
+        $preparado->execute([$idIncidente, $tipo]);
+        $resultado = $preparado->fetchAll(PDO::FETCH_ASSOC);
+
+        print_r($resultado);
+
+        foreach($resultado as $recurso){
+             // Verificar el tipo de recurso
+        $consultaTipo = "SELECT tipo FROM recurso WHERE id = ?";
+        $preparado = $conexion->prepare($consultaTipo);
+        $preparado->execute([$recurso['id_recurso']]);
+        $tipo = $preparado->fetchColumn();
+    
+        // Si el recurso es no reutilizable, restar la cantidad
+        if ($tipo === 'NO') {
+            $this->SumarRecurso($recurso['id_recurso'], $recurso['cantidad']);
+        }
+        }
+
+        // $SQL = "DELETE FROM recurso_asignado WHERE id_incidente = ?";
+        // $preparado = $conexion->prepare($SQL);
+        // $preparado->execute([$idIncidente]);
+
+        // return $preparado;
+
+    }
+
+    private function SumarRecurso($idRecurso, $cantidad) {
+        include("conexion.php");
+    
+        // Obtener la cantidad actual del recurso
+        $consultaCantidad = "SELECT cantidad FROM recurso WHERE id = ?";
+        $CantidadActual = $conexion->prepare($consultaCantidad);
+        $CantidadActual->execute([$idRecurso]);
+        $cantidadActual = $CantidadActual->fetchColumn();
+    
+        // Verificar si la cantidad actual es mayor que la cantidad a restar
+        if ($cantidadActual >= $cantidad) {
+            // Calcular la nueva cantidad restando la proporcionada
+            $nuevaCantidad = max(0, $cantidadActual + $cantidad);
+    
+            // Actualizar la cantidad en la base de datos
+            $SQL = "UPDATE recurso SET cantidad = ? WHERE id = ?";
+            $preparado = $conexion->prepare($SQL);
+            $preparado->execute([$nuevaCantidad, $idRecurso]);
+    
+            return $preparado;
+        }
     }
     
 }

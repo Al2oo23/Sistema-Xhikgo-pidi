@@ -269,7 +269,8 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                             </div>
 
                                         </div>
-                                        <div id="plus-recurso" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
+                                        <div id="plus-recurso" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i>
+                                        </div>
                                     </div>
                                     
                                 </div>
@@ -287,7 +288,8 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                            <i class="bi bi-person-x"></i>
                                        </div>
                                    </div>
-                                   <div id="plus-efectivo" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
+                                   <div id="plus-efectivo" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i>
+                                   </div>
                                </div>
                                
                            </div>
@@ -310,7 +312,9 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                        <?php endforeach;?>
                                        </select>
                                    </div>
-                                   <div id="plus-unidad" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
+                                   <div id="plus-unidad" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i>
+
+                                   </div>
                                </div>
                                
                            </div>
@@ -453,5 +457,3 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
         });
     });
 </script>
-
-<script src="Javascript/plus.js"></script>

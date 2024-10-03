@@ -238,7 +238,7 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
 
             //getters vehiculo incidente
 
-            $efectivo->eliminarEfectivo($efectivo->getIdIncidente());
+            $efectivo->eliminarEfectivo($efectivo->getIdIncidente(), $efectivo->getTipo());
 
             $resultadoEfectivo = $efectivo->agregarEfectivo(
                 $efectivo->getIdIncidente(),
@@ -280,7 +280,8 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
             //getters vehiculo incidente
 
             $unidad->eliminarUnidad(
-                $unidad->getIdIncidente()
+                $unidad->getIdIncidente(),
+                $unidad->getTipo()
             );
 
             $resultadoUnidad = $unidad->agregarUnidad(

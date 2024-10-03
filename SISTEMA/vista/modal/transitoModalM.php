@@ -71,7 +71,6 @@
                                     <label for="">Sección</label>
                                     <div class="position-relative">
                                          <select name="seccion" class="form-select" id="seccionM">
-                                         <option value="">Seleccionar</option>
                                         <?php foreach ($secciones as $seccion) : ?>
 
                                             <option value="<?=$seccion["id"]?>"><?=$seccion["numero"]?></option>
@@ -88,7 +87,6 @@
                                     <label for="">Estación</label>
                                     <div class="position-relative">
                                          <select name="estacion" class="form-select" id="estacionM">
-                                         <option value="">Seleccionar</option>
                                         <?php foreach ($estaciones as $estacion) : ?>
 
                                             <option value="<?=$estacion["id"]?>"><?=$estacion["nombre"]?></option>
@@ -298,7 +296,6 @@
                                     <div class="plus-container">
                                         <div class="position-relative zero-siblingM">
                                             <select name="recurso[]" class="form-select" id="recurso_utilizado">
-                                                <option value="">Seleccione el Recurso Utilizado...</option>
                                                 <?php foreach ($recursos as $recurso) : ?>
 
                                                     <option value="<?=$recurso["id"]?>"><?=$recurso["nombre"]?></option>
@@ -358,7 +355,6 @@
                                     <div class="plus-container">
                                         <div class="position-relative second-siblingM">
                                             <select name="unidad[]" class="form-select" id="unidad">
-                                                <option value="">Seleccione la Unidad que asistió</option>
                                             <?php foreach ($n_unidad as $unidad) : 
                                                 $n_unidad = $unidad["unidad"];
                                             ?>

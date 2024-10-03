@@ -46,18 +46,14 @@ class incendio
     private $lesionados; //42 ---> revisado
     private $num_lesionados; //43 ---> revisado
     private $datos_lesionados; //44 ---> revisado
-    private $recurso_utilizado; //45 ---> revisado
-    private $cantidad_recurso_usado; //46 ---> revisado
-    private $unidad; //47 ---> revisado
-    private $jefe_comision; //48 ---> revisado
-    private $efectivo; //49 ---> revisado
-    private $ci_pnb; //50 ---> revisado
-    private $ci_gnb; //51 ---> revisado
-    private $ci_intt; //52 ---> revisado
-    private $ci_invity; //53 ---> revisado
-    private $ci_pc; //54 ---> revisado
-    private $ci_otro; //55 ---> revisado
-    private $observaciones; //56 ---> revisado
+    private $jefe_comision; //45 ---> revisado
+    private $ci_pnb; //46 ---> revisado
+    private $ci_gnb; //47 ---> revisado
+    private $ci_intt; //48 ---> revisado
+    private $ci_invity; //49 ---> revisado
+    private $ci_pc; //50 ---> revisado
+    private $ci_otro; //51 ---> revisado
+    private $observaciones; //52 ---> revisado
 
     public function __construct()
     {
@@ -284,29 +280,9 @@ class incendio
         $this->datos_lesionados = $datos_lesionados;
     }
 
-    public function setRecursoUtilizado($recurso_utilizado)
-    {
-        $this->recurso_utilizado = $recurso_utilizado;
-    }
-
-    public function setCantidadRecursoUsado($cantidad_recurso_usado)
-    {
-        $this->cantidad_recurso_usado = $cantidad_recurso_usado;
-    }
-
-    public function setUnidad($unidad)
-    {
-        $this->unidad = $unidad;
-    }
-
     public function setJefeComision($jefe_comision)
     {
         $this->jefe_comision = $jefe_comision;
-    }
-
-    public function setEfectivo($efectivo)
-    {
-        $this->efectivo = $efectivo;
     }
 
     public function setCiPNB($ci_pnb)
@@ -565,28 +541,9 @@ class incendio
         return $this->datos_lesionados;
     }
 
-    public function getRecursoUtilizado()
-    {
-        return $this->recurso_utilizado;
-    }
-    public function getCantidadRecursoUsado()
-    {
-        return $this->cantidad_recurso_usado;
-    }
-
-    public function getUnidad()
-    {
-        return $this->unidad;
-    }
-
     public function getJefeComision()
     {
         return $this->jefe_comision;
-    }
-
-    public function getEfectivo()
-    {
-        return $this->efectivo;
     }
 
     public function getCiPNB()
@@ -626,11 +583,11 @@ class incendio
 
 
     //REGISTRAR
-    public function registrarIncendio($fecha, $seccion, $estacion, $tipo_aviso, $solicitante, $receptor, $aprobador, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, $municipio, $localidad, $direccion, $paredes, $techo, $piso, $ventanas, $puertas, $otros_materiales, $propietario, $valor_inmueble, $num_residenciados, $ninos, $adolescentes, $adultos, $info_adicional, $asegurado, $aseguradora, $num_poliza, $valor_asegurado, $valor_perdido, $valor_salvado, $fuente_ignicion, $causa_incendio, $lugar_inicio, $lugar_fin, $reignicion, $tipo_combustible, $declaracion, $lesionados, $num_lesionados, $datos_lesionados, $recurso_utilizado, $cantidad_recurso_usado, $unidad, $jefe_comision, $efectivo, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $observaciones) {
+    public function registrarIncendio($fecha, $seccion, $estacion, $tipo_aviso, $solicitante, $receptor, $aprobador, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, $municipio, $localidad, $direccion, $paredes, $techo, $piso, $ventanas, $puertas, $otros_materiales, $propietario, $valor_inmueble, $num_residenciados, $ninos, $adolescentes, $adultos, $info_adicional, $asegurado, $aseguradora, $num_poliza, $valor_asegurado, $valor_perdido, $valor_salvado, $fuente_ignicion, $causa_incendio, $lugar_inicio, $lugar_fin, $reignicion, $tipo_combustible, $declaracion, $lesionados, $num_lesionados, $datos_lesionados, $jefe_comision, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $observaciones) {
 
         include("conexion.php");
 
-        $SQL = "INSERT INTO incendio VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $SQL = "INSERT INTO incendio VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $preparado = $conexion->prepare($SQL);
 
@@ -640,26 +597,26 @@ class incendio
         $otros_materiales, $propietario, $valor_inmueble, $num_residenciados, $ninos, 
         $adolescentes, $adultos, $info_adicional, $asegurado, $aseguradora, $num_poliza, 
         $valor_asegurado, $valor_perdido, $valor_salvado, $fuente_ignicion, $causa_incendio,
-        $lugar_inicio, $lugar_fin, $reignicion, $tipo_combustible, $declaracion, $lesionados, $num_lesionados, $datos_lesionados, $recurso_utilizado, $cantidad_recurso_usado, $unidad, $jefe_comision, $efectivo, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $observaciones]);
+        $lugar_inicio, $lugar_fin, $reignicion, $tipo_combustible, $declaracion, $lesionados, $num_lesionados, $datos_lesionados, $jefe_comision, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $observaciones]);
 
 
-        $SQL = "INSERT INTO mantenimiento VALUES (?,?,?,?,?)";
-        $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null, $unidad,"incendio", $fecha,"pendiente"]);
-        return $preparado;
+        // $SQL = "INSERT INTO mantenimiento VALUES (?,?,?,?,?)";
+        // $preparado = $conexion->prepare($SQL);
+        // $preparado->execute([null, $unidad,"incendio", $fecha,"pendiente"]);
+        return array($preparado,$conexion->lastInsertId());
     }
 
 
     //MODIFICAR
-    public function modificarIncedio($id, $fecha, $seccion, $estacion, $tipo_aviso, $solicitante, $receptor, $aprobador, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, $municipio, $localidad, $direccion, $paredes, $techo, $piso, $ventanas, $puertas, $otros_materiales, $propietario, $valor_inmueble, $num_residenciados, $ninos, $adolescentes, $adultos, $info_adicional, $asegurado, $aseguradora, $num_poliza, $valor_asegurado, $valor_perdido, $valor_salvado, $fuente_ignicion, $causa_incendio, $lugar_inicio, $lugar_fin, $reignicion, $tipo_combustible, $declaracion, $lesionados, $num_lesionados, $datos_lesionados, $recurso_utilizado, $cantidad_recurso_usado, $unidad, $jefe_comision, $efectivo, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $observaciones){
+    public function modificarIncedio($id, $fecha, $seccion, $estacion, $tipo_aviso, $solicitante, $receptor, $aprobador, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, $municipio, $localidad, $direccion, $paredes, $techo, $piso, $ventanas, $puertas, $otros_materiales, $propietario, $valor_inmueble, $num_residenciados, $ninos, $adolescentes, $adultos, $info_adicional, $asegurado, $aseguradora, $num_poliza, $valor_asegurado, $valor_perdido, $valor_salvado, $fuente_ignicion, $causa_incendio, $lugar_inicio, $lugar_fin, $reignicion, $tipo_combustible, $declaracion, $lesionados, $num_lesionados, $datos_lesionados, $jefe_comision, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $observaciones){
         
         include("conexion.php");
     
-        $SQL = "UPDATE incendio SET fecha = ?, seccion = ?, estacion = ?, tipo_aviso = ?, solicitante = ?, receptor = ?, aprobador = ?, hora_aviso = ?, hora_salida = ?, hora_llegada = ?, hora_regreso = ?, municipio = ?, localidad = ?, direccion = ?, paredes = ?, techo = ?, piso = ?, ventanas = ?, puertas = ?, otros_materiales = ?, propietario = ?, valor_inmueble = ?, num_residenciados = ?, ninos = ?, adolescentes = ?, adultos = ?, info_adicional = ?, asegurado = ?, aseguradora = ?, num_poliza = ?, valor_asegurado = ?, valor_perdido = ?, valor_salvado = ?, fuente_ignicion = ?, causa_incendio = ?, lugar_inicio = ?, lugar_fin = ?, reignicion = ?, tipo_combustible = ?, declaracion = ?, lesionados = ?, num_lesionados = ?, datos_lesionados = ?, recurso_utilizado = ?, cantidad_recurso_usado = ?, unidad = ?, jefe_comision = ?, efectivo = ?, ci_pnb = ?, ci_gnb = ?, ci_intt = ?, ci_invity = ?, ci_pc = ?, ci_otro = ?, observaciones = ? WHERE id = ?";
+        $SQL = "UPDATE incendio SET fecha = ?, seccion = ?, estacion = ?, tipo_aviso = ?, solicitante = ?, receptor = ?, aprobador = ?, hora_aviso = ?, hora_salida = ?, hora_llegada = ?, hora_regreso = ?, municipio = ?, localidad = ?, direccion = ?, paredes = ?, techo = ?, piso = ?, ventanas = ?, puertas = ?, otros_materiales = ?, propietario = ?, valor_inmueble = ?, num_residenciados = ?, ninos = ?, adolescentes = ?, adultos = ?, info_adicional = ?, asegurado = ?, aseguradora = ?, num_poliza = ?, valor_asegurado = ?, valor_perdido = ?, valor_salvado = ?, fuente_ignicion = ?, causa_incendio = ?, lugar_inicio = ?, lugar_fin = ?, reignicion = ?, tipo_combustible = ?, declaracion = ?, lesionados = ?, num_lesionados = ?, datos_lesionados = ?, jefe_comision = ?, ci_pnb = ?, ci_gnb = ?, ci_intt = ?, ci_invity = ?, ci_pc = ?, ci_otro = ?, observaciones = ? WHERE id = ?";
 
         $preparado = $conexion->prepare($SQL);
 
-        $preparado->execute([$fecha, $seccion, $estacion, $tipo_aviso, $solicitante, $receptor, $aprobador, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, $municipio, $localidad, $direccion, $paredes, $techo, $piso, $ventanas, $puertas, $otros_materiales, $propietario, $valor_inmueble, $num_residenciados, $ninos, $adolescentes, $adultos, $info_adicional, $asegurado, $aseguradora, $num_poliza, $valor_asegurado, $valor_perdido, $valor_salvado, $fuente_ignicion, $causa_incendio, $lugar_inicio, $lugar_fin, $reignicion, $tipo_combustible, $declaracion, $lesionados, $num_lesionados, $datos_lesionados, $recurso_utilizado, $cantidad_recurso_usado, $unidad, $jefe_comision, $efectivo, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $observaciones, $id]);
+        $preparado->execute([$fecha, $seccion, $estacion, $tipo_aviso, $solicitante, $receptor, $aprobador, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, $municipio, $localidad, $direccion, $paredes, $techo, $piso, $ventanas, $puertas, $otros_materiales, $propietario, $valor_inmueble, $num_residenciados, $ninos, $adolescentes, $adultos, $info_adicional, $asegurado, $aseguradora, $num_poliza, $valor_asegurado, $valor_perdido, $valor_salvado, $fuente_ignicion, $causa_incendio, $lugar_inicio, $lugar_fin, $reignicion, $tipo_combustible, $declaracion, $lesionados, $num_lesionados, $datos_lesionados, $jefe_comision, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $observaciones, $id]);
     
         return $preparado;
     }
