@@ -39,7 +39,7 @@ class marca{
   
 
     //Modificar
-    public function modificarMarca($id, $nombre, ){
+    public function modificarMarca($id, $nombre){
         include("conexion.php");
 
         $SQL = "UPDATE marca SET nombre = ? WHERE id = ?";
