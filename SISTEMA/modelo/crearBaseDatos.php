@@ -33,7 +33,7 @@ try {
     id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(25) NOT NULL,
     rif VARCHAR(25) NOT NULL,
-    descripcion TEXT DEFAULT 'Sin descripción',
+    descripcion VARCHAR(20),
     logo VARCHAR(255) DEFAULT 'ruta/logo-por-defecto.png',
     firma VARCHAR(255) DEFAULT 'ruta/firma-por-defecto.pdf'
     )";

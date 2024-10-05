@@ -36,8 +36,6 @@ class marca{
         return $preparado;
     }
 
-  
-
     //Modificar
     public function modificarMarca($id, $nombre){
         include("conexion.php");
