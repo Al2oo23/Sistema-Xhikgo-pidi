@@ -3,9 +3,9 @@ $nombrePagina = 'Catálogo Historico de Operaciones';
 require ('../header.php');
 include ('../modelo/conexion.php');
 
-// $sentencia = $conexion->prepare("SELECT * FROM marca");
-// $sentencia->execute();
-// $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+$sentencia = $conexion->prepare("SELECT * FROM efectivo_asignado e INNER JOIN persona p ON e.cedula = p.cedula");
+$sentencia->execute();
+$resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="col-9 m-auto" id="catalogo">
@@ -33,25 +33,23 @@ include ('../modelo/conexion.php');
                 <table class="table table-hover mb-0">
                     <thead>
                         <tr style="text-align: center;">
+                            <th class="columna">Incidente</th>
+                            <th class="columna">Tipo de Incidente</th>
                             <th class="columna">Cedula</th>
                             <th class="columna">Nombre</th>
-                            <th class="columna">Asistencia (Incendio)</th>
-                            <th class="columna">Asistencia (Abejas)</th>
-                            <th class="columna">Asistencia (Transito)</th>
-                            <th class="columna">Total</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="fila">
-                            <td class="columna">20588674</td>
-                            <td class="columna">Felipe Perez</td>
-                            <td class="columna">5</td>
-                            <td class="columna">3</td>
-                            <td class="columna">6</td>
-                            <td class="columna">14</td>
-
-                        </tr>
+                    <?php foreach ($resultado as $efectivo): ?>
+                            <tr class="fila">
+                                <td class="columnas"><?php echo $efectivo["id_incidente"] ?></td>
+                                <td class="columnas"><?php echo $efectivo["tipo_incidente"] ?></td>
+                                <td class="columnas"><?php echo $efectivo["cedula"] ?></td>
+                                <td class="columnas"><?php echo $efectivo["nombre"] ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
+                    
                 </table>
             </div>
         </div>

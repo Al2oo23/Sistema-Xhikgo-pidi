@@ -1,5 +1,4 @@
 <?php
-session_start();
 $nombrePagina = "Preguntas de Seguridad";
 require('../header.php');
 

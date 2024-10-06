@@ -32,3 +32,7 @@
 #plus-recurso, #plus-recursoM{
     height: min-content;
 }
+
+.recuperacion{
+    margin-top: 100px !important;
+}

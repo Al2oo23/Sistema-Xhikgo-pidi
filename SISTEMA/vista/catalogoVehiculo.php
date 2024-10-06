@@ -3,7 +3,7 @@ $nombrePagina = 'Catálogo de Vehiculo';
 require ('../header.php');
 include ('../modelo/conexion.php');
 
-$sentencia = $conexion->prepare("SELECT * FROM vehiculo");
+$sentencia = $conexion->prepare("SELECT * FROM vehiculo v INNER JOIN persona p ON v.cedula = p.cedula");
 $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -125,6 +125,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             <th class="columna">Carburante</th>
                             <th class="columna">Seguro</th>
                             <th class="columna">CI Propietario</th>
+                            <th class="columna">Nombre</th>
                             <th class="columna">Accion</th>
                         </tr>
                     </thead>
@@ -141,6 +142,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <td class="columna"><?= $vehiculo['carburante'] ?></td>
                                 <td class="columna"><?= $vehiculo['seguro'] ?></td>
                                 <td class="columna"><?= $vehiculo['cedula'] ?></td>
+                                <td class="columna"><?= $vehiculo['nombre'] ?></td>
                                 <td>
                                     <div class="botones">
                                         <?php include ("modal/modalVehiculoM.php"); ?>
