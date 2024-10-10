@@ -262,9 +262,6 @@
                                                 <a href="catalogoMantenimiento.php" class='submenu-link'>Cronograma de Mantenimiento</a>
                                             </li>
 
-                                            <li class="submenu-item  ">
-                                                <a href="catalogoHM.php" class='submenu-link'>Historial de Mantenimiento</a>
-                                            </li>
                                             <?php endif;?>
                                         
                                         </ul>
