@@ -32,22 +32,45 @@ class municipio{
     public function agregarMunicipio($nombre, $codigo){
         include("conexion.php");
 
-        $SQL = "INSERT INTO municipio VALUES (?,?,?)";
+        $SQL = "SELECT * FROM municipio WHERE nombre = :nombre";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null,$nombre, $codigo]);
+        $preparado->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        $preparado->execute();
 
-        return $preparado;
+        $municipio = $preparado->fetch(PDO::FETCH_ASSOC);
+
+        if(!$municipio){
+            $SQL = "INSERT INTO municipio VALUES (?,?,?)";
+            $resultado = $conexion->prepare($SQL);
+            $resultado->execute([null,$nombre, $codigo]);
+            return $resultado;
+        }else{
+            echo "<script>alert('El Municipio ya está registrado')</script>";
+        }
+        
     }
 
     //Modificar
     public function modificarMunicipio($id, $nombre, $codigo){
         include("conexion.php");
 
-        $SQL = "UPDATE municipio SET nombre = ?, codigo = ? WHERE id = ?";
-        $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$nombre, $codigo, $id]);
+        // $SQL = "SELECT * FROM municipio WHERE nombre = :nombre";
+        // $preparado = $conexion->prepare($SQL);
+        // $preparado->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        // $preparado->execute();
 
-        return $preparado;
+        // $municipio = $preparado->fetch(PDO::FETCH_ASSOC);
+
+        // if(!$municipio){
+            $SQL = "UPDATE municipio SET nombre = ?, codigo = ? WHERE id = ?";
+            $resultado = $conexion->prepare($SQL);
+            $resultado->execute([$nombre, $codigo, $id]);
+            return $resultado;
+        // }else{
+        //     echo "<script>alert('El Nombre Municipio ya existe')</script>";
+        // }
+
+        
     }
 }
 ?>

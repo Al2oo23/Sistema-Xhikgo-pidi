@@ -1427,7 +1427,7 @@ function validarRecursoInoperativo() {
 function validarRecurso() {
 
     var nombre_recurso = document.getElementById('nombre_recurso').value;
-    var nombre_recursoRegex = /^.{3,50}$/;
+    var nombre_recursoRegex =  /^.{3,50}$/;
 
     if (!nombre_recursoRegex.test(nombre_recurso)) {
         alert('Debe ingresar el nombre de un recurso');
@@ -1448,7 +1448,7 @@ function validarRecurso() {
 function validarRecursoM() {
 
     var nombre_recurso = document.getElementById('nombreM').value;
-    var nombre_recursoRegex = /^[0-9]{1,50}$/;
+    var nombre_recursoRegex = /^.{3,50}$/;
 
     if (!nombre_recursoRegex.test(nombre_recurso)) {
         alert('Debe ingresar el nombre de un recurso');

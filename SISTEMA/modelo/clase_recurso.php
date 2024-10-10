@@ -45,22 +45,42 @@ class recurso{
     public function registrarRecurso($nombre, $tipo){
         include("conexion.php");
 
-        $SQL = "INSERT INTO recurso VALUES (?, ?, ?, ?)";
+        $SQL = "SELECT * FROM recurso WHERE nombre = :nombre";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null, $nombre, $tipo, 0]);
+        $preparado->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        $preparado->execute();
 
-        return $preparado;
+        $recurso = $preparado->fetch(PDO::FETCH_ASSOC);
+
+        if(!$recurso){
+        $SQL = "INSERT INTO recurso VALUES (?, ?, ?, ?)";
+        $resultado = $conexion->prepare($SQL);
+        $resultado->execute([null, $nombre, $tipo, 0]);
+        return $resultado;
+        }else{
+            echo "<script>alert('El Recurso ya está registrado')</script>";
+        }
     }
 
     //MODIFICAR
     public function modificarRecurso($id, $nombre, $tipo){
         include("conexion.php");
-    
-        $SQL = "UPDATE recurso SET nombre = ?, tipo = ? WHERE id = ?";
-        $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$nombre, $tipo, $id]);
-    
-        return $preparado;
+        
+        // $SQL = "SELECT * FROM recurso WHERE nombre = :nombre";
+        // $preparado = $conexion->prepare($SQL);
+        // $preparado->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        // $preparado->execute();
+
+        // $recurso = $preparado->fetch(PDO::FETCH_ASSOC);
+
+        // if(!$recurso){
+            $SQL = "UPDATE recurso SET nombre = ?, tipo = ? WHERE id = ?";
+            $preparado = $conexion->prepare($SQL);
+            $preparado->execute([$nombre, $tipo, $id]);
+            return $preparado;
+        // }else{
+            // echo "<script>alert('El Nombre del recurso ya está registrado')</script>";
+        // }
     }
 
     //AGREGAR

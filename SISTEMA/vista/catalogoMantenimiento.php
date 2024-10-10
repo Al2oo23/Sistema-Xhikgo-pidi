@@ -3,7 +3,7 @@ $nombrePagina = 'Catalogo de Mantenimiento de Unidades';
 require ('../header.php');
 include ('../modelo/conexion.php');
 
-$sentencia = $conexion->prepare("SELECT * FROM unidad_asignada");
+$sentencia = $conexion->prepare("SELECT * FROM mantenimiento");
 $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -34,6 +34,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                         <tr style="text-align: center;">
                             <th class="columna">N° Unidad</th>
                             <th class="columna">Incidente Previo</th>
+                            <th class="columna">Fecha</th>
                             <th class="columna">Estado Del Mantenimiento</th>
                             <th class="columna">Accion</th>
                         </tr>
@@ -41,9 +42,10 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                     <tbody>
                         <?php foreach ($resultado as $mantenimiento): ?>
                             <tr class="fila">
-                                <td class="columna"><?= $mantenimiento['niv'] ?></td>
-                                <td class="columna"><?= $mantenimiento['tipo_incidente'] ?></td>
-                                <td class="columna">Pendiente</td>
+                                <td class="columna"><?= $mantenimiento['unidad'] ?></td>
+                                <td class="columna"><?= $mantenimiento['incidente'] ?></td>
+                                <td class="columna"><?= $mantenimiento['fecha'] ?></td>
+                                <td class="columna"><?= $mantenimiento['estado'] ?></td>
 
                                 <td>
                                     <div class="botones" style="justify-content:space-evenly;">

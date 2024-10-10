@@ -78,4 +78,14 @@ class Institucion
 
         return $data;
     }
+
+    public function obtenerNombre()
+    {
+        include ("conexion.php");
+        $SQL = "SELECT nombre FROM institucion ORDER BY id DESC LIMIT 1";
+        $query = $conexion->query($SQL);
+        $data = $query->fetch();
+
+        return $data;
+    }
 }

@@ -36,6 +36,7 @@ class efectivo{
 
     public function agregarEfectivo($idIncidente, $tipo,$cedula){
         include("conexion.php");
+        
 
         $SQL = "INSERT INTO efectivo_asignado VALUES (?,?,?,?)";
         $preparado = $conexion->prepare($SQL);

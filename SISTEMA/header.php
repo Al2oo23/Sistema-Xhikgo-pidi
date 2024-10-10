@@ -5,12 +5,9 @@
 
     include('modelo/clase_institucion.php');
     $institucion = new Institucion();
-
-    if($institucion === true){
-        $logo = $institucion->obtenerLogo()[0];
-    }else{
-        echo "";
-    }
+    $logo = $institucion->obtenerLogo()[0];
+    $nombre = $institucion->obtenerNombre()[0];
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +42,7 @@
                     <div class="container">
                         <div class="logo">
                             <a href="index.php"><img src="<?php echo $logo;?>" style="width: 5rem; height: 3rem;" alt="Logo"></a>
-                            <h6 style="font-size:15px; display:inline-block;">Cuerpo Autónomo de Bomberos</h6>
+                            <h6 style="font-size:15px; display:inline-block;"><?php if(!$nombre){echo "Cuerpo de Bomberos";}else{echo $nombre;}?></h6>
                         </div>
                         
 
@@ -265,7 +262,9 @@
                                                 <a href="catalogoMantenimiento.php" class='submenu-link'>Cronograma de Mantenimiento</a>
                                             </li>
 
-                                         
+                                            <li class="submenu-item  ">
+                                                <a href="catalogoHM.php" class='submenu-link'>Historial de Mantenimiento</a>
+                                            </li>
                                             <?php endif;?>
                                         
                                         </ul>

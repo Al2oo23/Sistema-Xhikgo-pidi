@@ -11,7 +11,6 @@ if(isset($_POST['agregar']) && $_POST['agregar'] == "agregar"){
     $datos = $marca->agregarMarca($marca->getNombre());
 
     if(empty($datos)){
-        echo "<script>alert('No se pudo registrar la marca')</script>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoMarca.php'>"; 
     }else{
         echo "<script>alert('Marca registrada con exito')</script>";

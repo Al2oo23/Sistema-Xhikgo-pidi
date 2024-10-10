@@ -11,8 +11,7 @@ if(isset($_POST['agregar']) && $_POST['agregar'] == "agregar"){
 
     $datos = $municipio->agregarMunicipio($municipio->getNombre(), $municipio->getCodigo());
 
-    if(empty($datos)){
-        echo "<script>alert('No se pudo registrar el Municipio')</script>";
+    if(!$datos){
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoMunicipio.php'>"; 
     }else{
         echo "<script>alert('Municipio registrado con exito')</script>";
@@ -29,7 +28,7 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
  
     $datos = $municipio->modificarMunicipio($municipio->getId(), $municipio->getNombre(), $municipio->getCodigo());
 
-    if(empty($datos)){
+    if(!$datos){
         echo "<script>alert('No se pudo Modificar el municipio')</script>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoMunicipio.php'>"; 
     }else{

@@ -13,16 +13,25 @@ if (isset($_POST['agregar']) && $_POST['agregar'] == 'agregar') {
     $usuario->setPregunta($_POST["pregunta"]);
     $usuario->setRespuesta($_POST["respuesta"]);
 
+    $sql = "SELECT * FROM persona WHERE cedula = :cedula";
+    $preparado = $conexion->prepare($sql);
+    $preparado->bindParam(':cedula', $cedula, PDO::PARAM_STR);
+    $preparado->execute();
 
+    $persona = $preparado->fetch(PDO::FETCH_ASSOC);
 
-    $resultado = $usuario->agregarUsuario($usuario->getCedula(), $usuario->getNombre(), $usuario->getClave(), "A",$usuario->getPregunta(), $usuario->getRespuesta());
-
-    if (empty($resultado)){
-        echo "<script>alert('Registro Fallido')</script>";
+    if(!$persona){
+        echo "<script>alert('Esta persona no está registrada')</script>";
         echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoUsuario.php'>";
-    } else {
-        echo "<script>alert('Registro Exitoso!')</script>";
-        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoUsuario.php'>";
+    }else{
+        $resultado = $usuario->agregarUsuario($usuario->getCedula(), $usuario->getNombre(), $usuario->getClave(), "A",$usuario->getPregunta(), $usuario->getRespuesta());
+        if (empty($resultado)){
+            echo "<script>alert('Registro Fallido')</script>";
+            echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoUsuario.php'>";
+        } else {
+            echo "<script>alert('Registro Exitoso!')</script>";
+            echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoUsuario.php'>";
+        }
     }
 }
 
@@ -43,6 +52,8 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         echo "<script>alert('No se pudo modificar el Usuario')</script>";
         echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/modal/catalogoUsuario.php'>";
     } else {
+
+        
         echo "<script>alert('Usuario modificado con exito')</script>";
         echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoUsuario.php'>";
     }

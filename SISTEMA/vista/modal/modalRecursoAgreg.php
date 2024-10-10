@@ -68,7 +68,7 @@
                         <span class="d-none d-sm-block">Cerrar</span>
                     </button>
 
-                    <button type="submit" name="agregar" id="agregar" value="agregar" class="btn btn-primary ms-1" data-bs-dismiss="modal">
+                    <button type="submit" name="agregar" id="agregar" value="agregar" class="btn btn-primary ms-1">
                         <i class="bx bx-check d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">Agregar</span>
                     </button>

@@ -12,8 +12,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
     $resultado = $recurso->registrarRecurso($recurso->getNombre(), $recurso->getTipo(), 0);
 
     if (!$resultado) {
-        echo "<script>alert('No se pudo registrar el Recurso')</script>";
-        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/modalRecursoR.php'>";
+        echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoRecursos.php'>";
     } else {
         echo "<script>alert('Recurso registrado con exito')</script>";
         echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoRecursos.php'>";

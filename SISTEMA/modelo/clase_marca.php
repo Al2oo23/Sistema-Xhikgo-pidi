@@ -29,11 +29,22 @@ class marca{
     public function agregarMarca($nombre){
         include("conexion.php");
 
-        $SQL = "INSERT INTO marca VALUES (?,?)";
+        $SQL = "SELECT * FROM marca WHERE nombre = :nombre";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null,$nombre]);
+        $preparado->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        $preparado->execute();
 
-        return $preparado;
+        $marca = $preparado->fetch(PDO::FETCH_ASSOC);
+
+        if(!$marca){
+            $SQL = "INSERT INTO marca VALUES (?,?)";
+            $resultado = $conexion->prepare($SQL);
+            $resultado->execute([null,$nombre]);
+            return $resultado;
+
+        }else{
+            echo "<script>alert('La Marca ya está registrada')</script>";
+        }
     }
     
     //Modificar
