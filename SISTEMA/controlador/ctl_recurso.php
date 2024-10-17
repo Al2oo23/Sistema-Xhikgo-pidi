@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../modelo/conexion.php');
 include('../modelo/clase_recurso.php');
 $recurso = new recurso();

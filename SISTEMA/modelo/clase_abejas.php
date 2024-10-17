@@ -179,6 +179,17 @@ class Abejas{
         $preparado->execute([null,$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
         $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro]);
         
+         // BITACORA
+                // Fecha y hora actual
+                $fecha = date('Y-m-d H:i:s');
+            
+                // Preparar la consulta SQL
+                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
+                $resultado2 = $conexion->prepare($sql);
+
+                // Ejecutar la consulta
+                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró Abejas", $fecha]);
+
 
         // $SQL = "INSERT INTO mantenimiento VALUES (?,?,?,?,?)";
         // $preparado = $conexion->prepare($SQL);
@@ -199,6 +210,17 @@ class Abejas{
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
         $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $id]);
+
+         // BITACORA
+                // Fecha y hora actual
+                $fecha = date('Y-m-d H:i:s');
+            
+                // Preparar la consulta SQL
+                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
+                $resultado2 = $conexion->prepare($sql);
+
+                // Ejecutar la consulta
+                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Modificó Abejas", $fecha]);
 
         return $preparado;
     }

@@ -599,6 +599,16 @@ class incendio
         $valor_asegurado, $valor_perdido, $valor_salvado, $fuente_ignicion, $causa_incendio,
         $lugar_inicio, $lugar_fin, $reignicion, $tipo_combustible, $declaracion, $lesionados, $num_lesionados, $datos_lesionados, $jefe_comision, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $observaciones]);
 
+         // BITACORA
+                // Fecha y hora actual
+                $fecha = date('Y-m-d H:i:s');
+            
+                // Preparar la consulta SQL
+                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
+                $resultado2 = $conexion->prepare($sql);
+
+                // Ejecutar la consulta
+                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró Incendio", $fecha]);
 
         // $SQL = "INSERT INTO mantenimiento VALUES (?,?,?,?,?)";
         // $preparado = $conexion->prepare($SQL);
@@ -618,6 +628,17 @@ class incendio
 
         $preparado->execute([$fecha, $seccion, $estacion, $tipo_aviso, $solicitante, $receptor, $aprobador, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, $municipio, $localidad, $direccion, $paredes, $techo, $piso, $ventanas, $puertas, $otros_materiales, $propietario, $valor_inmueble, $num_residenciados, $ninos, $adolescentes, $adultos, $info_adicional, $asegurado, $aseguradora, $num_poliza, $valor_asegurado, $valor_perdido, $valor_salvado, $fuente_ignicion, $causa_incendio, $lugar_inicio, $lugar_fin, $reignicion, $tipo_combustible, $declaracion, $lesionados, $num_lesionados, $datos_lesionados, $jefe_comision, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $observaciones, $id]);
     
+         // BITACORA
+                // Fecha y hora actual
+                $fecha = date('Y-m-d H:i:s');
+            
+                // Preparar la consulta SQL
+                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
+                $resultado2 = $conexion->prepare($sql);
+
+                // Ejecutar la consulta
+                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Modicó Incendio", $fecha]);
+
         return $preparado;
     }
 

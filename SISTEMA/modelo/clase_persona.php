@@ -112,6 +112,18 @@ class Persona{
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([$cedula, $nombre, $edad, $correo, $telefono, $direccion, $genero, $tpersona, $cargo, $seccion, $estacion, $estado]);
 
+          // BITACORA
+
+                // Fecha y hora actual
+                $fecha = date('Y-m-d H:i:s');
+            
+                // Preparar la consulta SQL
+                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
+                $resultado2 = $conexion->prepare($sql);
+
+                // Ejecutar la consulta
+                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró Persona".$cedula, $fecha]);
+
         return $preparado;
     }
 
@@ -123,6 +135,19 @@ class Persona{
         seccion = ?, estacion = ?, estado = ? WHERE cedula = ?";
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([$nombre, $edad, $correo, $telefono, $direccion, $genero, $tpersona, $cargo, $seccion, $estacion, $estado, $cedula]);
+
+          // BITACORA
+
+                // Fecha y hora actual
+                $fecha = date('Y-m-d H:i:s');
+            
+                // Preparar la consulta SQL
+                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
+                $resultado2 = $conexion->prepare($sql);
+
+                // Ejecutar la consulta
+                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Modificó Persona".$nombre, $fecha]);
+
 
         return $preparado;
     }

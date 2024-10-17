@@ -97,6 +97,18 @@ class Vehiculo{
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([$niv, $tipo, $unidad, $marca, $modelo, $serial, $cilindrada, $carburante, $seguro, $propietario]);
 
+         // BITACORA
+                // Fecha y hora actual
+                $fecha = date('Y-m-d H:i:s');
+            
+                // Preparar la consulta SQL
+                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
+                $resultado2 = $conexion->prepare($sql);
+
+                // Ejecutar la consulta
+                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró Vehiculo".$niv, $fecha]);
+
+
         return $preparado;
     }
 
@@ -108,6 +120,18 @@ class Vehiculo{
         carburante = ?, seguro = ?, cedula = ? WHERE niv = ?";
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([$tipo, $unidad, $marca, $modelo, $serial, $cilindrada, $carburante, $seguro, $propietario, $niv]);
+
+         // BITACORA
+                // Fecha y hora actual
+                $fecha = date('Y-m-d H:i:s');
+            
+                // Preparar la consulta SQL
+                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
+                $resultado2 = $conexion->prepare($sql);
+
+                // Ejecutar la consulta
+                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Modifico Vehiculo".$tipo, $fecha]);
+
     
         return $preparado;
     }

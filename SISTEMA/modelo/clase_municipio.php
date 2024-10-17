@@ -67,21 +67,36 @@ class municipio{
     public function modificarMunicipio($id, $nombre, $codigo){
         include("conexion.php");
 
-        // $SQL = "SELECT * FROM municipio WHERE nombre = :nombre";
-        // $preparado = $conexion->prepare($SQL);
-        // $preparado->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-        // $preparado->execute();
 
-        // $municipio = $preparado->fetch(PDO::FETCH_ASSOC);
 
-        // if(!$municipio){
+        $SQL = "SELECT * FROM municipio WHERE nombre = :nombre";
+         $preparado = $conexion->prepare($SQL);
+         $preparado->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+         $preparado->execute();
+
+         $municipio = $preparado->fetch(PDO::FETCH_ASSOC);
+
+         if(!$municipio){
+
             $SQL = "UPDATE municipio SET nombre = ?, codigo = ? WHERE id = ?";
             $resultado = $conexion->prepare($SQL);
             $resultado->execute([$nombre, $codigo, $id]);
+
+             // BITACORA
+
+                // Fecha y hora actual
+                $fecha = date('Y-m-d H:i:s');
+            
+                // Preparar la consulta SQL
+                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
+                $resultado2 = $conexion->prepare($sql);
+
+                // Ejecutar la consulta
+                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Modificó  Municipio ".$nombre." el día ",$fecha]);
             return $resultado;
-        // }else{
-        //     echo "<script>alert('El Nombre Municipio ya existe')</script>";
-        // }
+         }else{
+             echo "<script>alert('El Nombre Municipio ya existe')</script>";
+         }
 
         
     }
