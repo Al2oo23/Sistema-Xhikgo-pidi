@@ -1,10 +1,11 @@
 <?php
-require_once '../dompdf/autoload.inc.php';
 require_once '../../modelo/conexion.php';
 
-$stmt = $conexion->prepare("SELECT * FROM vehiculo v INNER JOIN persona p ON v.cedula = p.cedula");
+// Crear variable
+
+$stmt = $conexion->prepare("SELECT * FROM unidad_asignada");
 $stmt->execute();
-$vehiculo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$unidad = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
     $path = 'imagenes/logo_bomberos.jpg';
@@ -29,7 +30,7 @@ $vehiculo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <head>
             <meta charset="UTF-8">
-            <title>Reporte de Vehiculo</title>
+            <title>Reporte de Mantenimiento</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -74,37 +75,23 @@ $vehiculo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <img align="left" src="<?=$logo?>" style="margin-left:-30px; margin-top:-10px;" alt="Logo de la Institución" width="150px" height="100px">
          
             <h2 align="center" >Cuerpo Autonomo de Bomberos de Yaracuy</h2>
-            <h2 align="center">Reporte de Vehiculo</h2>
+            <h2 align="center">Reporte de Mantenimiento</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>NIV</th>
-                        <th>Tipo</th>
+                        <th>ID</th>
                         <th>N° Unidad</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Serial</th>
-                        <th>Cilindrada</th>
-                        <th>Carburante</th>
-                        <th>Seguro</th>
-                        <th>CI Propietario</th>
-                        <th>Nombre</th>
+                        <th>Incidente Previo</th>
+                        <th>Estado Del Mantenimiento</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($vehiculo as $vehic) : ?>
+                    <?php foreach ($unidad as $unidad) : ?>
                         <tr>
-                            <td><?= $vehic['niv'] ?></td>
-                            <td><?= $vehic['tipo'] ?></td>
-                            <td><?= $vehic['unidad'] ?></td>
-                            <td><?= $vehic['marca'] ?></td>
-                            <td><?= $vehic['modelo'] ?></td>
-                            <td><?= $vehic['serial_vehiculo'] ?></td>
-                            <td><?= $vehic['cilindrada'] ?></td>
-                            <td><?= $vehic['carburante'] ?></td>
-                            <td><?= $vehic['seguro'] ?></td>
-                            <td><?= $vehic['cedula'] ?></td>
-                            <td><?= $vehic['nombre'] ?></td>
+                            <td><?=$unidad["id"]?></td>
+                            <td><?=$unidad["niv"]?></td>
+                            <td><?=$unidad["tipo_incidente"]?></td>
+                            <td>Pendiente</td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -135,9 +122,9 @@ $dompdf->setOptions($options);
 
 $dompdf->loadHtml($html);
 
-// $dompdf->setPaper( 'letter');
+$dompdf->setPaper( 'letter');
 
-$dompdf->setPaper('A4', 'landscape');
+// $dompdf->setPaper('A4', 'landscape');
 
 $dompdf->render();
 

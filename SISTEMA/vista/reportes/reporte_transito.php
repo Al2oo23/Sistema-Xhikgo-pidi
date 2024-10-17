@@ -1,48 +1,36 @@
 <?php
-require_once '../dompdf/autoload.inc.php';
 require_once '../../modelo/conexion.php';
 
-use Dompdf\Dompdf;
+// Crear variable
 
-try {
-    // Obtener filtros del formulario
-    $filtro_fecha = isset($_POST['fecha_transito_buscador']) ? '%' . $_POST['fecha_transito_buscador'] . '%' : '%';
-    $filtro_seccion = isset($_POST['seccion_transito_buscador']) ? '%' . $_POST['seccion_transito_buscador'] . '%' : '%';
-    $filtro_estacion = isset($_POST['estacion_transito_buscador']) ? '%' . $_POST['estacion_transito_buscador'] . '%' : '%';
-    $filtro_emergencia = isset($_POST['emergencia_transito_buscador']) ? '%' . $_POST['emergencia_transito_buscador'] . '%' : '%';
-    $filtro_inspeccion = isset($_POST['inspeccion_transito_buscador']) ? '%' . $_POST['inspeccion_transito_buscador'] . '%' : '%';
-    $filtro_incidente = isset($_POST['tipo_incidente_transito_buscador']) ? '%' . $_POST['tipo_incidente_transito_buscador'] . '%' : '%';
-    $filtro_vehiculo = isset($_POST['vehiculo_transito_buscador']) ? '%' . $_POST['vehiculo_transito_buscador'] . '%' : '%';
-    $filtro_occisos = isset($_POST['occisos_transito_buscador']) ? '%' . $_POST['occisos_transito_buscador'] . '%' : '%';
-    $filtro_incendio = isset($_POST['incendio_transito_buscador']) ? '%' . $_POST['incendio_transito_buscador'] . '%' : '%';
+$stmt = $conexion->prepare("SELECT * FROM transito");
+$stmt->execute();
+$transito = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+    $path = 'imagenes/logo_bomberos.jpg';
+    $logo = "data:image/jpg;base64," . base64_encode(file_get_contents($path));
+
+    $path2 = 'imagenes/firma.jpg';
+    $firma = "data:image/jpg;base64," . base64_encode(file_get_contents($path2));
+    ob_start(); // Iniciar el buffer de salida
+// 
+
+// 
+
+// 
 
     // Preparar y ejecutar la consulta SQL con los filtros aplicados
-    $stmt = $conexion->prepare("SELECT * FROM transito WHERE fecha LIKE :fecha AND seccion LIKE :seccion AND estacion LIKE :estacion AND emergencia LIKE :emergencia AND inspeccion LIKE :inspeccion AND incidente LIKE :incidente AND vehiculo LIKE :vehiculo AND occisos LIKE :occisos AND incendio LIKE :incendio");
-    $stmt->bindParam(':fecha', $filtro_fecha, PDO::PARAM_STR);
-    $stmt->bindParam(':seccion', $filtro_seccion, PDO::PARAM_STR);
-    $stmt->bindParam(':estacion', $filtro_estacion, PDO::PARAM_STR);
-    $stmt->bindParam(':emergencia', $filtro_emergencia, PDO::PARAM_STR);
-    $stmt->bindParam(':inspeccion', $filtro_inspeccion, PDO::PARAM_STR);
-    $stmt->bindParam(':incidente', $filtro_incidente, PDO::PARAM_STR);
-    $stmt->bindParam(':vehiculo', $filtro_vehiculo, PDO::PARAM_STR);
-    $stmt->bindParam(':occisos', $filtro_occisos, PDO::PARAM_STR);
-    $stmt->bindParam(':incendio', $filtro_incendio, PDO::PARAM_STR);
-    $stmt->execute();
-    $transito = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   
 
-    // Función para generar el contenido HTML del reporte de Transito
-    function generarHTMLReporteTransito($datosTransito)
-    {
-        ob_start(); // Iniciar el buffer de salida
-
-        // Construir el HTML del reporte de Transito
+        // Construir el HTML del reporte de municipio
 ?>
-        <!DOCTYPE html>
+      <!DOCTYPE html>
         <html lang="es">
 
         <head>
             <meta charset="UTF-8">
-            <title>Reporte de Incidente de Transito</title>
+            <title>Reporte de Incendio</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -55,9 +43,11 @@ try {
                     margin-bottom: 20px;
                 }
 
-                .logo {
-                    text-align: center;
-                    margin-bottom: 20px;
+                .linea{
+                    width: 90%;
+                    border: 0.5px solid black;
+                    margin: auto;
+                    margin-top: 30px;
                 }
 
                 table {
@@ -81,100 +71,82 @@ try {
         </head>
 
         <body>
-            <div class="logo">
-                <img src="../img/logo_bomberos-removebg.png" alt="Logo de la Institución" width="150">
-            </div>
-            <h1>Cuerpo Autonomo de Bomberos</h1>
-            <h2>Reporte de Transito</h2>
+            
+                <img align="left" src="<?=$logo?>" style="margin-left:-30px; margin-top:-10px;" alt="Logo de la Institución" width="150px" height="100px">
+         
+            <h2 align="center" >Cuerpo Autonomo de Bomberos de Yaracuy</h2>
+            <h2 align="center">Reporte de Transito</h2>
             <table>
                 <thead>
-                    <tr style="text-align: center;">
-                        <th class="columnas">ID</th>
-                        <th class="columnas">Fecha</th>
-                        <th class="columnas">Sección</th>
-                        <th class="columnas">Estación</th>
-                        <th class="columnas">Emergencia</th>
-                        <th class="columnas">Inspección</th>
-                        <th class="columnas">Tipo Incidente</th>
-                        <th class="columnas">Tipo de Aviso</th>
-                        <th class="columnas">Solicitante</th>
-                        <th class="columnas">Recibidor</th>
-                        <th class="columnas">Aviso</th>
-                        <th class="columnas">Salida</th>
-                        <th class="columnas">Llegada</th>
-                        <th class="columnas">Regreso</th>
-                        <th class="columnas">Vehiculo</th>
-                        <th class="columnas">Lesionados</th>
-                        <th class="columnas">Occisos</th>
-                        <th class="columnas">Observaciones</th>
-                        <th class="columnas">Incendio</th>
-                        <th class="columnas">Recursos</th>
-                        <th class="columnas">Cantidad</th>
-                        <th class="columnas">Jefe Comisión</th>
-                        <th class="columnas">Efectivos</th>
-                        <th class="columnas">Unidad</th>
-                        <th class="columnas">PNB</th>
-                        <th class="columnas">GNB</th>
-                        <th class="columnas">INTT</th>
-                        <th class="columnas">INVITY</th>
-                        <th class="columnas">PC</th>
-                        <th class="columnas">Otros</th>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha</th>
+                        <th>Seccion</th>
+                        <th>Emergencia</th>
+                        <th>Inspeccion</th>
+                        <th>Tipo de Incidente</th>
+                        <th>Occisos</th>
+                        <th>Incendio</th>
+                        <th>CI_PNB</th>
+                        <th>CI_GNB</th>
+                        <th>CI_INTT</th>
+                        <th>CI_INVITY</th>
+                        <th>CI_PC</th>
+                        <th>CI_OTRO</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($datosTransito as $transito) : ?>
-
+                    <?php foreach ($transito as $carro) : ?>
                         <tr>
-                            <td class="columnas"><?= $transito['id'] ?></td>
-                            <td class="columnas"><?= $transito['fecha'] ?></td>
-                            <td class="columnas"><?= $transito['seccion'] ?></td>
-                            <td class="columnas"><?= $transito['estacion'] ?></td>
-                            <td class="columnas"><?= $transito['emergencia'] ?></td>
-                            <td class="columnas"><?= $transito['inspeccion'] ?></td>
-                            <td class="columnas"><?= $transito['incidente'] ?></td>
-                            <td class="columnas"><?= $transito['taviso'] ?></td>
-                            <td class="columnas"><?= $transito['solicitante'] ?></td>
-                            <td class="columnas"><?= $transito['recibidor'] ?></td>
-                            <td class="columnas"><?= $transito['aviso'] ?></td>
-                            <td class="columnas"><?= $transito['salida'] ?></td>
-                            <td class="columnas"><?= $transito['llegada'] ?></td>
-                            <td class="columnas"><?= $transito['regreso'] ?></td>
-                            <td class="columnas"><?= $transito['vehiculo'] ?></td>
-                            <td class="columnas"><?= $transito['lesionados'] ?></td>
-                            <td class="columnas"><?= $transito['occisos'] ?></td>
-                            <td class="columnas"><?= $transito['observaciones'] ?></td>
-                            <td class="columnas"><?= $transito['incendio'] ?></td>
-                            <td class="columnas"><?= $transito['recurso'] ?></td>
-                            <td class="columnas"><?= $transito['cantidad'] ?></td>
-                            <td class="columnas"><?= $transito['jefe'] ?></td>
-                            <td class="columnas"><?= $transito['efectivo'] ?></td>
-                            <td class="columnas"><?= $transito['unidad'] ?></td>
-                            <td class="columnas"><?= $transito['pnb'] ?></td>
-                            <td class="columnas"><?= $transito['gnb'] ?></td>
-                            <td class="columnas"><?= $transito['intt'] ?></td>
-                            <td class="columnas"><?= $transito['invity'] ?></td>
-                            <td class="columnas"><?= $transito['pc'] ?></td>
-                            <td class="columnas"><?= $transito['otros'] ?></td>
+                            <td><?= $carro['id'] ?></td>
+                            <td><?= $carro['fecha']; ?></td>
+                            <td><?= $carro['seccion']; ?></td>
+                            <td><?= $carro['emergencia']; ?></td>
+                            <td><?= $carro['inspeccion']; ?></td>
+                            <td><?= $carro['incidente']; ?></td>
+                            <td><?= $carro['occisos']; ?></td>
+                            <td><?= $carro['incendio']; ?></td>
+                            <td><?php if(!isset($carro["pnb"])){ echo $carro["pnb"];}else{echo "Ninguno";}?></td>
+                            <td><?php if(!isset($carro["gnb"])){ echo $carro["gnb"];}else{echo "Ninguno";}?></td>
+                            <td><?php if(!isset($carro["intt"])){ echo $carro["intt"];}else{echo "Ninguno";}?></td>
+                            <td><?php if(!isset($carro["invity"])){ echo $carro["invity"];}else{echo "Ninguno";}?></td>
+                            <td><?php if(!isset($carro["pc"])){ echo $carro["pc"];}else{echo "Ninguno";}?></td>
+                            <td><?php if(!isset($carro["otros"])){ echo $carro["otros"];}else{echo "Ninguno";}?></td>
                         </tr>
-
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <h3 align="center" style="margin-top: 50px;">Directivo: Aldo Tortolani</h3>
+            <div align="center"> <img src="<?=$firma?>" alt="Logo de la Institución" width="150px" height="100px"></div>
+           
+            <div class="linea">
+
+           </div>
         </body>
 
         </html>
 <?php
 
-        return ob_get_clean(); // Obtener y limpiar el contenido del buffer
-    }
+        $html = ob_get_clean(); // Obtener y limpiar el contenido del buffer
 
-    // Configurar Dompdf
-    $dompdf = new Dompdf();
-    $dompdf->loadHtml(generarHTMLReporteTransito($transito));
-    $dompdf->setPaper('A0', 'portrait');
-    $dompdf->render();
-    $dompdf->stream('reporte_transito.pdf', array('Attachment' => 0));
-} catch (PDOException $e) {
-    die("Error en la conexión: " . $e->getMessage());
-}
+require_once "../dompdf/autoload.inc.php";
+
+use Dompdf\Dompdf;
+$dompdf = new Dompdf();
+
+$options = $dompdf->getOptions();
+
+$options->set(array('isRemoteEnabled' => true));
+
+$dompdf->setOptions($options);
+
+$dompdf->loadHtml($html);
+
+// $dompdf->setPaper( 'letter');
+
+$dompdf->setPaper('A2', 'landscape');
+
+$dompdf->render();
+
+$dompdf->stream("locales.pdf", array("Attachment" => false));
 ?>

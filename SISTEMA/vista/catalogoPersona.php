@@ -21,37 +21,18 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form id="buscador-form">
+               
                     <div class="form-group has-icon-left">
                         <div class="position-relative col-4">
                             <select class="form-select" name="id_criterio" id="id_criterio"
                                 style="width:200px; display:inline-block;">
-                                <option value="">Seleccionar Criterio...</option>
-                                <?php foreach ($criterios as $criterio): ?>
-                                    <option value="<?= $criterio['id']; ?>"><?= $criterio['nombre']; ?></option>
-                                <?php endforeach; ?>
+                                
                             </select>
-                            <button type="button" class="btn btn-primary"><a href="criterioPersona.php"
-                                    style="text-decoration: none; color:white;">Criterio de Persona</a></button>
+                            <a href="reportes/reporte_persona.php" class="btn btn-primary" style="text-decoration: none;
+                                    color:white;">Generar Reporte</a>
                         </div>
                     </div>
-                    <input type="submit" value="Buscar" id="buscar" class="btn btn-primary">
-                    <button type="button" id="limpiar" class="btn btn-danger">Limpiar</button>
-                </form>
-                <form>
-                    <div class="col-4">
-                        <div class="form-group has-icon-left">
-                            <div class="position-relative">
-                                <select name="tamano" class="form-select" id="tamano" onchange="cambiarTamano()">
-                                    <option value="pequeno">Pequeño</option>
-                                    <option value="mediano">Mediano</option>
-                                    <option value="grande">Grande</option>
-                                    <option value="extragrande" selected>Extra Grande</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+               
             </div>
         </div>
     </div>

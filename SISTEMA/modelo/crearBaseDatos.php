@@ -28,6 +28,15 @@ try {
     $conexion = new PDO ("mysql:host=$servidor;dbname=$baseDatos",$userMySQL,$passwordMySQL);   
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    //------------------ BITACORA ------------------
+    $SQL = "CREATE TABLE IF NOT EXISTS bitacora (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        usuario VARCHAR(225) NOT NULL,
+        accion VARCHAR(225) NOT NULL,
+        fecha DATETIME NOT NULL
+        )";
+        $conexion->exec($SQL);
+
  //------------------ INSTITUCION ------------------
     $SQL = "CREATE TABLE IF NOT EXISTS institucion (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -268,19 +277,6 @@ try {
         estado VARCHAR(20) NOT NULL
     )";
     $conexion->exec($SQL);
-
-    
-    //------------------ Historial------------------
-
-    $SQL = "CREATE TABLE IF NOT EXISTS historial (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        unidad INT(100) NOT NULL,
-        incidente VARCHAR(20) NOT NULL,
-        fecha VARCHAR(100) NOT NULL
-    )";
-    $conexion->exec($SQL);
-
-
 
         //-------------- ABEJAS ----------------------
 

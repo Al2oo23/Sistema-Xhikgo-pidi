@@ -1,48 +1,36 @@
 <?php
-require_once '../dompdf/autoload.inc.php';
 require_once '../../modelo/conexion.php';
 
-use Dompdf\Dompdf;
+// Crear variable
 
-try {
-    // Obtener filtros del formulario
-    $filtro_fecha = isset($_POST['fecha_abejas_buscador']) ? '%' . $_POST['fecha_abejas_buscador'] . '%' : '%';
-    $filtro_seccion = isset($_POST['seccion_abejas_buscador']) ? '%' . $_POST['seccion_abejas_buscador'] . '%' : '%';
-    $filtro_ubicacion = isset($_POST['ubicacion_abejas_buscador']) ? '%' . $_POST['ubicacion_abejas_buscador'] . '%' : '%';
-    $filtro_lugar = isset($_POST['lugar_abejas_buscador']) ? '%' . $_POST['lugar_abejas_buscador'] . '%' : '%';
-    $filtro_dueno = isset($_POST['dueno_abejas_buscador']) ? '%' . $_POST['dueno_abejas_buscador'] . '%' : '%';
-    $filtro_jefe = isset($_POST['jefe_abejas_buscador']) ? '%' . $_POST['jefe_abejas_buscador'] . '%' : '%';
-    $filtro_recurso = isset($_POST['recurso_abejas_buscador']) ? '%' . $_POST['recurso_abejas_buscador'] . '%' : '%';
-    $filtro_cantidad = isset($_POST['cantidad_abejas_buscador']) ? '%' . $_POST['cantidad_abejas_buscador'] . '%' : '%';
-    $filtro_efectivo = isset($_POST['efectivo_abejas_buscador']) ? '%' . $_POST['efectivo_abejas_buscador'] . '%' : '%';
+$stmt = $conexion->prepare("SELECT * FROM abejas");
+$stmt->execute();
+$abejas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+    $path = 'imagenes/logo_bomberos.jpg';
+    $logo = "data:image/jpg;base64," . base64_encode(file_get_contents($path));
+
+    $path2 = 'imagenes/firma.jpg';
+    $firma = "data:image/jpg;base64," . base64_encode(file_get_contents($path2));
+    ob_start(); // Iniciar el buffer de salida
+// 
+
+// 
+
+// 
 
     // Preparar y ejecutar la consulta SQL con los filtros aplicados
-    $stmt = $conexion->prepare("SELECT * FROM abejas WHERE fecha LIKE :fecha AND seccion LIKE :seccion AND panal LIKE :panal AND lugar LIKE :lugar AND inmueble LIKE :inmueble AND jefe LIKE :jefe AND recurso LIKE :recurso AND cantidad LIKE :cantidad AND efectivo LIKE :efectivo");
-    $stmt->bindParam(':fecha', $filtro_fecha, PDO::PARAM_STR);
-    $stmt->bindParam(':seccion', $filtro_seccion, PDO::PARAM_STR);
-    $stmt->bindParam(':panal', $filtro_ubicacion, PDO::PARAM_STR);
-    $stmt->bindParam(':lugar', $filtro_lugar, PDO::PARAM_STR);
-    $stmt->bindParam(':inmueble', $filtro_dueno, PDO::PARAM_STR);
-    $stmt->bindParam(':jefe', $filtro_jefe, PDO::PARAM_STR);
-    $stmt->bindParam(':recurso', $filtro_recurso, PDO::PARAM_STR);
-    $stmt->bindParam(':cantidad', $filtro_cantidad, PDO::PARAM_STR);
-    $stmt->bindParam(':efectivo', $filtro_efectivo, PDO::PARAM_STR);
-    $stmt->execute();
-    $abejas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   
 
-    // Función para generar el contenido HTML del reporte de persona
-    function generarHTMLReportePersona($datosAbejas)
-    {
-        ob_start(); // Iniciar el buffer de salida
-
-        // Construir el HTML del reporte de persona
+        // Construir el HTML del reporte de municipio
 ?>
-        <!DOCTYPE html>
+      <!DOCTYPE html>
         <html lang="es">
 
         <head>
             <meta charset="UTF-8">
-            <title>Reporte de Incidente de Abejas</title>
+            <title>Reporte de Servicios Especiales</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -55,9 +43,11 @@ try {
                     margin-bottom: 20px;
                 }
 
-                .logo {
-                    text-align: center;
-                    margin-bottom: 20px;
+                .linea{
+                    width: 90%;
+                    border: 0.5px solid black;
+                    margin: auto;
+                    margin-top: 30px;
                 }
 
                 table {
@@ -81,88 +71,94 @@ try {
         </head>
 
         <body>
-            <div class="logo">
-                <img src="../img/logo_bomberos-removebg.png" alt="Logo de la Institución" width="150">
-            </div>
-            <h1>Cuerpo Autonomo de Bomberos</h1>
-            <h2>Reporte de Abejas</h2>
+            
+                <img align="left" src="<?=$logo?>" style="margin-left:-30px; margin-top:-10px;" alt="Logo de la Institución" width="150px" height="100px">
+         
+            <h2 align="center" >Cuerpo Autonomo de Bomberos de Yaracuy</h2>
+            <h2 align="center">Reporte de Servicios Especiales</h2>
             <table>
-                        <thead>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Fecha</th>
+                        <th>Seccion</th>
+                        <th>Estacion</th>
+                        <th>Aviso</th>
+                        <th>Hora</th>
+                        <th>Salida</th>
+                        <th>Llegada</th>
+                        <th>Regreso</th>
+                        <th>Ubicacion</th>
+                        <th>Direccion</th>
+                        <th>Lugar</th>
+                        <th>Dueño Inmueble</th> 
+                        <th>Jefe</th> 
+                        <th>CI_PNB</th>
+                        <th>CI_GNB</th>
+                        <th>CI_INTT</th>
+                        <th>CI_INVITY</th>
+                        <th>CI_PC</th>
+                        <th>CI_OTRO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($abejas as $se) : ?>
                         <tr>
-                                <th>Id</th>
-                                <th>Fecha</th>
-                                <th>Seccion</th>
-                                <th>Estacion</th>
-                                <th>Tipo Aviso</th>
-                                <th>Hora Aviso</th>
-                                <th>Hora Salida</th>
-                                <th>Hora Llegada</th>
-                                <th>Hora Regreso</th>
-                                <th>Ubicacion</th>
-                                <th>Direccion</th>
-                                <th>Lugar</th>
-                                <th>Dueño Inmueble</th>
-                                <th>Jefe</th>
-                                <th>Recursos</th>
-                                <th>Cantidad</th>
-                                <th>Efectivo</th>
-                                <th>Unidad</th>
-                                <th>CI. PNB</th>
-                                <th>CI. GNB</th>
-                                <th>CI. INTT</th>
-                                <th>CI. INVITY</th>
-                                <th>CI. PC</th>
-                                <th>CI. OTRO</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                    <?php foreach ($datosAbejas as $abej) :?>
+                        <td><?= $se["id"]; ?></td>
+                        <td><?= $se["fecha"]; ?></td>
+                        <td><?= $se["seccion"]; ?></td>
+                        <td><?= $se["estacion"]; ?></td>
+                        <td><?= $se["aviso"]; ?></td>
+                        <td><?= $se["hora"]; ?></td>
+                        <td><?= $se["salida"]; ?></td>
+                        <td><?= $se["llegada"]; ?></td>
+                        <td><?= $se["regreso"]; ?></td>
+                        <td><?= $se["panal"]; ?></td>
+                        <td><?= $se["direccion"]; ?></td>
+                        <td><?= $se["lugar"]; ?></td>
+                        <td><?= $se["inmueble"]; ?></td>
+                        <td><?= $se["jefe"]; ?></td>
+                        <td><?php if(!isset($se["ci_pnb"])){ echo $se["ci_pnb"];}else{echo "Ninguno";}?></td>
+                        <td><?php if(!isset($se["ci_gnb"])){ echo $se["ci_gnb"];}else{echo "Ninguno";}?></td>
+                        <td><?php if(!isset($se["ci_intt"])){ echo $se["ci_intt"];}else{echo "Ninguno";}?></td>
+                        <td><?php if(!isset($se["ci_invity"])){ echo $se["ci_invity"];}else{echo "Ninguno";}?></td>
+                        <td><?php if(!isset($se["ci_pc"])){ echo $se["ci_pc"];}else{echo "Ninguno";}?></td>
+                        <td><?php if(!isset($se["ci_otro"])){ echo $se["ci_otro"];}else{echo "Ninguno";}?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            <h3 align="center" style="margin-top: 50px;">Directivo: Aldo Tortolani</h3>
+            <div align="center"> <img src="<?=$firma?>" alt="Logo de la Institución" width="150px" height="100px"></div>
+           
+            <div class="linea">
 
-                                    <tr>
-                                        <td><?=$abej["id"];?></td>
-                                        <td><?=$abej["fecha"];?></td>
-                                        <td><?=$abej["seccion"];?></td>
-                                        <td><?=$abej["estacion"];?></td>
-                                        <td><?=$abej["aviso"];?></td>
-                                        <td><?=$abej["hora"];?></td>
-                                        <td><?=$abej["salida"];?></td>
-                                        <td><?=$abej["llegada"];?></td>
-                                        <td><?=$abej["regreso"];?></td>
-                                        <td><?=$abej["panal"];?></td>
-                                        <td><?=$abej["direccion"];?></td>
-                                        <td><?=$abej["lugar"];?></td>
-                                        <td><?=$abej["inmueble"];?></td>
-                                        <td><?=$abej["jefe"];?></td>
-                                        <td><?=$abej["recurso"];?></td>
-                                        <td><?=$abej["cantidad"];?></td>
-                                        <td><?=$abej["efectivo"];?></td>
-                                        <td><?=$abej["unidad"];?></td>
-                                        <td><?=$abej["ci_pnb"];?></td>
-                                        <td><?=$abej["ci_gnb"];?></td>
-                                        <td><?=$abej["ci_intt"];?></td>
-                                        <td><?=$abej["ci_invity"];?></td>
-                                        <td><?=$abej["ci_pc"];?></td>
-                                        <td><?=$abej["ci_otro"];?></td>
-                                    </tr>
-
-                                   <?php endforeach; ?>
-                                </tbody>
-                    </table>
+           </div>
         </body>
 
         </html>
 <?php
 
-        return ob_get_clean(); // Obtener y limpiar el contenido del buffer
-    }
+        $html = ob_get_clean(); // Obtener y limpiar el contenido del buffer
 
-    // Configurar Dompdf
-    $dompdf = new Dompdf();
-    $dompdf->loadHtml(generarHTMLReportePersona($abejas));
-    $dompdf->setPaper('A2', 'landscape');
-    $dompdf->render();
-    $dompdf->stream('reporte_abejas.pdf', array('Attachment' => 0));
-} catch (PDOException $e) {
-    die("Error en la conexión: " . $e->getMessage());
-}
+require_once "../dompdf/autoload.inc.php";
+
+use Dompdf\Dompdf;
+$dompdf = new Dompdf();
+
+$options = $dompdf->getOptions();
+
+$options->set(array('isRemoteEnabled' => true));
+
+$dompdf->setOptions($options);
+
+$dompdf->loadHtml($html);
+
+// $dompdf->setPaper( 'letter');
+
+$dompdf->setPaper('A2', 'landscape');
+
+$dompdf->render();
+
+$dompdf->stream("locales.pdf", array("Attachment" => false));
 ?>

@@ -1,31 +1,29 @@
 <?php
-require_once '../dompdf/autoload.inc.php';
 require_once '../../modelo/conexion.php';
 
-use Dompdf\Dompdf;
+$stmt = $conexion->prepare("SELECT * FROM usuario");
+$stmt->execute();
+$usuario = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-try {
-    // Obtener filtros del formulario
-    $filtro_cedula = isset($_POST['cedula_usuario_buscador']) ? '%' . $_POST['cedula_usuario_buscador'] . '%' : '%';
-    $filtro_nombre = isset($_POST['nombre_usuario_buscador']) ? '%' . $_POST['nombre_usuario_buscador'] . '%' : '%';
-    $filtro_estado = isset($_POST['estado_usuario_buscador']) ? '%' . $_POST['estado_usuario_buscador'] . '%' : '%';
+
+    $path = 'imagenes/logo_bomberos.jpg';
+    $logo = "data:image/jpg;base64," . base64_encode(file_get_contents($path));
+
+    $path2 = 'imagenes/firma.jpg';
+    $firma = "data:image/jpg;base64," . base64_encode(file_get_contents($path2));
+    ob_start(); // Iniciar el buffer de salida
+// 
+
+// 
+
+// 
 
     // Preparar y ejecutar la consulta SQL con los filtros aplicados
-    $stmt = $conexion->prepare("SELECT * FROM usuario WHERE cedula LIKE :cedula AND nombre LIKE :nombre AND estado LIKE :estado");
-    $stmt->bindParam(':cedula', $filtro_cedula, PDO::PARAM_STR);
-    $stmt->bindParam(':nombre', $filtro_nombre, PDO::PARAM_STR);
-    $stmt->bindParam(':estado', $filtro_estado, PDO::PARAM_STR);
-    $stmt->execute();
-    $usuario = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   
 
-    // Función para generar el contenido HTML del reporte de Usuario
-    function generarHTMLReporteUsuario($datosUsuario)
-    {
-        ob_start(); // Iniciar el buffer de salida
-
-        // Construir el HTML del reporte de Usuario
+        // Construir el HTML del reporte de municipio
 ?>
-        <!DOCTYPE html>
+      <!DOCTYPE html>
         <html lang="es">
 
         <head>
@@ -43,9 +41,11 @@ try {
                     margin-bottom: 20px;
                 }
 
-                .logo {
-                    text-align: center;
-                    margin-bottom: 20px;
+                .linea{
+                    width: 90%;
+                    border: 0.5px solid black;
+                    margin: auto;
+                    margin-top: 30px;
                 }
 
                 table {
@@ -69,50 +69,68 @@ try {
         </head>
 
         <body>
-            <div class="logo">
-                <img src="../img/logo_bomberos-removebg.png" alt="Logo de la Institución" width="150">
-            </div>
-            <h1>Cuerpo Autonomo de Bomberos</h1>
-            <h2>Reporte de Usuario</h2>
+            
+                <img align="left" src="<?=$logo?>" style="margin-left:-30px; margin-top:-10px;" alt="Logo de la Institución" width="150px" height="100px">
+         
+            <h2 align="center" >Cuerpo Autonomo de Bomberos de Yaracuy</h2>
+            <h2 align="center">Reporte de Usuario</h2>
             <table>
                 <thead>
                     <tr>
                         <th>Cedula</th>
                         <th>Nombre</th>
-                        <th>Clave</th>
+                        <th>clave</th>
+                        <th>Estado</th>
                         <th>Pregunta</th>
                         <th>Respuesta</th>
-                        <th>Estado</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($datosUsuario as $usuario) : ?>
+                    <?php foreach ($usuario as $usu) : ?>
                         <tr>
-                            <td><?= $usuario['cedula']; ?></td>
-                            <td><?= $usuario['nombre']; ?></td>
-                            <td><?= $usuario['clave']; ?></td>
-                            <td><?= $usuario['pregunta']; ?></td>
-                            <td><?= $usuario['respuesta']; ?></td>
-                            <td><?= $usuario['estado']; ?></td>
+                            <td><?= ($usu['cedula']) ?></td>
+                            <td><?= ($usu['nombre']) ?></td>
+                            <td><?= ($usu['clave']) ?></td>
+                            <td><?= ($usu['estado']) ?></td>
+                            <td><?= ($usu['pregunta']) ?></td>
+                            <td><?= ($usu['respuesta']) ?></td>
+                           
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <h3 align="center" style="margin-top: 50px;">Directivo: Aldo Tortolani</h3>
+            <div align="center"> <img src="<?=$firma?>" alt="Logo de la Institución" width="150px" height="100px"></div>
+           
+            <div class="linea">
+
+           </div>
         </body>
 
         </html>
 <?php
 
-        return ob_get_clean(); // Obtener y limpiar el contenido del buffer
-    }
+        $html = ob_get_clean(); // Obtener y limpiar el contenido del buffer
 
-    // Configurar Dompdf
-    $dompdf = new Dompdf();
-    $dompdf->loadHtml(generarHTMLReporteUsuario($usuario));
-    $dompdf->setPaper('A4', 'portrait');
-    $dompdf->render();
-    $dompdf->stream('reporte_usuario.pdf', array('Attachment' => 0));
-} catch (PDOException $e) {
-    die("Error en la conexión: " . $e->getMessage());
-}
+require_once "../dompdf/autoload.inc.php";
+
+use Dompdf\Dompdf;
+$dompdf = new Dompdf();
+
+$options = $dompdf->getOptions();
+
+$options->set(array('isRemoteEnabled' => true));
+
+$dompdf->setOptions($options);
+
+$dompdf->loadHtml($html);
+
+// $dompdf->setPaper( 'letter');
+
+$dompdf->setPaper('A4', 'landscape');
+
+$dompdf->render();
+
+$dompdf->stream("locales.pdf", array("Attachment" => false));
 ?>

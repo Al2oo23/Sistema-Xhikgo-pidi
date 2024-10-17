@@ -133,7 +133,7 @@ include ("modal/modalIncendioM.php");
                                 <th class="columnas" hidden>Hora Llegada</th>
                                 <th class="columnas" hidden>Hora Regreso</th>
                                 <th class="columnas">Municipio</th>
-                                <th class="columnas">Localidad</th>
+                                <th class="columnas">Lugar</th>
                                 <th class="columnas" hidden>Direccion</th>
                                 <th class="columnas" hidden>Paredes</th>
                                 <th class="columnas" hidden>Techo</th>

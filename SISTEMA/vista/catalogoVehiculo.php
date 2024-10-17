@@ -116,13 +116,13 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                     <thead>
                         <tr style="text-align: center;">
                             <th class="columna">NIV</th>
-                            <th class="columna" hidden>Tipo</th>
+                            <th class="columna">Tipo</th>
                             <th class="columna">N° Unidad</th>
                             <th class="columna">Marca</th>
                             <th class="columna">Modelo</th>
                             <th class="columna">Serial</th>
-                            <th class="columna">Cilindrada</th>
-                            <th class="columna">Carburante</th>
+                            <th class="columna" hidden>Cilindrada</th>
+                            <th class="columna" hidden>Carburante</th>
                             <th class="columna">Seguro</th>
                             <th class="columna">CI Propietario</th>
                             <th class="columna">Nombre</th>
@@ -133,13 +133,13 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                         <?php foreach ($resultado as $vehiculo): ?>
                             <tr class="fila">
                                 <td class="columna"><?= $vehiculo['niv'] ?></td>
-                                <td class="columna" hidden><?= $vehiculo['tipo'] ?></td>
+                                <td class="columna"><?= $vehiculo['tipo'] ?></td>
                                 <td class="columna"><?= $vehiculo['unidad'] ?></td>
                                 <td class="columna"><?= $vehiculo['marca'] ?></td>
                                 <td class="columna"><?= $vehiculo['modelo'] ?></td>
                                 <td class="columna"><?= $vehiculo['serial_vehiculo'] ?></td>
-                                <td class="columna"><?= $vehiculo['cilindrada'] ?></td>
-                                <td class="columna"><?= $vehiculo['carburante'] ?></td>
+                                <td class="columna" hidden><?= $vehiculo['cilindrada'] ?></td>
+                                <td class="columna" hidden><?= $vehiculo['carburante'] ?></td>
                                 <td class="columna"><?= $vehiculo['seguro'] ?></td>
                                 <td class="columna"><?= $vehiculo['cedula'] ?></td>
                                 <td class="columna"><?= $vehiculo['nombre'] ?></td>

@@ -10,30 +10,36 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="col-9 m-auto" id="catalogo">
     <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Buscador</h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                
+                            <div class="col-md-12 form-group d-flex justify-content-end">
+                            
+                            <a href="reportes/reporte_HDO.php" class="btn btn-primary" style="text-decoration: none;
+                                    color:white;">Generar Reporte</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+<div class="col-9 m-auto" id="catalogo">
+    <div class="card">
         <div class="card-content">
             <div class="card-header">
                 <h4 class="card-title">Historico de Operaciones</h4>
             </div>
             <!-- table hover -->
             <div class="table-responsive">
-                <form>
-                    <div class="col-4">
-                        <div class="form-group has-icon-left">
-                            <div class="position-relative">
-                                <select name="tamano" class="form-select" id="tamano" onchange="cambiarTamano()">
-                                    <option value="pequeno">Pequeño</option>
-                                    <option value="mediano">Mediano</option>
-                                    <option value="grande" selected>Grande</option>
-                                    <option value="extragrande">Extra Grande</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+
                 <table class="table table-hover mb-0">
                     <thead>
                         <tr style="text-align: center;">
-                            <th class="columna">Incidente</th>
+                            <th class="columna">ID Incidente</th>
                             <th class="columna">Tipo de Incidente</th>
                             <th class="columna">Cedula</th>
                             <th class="columna">Nombre</th>

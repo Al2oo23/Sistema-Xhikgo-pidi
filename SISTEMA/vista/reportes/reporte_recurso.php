@@ -2,35 +2,34 @@
 require_once '../dompdf/autoload.inc.php';
 require_once '../../modelo/conexion.php';   
 
-use Dompdf\Dompdf;
+$stmt = $conexion->prepare("SELECT * FROM recurso");
+$stmt->execute();
+$recurso = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-try {
-    // Obtener filtros del formulario
-    $filtro_nombre = isset($_POST['nombre_recurso_buscador']) ? '%' . $_POST['nombre_recurso_buscador'] . '%' : '%';
-    $filtro_tipo = isset($_POST['tipo_recurso_buscador']) ? '%' . $_POST['tipo_recurso_buscador'] . '%' : '%';
-    $filtro_cantidad = isset($_POST['cantidad_recurso_buscador']) ? '%' . $_POST['cantidad_recurso_buscador'] . '%' : '%';
+
+    $path = 'imagenes/logo_bomberos.jpg';
+    $logo = "data:image/jpg;base64," . base64_encode(file_get_contents($path));
+
+    $path2 = 'imagenes/firma.jpg';
+    $firma = "data:image/jpg;base64," . base64_encode(file_get_contents($path2));
+    ob_start(); // Iniciar el buffer de salida
+// 
+
+// 
+
+// 
 
     // Preparar y ejecutar la consulta SQL con los filtros aplicados
-    $stmt = $conexion->prepare("SELECT * FROM recurso WHERE nombre LIKE :nombre AND tipo LIKE :tipo AND cantidad LIKE :cantidad");
-    $stmt->bindParam(':nombre', $filtro_nombre, PDO::PARAM_STR);
-    $stmt->bindParam(':tipo', $filtro_tipo, PDO::PARAM_STR);
-    $stmt->bindParam(':cantidad', $filtro_cantidad, PDO::PARAM_STR);
-    $stmt->execute();
-    $recurso = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   
 
-    // Función para generar el contenido HTML del reporte de recursos
-    function generarHTMLReporteRecurso($datosRecurso)
-    {
-        ob_start(); // Iniciar el buffer de salida
-
-        // Construir el HTML del reporte de recursos
+        // Construir el HTML del reporte de municipio
 ?>
-        <!DOCTYPE html>
+      <!DOCTYPE html>
         <html lang="es">
 
         <head>
             <meta charset="UTF-8">
-            <title>Reporte de Recursos</title>
+            <title>Reporte de Recurso</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -43,9 +42,11 @@ try {
                     margin-bottom: 20px;
                 }
 
-                .logo {
-                    text-align: center;
-                    margin-bottom: 20px;
+                .linea{
+                    width: 90%;
+                    border: 0.5px solid black;
+                    margin: auto;
+                    margin-top: 30px;
                 }
 
                 table {
@@ -69,46 +70,62 @@ try {
         </head>
 
         <body>
-            <div class="logo">
-                <img src="../img/logo_bomberos-removebg.png" alt="Logo de la Institución" width="150">
-            </div>
-            <h1>Cuerpo Autonomo de Bomberos</h1>
-            <h2>Reporte de Recursos</h2>
+            
+                <img align="left" src="<?=$logo?>" style="margin-left:-30px; margin-top:-10px;" alt="Logo de la Institución" width="150px" height="100px">
+         
+            <h2 align="center" >Cuerpo Autonomo de Bomberos de Yaracuy</h2>
+            <h2 align="center">Reporte de Recurso</h2>
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
-                        <th>Tipo</th>
+                        <th>Reutilidad</th>
                         <th>Cantidad</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($datosRecurso as $recurso) : ?>
+                    <?php foreach ($recurso as $rec) : ?>
                         <tr>
-                            <td><?= ($recurso['id']) ?></td>
-                            <td><?= ($recurso['nombre']) ?></td>
-                            <td><?= ($recurso['tipo']) ?></td>
-                            <td><?= ($recurso['cantidad']) ?></td>
+                            <td><?= ($rec['id']) ?></td>
+                            <td><?= ($rec['nombre']) ?></td>
+                            <td><?= ($rec['tipo']) ?></td>
+                            <td><?= ($rec['cantidad']) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <h3 align="center" style="margin-top: 50px;">Directivo: Aldo Tortolani</h3>
+            <div align="center"> <img src="<?=$firma?>" alt="Logo de la Institución" width="150px" height="100px"></div>
+           
+            <div class="linea">
+
+           </div>
         </body>
 
         </html>
 <?php
 
-        return ob_get_clean(); // Obtener y limpiar el contenido del buffer
-    }
+        $html = ob_get_clean(); // Obtener y limpiar el contenido del buffer
 
-    // Configurar Dompdf
-    $dompdf = new Dompdf();
-    $dompdf->loadHtml(generarHTMLReporteRecurso($recurso));
-    $dompdf->setPaper('A4', 'portrait');
-    $dompdf->render();
-    $dompdf->stream('reporte_recurso.pdf', array('Attachment' => 0));
-} catch (PDOException $e) {
-    die("Error en la conexión: " . $e->getMessage());
-}
+require_once "../dompdf/autoload.inc.php";
+
+use Dompdf\Dompdf;
+$dompdf = new Dompdf();
+
+$options = $dompdf->getOptions();
+
+$options->set(array('isRemoteEnabled' => true));
+
+$dompdf->setOptions($options);
+
+$dompdf->loadHtml($html);
+
+$dompdf->setPaper( 'letter');
+
+// $dompdf->setPaper('A4', 'landscape');
+
+$dompdf->render();
+
+$dompdf->stream("locales.pdf", array("Attachment" => false));
 ?>
