@@ -275,13 +275,35 @@
                                 </div>
                             </li>
 
-                            <?php if($datos["recurso"] == "si"):?>
-                            <li class="menu-item">
-                                <a href="catalogoRecursos.php" class='menu-link'>
-                                    <span><i class="bi bi-shield-fill-check"></i>Recurso</span>
-                                </a>    
+                           
+
+                            <li class="menu-item  has-sub">
+                                <a href="#" class='menu-link'>
+                                    <span><i class="bi bi-geo-alt-fill"></i>Recursos</span>
+                                </a>
+                                <div class="submenu ">
+                                    <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+                                    <div class="submenu-group-wrapper">
+
+
+                                        <ul class="submenu-group">
+
+                                            <?php if($datos["usuario"] == "si"):?>
+                                            <li class="submenu-item">
+                                                <a href="catalogoRecursos.php" class='submenu-link'>Nuevo Recurso</a>
+                                            </li>
+                                            <?php endif;?>
+
+                                            <?php if($datos["lugar"] == "si"):?>
+                                            <li class="submenu-item">
+                                                <a href="recursoAsignado.php" class='submenu-link'>Recursos Asignados</a>
+                                            </li>
+                                            <?php endif;?>
+
+                                        </ul>
+                                    </div>
+                                </div>
                             </li>
-                            <?php endif;?>
 
                             <?php if($datos["incidente"] == "si"):?>
                             <li class="menu-item has-sub">
@@ -320,6 +342,14 @@
 
                                     </div>
                                 </div>
+                            </li>
+                            <?php endif;?>
+
+                            <?php if($datos["recurso"] == "si"):?>
+                            <li class="menu-item">
+                                <a href="bitacora.php" class='menu-link'>
+                                    <span><i class="bi bi-shield-fill-check"></i>Bitacora</span>
+                                </a>    
                             </li>
                             <?php endif;?>
                         </ul>
