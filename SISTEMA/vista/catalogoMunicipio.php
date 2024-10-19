@@ -3,6 +3,7 @@ $nombrePagina = 'Catálogo de Municipio';
 require ('../header.php');
 include ('../modelo/conexion.php');
 
+
 $sentencia = $conexion->prepare("SELECT * FROM municipio");
 $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -48,11 +49,15 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </div>
                                 </form>
-                                <button type="submit" class="btn btn-primary">Generar PDF</button>
+                                <div>
+                                    <?php include ('modal/modalCriterio.php'); ?>
+                                    <button type="submit" class="btn btn-primary">Generar PDF</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </form>
+                
             </div>
         </div>
 
