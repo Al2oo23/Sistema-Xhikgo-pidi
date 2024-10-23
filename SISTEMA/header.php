@@ -347,6 +347,14 @@
 
                             <?php if($datos["recurso"] == "si"):?>
                             <li class="menu-item">
+                                <a href="catalogoRepresentacion.php" class='menu-link'>
+                                    <span><i class="bi bi-shield-fill-check"></i>Representación Institucional</span>
+                                </a>    
+                            </li>
+                            <?php endif;?>
+
+                            <?php if($datos["recurso"] == "si"):?>
+                            <li class="menu-item">
                                 <a href="bitacora.php" class='menu-link'>
                                     <span><i class="bi bi-shield-fill-check"></i>Bitacora</span>
                                 </a>    

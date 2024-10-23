@@ -281,6 +281,18 @@ if (isset($_GET['txtID'])) {
 	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoAbejas.php'>"; 
 }
 
+// GENERAR REPORTE INDIVIDUAL
+if (isset($_GET['txtIDreporte'])) {
+
+    $txtID = $_GET['txtIDreporte'];
+
+    $resultado = $abejas->reporte($txtID);
+
+    $_SESSION['reporte'] = $txtID;
+
+    echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/reportes/reporte_abejasEsp.php?ID=$txtID'>";
+}
+
 
 
 
