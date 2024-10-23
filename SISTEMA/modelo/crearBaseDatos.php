@@ -395,6 +395,53 @@ try {
     )";
     $conexion->exec($SQL);
 
+    //------------------ LEVANTAMIENTO -------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS levantamiento (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        fecha VARCHAR(100) NOT NULL,
+        seccion int(7) NOT NULL,
+        estacion VARCHAR(20) NOT NULL,
+        taviso VARCHAR(20) NOT NULL,
+        solicitante VARCHAR(11) NOT NULL,
+        recibidor VARCHAR(11) NOT NULL,
+        aviso VARCHAR(20) NOT NULL,
+        salida VARCHAR(20) NOT NULL,
+        llegada VARCHAR(20) NOT NULL,
+        regreso VARCHAR(20) NOT NULL,
+        direccion VARCHAR(70) NOT NULL,
+        municipio VARCHAR(20) NOT NULL,
+        lugar VARCHAR(4) NOT NULL,
+        estado VARCHAR(20) NOT NULL,
+        jefe VARCHAR(20) NOT NULL,
+        occiso VARCHAR(20) NOT NULL,
+        estado_encontrado VARCHAR(20) NOT NULL, /*Maestro pendiente */
+        desmembrado VARCHAR(3) NOT NULL,
+        partes INT(3) NOT NULL,
+        causa VARCHAR(20) NOT NULL,
+        putrefacto VARCHAR(20) NOT NULL,
+        autorizador VARCHAR(11) NOT NULL,
+
+        norte VARCHAR(20) NOT NULL,
+        sur VARCHAR(20) NOT NULL,
+        este VARCHAR(20) NOT NULL,
+        oeste VARCHAR(20) NOT NULL,
+        clima VARCHAR(4) NOT NULL, 
+        pavimento VARCHAR(4) NOT NULL,
+        acta VARCHAR(3) NOT NULL,
+        observaciones VARCHAR(50) NOT NULL,
+        pnb INT(11) NOT NULL,
+        gnb INT(11) NOT NULL,
+        intt INT(11) NOT NULL,
+        invity INT(11) NOT NULL,
+        pc INT(11) NOT NULL,
+        otros INT(11) NOT NULL,
+        jefe_general VARCHAR(20) NOT NULL,
+        jefe_deseccion VARCHAR(20) NOT NULL,
+        comandante VARCHAR(20) NOT NULL
+    )";
+    $conexion->exec($SQL);
+
     //------------------ VEHICULO INCIDENTE -------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS vehiculo_incidente (
