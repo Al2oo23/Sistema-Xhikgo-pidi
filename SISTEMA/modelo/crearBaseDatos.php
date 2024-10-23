@@ -304,6 +304,33 @@ try {
         )";
     $conexion->exec($SQL);
 
+
+     //-------------- Vegetacion ----------------------
+
+     $SQL = "CREATE TABLE IF NOT EXISTS vegetacion (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        fecha VARCHAR(100) NOT NULL,
+        seccion VARCHAR(20) NOT NULL,
+        estacion VARCHAR(20) NOT NULL,
+        aviso VARCHAR(20) NOT NULL,
+        hora VARCHAR(20) NOT NULL,
+        salida VARCHAR(20) NOT NULL,
+        llegada VARCHAR(20) NOT NULL,
+        regreso VARCHAR(20) NOT NULL,
+        incendio VARCHAR(20) NOT NULL,
+        areas VARCHAR(20) NOT NULL,
+        direccion VARCHAR(100) NOT NULL,
+        lugar VARCHAR(20) NOT NULL,
+        jefe VARCHAR(20) NOT NULL,
+        ci_pnb VARCHAR(20) NULL,
+        ci_gnb VARCHAR(20) NULL,
+        ci_intt VARCHAR(20) NULL,
+        ci_invity VARCHAR(20) NULL,
+        ci_pc VARCHAR(20) NULL,
+        ci_otro VARCHAR(20) NULL
+    )";
+$conexion->exec($SQL);
+
     //------------------ TRANSITO -------------------
 
      $SQL = "CREATE TABLE IF NOT EXISTS transito (
