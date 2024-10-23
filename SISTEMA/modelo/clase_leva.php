@@ -1,7 +1,7 @@
 <?php
 
 class leva{
-    private $id, $fecha, $seccion, $estacion, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $direccion, $municipio, $lugar, $estado, $jefe, $occiso, $estadoEncontrado, $desmembrado, $partes, $causa, $putrefacto, $autorizador, $norte, $sur, $este, $oeste, $clima, $pavimento, $recibidor, $acta, $observaciones, $pnb, $gnb, $intt, $invity, $pc, $otros, $jefeGeneral, $jefeSeccion, $comandante;
+    private $id, $fecha, $seccion, $estacion, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $direccion, $municipio, $lugar, $estado, $jefe, $occiso, $estadoEncontrado, $desmembrado, $partes, $causa, $putrefacto, $autorizador, $norte, $sur, $este, $oeste, $clima, $pavimento, $acta, $observacion, $pnb, $gnb, $intt, $invity, $pc, $otro, $jefeGeneral, $jefeSeccion, $comandante;
 
     public function __construct(){
 	}
@@ -238,14 +238,6 @@ class leva{
 		$this->pavimento = $pavimento;
 	}
 
-	public function getRecibidor(){
-		return $this->recibidor;
-	}
-
-	public function setRecibidor($recibidor){
-		$this->recibidor = $recibidor;
-	}
-
 	public function getActa(){
 		return $this->acta;
 	}
@@ -254,12 +246,12 @@ class leva{
 		$this->acta = $acta;
 	}
 
-	public function getObservaciones(){
-		return $this->observaciones;
+	public function getObservacion(){
+		return $this->observacion;
 	}
 
-	public function setObservaciones($observaciones){
-		$this->observaciones = $observaciones;
+	public function setObservacion($observacion){
+		$this->observacion = $observacion;
 	}
 
 	public function getPnb(){
@@ -302,12 +294,12 @@ class leva{
 		$this->pc = $pc;
 	}
 
-	public function getOtros(){
-		return $this->otros;
+	public function getOtro(){
+		return $this->otro;
 	}
 
-	public function setOtros($otros){
-		$this->otros = $otros;
+	public function setOtro($otro){
+		$this->otro = $otro;
 	}
 
 	public function getJefeGeneral(){
@@ -335,26 +327,14 @@ class leva{
 	}
 
     //Registrar
-    public function agregarLeva($fecha, $seccion, $estacion, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $direccion, $municipio, $lugar, $estado, $jefe, $occiso, $estadoEncontrado, $desmembrado, $partes, $causa, $putrefacto, $autorizador, $norte, $sur, $este, $oeste, $clima, $pavimento, $recibidor, $acta, $observaciones, $pnb, $gnb, $intt, $invity, $pc, $otros, $jefeGeneral, $jefeSeccion, $comandante){
+    public function agregarLeva($fecha, $seccion, $estacion, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $direccion, $municipio, $lugar, $estado, $jefe, $occiso, $estadoEncontrado, $desmembrado, $partes, $causa, $putrefacto, $autorizador, $norte, $sur, $este, $oeste, $clima, $pavimento, $acta, $observacion, $pnb, $gnb, $intt, $invity, $pc, $otro, $jefeGeneral, $jefeSeccion, $comandante){
         include("conexion.php");
 
-        $SQL = "INSERT INTO leva VALUES (?,?,?,?)";
+        $SQL = "INSERT INTO levantamiento VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null,$nombre, $municipio, $distancia]);
+        $preparado->execute([null,$fecha, $seccion, $estacion, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $direccion, $municipio, $lugar, $estado, $jefe, $occiso, $estadoEncontrado, $desmembrado, $partes, $causa, $putrefacto, $autorizador, $norte, $sur, $este, $oeste, $clima, $pavimento, $acta, $observacion, $pnb, $gnb, $intt, $invity, $pc, $otro, $jefeGeneral, $jefeSeccion, $comandante]);
 
-         // BITACORA
-
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
-            
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró Lugar ".$nombre." el día ",$fecha]);
-
-        return $preparado;
+        return array($preparado,$conexion->lastInsertId());
     }
 
     //Modificar

@@ -42,9 +42,11 @@ $lugares = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 // LLAMAR UNIDAD 
 
-$sentencia = $conexion->prepare("SELECT unidad FROM vehiculo");
+$sentencia = $conexion->prepare("SELECT unidad FROM vehiculo WHERE tipo = 'Unidad'");
 $sentencia->execute();
-$n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
+$n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+print_r($n_unidad);
 
 ?>
 
@@ -398,7 +400,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                 <div class="form-group has-icon-left">
                                     <label for="">Estado de Putrefaccion</label>
                                     <div class="position-relative">
-                                        <select name="estadoEncontrado" class="form-select" id="estadoEncontrado">
+                                        <select name="putrefacto" class="form-select" id="estadoEncontrado">
                                             <option value="">Seleccione</option>
                                             <option value="Cromatico">Cromatico</option>
                                             <option value="Enfisematoso">Enfisematoso</option>
