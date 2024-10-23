@@ -69,7 +69,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-                    <form action="../controlador/ctl_abejas.php" method="POST" style="text-align: left;" onsubmit="return validarAbejas()">
+                    <form action="../controlador/ctl_leva.php" method="POST" style="text-align: left;" onsubmit="return validarAbejas()">
                         <div class="modal-body">
     
                         <!--------------FECHA--------------->
