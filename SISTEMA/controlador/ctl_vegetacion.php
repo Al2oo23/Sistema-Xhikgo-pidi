@@ -11,7 +11,7 @@ $efectivo = new efectivo();
 $recurso = new recursoAsignado();
 $unidad = new unidad();
 
-// REGISTRAR INCIDENTE DE Vegetacion-------------------------------------------
+// REGISTRAR INCIDENTE DE vegetacion -------------------------------------------
 
 if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
 
@@ -24,10 +24,18 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
     $vegetacion->setHllegada($_POST['hora_llegada']);
     $vegetacion->setHregreso($_POST['hora_regreso']);
     $vegetacion->setIncendio($_POST['incendio']);
-    $vegetacion->setAreas($_POST['areas']);
+    $vegetacion->setNorte($_POST['norte']);
+    $vegetacion->setSur($_POST['sur']);
+    $vegetacion->setEste($_POST['este']);
+    $vegetacion->setOeste($_POST['oeste']);
     $vegetacion->setDireccion($_POST['direccion']);
     $vegetacion->setLugar($_POST['lugar']);
     $vegetacion->setJefe($_POST['jefe']);
+    $vegetacion->setActa($_POST['acta']);
+    $vegetacion->setObservaciones($_POST['observaciones']);
+    $vegetacion->setGral_servicios($_POST['gral_servicios']);
+    $vegetacion->setJefe_deseccion($_POST['jefe_deseccion']);
+    $vegetacion->setComandante($_POST['comandante']);
     $vegetacion->setCi_pnb($_POST['ci_pnb']);
     $vegetacion->setCi_gnb($_POST['ci_gnb']);
     $vegetacion->setCi_intt($_POST['ci_intt']);
@@ -45,10 +53,18 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         $vegetacion->getHllegada(),
         $vegetacion->getHregreso(),
         $vegetacion->getIncendio(),
-        $vegetacion->getAreas(),
+        $vegetacion->getNorte(),
+        $vegetacion->getSur(),
+        $vegetacion->getEste(),
+        $vegetacion->getOeste(),
         $vegetacion->getDireccion(),
         $vegetacion->getLugar(),
         $vegetacion->getJefe(),
+        $vegetacion->getActa(),
+        $vegetacion->getObservaciones(),
+        $vegetacion->getGral_servicios(),
+        $vegetacion->getJefe_deseccion(),
+        $vegetacion->getComandante(),
         $vegetacion->getCi_pnb(),
         $vegetacion->getCi_gnb(),
         $vegetacion->getCi_intt(),
@@ -56,7 +72,6 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         $vegetacion->getCi_pc(),
         $vegetacion->getCi_otro()
     );
-
      //EFECTIVOS
      foreach ($_POST['efectivos'] as $cedula) {
         //setters vehiculo incidente
@@ -130,28 +145,40 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
 
     // print_r($_POST);
     
-    $vegetacion->setId($_POST['id']);
-    $vegetacion->setFecha($_POST['fecha']);
-    $vegetacion->setSeccion($_POST['seccion']);
-    $vegetacion->setEstacion($_POST['estacion']);
-    $vegetacion->setTipoAviso($_POST['tipo_aviso']);
-    $vegetacion->setHaviso($_POST['hora_aviso']);
-    $vegetacion->setHsalida($_POST['hora_salida']);
-    $vegetacion->setHllegada($_POST['hora_llegada']);
-    $vegetacion->setHregreso($_POST['hora_regreso']);
-    $vegetacion->setIncendio($_POST['incendio']);
-    $vegetacion->setAreas($_POST['areas']);
-    $vegetacion->setDireccion($_POST['direccion']);
-    $vegetacion->setLugar($_POST['lugar']);
-    $vegetacion->setJefe($_POST['jefe']);
-    $vegetacion->setCi_pnb($_POST['ci_pnb']);
-    $vegetacion->setCi_gnb($_POST['ci_gnb']);
-    $vegetacion->setCi_intt($_POST['ci_intt']);
-    $vegetacion->setCi_invity($_POST['ci_invity']);
-    $vegetacion->setCi_pc($_POST['ci_pc']);
-    $vegetacion->setCi_otro($_POST['ci_otro']);
-    
-    $datos = $vegetacion->modificarVegetacion(
+    if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
+
+        // print_r($_POST);
+        
+        $vegetacion->setId($_POST['id']);
+        $vegetacion->setFecha($_POST['fecha']);
+        $vegetacion->setSeccion($_POST['seccion']);
+        $vegetacion->setEstacion($_POST['estacion']);
+        $vegetacion->setTipoAviso($_POST['tipo_aviso']);
+        $vegetacion->setHaviso($_POST['hora_aviso']);
+        $vegetacion->setHsalida($_POST['hora_salida']);
+        $vegetacion->setHllegada($_POST['hora_llegada']);
+        $vegetacion->setHregreso($_POST['hora_regreso']);
+        $vegetacion->setIncendio($_POST['incendio']);
+        $vegetacion->setNorte($_POST['norte']);
+        $vegetacion->setSur($_POST['sur']);
+        $vegetacion->setEste($_POST['este']);
+        $vegetacion->setOeste($_POST['oeste']);
+        $vegetacion->setDireccion($_POST['direccion']);
+        $vegetacion->setLugar($_POST['lugar']);
+        $vegetacion->setJefe($_POST['jefe']);
+        $vegetacion->setActa($_POST['acta']);
+        $vegetacion->setObservaciones($_POST['observaciones']);
+        $vegetacion->setGral_servicios($_POST['gral_servicios']);
+        $vegetacion->setJefe_deseccion($_POST['jefe_deseccion']);
+        $vegetacion->setComandante($_POST['comandante']);
+        $vegetacion->setCi_pnb($_POST['ci_pnb']);
+        $vegetacion->setCi_gnb($_POST['ci_gnb']);
+        $vegetacion->setCi_intt($_POST['ci_intt']);
+        $vegetacion->setCi_invity($_POST['ci_invity']);
+        $vegetacion->setCi_pc($_POST['ci_pc']);
+        $vegetacion->setCi_otro($_POST['ci_otro']);
+        
+        $datos = $vegetacion->modificarVegetacion(
         $vegetacion->getId(),
         $vegetacion->getFecha(),
         $vegetacion->getSeccion(),
@@ -162,24 +189,32 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         $vegetacion->getHllegada(),
         $vegetacion->getHregreso(),
         $vegetacion->getIncendio(),
-        $vegetacion->getAreas(),
+        $vegetacion->getNorte(),
+        $vegetacion->getSur(),
+        $vegetacion->getEste(),
+        $vegetacion->getOeste(),
         $vegetacion->getDireccion(),
         $vegetacion->getLugar(),
         $vegetacion->getJefe(),
+        $vegetacion->getActa(),
+        $vegetacion->getObservaciones(),
+        $vegetacion->getGral_servicios(),
+        $vegetacion->getJefe_deseccion(),
+        $vegetacion->getComandante(),
         $vegetacion->getCi_pnb(),
         $vegetacion->getCi_gnb(),
         $vegetacion->getCi_intt(),
         $vegetacion->getCi_invity(),
         $vegetacion->getCi_pc(),
         $vegetacion->getCi_otro()
-    );
+        );
 
      //EFECTIVOS
      foreach ($_POST['efectivos'] as $cedula) {
         //setters vehiculo incidente
 
         $efectivo->setIdIncidente($_POST['id']);
-        $efectivo->setTipo("S.E");
+        $efectivo->setTipo("Vegetacion");
         $efectivo->setCedula($cedula);
 
         //getters vehiculo incidente
@@ -204,7 +239,7 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         //setters vehiculo incidente
 
     $recurso->setIdIncidente($_POST['id']);
-        $recurso->setTipo("S.E");
+        $recurso->setTipo("Vegetacion");
         $recurso->setIdRecurso($_POST['recurso'][$i]);
         $recurso->setCantidad($_POST['cantidad'][$i]);
 
@@ -228,7 +263,7 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         //setters vehiculo incidente
 
         $unidad->setIdIncidente($_POST['id']);
-        $unidad->setTipo("S.E");
+        $unidad->setTipo("Vegetacion");
         $unidad->setNiv($niv);
 
         //getters vehiculo incidente
@@ -256,6 +291,8 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
     }   
 }
 
+}
+
 // ELIMINAR
 if (isset($_GET['txtID'])) {
 
@@ -280,7 +317,6 @@ if (isset($_GET['txtID'])) {
     echo "<script>alert('Incidente Eliminado con Exito')</script>";
 	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoVegetacion.php'>"; 
 }
-
 
 
 

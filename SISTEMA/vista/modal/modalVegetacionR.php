@@ -199,9 +199,9 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Areas Adyacentes</label>
+                                    <label for="">Norte</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" name="areas" id="areas" placeholder="Areas Adyacentes">
+                                        <input type="text" id="norte" class="form-control" name="norte" placeholder="Areas Adyacentes">
                                         <div class="form-control-icon">
                                         <i class="bi bi-image-alt"></i>
                                         </div>
@@ -209,7 +209,43 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                 </div>
                             </div>
 
-               
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Sur</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="sur" class="form-control" name="sur" placeholder="Areas Adyacentes">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-image-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Este</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="este" class="form-control" name="este" placeholder="Areas Adyacentes">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-image-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                          
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Oeste</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="oeste" class="form-control" name="oeste" placeholder="Areas Adyacentes">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-image-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                                                         
                             <div class="form-group">
                                 <label for="" class="form-label">Direccion</label>
@@ -325,6 +361,62 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                            
                        </div>
 
+                       <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Se Levanto Acta en el sitio</label>
+                                    <div class="position-relative">
+                                        <label class="form-check-label" for="">SI</label>
+                                        <input type="radio" class="form-check-input" name="acta" value="Si" id="acta">
+
+                                        <label class="form-check-label ms-3" for="">NO</label>
+                                        <input type="radio" class="form-check-input" name="acta" value="No" id="acta">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="form-label">Observacion</label>
+                                <textarea class="form-control no-resize" name="observaciones" id="observaciones" rows="4"></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">INSP. Gral de los Servicios</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="gral_servicios" name="gral_servicios" class="form-control" placeholder="Cedula">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-person-video2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                    
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Jefe de Seccion</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="jefe_deseccion" name="jefe_deseccion" class="form-control" placeholder="Cedula">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-person-video2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Comandante</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="comandante" name="comandante" class="form-control" placeholder="Cedula">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-person-video2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
                                     <label for="">Autoridades Adicionales en el Sitio</label>
@@ -349,6 +441,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                     </div>
                                 </div>
                             </div>
+
 
                             <div class="col-12 campoInput" id="campoInput1" style="display: none;">
                                 <div class="form-group has-icon-left">

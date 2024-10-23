@@ -9,83 +9,15 @@ $vegetacion = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 include ("modal/modalVegetacionM.php");
 ?>
 
-<div class="col-12" id="catalogo">
+<div class="col-12 m-auto" id="catalogo">
     <div class="card">
-        <div class="card-header">
-            <h4 class="card-title">Buscador</h4>
-        </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form" action="reportes/reporte_vegetacion.php" method="POST">
-                    <div class="row">
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="fecha_vegetacion_buscador">Fecha</label>
-                                <input type="text" id="fecha_vegetacion_buscador" name="fecha_vegetacion_buscador"
-                                    class="form-control" placeholder="Fecha Buscada">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="seccion_vegetacion_buscador">Seccion</label>
-                                <input type="text" id="seccion_vegetacion_buscador" name="seccion_vegetacion_buscador"
-                                    class="form-control" placeholder="Seccion Buscada">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="ubicacion_vegetacion_buscador">Ubicacion</label>
-                                <input type="text" id="ubicacion_vegetacion_buscador" name="ubicacion_vegetacion_buscador"
-                                    class="form-control" placeholder="Ubicacion Buscada">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="lugar_vegetacion_buscador">Lugar</label>
-                                <input type="text" id="lugar_vegetacion_buscador" name="lugar_vegetacion_buscador"
-                                    class="form-control" placeholder="Lugar Buscado">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="incendio_vegetacion_buscador">Tipo de incendio</label>
-                                <input type="text" id="incendio_vegetacion_buscador" name="incendio_vegetacion_buscador"
-                                    class="form-control" placeholder="Incendio Buscado">
-                            </div>
-                        </div> 
-
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="jefe_vegetacion_buscador">Jefe</label>
-                                <input type="text" id="jefe_vegetacion_buscador" name="jefe_vegetacion_buscador"
-                                    class="form-control" placeholder="Jefe Buscado">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="recurso_vegetacion_buscador">Recurso</label>
-                                <input type="text" id="recurso_vegetacion_buscador" name="recurso_vegetacion_buscador"
-                                    class="form-control" placeholder="Recurso Buscado">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="cantidad_vegetacion_buscador">Cantidad del Recurso</label>
-                                <input type="text" id="cantidad_vegetacion_buscador" name="cantidad_vegetacion_buscador"
-                                    class="form-control" placeholder="Cantidad Buscada">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="efectivo_vegetacion_buscador">Efectivo</label>
-                                <input type="text" id="efectivo_vegetacion_buscador" name="efectivo_vegetacion_buscador"
-                                    class="form-control" placeholder="Efectivo Buscado">
-                            </div>
-                        </div>
-                        <div class="col-md-12 form-group d-flex justify-content-between">
+                <form class="form form-horizontal" action="reportes/reporte_vegetacion.php" method="POST">
+                    <div class="form-body">
+                        <div class="row">
                             <form>
-                                <div class="col-4">
+                                <div class="col-md-12 form-group d-flex justify-content-between">
                                     <div class="form-group has-icon-left">
                                         <div class="position-relative">
                                             <select name="tamano" class="form-select" id="tamano"
@@ -97,10 +29,13 @@ include ("modal/modalVegetacionM.php");
                                             </select>
                                         </div>
                                     </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-primary">Generar PDF</button>
+                                    </div>
                                 </div>
                             </form>
-                            <button type="submit" class="btn btn-primary">Generar PDF</button>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -122,7 +57,6 @@ include ("modal/modalVegetacionM.php");
                                 <th class="columna">Fecha</th>
                                 <th class="columna">Seccion</th>
                                 <th class="columna">Tipo de Incendio</th>
-                                <th class="columna">Areas Adyacentes</th>
                                 <th class="columna">Lugar</th>
                                 <th class="columna">Jefe</th>
                                 <th class="columna">Accion</th>
@@ -142,11 +76,19 @@ include ("modal/modalVegetacionM.php");
                                     <td class="columna" hidden><?= $vegetacio["salida"]; ?></td>
                                     <td class="columna" hidden><?= $vegetacio["llegada"]; ?></td>
                                     <td class="columna" hidden><?= $vegetacio["regreso"]; ?></td>
-                                    <td class="columna"><?= $vegetacio["incendio"]; ?></td>
-                                    <td class="columna"><?= $vegetacio["areas"]; ?></td>
+                                    <td class="columna" ><?= $vegetacio["incendio"]; ?></td>
+                                    <td class="columna" hidden><?= $vegetacio["norte"]; ?></td>
+                                    <td class="columna" hidden><?= $vegetacio["sur"]; ?></td>
+                                    <td class="columna" hidden><?= $vegetacio["este"]; ?></td>
+                                    <td class="columna" hidden><?= $vegetacio["oeste"]; ?></td>
                                     <td class="columna" hidden><?= $vegetacio["direccion"]; ?></td>
                                     <td class="columna"><?= $vegetacio["lugar"]; ?></td>
                                     <td class="columna"><?= $vegetacio["jefe"]; ?></td>
+                                    <td class="columna" hidden><?= $vegetacio["acta"]; ?></td>
+                                    <td class="columna" hidden><?= $vegetacio["observaciones"]; ?></td>
+                                    <td class="columna" hidden><?= $vegetacio["gral_servicios"]; ?></td>
+                                    <td class="columna" hidden><?= $vegetacio["jefe_deseccion"]; ?></td>
+                                    <td class="columna" hidden><?= $vegetacio["comandante"]; ?></td>
                                     <td class="columna" hidden><?= $vegetacio["ci_gnb"]; ?></td>
                                     <td class="columna" hidden><?= $vegetacio["ci_intt"]; ?></td>
                                     <td class="columna" hidden><?= $vegetacio["ci_invity"]; ?></td>

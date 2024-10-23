@@ -1,8 +1,8 @@
 <?php
 
 class Vegetacion{
-    private $id, $fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $areas, $direccion,
-    $lugar, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro;
+    private $id, $fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $norte, $sur, $este, $oeste, $direccion,
+    $lugar, $jefe, $acta, $observaciones, $gral_servicios, $jefe_deseccion, $comandante,  $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro;
 
     public function __construct(){
 	}
@@ -48,10 +48,21 @@ class Vegetacion{
         $this->incendio = $incendio;
     }
 
-    public function setAreas($areas){
-        $this->areas = $areas;
+    public function setNorte($norte){
+        $this->norte = $norte;
     }
 
+    public function setSur($sur){
+        $this->sur = $sur;
+    }
+
+    public function setEste($este){
+        $this->este = $este;
+    }
+
+    public function setOeste($oeste){
+        $this->oeste = $oeste;
+    }
 
     public function setDireccion($direccion){
         $this->direccion = $direccion;
@@ -60,10 +71,29 @@ class Vegetacion{
     public function setLugar($lugar){
         $this->lugar = $lugar;
     }
-    
 
     public function setJefe($jefe){
         $this->jefe = $jefe;
+    }
+
+    public function setActa($acta){
+        $this->acta = $acta;
+    }
+
+    public function setObservaciones($observaciones){
+        $this->observaciones = $observaciones;
+    }
+
+    public function setGral_servicios($gral_servicios){
+        $this->gral_servicios = $gral_servicios;
+    }
+
+    public function setJefe_deseccion($jefe_deseccion){
+        $this->jefe_deseccion = $jefe_deseccion;
+    }
+
+    public function setComandante($comandante){
+        $this->comandante = $comandante;
     }
 
     public function setCi_pnb($ci_pnb){
@@ -131,8 +161,20 @@ class Vegetacion{
         return $this->incendio;
     }
 
-    public function getAreas(){
-        return $this->areas;
+    public function getNorte(){
+        return $this->norte;
+    }
+
+    public function getSur(){
+        return $this->sur;
+    }
+
+    public function getEste(){
+        return $this->este;
+    }
+
+    public function getOeste(){
+        return $this->oeste;
     }
 
     public function getDireccion(){
@@ -143,9 +185,28 @@ class Vegetacion{
         return $this->lugar;
     }
 
-
     public function getJefe(){
         return $this->jefe;
+    }
+
+    public function getActa(){
+        return $this->acta;
+    }
+
+    public function getObservaciones(){
+        return $this->observaciones;
+    }
+
+    public function getGral_servicios(){
+        return $this->gral_servicios;
+    }
+
+    public function getJefe_deseccion(){
+        return $this->jefe_deseccion;
+    }
+
+    public function getComandante(){
+        return $this->comandante;
     }
 
     public function getCi_pnb(){
@@ -173,25 +234,25 @@ class Vegetacion{
     }
 
     //Registrar
-    public function registrarVegetacion($fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $areas, $direccion,
-    $lugar, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
+        public function registrarVegetacion($fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $norte, $sur, $este, $oeste, $direccion,
+        $lugar, $jefe, $acta, $observaciones, $gral_servicios, $jefe_deseccion, $comandante, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
         include("conexion.php");
 
-        $SQL = "INSERT INTO vegetacion VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $SQL = "INSERT INTO vegetacion VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, ?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null,$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $areas, $direccion,
-        $lugar, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro]);
+        $preparado->execute([null,$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $norte, $sur, $este, $oeste, $direccion,
+        $lugar, $jefe, $acta, $observaciones, $gral_servicios, $jefe_deseccion, $comandante, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro]);
         
-        //  // BITACORA
-        //         // Fecha y hora actual
-        //         $fecha = date('Y-m-d H:i:s');
+         // BITACORA
+                // // Fecha y hora actual
+                // $fecha = date('Y-m-d H:i:s');
             
-        //         // Preparar la consulta SQL
-        //         $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-        //         $resultado2 = $conexion->prepare($sql);
+                // // Preparar la consulta SQL
+                // $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
+                // $resultado2 = $conexion->prepare($sql);
 
-        //         // Ejecutar la consulta
-        //         $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró Abejas", $fecha]);
+                // // Ejecutar la consulta
+                // $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró Abejas", $fecha]);
 
 
         // $SQL = "INSERT INTO mantenimiento VALUES (?,?,?,?,?)";
@@ -201,20 +262,18 @@ class Vegetacion{
         return array($preparado,$conexion->lastInsertId());
         
     }
-
     // //Modificar
-    public function modificarVegetacion($id, $fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $areas, $direccion,
-    $lugar, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
+    public function modificarVegetacion($id, $fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $norte, $sur, $este, $oeste,  $direccion,
+    $lugar, $jefe, $acta, $observaciones, $gral_servicios, $jefe_deseccion, $comandante,  $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
         include("conexion.php");
 
-        $SQL = "UPDATE vegetacion SET fecha = ?, seccion = ?, estacion = ?, aviso = ?, hora = ?, salida = ?, llegada = ?, regreso = ?, incendio = ?, areas = ?, 
-        direccion = ?, lugar = ?,  jefe = ?, ci_pnb = ?, ci_gnb = ?, ci_intt = ?,
-        ci_invity = ?, ci_pc = ?, ci_otro = ? WHERE id = ?";
+        $SQL = "UPDATE vegetacion SET fecha = ?, seccion = ?, estacion = ?, aviso = ?, hora = ?, salida = ?, llegada = ?, regreso = ?, incendio = ?, norte= ?, sur= ?, este= ?, oeste= ?, 
+        direccion = ?, lugar = ?,  jefe = ?, acta= ?, observaciones= ?,gral_servicios= ?, jefe_deseccion= ?,  comandante= ?,   ci_pnb = ?, ci_gnb = ?, ci_intt = ?, ci_invity = ?, ci_pc = ?, ci_otro = ? WHERE id = ?";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $areas, $direccion,
-        $lugar,  $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $id]);
+        $preparado->execute([$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $norte, $sur, $este, $oeste,  $direccion,
+        $lugar,  $jefe, $acta, $observaciones, $gral_servicios, $jefe_deseccion, $comandante, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $id]);
 
-    //      // BITACORA
+    // //      // BITACORA
     //             // Fecha y hora actual
     //             $fecha = date('Y-m-d H:i:s');
             

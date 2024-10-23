@@ -331,6 +331,11 @@
                                             </li>
 
                                             <li class="submenu-item  ">
+                                                <a href="catalogoVegetacion.php" class='submenu-link'>Vegetacion</a>
+
+                                            </li>
+
+                                            <li class="submenu-item  ">
                                                 <a href="catalogoTaviso.php" class='submenu-link'>Tipo de Aviso</a>
                                             </li>
 

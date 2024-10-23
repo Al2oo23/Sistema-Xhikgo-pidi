@@ -89,10 +89,18 @@ $vegetacion = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>Llegada</th>
                         <th>Regreso</th>
                         <th>Tipo de Incendio</th>
-                        <th>Areas Adyacentes</th>
+                        <th>Norte</th>
+                        <th>Sur</th>
+                        <th>Este</th>
+                        <th>Oeste</th>
                         <th>Direccion</th>
                         <th>Lugar</th>
                         <th>Jefe</th> 
+                        <th>Acta</th> 
+                        <th>Observaciones</th> 
+                        <th>INSP.Gral de los Servicios</th> 
+                        <th>Jefe de Seccion</th> 
+                        <th>Comandante</th> 
                         <th>CI_PNB</th>
                         <th>CI_GNB</th>
                         <th>CI_INTT</th>
@@ -114,10 +122,18 @@ $vegetacion = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td><?= $vege["llegada"]; ?></td>
                         <td><?= $vege["regreso"]; ?></td>
                         <td><?= $vege["incendio"]; ?></td>
-                        <td><?= $vege["areas"]; ?></td>
+                        <td><?= $vege["norte"]; ?></td>
+                        <td><?= $vege["sur"]; ?></td>
+                        <td><?= $vege["este"]; ?></td>
+                        <td><?= $vege["oeste"]; ?></td>
                         <td><?= $vege["direccion"]; ?></td>
                         <td><?= $vege["lugar"]; ?></td>
                         <td><?= $vege["jefe"]; ?></td>
+                        <td><?= $vege["acta"]; ?></td>
+                        <td><?= $vege["observaciones"]; ?></td>
+                        <td><?= $vege["gral_servicios"]; ?></td>
+                        <td><?= $vege["jefe_deseccion"]; ?></td>
+                        <td><?= $vege["comandante"]; ?></td>
                         <td><?php if(!isset($vege["ci_pnb"])){ echo $vege["ci_pnb"];}else{echo "Ninguno";}?></td>
                         <td><?php if(!isset($vege["ci_gnb"])){ echo $vege["ci_gnb"];}else{echo "Ninguno";}?></td>
                         <td><?php if(!isset($vege["ci_intt"])){ echo $vege["ci_intt"];}else{echo "Ninguno";}?></td>
