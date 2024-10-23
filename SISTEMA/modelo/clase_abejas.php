@@ -224,5 +224,16 @@ class Abejas{
 
         return $preparado;
     }
+
+    public function reporte($id){
+        include("conexion.php");
+        
+        $SQL = "SELECT * FROM abejas WHERE id = :id";
+        $preparado = $conexion->prepare($SQL);
+        $preparado->bindParam(':id', $id, PDO::PARAM_INT); 
+        $preparado->execute();
+
+        return $preparado->fetch(PDO::FETCH_ASSOC);
+    }
 }
 ?>

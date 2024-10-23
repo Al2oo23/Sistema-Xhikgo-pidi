@@ -124,6 +124,7 @@ include ("modal/modalAbejasM.php");
                                 <th class="columna">Dueño Inmueble</th>
                                 <th class="columna">Jefe</th>
                                 <th class="columna">Accion</th>
+                                <th class="columna">Reporte</th>
 
                             </tr>
                         </thead>
@@ -159,6 +160,9 @@ include ("modal/modalAbejasM.php");
                                                     href='../controlador/ctl_abejas.php?txtID=<?= $abej['id']; ?>'
                                                     class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
+                                    </td>
+                                    <td>
+                                    <a href="../controlador/ctl_abejas.php?txtIDreporte=<?= $abej['id'];?>" class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
                                     </td>
                                 </tr>
 
