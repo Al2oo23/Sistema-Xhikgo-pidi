@@ -505,7 +505,92 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                 </div>
                             </div>
 
-                            
+                            <!--------------lluvia--------------->
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Lluvia</label>
+                                    <div class="position-relative">
+                                        <label class="form-check-label" for="">SI</label>
+                                        <input type="radio" class="form-check-input" name="lluvia" value="Si" id="lluvia">
+
+                                        <label class="form-check-label ms-3" for="">NO</label>
+                                        <input type="radio" class="form-check-input" name="lluvia" value="No" id="lluvia">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--------------Pavimento Mojado--------------->
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Pavimento Mojado</label>
+                                    <div class="position-relative">
+                                        <label class="form-check-label" for="">SI</label>
+                                        <input type="radio" class="form-check-input" name="pavimento" value="Si" id="pavimento">
+
+                                        <label class="form-check-label ms-3" for="">NO</label>
+                                        <input type="radio" class="form-check-input" name="pavimento" value="No" id="pavimento">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--------------ACTA--------------->
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Se Levanto Acta en el sitio</label>
+                                    <div class="position-relative">
+                                        <label class="form-check-label" for="">SI</label>
+                                        <input type="radio" class="form-check-input" name="acta" value="Si" id="acta">
+
+                                        <label class="form-check-label ms-3" for="">NO</label>
+                                        <input type="radio" class="form-check-input" name="acta" value="No" id="acta">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--------------Observacion--------------->
+                            <div class="form-group">
+                                <label for="" class="form-label">Observacion</label>
+                                <textarea class="form-control no-resize" name="observacion" id="observacion" rows="4"></textarea>
+                            </div>
+
+                            <!--------------Jefe General--------------->
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Jefe General</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="general" name="general" class="form-control" placeholder="Cedula">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-person-video2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--------------Jefe de Seccion--------------->
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Jefe de Seccion</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="jefe_seccion" name="jefe_seccion" class="form-control" placeholder="Cedula">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-person-video2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--------------Comandante--------------->
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Comandante</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="comandante" name="comandante" class="form-control" placeholder="Cedula">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-person-video2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
