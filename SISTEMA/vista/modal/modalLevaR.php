@@ -46,8 +46,6 @@ $sentencia = $conexion->prepare("SELECT unidad FROM vehiculo WHERE tipo = 'Unida
 $sentencia->execute();
 $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
-print_r($n_unidad);
-
 ?>
 
 

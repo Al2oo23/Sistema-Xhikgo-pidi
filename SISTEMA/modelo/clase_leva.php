@@ -338,26 +338,14 @@ class leva{
     }
 
     //Modificar
-    public function modificarLugar($id, $nombre, $municipio, $distancia){
+    public function modificarLeva($fecha, $seccion, $estacion, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $direccion, $municipio, $lugar, $estado, $jefe, $occiso, $estadoEncontrado, $desmembrado, $partes, $causa, $putrefacto, $autorizador, $norte, $sur, $este, $oeste, $clima, $pavimento, $acta, $observacion, $pnb, $gnb, $intt, $invity, $pc, $otro, $jefeGeneral, $jefeSeccion, $comandante, $id){
         include("conexion.php");
 
-        $SQL = "UPDATE lugar SET nombre = ?, municipio = ?, distancia = ? WHERE id = ?";
+        $SQL = "UPDATE `levantamiento` SET `fecha` = ?, `seccion` = ?, `estacion` = ?, `taviso` = ?, `solicitante` = ?, `recibidor` = ?, `aviso` = ?, `salida` = ?, `llegada` = ?, `regreso` = ?, `direccion` = ?, `municipio` = ?, `lugar` = ?, `estado` = ?, `jefe` = ?, `occiso` = ?, `estado_encontrado` = ?, `desmembrado` = ?, `partes` = ?, `causa` = ?, `putrefacto` = ?, `autorizador` = ?, `norte` = ?, `sur` = ?, `este` = ?, `oeste` = ?, `clima` = ?, `pavimento` = ?, `acta` = ?, `observaciones` = ?, `pnb` = ?, `gnb` = ?, `intt` = ?, `invity` = ?, `pc` = ?, `otros` = ?, `jefe_general` = ?, `jefe_deseccion` = ?, `comandante` = ? WHERE `levantamiento`.`id` = ?";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$nombre, $municipio, $distancia, $id]);
-
-
-         // BITACORA
-
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
-            
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Modificó  Lugar ".$nombre." el día ",$fecha]);
-        return $preparado;
+        $preparado->execute([$fecha, $seccion, $estacion, $taviso, $solicitante, $recibidor, $aviso, $salida, $llegada, $regreso, $direccion, $municipio, $lugar, $estado, $jefe, $occiso, $estadoEncontrado, $desmembrado, $partes, $causa, $putrefacto, $autorizador, $norte, $sur, $este, $oeste, $clima, $pavimento, $acta, $observacion, $pnb, $gnb, $intt, $invity, $pc, $otro, $jefeGeneral, $jefeSeccion, $comandante, $id]);
+		
+        return array($preparado,$conexion->lastInsertId());
     }
 }
 ?>
