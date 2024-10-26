@@ -96,7 +96,6 @@ try {
     //     )";
     // $conexion->exec($SQL);
 
-
     //------------------ MUNICIPIO ------------------
     $SQL = "CREATE TABLE IF NOT EXISTS municipio (
         id INT PRIMARY KEY AUTO_INCREMENT,
@@ -388,7 +387,8 @@ try {
     )";
     $conexion->exec($SQL);
 
-    //-------------- incendio vehiculo ----------------------
+    
+ //-------------- incendio vehiculo ----------------------
 
  $SQL = "CREATE TABLE IF NOT EXISTS incendio_vehiculo (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -439,6 +439,7 @@ try {
     ci_otro VARCHAR(20) NULL
 )";
 $conexion->exec($SQL);
+
 
 
     //------------------ TRANSITO -------------------
