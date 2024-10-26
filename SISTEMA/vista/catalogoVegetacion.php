@@ -115,7 +115,7 @@ include ("modal/modalVegetacionM.php");
 </div>
 
 <script src="Javascript/vegetacionModal.js"></script>
-<script src="Javascript/plusvegetacion.js"></script>
+<script src="Javascript/plusVegetacion.js"></script>
 
 <?php
 require ('../footer.php');

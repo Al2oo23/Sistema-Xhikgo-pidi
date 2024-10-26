@@ -19,6 +19,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
     $abejas->setSeccion($_POST['seccion']);
     $abejas->setEstacion($_POST['estacion']);
     $abejas->setTipoAviso($_POST['tipo_aviso']);
+    $abejas->setSolicitante($_POST['solicitante']);
     $abejas->setHaviso($_POST['hora_aviso']);
     $abejas->setHsalida($_POST['hora_salida']);
     $abejas->setHllegada($_POST['hora_llegada']);
@@ -34,12 +35,15 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
     $abejas->setCi_invity($_POST['ci_invity']);
     $abejas->setCi_pc($_POST['ci_pc']);
     $abejas->setCi_otro($_POST['ci_otro']);
+    $abejas->setActa($_POST['acta']);
+    $abejas->setObservaciones($_POST['observaciones']);
     
     $datos = $abejas->registrarAbejas(
         $abejas->getFecha(),
         $abejas->getSeccion(),
         $abejas->getEstacion(),
         $abejas->getTipoAviso(),
+        $abejas->getSolicitante(),
         $abejas->getHaviso(),
         $abejas->getHsalida(),
         $abejas->getHllegada(),
@@ -54,7 +58,9 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         $abejas->getCi_intt(),
         $abejas->getCi_invity(),
         $abejas->getCi_pc(),
-        $abejas->getCi_otro()
+        $abejas->getCi_otro(),
+        $abejas->getActa(),
+        $abejas->getObservaciones()
     );
 
      //EFECTIVOS
@@ -62,7 +68,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         //setters vehiculo incidente
 
         $efectivo->setIdIncidente($datos[1]);
-        $efectivo->setTipo("S.E");
+        $efectivo->setTipo("Abejas");
         $efectivo->setCedula($cedula);
 
         //getters vehiculo incidente
@@ -81,7 +87,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         //setters vehiculo incidente
 
     $recurso->setIdIncidente($datos[1]);
-        $recurso->setTipo("S.E");
+        $recurso->setTipo("Abejas");
         $recurso->setIdRecurso($_POST['recurso'][$i]);
         $recurso->setCantidad($_POST['cantidad'][$i]);
 
@@ -100,7 +106,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         //setters vehiculo incidente
 
         $unidad->setIdIncidente($datos[1]);
-        $unidad->setTipo("S.E");
+        $unidad->setTipo("Abejas");
         $unidad->setNiv($niv);
 
         //getters vehiculo incidente
@@ -135,6 +141,7 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
     $abejas->setSeccion($_POST['seccion']);
     $abejas->setEstacion($_POST['estacion']);
     $abejas->setTipoAviso($_POST['tipo_aviso']);
+    $abejas->setSolicitante($_POST['solicitante']);
     $abejas->setHaviso($_POST['hora_aviso']);
     $abejas->setHsalida($_POST['hora_salida']);
     $abejas->setHllegada($_POST['hora_llegada']);
@@ -150,6 +157,8 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
     $abejas->setCi_invity($_POST['ci_invity']);
     $abejas->setCi_pc($_POST['ci_pc']);
     $abejas->setCi_otro($_POST['ci_otro']);
+    $abejas->setActa($_POST['acta']);
+    $abejas->setObservaciones($_POST['observaciones']);
     
     $datos = $abejas->modificarAbejas(
         $abejas->getId(),
@@ -157,6 +166,7 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         $abejas->getSeccion(),
         $abejas->getEstacion(),
         $abejas->getTipoAviso(),
+        $abejas->getSolicitante(),
         $abejas->getHaviso(),
         $abejas->getHsalida(),
         $abejas->getHllegada(),
@@ -171,7 +181,9 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         $abejas->getCi_intt(),
         $abejas->getCi_invity(),
         $abejas->getCi_pc(),
-        $abejas->getCi_otro()
+        $abejas->getCi_otro(),
+        $abejas->getActa(),
+        $abejas->getObservaciones()
     );
 
      //EFECTIVOS

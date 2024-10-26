@@ -10,6 +10,8 @@ if (isset($_GET['ID'])) {
     $idReporte = $_GET['ID'];
     $abejas = new Abejas();
     $reporte = $abejas->reporte($idReporte); // Obtenemos los datos del reporte
+
+    $acta = $reporte['acta'];
 }
 
 
@@ -60,9 +62,9 @@ if (isset($_GET['ID'])) {
             text-align: center;
             font-size: 22px;
             margin: 0;
-            margin-top: 10px;
+            /* margin-top: 10px; */
             margin-left: -20px;
-            margin-bottom: -10px;
+            /* margin-bottom: -10px; */
         }
 
         h2{
@@ -84,7 +86,7 @@ if (isset($_GET['ID'])) {
         }
         th, td {
            border: 1px solid black;
-            padding: 10px;
+            padding: 7px;
             text-align: left;
         }
 
@@ -99,6 +101,7 @@ if (isset($_GET['ID'])) {
 
         input[type="checkbox"]{
             margin-bottom: -6px;
+            background: none;
         }
 
         textarea{
@@ -163,13 +166,14 @@ if (isset($_GET['ID'])) {
                 <td>HORA DE SALIDA: <input type="text" name="salida" value="<?=$reporte['salida'];?>"></td>
             </tr>
             <tr>
-                <td>HORA DE LLEGADA AL SITIO: <input type="text" name="llegada"value="<?=$reporte['llegada'];?>"></td>
+                <td>HORA DE LLEGADA: <input type="text" name="llegada"value="<?=$reporte['llegada'];?>"></td>
                 <td>HORA DE REGRESO: <input type="text" name="regreso" value="<?=$reporte['regreso'];?>"></td>
             </tr>
         </table>
         <table>
             <tr>
-                <td colspan="2">TIPO DE AVISO: <input type="text" size="30px" name="aviso" value="<?=$reporte['aviso'];?>"></td>
+                <td colspan="2">TIPO DE AVISO: <input type="text" size="22px" name="aviso" value="<?=$reporte['aviso'];?>"></td>
+                <td colspan="2">SOLICITANTE: <input type="text" size="24px" name="solicitante" value="<?=$reporte['solicitante'];?>"></td>
             </tr>
         </table>
         <!-- Datos del Servicio -->
@@ -186,9 +190,10 @@ if (isset($_GET['ID'])) {
                 <td>DIRECCION: <input type="text" name="direccion" value="<?=$reporte['direccion'];?>"></td>
                 <td>LUGAR: <input type="text" size="10px" name="lugar" value="<?=$reporte['lugar'];?>"></td>
             </tr>
+            <tr><td colspan="3">MATERIAL UTILIZADO: <input type="text" size="70px" name="recurso"></td></tr>
             <tr>
-                <td colspan="2">PROPIETARIO DEL INMUEBLE: <input type="text" style="padding:5;" size="40px" name="inmueble" ></td>
-                <td>C.I.: <input type="text"></td>
+                <td colspan="2">PROPIETARIO DEL INMUEBLE: <input type="text" style="padding:5;" size="40px" name="propietario_inmueble"></td>
+                <td>C.I.: <input type="text" name="ci_inmueble" value="<?=$reporte['inmueble'];?>"></td>
             </tr>
         </table>
 
@@ -201,8 +206,8 @@ if (isset($_GET['ID'])) {
        
         <table>
             <tr>
-                <td>JEFE DE COMISIÓN: <input type="text" size="40px"></td>
-                <td>C.I.: <input type="text" size="10px"></td>
+                <td>JEFE DE COMISIÓN: <input type="text" size="40px" name="jefe_comision"></td>
+                <td>C.I.: <input type="text" size="10px" name="ci_comision"  value="<?=$reporte['jefe'];?>"></td>
             </tr>
         </table>
 
@@ -210,7 +215,7 @@ if (isset($_GET['ID'])) {
 
         <table>
             <tr>
-                <td style="padding: 0;;"><h3 align="center">4) OTRAS AUTORIDADES EN EL SITIO:</h3></td>
+                <td style="padding: 0;"><h3 align="center">4) OTRAS AUTORIDADES EN EL SITIO:</h3></td>
             </tr>
         </table>
         
@@ -220,7 +225,7 @@ if (isset($_GET['ID'])) {
                 <td>C.I. G.N.B.: <input type="text"  size="20px"  value="<?=$reporte['ci_gnb'];?>" <?php if(!$reporte['ci_gnb']){echo "value='Ninguno'";}?>></td>
             </tr>
             <tr>
-                <td>C.I. TRÁNSITO TERRESTRE: <input type="text"  size="20px" ></td>
+                <td>C.I. TRÁNSITO TERRESTRE: <input type="text"  size="20px"  value="<?=$reporte['ci_intt'];?>" <?php if(!$reporte['ci_intt']){echo "value='Ninguno'";}?>></td>
                 <td>C.I. I.N.V.I.T.Y: <input type="text"  size="20px" value="<?=$reporte['ci_invity'];?>" <?php if(!$reporte['ci_invity']){echo "value='Ninguno'";}?>></td>
                 
             </tr>
@@ -229,7 +234,11 @@ if (isset($_GET['ID'])) {
                 <td>C.I. OTROS: <input type="text"  size="20px"  value="<?=$reporte['ci_otro'];?>" <?php if(!$reporte['ci_otro']){echo "value='Ninguno'";}?>></td>
             </tr>
         </table>
-    
+        <table>
+            <tr>
+                <td style="padding: 0;"><h3 align="center">5) SE LEVANTÓ ACTA EN EL SITIO: SI <input type="checkbox" name="SI" <?php if ($acta === 'SI') echo 'checked'; ?>> NO <input type="checkbox" name="NO" <?php if ($acta === 'NO') echo 'checked'; ?>></h3></td>
+            </tr>
+        </table>
 
         <!-- Observaciones -->
             <table>
@@ -239,7 +248,7 @@ if (isset($_GET['ID'])) {
                     </td>
                 </tr>
                 <tr>
-                    <td><textarea style="border: none; height:160px;" resize="none"></textarea></td>
+                    <td><textarea style="border: none; height:160px;" resize="none"><?=$reporte['observaciones'];?></textarea></td>
                 </tr>
 
             </table>
@@ -255,7 +264,7 @@ if (isset($_GET['ID'])) {
                     
                     </td>
                     <td style="text-align: center;">
-                       <b>JEFE DE SERVICIOS GENERALES:</b> <br> <br>
+                       <b>JEFE DE COMISION:</b> <br> <br>
                        NOMBRE Y APELLIDO: <input type="text" name="" id=""  size="30px"> <br> <br>
 
                        CI: <input type="text" name="" id="">  FIRMA: <input type="text" name="" id="" size="10px">
@@ -264,14 +273,14 @@ if (isset($_GET['ID'])) {
                 </tr>
                 <tr>
                     <td style="text-align: center;">
-                       <b>JEFE DE SECCION:</b> <br> <br>
+                       <b>JEFE DE COMISION:</b> <br> <br>
                        NOMBRE Y APELLIDO: <input type="text" name="" id=""  size="30px"> <br> <br>
 
                        CI: <input type="text" name="" id="">  FIRMA: <input type="text" name="" id="" size="10px">
                     
                     </td>
                     <td style="text-align: center;">
-                       <b>COMANDANTE:</b> <br> <br>
+                       <b>JEFE DE COMISION:</b> <br> <br>
                        NOMBRE Y APELLIDO: <input type="text" name="" id=""  size="30px"> <br> <br>
 
                        CI: <input type="text" name="" id=""> FIRMA: <input type="text" name="" id="" size="10px">

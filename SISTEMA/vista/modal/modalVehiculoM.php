@@ -137,13 +137,11 @@ $modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Estado del Seguro:</label>
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control" name="seguro" id="seguroM" placeholder="Estado del Seguro">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-postcard"></i>
-                                        </div>
-                                    </div>
+                                    <label for="first-name-icon">Estado del Seguro</label>
+                                    <select class="form-select"  name="seguro" id="seguroM">
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                    </select>
                                 </div>
                             </div>
 

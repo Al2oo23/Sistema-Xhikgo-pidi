@@ -149,15 +149,17 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Estado del Seguro:</label>
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control" name="seguro" id="estado_seguro" placeholder="Estado del Seguro">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-postcard"></i>
-                                        </div>
-                                    </div>
+                                    <label for="first-name-icon">Estado del Seguro</label>
+                                    <select class="form-select" name="seguro" id="estado_seguro">
+                                        <option value=""> Seleccione el Estado del Seguro</option>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
                                 </div>
+                                
                             </div>
+
+                           
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">

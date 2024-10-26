@@ -44,8 +44,17 @@ $lugar = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 $sentencia = $conexion->prepare("SELECT unidad FROM vehiculo");
 $sentencia->execute();
-$n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
+$n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
+// LLAMAR MARCA Y MODELO DEL VEHICULO
+$sentencia = $conexion->prepare("SELECT * FROM modelo");
+$sentencia->execute();
+$vehiculo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+$MarcaModelos = array();
+foreach ($vehiculo as $row) {
+$MarcaModelos[$row["marca"]] = $row["nombre"];
+}
 ?>
 
 
@@ -62,7 +71,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
             <!-- Header del Modal: ----------------------------->
 
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel33">Registrar Incidente de Incendio de Vegetacion</h4>
+                        <h4 class="modal-title" id="myModalLabel33">Registrar de Incendio de Vehiculo</h4>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <i data-feather="x"></i>
                         </button>
@@ -187,74 +196,6 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Tipo de Incendio</label>
-                                    <div class="position-relative">
-                                        <input type="text" id="incendio" class="form-control" name="incendio" placeholder="Tipo de Incendio">
-                                        <div class="form-control-icon">
-                                        <i class="bi bi-fire"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Norte</label>
-                                    <div class="position-relative">
-                                        <input type="text" id="norte" class="form-control" name="norte" placeholder="Areas Adyacentes">
-                                        <div class="form-control-icon">
-                                        <i class="bi bi-image-alt"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Sur</label>
-                                    <div class="position-relative">
-                                        <input type="text" id="sur" class="form-control" name="sur" placeholder="Areas Adyacentes">
-                                        <div class="form-control-icon">
-                                        <i class="bi bi-image-alt"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Este</label>
-                                    <div class="position-relative">
-                                        <input type="text" id="este" class="form-control" name="este" placeholder="Areas Adyacentes">
-                                        <div class="form-control-icon">
-                                        <i class="bi bi-image-alt"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                          
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Oeste</label>
-                                    <div class="position-relative">
-                                        <input type="text" id="oeste" class="form-control" name="oeste" placeholder="Areas Adyacentes">
-                                        <div class="form-control-icon">
-                                        <i class="bi bi-image-alt"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                                                        
-                            <div class="form-group">
-                                <label for="" class="form-label">Direccion</label>
-                                <textarea class="form-control no-resize" name="direccion" id="direccion" rows="4"></textarea>
-                            </div>
-
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
                                     <label for="">Lugar</label>
                                     <div class="position-relative">
                                         <select name="lugar" class="form-select" id="lugar">
@@ -270,8 +211,326 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label for="" class="form-label">Direccion</label>
+                                <textarea class="form-control no-resize" name="direccion" id="direccion" rows="4"></textarea>
+                            </div>
 
 
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Modelo </label>
+                                    <div class="position-relative">
+                                        <select name="modelo" class="form-select" id="modelo">
+                                            <option>Seleccione el Modelo...</option>
+
+                                            <?php $modelosMostrados = array();
+                                            foreach ($vehiculo as $modelos) :
+                                                $modelo = $modelos["nombre"];
+
+                                                if (!in_array($modelo, $modelosMostrados)) :
+                                                    $modelosMostrados[] = $modelo;
+                                            ?>
+                                                    <option value="<?= $modelo?>"><?= $modelo?></option>
+                                            <?php endif;
+                                            endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="first-name-icon">Marca </label>
+                                    <select class="form-select" name="marca" id="marca">
+                                        <option value="default">Seleccione la Marca...</option>
+                                        
+                                        <?php $marcasMostradas = array();
+                                            foreach ($vehiculo as $marcas) :
+                                                $marca = $marcas["marca"];
+
+                                                if (!in_array($marca, $marcasMostradas)) :
+                                                    $marcasMostradas[] = $marca;
+                                            ?>
+                                                    <option value="<?= $marca?>"><?= $marca?></option>
+                                            <?php endif;
+                                            endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                                                        
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Año del Vehiculo</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="año" name="año" class="form-control" placeholder="Año">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Placa del Vehiculo</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="placa" name="placa" class="form-control" placeholder="Placa">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Serial del Vehiculo</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="serial" name="serial" class="form-control" placeholder="Serial">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Color del Vehiculo</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="color" name="color" class="form-control" placeholder="Color">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">N⁰ de Puestos</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="puestos" name="puestos" class="form-control" placeholder="Numero de Puestos">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Propietario del Vehiculo</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="propietario" name="propietario" class="form-control" placeholder="Propietario">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">C.I Del Propietario</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="ci_propietario" name="ci_propietario" class="form-control" placeholder="C.I Propietario">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Valor Aproximado del Vehiculo</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="valor" name="valor" class="form-control" placeholder="Valor Aproximado">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Conductor del Vehiculo</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="conductor" name="conductor" class="form-control" placeholder="Conductor">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">C.I Del Conductor</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="ci_conductor" name="ci_conductor" class="form-control" placeholder="C.I del Conductor">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                        <div class="form-group has-icon-left">
+                            <label for="">Aseguradora</label>
+                            <div class="position-relative">
+                                <label class="form-check-label" for="">SI</label>
+                                <input type="radio" class="form-check-input" name="aseguradora" value="aseguradora" id="aseguradora">
+
+                                <label class="form-check-label ms-3" for="">NO</label>
+                                <input type="radio" class="form-check-input" name="aseguradora" value="no-aseguradora"  id="no_asegurado">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Fecha de Vigencia </label>
+                                    <div class="position-relative">
+                                        <input type="text" id="vigencia" name="vigencia" class="form-control" placeholder="C.I del Conductor">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Lugar donde comenzo el Servicio</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="inicio" name="inicio" class="form-control" placeholder="Comenzo el Servicio">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Fuente de Ignicion </label>
+                                    <div class="position-relative">
+                                        <input type="text" id="ignicion" name="ignicion" class="form-control" placeholder="Fuente de Ignicion">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Lugar donde culmino el Servicio </label>
+                                    <div class="position-relative">
+                                        <input type="text" id="culmino" name="culmino" class="form-control" placeholder="Lugar donde Culmino el Servicio">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Causa del Incendio </label>
+                                    <div class="position-relative">
+                                        <input type="text" id="causa" name="causa" class="form-control" placeholder="Causa del Incendio">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Hubo Reignicion</label>
+                                    <div class="position-relative">
+                                        <label class="form-check-label" for="">SI</label>
+                                        <input type="radio" class="form-check-input" name="h_reignicion" value="Si" id="h_reignicion">
+
+                                        <label class="form-check-label ms-3" for="">NO</label>
+                                        <input type="radio" class="form-check-input" name="h_reignicion" value="No" id="h_reignicion">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Clase de combustible afectado</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="clase" name="clase" class="form-control" placeholder="Combustible Afectado">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Declaracion del incendio</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="declaracion" name="declaracion" class="form-control" placeholder="Declaracion de Incendio">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Hubo Lesionados </label>
+                                    <div class="position-relative">
+                                        <label class="form-check-label" for="">SI</label>
+                                        <input type="radio" class="form-check-input" name="h_lesionados" value="Si" id="h_lesionados">
+
+                                        <label class="form-check-label ms-3" for="">NO</label>
+                                        <input type="radio" class="form-check-input" name="h_lesionados" value="No" id="h_lesionados">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Numero de Lesionados</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="lesionados" name="lesionados" class="form-control" placeholder="Lesionados">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-calendar3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Se Levanto Acta en el sitio</label>
+                                    <div class="position-relative">
+                                        <label class="form-check-label" for="">SI</label>
+                                        <input type="radio" class="form-check-input" name="acta" value="Si" id="acta">
+
+                                        <label class="form-check-label ms-3" for="">NO</label>
+                                        <input type="radio" class="form-check-input" name="acta" value="No" id="acta">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="form-label">Observacion</label>
+                                <textarea class="form-control no-resize" name="observaciones" id="observaciones" rows="4"></textarea>
+                            </div>
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
@@ -317,24 +576,6 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                            
                        </div>
 
-                       <div class="col-12">
-                      
-                      <div class="form-group has-icon-left grand-plus_Container-efectivo">
-                          <label for="">Efectivo</label>
-                          <div class="plus-container">
-                              <div class="position-relative first-sibling">
-                                  <input type="text" id="efectivo" name="efectivos[]" class="form-control" placeholder="Efectivo">
-                                  <div class="form-control-icon">
-                                      <i class="bi bi-person-x"></i>
-                                  </div>
-                              </div>
-                              <div id="plus-efectivo" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i>
-                              </div>
-                          </div>
-                          
-                      </div>
-                      
-                  </div>
 
                   <div class="col-12">
                       
@@ -360,24 +601,6 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                       </div>
                       
                   </div>
-
-                       <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Se Levanto Acta en el sitio</label>
-                                    <div class="position-relative">
-                                        <label class="form-check-label" for="">SI</label>
-                                        <input type="radio" class="form-check-input" name="acta" value="Si" id="acta">
-
-                                        <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="acta" value="No" id="acta">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="" class="form-label">Observacion</label>
-                                <textarea class="form-control no-resize" name="observaciones" id="observaciones" rows="4"></textarea>
-                            </div>
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
@@ -554,3 +777,14 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
         });
     });
 </script>
+
+
+
+
+
+
+
+
+
+
+                        

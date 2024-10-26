@@ -3,9 +3,9 @@ require_once '../../modelo/conexion.php';
 
 // Crear variable
 
-$stmt = $conexion->prepare("SELECT * FROM abejas");
+$stmt = $conexion->prepare("SELECT * FROM servicios");
 $stmt->execute();
-$abejas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
     $path = 'imagenes/logo_bomberos.jpg';
@@ -30,7 +30,7 @@ $abejas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <head>
             <meta charset="UTF-8">
-            <title>Reporte de Exterminacion de Abejas</title>
+            <title>Reporte de Servicios Especiales</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -75,7 +75,7 @@ $abejas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <img align="left" src="<?=$logo?>" style="margin-left:-30px; margin-top:-10px;" alt="Logo de la Institución" width="150px" height="100px">
          
             <h2 align="center" >Cuerpo Autonomo de Bomberos de Yaracuy</h2>
-            <h2 align="center">Reporte de Exterminacion de Abejas</h2>
+            <h2 align="center">Reporte de Servicios Especiales</h2>
             <table>
                 <thead>
                     <tr>
@@ -84,46 +84,54 @@ $abejas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>Seccion</th>
                         <th>Estacion</th>
                         <th>Aviso</th>
+                        <th>Solicitante</th>
                         <th>Hora</th>
                         <th>Salida</th>
                         <th>Llegada</th>
                         <th>Regreso</th>
-                        <th>Ubicacion</th>
+                        <th>Causa</th>
                         <th>Direccion</th>
-                        <th>Lugar</th>
-                        <th>Dueño Inmueble</th> 
-                        <th>Jefe</th> 
                         <th>CI_PNB</th>
                         <th>CI_GNB</th>
                         <th>CI_INTT</th>
                         <th>CI_INVITY</th>
                         <th>CI_PC</th>
                         <th>CI_OTRO</th>
+                        <th>Jefe de Comision</th>
+                        <th>Jefe General</th>
+                        <th>Jefe de Seccion</th>
+                        <th>Comandante</th>
+                        <th>Acta</th>
+                        <th>Observaciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($abejas as $abej) : ?>
+                    <?php foreach ($servicios as $se) : ?>
                         <tr>
-                        <td><?= $abej["id"]; ?></td>
-                        <td><?= $abej["fecha"]; ?></td>
-                        <td><?= $abej["seccion"]; ?></td>
-                        <td><?= $abej["estacion"]; ?></td>
-                        <td><?= $abej["aviso"]; ?></td>
-                        <td><?= $abej["hora"]; ?></td>
-                        <td><?= $abej["salida"]; ?></td>
-                        <td><?= $abej["llegada"]; ?></td>
-                        <td><?= $abej["regreso"]; ?></td>
-                        <td><?= $abej["panal"]; ?></td>
-                        <td><?= $abej["direccion"]; ?></td>
-                        <td><?= $abej["lugar"]; ?></td>
-                        <td><?= $abej["inmueble"]; ?></td>
-                        <td><?= $abej["jefe"]; ?></td>
-                        <td><?=$abej["ci_pnb"]?><?php if(!$abej['ci_pnb']){echo "Ninguno";}?></td>
-                        <td><?=$abej["ci_gnb"]?><?php if(!$abej['ci_gnb']){echo "Ninguno";}?></td>
-                        <td><?=$abej["ci_intt"]?><?php if(!$abej['ci_intt']){echo "Ninguno";}?></td>
-                        <td><?=$abej["ci_invity"]?><?php if(!$abej['ci_invity']){echo "Ninguno";}?></td>
-                        <td><?=$abej["ci_pc"]?><?php if(!$abej['ci_pc']){echo "Ninguno";}?></td>
-                        <td><?=$abej["ci_otro"]?><?php if(!$abej['ci_otro']){echo "Ninguno";}?></td>
+                        <td><?= $se["id"]; ?></td>
+                        <td><?= $se["fecha"]; ?></td>
+                        <td><?= $se["seccion"]; ?></td>
+                        <td><?= $se["estacion"]; ?></td>
+                        <td><?= $se["aviso"]; ?></td>
+                        <td><?= $se["solicitante"]; ?></td>
+                        <td><?= $se["hora"]; ?></td>
+                        <td><?= $se["salida"]; ?></td>
+                        <td><?= $se["llegada"]; ?></td>
+                        <td><?= $se["regreso"]; ?></td>
+                        <td><?= $se["causa"]; ?></td>
+                        <td><?= $se["direccion"]; ?></td>
+                        <td><?=$se["ci_pnb"]?><?php if(!$se['ci_pnb']){echo "Ninguno";}?></td>
+                        <td><?=$se["ci_gnb"]?><?php if(!$se['ci_gnb']){echo "Ninguno";}?></td>
+                        <td><?=$se["ci_intt"]?><?php if(!$se['ci_intt']){echo "Ninguno";}?></td>
+                        <td><?=$se["ci_invity"]?><?php if(!$se['ci_invity']){echo "Ninguno";}?></td>
+                        <td><?=$se["ci_pc"]?><?php if(!$se['ci_pc']){echo "Ninguno";}?></td>
+                        <td><?=$se["ci_otro"]?><?php if(!$se['ci_otro']){echo "Ninguno";}?></td>
+                        <td><?=$se['jefe_comision'];?></td>
+                        <td><?=$se['jefe_general'];?></td>
+                        <td><?=$se['jefe_seccion'];?></td>
+                        <td><?=$se['comandante'];?></td>
+                        <td><?= $se["acta"]; ?></td>
+                        <td><?= $se["observaciones"]; ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

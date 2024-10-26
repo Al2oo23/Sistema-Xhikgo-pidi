@@ -44,7 +44,6 @@ require_once '../../modelo/conexion.php';
             margin-left: -15px;
             width: 200mm; /* A4 width */
             height: 260mm; /* A4 height */
-            border: 1px solid black;
             box-sizing: border-box;
         }
         h1 {
@@ -74,7 +73,7 @@ require_once '../../modelo/conexion.php';
         }
         th, td {
            border: 1px solid black;
-            padding: 10px;
+            padding: 7px;
             text-align: left;
         }
 
@@ -82,11 +81,12 @@ require_once '../../modelo/conexion.php';
             border-top: none;
             border-left: none;
             border-right: none;
-            margin-bottom: -5px;
+            margin-bottom: -2px;
         }
 
         input[type="checkbox"]{
             margin-bottom: -6px;
+            background: none;
         }
 
         textarea{
@@ -125,7 +125,11 @@ require_once '../../modelo/conexion.php';
                 </td>
             </tr>
         </table>
-        <h2 align="center">REPORTE DE SERVICIOS ESPECIALES</h2>
+        <table>
+            <tr>
+                <td style="padding: 0;"><h2 align="center">REPORTE DE SERVICIOS ESPECIALES</h2></td>
+            </tr>
+        </table>
 
         <!-- Información General -->
         <table>
@@ -136,27 +140,35 @@ require_once '../../modelo/conexion.php';
             </tr>
         </table>
 
-        <h3 align="center">1) INFORMACIÓN GENERAL:</h3>
+      <table>
+        <tr>
+            <td style="padding: 0;"><h3 align="center">1) INFORMACIÓN GENERAL:</h3></td>
+        </tr>
+      </table>
         <table>
             <tr>
                 <td>HORA DE AVISO: <input type="text"></td>
                 <td>HORA DE SALIDA: <input type="text"></td>
             </tr>
             <tr>
-                <td>HORA DE LLEGADA AL SITIO: <input type="text"></td>
+                <td>HORA DE LLEGADA: <input type="text"></td>
                 <td>HORA DE REGRESO: <input type="text"></td>
             </tr>
         </table>
         <table>
             <tr>
-                <td colspan="2">TIPO DE AVISO: <input type="text" size="30px"></td>
-                <td>CAUSA DEL SERVICIO: <input type="text" size="10px"></td>
+                <td>TIPO DE AVISO: <input type="text" size="30px"></td>
+                <td>CAUSA QUE GENERÓ EL SERVICIO: <input type="text" size="10px"></td>
             </tr>
         </table>
         
         <!-- Ejecución del Servicio -->
         
-        <h3 align="center">2) EJECUCION DEL SERVICIO:</h3>
+        <table>
+        <tr>
+            <td style="padding: 0;"><h3 align="center">2) EJECUCIÓN DEL SERVICIO:</h3></td>
+        </tr>
+      </table>
         <table>
             <tr>
                 <td>JEFE DE COMISIÓN: <input type="text" size="40px"></td>
@@ -164,7 +176,11 @@ require_once '../../modelo/conexion.php';
             </tr>
         </table>
 
-        <h3 align="center">3) MATERIAL UTILIZADO:</h3>
+        <table>
+        <tr>
+            <td style="padding: 0;"><h3 align="center">3) MATERIAL UTILIZADO:</h3></td>
+        </tr>
+      </table>
         <table>
             <tr>
                 <td>MALETIN PRIMEROS AUXILIOS: SI <input type="checkbox" id="si"> NO <input type="checkbox"> CANTIDAD: <input type="text" size="15px"></td>
@@ -173,7 +189,11 @@ require_once '../../modelo/conexion.php';
         </table>
 
         <!-- Otras Autoridades -->
-        <h3 align="center">4) OTRAS AUTORIDADES EN EL SITIO:</h3>
+        <table>
+        <tr>
+            <td style="padding: 0;"><h3 align="center">4) OTRAS AUTORIDADES EN EL SITIO:</h3></td>
+        </tr>
+      </table>
         <table>
             <tr>
                 <td>POLICÍA DEL ESTADO: <input type="text"></td>
@@ -197,7 +217,7 @@ require_once '../../modelo/conexion.php';
         
         <table>
             <tr>
-                <td><h3 align="center">5) SE LEVANTÓ ACTA EN EL SITIO: SI <input type="checkbox" id="si"> NO <input type="checkbox">  (VER ACTA ANEXA: SI <input type="checkbox" id="si"> NO <input type="checkbox"> )</h3></td>
+                <td style="padding: 0;"><h3 align="center">5) SE LEVANTÓ ACTA EN EL SITIO: SI <input type="checkbox" id="si"> NO <input type="checkbox"></h3></td>
             </tr>
         </table>
 

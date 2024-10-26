@@ -1,12 +1,12 @@
 <?php
-$nombrePagina = "Catálogo de Abejas";
+$nombrePagina = "Catálogo de Servicios Especiales";
 require ('../header.php');
 include ('../modelo/conexion.php');
 
-$sentencia = $conexion->prepare("SELECT * FROM `abejas`");
+$sentencia = $conexion->prepare("SELECT * FROM `servicios`");
 $sentencia->execute();
-$abejas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-include ("modal/modalAbejasM.php");
+$servicios = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+// include ("modal/modalSEM.php");
 ?>
 
 <div class="col-12" id="catalogo">
@@ -16,7 +16,7 @@ include ("modal/modalAbejasM.php");
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form" action="reportes/reporte_abejas.php" method="POST">
+                <form class="form" action="reportes/reporte_SE.php" method="POST">
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
@@ -108,12 +108,12 @@ include ("modal/modalAbejasM.php");
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Incidente de Abeja</h4>
-                    <?php include ("modal/modalAbejasR.php"); ?>
+                    <h4 class="card-title">Incidente de Servicios Especiales</h4>
+                    <?php include ("modal/modalSER.php"); ?>
                 </div>
                 <!-- table hover -->
                 <div class="table-responsive">
-                    <table class="table table-hover mb-0" id="tabla_abejas">
+                    <table class="table table-hover mb-0" id="tabla_se">
                         <thead>
                             <tr style="text-align: center;">
                                 <th class="columna" hidden>Id</th>
@@ -121,51 +121,53 @@ include ("modal/modalAbejasM.php");
                                 <th class="columna">Seccion</th>
                                 <th class="columna">Ubicacion</th>
                                 <th class="columna">Lugar</th>
-                                <th class="columna">Dueño Inmueble</th>
-                                <th class="columna">Jefe</th>
+                                <th class="columna">Aviso</th>
+                                <th class="columna">Solicitante</th>
+                                <th class="columna">Causa</th>
                                 <th class="columna">Accion</th>
                                 <th class="columna">Reporte</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($abejas as $abej): ?>
+                            <?php foreach ($servicios as $se): ?>
 
                                 <tr class="fila">
-                                    <td class="columna" hidden><?= $abej["id"]; ?></td>
-                                    <td class="columna"><?= $abej["fecha"]; ?></td>
-                                    <td class="columna"><?= $abej["seccion"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["estacion"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["aviso"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["solicitante"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["hora"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["salida"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["llegada"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["regreso"]; ?></td>
-                                    <td class="columna"><?= $abej["panal"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["direccion"]; ?></td>
-                                    <td class="columna"><?= $abej["lugar"]; ?></td>
-                                    <td class="columna"><?= $abej["inmueble"]; ?></td>
-                                    <td class="columna"><?= $abej["jefe"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["ci_pnb"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["ci_gnb"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["ci_intt"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["ci_invity"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["ci_pc"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["ci_otro"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["acta"]; ?></td>
-                                    <td class="columna" hidden><?= $abej["observaciones"]; ?></td>
+                                    <td class="columna" hidden><?= $se["id"]; ?></td>
+                                    <td class="columna"><?= $se["fecha"]; ?></td>
+                                    <td class="columna"><?= $se["seccion"]; ?></td>
+                                    <td class="columna" hidden><?= $se["estacion"]; ?></td>
+                                    <td class="columna" hidden><?= $se["aviso"]; ?></td>
+                                    <td class="columna" hidden><?= $se["solicitante"]; ?></td>
+                                    <td class="columna" hidden><?= $se["hora"]; ?></td>
+                                    <td class="columna" hidden><?= $se["salida"]; ?></td>
+                                    <td class="columna" hidden><?= $se["llegada"]; ?></td>
+                                    <td class="columna" hidden><?= $se["regreso"]; ?></td>
+                                    <td class="columna"><?= $se["causa"]; ?></td>
+                                    <td class="columna" hidden><?= $se["direccion"]; ?></td>
+                                    <td class="columna" hidden><?= $se["ci_pnb"]; ?></td>
+                                    <td class="columna" hidden><?= $se["ci_gnb"]; ?></td>
+                                    <td class="columna" hidden><?= $se["ci_intt"]; ?></td>
+                                    <td class="columna" hidden><?= $se["ci_invity"]; ?></td>
+                                    <td class="columna" hidden><?= $se["ci_pc"]; ?></td>
+                                    <td class="columna" hidden><?= $se["ci_otro"]; ?></td>
+                                    <td class="columna"><?=$se['jefe_comision'];?></td>
+                                    <td class="columna"><?=$se['jefe_general'];?></td>
+                                    <td class="columna"><?=$se['jefe_seccion'];?></td>
+                                    <td class="columna"><?=$se['comandante'];?></td>
+                                    <td class="columna" hidden><?= $se["acta"]; ?></td>
+                                    <td class="columna" hidden><?= $se["observaciones"]; ?></td>
                                     <td>
                                         <div class="botones" style="justify-content:space-evenly;">
                                         <button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm1"><i class="bi bi-pencil"></i></button>
                                             
                                         <div><a name='eliminar' id='eliminar'
-                                                    href='../controlador/ctl_abejas.php?txtID=<?= $abej['id']; ?>'
+                                                    href='../controlador/ctl_servicio.php?txtID=<?= $se['id']; ?>'
                                                     class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                     </td>
                                     <td>
-                                    <a href="../controlador/ctl_abejas.php?txtIDreporte=<?= $abej['id'];?>" class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
+                                    <a href="../controlador/ctl_servicio.php?txtIDreporte=<?= $se['id'];?>" class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
                                     </td>
                                 </tr>
 
@@ -178,8 +180,8 @@ include ("modal/modalAbejasM.php");
     </div>
 </div>
 
-<script src="Javascript/abejasModal.js"></script>
-<script src="Javascript/plusAbejas.js"></script>
+<script src="Javascript/servicioModal.js"></script>
+<script src="Javascript/plusSE.js"></script>
 
 <?php
 require ('../footer.php');

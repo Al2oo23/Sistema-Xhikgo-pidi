@@ -139,6 +139,18 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
+                                    <label for="">Solicitante</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="solicitanteM" name="solicitante" class="form-control" placeholder="Solicitante">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-person-video2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
                                     <label for="">Hora de Aviso</label>
                                     <div class="position-relative">
                                         <input type="text" id="havisoM" class="form-control" name="hora_aviso" placeholder="Hora de Aviso">
@@ -409,6 +421,24 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                 <label for="">Se Levantó acta:</label>
+                                <div class="position-relative">
+                                    <label class="form-check-label" for="">SI</label>
+                                        <input type="radio" class="form-check-input" name="acta" value="SI" id="actaM">
+                                    <label class="form-check-label ms-3" for="">NO</label>
+                                <input type="radio" class="form-check-input" name="acta" value="NO" id="no_actaM">
+                                </div>
+                            </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="" class="form-label">Observaciones</label>
+                                <textarea class="form-control no-resize" name="observaciones" id="observacionesM"
+                                rows="4"></textarea>
                             </div>
                         </div>
                        

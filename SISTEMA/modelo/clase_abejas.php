@@ -1,8 +1,8 @@
 <?php
 
 class Abejas{
-    private $id, $fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
-    $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro;
+    private $id, $fecha, $seccion, $estacion, $aviso, $solicitante, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
+    $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $acta, $observaciones;
 
     public function __construct(){
 	}
@@ -26,6 +26,10 @@ class Abejas{
 
     public function setTipoAviso($aviso){
         $this->aviso = $aviso;
+    }
+
+    public function setSolicitante($solicitante){
+        $this->solicitante = $solicitante;
     }
 
     public function setHaviso($haviso){
@@ -88,6 +92,14 @@ class Abejas{
         $this->ci_otro = $ci_otro;
     }
 
+    public function setActa($acta){
+        $this->acta = $acta;
+    }
+
+    public function setObservaciones($observaciones){
+        $this->observaciones = $observaciones;
+    }
+
     //getters
     public function getId(){
         return $this->id;
@@ -107,6 +119,10 @@ class Abejas{
 
     public function getTipoAviso(){
         return $this->aviso;
+    }
+
+    public function getSolicitante(){
+        return $this->solicitante;
     }
 
     public function getHaviso(){
@@ -169,15 +185,23 @@ class Abejas{
         return $this->ci_otro;
     }
 
+    public function getActa(){
+        return $this->acta;
+    }
+
+    public function getObservaciones(){
+        return $this->observaciones;
+    }
+
     //Registrar
-    public function registrarAbejas($fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
-    $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
+    public function registrarAbejas($fecha, $seccion, $estacion, $aviso, $solicitante, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
+    $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $acta, $observaciones){
         include("conexion.php");
 
-        $SQL = "INSERT INTO abejas VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $SQL = "INSERT INTO abejas VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null,$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
-        $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro]);
+        $preparado->execute([null,$fecha, $seccion, $estacion, $aviso, $solicitante, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
+        $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $acta, $observaciones]);
         
          // BITACORA
                 // Fecha y hora actual
@@ -200,16 +224,16 @@ class Abejas{
     }
 
     //Modificar
-    public function modificarAbejas($id, $fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
-    $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
+    public function modificarAbejas($id, $fecha, $seccion, $estacion, $aviso, $solicitante, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
+    $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $acta, $observaciones){
         include("conexion.php");
 
-        $SQL = "UPDATE abejas SET fecha = ?, seccion = ?, estacion = ?, aviso = ?, hora = ?, salida = ?, llegada = ?, regreso = ?, panal = ?, 
+        $SQL = "UPDATE abejas SET fecha = ?, seccion = ?, estacion = ?, aviso = ?, solicitante = ?, hora = ?, salida = ?, llegada = ?, regreso = ?, panal = ?, 
         direccion = ?, lugar = ?, inmueble = ?, jefe = ?, ci_pnb = ?, ci_gnb = ?, ci_intt = ?,
-        ci_invity = ?, ci_pc = ?, ci_otro = ? WHERE id = ?";
+        ci_invity = ?, ci_pc = ?, ci_otro = ?, acta = ?, observaciones = ? WHERE id = ?";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
-        $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $id]);
+        $preparado->execute([$fecha, $seccion, $estacion, $aviso, $solicitante, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
+        $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $acta, $observaciones, $id]);
 
          // BITACORA
                 // Fecha y hora actual

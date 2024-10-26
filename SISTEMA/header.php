@@ -200,14 +200,6 @@
                                 </div>
                             </li>
                             
-                            <?php if($datos["aseguradora"] == "si"):?>
-                            <li class="menu-item">
-                                <a href="catalogoAseguradora.php" class='menu-link'>
-                                    <span><i class="bi bi-shield-fill-check"></i>Aseguradora</span>
-                                </a>
-                            </li>
-                            <?php endif;?>
-                            
 
                             <li class="menu-item active has-sub">
                                 <a href="#" class='menu-link'>
@@ -305,57 +297,108 @@
                                 </div>
                             </li>
 
+
                             <?php if($datos["incidente"] == "si"):?>
-                            <li class="menu-item has-sub">
+                            <li class="menu-item active has-sub">
                                 <a href="#" class='menu-link'>
-                                    <span><i class="bi bi-prescription2"></i>Incidente</span>
+                                    <span><i class="bi bi-car-front-fill"></i>Incidente</span>
                                 </a>
                                 <div class="submenu ">
-                                    <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
                                     <div class="submenu-group-wrapper">
+                                        <div class="submenu active">
+                                            <div class="submenu-group-wrapper">                                                         
+                                        
+                                            <ul class="submenu-group">
+                                             
+                                           <!-- LISTA 1 -->
+                                            <li class="submenu-item  has-sub">
+                                                <a href="#" class="submenu-link">Principal</a>
 
-
-                                        <ul class="submenu-group">
-
-                                            <li class="submenu-item  ">
-                                                <a href="catalogoIncendio.php" class='submenu-link'>Incendio</a>
+                                                
+                                                <!-- 3 Level Submenu -->
+                                                <ul class="subsubmenu">
+                                                    
+                                                <li class="subsubmenu-item">
+                                                
+                                            </li>
+                                            
+                                            <li class="subsubmenu-item  ">
+                                                <a href="catalogoIncendio.php" class='subsubmenu-link'>Incendio</a>
                                             </li>
 
-                                            <li class="submenu-item  ">
-                                                <a href="catalogoTransito.php" class='submenu-link'>Transito</a>
+                                            <li class="subsubmenu-item  ">
+                                                <a href="catalogoTransito.php" class='subsubmenu-link'>Transito</a>
                                             </li>
 
-                                            <li class="submenu-item  ">
-                                                <a href="catalogoAbejas.php" class='submenu-link'>Abejas</a>
-
+                                            <li class="subsubmenu-item  ">
+                                                <a href="catalogoAbejas.php" class='subsubmenu-link'>Abejas</a>
                                             </li>
 
-                                            <li class="submenu-item  ">
-                                                <a href="catalogoVegetacion.php" class='submenu-link'>Vegetacion</a>
-
+                                            <li class="subsubmenu-item  ">
+                                                <a href="catalogoAuxilio.php" class='subsubmenu-link'>Auxilios Medicos</a>
                                             </li>
 
-                                            <li class="submenu-item  ">
-                                                <a href="catalogoTaviso.php" class='submenu-link'>Tipo de Aviso</a>
+                                            <li class="subsubmenu-item  ">
+                                                <a href="catalogoVegetacion.php" class='subsubmenu-link'>Incendio de Vegetacion</a>
+                                            </li>
+                                            </ul>
                                             </li>
 
-                                            <li class="submenu-item  ">
-                                                <a href="catalogoTincidente.php" class='submenu-link'>Tipo de Incidente</a>
+                                            <!-- LISTA DOS -->
+                                           <li class="submenu-item  has-sub">
+                                                <a href="#" class="submenu-link">Secundario</a>
+
+                                                
+                                                <!-- 3 Level Submenu -->
+                                                <ul class="subsubmenu">
+                                                    
+                                                <li class="subsubmenu-item">
+                                                
                                             </li>
 
+                                            <li class="subsubmenu-item  ">
+                                                <a href="catalogoSE.php" class='subsubmenu-link'>Servicios Especiales</a>
+                                            </li>
+                                            
+                                            <li class="subsubmenu-item  ">
+                                                <a href="catalogoRepresentacion.php" class='subsubmenu-link'>Representación Institucional</a>
+                                            </li>
+                                            
+                                            </li>
+                                            
                                         </ul>
+
+                                        <li class="submenu-item  has-sub">
+                                                <a href="#" class="submenu-link">Otro</a>
+
+                                                
+                                                <!-- 3 Level Submenu -->
+                                                <ul class="subsubmenu">
+                                                    
+                                                <li class="subsubmenu-item">
+                                                
+                                            </li>
+                                            
+                                            <li class="subsubmenu-item  ">
+                                                <a href="catalogoTaviso.php" class='subsubmenu-link'>Tipo de Aviso</a>
+                                            </li>
+
+                                            <li class="subsubmenu-item  ">
+                                                <a href="catalogoTincidente.php" class='subsubmenu-link'>Tipo de Incidente</a>
+                                            </li>
+
+                                            <li class="subsubmenu-item  ">
+                                                <a href="catalogoAseguradora.php" class='subsubmenu-link'>Aseguradora</a>
+                                            </li>
+
+                                            </ul>
+                                            </li>
+                                    </div>
+                                </div>
 
                                     </div>
                                 </div>
-                            </li>
-                            <?php endif;?>
-
-                            <?php if($datos["recurso"] == "si"):?>
-                            <li class="menu-item">
-                                <a href="catalogoRepresentacion.php" class='menu-link'>
-                                    <span><i class="bi bi-shield-fill-check"></i>Representación Institucional</span>
-                                </a>    
-                            </li>
+                            </li>                            
                             <?php endif;?>
 
                             <?php if($datos["recurso"] == "si"):?>

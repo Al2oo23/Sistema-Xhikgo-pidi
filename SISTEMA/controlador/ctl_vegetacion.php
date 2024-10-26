@@ -144,8 +144,6 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
 if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
 
     // print_r($_POST);
-    
-    if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
 
         // print_r($_POST);
         
@@ -291,7 +289,7 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
     }   
 }
 
-}
+
 
 // ELIMINAR
 if (isset($_GET['txtID'])) {
