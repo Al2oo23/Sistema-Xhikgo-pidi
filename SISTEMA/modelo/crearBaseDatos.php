@@ -270,6 +270,24 @@ try {
     )";
     $conexion->exec($SQL);
 
+    //------------------ TIPO DE INCENDIO------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS tipo_incendio (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        incendio VARCHAR(20) NOT NULL 
+        )";
+    $conexion->exec($SQL);
+
+    //------------------ ESTADO CADAVER------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS estado_cadaver (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        ecadaver VARCHAR(20) NOT NULL 
+        )";
+    $conexion->exec($SQL);
+
+
+
 
     //------------------ MODELO ------------------
 
@@ -387,10 +405,10 @@ try {
     )";
     $conexion->exec($SQL);
 
-    
- //-------------- incendio vehiculo ----------------------
 
- $SQL = "CREATE TABLE IF NOT EXISTS incendio_vehiculo (
+    //-------------- incendio vehiculo ----------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS incendio_vehiculo (
     id INT PRIMARY KEY AUTO_INCREMENT,
     fecha VARCHAR(100) NOT NULL,
     seccion VARCHAR(20) NOT NULL,
@@ -438,7 +456,7 @@ try {
     ci_pc VARCHAR(20) NULL,
     ci_otro VARCHAR(20) NULL
 )";
-$conexion->exec($SQL);
+    $conexion->exec($SQL);
 
 
 
@@ -882,7 +900,7 @@ BEGIN
 END;";
     $conexion->exec($SQL);
 
-        //------------------ TRIGGER REGISTRO ESTACIÓN -------------------
+    //------------------ TRIGGER REGISTRO ESTACIÓN -------------------
 
     // Eliminar el trigger si ya existe para poder crearlo nuevamente.
     $SQL = "DROP TRIGGER IF EXISTS bitacora_estacion_registro";

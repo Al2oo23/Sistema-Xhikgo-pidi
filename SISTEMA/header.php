@@ -388,7 +388,15 @@
                                             </li>
 
                                             <li class="subsubmenu-item  ">
+                                                <a href="catalogoTincendio.php" class='subsubmenu-link'>Tipo de Incendio</a>
+                                            </li>
+
+                                            <li class="subsubmenu-item  ">
                                                 <a href="catalogoAseguradora.php" class='subsubmenu-link'>Aseguradora</a>
+                                            </li>
+
+                                            <li class="subsubmenu-item  ">
+                                                <a href="catalogoEcadaver.php" class='subsubmenu-link'>Estado de Cadaver</a>
                                             </li>
 
                                             </ul>

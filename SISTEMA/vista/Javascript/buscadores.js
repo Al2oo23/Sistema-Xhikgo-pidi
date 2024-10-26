@@ -734,3 +734,63 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+//BUSCADOR TIPO DE INCENDIO
+document.addEventListener('DOMContentLoaded', () => {
+
+    const nombre_incendio_buscador = document.getElementById('tipo_incendio_buscador');
+
+    const tabla = document.getElementById('tabla_tipo_incendio');
+    const rows = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+
+    [nombre_incendio_buscador].forEach((input) => {
+        input.addEventListener('keyup', () => {
+
+            const filtro1 = nombre_incendio_buscador.value.toLowerCase();
+
+            for (let i = 0; i < rows.length; i++) {
+                let row = rows[i];
+                let cell1 = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+
+                let match1 = !filtro1 || cell1.includes(filtro1);
+
+                if (match1) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    });
+});
+
+//BUSCADOR ESTADO DEL CADAVER
+document.addEventListener('DOMContentLoaded', () => {
+
+    const nombre_ecadaver_buscador = document.getElementById('estado_cadaver_buscador');
+
+    const tabla = document.getElementById('tabla_estado_cadaver');
+    const rows = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+
+    [nombre_ecadaver_buscador].forEach((input) => {
+        input.addEventListener('keyup', () => {
+
+            const filtro1 = nombre_ecadaver_buscador.value.toLowerCase();
+
+            for (let i = 0; i < rows.length; i++) {
+                let row = rows[i];
+                let cell1 = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+
+                let match1 = !filtro1 || cell1.includes(filtro1);
+
+                if (match1) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    });
+});
