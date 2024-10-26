@@ -3,13 +3,8 @@ $nombrePagina = "Catálogo de Persona";
 require ('../header.php');
 include ('../modelo/conexion.php');
 
-// Obtener criterios de búsqueda
-$sentencia = $conexion->prepare("SELECT * FROM criterio_persona");
-$sentencia->execute();
-$criterios = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-
 // Obtener resultados iniciales
-$sentencia = $conexion->prepare("SELECT * FROM persona");
+$sentencia = $conexion->prepare("SELECT * FROM persona WHERE cedula != 0");
 $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>

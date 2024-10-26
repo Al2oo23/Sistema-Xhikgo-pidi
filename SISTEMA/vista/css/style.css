@@ -36,3 +36,11 @@
 .recuperacion{
     margin-top: 100px !important;
 }
+.filtrador{
+    display: flex;
+    justify-content: space-between;
+
+}
+#busca{
+    width: 200px;
+}

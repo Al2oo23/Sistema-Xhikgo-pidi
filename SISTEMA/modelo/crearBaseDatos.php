@@ -639,6 +639,19 @@ try {
       )";
     $conexion->exec($SQL);
 
+    //------------------ Criterio -------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS criterio (
+        id VARCHAR(20) PRIMARY KEY NOT NULL,
+        tabla VARCHAR(20) NOT NULL,
+        sentencia VARCHAR(100) 
+    )";
+    $conexion->exec($SQL);
+
+    $SQL = "INSERT IGNORE INTO criterio VALUES(?,?,?)";
+    $preparado = $conexion->prepare($SQL);
+    $preparado->execute(["usuario", "usuario", "SELECT * FROM usuario"]);
+
     //------------------ BITÁCORA -------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS bitacora (

@@ -4,66 +4,42 @@ $nombrePagina = 'Catálogo de Usuario';
 require ('../header.php');
 include ('../modelo/conexion.php');
 
-$sentencia = $conexion->prepare("SELECT * FROM usuario");
+$sentencia = $conexion->prepare("SELECT sentencia FROM criterio WHERE tabla = 'usuario'");
+$sentencia->execute();
+$resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC)[0];
+
+$sentencia = $resultado['sentencia'];
+
+$sentencia = $conexion->prepare("$sentencia");
 $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="col-9 m-auto" id="catalogo">
-    <div class="card">
+<div class="card">
         <div class="card-header">
             <h4 class="card-title">Buscador</h4>
         </div>
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-horizontal" action="reportes/reporte_usuario.php" method="POST">
-                    <div class="form-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label for="cedula_usuario_buscador">Cedula</label>
-                            </div>
-                            <div class="col-md-8 form-group">
-                                <input type="text" id="cedula_usuario_buscador" name="cedula_usuario_buscador"
-                                    class="form-control" placeholder="Cedula Buscada">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="nombre_usuario_buscador">Nombre de Usuario</label>
-                            </div>
-                            <div class="col-md-8 form-group">
-                                <input type="text" id="nombre_usuario_buscador" name="nombre_usuario_buscador"
-                                    class="form-control" placeholder="Nombre de Usuario Buscado">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="estado_usuario_buscador">Estado</label>
-                            </div>
-                            <div class="col-md-8 form-group">
-                                <input type="text" id="estado_usuario_buscador" name="estado_usuario_buscador"
-                                    class="form-control" placeholder="Estado Buscado">
-                            </div>
-                            <div class="col-md-12 form-group d-flex justify-content-between">
-                                <form>
-                                    <div class="col-4">
-                                        <div class="form-group has-icon-left">
-                                            <div class="position-relative">
-                                                <select name="tamano" class="form-select" id="tamano"
-                                                    onchange="cambiarTamano()">
-                                                    <option value="pequeno">Pequeño</option>
-                                                    <option value="mediano">Mediano</option>
-                                                    <option value="grande" selected>Grande</option>
-                                                    <option value="extragrande">Extra Grande</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <button type="submit" class="btn btn-primary">Generar PDF</button>
+            
+                <div class="col-12">
+                    <div class="form-group has-icon-left">
+                        <div class=" position-relative filtrador">
+                            <input type="text" class="form-control" id="busca" placeholder="Buscar">
+                            <div>
+                                <a href="reportes/reporte_usuario.php" class="btn btn-primary" style="text-decoration: none;
+                                    color:white;">Generar Reporte</a>
+                                <?php include ("modal/criterioUsuario.php"); ?>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div> 
             </div>
         </div>
+    </div>
 
+    <div class="card">
         <div class="card">
             <div class="card-content">
                 <div class="card-header">
