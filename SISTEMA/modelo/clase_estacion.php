@@ -30,18 +30,6 @@ class Estacion{
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([null,$nombre]);
 
-         // BITACORA
-
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
-            
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Agregó  Estacion ".$nombre." el día ",$fecha]);
-
         return $preparado;
     }
 
@@ -52,18 +40,6 @@ class Estacion{
         $SQL = "UPDATE estacion SET nombre = ? WHERE id = ?";
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([$nombre, $id]);
-
-         // BITACORA
-
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
-            
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Modificó  Estacion".$nombre." el día ",$fecha]);
 
         return $preparado;
     }

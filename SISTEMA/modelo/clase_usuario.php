@@ -59,18 +59,6 @@ class usuario{
         $preparado1 = $conexion->prepare($SQL);
         $preparado1->execute([$cedula, "no", "no", "no", "no", "no", "no", "no", "no", "no", "no", "no", "no", "no", "no", "no", "no"]);
 
-          // BITACORA
-
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
-            
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró El Usuario".$cedula, $fecha]);
-
         return $preparado;
     }
 
@@ -81,18 +69,6 @@ class usuario{
         $SQL = "UPDATE usuario SET nombre = ?, clave = ?, estado = ?, pregunta = ?, respuesta = ? WHERE cedula = ?";
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([$nombre, $clave, $estado, $pregunta, $respuesta, $cedula]);
-
-          // BITACORA
-
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
-            
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Modifico Usuario".$nombre, $fecha]);
 
     
         return $preparado;

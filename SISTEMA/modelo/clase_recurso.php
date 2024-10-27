@@ -57,17 +57,6 @@ class recurso{
         $resultado = $conexion->prepare($SQL);
         $resultado->execute([null, $nombre, $tipo, 0]);
 
-         // BITACORA
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
-            
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró Recurso".$nombre, $fecha]);
-
         return $resultado;
         }else{
             echo "<script>alert('El Recurso ya está registrado')</script>";
@@ -89,16 +78,6 @@ class recurso{
             $SQL = "UPDATE recurso SET nombre = ?, tipo = ? WHERE id = ?";
             $preparado = $conexion->prepare($SQL);
             $preparado->execute([$nombre, $tipo, $id]);
-             // BITACORA
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
-            
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Modificó Recurso".$nombre, $fecha]);
 
             return $preparado;
         // }else{
@@ -123,17 +102,6 @@ class recurso{
     $SQL = "UPDATE recurso SET cantidad = ? WHERE nombre = ?";
     $preparado = $conexion->prepare($SQL);
     $preparado->execute([$nuevaCantidad, $nombre]);
-
-     // BITACORA
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
-            
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Agregó Recurso".$nombre, $fecha]);
 
 
     return $preparado;
@@ -161,18 +129,6 @@ public function restarRecurso($nombre, $cantidad){
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([$nuevaCantidad, $nombre]);
 
-         // BITACORA
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
-            
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Resto Recurso".$nombre, $fecha]);
-
-
         return $preparado;
     } 
 }
@@ -184,17 +140,6 @@ public function restarRecurso($nombre, $cantidad){
         $SQL = $conexion->prepare("DELETE FROM recurso WHERE id = ?");
         $SQL->bindParam(1, $id, PDO::PARAM_INT);
         $preparado = $SQL->execute();
-
-         // BITACORA
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
-            
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Eliminó Recurso con id".$id, $fecha]);
 
 
         return $preparado;

@@ -652,7 +652,7 @@ try {
     $preparado = $conexion->prepare($SQL);
     $preparado->execute(["usuario", "usuario", "SELECT * FROM usuario"]);
 
-    //------------------ BITÁCORA -------------------
+//     //------------------ BITÁCORA -------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS bitacora (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -676,10 +676,10 @@ AFTER INSERT ON persona
 FOR EACH ROW
 BEGIN
     DECLARE sessionUserId INT;
-    SET sessionUserId = @sessionUserId;
+    SET sessionUserId = 123;
 
     INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora)
-    VALUES (sessionUserId, 'registro', 'persona', NOW());
+    VALUES (sessionUserId, 'registro', 'persona', NOW(), 'N/A', 'N/A');
 END;";
     $conexion->exec($SQL);
 
@@ -694,7 +694,7 @@ AFTER UPDATE ON persona
 FOR EACH ROW
 BEGIN
     DECLARE sessionUserId INT;
-    SET sessionUserId = @sessionUserId;
+    SET sessionUserId = 123;
 
     IF (NEW.cedula <> OLD.cedula OR NEW.nombre <> OLD.nombre OR NEW.edad <> OLD.edad OR NEW.correo <> OLD.correo OR 
         NEW.telefono <> OLD.telefono OR NEW.direccion <> OLD.direccion OR NEW.sexo <> OLD.sexo OR 
@@ -722,12 +722,12 @@ AFTER DELETE ON persona
 FOR EACH ROW
 BEGIN
     DECLARE sessionUserId INT;
-    SET sessionUserId = @sessionUserId;
+    SET sessionUserId = 123;
     
-    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM)
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
     VALUES (sessionUserId, 'Eliminación', 'persona', NOW(),
             CONCAT_WS(', ', OLD.cedula, OLD.nombre, OLD.edad, OLD.correo, OLD.telefono, OLD.direccion, OLD.sexo, 
-                      OLD.tipo_persona, OLD.cargo, OLD.seccion, OLD.estacion, OLD.estado));
+                      OLD.tipo_persona, OLD.cargo, OLD.seccion, OLD.estacion, OLD.estado), 'N/A');
 END;";
     $conexion->exec($SQL);
 
@@ -742,10 +742,10 @@ AFTER INSERT ON usuario
 FOR EACH ROW
 BEGIN
     DECLARE sessionUserId INT;
-    SET sessionUserId = @sessionUserId;
+    SET sessionUserId = 123;
 
-    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora)
-    VALUES (sessionUserId, 'registro', 'usuario', NOW());
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'registro', 'usuario', NOW(), 'N/A', 'N/A');
 END;";
     $conexion->exec($SQL);
 
@@ -760,7 +760,7 @@ AFTER UPDATE ON usuario
 FOR EACH ROW
 BEGIN
     DECLARE sessionUserId INT;
-    SET sessionUserId = @sessionUserId;
+    SET sessionUserId = 123;
 
     IF (NEW.cedula <> OLD.cedula OR NEW.nombre <> OLD.nombre OR NEW.clave <> OLD.clave OR NEW.estado <> OLD.estado OR 
         NEW.pregunta <> OLD.pregunta OR NEW.respuesta <> OLD.respuesta) THEN  
@@ -784,11 +784,11 @@ AFTER DELETE ON usuario
 FOR EACH ROW
 BEGIN
     DECLARE sessionUserId INT;
-    SET sessionUserId = @sessionUserId;
+    SET sessionUserId = 123;
     
-    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM)
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
     VALUES (sessionUserId, 'Eliminación', 'usuario', NOW(),
-            CONCAT_WS(', ', OLD.cedula, OLD.nombre, OLD.clave, OLD.estado, OLD.pregunta, OLD.respuesta));
+            CONCAT_WS(', ', OLD.cedula, OLD.nombre, OLD.clave, OLD.estado, OLD.pregunta, OLD.respuesta), 'N/A');
 END;";
     $conexion->exec($SQL);
 
@@ -803,10 +803,10 @@ AFTER INSERT ON vehiculo
 FOR EACH ROW
 BEGIN
     DECLARE sessionUserId INT;
-    SET sessionUserId = @sessionUserId;
+    SET sessionUserId = 123;
 
-    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora)
-    VALUES (sessionUserId, 'registro', 'vehiculo', NOW());
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'registro', 'vehiculo', NOW(), 'N/A', 'N/A');
 END;";
     $conexion->exec($SQL);
 
@@ -821,7 +821,7 @@ AFTER UPDATE ON vehiculo
 FOR EACH ROW
 BEGIN
     DECLARE sessionUserId INT;
-    SET sessionUserId = @sessionUserId;
+    SET sessionUserId = 123;
 
     IF (NEW.niv <> OLD.niv OR NEW.tipo <> OLD.tipo OR NEW.unidad <> OLD.unidad OR NEW.marca <> OLD.marca OR 
         NEW.modelo <> OLD.modelo OR NEW.serial_vehiculo <> OLD.serial_vehiculo OR NEW.cilindrada <> OLD.cilindrada OR NEW.carburante <> OLD.carburante OR NEW.seguro <> OLD.seguro OR NEW.cedula <> OLD.cedula) THEN  
@@ -845,11 +845,11 @@ AFTER DELETE ON vehiculo
 FOR EACH ROW
 BEGIN
     DECLARE sessionUserId INT;
-    SET sessionUserId = @sessionUserId;
+    SET sessionUserId = 123;
     
-    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM)
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
     VALUES (sessionUserId, 'Eliminación', 'vehiculo', NOW(),
-            CONCAT_WS(', ', OLD.niv, OLD.tipo, OLD.unidad, OLD.marca, OLD.modelo, OLD.serial_vehiculo, OLD.cilindrada, OLD.carburante, OLD.seguro, OLD.cedula));
+            CONCAT_WS(', ', OLD.niv, OLD.tipo, OLD.unidad, OLD.marca, OLD.modelo, OLD.serial_vehiculo, OLD.cilindrada, OLD.carburante, OLD.seguro, OLD.cedula), 'N/A');
 END;";
     $conexion->exec($SQL);
 
@@ -864,10 +864,10 @@ AFTER INSERT ON recurso
 FOR EACH ROW
 BEGIN
     DECLARE sessionUserId INT;
-    SET sessionUserId = @sessionUserId;
+    SET sessionUserId = 123;
 
-    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora)
-    VALUES (sessionUserId, 'registro', 'recurso', NOW());
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'registro', 'recurso', NOW(), 'N/A', 'N/A');
 END;";
     $conexion->exec($SQL);
 
@@ -882,7 +882,7 @@ AFTER UPDATE ON recurso
 FOR EACH ROW
 BEGIN
     DECLARE sessionUserId INT;
-    SET sessionUserId = @sessionUserId;
+    SET sessionUserId = 123;
 
     IF (NEW.id <> OLD.id OR NEW.nombre <> OLD.nombre OR NEW.tipo <> OLD.tipo OR NEW.cantidad <> OLD.cantidad) THEN  
         
@@ -905,11 +905,11 @@ AFTER DELETE ON recurso
 FOR EACH ROW
 BEGIN
     DECLARE sessionUserId INT;
-    SET sessionUserId = @sessionUserId;
+    SET sessionUserId = 123;
     
-    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM)
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
     VALUES (sessionUserId, 'Eliminación', 'recurso', NOW(),
-            CONCAT_WS(', ', OLD.id, OLD.nombre, OLD.tipo, OLD.cantidad));
+            CONCAT_WS(', ', OLD.id, OLD.nombre, OLD.tipo, OLD.cantidad), 'N/A');
 END;";
     $conexion->exec($SQL);
 
@@ -924,10 +924,10 @@ AFTER INSERT ON estacion
 FOR EACH ROW
 BEGIN
     DECLARE sessionUserId INT;
-    SET sessionUserId = @sessionUserId;
+    SET sessionUserId = 123;
 
-    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora)
-    VALUES (sessionUserId, 'registro', 'estacion', NOW());
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'registro', 'estacion', NOW(), 'N/A', 'N/A');
 END;";
     $conexion->exec($SQL);
 
@@ -942,7 +942,7 @@ AFTER UPDATE ON estacion
 FOR EACH ROW
 BEGIN
     DECLARE sessionUserId INT;
-    SET sessionUserId = @sessionUserId;
+    SET sessionUserId = 123;
 
     IF (NEW.id <> OLD.id OR NEW.nombre <> OLD.nombre) THEN  
         
@@ -965,11 +965,11 @@ AFTER DELETE ON estacion
 FOR EACH ROW
 BEGIN
     DECLARE sessionUserId INT;
-    SET sessionUserId = @sessionUserId;
+    SET sessionUserId = 123;
     
-    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM)
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
     VALUES (sessionUserId, 'Eliminación', 'estacion', NOW(),
-            CONCAT_WS(', ', OLD.id, OLD.nombre));
+            CONCAT_WS(', ', OLD.id, OLD.nombre), 'N/A');
 END;";
     $conexion->exec($SQL);
 
