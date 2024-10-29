@@ -576,6 +576,24 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                            
                        </div>
 
+                       <div class="col-12">
+                           
+                           <div class="form-group has-icon-left grand-plus_Container-efectivoM">
+                               <label for="">Efectivo</label>
+                               <div class="plus-container">
+                                   <div class="position-relative first-siblingM">
+                                       <input type="text" id="efectivo" name="efectivos[]" class="form-control" placeholder="Efectivo">
+                                       <div class="form-control-icon">
+                                           <i class="bi bi-person-x"></i>
+                                       </div>
+                                   </div>
+                                   <div id="plus-efectivoM" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
+                               </div>
+                               
+                           </div>
+                           
+                       </div>
+
 
                   <div class="col-12">
                       

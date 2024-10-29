@@ -415,7 +415,8 @@ class Incendio_vehiculo {
          valor = ?, conductor = ?, ci_conductor = ?, aseguradora = ?, vigencia = ?, inicio = ?, ignicion = ?, culmino = ?, causa = ?, h_reignicion = ?,
          clase = ?, declaracion = ?,  h_lesionados = ?, lesionados = ?, acta= ?, observaciones= ?, jefe = ?, gral_servicios= ?, jefe_deseccion= ?,  
          comandante= ?,   ci_pnb = ?, ci_gnb = ?, ci_intt = ?, ci_invity = ?, ci_pc = ?, ci_otro = ? WHERE id = ?";
-         $preparado = $conexion->prepare($SQL);
+       
+       $preparado = $conexion->prepare($SQL);
          $preparado->execute([$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso,
          $lugar, $direccion, $modelo, $marca, $año, $placa, $serial, $color, $puestos, $propietario, $ci_propietario, $valor,
          $conductor, $ci_conductor, $aseguradora, $vigencia, $inicio, $ignicion, $culmino, $causa, $h_reignicion, $clase, 

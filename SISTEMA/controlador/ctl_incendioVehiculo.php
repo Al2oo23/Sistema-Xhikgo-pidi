@@ -275,12 +275,12 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         $incendio_vehiculo->getCi_otro()
     );
    
-     //EFECTIVOS
-     foreach ($_POST['efectivos'] as $cedula) {
+       //EFECTIVOS
+       foreach ($_POST['efectivos'] as $cedula) {
         //setters vehiculo incidente
 
         $efectivo->setIdIncidente($_POST['id']);
-        $efectivo->setTipo("S.E");
+        $efectivo->setTipo("incendio_vehiculo");
         $efectivo->setCedula($cedula);
 
         //getters vehiculo incidente
@@ -298,14 +298,14 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
 
     $recurso->restauradorRecurso(
         $_POST['id'],
-        "S.E"
+        "Incendio_vehiculo"
     );
 
     for($i = 0; $i<count($_POST['recurso']);$i++){
         //setters vehiculo incidente
 
     $recurso->setIdIncidente($_POST['id']);
-        $recurso->setTipo("S.E");
+        $recurso->setTipo("incendio_vehiculo");
         $recurso->setIdRecurso($_POST['recurso'][$i]);
         $recurso->setCantidad($_POST['cantidad'][$i]);
 
@@ -313,7 +313,7 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
 
         $recurso->eliminarRecurso(
             $recurso->getIdIncidente(),
-            $recurso->getTipo("S.E")
+            $recurso->getTipo("Incendio_vehiculo")
         );
 
         $resultadoRecurso = $recurso->agregarRecurso(
@@ -329,7 +329,7 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         //setters vehiculo incidente
 
         $unidad->setIdIncidente($_POST['id']);
-        $unidad->setTipo("S.E");
+        $unidad->setTipo("incendio_vehiculo");
         $unidad->setNiv($niv);
 
         //getters vehiculo incidente
@@ -356,6 +356,7 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoIncendioVehiculo.php'>";
     }   
 }
+
 
 
 
