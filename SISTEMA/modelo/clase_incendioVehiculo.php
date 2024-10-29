@@ -1,6 +1,6 @@
 <?php
 
-class incendio_vehiculo {
+class Incendio_vehiculo {
     private $id, $fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $lugar, $direccion, $modelo, $marca, $año, $placa, 
     $serial, $color, $puestos, $propietario, $ci_propietario, $valor, $conductor, $ci_conductor, $aseguradora, $vigencia, $inicio, $ignicion, $culmino, 
     $causa, $h_reignicion, $clase, $declaracion, $h_lesionados, $lesionados, $acta, $observaciones, $jefe, $gral_servicios, $jefe_deseccion, $comandante,  $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro;
@@ -53,7 +53,7 @@ class incendio_vehiculo {
         $this->direccion = $direccion;
     }
 
-    public function seModelo($modelo){
+    public function setModelo($modelo){
         $this->modelo = $modelo;
     }
 
@@ -231,6 +231,11 @@ class incendio_vehiculo {
         return $this->hregreso;
     }
 
+    public function getLugar(){
+        return $this->lugar;
+    }
+
+
     public function getDireccion(){
         return $this->direccion;
     }
@@ -295,6 +300,11 @@ class incendio_vehiculo {
         return $this->inicio;
     }
 
+    
+    public function getIgnicion(){
+        return $this->ignicion;
+    }
+
     public function getCulmino(){
         return $this->culmino;
     }
@@ -319,23 +329,21 @@ class incendio_vehiculo {
         return $this->h_lesionados;
     }
 
-
-
-
-    public function getLugar(){
-        return $this->lugar;
-    }
-
-    public function getJefe(){
-        return $this->jefe;
+    public function getLesionados(){
+        return $this->lesionados;
     }
 
     public function getActa(){
         return $this->acta;
     }
 
+
     public function getObservaciones(){
         return $this->observaciones;
+    }
+
+    public function getJefe(){
+        return $this->jefe;
     }
 
     public function getGral_servicios(){
@@ -375,31 +383,47 @@ class incendio_vehiculo {
     }
 
     //Registrar
-        public function registrarVegetacion($fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $norte, $sur, $este, $oeste, $direccion,
-        $lugar, $jefe, $acta, $observaciones, $gral_servicios, $jefe_deseccion, $comandante, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
+        public function registrarIncendio_vehiculo($fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso,
+        $lugar, $direccion, $modelo, $marca, $año, $placa, $serial, $color, $puestos, $propietario, $ci_propietario, $valor,
+         $conductor, $ci_conductor, $aseguradora, $vigencia, $inicio, $ignicion, $culmino, $causa, $h_reignicion, $clase, 
+         $declaracion, $h_lesionados, $lesionados,  $acta, $observaciones, $jefe, $gral_servicios, $jefe_deseccion, $comandante,
+         $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
         include("conexion.php");
 
-        $SQL = "INSERT INTO vegetacion VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, ?)";
+        $SQL = "INSERT INTO incendio_vehiculo VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null,$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $norte, $sur, $este, $oeste, $direccion,
-        $lugar, $jefe, $acta, $observaciones, $gral_servicios, $jefe_deseccion, $comandante, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro]);
+        $preparado->execute([null,$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso,
+        $lugar, $direccion, $modelo, $marca, $año, $placa, $serial, $color, $puestos, $propietario, $ci_propietario, $valor, 
+        $conductor, $ci_conductor, $aseguradora, $vigencia, $inicio, $ignicion, $culmino, $causa, $h_reignicion, $clase, 
+        $declaracion, $h_lesionados, $lesionados,  $acta, $observaciones, $jefe, $gral_servicios, $jefe_deseccion, $comandante,
+        $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro]);
         
         return array($preparado,$conexion->lastInsertId());
         
     }
-    // // //Modificar
-    // public function modificarVegetacion($id, $fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $norte, $sur, $este, $oeste,  $direccion,
-    // $lugar, $jefe, $acta, $observaciones, $gral_servicios, $jefe_deseccion, $comandante,  $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
-    //     include("conexion.php");
+  
+     // //Modificar
+     public function modificarIncendio_vehiculo($id, $fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso,
+     $lugar, $direccion, $modelo, $marca, $año, $placa, $serial, $color, $puestos, $propietario, $ci_propietario, $valor,
+     $conductor, $ci_conductor, $aseguradora, $vigencia, $inicio, $ignicion, $culmino, $causa, $h_reignicion, $clase, 
+     $declaracion, $h_lesionados, $lesionados,  $acta, $observaciones, $jefe, $gral_servicios, $jefe_deseccion, $comandante,
+     $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro ){
+         include("conexion.php");
+ 
+         $SQL = "UPDATE incendio_vehiculo SET fecha = ?, seccion = ?, estacion = ?, aviso = ?, hora = ?, salida = ?, llegada = ?, regreso = ?, 
+         lugar = ?, direccion = ?, modelo = ?, marca = ?, año= ?, placa = ?, serial = ?, color = ?, puestos= ?, propietario = ?, ci_propietario = ?,
+         valor = ?, conductor = ?, ci_conductor = ?, aseguradora = ?, vigencia = ?, inicio = ?, ignicion = ?, culmino = ?, causa = ?, h_reignicion = ?,
+         clase = ?, declaracion = ?,  h_lesionados = ?, lesionados = ?, acta= ?, observaciones= ?, jefe = ?, gral_servicios= ?, jefe_deseccion= ?,  
+         comandante= ?,   ci_pnb = ?, ci_gnb = ?, ci_intt = ?, ci_invity = ?, ci_pc = ?, ci_otro = ? WHERE id = ?";
+         $preparado = $conexion->prepare($SQL);
+         $preparado->execute([$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso,
+         $lugar, $direccion, $modelo, $marca, $año, $placa, $serial, $color, $puestos, $propietario, $ci_propietario, $valor,
+         $conductor, $ci_conductor, $aseguradora, $vigencia, $inicio, $ignicion, $culmino, $causa, $h_reignicion, $clase, 
+         $declaracion, $h_lesionados, $lesionados,  $acta, $observaciones, $jefe, $gral_servicios, $jefe_deseccion, $comandante,
+         $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $id]);
+ 
+         return $preparado;
+        }
+    }
 
-    //     $SQL = "UPDATE vegetacion SET fecha = ?, seccion = ?, estacion = ?, aviso = ?, hora = ?, salida = ?, llegada = ?, regreso = ?, incendio = ?, norte= ?, sur= ?, este= ?, oeste= ?, 
-    //     direccion = ?, lugar = ?,  jefe = ?, acta= ?, observaciones= ?,gral_servicios= ?, jefe_deseccion= ?,  comandante= ?,   ci_pnb = ?, ci_gnb = ?, ci_intt = ?, ci_invity = ?, ci_pc = ?, ci_otro = ? WHERE id = ?";
-    //     $preparado = $conexion->prepare($SQL);
-    //     $preparado->execute([$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $norte, $sur, $este, $oeste,  $direccion,
-    //     $lugar,  $jefe, $acta, $observaciones, $gral_servicios, $jefe_deseccion, $comandante, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $id]);
-
-
-    //     return $preparado;
-    // }
-}
 ?>

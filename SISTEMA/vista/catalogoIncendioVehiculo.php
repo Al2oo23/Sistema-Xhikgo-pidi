@@ -1,19 +1,19 @@
 <?php
-$nombrePagina = "Catálogo de Incendio de Vegetacion";
+$nombrePagina = "Catálogo de Incendio de Vehiculo";
 require ('../header.php');
 include ('../modelo/conexion.php');
 
-// $sentencia = $conexion->prepare("SELECT * FROM `incendio_vehiculo`");
-// $sentencia->execute();
-// $incendio_vehiculo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-// include ("modal/modalVegetacionM.php");
+$sentencia = $conexion->prepare("SELECT * FROM `incendio_vehiculo`");
+$sentencia->execute();
+$incendio_vehiculo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+include ("modal/modalIncendioVehiculoM.php");
 ?>
 
 <div class="col-12 m-auto" id="catalogo">
     <div class="card">
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-horizontal" action="reportes/reporte_vegetacion.php" method="POST">
+                <form class="form form-horizontal" action="reportes/reporte_incendioVehiculo.php" method="POST">
                     <div class="form-body">
                         <div class="row">
                             <form>
@@ -56,9 +56,9 @@ include ('../modelo/conexion.php');
                                 <th class="columna" hidden>Id</th>
                                 <th class="columna">Fecha</th>
                                 <th class="columna">Seccion</th>
-                                <th class="columna">Tipo de Incendio</th>
                                 <th class="columna">Lugar</th>
                                 <th class="columna">Serial del Vehiculo</th>
+                                <th class="columna">C.I Propietario</th>
                                 <th class="columna">Fuente de Ignicion</th>
                                 <th class="columna">Causa del Incendio</th>
                                 <th class="columna">Numero de Lesionados</th>
@@ -87,26 +87,26 @@ include ('../modelo/conexion.php');
                                     <td class="columna" hidden><?= $incendio_vehicu["año"]; ?></td>
                                     <td class="columna" hidden><?= $incendio_vehicu["placa"]; ?></td>
                                     <td class="columna"><?= $incendio_vehicu["serial"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["color"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["puestos"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["color"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["puestos"]; ?></td>
                                     <td class="columna"><?= $incendio_vehicu["propietario"]; ?></td>
                                     <td class="columna"><?= $incendio_vehicu["ci_propietario"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["valor"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["conductor"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["ci_conductor"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["aseguradora"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["vigencia"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["inicio"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["ignicion"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["culmino"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["valor"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["conductor"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["ci_conductor"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["aseguradora"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["vigencia"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["inicio"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["ignicion"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["culmino"]; ?></td>
                                     <td class="columna"><?= $incendio_vehicu["causa"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["h_reigicion"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["clase"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["declaracion"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["h_lesionados"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["h_reigicion"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["clase"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["declaracion"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["h_lesionados"]; ?></td>
                                     <td class="columna"><?= $incendio_vehicu["lesionados"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["acta"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["observaciones"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["acta"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["observaciones"]; ?></td>
                                     <td class="columna"><?= $incendio_vehicu["jefe"]; ?></td>
                                     <td class="columna" hidden><?= $incendio_vehicu["gral_servicios"]; ?></td>
                                     <td class="columna" hidden><?= $incendio_vehicu["jefe_deseccion"]; ?></td>
@@ -121,7 +121,7 @@ include ('../modelo/conexion.php');
                                         <button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm1"><i class="bi bi-pencil"></i></button>
                                             
                                         <div><a name='eliminar' id='eliminar'
-                                                    href='../controlador/ctl_vegetacion.php?txtID=<?= $incendio_vehicu['id']; ?>'
+                                                    href='../controlador/ctl_incendioVehiculo.php?txtID=<?= $incendio_vehicu['id']; ?>'
                                                     class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                     </td>
@@ -136,8 +136,8 @@ include ('../modelo/conexion.php');
     </div>
 </div>
 
-<script src="Javascript/vegetacionModal.js"></script>
-<script src="Javascript/plusvegetacion.js"></script>
+<script src="Javascript/incendioVehiculoModal.js"></script>
+<script src="Javascript/plusIncendiovehiculo.js"></script>
 
 <?php
 require ('../footer.php');

@@ -103,6 +103,9 @@ include ("modal/modalVegetacionM.php");
                                                     class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
                                     </td>
+                                    <td>
+                                    <a href="../controlador/ctl_vegetacion.php?txtIDreporte=<?= $abej['id'];?>" class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
+                                    </td>
                                 </tr>
 
                             <?php endforeach; ?>
