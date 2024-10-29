@@ -442,7 +442,7 @@ try {
     clase VARCHAR(20) NOT NULL,
     declaracion VARCHAR(20) NOT NULL,
     h_lesionados VARCHAR(20) NOT NULL,
-    lesionados VARCHAR(20) NOT NULL,
+    lesionados VARCHAR (20) NOT NULL,
     acta VARCHAR(20) NOT NULL,
     observaciones VARCHAR(50) NOT NULL,
     jefe VARCHAR(20) NOT NULL,
