@@ -678,8 +678,9 @@ BEGIN
     DECLARE sessionUserId INT;
     SET sessionUserId = 123;
 
-    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora)
-    VALUES (sessionUserId, 'registro', 'persona', NOW(), 'N/A', 'N/A');
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'registro', 'persona', NOW(), 'N/A', CONCAT_WS(', ', NEW.cedula, NEW.nombre, NEW.edad, NEW.correo, NEW.telefono, NEW.direccion, NEW.sexo, 
+                          NEW.tipo_persona, NEW.cargo, NEW.seccion, NEW.estacion, NEW.estado));
 END;";
     $conexion->exec($SQL);
 
@@ -745,7 +746,7 @@ BEGIN
     SET sessionUserId = 123;
 
     INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
-    VALUES (sessionUserId, 'registro', 'usuario', NOW(), 'N/A', 'N/A');
+    VALUES (sessionUserId, 'registro', 'usuario', NOW(), 'N/A', CONCAT_WS(', ', NEW.cedula, NEW.nombre, NEW.clave, NEW.estado, NEW.pregunta, NEW.respuesta));
 END;";
     $conexion->exec($SQL);
 
@@ -806,7 +807,7 @@ BEGIN
     SET sessionUserId = 123;
 
     INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
-    VALUES (sessionUserId, 'registro', 'vehiculo', NOW(), 'N/A', 'N/A');
+    VALUES (sessionUserId, 'registro', 'vehiculo', NOW(), 'N/A', CONCAT_WS(', ', NEW.niv, NEW.tipo, NEW.unidad, NEW.marca, NEW.modelo, NEW.serial_vehiculo, NEW.cilindrada, NEW.carburante, NEW.seguro, NEW.cedula));
 END;";
     $conexion->exec($SQL);
 
@@ -867,7 +868,7 @@ BEGIN
     SET sessionUserId = 123;
 
     INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
-    VALUES (sessionUserId, 'registro', 'recurso', NOW(), 'N/A', 'N/A');
+    VALUES (sessionUserId, 'registro', 'recurso', NOW(), 'N/A', CONCAT_WS(', ', NEW.id, NEW.nombre, NEW.tipo, NEW.cantidad));
 END;";
     $conexion->exec($SQL);
 
@@ -927,7 +928,7 @@ BEGIN
     SET sessionUserId = 123;
 
     INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
-    VALUES (sessionUserId, 'registro', 'estacion', NOW(), 'N/A', 'N/A');
+    VALUES (sessionUserId, 'registro', 'estacion', NOW(), 'N/A', CONCAT_WS(', ', NEW.id, NEW.nombre));
 END;";
     $conexion->exec($SQL);
 
@@ -972,6 +973,368 @@ BEGIN
             CONCAT_WS(', ', OLD.id, OLD.nombre), 'N/A');
 END;";
     $conexion->exec($SQL);
+
+
+//------------------ TRIGGER REGISTRO LUGAR -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_lugar_registro";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_lugar_registro
+AFTER INSERT ON lugar 
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'registro', 'lugar', NOW(), 'N/A', CONCAT_WS(', ', NEW.id, NEW.nombre, NEW.municipio, NEW.distancia));
+END;";
+    $conexion->exec($SQL);
+
+    //------------------ TRIGGER MODIFICACIÓN LUGAR -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_lugar_modificar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_lugar_modificar
+AFTER UPDATE ON lugar
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    IF (NEW.id <> OLD.id OR NEW.nombre <> OLD.nombre OR NEW.municipio <> OLD.municipio OR NEW.distancia <> OLD.distancia) THEN  
+        
+        INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+        VALUES (sessionUserId, 'Actualización de datos de estación', 'lugar', NOW(),
+                CONCAT_WS(', ', OLD.id, OLD.nombre, OLD.municipio, OLD.distancia),
+                CONCAT_WS(', ', NEW.id, NEW.nombre, NEW.municipio, NEW.distancia));
+    END IF;
+END;";
+    $conexion->exec($SQL);
+
+        //------------------ TRIGGER ELIMINACIÓN LUGAR -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_lugar_eliminar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_lugar_eliminar
+AFTER DELETE ON lugar
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+    
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'Eliminación', 'lugar', NOW(),
+            CONCAT_WS(', ', OLD.id, OLD.nombre, OLD.municipio, OLD.distancia), 'N/A');
+END;";
+    $conexion->exec($SQL);
+
+     //------------------ TRIGGER REGISTRO SECCIÓN -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_seccion_registro";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_seccion_registro
+AFTER INSERT ON seccion 
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'registro', 'seccion', NOW(), 'N/A', CONCAT_WS(', ', NEW.id, NEW.numero));
+END;";
+    $conexion->exec($SQL);
+
+    //------------------ TRIGGER MODIFICACIÓN SECCIÓN -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_seccion_modificar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_seccion_modificar
+AFTER UPDATE ON seccion
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    IF (NEW.id <> OLD.id OR NEW.numero <> OLD.numero) THEN  
+        
+        INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+        VALUES (sessionUserId, 'Actualización de datos de estación', 'seccion', NOW(),
+                CONCAT_WS(', ', OLD.id, OLD.numero),
+                CONCAT_WS(', ', NEW.id, NEW.numero));
+    END IF;
+END;";
+    $conexion->exec($SQL);
+
+     //------------------ TRIGGER ELIMINACIÓN SECCIÓN -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_seccion_eliminar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_seccion_eliminar
+AFTER DELETE ON seccion
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+    
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'Eliminación', 'seccion', NOW(),
+            CONCAT_WS(', ', OLD.id, OLD.numero), 'N/A');
+END;";
+    $conexion->exec($SQL);
+
+    //------------------ TRIGGER REGISTRO MUNICIPIO -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_municipio_registro";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_municipio_registro
+AFTER INSERT ON municipio 
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'registro', 'municipio', NOW(), 'N/A', CONCAT_WS(', ', NEW.id, NEW.nombre, NEW.codigo));
+END;";
+    $conexion->exec($SQL);
+
+    //------------------ TRIGGER MODIFICACIÓN MUNICIPIO -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_municipio_modificar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_municipio_modificar
+AFTER UPDATE ON municipio
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    IF (NEW.id <> OLD.id OR NEW.numero <> OLD.numero OR NEW.codigo <> OLD.codigo) THEN  
+        
+        INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+        VALUES (sessionUserId, 'Actualización de datos de estación', 'municipio', NOW(),
+                CONCAT_WS(', ', OLD.id, OLD.numero, OLD.codigo),
+                CONCAT_WS(', ', NEW.id, NEW.numero, NEW.codigo));
+    END IF;
+END;";
+    $conexion->exec($SQL);
+
+    //------------------ TRIGGER ELIMINACIÓN MUNICIPIO -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_municipio_eliminar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_municipio_eliminar
+AFTER DELETE ON municipio
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+    
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'Eliminación', 'municipio', NOW(),
+            CONCAT_WS(', ', OLD.id, OLD.numero, OLD.codigo), 'N/A');
+END;";
+    $conexion->exec($SQL);
+
+    //------------------ TRIGGER REGISTRO TIPO PERSONA -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_tipo_persona_registro";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_tipo_persona_registro
+AFTER INSERT ON tipo_persona 
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'registro', 'tipo_persona', NOW(), 'N/A', CONCAT_WS(', ', NEW.id, NEW.tipo, NEW.descripcion));
+END;";
+    $conexion->exec($SQL);
+
+    //------------------ TRIGGER MODIFICACIÓN TIPO PERSONA -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_tipo_persona_modificar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_tipo_persona_modificar
+AFTER UPDATE ON tipo_persona
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    IF (NEW.id <> OLD.id OR NEW.tipo <> OLD.tipo OR NEW.descripcion <> OLD.descripcion) THEN  
+        
+        INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+        VALUES (sessionUserId, 'Actualización de datos de estación', 'tipo_persona', NOW(),
+                CONCAT_WS(', ', OLD.id, OLD.tipo, OLD.descripcion),
+                CONCAT_WS(', ', NEW.id, NEW.tipo, NEW.descripcion));
+    END IF;
+END;";
+    $conexion->exec($SQL);
+
+    //------------------ TRIGGER ELIMINACIÓN TIPO PERSONA -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_tipo_persona_eliminar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_tipo_persona_eliminar
+AFTER DELETE ON tipo_persona
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+    
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'Eliminación', 'tipo_persona', NOW(),
+            CONCAT_WS(', ', OLD.id, OLD.tipo, OLD.descripcion), 'N/A');
+END;";
+    $conexion->exec($SQL);
+
+    //------------------ TRIGGER REGISTRO CARGO -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_cargo_registro";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_cargo_registro
+AFTER INSERT ON cargo 
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'registro', 'cargo', NOW(), 'N/A', CONCAT_WS(', ', NEW.id, NEW.nombre));
+END;";
+    $conexion->exec($SQL);
+
+    //------------------ TRIGGER MODIFICACIÓN CARGO -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_cargo_modificar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_cargo_modificar
+AFTER UPDATE ON cargo
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    IF (NEW.id <> OLD.id OR NEW.nombre <> OLD.nombre) THEN  
+        
+        INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+        VALUES (sessionUserId, 'Actualización de datos de estación', 'cargo', NOW(),
+                CONCAT_WS(', ', OLD.id, OLD.nombre),
+                CONCAT_WS(', ', NEW.id, NEW.nombre));
+    END IF;
+END;";
+    $conexion->exec($SQL);
+
+    //------------------ TRIGGER ELIMINACIÓN CARGO -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_cargo_eliminar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_cargo_eliminar
+AFTER DELETE ON cargo
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+    
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'Eliminación', 'cargo', NOW(),
+            CONCAT_WS(', ', OLD.id, OLD.nombre), 'N/A');
+END;";
+    $conexion->exec($SQL);
+
+    //------------------ TRIGGER REGISTRO RECURSO ASIGNADO -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_recurso_asignado_registro";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_recurso_asignado_registro
+AFTER INSERT ON recurso_asignado 
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'registro', 'recurso_asignado', NOW(), 'N/A', CONCAT_WS(', ', NEW.id, NEW.id_incidente, NEW.tipo_incidente, NEW.id_recurso, NEW.cantidad));
+END;";
+    $conexion->exec($SQL);
+
+    //------------------ TRIGGER MODIFICACIÓN RECURSO ASIGNADO -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_recurso_asignado_modificar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_recurso_asignado_modificar
+AFTER UPDATE ON recurso_asignado
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    IF (NEW.id <> OLD.id OR NEW.id_incidente <> OLD.id_incidente OR NEW.tipo_incidente <> OLD.tipo_incidente OR NEW.id_recurso <> OLD.id_recurso OR NEW.cantidad <> OLD.cantidad) THEN  
+        
+        INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+        VALUES (sessionUserId, 'Actualización de datos de estación', 'recurso_asignado', NOW(),
+                CONCAT_WS(', ', OLD.id, OLD.id_incidente, OLD.tipo_incidente, OLD.id_recurso, OLD.cantidad),
+                CONCAT_WS(', ', NEW.id, NEW.id_incidente, NEW.tipo_incidente, NEW.id_recurso, NEW.cantidad));
+    END IF;
+END;";
+    $conexion->exec($SQL);
+    
+    //------------------ TRIGGER ELIMINACIÓN RECURSO ASIGNADO -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_recurso_asignado_eliminar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_recurso_asignado_eliminar
+AFTER DELETE ON recurso_asignado
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+    
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'Eliminación', 'recurso_asignado', NOW(),
+            CONCAT_WS(', ', OLD.id, OLD.id_incidente, OLD.tipo_incidente, OLD.id_recurso, OLD.cantidad), 'N/A');
+END;";
+    $conexion->exec($SQL);
+
 
 
 } catch (PDOException $e) {
