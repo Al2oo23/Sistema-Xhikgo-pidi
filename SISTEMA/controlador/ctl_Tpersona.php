@@ -48,18 +48,6 @@ if (isset($_GET['txtID'])) {
     $sentencia->bindParam(1, $txtID, PDO::PARAM_INT);
     $sentencia->execute();
 
-      // BITACORA
-
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
-            
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Modificó  Tipo de Persona con el ID".$txtID, $fecha]);
-
     echo "<script>alert('Tipo de Persona Eliminada con Exito')</script>";
 	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoTpersona.php'>"; 
 }
