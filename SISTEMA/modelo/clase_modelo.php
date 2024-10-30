@@ -41,16 +41,16 @@ class modelo{
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([null,$marca,$nombre]);
 
-         // BITACORA
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
+        //  // BITACORA
+        //         // Fecha y hora actual
+        //         $fecha = date('Y-m-d H:i:s');
             
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
+        //         // Preparar la consulta SQL
+        //         $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
+        //         $resultado2 = $conexion->prepare($sql);
 
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró Modelo".$nombre, $fecha]);
+        //         // Ejecutar la consulta
+        //         $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró Modelo".$nombre, $fecha]);
 
 
         return $preparado;

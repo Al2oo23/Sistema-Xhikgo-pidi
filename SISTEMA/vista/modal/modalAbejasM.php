@@ -245,18 +245,6 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                             </div>
 
                             <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Jefe de Comision</label>
-                                    <div class="position-relative">
-                                        <input type="text" id="jefeM" name="jefe" class="form-control" placeholder="Jefe de Comision">
-                                        <div class="form-control-icon">
-                                        <i class="bi bi-person-video2"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
                            
                                 <div class="form-group has-icon-left grand-plus_Container-recursoM">
                                     <label for="">Recurso Utilizado</label>
@@ -279,7 +267,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                             </div>
 
                                         </div>
-                                        <div id="plus-recursoM" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
+                                        <div id="plus-recursoM" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i></div>
                                     </div>
                                     
                                 </div>
@@ -297,7 +285,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                                 <i class="bi bi-person-x"></i>
                                             </div>
                                         </div>
-                                        <div id="plus-efectivoM" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
+                                        <div id="plus-efectivoM" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i></div>
                                     </div>
                                     
                                 </div>
@@ -319,7 +307,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                             <?php endforeach;?>
                                             </select>
                                         </div>
-                                        <div id="plus-unidadM" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
+                                        <div id="plus-unidadM" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i></div>
                                     </div>
                                     
                                 </div>
@@ -355,7 +343,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I PNB</label>
                                     <div class="position-relative">
-                                        <input type="text" name="ci_pnb" id="ci_pnb" class="form-control" placeholder="C.I PNB">
+                                        <input type="text" name="ci_pnb" id="ci_pnbM" class="form-control" placeholder="C.I PNB">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -367,7 +355,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I GNB</label>
                                     <div class="position-relative">
-                                        <input type="text" name="ci_gnb" id="ci_gnb" class="form-control" placeholder="C.I GNB">
+                                        <input type="text" name="ci_gnb" id="ci_gnbM" class="form-control" placeholder="C.I GNB">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -379,7 +367,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I INTT</label>
                                     <div class="position-relative">
-                                        <input type="text" name="ci_intt" id="ci_intt" class="form-control" placeholder="C.I INTT">
+                                        <input type="text" name="ci_intt" id="ci_inttM" class="form-control" placeholder="C.I INTT">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -391,7 +379,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I INVITY</label>
                                     <div class="position-relative">
-                                        <input type="text" name="ci_invity" id="ci_invity" class="form-control" placeholder="C.I INVITY">
+                                        <input type="text" name="ci_invity" id="ci_invityM" class="form-control" placeholder="C.I INVITY">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -403,7 +391,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I PC</label>
                                     <div class="position-relative">
-                                        <input type="text" name="ci_pc" id="ci_pc" class="form-control" placeholder="C.I PC">
+                                        <input type="text" name="ci_pc" id="ci_pcM" class="form-control" placeholder="C.I PC">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -415,9 +403,61 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I OTROS</label>
                                     <div class="position-relative">
-                                        <input type="text" name="ci_otro" id="ci_otro" class="form-control" placeholder="C.I OTROS">
+                                        <input type="text" name="ci_otro" id="ci_otroM" class="form-control" placeholder="C.I OTROS">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Jefe de Comisión</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="jefe_comisionM" name="jefe_comisionM" class="form-control"
+                                            placeholder="Ingrese la Cedula del Jefe de Comision">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-person-video2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Jefe General</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="jefe_generalM" name="jefe_generalM" class="form-control"
+                                            placeholder="Ingrese la Cedula del Jefe General">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-person-video2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Jefe de Sección</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="jefe_seccionM" name="jefe_seccionM" class="form-control"
+                                            placeholder="Ingrese la Cedula del Jefe de Sección">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-person-video2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Comandante</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="comandanteM" name="comandanteM" class="form-control"
+                                            placeholder="Ingrese la Cedula del Comandante">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-person-video2"></i>
                                         </div>
                                     </div>
                                 </div>

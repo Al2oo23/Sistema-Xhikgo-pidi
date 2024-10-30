@@ -4,7 +4,7 @@ require ('../header.php');
 include ('../modelo/conexion.php');
 
 // Obtener resultados iniciales
-$sentencia = $conexion->prepare("SELECT * FROM persona WHERE cedula != 0");
+$sentencia = $conexion->prepare("SELECT * FROM persona WHERE cedula != '0'");
 $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -71,6 +71,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <td class="columnas"><?= $persona['cargo']; ?></td>
                                     <td class="columnas"><?= $persona['seccion']; ?></td>
                                     <td class="columnas"><?= $persona['estacion']; ?></td>
+                                    <td class="columnas" hidden><?= $persona['estado']; ?></td>
                                     <td>
                                         <div class="botones" style="justify-content:space-evenly;">
                                             <?php include ("modal/modalPersonaM.php"); ?>

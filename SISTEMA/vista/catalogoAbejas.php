@@ -122,7 +122,7 @@ include ("modal/modalAbejasM.php");
                                 <th class="columna">Ubicacion</th>
                                 <th class="columna">Lugar</th>
                                 <th class="columna">Dueño Inmueble</th>
-                                <th class="columna">Jefe</th>
+                                <th class="columna">Jefe Comision</th>
                                 <th class="columna">Accion</th>
                                 <th class="columna">Reporte</th>
 
@@ -146,13 +146,16 @@ include ("modal/modalAbejasM.php");
                                     <td class="columna" hidden><?= $abej["direccion"]; ?></td>
                                     <td class="columna"><?= $abej["lugar"]; ?></td>
                                     <td class="columna"><?= $abej["inmueble"]; ?></td>
-                                    <td class="columna"><?= $abej["jefe"]; ?></td>
                                     <td class="columna" hidden><?= $abej["ci_pnb"]; ?></td>
                                     <td class="columna" hidden><?= $abej["ci_gnb"]; ?></td>
                                     <td class="columna" hidden><?= $abej["ci_intt"]; ?></td>
                                     <td class="columna" hidden><?= $abej["ci_invity"]; ?></td>
                                     <td class="columna" hidden><?= $abej["ci_pc"]; ?></td>
                                     <td class="columna" hidden><?= $abej["ci_otro"]; ?></td>
+                                    <td class="columna"><?= $abej["jefe_comision"]; ?></td>
+                                    <td class="columna" hidden><?= $abej["jefe_general"]; ?></td>
+                                    <td class="columna" hidden><?= $abej["jefe_seccion"]; ?></td>
+                                    <td class="columna" hidden><?= $abej["comandante"]; ?></td>
                                     <td class="columna" hidden><?= $abej["acta"]; ?></td>
                                     <td class="columna" hidden><?= $abej["observaciones"]; ?></td>
                                     <td>

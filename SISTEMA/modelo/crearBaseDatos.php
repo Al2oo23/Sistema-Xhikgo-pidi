@@ -66,35 +66,34 @@ try {
         )";
     $conexion->exec($SQL);
 
-    // //------------------ SERVICIOS ESPECIALES ------------------
-    // $SQL = "CREATE TABLE IF NOT EXISTS servicios (
-    //         id INT PRIMARY KEY AUTO_INCREMENT,
-    //         fecha VARCHAR(100) NOT NULL,
-    //         seccion VARCHAR(20) NOT NULL,
-    //         estacion VARCHAR(20) NOT NULL,
-    //         aviso VARCHAR(20) NOT NULL,
-    //         hora VARCHAR(20) NOT NULL,
-    //         salida VARCHAR(20) NOT NULL,
-    //         llegada VARCHAR(20) NOT NULL,
-    //         regreso VARCHAR(20) NOT NULL,
-    //         causa VARCHAR(100) NOT NULL,
-    //         direccion VARCHAR(100) NOT NULL,
-    //         num_efectivos VARCHAR (20) NOT NULL,
-    //         unidad VARCHAR(20) NOT NULL,
-    //         material VARCHAR (255) NOT NULL,
-    //         explicacion VARCHAR(255) NOT NULL,
-    //         ci_pnb varchar(100) DEFAULT NULL,
-    //         ci_gnb varchar(100) DEFAULT NULL,
-    //         ci_intt varchar(100) DEFAULT NULL,
-    //         ci_invity varchar(100) DEFAULT NULL,
-    //         ci_pc varchar(100) DEFAULT NULL,
-    //         ci_otro varchar(100) DEFAULT NULL,
-    //         jefe_comision VARCHAR(255) NOT NULL,
-    //         jefe_generales VARCHAR(255) NOT NULL,
-    //         jefe_seccion VARCHAR(255) NOT NULL,
-    //         comandante VARCHAR(255) NOT NULL
-    //     )";
-    // $conexion->exec($SQL);
+     // //------------------ SERVICIOS ESPECIALES ------------------
+     $SQL = "CREATE TABLE IF NOT EXISTS servicios (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        fecha VARCHAR(100) NOT NULL,
+        seccion VARCHAR(20) NOT NULL,
+        estacion VARCHAR(20) NOT NULL,
+        aviso VARCHAR(20) NOT NULL,
+        solicitante VARCHAR(100) NOT NULL,
+        hora VARCHAR(20) NOT NULL,
+        salida VARCHAR(20) NOT NULL,
+        llegada VARCHAR(20) NOT NULL,
+        regreso VARCHAR(20) NOT NULL,
+        causa VARCHAR(100) NOT NULL,
+        direccion VARCHAR(100) NOT NULL,
+        ci_pnb varchar(100) DEFAULT NULL,
+        ci_gnb varchar(100) DEFAULT NULL,
+        ci_intt varchar(100) DEFAULT NULL,
+        ci_invity varchar(100) DEFAULT NULL,
+        ci_pc varchar(100) DEFAULT NULL,
+        ci_otro varchar(100) DEFAULT NULL,
+        jefe_comision VARCHAR(255) NOT NULL,
+        jefe_general VARCHAR(255) NOT NULL,
+        jefe_seccion VARCHAR(255) NOT NULL,
+        comandante VARCHAR(255) NOT NULL,
+        acta VARCHAR(5) NOT NULL,
+        observaciones VARCHAR(200) NOT NULL
+    )";
+$conexion->exec($SQL);
 
     //------------------ MUNICIPIO ------------------
     $SQL = "CREATE TABLE IF NOT EXISTS municipio (
@@ -665,7 +664,7 @@ try {
 )";
     $conexion->exec($SQL);
 
-    //------------------ TRIGGER REGISTRO PERSONA -------------------
+     //------------------ TRIGGER REGISTRO PERSONA -------------------
 
     // Eliminar el trigger si ya existe para poder crearlo nuevamente.
     $SQL = "DROP TRIGGER IF EXISTS bitacora_persona_registro";
@@ -1126,12 +1125,12 @@ BEGIN
     DECLARE sessionUserId INT;
     SET sessionUserId = 123;
 
-    IF (NEW.id <> OLD.id OR NEW.numero <> OLD.numero OR NEW.codigo <> OLD.codigo) THEN  
+    IF (NEW.id <> OLD.id OR NEW.nombre <> OLD.nombre OR NEW.codigo <> OLD.codigo) THEN  
         
         INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
         VALUES (sessionUserId, 'Actualización de datos de estación', 'municipio', NOW(),
-                CONCAT_WS(', ', OLD.id, OLD.numero, OLD.codigo),
-                CONCAT_WS(', ', NEW.id, NEW.numero, NEW.codigo));
+                CONCAT_WS(', ', OLD.id, OLD.nombre, OLD.codigo),
+                CONCAT_WS(', ', NEW.id, NEW.nombre, NEW.codigo));
     END IF;
 END;";
     $conexion->exec($SQL);
@@ -1151,7 +1150,7 @@ BEGIN
     
     INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
     VALUES (sessionUserId, 'Eliminación', 'municipio', NOW(),
-            CONCAT_WS(', ', OLD.id, OLD.numero, OLD.codigo), 'N/A');
+            CONCAT_WS(', ', OLD.id, OLD.nombre, OLD.codigo), 'N/A');
 END;";
     $conexion->exec($SQL);
 

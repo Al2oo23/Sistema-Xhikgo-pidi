@@ -28,15 +28,36 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
     $abejas->setDireccion($_POST['direccion']);
     $abejas->setLugar($_POST['lugar']);
     $abejas->setInmueble($_POST['inmueble']);
-    $abejas->setJefe($_POST['jefe']);
     $abejas->setCi_pnb($_POST['ci_pnb']);
     $abejas->setCi_gnb($_POST['ci_gnb']);
     $abejas->setCi_intt($_POST['ci_intt']);
     $abejas->setCi_invity($_POST['ci_invity']);
     $abejas->setCi_pc($_POST['ci_pc']);
     $abejas->setCi_otro($_POST['ci_otro']);
+    $abejas->setJefeComision($_POST['jefe_comision']);
+    $abejas->setJefeGeneral($_POST['jefe_general']);
+    $abejas->setJefeSeccion($_POST['jefe_seccion']);
+    $abejas->setComandante($_POST['comandante']);
     $abejas->setActa($_POST['acta']);
     $abejas->setObservaciones($_POST['observaciones']);
+
+    if($_POST['ci_pnb'] == ''){$abejas->setCi_pnb("Ninguno");}
+    else{$abejas->setCi_pnb($_POST['ci_pnb']);}
+    
+    if($_POST['ci_gnb'] == ''){$abejas->setCi_gnb("Ninguno");
+    }else{$abejas->setCi_gnb($_POST['ci_gnb']);}
+
+    if($_POST['ci_intt'] == ''){$abejas->setCi_intt('Ninguno');}
+    else{$abejas->setCi_intt($_POST['ci_intt']);}
+    
+    if($_POST['ci_invity'] == ''){$abejas->setCi_invity("Ninguno");}
+    else{$abejas->setCi_invity($_POST['ci_invity']);}
+
+    if($_POST['ci_pc'] == ''){$abejas->setCi_pc("Ninguno");}
+    else{$abejas->setCi_pc($_POST['ci_pc']);}
+
+    if($_POST['ci_otro'] == ''){$abejas->setCi_otro("Ninguno");}
+    else{$abejas->setCi_otro($_POST['ci_otro']);}
     
     $datos = $abejas->registrarAbejas(
         $abejas->getFecha(),
@@ -52,13 +73,16 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         $abejas->getDireccion(),
         $abejas->getLugar(),
         $abejas->getInmueble(),
-        $abejas->getJefe(),
         $abejas->getCi_pnb(),
         $abejas->getCi_gnb(),
         $abejas->getCi_intt(),
         $abejas->getCi_invity(),
         $abejas->getCi_pc(),
         $abejas->getCi_otro(),
+        $abejas->getJefeComision(), 
+        $abejas->getJefeGeneral(), 
+        $abejas->getJefeSeccion(), 
+        $abejas->getComandante(),
         $abejas->getActa(),
         $abejas->getObservaciones()
     );
@@ -150,15 +174,36 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
     $abejas->setDireccion($_POST['direccion']);
     $abejas->setLugar($_POST['lugar']);
     $abejas->setInmueble($_POST['inmueble']);
-    $abejas->setJefe($_POST['jefe']);
     $abejas->setCi_pnb($_POST['ci_pnb']);
     $abejas->setCi_gnb($_POST['ci_gnb']);
     $abejas->setCi_intt($_POST['ci_intt']);
     $abejas->setCi_invity($_POST['ci_invity']);
     $abejas->setCi_pc($_POST['ci_pc']);
     $abejas->setCi_otro($_POST['ci_otro']);
+    $abejas->setJefeComision($_POST['jefe_comision']);
+    $abejas->setJefeGeneral($_POST['jefe_general']);
+    $abejas->setJefeSeccion($_POST['jefe_seccion']);
+    $abejas->setComandante($_POST['comandante']);
     $abejas->setActa($_POST['acta']);
     $abejas->setObservaciones($_POST['observaciones']);
+
+    if($_POST['ci_pnb'] == ''){$abejas->setCi_pnb("Ninguno");}
+    else{$abejas->setCi_pnb($_POST['ci_pnb']);}
+    
+    if($_POST['ci_gnb'] == ''){$abejas->setCi_gnb("Ninguno");
+    }else{$abejas->setCi_gnb($_POST['ci_gnb']);}
+
+    if($_POST['ci_intt'] == ''){$abejas->setCi_intt('Ninguno');}
+    else{$abejas->setCi_intt($_POST['ci_intt']);}
+    
+    if($_POST['ci_invity'] == ''){$abejas->setCi_invity("Ninguno");}
+    else{$abejas->setCi_invity($_POST['ci_invity']);}
+
+    if($_POST['ci_pc'] == ''){$abejas->setCi_pc("Ninguno");}
+    else{$abejas->setCi_pc($_POST['ci_pc']);}
+
+    if($_POST['ci_otro'] == ''){$abejas->setCi_otro("Ninguno");}
+    else{$abejas->setCi_otro($_POST['ci_otro']);}
     
     $datos = $abejas->modificarAbejas(
         $abejas->getId(),
@@ -175,13 +220,16 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         $abejas->getDireccion(),
         $abejas->getLugar(),
         $abejas->getInmueble(),
-        $abejas->getJefe(),
         $abejas->getCi_pnb(),
         $abejas->getCi_gnb(),
         $abejas->getCi_intt(),
         $abejas->getCi_invity(),
         $abejas->getCi_pc(),
         $abejas->getCi_otro(),
+        $abejas->getJefeComision(), 
+        $abejas->getJefeGeneral(), 
+        $abejas->getJefeSeccion(), 
+        $abejas->getComandante(),
         $abejas->getActa(),
         $abejas->getObservaciones()
     );
@@ -277,16 +325,16 @@ if (isset($_GET['txtID'])) {
     $sentencia->bindParam(1, $txtID, PDO::PARAM_INT);
     $sentencia->execute();
 
-     // BITACORA
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
+    //  // BITACORA
+    //             // Fecha y hora actual
+    //             $fecha = date('Y-m-d H:i:s');
             
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
+    //             // Preparar la consulta SQL
+    //             $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
+    //             $resultado2 = $conexion->prepare($sql);
 
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Elimino Abejas", $fecha]);
+    //             // Ejecutar la consulta
+    //             $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Elimino Abejas", $fecha]);
 
 
     echo "<script>alert('Incidente Eliminado con Exito')</script>";
@@ -302,7 +350,9 @@ if (isset($_GET['txtIDreporte'])) {
 
     $_SESSION['reporte'] = $txtID;
 
-    echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/reportes/reporte_abejasEsp.php?ID=$txtID'>";
+    print_r($resultado);
+
+     echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/reportes/reporte_abejasEsp.php?ID=$txtID'>";
 }
 
 

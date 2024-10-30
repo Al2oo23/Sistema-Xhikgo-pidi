@@ -2,7 +2,7 @@
 
 class Abejas{
     private $id, $fecha, $seccion, $estacion, $aviso, $solicitante, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
-    $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $acta, $observaciones;
+    $lugar, $inmueble, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $acta, $observaciones;
 
     public function __construct(){
 	}
@@ -64,10 +64,6 @@ class Abejas{
         $this->inmueble = $inmueble;
     }
 
-    public function setJefe($jefe){
-        $this->jefe = $jefe;
-    }
-
     public function setCi_pnb($ci_pnb){
         $this->ci_pnb = $ci_pnb;
     }
@@ -91,6 +87,23 @@ class Abejas{
     public function setCi_otro($ci_otro){
         $this->ci_otro = $ci_otro;
     }
+
+    public function setJefeComision($jefe_comision) {
+        $this->jefe_comision = $jefe_comision;
+    }
+    
+    public function setJefeGeneral($jefe_general) {
+        $this->jefe_general = $jefe_general;
+    }
+    
+    public function setJefeSeccion($jefe_seccion) {
+        $this->jefe_seccion = $jefe_seccion;
+    }
+    
+    public function setComandante($comandante) {
+        $this->comandante = $comandante;
+    }
+
 
     public function setActa($acta){
         $this->acta = $acta;
@@ -157,10 +170,6 @@ class Abejas{
         return $this->inmueble;
     }
 
-    public function getJefe(){
-        return $this->jefe;
-    }
-
     public function getCi_pnb(){
         return $this->ci_pnb;
     }
@@ -185,6 +194,22 @@ class Abejas{
         return $this->ci_otro;
     }
 
+    public function getJefeComision() {
+        return $this->jefe_comision;
+    }
+    
+    public function getJefeGeneral() {
+        return $this->jefe_general;
+    }
+    
+    public function getJefeSeccion() {
+        return $this->jefe_seccion;
+    }
+    
+    public function getComandante() {
+        return $this->comandante;
+    }
+
     public function getActa(){
         return $this->acta;
     }
@@ -195,24 +220,24 @@ class Abejas{
 
     //Registrar
     public function registrarAbejas($fecha, $seccion, $estacion, $aviso, $solicitante, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
-    $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $acta, $observaciones){
+    $lugar, $inmueble, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $acta, $observaciones){
         include("conexion.php");
 
-        $SQL = "INSERT INTO abejas VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $SQL = "INSERT INTO abejas VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([null,$fecha, $seccion, $estacion, $aviso, $solicitante, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
-        $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $acta, $observaciones]);
+        $lugar, $inmueble, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $acta, $observaciones]);
         
-         // BITACORA
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
+        //  // BITACORA
+        //         // Fecha y hora actual
+        //         $fecha = date('Y-m-d H:i:s');
             
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
+        //         // Preparar la consulta SQL
+        //         $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
+        //         $resultado2 = $conexion->prepare($sql);
 
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró Abejas", $fecha]);
+        //         // Ejecutar la consulta
+        //         $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró Abejas", $fecha]);
 
 
         // $SQL = "INSERT INTO mantenimiento VALUES (?,?,?,?,?)";
@@ -225,26 +250,26 @@ class Abejas{
 
     //Modificar
     public function modificarAbejas($id, $fecha, $seccion, $estacion, $aviso, $solicitante, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
-    $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $acta, $observaciones){
+    $lugar, $inmueble, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $acta, $observaciones){
         include("conexion.php");
 
         $SQL = "UPDATE abejas SET fecha = ?, seccion = ?, estacion = ?, aviso = ?, solicitante = ?, hora = ?, salida = ?, llegada = ?, regreso = ?, panal = ?, 
-        direccion = ?, lugar = ?, inmueble = ?, jefe = ?, ci_pnb = ?, ci_gnb = ?, ci_intt = ?,
-        ci_invity = ?, ci_pc = ?, ci_otro = ?, acta = ?, observaciones = ? WHERE id = ?";
+        direccion = ?, lugar = ?, inmueble = ?, ci_pnb = ?, ci_gnb = ?, ci_intt = ?,
+        ci_invity = ?, ci_pc = ?, ci_otro = ?, jefe_comision = ?, jefe_general = ?, jefe_seccion = ?, comandante = ?, acta = ?, observaciones = ? WHERE id = ?";
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([$fecha, $seccion, $estacion, $aviso, $solicitante, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
-        $lugar, $inmueble, $jefe, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $acta, $observaciones, $id]);
+        $lugar, $inmueble, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $acta, $observaciones, $id]);
 
-         // BITACORA
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
+        //  // BITACORA
+        //         // Fecha y hora actual
+        //         $fecha = date('Y-m-d H:i:s');
             
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
+        //         // Preparar la consulta SQL
+        //         $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
+        //         $resultado2 = $conexion->prepare($sql);
 
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Modificó Abejas", $fecha]);
+        //         // Ejecutar la consulta
+        //         $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Modificó Abejas", $fecha]);
 
         return $preparado;
     }
@@ -252,12 +277,37 @@ class Abejas{
     public function reporte($id){
         include("conexion.php");
         
-        $SQL = "SELECT * FROM abejas WHERE id = :id";
-        $preparado = $conexion->prepare($SQL);
-        $preparado->bindParam(':id', $id, PDO::PARAM_INT); 
-        $preparado->execute();
+        $sentencia = $conexion->prepare("SELECT * FROM abejas WHERE id = ?");
+        $sentencia->execute([$id]);
+        $abejas = $sentencia->fetchAll(PDO::FETCH_ASSOC)[0];
+        // print_r($abejas);
 
-        return $preparado->fetch(PDO::FETCH_ASSOC);
+        $SQL = " SELECT * FROM persona WHERE cedula = ?";
+        $propietario = $conexion->prepare($SQL);
+        $propietario->execute([$abejas['inmueble']]);
+        $inmu = $propietario->fetchAll(PDO::FETCH_ASSOC)[0];
+
+        $SQL = " SELECT * FROM persona WHERE cedula = ?";
+        $jefe_com = $conexion->prepare($SQL);
+        $jefe_com->execute([$abejas['jefe_comision']]);
+        $jcomision = $jefe_com->fetchAll(PDO::FETCH_ASSOC)[0];
+       
+         $SQL = " SELECT * FROM persona WHERE cedula = ?";
+        $jefe_gen = $conexion->prepare($SQL);
+        $jefe_gen->execute([$abejas['jefe_general']]);
+        $jgeneral = $jefe_gen->fetchAll(PDO::FETCH_ASSOC)[0];
+
+         $SQL = " SELECT * FROM persona WHERE cedula = ?";
+        $jefe_sec = $conexion->prepare($SQL);
+        $jefe_sec->execute([$abejas['jefe_seccion']]);
+        $jseccion = $jefe_sec->fetchAll(PDO::FETCH_ASSOC)[0];
+
+         $SQL = " SELECT * FROM persona WHERE cedula = ?";
+        $comando = $conexion->prepare($SQL);
+        $comando->execute([$abejas['comandante']]);
+        $com = $comando->fetchAll(PDO::FETCH_ASSOC)[0];
+
+         return [$abejas,$inmu,$jcomision,$jgeneral,$jseccion,$com];
     }
 }
 ?>

@@ -2,10 +2,20 @@
 session_start();
 
 require_once '../../modelo/conexion.php';
+require_once '../../modelo/clase_servicio.php';
 
-// Crear variable
-
-
+if (isset($_GET['ID'])) {
+    $idReporte = $_GET['ID'];
+    $servicio = new Servicio();
+    $reporte = $servicio->reporte($idReporte); // Obtenemos los datos del reporte
+    $acta = $reporte['acta'];
+    
+}
+    
+    // LLAMAR RECURSOS POR INCIDENTE
+    $SQL = "SELECT * FROM recurso_asignado WHERE id_incidente = $idReporte";
+    $preparado = $conexion->prepare($SQL);
+    $preparado->execute();
 
 
     $path = 'imagenes/logo_bomberos.jpg';
@@ -134,9 +144,9 @@ require_once '../../modelo/conexion.php';
         <!-- Información General -->
         <table>
             <tr>
-                <td>FECHA: <input type="text" name="fecha"></td>
-                <td>SECCIÓN: <input type="text"></td>
-                <td>ESTACIÓN: <input type="text"></td>
+                <td>FECHA: <input type="text" name="fecha" value="<?=$reporte['fecha'];?>"></td>
+                <td>SECCIÓN: <input type="text" name="seccion" value="<?=$reporte['seccion'];?>"></td>
+                <td>ESTACIÓN: <input type="text" name="estacion" value="<?=$reporte['estacion'];?>"></td>
             </tr>
         </table>
 
@@ -147,18 +157,18 @@ require_once '../../modelo/conexion.php';
       </table>
         <table>
             <tr>
-                <td>HORA DE AVISO: <input type="text"></td>
-                <td>HORA DE SALIDA: <input type="text"></td>
+                <td>HORA DE AVISO: <input type="text" name="hora" value="<?=$reporte['hora'];?>"></td>
+                <td>HORA DE SALIDA: <input type="text" name="salida" value="<?=$reporte['salida'];?>"></td>
             </tr>
             <tr>
-                <td>HORA DE LLEGADA: <input type="text"></td>
-                <td>HORA DE REGRESO: <input type="text"></td>
+                <td>HORA DE LLEGADA: <input type="text" name="llegada" value="<?=$reporte['llegada'];?>"></td>
+                <td>HORA DE REGRESO: <input type="text" name="regreso" value="<?=$reporte['regreso'];?>"></td>
             </tr>
         </table>
         <table>
             <tr>
-                <td>TIPO DE AVISO: <input type="text" size="30px"></td>
-                <td>CAUSA QUE GENERÓ EL SERVICIO: <input type="text" size="10px"></td>
+                <td>TIPO DE AVISO: <input type="text"  value="<?=$reporte['aviso'];?>" size="10px"></td>
+                <td>CAUSA QUE GENERÓ EL SERVICIO: <input type="text" value="<?=$reporte['causa'];?>" size="30px"></td>
             </tr>
         </table>
         
@@ -172,19 +182,20 @@ require_once '../../modelo/conexion.php';
         <table>
             <tr>
                 <td>JEFE DE COMISIÓN: <input type="text" size="40px"></td>
-                <td>C.I.: <input type="text" size="10px"></td>
+                <td>C.I.: <input type="text" value="<?=$reporte['jefe_comision'];?>" size="10px"></td>
             </tr>
         </table>
 
         <table>
         <tr>
-            <td style="padding: 0;"><h3 align="center">3) MATERIAL UTILIZADO:</h3></td>
+            <td style="padding: 0;"><h3 align="center">3) MATERIALES UTILIZADO:</h3></td>
         </tr>
       </table>
         <table>
             <tr>
-                <td>MALETIN PRIMEROS AUXILIOS: SI <input type="checkbox" id="si"> NO <input type="checkbox"> CANTIDAD: <input type="text" size="15px"></td>
-                <td>OTROS:<input type="text"></td>
+                <?php foreach ($preparado as $recurso):?>
+                <td><input type="text" value="<?=$recurso['id_recurso']?>" size="1px">:<input type="text" value="<?=$recurso['cantidad']?>" size="1px"></td>
+                <?php endforeach;?>
             </tr>
         </table>
 
@@ -196,20 +207,17 @@ require_once '../../modelo/conexion.php';
       </table>
         <table>
             <tr>
-                <td>POLICÍA DEL ESTADO: <input type="text"></td>
-                <td>C.I.: <input type="text"></td>
-                <td>G.N.B.: <input type="text"></td>
+                <td>C.I. POLICÍA DEL ESTADO: <input type="text"size="20px" value="<?=$reporte['ci_pnb'];?>"></td>
+                <td>C.I. G.N.B.: <input type="text"  size="20px"  value="<?=$reporte['ci_gnb'];?>" ></td>
             </tr>
             <tr>
-                <td>TRÁNSITO TERRESTRE: <input type="text"></td>
-                <td>C.I.: <input type="text"></td>
-                <td>I.N.V.I.T.: <input type="text"></td>
+                <td>C.I. TRÁNSITO TERRESTRE: <input type="text"  size="20px"  value="<?=$reporte['ci_intt'];?>"></td>
+                <td>C.I. I.N.V.I.T.Y: <input type="text"  size="20px" value="<?=$reporte['ci_invity'];?>"></td>
                 
             </tr>
             <tr>
-                <td>P.C.: <input type="text"></td>
-                <td>C.I.: <input type="text"></td>
-                <td>OTROS: <input type="text"></td>
+                <td>C.I. P.C.: <input type="text"  size="20px"  value="<?=$reporte['ci_pc'];?>"></td>
+                <td>C.I. OTROS: <input type="text"  size="20px"  value="<?=$reporte['ci_otro'];?>"></td>
             </tr>
         </table>
 
@@ -217,7 +225,7 @@ require_once '../../modelo/conexion.php';
         
         <table>
             <tr>
-                <td style="padding: 0;"><h3 align="center">5) SE LEVANTÓ ACTA EN EL SITIO: SI <input type="checkbox" id="si"> NO <input type="checkbox"></h3></td>
+                <td style="padding: 0;"><h3 align="center">5) SE LEVANTÓ ACTA EN EL SITIO: SI <input type="checkbox" name="SI" <?php if ($acta === 'SI') echo 'checked'; ?>> NO <input type="checkbox" name="NO" <?php if ($acta === 'NO') echo 'checked'; ?>></h3></td>
             </tr>
         </table>
 
@@ -229,7 +237,7 @@ require_once '../../modelo/conexion.php';
                     </td>
                 </tr>
                 <tr>
-                    <td><textarea style="border: none; height:192px;" resize="none"></textarea></td>
+                    <td><textarea style="border: none; height:192px;" resize="none"><?=$reporte['observaciones'];?></textarea></td>
                 </tr>
 
             </table>

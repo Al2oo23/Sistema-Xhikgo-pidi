@@ -13,15 +13,6 @@ plusRecurso.addEventListener("click",(e)=>{
     
 })
 
-/*-------------------------INPUT CANTIDAD MALETIN---------------------------*/
-document.getElementById('maletin_si').addEventListener('click', function() {
-    document.getElementById('cantidad_container').style.display = 'block';
-});
-
-document.getElementById('maletin_no').addEventListener('click', function() {
-    document.getElementById('cantidad_container').style.display = 'none';
-});
-
 /*--------------------------------MODIFICAR--------------------------------- */
 
 const plusRecursoM = document.getElementById("plus-recursoM");

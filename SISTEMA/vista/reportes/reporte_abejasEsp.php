@@ -9,10 +9,27 @@ require_once '../../modelo/clase_abejas.php';
 if (isset($_GET['ID'])) {
     $idReporte = $_GET['ID'];
     $abejas = new Abejas();
-    $reporte = $abejas->reporte($idReporte); // Obtenemos los datos del reporte
-
+    $datos = $abejas->reporte($idReporte); // Obtenemos los datos del reporte
+    $reporte = $datos[0];
+    $propietario = $datos[1];
+    $jefe_com = $datos[2];
+    $jefe_gen = $datos[3];
+    $jefe_sec = $datos[4];
+    $comando = $datos[5];
     $acta = $reporte['acta'];
 }
+
+$SQL = "SELECT ra.cantidad,r.nombre FROM recurso_asignado ra INNER JOIN recurso r ON ra.id_recurso = r.id WHERE id_incidente = $idReporte";
+$preparado = $conexion->prepare($SQL);
+$preparado->execute();
+
+$SQL = "SELECT * FROM efectivo_asignado ea INNER JOIN persona p ON ea.cedula = p.cedula WHERE id_incidente = $idReporte";
+$preparado2 = $conexion->prepare($SQL);
+$preparado2->execute();
+
+    // $sentencia = $conexion->prepare("SELECT * FROM abejas a INNER JOIN persona p ON a.jefe = p.cedula");
+    // $sentencia->execute();
+    // $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 
     $path = 'imagenes/logo_bomberos.jpg';
@@ -97,6 +114,7 @@ if (isset($_GET['ID'])) {
             height: 10px;
             margin: 0;
             margin-bottom: -2px;
+            text-align: left;
         }
 
         input[type="checkbox"]{
@@ -190,24 +208,42 @@ if (isset($_GET['ID'])) {
                 <td>DIRECCION: <input type="text" name="direccion" value="<?=$reporte['direccion'];?>"></td>
                 <td>LUGAR: <input type="text" size="10px" name="lugar" value="<?=$reporte['lugar'];?>"></td>
             </tr>
-            <tr><td colspan="3">MATERIAL UTILIZADO: <input type="text" size="70px" name="recurso"></td></tr>
-            <tr>
-                <td colspan="2">PROPIETARIO DEL INMUEBLE: <input type="text" style="padding:5;" size="40px" name="propietario_inmueble"></td>
+                <td colspan="2">PROPIETARIO DEL INMUEBLE: <input type="text"  size="40px" name="propietario_inmueble" value="<?=$propietario['nombre'];?>"></td>
                 <td>C.I.: <input type="text" name="ci_inmueble" value="<?=$reporte['inmueble'];?>"></td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td style="padding: 0;;"><h3 align="center">3) MATERIALES UTILIZADOS:</h3></td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <?php foreach ($preparado as $recurso):?>
+                <td><input type="text" value="<?=$recurso['nombre']?>" size="10px">:<input type="text" value="<?=$recurso['cantidad']?>" size="1px"></td>
+                <?php endforeach;?>
             </tr>
         </table>
 
         <!-- Ejecución del Servicio -->
         <table>
             <tr>
-                <td style="padding: 0;;"><h3 align="center">3) EJECUCIÓN DEL SERVICIO:</h3></td>
+                <td style="padding: 0;;"><h3 align="center">4) EJECUCIÓN DEL SERVICIO:</h3></td>
             </tr>
         </table>
-       
+
         <table>
             <tr>
-                <td>JEFE DE COMISIÓN: <input type="text" size="40px" name="jefe_comision"></td>
-                <td>C.I.: <input type="text" size="10px" name="ci_comision"  value="<?=$reporte['jefe'];?>"></td>
+                <td>JEFE DE COMISION <input type="text" size="10px" name="jefe_comision" value="<?=$jefe_com['nombre'];?>"></td>
+                <?php foreach ($preparado2 as $efectivo):?>
+                <td>EFECTIVOS ACTUANTES: <input type="text" size="30px" name="efectivo" value="<?=$efectivo['nombre'];?> (<?=$efectivo['cedula']?>)"></td>
+               <?php endforeach;?>
+            </tr>
+            <tr>
+                <td colspan="2">PROPIETARIO DEL INMUEBLE: <input type="text"  size="40px" name="propietario_inmueble" value="<?=$propietario['nombre'];?>"></td>
+                <td>C.I.: <input type="text" name="ci_inmueble" value="<?=$reporte['inmueble'];?>"></td>
             </tr>
         </table>
 
@@ -215,7 +251,7 @@ if (isset($_GET['ID'])) {
 
         <table>
             <tr>
-                <td style="padding: 0;"><h3 align="center">4) OTRAS AUTORIDADES EN EL SITIO:</h3></td>
+                <td style="padding: 0;"><h3 align="center">5) OTRAS AUTORIDADES EN EL SITIO:</h3></td>
             </tr>
         </table>
         
@@ -236,7 +272,7 @@ if (isset($_GET['ID'])) {
         </table>
         <table>
             <tr>
-                <td style="padding: 0;"><h3 align="center">5) SE LEVANTÓ ACTA EN EL SITIO: SI <input type="checkbox" name="SI" <?php if ($acta === 'SI') echo 'checked'; ?>> NO <input type="checkbox" name="NO" <?php if ($acta === 'NO') echo 'checked'; ?>></h3></td>
+                <td style="padding: 0;"><h3 align="center">6) SE LEVANTÓ ACTA EN EL SITIO: SI <input type="checkbox" name="SI" <?php if ($acta === 'SI') echo 'checked'; ?>> NO <input type="checkbox" name="NO" <?php if ($acta === 'NO') echo 'checked'; ?>></h3></td>
             </tr>
         </table>
 
@@ -244,7 +280,7 @@ if (isset($_GET['ID'])) {
             <table>
                 <tr>
                     <td style="padding: 0;">
-                     <h3 align="center">6) OBSERVACIONES:</h3>
+                     <h3 align="center">7) OBSERVACIONES:</h3>
                     </td>
                 </tr>
                 <tr>
@@ -258,32 +294,32 @@ if (isset($_GET['ID'])) {
                 <tr>
                     <td style="text-align: center;">
                       <b> JEFE DE COMISION:</b><br> <br>
-                       NOMBRE Y APELLIDO: <input type="text" name="" id="" size="30px"> <br> <br>
+                       NOMBRE Y APELLIDO: <input type="text" id="" value="<?=$jefe_com['nombre']?>" size="30px"> <br> <br>
 
-                       CI: <input type="text" name="" id="">  FIRMA: <input type="text" name="" id="" size="10px">
+                       CI: <input type="text" id="" value="<?=$reporte['jefe_comision']?>">  FIRMA: <input type="text" id="" size="10px">
                     
                     </td>
                     <td style="text-align: center;">
-                       <b>JEFE DE COMISION:</b> <br> <br>
-                       NOMBRE Y APELLIDO: <input type="text" name="" id=""  size="30px"> <br> <br>
+                       <b>JEFE GENERAL:</b> <br> <br>
+                       NOMBRE Y APELLIDO: <input type="text" id="" size="30px" value="<?=$jefe_gen['nombre']?>"> <br> <br>
 
-                       CI: <input type="text" name="" id="">  FIRMA: <input type="text" name="" id="" size="10px">
+                       CI: <input type="text" id="" value="<?=$reporte['jefe_general']?>">  FIRMA: <input type="text" id="" size="10px">
                     
                     </td>
                 </tr>
                 <tr>
                     <td style="text-align: center;">
-                       <b>JEFE DE COMISION:</b> <br> <br>
-                       NOMBRE Y APELLIDO: <input type="text" name="" id=""  size="30px"> <br> <br>
+                       <b>JEFE DE SECCION:</b> <br> <br>
+                       NOMBRE Y APELLIDO: <input type="text" id="" value="<?=$jefe_sec['nombre']?>"  size="30px"> <br> <br>
 
-                       CI: <input type="text" name="" id="">  FIRMA: <input type="text" name="" id="" size="10px">
+                       CI: <input type="text" id="" value="<?=$reporte['jefe_seccion']?>">  FIRMA: <input type="text" id="" size="10px">
                     
                     </td>
                     <td style="text-align: center;">
-                       <b>JEFE DE COMISION:</b> <br> <br>
-                       NOMBRE Y APELLIDO: <input type="text" name="" id=""  size="30px"> <br> <br>
+                       <b>COMANDANTE:</b> <br> <br>
+                       NOMBRE Y APELLIDO: <input type="text" id="" value="<?=$comando['nombre']?>"  size="30px"> <br> <br>
 
-                       CI: <input type="text" name="" id=""> FIRMA: <input type="text" name="" id="" size="10px">
+                       CI: <input type="text" id="" value="<?=$reporte['comandante']?>"> FIRMA: <input type="text" id="" size="10px">
                     
                     </td>
                 </tr>
