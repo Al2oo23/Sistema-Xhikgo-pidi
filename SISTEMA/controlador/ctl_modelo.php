@@ -58,18 +58,6 @@ if (isset($_GET['txtID'])) {
 
     // Ejecutar la consulta
     $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Eliminó Modelo".$txtID, $fecha]);
-
-    // BITACORA
-
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
-            
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Eliminó  Modelo con el txtID ".$txtID." el día ",$fecha]);
                 
     echo "<script>alert('Modelo Eliminado con Exito')</script>";
 	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoModelo.php'>"; 

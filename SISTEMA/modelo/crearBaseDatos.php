@@ -1338,6 +1338,125 @@ BEGIN
 END;";
     $conexion->exec($SQL);
 
+    //------------------ TRIGGER REGISTRO MARCA -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_marca_registro";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_marca_registro
+AFTER INSERT ON marca 
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'registro', 'marca', NOW(), 'N/A', CONCAT_WS(', ', NEW.id, NEW.nombre));
+END;";
+    $conexion->exec($SQL);
+
+    //------------------ TRIGGER MODIFICACIÓN MARCA -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_marca_modificar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_marca_modificar
+AFTER UPDATE ON marca
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    IF (NEW.id <> OLD.id OR NEW.nombre <> OLD.nombre) THEN  
+        
+        INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+        VALUES (sessionUserId, 'Actualización de datos de estación', 'marca', NOW(),
+                CONCAT_WS(', ', OLD.id, OLD.nombre),
+                CONCAT_WS(', ', NEW.id, NEW.nombre));
+    END IF;
+END;";
+    $conexion->exec($SQL);
+    
+    //------------------ TRIGGER ELIMINACIÓN MARCA -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_marca_eliminar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_marca_eliminar
+AFTER DELETE ON marca
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+    
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'Eliminación', 'marca', NOW(),
+            CONCAT_WS(', ', OLD.id, OLD.nombre), 'N/A');
+END;";
+    $conexion->exec($SQL);
+
+        //------------------ TRIGGER REGISTRO MODELO -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_modelo_registro";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_modelo_registro
+AFTER INSERT ON modelo 
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'registro', 'modelo', NOW(), 'N/A', CONCAT_WS(', ', NEW.id, NEW.marca, NEW.nombre));
+END;";
+    $conexion->exec($SQL);
+
+    //------------------ TRIGGER MODIFICACIÓN MODELO -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_modelo_modificar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_modelo_modificar
+AFTER UPDATE ON modelo
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+
+    IF (NEW.id <> OLD.id OR NEW.marca <> OLD.marca OR NEW.nombre <> OLD.nombre) THEN  
+        
+        INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+        VALUES (sessionUserId, 'Actualización de datos de estación', 'modelo', NOW(),
+                CONCAT_WS(', ', OLD.id, OLD.marca, OLD.nombre),
+                CONCAT_WS(', ', NEW.id, NEW.marca, NEW.nombre));
+    END IF;
+END;";
+    $conexion->exec($SQL);
+    
+    //------------------ TRIGGER ELIMINACIÓN MODELO -------------------
+
+    // Eliminar el trigger si ya existe para poder crearlo nuevamente.
+    $SQL = "DROP TRIGGER IF EXISTS bitacora_modelo_eliminar";
+    $conexion->exec($SQL);
+
+    $SQL = "CREATE TRIGGER bitacora_modelo_eliminar
+AFTER DELETE ON modelo
+FOR EACH ROW
+BEGIN
+    DECLARE sessionUserId INT;
+    SET sessionUserId = 123;
+    
+    INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
+    VALUES (sessionUserId, 'Eliminación', 'modelo', NOW(),
+            CONCAT_WS(', ', OLD.id, OLD.marca, OLD.nombre), 'N/A');
+END;";
+    $conexion->exec($SQL);
 
 
 } catch (PDOException $e) {
