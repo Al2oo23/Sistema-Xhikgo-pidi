@@ -29,7 +29,7 @@ try {
     //------------------ INSTITUCIÓN ------------------
     $SQL = "CREATE TABLE IF NOT EXISTS institucion (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(25) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
     rif VARCHAR(25) NOT NULL,
     descripcion VARCHAR(20),
     logo VARCHAR(255) DEFAULT 'ruta/logo-por-defecto.png',
@@ -346,30 +346,34 @@ $conexion->exec($SQL);
     //-------------- ABEJAS ----------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS abejas (
-            id INT PRIMARY KEY AUTO_INCREMENT,
-            fecha VARCHAR(100) NOT NULL,
-            seccion VARCHAR(20) NOT NULL,
-            estacion VARCHAR(20) NOT NULL,
-            aviso VARCHAR(20) NOT NULL,
-            hora VARCHAR(20) NOT NULL,
-            salida VARCHAR(20) NOT NULL,
-            llegada VARCHAR(20) NOT NULL,
-            regreso VARCHAR(20) NOT NULL,
-            panal VARCHAR(20) NOT NULL,
-            direccion VARCHAR(100) NOT NULL,
-            lugar VARCHAR(20) NOT NULL,
-            inmueble VARCHAR(20) NOT NULL,
-            jefe VARCHAR(20) NOT NULL,
-            ci_pnb VARCHAR(20) NULL,
-            ci_gnb VARCHAR(20) NULL,
-            ci_intt VARCHAR(20) NULL,
-            ci_invity VARCHAR(20) NULL,
-            ci_pc VARCHAR(20) NULL,
-            ci_otro VARCHAR(20) NULL
-        )";
-    $conexion->exec($SQL);
-
-
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        fecha VARCHAR(100) NOT NULL,
+        seccion VARCHAR(20) NOT NULL,
+        estacion VARCHAR(20) NOT NULL,
+        aviso VARCHAR(20) NOT NULL,
+        solicitante VARCHAR(100) NOT NULL,
+        hora VARCHAR(20) NOT NULL,
+        salida VARCHAR(20) NOT NULL,
+        llegada VARCHAR(20) NOT NULL,
+        regreso VARCHAR(20) NOT NULL,
+        panal VARCHAR(20) NOT NULL,
+        direccion VARCHAR(100) NOT NULL,
+        lugar VARCHAR(20) NOT NULL,
+        inmueble VARCHAR(20) NOT NULL,
+        ci_pnb VARCHAR(20) NULL,
+        ci_gnb VARCHAR(20) NULL,
+        ci_intt VARCHAR(20) NULL,
+        ci_invity VARCHAR(20) NULL,
+        ci_pc VARCHAR(20) NULL,
+        ci_otro VARCHAR(20) NULL,
+        jefe_comision VARCHAR(20) NOT NULL,
+        jefe_general VARCHAR(40) NOT NULL,
+        jefe_seccion VARCHAR(40) NOT NULL,
+        comandante VARCHAR(40) NOT NULL,
+        acta VARCHAR(5) NOT NULL,
+        observaciones VARCHAR(200) NOT NULL
+    )";
+$conexion->exec($SQL);
     //-------------- Vegetacion ----------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS vegetacion (
