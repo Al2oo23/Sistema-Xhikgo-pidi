@@ -324,8 +324,6 @@ $conexion->exec($SQL);
         unidad VARCHAR(20) NOT NULL,
         marca VARCHAR(20) NOT NULL,
         modelo VARCHAR(20) NOT NULL,
-        serial_vehiculo INT(20) NOT NULL,
-        cilindrada VARCHAR(20) NOT NULL,
         carburante VARCHAR(20) NOT NULL,
         seguro VARCHAR(20) NOT NULL,
         cedula VARCHAR(20) NOT NULL
@@ -810,7 +808,7 @@ BEGIN
     SET sessionUserId = 123;
 
     INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
-    VALUES (sessionUserId, 'registro', 'vehiculo', NOW(), 'N/A', CONCAT_WS(', ', NEW.niv, NEW.tipo, NEW.unidad, NEW.marca, NEW.modelo, NEW.serial_vehiculo, NEW.cilindrada, NEW.carburante, NEW.seguro, NEW.cedula));
+    VALUES (sessionUserId, 'registro', 'vehiculo', NOW(), 'N/A', CONCAT_WS(', ', NEW.niv, NEW.tipo, NEW.unidad, NEW.marca, NEW.modelo, NEW.carburante, NEW.seguro, NEW.cedula));
 END;";
     $conexion->exec($SQL);
 
@@ -828,12 +826,12 @@ BEGIN
     SET sessionUserId = 123;
 
     IF (NEW.niv <> OLD.niv OR NEW.tipo <> OLD.tipo OR NEW.unidad <> OLD.unidad OR NEW.marca <> OLD.marca OR 
-        NEW.modelo <> OLD.modelo OR NEW.serial_vehiculo <> OLD.serial_vehiculo OR NEW.cilindrada <> OLD.cilindrada OR NEW.carburante <> OLD.carburante OR NEW.seguro <> OLD.seguro OR NEW.cedula <> OLD.cedula) THEN  
+        NEW.modelo <> OLD.modelo OR NEW.carburante <> OLD.carburante OR NEW.seguro <> OLD.seguro OR NEW.cedula <> OLD.cedula) THEN  
         
         INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
         VALUES (sessionUserId, 'Actualización de datos de vehiculo', 'vehiculo', NOW(),
-                CONCAT_WS(', ', OLD.niv, OLD.tipo, OLD.unidad, OLD.marca, OLD.modelo, OLD.serial_vehiculo, OLD.cilindrada, OLD.carburante, OLD.seguro, OLD.cedula),
-                CONCAT_WS(', ', NEW.niv, NEW.tipo, NEW.unidad, NEW.marca, NEW.modelo, NEW.serial_vehiculo, NEW.cilindrada, NEW.carburante, NEW.seguro, NEW.cedula));
+                CONCAT_WS(', ', OLD.niv, OLD.tipo, OLD.unidad, OLD.marca, OLD.modelo, OLD.carburante, OLD.seguro, OLD.cedula),
+                CONCAT_WS(', ', NEW.niv, NEW.tipo, NEW.unidad, NEW.marca, NEW.modelo, NEW.carburante, NEW.seguro, NEW.cedula));
     END IF;
 END;";
     $conexion->exec($SQL);
@@ -853,7 +851,7 @@ BEGIN
     
     INSERT INTO bitacora (idUsuario, movimiento, tabla, fechaBitacora, antesM, despuesM)
     VALUES (sessionUserId, 'Eliminación', 'vehiculo', NOW(),
-            CONCAT_WS(', ', OLD.niv, OLD.tipo, OLD.unidad, OLD.marca, OLD.modelo, OLD.serial_vehiculo, OLD.cilindrada, OLD.carburante, OLD.seguro, OLD.cedula), 'N/A');
+            CONCAT_WS(', ', OLD.niv, OLD.tipo, OLD.unidad, OLD.marca, OLD.modelo, OLD.carburante, OLD.seguro, OLD.cedula), 'N/A');
 END;";
     $conexion->exec($SQL);
 

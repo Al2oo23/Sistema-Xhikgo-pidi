@@ -110,10 +110,11 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
     for($i = 0; $i<count($_POST['recurso']);$i++){
         //setters vehiculo incidente
 
-    $recurso->setIdIncidente($datos[1]);
+        $recurso->setIdIncidente($datos[1]);
         $recurso->setTipo("Abejas");
         $recurso->setIdRecurso($_POST['recurso'][$i]);
         $recurso->setCantidad($_POST['cantidad'][$i]);
+
 
         //getters vehiculo incidente
 
@@ -123,6 +124,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
             $recurso->getIdRecurso(),
             $recurso->getCantidad()
         );
+
     }
 
     //UNIDAD

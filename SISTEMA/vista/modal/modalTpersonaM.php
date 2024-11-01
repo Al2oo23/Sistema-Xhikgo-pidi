@@ -7,7 +7,7 @@
         <!--login form Modal -->
         <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                <div class="modal-content" id="modalMs">
+                <div class="modal-content" id="modalM">
 
             <!-- Header del Modal: ----------------------------->
 
@@ -43,7 +43,7 @@
                                     <span class="d-none d-sm-block">Cerrar</span>
                                 </button>
 
-                                <button type="submit" value="modificar" name="modificar" class="btn btn-primary ms-1" data-bs-dismiss="modal">
+                                <button type="submit" value="modificar" name="modificar" class="btn btn-primary ms-1">
                                     <i class="bx bx-check d-block d-sm-none"></i>
                                     <span class="d-none d-sm-block">Modificar</span>
                                 </button>

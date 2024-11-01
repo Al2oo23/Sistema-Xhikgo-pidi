@@ -334,9 +334,9 @@
                                                 <a href="catalogoAbejas.php" class='subsubmenu-link'>Abejas</a>
                                             </li>
 
-                                            <li class="subsubmenu-item  ">
+                                            <!-- <li class="subsubmenu-item  ">
                                                 <a href="catalogoAuxilio.php" class='subsubmenu-link'>Auxilios Medicos</a>
-                                            </li>
+                                            </li> -->
 
                                             <li class="subsubmenu-item  ">
                                                 <a href="catalogoVegetacion.php" class='subsubmenu-link'>Incendio de Vegetacion</a>

@@ -49,6 +49,7 @@ class recursoAsignado{
 
          // Verificar si el recurso es no reutilizable y restar la cantidad
          $this->RecursoNoReutilizable($idRecurso, $cantidad);
+         
 
         return $preparado;
 
@@ -87,8 +88,9 @@ class recursoAsignado{
             $SQL = "UPDATE recurso SET cantidad = ? WHERE id = ?";
             $preparado = $conexion->prepare($SQL);
             $preparado->execute([$nuevaCantidad, $idRecurso]);
-    
             return $preparado;
+        }else{
+            echo 'La cantidad de recurso ingresada es mayor a la disponible.';
         }
     }
 
