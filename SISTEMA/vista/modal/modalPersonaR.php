@@ -149,6 +149,7 @@ $estacion = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="position-relative">
                                         <select name="cargo" class="form-select" id="cargo">
                                             <option value="">Seleccione un Cargo...</option>
+                                            <option value="N/A">Ninguna</option>
                                             <?php foreach ($cargo as $carg) : 
                                             $cargo = $carg["nombre"];
                                         ?>
@@ -167,11 +168,12 @@ $estacion = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="position-relative">
                                         <select name="seccion" class="form-select" id="seccion">
                                             <option value="">Seleccione una Seccion...</option>
+                                            <option value="N/A">Ninguna</option>
                                             <?php foreach ($seccion as $secc) : 
                                             $seccion = $secc["numero"];
                                         ?>
                                             <option value="<?=$seccion?>"><?=$seccion?></option>
-
+                                            
                                         <?php endforeach;?>
                                         </select>
                                     </div>

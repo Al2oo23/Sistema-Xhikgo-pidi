@@ -34,16 +34,25 @@ class efectivo{
         return $this->cedula;
     }
 
-    public function agregarEfectivo($idIncidente, $tipo,$cedula){
+    public function agregarEfectivo($idIncidente, $tipo, $cedula){
         include("conexion.php");
-        
+        // SENTENCIA PARA LLAMAR AL EFECTIVO ------------
+        $SQL = "SELECT * FROM persona WHERE cedula = ?";
+        $listo = $conexion->prepare($SQL);
+        $listo->execute([$cedula]);
+        $resultado = $listo->fetchAll(PDO::FETCH_ASSOC);
 
+        if(!empty($resultado)){
+
+        // SENTENCIA PARA INSERTAR EL EFECTIVO ------------
         $SQL = "INSERT INTO efectivo_asignado VALUES (?,?,?,?)";
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([null, $idIncidente, $tipo, $cedula]);
 
         return $preparado;
-
+        }else{
+            return false;
+        }
     }
     public function eliminarEfectivo($idIncidente, $tipo){
         include("conexion.php");

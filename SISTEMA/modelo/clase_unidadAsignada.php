@@ -37,11 +37,23 @@ class unidad{
     public function agregarUnidad($idIncidente, $tipo, $niv){
         include("conexion.php");
 
+        // SENTENCIA PARA LLAMAR AL VEHICULO ------------
+        $SQL = "SELECT * FROM vehiculo WHERE niv = ?";
+        $listo = $conexion->prepare($SQL);
+        $listo->execute([$niv]);
+        $resultado = $listo->fetchAll(PDO::FETCH_ASSOC);
+
+        if(empty($resultado)){
+
+        // SENTENCIA PARA INSERTAR EL VEHICULO ------------
         $SQL = "INSERT INTO unidad_asignada VALUES (?,?,?,?)";
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([null, $idIncidente, $tipo, $niv]);
 
         return $preparado;
+        }else{
+            return false;
+        }
 
     }
     public function eliminarUnidad($idIncidente, $tipo){

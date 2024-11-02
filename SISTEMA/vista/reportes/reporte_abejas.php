@@ -84,6 +84,7 @@ $abejas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>Seccion</th>
                         <th>Estacion</th>
                         <th>Aviso</th>
+                        <th>solicitante</th>
                         <th>Hora</th>
                         <th>Salida</th>
                         <th>Llegada</th>
@@ -92,38 +93,49 @@ $abejas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>Direccion</th>
                         <th>Lugar</th>
                         <th>Dueño Inmueble</th> 
-                        <th>Jefe</th> 
                         <th>CI_PNB</th>
                         <th>CI_GNB</th>
                         <th>CI_INTT</th>
                         <th>CI_INVITY</th>
                         <th>CI_PC</th>
                         <th>CI_OTRO</th>
+                        <th>Jefe de Comision</th>
+                        <th>Jefe General</th> 
+                        <th>Jefe de Seccion</th>
+                        <th>Comandante</th> 
+                        <th>Acta</th>
+                        <th>Observaciones</th>  
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($abejas as $abej) : ?>
                         <tr>
                         <td><?= $abej["id"]; ?></td>
-                        <td><?= $abej["fecha"]; ?></td>
-                        <td><?= $abej["seccion"]; ?></td>
-                        <td><?= $abej["estacion"]; ?></td>
-                        <td><?= $abej["aviso"]; ?></td>
-                        <td><?= $abej["hora"]; ?></td>
-                        <td><?= $abej["salida"]; ?></td>
-                        <td><?= $abej["llegada"]; ?></td>
-                        <td><?= $abej["regreso"]; ?></td>
-                        <td><?= $abej["panal"]; ?></td>
-                        <td><?= $abej["direccion"]; ?></td>
-                        <td><?= $abej["lugar"]; ?></td>
-                        <td><?= $abej["inmueble"]; ?></td>
-                        <td><?= $abej["jefe"]; ?></td>
-                        <td><?=$abej["ci_pnb"]?><?php if(!$abej['ci_pnb']){echo "Ninguno";}?></td>
-                        <td><?=$abej["ci_gnb"]?><?php if(!$abej['ci_gnb']){echo "Ninguno";}?></td>
-                        <td><?=$abej["ci_intt"]?><?php if(!$abej['ci_intt']){echo "Ninguno";}?></td>
-                        <td><?=$abej["ci_invity"]?><?php if(!$abej['ci_invity']){echo "Ninguno";}?></td>
-                        <td><?=$abej["ci_pc"]?><?php if(!$abej['ci_pc']){echo "Ninguno";}?></td>
-                        <td><?=$abej["ci_otro"]?><?php if(!$abej['ci_otro']){echo "Ninguno";}?></td>
+                                    <td><?= $abej["fecha"]; ?></td>
+                                    <td><?= $abej["seccion"]; ?></td>
+                                    <td><?= $abej["estacion"]; ?></td>
+                                    <td><?= $abej["aviso"]; ?></td>
+                                    <td><?= $abej["solicitante"]; ?></td>
+                                    <td><?= $abej["hora"]; ?></td>
+                                    <td><?= $abej["salida"]; ?></td>
+                                    <td><?= $abej["llegada"]; ?></td>
+                                    <td><?= $abej["regreso"]; ?></td>
+                                    <td><?= $abej["panal"]; ?></td>
+                                    <td><?= $abej["direccion"]; ?></td>
+                                    <td><?= $abej["lugar"]; ?></td>
+                                    <td><?= $abej["inmueble"]; ?></td>
+                                    <td><?= $abej["ci_pnb"]; ?></td>
+                                    <td><?= $abej["ci_gnb"]; ?></td>
+                                    <td><?= $abej["ci_intt"]; ?></td>
+                                    <td><?= $abej["ci_invity"]; ?></td>
+                                    <td><?= $abej["ci_pc"]; ?></td>
+                                    <td><?= $abej["ci_otro"]; ?></td>
+                                    <td><?= $abej["jefe_comision"]; ?></td>
+                                    <td><?= $abej["jefe_general"]; ?></td>
+                                    <td><?= $abej["jefe_seccion"]; ?></td>
+                                    <td><?= $abej["comandante"]; ?></td>
+                                    <td><?= $abej["acta"]; ?></td>
+                                    <td><?= $abej["observaciones"]; ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -156,7 +168,7 @@ $dompdf->loadHtml($html);
 
 // $dompdf->setPaper( 'letter');
 
-$dompdf->setPaper('A2', 'landscape');
+$dompdf->setPaper('A1', 'landscape');
 
 $dompdf->render();
 

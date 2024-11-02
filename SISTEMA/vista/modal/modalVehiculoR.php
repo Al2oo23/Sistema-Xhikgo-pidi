@@ -109,31 +109,6 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Serial:</label>
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control" id="serial" name="serial" placeholder="Serial">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-card-checklist"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Cilindrada:</label>
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control" name="cilindrada" id="cilindrada" placeholder="Cilindrada">
-                                        <div class="form-control-icon">
-                                        <i class="bi bi-car-front-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">

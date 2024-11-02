@@ -120,8 +120,6 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             <th class="columna">N° Unidad</th>
                             <th class="columna">Marca</th>
                             <th class="columna">Modelo</th>
-                            <th class="columna">Serial</th>
-                            <th class="columna" hidden>Cilindrada</th>
                             <th class="columna" hidden>Carburante</th>
                             <th class="columna">Seguro</th>
                             <th class="columna">CI Propietario</th>
@@ -137,8 +135,6 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <td class="columna"><?= $vehiculo['unidad'] ?></td>
                                 <td class="columna"><?= $vehiculo['marca'] ?></td>
                                 <td class="columna"><?= $vehiculo['modelo'] ?></td>
-                                <td class="columna"><?= $vehiculo['serial_vehiculo'] ?></td>
-                                <td class="columna" hidden><?= $vehiculo['cilindrada'] ?></td>
                                 <td class="columna" hidden><?= $vehiculo['carburante'] ?></td>
                                 <td class="columna"><?= $vehiculo['seguro'] ?></td>
                                 <td class="columna"><?= $vehiculo['cedula'] ?></td>

@@ -1,7 +1,7 @@
 <?php 
 
 class Vehiculo{
-    private $niv, $tipo, $unidad, $marca, $modelo, $serial, $cilindrada, $carburante, $seguro, $propietario;
+    private $niv, $tipo, $unidad, $marca, $modelo, $carburante, $seguro, $propietario;
 
     public function __construct(){
 	}
@@ -25,14 +25,6 @@ class Vehiculo{
 
     public function setModelo($modelo){
         $this->modelo = $modelo;
-    }
-    
-    public function setSerial($serial){
-        $this->serial = $serial;
-    }
-
-    public function setCilindrada($cilindrada){
-        $this->cilindrada = $cilindrada;
     }
 
     public function setCarburante($carburante){
@@ -68,14 +60,6 @@ class Vehiculo{
         return $this->modelo;
     }
 
-    public function getSerial(){
-        return $this->serial;
-    }
-
-    public function getCilindrada(){
-        return $this->cilindrada;
-    }
-
     public function getCarburante(){
         return $this->carburante;
     }
@@ -90,25 +74,24 @@ class Vehiculo{
     
 
     //REGISTRAR 
-    public function registrarVehiculo($niv, $tipo, $unidad, $marca, $modelo, $serial, $cilindrada, $carburante, $seguro, $propietario){
+    public function registrarVehiculo($niv, $tipo, $unidad, $marca, $modelo, $carburante, $seguro, $propietario){
         include("conexion.php");
 
-        $SQL = "INSERT INTO vehiculo VALUES (?,?,?,?,?,?,?,?,?,?)";
+        $SQL = "INSERT INTO vehiculo VALUES (?,?,?,?,?,?,?,?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$niv, $tipo, $unidad, $marca, $modelo, $serial, $cilindrada, $carburante, $seguro, $propietario]);
+        $preparado->execute([$niv, $tipo, $unidad, $marca, $modelo, $carburante, $seguro, $propietario]);
 
 
         return $preparado;
     }
 
     //MODIFICAR
-    public function modificarVehiculo($niv, $tipo, $unidad, $marca, $modelo, $serial, $cilindrada, $carburante, $seguro, $propietario){
+    public function modificarVehiculo($niv, $tipo, $unidad, $marca, $modelo, $carburante, $seguro, $propietario){
         include("conexion.php");
     
-        $SQL = "UPDATE vehiculo SET tipo = ?, unidad = ?, marca = ?, modelo = ?, serial_vehiculo = ?, cilindrada = ?, 
-        carburante = ?, seguro = ?, cedula = ? WHERE niv = ?";
+        $SQL = "UPDATE vehiculo SET tipo = ?, unidad = ?, marca = ?, modelo = ?, carburante = ?, seguro = ?, cedula = ? WHERE niv = ?";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$tipo, $unidad, $marca, $modelo, $serial, $cilindrada, $carburante, $seguro, $propietario, $niv]);
+        $preparado->execute([$tipo, $unidad, $marca, $modelo, $carburante, $seguro, $propietario, $niv]);
 
     
         return $preparado;

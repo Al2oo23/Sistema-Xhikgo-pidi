@@ -11,6 +11,10 @@ $efectivo = new efectivo();
 $recurso = new recursoAsignado();
 $unidad = new unidad();
 
+$caso1 = false;
+$caso2 = false;
+$caso3 = false;
+
 // REGISTRAR INCIDENTE DE ABEJAS -------------------------------------------
 
 if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
@@ -89,42 +93,19 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
 
      //EFECTIVOS
      foreach ($_POST['efectivos'] as $cedula) {
-        //setters vehiculo incidente
+        //setters efectivo incidente
 
         $efectivo->setIdIncidente($datos[1]);
         $efectivo->setTipo("Abejas");
         $efectivo->setCedula($cedula);
 
-        //getters vehiculo incidente
-
-        $resultadoEfectivo = $efectivo->agregarEfectivo(
+        //getters efectivo incidente
+       
+            $caso1 = $efectivo->agregarEfectivo(
             $efectivo->getIdIncidente(),
             $efectivo->getTipo(),
             $efectivo->getCedula()
         );
-
-
-    }
-
-    //RECURSOS
-    for($i = 0; $i<count($_POST['recurso']);$i++){
-        //setters vehiculo incidente
-
-        $recurso->setIdIncidente($datos[1]);
-        $recurso->setTipo("Abejas");
-        $recurso->setIdRecurso($_POST['recurso'][$i]);
-        $recurso->setCantidad($_POST['cantidad'][$i]);
-
-
-        //getters vehiculo incidente
-
-        $resultadoRecurso = $recurso->agregarRecurso(
-            $recurso->getIdIncidente(),
-            $recurso->getTipo(),
-            $recurso->getIdRecurso(),
-            $recurso->getCantidad()
-        );
-
     }
 
     //UNIDAD
@@ -137,15 +118,36 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
 
         //getters vehiculo incidente
 
-        $resultadoUnidad = $unidad->agregarUnidad(
+            $caso2 = $unidad->agregarUnidad(
             $unidad->getIdIncidente(),
             $unidad->getTipo(),
             $unidad->getNiv()
         );
     }
 
+    //RECURSOS
+    for($i = 0; $i<count($_POST['recurso']);$i++){
+        //setters vehiculo incidente
 
-    if (empty($datos[0])) {
+        $recurso->setIdIncidente($datos[1]);
+        $recurso->setTipo("Abejas");
+        $recurso->setIdRecurso($_POST['recurso'][$i]);
+        $recurso->setCantidad($_POST['cantidad'][$i]);
+
+        //getters vehiculo incidente
+
+            $caso3 = $recurso->agregarRecurso(
+            $recurso->getIdIncidente(),
+            $recurso->getTipo(),
+            $recurso->getIdRecurso(),
+            $recurso->getCantidad()
+        );
+    }
+
+    if (empty($datos[0]) || !$caso1 || !$caso2 || !$caso3) {
+
+        $abejas->errorRegistro($datos[1]);
+
         echo "<script>alert('No se pudo registrar el Incidente')</script>";
         echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoAbejas.php'>";
     } else {
@@ -351,8 +353,6 @@ if (isset($_GET['txtIDreporte'])) {
     $resultado = $abejas->reporte($txtID);
 
     $_SESSION['reporte'] = $txtID;
-
-    print_r($resultado);
 
      echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/reportes/reporte_abejasEsp.php?ID=$txtID'>";
 }

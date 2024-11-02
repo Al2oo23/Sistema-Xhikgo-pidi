@@ -49,10 +49,26 @@ class recursoAsignado{
 
          // Verificar si el recurso es no reutilizable y restar la cantidad
          $this->RecursoNoReutilizable($idRecurso, $cantidad);
+         $this->RecursoReutilizable($idRecurso, $cantidad);
          
 
         return $preparado;
 
+    }
+
+    private function recursoReutilizable($idRecurso, $cantidad) {
+        include("conexion.php");
+    
+        // Verificar el tipo de recurso
+        $consultaTipo = "SELECT tipo FROM recurso WHERE id = ?";
+        $preparado = $conexion->prepare($consultaTipo);
+        $preparado->execute([$idRecurso]);
+        $tipo = $preparado->fetchColumn();
+    
+        // Si el recurso es no reutilizable, restar la cantidad
+        if ($tipo == 'SI') {
+            $this->validarCantidad($idRecurso, $cantidad);
+        }
     }
 
     private function RecursoNoReutilizable($idRecurso, $cantidad) {
@@ -67,6 +83,23 @@ class recursoAsignado{
         // Si el recurso es no reutilizable, restar la cantidad
         if ($tipo === 'NO') {
             $this->restarRecurso($idRecurso, $cantidad);
+        }
+    }
+
+    private function validarCantidad($idRecurso, $cantidad) {
+        include("conexion.php");
+    
+        // Obtener la cantidad actual del recurso
+        $consultaCantidad = "SELECT cantidad FROM recurso WHERE id = ?";
+        $CantidadActual = $conexion->prepare($consultaCantidad);
+        $CantidadActual->execute([$idRecurso]);
+        $cantidadActual = $CantidadActual->fetchColumn();
+    
+        // Verificar si la cantidad actual es mayor que la cantidad a restar
+        if ($cantidadActual >= $cantidad) {
+            return true;
+        }else{
+            return false;
         }
     }
     
@@ -90,7 +123,7 @@ class recursoAsignado{
             $preparado->execute([$nuevaCantidad, $idRecurso]);
             return $preparado;
         }else{
-            echo 'La cantidad de recurso ingresada es mayor a la disponible.';
+           return false;
         }
     }
 

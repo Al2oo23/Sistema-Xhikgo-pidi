@@ -221,29 +221,40 @@ $preparado2->execute();
 
         <table>
             <tr>
+               
+                <td>
                 <?php foreach ($preparado as $recurso):?>
-                <td><input type="text" value="<?=$recurso['nombre']?>" size="10px">:<input type="text" value="<?=$recurso['cantidad']?>" size="1px"></td>
+                
+                <input type="text" value="<?=$recurso['nombre']?>" size="10px">:<input type="text" value="<?=$recurso['cantidad']?>" size="1px">
+            
                 <?php endforeach;?>
+                </td>
+                
             </tr>
         </table>
 
         <!-- Ejecución del Servicio -->
         <table>
             <tr>
-                <td style="padding: 0;;"><h3 align="center">4) EJECUCIÓN DEL SERVICIO:</h3></td>
+                <td style="padding: 0;"><h3 align="center">4) EJECUCIÓN DEL SERVICIO:</h3></td>
             </tr>
         </table>
 
         <table>
             <tr>
-                <td>JEFE DE COMISION <input type="text" size="10px" name="jefe_comision" value="<?=$jefe_com['nombre'];?>"></td>
-                <?php foreach ($preparado2 as $efectivo):?>
-                <td>EFECTIVOS ACTUANTES: <input type="text" size="30px" name="efectivo" value="<?=$efectivo['nombre'];?> (<?=$efectivo['cedula']?>)"></td>
-               <?php endforeach;?>
+                <td  colspan="2">JEFE DE COMISION:<input type="text" size="10px" name="jefe_comision" value="<?=$jefe_com['nombre'];?>"></td>
+                <td colspan="10">
+                    EFECTIVOS ACTUANTES:<br>
+                    <?php foreach ($preparado2 as $efectivo):?>
+
+                        <input type="text" size="20px" name="efectivo" value="<?=$efectivo['nombre'].'('.$efectivo['cedula'].')';?>"><br>
+
+                    <?php endforeach;?>
+                </td>
             </tr>
             <tr>
-                <td colspan="2">PROPIETARIO DEL INMUEBLE: <input type="text"  size="40px" name="propietario_inmueble" value="<?=$propietario['nombre'];?>"></td>
-                <td>C.I.: <input type="text" name="ci_inmueble" value="<?=$reporte['inmueble'];?>"></td>
+                <td colspan="6">PROPIETARIO DEL INMUEBLE: <input type="text"  size="40px" name="propietario_inmueble" value="<?=$propietario['nombre'];?>"></td>
+                <td colspan="6">C.I.: <input type="text" name="ci_inmueble" value="<?=$reporte['inmueble'];?>"></td>
             </tr>
         </table>
 

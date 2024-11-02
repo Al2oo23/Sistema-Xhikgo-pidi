@@ -100,31 +100,6 @@ $modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Serial:</label>
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control" name="serial" id="serialM" placeholder="Serial">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-card-checklist"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Cilindrada:</label>
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control" name="cilindrada" id="cilindradaM" placeholder="Cilindrada">
-                                        <div class="form-control-icon">
-                                        <i class="bi bi-car-front-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group has-icon-left">
                                     <label for="">Carburante:</label>
                                     <div class="position-relative">
                                         <input type="text" class="form-control" name="carburante" id="carburanteM" placeholder="Carburante">

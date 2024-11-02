@@ -11,8 +11,6 @@ if(isset($_POST['registrar']) && $_POST['registrar'] == "registrar"){
     $vehiculo->setUnidad($_POST['unidad']);
     $vehiculo->setMarca($_POST['marca']);
     $vehiculo->setModelo($_POST['modelo']);
-    $vehiculo->setSerial($_POST['serial']);
-    $vehiculo->setCilindrada($_POST['cilindrada']);
     $vehiculo->setCarburante($_POST['carburante']);
     $vehiculo->setSeguro($_POST['seguro']);
     $vehiculo->setPropietario($_POST['propietario']);
@@ -23,8 +21,6 @@ if(isset($_POST['registrar']) && $_POST['registrar'] == "registrar"){
     $vehiculo->getUnidad(),
     $vehiculo->getMarca(),
     $vehiculo->getModelo(),
-    $vehiculo->getSerial(),
-    $vehiculo->getCilindrada(),
     $vehiculo->getCarburante(),
     $vehiculo->getSeguro(),
     $vehiculo->getPropietario()
@@ -48,8 +44,6 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
     $vehiculo->setUnidad($_POST['unidad']);
     $vehiculo->setMarca($_POST['marca']);
     $vehiculo->setModelo($_POST['modelo']);
-    $vehiculo->setSerial($_POST['serial']);
-    $vehiculo->setCilindrada($_POST['cilindrada']);
     $vehiculo->setCarburante($_POST['carburante']);
     $vehiculo->setSeguro($_POST['seguro']);
     $vehiculo->setPropietario($_POST['propietario']);
@@ -60,8 +54,6 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
     $vehiculo->getUnidad(),
     $vehiculo->getMarca(),
     $vehiculo->getModelo(),
-    $vehiculo->getSerial(),
-    $vehiculo->getCilindrada(),
     $vehiculo->getCarburante(),
     $vehiculo->getSeguro(),
     $vehiculo->getPropietario()
