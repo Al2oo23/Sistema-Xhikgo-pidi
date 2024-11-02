@@ -27,6 +27,10 @@ $SQL = "SELECT * FROM efectivo_asignado ea INNER JOIN persona p ON ea.cedula = p
 $preparado2 = $conexion->prepare($SQL);
 $preparado2->execute();
 
+$SQL = "SELECT * FROM unidad_asignada WHERE id_incidente = $idReporte";
+$preparado3 = $conexion->prepare($SQL);
+$preparado3->execute();
+
     // $sentencia = $conexion->prepare("SELECT * FROM abejas a INNER JOIN persona p ON a.jefe = p.cedula");
     // $sentencia->execute();
     // $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -204,12 +208,11 @@ $preparado2->execute();
        
         <table>
             <tr>
-                <td>UBICACION PANAL: <input type="text" size="10px" name="panal" value="<?=$reporte['panal'];?>"></td>
-                <td>DIRECCION: <input type="text" name="direccion" value="<?=$reporte['direccion'];?>"></td>
-                <td>LUGAR: <input type="text" size="10px" name="lugar" value="<?=$reporte['lugar'];?>"></td>
+                <td colspan="2">UBICACION PANAL: <input type="text" size="10px" name="panal" value="<?=$reporte['panal'];?>"></td>
+                <td colspan="2">DIRECCION: <input type="text" name="direccion" value="<?=$reporte['direccion'];?>"></td>
+                <td colspan="2">LUGAR: <input type="text" size="10px" name="lugar" value="<?=$reporte['lugar'];?>"></td>
             </tr>
-                <td colspan="2">PROPIETARIO DEL INMUEBLE: <input type="text"  size="40px" name="propietario_inmueble" value="<?=$propietario['nombre'];?>"></td>
-                <td>C.I.: <input type="text" name="ci_inmueble" value="<?=$reporte['inmueble'];?>"></td>
+                <td colspan="6">PROPIETARIO DEL INMUEBLE: <input type="text"  size="40px" name="propietario_inmueble"  value="<?=$propietario['nombre'].' ('.$propietario['cedula'].')';?>"></td>
             </tr>
         </table>
 
@@ -242,20 +245,23 @@ $preparado2->execute();
 
         <table>
             <tr>
-                <td  colspan="2">JEFE DE COMISION:<input type="text" size="10px" name="jefe_comision" value="<?=$jefe_com['nombre'];?>"></td>
-                <td colspan="10">
+                <td colspan="6">JEFE DE COMISION:<br><input type="text" size="20px" name="jefe_comision" value="<?=$jefe_com['nombre'];?>"></td>
+                <td colspan="6">
                     EFECTIVOS ACTUANTES:<br>
                     <?php foreach ($preparado2 as $efectivo):?>
 
-                        <input type="text" size="20px" name="efectivo" value="<?=$efectivo['nombre'].'('.$efectivo['cedula'].')';?>"><br>
+                        <input type="text" size="30px" name="efectivo" value="<?=$efectivo['nombre'].' ('.$efectivo['cedula'].')';?>"><br>
 
                     <?php endforeach;?>
                 </td>
+                <td colspan="6">
+                    UNIDADES:<br>
+                    <?php foreach ($preparado3 as $unidad):?>
+                    <input type="text" size="10px" name="unidad" value="<?=$unidad['niv']?>"><br>
+                    <?php endforeach;?>
+                </td>
             </tr>
-            <tr>
-                <td colspan="6">PROPIETARIO DEL INMUEBLE: <input type="text"  size="40px" name="propietario_inmueble" value="<?=$propietario['nombre'];?>"></td>
-                <td colspan="6">C.I.: <input type="text" name="ci_inmueble" value="<?=$reporte['inmueble'];?>"></td>
-            </tr>
+
         </table>
 
         <!-- Otras Autoridades -->
