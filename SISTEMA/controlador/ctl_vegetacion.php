@@ -11,6 +11,10 @@ $efectivo = new efectivo();
 $recurso = new recursoAsignado();
 $unidad = new unidad();
 
+$caso1 = false;
+$caso2 = false;
+$caso3 = false;
+
 // REGISTRAR INCIDENTE DE vegetacion -------------------------------------------
 
 if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
@@ -30,11 +34,11 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
     $vegetacion->setOeste($_POST['oeste']);
     $vegetacion->setDireccion($_POST['direccion']);
     $vegetacion->setLugar($_POST['lugar']);
-    $vegetacion->setJefe($_POST['jefe']);
     $vegetacion->setActa($_POST['acta']);
     $vegetacion->setObservaciones($_POST['observaciones']);
-    $vegetacion->setGral_servicios($_POST['gral_servicios']);
-    $vegetacion->setJefe_deseccion($_POST['jefe_deseccion']);
+    $vegetacion->setJefeComision($_POST['jefe_comision']);
+    $vegetacion->setJefeGeneral($_POST['jefe_general']);
+    $vegetacion->setJefeSeccion($_POST['jefe_seccion']);
     $vegetacion->setComandante($_POST['comandante']);
     $vegetacion->setCi_pnb($_POST['ci_pnb']);
     $vegetacion->setCi_gnb($_POST['ci_gnb']);
@@ -59,11 +63,11 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         $vegetacion->getOeste(),
         $vegetacion->getDireccion(),
         $vegetacion->getLugar(),
-        $vegetacion->getJefe(),
         $vegetacion->getActa(),
         $vegetacion->getObservaciones(),
-        $vegetacion->getGral_servicios(),
-        $vegetacion->getJefe_deseccion(),
+        $vegetacion->getJefeComision(), 
+        $vegetacion->getJefeGeneral(), 
+        $vegetacion->getJefeSeccion(), 
         $vegetacion->getComandante(),
         $vegetacion->getCi_pnb(),
         $vegetacion->getCi_gnb(),
@@ -77,7 +81,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         //setters vehiculo incidente
 
         $efectivo->setIdIncidente($datos[1]);
-        $efectivo->setTipo("S.E");
+        $efectivo->setTipo("Vegetacion");
         $efectivo->setCedula($cedula);
 
         //getters vehiculo incidente
@@ -96,7 +100,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         //setters vehiculo incidente
 
     $recurso->setIdIncidente($datos[1]);
-        $recurso->setTipo("S.E");
+        $recurso->setTipo("Vegetacion");
         $recurso->setIdRecurso($_POST['recurso'][$i]);
         $recurso->setCantidad($_POST['cantidad'][$i]);
 
@@ -163,11 +167,11 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         $vegetacion->setOeste($_POST['oeste']);
         $vegetacion->setDireccion($_POST['direccion']);
         $vegetacion->setLugar($_POST['lugar']);
-        $vegetacion->setJefe($_POST['jefe']);
         $vegetacion->setActa($_POST['acta']);
         $vegetacion->setObservaciones($_POST['observaciones']);
-        $vegetacion->setGral_servicios($_POST['gral_servicios']);
-        $vegetacion->setJefe_deseccion($_POST['jefe_deseccion']);
+        $vegetacion->setJefeComision($_POST['jefe_comision']);
+        $vegetacion->setJefeGeneral($_POST['jefe_general']);
+        $vegetacion->setJefeSeccion($_POST['jefe_seccion']);
         $vegetacion->setComandante($_POST['comandante']);
         $vegetacion->setCi_pnb($_POST['ci_pnb']);
         $vegetacion->setCi_gnb($_POST['ci_gnb']);
@@ -193,11 +197,11 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         $vegetacion->getOeste(),
         $vegetacion->getDireccion(),
         $vegetacion->getLugar(),
-        $vegetacion->getJefe(),
         $vegetacion->getActa(),
         $vegetacion->getObservaciones(),
-        $vegetacion->getGral_servicios(),
-        $vegetacion->getJefe_deseccion(),
+        $vegetacion->getJefeComision(), 
+        $vegetacion->getJefeGeneral(), 
+        $vegetacion->getJefeSeccion(), 
         $vegetacion->getComandante(),
         $vegetacion->getCi_pnb(),
         $vegetacion->getCi_gnb(),
@@ -209,13 +213,13 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
 
      //EFECTIVOS
      foreach ($_POST['efectivos'] as $cedula) {
-        //setters vehiculo incidente
+        //setters vegetacion incidente
 
         $efectivo->setIdIncidente($_POST['id']);
         $efectivo->setTipo("Vegetacion");
         $efectivo->setCedula($cedula);
 
-        //getters vehiculo incidente
+        //getters vegetacion incidente
 
         $efectivo->eliminarEfectivo($efectivo->getIdIncidente(), $efectivo->getTipo());
 
@@ -245,7 +249,7 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
 
         $recurso->eliminarRecurso(
             $recurso->getIdIncidente(),
-            $recurso->getTipo("S.E")
+            $recurso->getTipo("Vegetacion")
         );
 
         $resultadoRecurso = $recurso->agregarRecurso(

@@ -95,12 +95,12 @@ $vegetacion = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>Oeste</th>
                         <th>Direccion</th>
                         <th>Lugar</th>
-                        <th>Jefe</th> 
                         <th>Acta</th> 
                         <th>Observaciones</th> 
-                        <th>INSP.Gral de los Servicios</th> 
-                        <th>Jefe de Seccion</th> 
-                        <th>Comandante</th> 
+                        <th>Jefe de Comision</th>
+                        <th>Jefe General</th> 
+                        <th>Jefe de Seccion</th>
+                        <th>Comandante</th>  
                         <th>CI_PNB</th>
                         <th>CI_GNB</th>
                         <th>CI_INTT</th>
@@ -128,11 +128,10 @@ $vegetacion = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td><?= $vege["oeste"]; ?></td>
                         <td><?= $vege["direccion"]; ?></td>
                         <td><?= $vege["lugar"]; ?></td>
-                        <td><?= $vege["jefe"]; ?></td>
                         <td><?= $vege["acta"]; ?></td>
-                        <td><?= $vege["observaciones"]; ?></td>
-                        <td><?= $vege["gral_servicios"]; ?></td>
-                        <td><?= $vege["jefe_deseccion"]; ?></td>
+                        <td><?= $vege["jefe_comision"]; ?></td>
+                        <td><?= $vege["jefe_general"]; ?></td>
+                        <td><?= $vege["jefe_seccion"]; ?></td>
                         <td><?= $vege["comandante"]; ?></td>
                         <td><?php if(!isset($vege["ci_pnb"])){ echo $vege["ci_pnb"];}else{echo "Ninguno";}?></td>
                         <td><?php if(!isset($vege["ci_gnb"])){ echo $vege["ci_gnb"];}else{echo "Ninguno";}?></td>
@@ -172,7 +171,7 @@ $dompdf->loadHtml($html);
 
 // $dompdf->setPaper( 'letter');
 
-$dompdf->setPaper('A2', 'landscape');
+$dompdf->setPaper('A1', 'landscape');
 
 $dompdf->render();
 

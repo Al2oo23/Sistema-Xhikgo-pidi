@@ -27,19 +27,16 @@ include ("modal/modalVegetacionM.php");
                                                 <option value="grande">Grande</option>
                                                 <option value="extragrande" selected>Extra Grande</option>
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <button type="submit" class="btn btn-primary">Generar PDF</button>
                                     </div>
                                 </div>
                             </form>
+                            <button type="submit" class="btn btn-primary">Generar PDF</button>
                         </div>
-                    </div>
                 </form>
             </div>
         </div>
     </div>
+
 
     <div class="row" id="table-hover-row">
         <div class="col-12">
@@ -58,7 +55,7 @@ include ("modal/modalVegetacionM.php");
                                 <th class="columna">Seccion</th>
                                 <th class="columna">Tipo de Incendio</th>
                                 <th class="columna">Lugar</th>
-                                <th class="columna">Jefe</th>
+                                <th class="columna">Jefe General</th>
                                 <th class="columna">Accion</th>
 
                             </tr>
@@ -83,11 +80,11 @@ include ("modal/modalVegetacionM.php");
                                     <td class="columna" hidden><?= $vegetacio["oeste"]; ?></td>
                                     <td class="columna" hidden><?= $vegetacio["direccion"]; ?></td>
                                     <td class="columna"><?= $vegetacio["lugar"]; ?></td>
-                                    <td class="columna"><?= $vegetacio["jefe"]; ?></td>
                                     <td class="columna" hidden><?= $vegetacio["acta"]; ?></td>
                                     <td class="columna" hidden><?= $vegetacio["observaciones"]; ?></td>
-                                    <td class="columna" hidden><?= $vegetacio["gral_servicios"]; ?></td>
-                                    <td class="columna" hidden><?= $vegetacio["jefe_deseccion"]; ?></td>
+                                    <td class="columna"><?= $vegetacio["jefe_comision"]; ?></td>
+                                    <td class="columna" hidden><?= $vegetacio["jefe_general"]; ?></td>
+                                    <td class="columna" hidden><?= $vegetacio["jefe_seccion"]; ?></td>
                                     <td class="columna" hidden><?= $vegetacio["comandante"]; ?></td>
                                     <td class="columna" hidden><?= $vegetacio["ci_gnb"]; ?></td>
                                     <td class="columna" hidden><?= $vegetacio["ci_intt"]; ?></td>
@@ -102,9 +99,9 @@ include ("modal/modalVegetacionM.php");
                                                     href='../controlador/ctl_vegetacion.php?txtID=<?= $vegetacio['id']; ?>'
                                                     class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
-                                    </td>
+                                        </td>
                                     <td>
-                                    <a href="../controlador/ctl_vegetacion.php?txtIDreporte=<?= $abej['id'];?>" class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
+                                    <a href="../controlador/ctl_vegetacion.php?txtIDreporte=<?= $vegetacio['id'];?>" class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
                                     </td>
                                 </tr>
 
@@ -116,6 +113,7 @@ include ("modal/modalVegetacionM.php");
         </div>
     </div>
 </div>
+
 
 <script src="Javascript/vegetacionModal.js"></script>
 <script src="Javascript/plusVegetacion.js"></script>

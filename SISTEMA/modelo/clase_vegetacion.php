@@ -2,7 +2,7 @@
 
 class Vegetacion{
     private $id, $fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $norte, $sur, $este, $oeste, $direccion,
-    $lugar, $jefe, $acta, $observaciones, $gral_servicios, $jefe_deseccion, $comandante,  $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro;
+    $lugar,  $acta, $observaciones, $jefe_comision, $jefe_general, $jefe_seccion, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro;
 
     public function __construct(){
 	}
@@ -72,10 +72,6 @@ class Vegetacion{
         $this->lugar = $lugar;
     }
 
-    public function setJefe($jefe){
-        $this->jefe = $jefe;
-    }
-
     public function setActa($acta){
         $this->acta = $acta;
     }
@@ -84,15 +80,19 @@ class Vegetacion{
         $this->observaciones = $observaciones;
     }
 
-    public function setGral_servicios($gral_servicios){
-        $this->gral_servicios = $gral_servicios;
+    public function setJefeComision($jefe_comision) {
+        $this->jefe_comision = $jefe_comision;
     }
-
-    public function setJefe_deseccion($jefe_deseccion){
-        $this->jefe_deseccion = $jefe_deseccion;
+    
+    public function setJefeGeneral($jefe_general) {
+        $this->jefe_general = $jefe_general;
     }
-
-    public function setComandante($comandante){
+    
+    public function setJefeSeccion($jefe_seccion) {
+        $this->jefe_seccion = $jefe_seccion;
+    }
+    
+    public function setComandante($comandante) {
         $this->comandante = $comandante;
     }
 
@@ -185,9 +185,6 @@ class Vegetacion{
         return $this->lugar;
     }
 
-    public function getJefe(){
-        return $this->jefe;
-    }
 
     public function getActa(){
         return $this->acta;
@@ -197,15 +194,19 @@ class Vegetacion{
         return $this->observaciones;
     }
 
-    public function getGral_servicios(){
-        return $this->gral_servicios;
+    public function getJefeComision() {
+        return $this->jefe_comision;
     }
-
-    public function getJefe_deseccion(){
-        return $this->jefe_deseccion;
+    
+    public function getJefeGeneral() {
+        return $this->jefe_general;
     }
-
-    public function getComandante(){
+    
+    public function getJefeSeccion() {
+        return $this->jefe_seccion;
+    }
+    
+    public function getComandante() {
         return $this->comandante;
     }
 
@@ -235,68 +236,62 @@ class Vegetacion{
 
     //Registrar
         public function registrarVegetacion($fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $norte, $sur, $este, $oeste, $direccion,
-        $lugar, $jefe, $acta, $observaciones, $gral_servicios, $jefe_deseccion, $comandante, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
+        $lugar,  $acta, $observaciones, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
         include("conexion.php");
 
         $SQL = "INSERT INTO vegetacion VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, ?)";
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([null,$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $norte, $sur, $este, $oeste, $direccion,
-        $lugar, $jefe, $acta, $observaciones, $gral_servicios, $jefe_deseccion, $comandante, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro]);
+        $lugar,  $acta, $observaciones, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro]);
         
-         // BITACORA
-                // // Fecha y hora actual
-                // $fecha = date('Y-m-d H:i:s');
-            
-                // // Preparar la consulta SQL
-                // $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                // $resultado2 = $conexion->prepare($sql);
-
-                // // Ejecutar la consulta
-                // $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró Abejas", $fecha]);
-
-
-        // $SQL = "INSERT INTO mantenimiento VALUES (?,?,?,?,?)";
-        // $preparado = $conexion->prepare($SQL);
-        // $preparado->execute([null, $unidad,"abejas", $fecha,"pendiente"]);
         
         return array($preparado,$conexion->lastInsertId());
         
     }
     // //Modificar
     public function modificarVegetacion($id, $fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $norte, $sur, $este, $oeste,  $direccion,
-    $lugar, $jefe, $acta, $observaciones, $gral_servicios, $jefe_deseccion, $comandante,  $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
+    $lugar, $acta, $observaciones, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
         include("conexion.php");
 
         $SQL = "UPDATE vegetacion SET fecha = ?, seccion = ?, estacion = ?, aviso = ?, hora = ?, salida = ?, llegada = ?, regreso = ?, incendio = ?, norte= ?, sur= ?, este= ?, oeste= ?, 
-        direccion = ?, lugar = ?,  jefe = ?, acta= ?, observaciones= ?,gral_servicios= ?, jefe_deseccion= ?,  comandante= ?,   ci_pnb = ?, ci_gnb = ?, ci_intt = ?, ci_invity = ?, ci_pc = ?, ci_otro = ? WHERE id = ?";
+        direccion = ?, lugar = ?, acta= ?, observaciones= ?,  jefe_comision = ?, jefe_general = ?, jefe_seccion = ?, comandante = ?,  ci_pnb = ?, ci_gnb = ?, ci_intt = ?, ci_invity = ?, ci_pc = ?, ci_otro = ? WHERE id = ?";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $norte, $sur, $este, $oeste,  $direccion,
-        $lugar,  $jefe, $acta, $observaciones, $gral_servicios, $jefe_deseccion, $comandante, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $id]);
-
-    // //      // BITACORA
-    //             // Fecha y hora actual
-    //             $fecha = date('Y-m-d H:i:s');
-            
-    //             // Preparar la consulta SQL
-    //             $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-    //             $resultado2 = $conexion->prepare($sql);
-
-    //             // Ejecutar la consulta
-    //             $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Modificó Abejas", $fecha]);
+        $preparado->execute([$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $incendio, $norte, $sur, $este, $oeste, $direccion,
+        $lugar,  $acta, $observaciones, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $id]);
 
         return $preparado;
     }
 
     public function reporte($id){
         include("conexion.php");
+      
+        $sentencia = $conexion->prepare("SELECT * FROM vegetacion WHERE id = ?");
+        $sentencia->execute([$id]);
+        $vegetacion = $sentencia->fetchAll(PDO::FETCH_ASSOC)[0];
         
-        $SQL = "SELECT * FROM vegetacion WHERE id = :id";
-        $preparado = $conexion->prepare($SQL);
-        $preparado->bindParam(':id', $id, PDO::PARAM_INT); 
-        $preparado->execute();
 
-        return $preparado->fetch(PDO::FETCH_ASSOC);
+
+        $SQL = " SELECT * FROM persona WHERE cedula = ?";
+        $jefe_com = $conexion->prepare($SQL);
+        $jefe_com->execute([$vegetacion['jefe_comision']]);
+        $jcomision = $jefe_com->fetchAll(PDO::FETCH_ASSOC)[0];
+       
+         $SQL = " SELECT * FROM persona WHERE cedula = ?";
+        $jefe_gen = $conexion->prepare($SQL);
+        $jefe_gen->execute([$vegetacion['jefe_general']]);
+        $jgeneral = $jefe_gen->fetchAll(PDO::FETCH_ASSOC)[0];
+
+         $SQL = " SELECT * FROM persona WHERE cedula = ?";
+        $jefe_sec = $conexion->prepare($SQL);
+        $jefe_sec->execute([$vegetacion['jefe_seccion']]);
+        $jseccion = $jefe_sec->fetchAll(PDO::FETCH_ASSOC)[0];
+
+         $SQL = " SELECT * FROM persona WHERE cedula = ?";
+        $comando = $conexion->prepare($SQL);
+        $comando->execute([$vegetacion['comandante']]);
+        $com = $comando->fetchAll(PDO::FETCH_ASSOC)[0];
+
+         return [$vegetacion,$jcomision,$jgeneral,$jseccion,$com];
     }
-
 }
 ?>

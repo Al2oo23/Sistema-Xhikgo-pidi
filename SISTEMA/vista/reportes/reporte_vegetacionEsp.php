@@ -9,10 +9,30 @@ require_once '../../modelo/clase_vegetacion.php';
 if (isset($_GET['ID'])) {
     $idReporte = $_GET['ID'];
     $vegetacion = new Vegetacion();
-    $reporte = $vegetacion->reporte($idReporte); // Obtenemos los datos del reporte
-
+    $datos = $vegetacion->reporte($idReporte); // Obtenemos los datos del reporte
+    $reporte = $datos[0];
+    $jefe_com = $datos[1];
+    $jefe_gen = $datos[2];
+    $jefe_sec = $datos[3];
+    $comando = $datos[4];
     $acta = $reporte['acta'];
 }
+
+$SQL = "SELECT ra.cantidad,r.nombre FROM recurso_asignado ra INNER JOIN recurso r ON ra.id_recurso = r.id WHERE id_incidente = $idReporte";
+$preparado = $conexion->prepare($SQL);
+$preparado->execute();
+
+$SQL = "SELECT * FROM efectivo_asignado ea INNER JOIN persona p ON ea.cedula = p.cedula WHERE id_incidente = $idReporte";
+$preparado2 = $conexion->prepare($SQL);
+$preparado2->execute();
+
+$SQL = "SELECT * FROM unidad_asignada WHERE id_incidente = $idReporte";
+$preparado3 = $conexion->prepare($SQL);
+$preparado3->execute();
+
+    // $sentencia = $conexion->prepare("SELECT * FROM abejas a INNER JOIN persona p ON a.jefe = p.cedula");
+    // $sentencia->execute();
+    // $persona = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 
     $path = 'imagenes/logo_bomberos.jpg';
@@ -29,7 +49,6 @@ if (isset($_GET['ID'])) {
 // 
 
 // 
-
     // Preparar y ejecutar la consulta SQL con los filtros aplicados
    
 
@@ -148,9 +167,9 @@ if (isset($_GET['ID'])) {
         <!-- Información General -->
         <table>
             <tr>
-                <td>FECHA: <input type="text" name="fecha" value="<?=$reporte['fecha'];?>"></td>
-                <td>SECCIÓN: <input type="text" name="seccion" value="<?=$reporte['seccion'];?>"></td>
-                <td>ESTACIÓN: <input type="text" name="estacion" value="<?=$reporte['estacion'];?>"></td>
+                <td colspan="1">FECHA: <input type="text" name="fecha" value="<?=$reporte['fecha'];?>"></td>
+                <td colspan="2">SECCIÓN: <input type="text" name="seccion" value="<?=$reporte['seccion'];?>"></td>
+                <td colspan="3">ESTACIÓN: <input type="text" name="estacion" value="<?=$reporte['estacion'];?>"></td>
             </tr>
         </table>
 
@@ -162,9 +181,9 @@ if (isset($_GET['ID'])) {
 
         <table>
             <tr>
-            <td>TIPO DE AVISO: <input type="text" name="tipo_aviso" value="<?=$reporte['tipo_aviso'];?>"></td>
-                <td>HORA DE AVISO: <input type="text" name="hora" value="<?=$reporte['hora'];?>"></td>
-                <td>HORA DE SALIDA: <input type="text" name="salida" value="<?=$reporte['salida'];?>"></td>
+            <td colspan="1">TIPO DE AVISO: <input type="text" name="aviso" value="<?=$reporte['aviso'];?>"></td>
+                <td colspan="2">HORA DE AVISO: <input type="text" name="hora" value="<?=$reporte['hora'];?>"></td>
+                <td colspan="3">HORA DE SALIDA: <input type="text" name="salida" value="<?=$reporte['salida'];?>"></td>
             </tr>
             <tr>
                 <td>HORA DE LLEGADA: <input type="text" name="llegada"value="<?=$reporte['llegada'];?>"></td>
@@ -187,33 +206,80 @@ if (isset($_GET['ID'])) {
        
         <table>
             <tr>
-                <td>NORTE: <input type="text" size="10px" name="norte" value="<?=$reporte['norte'];?>"></td>
+                <td>NORTE: <input type="text" size="12px" name="norte" value="<?=$reporte['norte'];?>"></td>
                 <td>SUR: <input type="text" name="sur" value="<?=$reporte['sur'];?>"></td>
                 <td>ESTE: <input type="text" size="10px" name="este" value="<?=$reporte['este'];?>"></td>
                 <td>OESTE: <input type="text" name="oeste" value="<?=$reporte['oeste'];?>"></td>
-            </tr>
-            <tr><td colspan="3">MATERIAL UTILIZADO: <input type="text" size="70px" name="recurso"></td></tr>
         </table>
 
-        <!-- Ejecución del Servicio -->
+        <!-- Datos del Servicio -->
+        
         <table>
             <tr>
-                <td style="padding: 0;;"><h3 align="center">3) EJECUCIÓN DEL SERVICIO:</h3></td>
+                <td style="padding: 0;;"><h3 align="center">2) DATOS DEL SERVICIO:</h3></td>
             </tr>
         </table>
        
         <table>
             <tr>
-                <td>JEFE DE COMISIÓN: <input type="text" size="40px" name="jefe_comision"></td>
-                <td>C.I.: <input type="text" size="10px" name="ci_comision"  value="<?=$reporte['jefe'];?>"></td>
+                <td colspan="2">DIRECCION: <input type="text" name="direccion" value="<?=$reporte['direccion'];?>"></td>
+                <td colspan="2">LUGAR: <input type="text" size="10px" name="lugar" value="<?=$reporte['lugar'];?>"></td>
+        </table>
+
+        <table>
+            <tr>
+                <td style="padding: 0;;"><h3 align="center">3) MATERIALES UTILIZADOS:</h3></td>
             </tr>
+        </table>
+
+        <table>
+            <tr>
+               
+                <td>
+                <?php foreach ($preparado as $recurso):?>
+                
+                <input type="text" value="<?=$recurso['nombre']?>" size="10px">:<input type="text" value="<?=$recurso['cantidad']?>" size="1px">
+            
+                <?php endforeach;?>
+                </td>
+                
+            </tr>
+        </table>
+
+
+         <!-- Ejecución del Servicio -->
+         <table>
+            <tr>
+                <td style="padding: 0;"><h3 align="center">4) EJECUCIÓN DEL SERVICIO:</h3></td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td colspan="6">JEFE DE COMISION:<br><input type="text" size="20px" name="jefe_comision" value="<?=$jefe_com['nombre'];?>"></td>
+                <td colspan="6">
+                    EFECTIVOS ACTUANTES:<br>
+                    <?php foreach ($preparado2 as $efectivo):?>
+
+                        <input type="text" size="30px" name="efectivo" value="<?=$efectivo['nombre'].' ('.$efectivo['cedula'].')';?>"><br>
+
+                    <?php endforeach;?>
+                </td>
+                <td colspan="6">
+                    UNIDADES:<br>
+                    <?php foreach ($preparado3 as $unidad):?>
+                    <input type="text" size="10px" name="unidad" value="<?=$unidad['niv']?>"><br>
+                    <?php endforeach;?>
+                </td>
+            </tr>
+
         </table>
 
         <!-- Otras Autoridades -->
 
         <table>
             <tr>
-                <td style="padding: 0;"><h3 align="center">4) OTRAS AUTORIDADES EN EL SITIO:</h3></td>
+                <td style="padding: 0;"><h3 align="center">5) OTRAS AUTORIDADES EN EL SITIO:</h3></td>
             </tr>
         </table>
         
@@ -234,7 +300,7 @@ if (isset($_GET['ID'])) {
         </table>
         <table>
             <tr>
-                <td style="padding: 0;"><h3 align="center">5) SE LEVANTÓ ACTA EN EL SITIO: SI <input type="checkbox" name="SI" <?php if ($acta === 'SI') echo 'checked'; ?>> NO <input type="checkbox" name="NO" <?php if ($acta === 'NO') echo 'checked'; ?>></h3></td>
+                <td style="padding: 0;"><h3 align="center">6) SE LEVANTÓ ACTA EN EL SITIO: SI <input type="checkbox" name="SI" <?php if ($acta === 'SI') echo 'checked'; ?>> NO <input type="checkbox" name="NO" <?php if ($acta === 'NO') echo 'checked'; ?>></h3></td>
             </tr>
         </table>
 
@@ -242,7 +308,7 @@ if (isset($_GET['ID'])) {
             <table>
                 <tr>
                     <td style="padding: 0;">
-                     <h3 align="center">6) OBSERVACIONES:</h3>
+                     <h3 align="center">7) OBSERVACIONES:</h3>
                     </td>
                 </tr>
                 <tr>
@@ -256,32 +322,32 @@ if (isset($_GET['ID'])) {
                 <tr>
                     <td style="text-align: center;">
                       <b> JEFE DE COMISION:</b><br> <br>
-                       NOMBRE Y APELLIDO: <input type="text" name="" id="" size="30px"> <br> <br>
+                       NOMBRE Y APELLIDO: <input type="text" id="" value="<?=$jefe_com['nombre']?>" size="30px"> <br> <br>
 
-                       CI: <input type="text" name="" id="">  FIRMA: <input type="text" name="" id="" size="10px">
+                       CI: <input type="text" id="" value="<?=$reporte['jefe_comision']?>">  FIRMA: <input type="text" id="" size="10px">
                     
                     </td>
                     <td style="text-align: center;">
-                       <b>JEFE DE COMISION:</b> <br> <br>
-                       NOMBRE Y APELLIDO: <input type="text" name="" id=""  size="30px"> <br> <br>
+                       <b>JEFE GENERAL:</b> <br> <br>
+                       NOMBRE Y APELLIDO: <input type="text" id="" size="30px" value="<?=$jefe_gen['nombre']?>"> <br> <br>
 
-                       CI: <input type="text" name="" id="">  FIRMA: <input type="text" name="" id="" size="10px">
+                       CI: <input type="text" id="" value="<?=$reporte['jefe_general']?>">  FIRMA: <input type="text" id="" size="10px">
                     
                     </td>
                 </tr>
                 <tr>
                     <td style="text-align: center;">
-                       <b>JEFE DE COMISION:</b> <br> <br>
-                       NOMBRE Y APELLIDO: <input type="text" name="" id=""  size="30px"> <br> <br>
+                       <b>JEFE DE SECCION:</b> <br> <br>
+                       NOMBRE Y APELLIDO: <input type="text" id="" value="<?=$jefe_sec['nombre']?>"  size="30px"> <br> <br>
 
-                       CI: <input type="text" name="" id="">  FIRMA: <input type="text" name="" id="" size="10px">
+                       CI: <input type="text" id="" value="<?=$reporte['jefe_seccion']?>">  FIRMA: <input type="text" id="" size="10px">
                     
                     </td>
                     <td style="text-align: center;">
-                       <b>JEFE DE COMISION:</b> <br> <br>
-                       NOMBRE Y APELLIDO: <input type="text" name="" id=""  size="30px"> <br> <br>
+                       <b>COMANDANTE:</b> <br> <br>
+                       NOMBRE Y APELLIDO: <input type="text" id="" value="<?=$comando['nombre']?>"  size="30px"> <br> <br>
 
-                       CI: <input type="text" name="" id=""> FIRMA: <input type="text" name="" id="" size="10px">
+                       CI: <input type="text" id="" value="<?=$reporte['comandante']?>"> FIRMA: <input type="text" id="" size="10px">
                     
                     </td>
                 </tr>
@@ -289,6 +355,7 @@ if (isset($_GET['ID'])) {
     </div>
 </body>
 </html>
+
 
 <?php
 
