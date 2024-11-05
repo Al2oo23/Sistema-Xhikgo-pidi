@@ -59,7 +59,7 @@ include ("modal/modalIncendioM.php");
                                 <label for="valor_inmueble_incendio_buscador">Valor Inmueble</label>
                                 <input type="text" id="valor_inmueble_incendio_buscador"
                                     name="valor_inmueble_incendio_buscador" class="form-control"
-                                    placeholder="Jefe Buscado">
+                                    placeholder="Valor Inmueble Buscado">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
