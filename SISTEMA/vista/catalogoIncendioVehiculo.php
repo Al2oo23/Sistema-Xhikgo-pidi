@@ -62,7 +62,7 @@ include ("modal/modalIncendioVehiculoM.php");
                                 <th class="columna">Fuente de Ignicion</th>
                                 <th class="columna">Causa del Incendio</th>
                                 <th class="columna">Numero de Lesionados</th>
-                                <th class="columna">Jefe</th>
+                                <th class="columna">Jefe General</th>
                                 <th class="columna">Accion</th>
 
                             </tr>
@@ -107,8 +107,8 @@ include ("modal/modalIncendioVehiculoM.php");
                                     <td class="columna"><?= $incendio_vehicu["lesionados"]; ?></td>
                                     <td class="columna" hidden><?= $incendio_vehicu["acta"]; ?></td>
                                     <td class="columna" hidden><?= $incendio_vehicu["observaciones"]; ?></td>
-                                    <td class="columna"><?= $incendio_vehicu["jefe"]; ?></td>
-                                    <td class="columna" hidden><?= $incendio_vehicu["gral_servicios"]; ?></td>
+                                    <td class="columna"><?= $incendio_vehicu["jefe_comision"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio_vehicu["jefe_general"]; ?></td>
                                     <td class="columna" hidden><?= $incendio_vehicu["jefe_deseccion"]; ?></td>
                                     <td class="columna" hidden><?= $incendio_vehicu["comandante"]; ?></td>
                                     <td class="columna" hidden><?= $incendio_vehicu["ci_gnb"]; ?></td>

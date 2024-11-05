@@ -115,8 +115,8 @@ $incendio_vehiculo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>Numero de Lesionados</th> 
                         <th>Acta</th> 
                         <th>Observaciones</th> 
-                        <th>Jefe</th> 
-                        <th>INSP.Gral de los Servicios</th> 
+                        <th>Jefe Comision</th> 
+                        <th>Jefe General</th> 
                         <th>Jefe de Seccion</th> 
                         <th>Comandante</th> 
                         <th>CI_PNB</th>
@@ -166,9 +166,9 @@ $incendio_vehiculo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td><?= $incendio_vehicul["lesionados"]; ?></td>
                         <td><?= $incendio_vehicul["acta"]; ?></td>
                         <td><?= $incendio_vehicul["observaciones"]; ?></td>
-                        <td><?= $incendio_vehicul["jefe"]; ?></td>
-                        <td><?= $incendio_vehicul["gral_servicios"]; ?></td>
-                        <td><?= $incendio_vehicul["jefe_deseccion"]; ?></td>
+                        <td><?= $incendio_vehicul["jefe_comision"]; ?></td>
+                        <td><?= $incendio_vehicul["jefe_general"]; ?></td>
+                        <td><?= $incendio_vehicul["jefe_seccion"]; ?></td>
                         <td><?= $incendio_vehicul["comandante"]; ?></td>
                         <td><?php if(!isset($incendio_vehicul["ci_pnb"])){ echo $incendio_vehicul["ci_pnb"];}else{echo "Ninguno";}?></td>
                         <td><?php if(!isset($incendio_vehicul["ci_gnb"])){ echo $incendio_vehicul["ci_gnb"];}else{echo "Ninguno";}?></td>
@@ -208,7 +208,7 @@ $dompdf->loadHtml($html);
 
 // $dompdf->setPaper( 'letter');
 
-$dompdf->setPaper('A2', 'landscape');
+$dompdf->setPaper('A0', 'landscape');
 
 $dompdf->render();
 

@@ -46,15 +46,16 @@ $sentencia = $conexion->prepare("SELECT unidad FROM vehiculo");
 $sentencia->execute();
 $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
-// LLAMAR MARCA Y MODELO DEL VEHICULO
-$sentencia = $conexion->prepare("SELECT * FROM modelo");
-$sentencia->execute();
-$vehiculo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
-$MarcaModelos = array();
-foreach ($vehiculo as $row) {
-$MarcaModelos[$row["marca"]] = $row["nombre"];
-}
+// LLAMAR MARCA VEHICULO
+$sentencia = $conexion->prepare("SELECT nombre FROM marca");
+$sentencia->execute();
+$marca = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+// LLAMAR MODELO VEHICULO
+$sentencia = $conexion->prepare("SELECT nombre FROM modelo");
+$sentencia->execute();
+$modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!-- Button trigger for login form modal -->
@@ -77,7 +78,7 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                     </div>
             <!-- Contenido del Modal:--------------------------->
 
-            <form action="../controlador/ctl_incendioVehiculo.php" method="POST" style="text-align: left;" onsubmit="return validarAbejas()">
+            <form action="../controlador/ctl_incendioVehiculo.php" method="POST" style="text-align: left;" onsubmit="return ">
                         <div class="modal-body">
 
                         <input type="hidden" id="id" name="id">
@@ -86,7 +87,7 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                                 <div class="form-group has-icon-left">
                                     <label for="">Fecha</label>
                                     <div class="position-relative">
-                                        <input type="text" id="parte_diaria" name="fecha" class="form-control" placeholder="Parte Diaria">
+                                        <input type="text" id="fechaM" name="fecha" class="form-control" placeholder="Parte Diaria">
                                         <div class="form-control-icon">
                                         <i class="bi bi-calendar3"></i>
                                         </div>
@@ -98,7 +99,7 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                                 <div class="form-group has-icon-left">
                                     <label for="">Seccion de Bomberos</label>
                                     <div class="position-relative">
-                                         <select name="seccion" class="form-select" id="seccion">
+                                         <select name="seccion" class="form-select" id="seccionM">
                                          <option value="default">Seleccione la Seccion...</option>
                                         <?php foreach ($seccion as $sec) : 
                                             $seccion = $sec["numero"];
@@ -116,8 +117,7 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                                 <div class="form-group has-icon-left">
                                     <label for="">Estacion de Bomberos</label>
                                     <div class="position-relative">
-                                         <select name="estacion" class="form-select" id="estacion">
-                                         <option value="default">Seleccione la Estacion...</option>
+                                         <select name="estacion" class="form-select" id="estacionM">
                                         <?php foreach ($estacion as $estac) : 
                                             $estacion = $estac["nombre"];
                                         ?>
@@ -134,7 +134,7 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                                 <div class="form-group has-icon-left">
                                     <label for="">Tipo de Aviso</label>
                                     <div class="position-relative">
-                                        <select name="tipo_aviso" class="form-select" id="tipo_aviso">
+                                        <select name="tipo_aviso" class="form-select" id="tavisoM">
                                             <option value="">Seleccione el Tipo de Aviso...</option>
                                             <?php foreach ($aviso as $avis) : 
                                             $aviso = $avis["nombre"];
@@ -151,7 +151,7 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Aviso</label>
                                     <div class="position-relative">
-                                        <input type="text" id="Haviso" class="form-control" name="hora_aviso" placeholder="Hora de Aviso">
+                                        <input type="text" id="havisoM" class="form-control" name="hora_aviso" placeholder="Hora de Aviso">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass"></i>
                                         </div>
@@ -163,7 +163,7 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Salida</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" name="hora_salida" id="hora_salida" placeholder="Hora de Salida">
+                                        <input type="text" class="form-control" name="hora_salida" id="hsalidaM" placeholder="Hora de Salida">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-top"></i>
                                         </div>
@@ -175,7 +175,7 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Llegada</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" name="hora_llegada" id="hora_llegada" placeholder="Hora de Llegada">
+                                        <input type="text" class="form-control" name="hora_llegada" id="hllegadaM" placeholder="Hora de Llegada">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
                                         </div>
@@ -187,7 +187,7 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Regreso</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" name="hora_regreso" id="hora_regreso" placeholder="Hora de Regreso">
+                                        <input type="text" class="form-control" name="hora_regreso" id="hregresoM" placeholder="Hora de Regreso">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-bottom"></i>
                                         </div>
@@ -199,7 +199,7 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                                 <div class="form-group has-icon-left">
                                     <label for="">Lugar</label>
                                     <div class="position-relative">
-                                        <select name="lugar" class="form-select" id="lugar">
+                                        <select name="lugar" class="form-select" id="lugarM">
                                             <option value="">Seleccione el Lugar del Incidente...</option>
                                             <?php foreach ($lugar as $lug) : 
                                             $lugar = $lug["nombre"];
@@ -220,21 +220,16 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Modelo </label>
+                                    <label for="">Modelo:</label>
                                     <div class="position-relative">
-                                        <select name="modelo" class="form-select" id="modelo">
-                                            <option>Seleccione el Modelo...</option>
-
-                                            <?php $modelosMostrados = array();
-                                            foreach ($vehiculo as $modelos) :
-                                                $modelo = $modelos["nombre"];
-
-                                                if (!in_array($modelo, $modelosMostrados)) :
-                                                    $modelosMostrados[] = $modelo;
+                                        <select name="modelo" class="form-select" id="modeloM">
+                                            <?php foreach ($modelo as $model) : 
+                                            $modelo = $model["nombre"];
                                             ?>
-                                                    <option value="<?= $modelo?>"><?= $modelo?></option>
-                                            <?php endif;
-                                            endforeach; ?>
+
+                                            <option value="<?= $modelo?>"><?= $modelo?></option>
+
+                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </div>
@@ -242,29 +237,22 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="first-name-icon">Marca </label>
-                                    <select class="form-select" name="marca" id="marca">
-                                        <option value="default">Seleccione la Marca...</option>
-                                        
-                                        <?php $marcasMostradas = array();
-                                            foreach ($vehiculo as $marcas) :
-                                                $marca = $marcas["marca"];
-
-                                                if (!in_array($marca, $marcasMostradas)) :
-                                                    $marcasMostradas[] = $marca;
-                                            ?>
-                                                    <option value="<?= $marca?>"><?= $marca?></option>
-                                            <?php endif;
-                                            endforeach; ?>
+                                    <label for="first-name-icon">Marca:</label>
+                                    <select class="form-select" name="marca" id="marcaM">
+                                        <?php foreach ($marca as $marc) : 
+                                        $marca = $marc["nombre"];
+                                        ?>
+                                        <option value="<?= $marca?>"><?= $marca?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
-                                                        
+
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
                                     <label for="">Año del Vehiculo</label>
                                     <div class="position-relative">
-                                        <input type="text" id="año" name="año" class="form-control" placeholder="Año">
+                                        <input type="text" id="añoM" name="año" class="form-control" placeholder="Año">
                                         <div class="form-control-icon">
                                         <i class="bi bi-calendar3"></i>
                                         </div>
@@ -276,7 +264,7 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                                 <div class="form-group has-icon-left">
                                     <label for="">Placa del Vehiculo</label>
                                     <div class="position-relative">
-                                        <input type="text" id="placa" name="placa" class="form-control" placeholder="Placa">
+                                        <input type="text" id="placaM" name="placa" class="form-control" placeholder="Placa">
                                         <div class="form-control-icon">
                                         <i class="bi bi-calendar3"></i>
                                         </div>
@@ -534,18 +522,6 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                             </div>
 
                             <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Jefe de Comision</label>
-                                    <div class="position-relative">
-                                        <input type="text" id="jefe" name="jefe" class="form-control" placeholder="Jefe de Comision">
-                                        <div class="form-control-icon">
-                                        <i class="bi bi-person-video2"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
                            
                            <div class="form-group has-icon-left grand-plus_Container-recurso">
                                <label for="">Recurso Utilizado</label>
@@ -621,11 +597,12 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                       
                   </div>
 
-                            <div class="col-12">
+                  <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">INSP. Gral de los Servicios</label>
+                                    <label for="">Jefe de Comisión</label>
                                     <div class="position-relative">
-                                        <input type="text" id="gral_servicios" name="gral_servicios" class="form-control" placeholder="Cedula">
+                                        <input type="text" id="jefe_comision" name="jefe_comision" class="form-control"
+                                            placeholder="Ingrese la Cedula del Jefe de Comision">
                                         <div class="form-control-icon">
                                         <i class="bi bi-person-video2"></i>
                                         </div>
@@ -633,12 +610,12 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                                 </div>
                             </div>
 
-                    
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
-                                    <label for="">Jefe de Seccion</label>
+                                    <label for="">Jefe General</label>
                                     <div class="position-relative">
-                                        <input type="text" id="jefe_deseccion" name="jefe_deseccion" class="form-control" placeholder="Cedula">
+                                        <input type="text" id="jefe_general" name="jefe_general" class="form-control"
+                                            placeholder="Ingrese la Cedula del Jefe General">
                                         <div class="form-control-icon">
                                         <i class="bi bi-person-video2"></i>
                                         </div>
@@ -646,12 +623,25 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
                                 </div>
                             </div>
 
-                        
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
+                                    <label for="">Jefe de Sección</label>
+                                    <div class="position-relative">
+                                        <input type="text" id="jefe_seccion" name="jefe_seccion" class="form-control"
+                                            placeholder="Ingrese la Cedula del Jefe de Sección">
+                                        <div class="form-control-icon">
+                                        <i class="bi bi-person-video2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
                                     <label for="">Comandante</label>
                                     <div class="position-relative">
-                                        <input type="text" id="comandante" name="comandante" class="form-control" placeholder="Cedula">
+                                        <input type="text" id="comandante" name="comandante" class="form-control"
+                                            placeholder="Ingrese la Cedula del Comandante">
                                         <div class="form-control-icon">
                                         <i class="bi bi-person-video2"></i>
                                         </div>

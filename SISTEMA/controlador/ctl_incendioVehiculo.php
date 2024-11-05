@@ -11,6 +11,10 @@ $efectivo = new efectivo();
 $recurso = new recursoAsignado();
 $unidad = new unidad();
 
+$caso1 = false;
+$caso2 = false;
+$caso3 = false;
+
 // REGISTRAR INCIDENTE DE vehiculo -------------------------------------------
 
 if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
@@ -50,9 +54,9 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
     $incendio_vehiculo->setLesionados($_POST['lesionados']);
     $incendio_vehiculo->setActa($_POST['acta']);
     $incendio_vehiculo->setObservaciones($_POST['observaciones']);
-    $incendio_vehiculo->setJefe($_POST['jefe']);
-    $incendio_vehiculo->setGral_servicios($_POST['gral_servicios']);
-    $incendio_vehiculo->setJefe_deseccion($_POST['jefe_deseccion']);
+    $incendio_vehiculo->setJefeComision($_POST['jefe_comision']);
+    $incendio_vehiculo->setJefeGeneral($_POST['jefe_general']);
+    $incendio_vehiculo->setJefeSeccion($_POST['jefe_seccion']);
     $incendio_vehiculo->setComandante($_POST['comandante']);
     $incendio_vehiculo->setCi_pnb($_POST['ci_pnb']);
     $incendio_vehiculo->setCi_gnb($_POST['ci_gnb']);
@@ -97,9 +101,9 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         $incendio_vehiculo->getLesionados(),
         $incendio_vehiculo->getActa(),
         $incendio_vehiculo->getObservaciones(),
-        $incendio_vehiculo->getJefe(),
-        $incendio_vehiculo->getGral_servicios(),
-        $incendio_vehiculo->getJefe_deseccion(),
+        $incendio_vehiculo->getJefeComision(), 
+        $incendio_vehiculo->getJefeGeneral(), 
+        $incendio_vehiculo->getJefeSeccion(), 
         $incendio_vehiculo->getComandante(),
         $incendio_vehiculo->getCi_pnb(),
         $incendio_vehiculo->getCi_gnb(),
@@ -132,7 +136,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         //setters vehiculo incidente
 
     $recurso->setIdIncidente($datos[1]);
-        $recurso->setTipo("S.E");
+        $recurso->setTipo("Incendio vehiculo");
         $recurso->setIdRecurso($_POST['recurso'][$i]);
         $recurso->setCantidad($_POST['cantidad'][$i]);
 
@@ -215,9 +219,9 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
     $incendio_vehiculo->setLesionados($_POST['lesionados']);
     $incendio_vehiculo->setActa($_POST['acta']);
     $incendio_vehiculo->setObservaciones($_POST['observaciones']);
-    $incendio_vehiculo->setJefe($_POST['jefe']);
-    $incendio_vehiculo->setGral_servicios($_POST['gral_servicios']);
-    $incendio_vehiculo->setJefe_deseccion($_POST['jefe_deseccion']);
+    $incendio_vehiculo->setJefeComision($_POST['jefe_comision']);
+    $incendio_vehiculo->setJefeGeneral($_POST['jefe_general']);
+    $incendio_vehiculo->setJefeSeccion($_POST['jefe_seccion']);
     $incendio_vehiculo->setComandante($_POST['comandante']);
     $incendio_vehiculo->setCi_pnb($_POST['ci_pnb']);
     $incendio_vehiculo->setCi_gnb($_POST['ci_gnb']);
@@ -263,9 +267,9 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         $incendio_vehiculo->getLesionados(),
         $incendio_vehiculo->getActa(),
         $incendio_vehiculo->getObservaciones(),
-        $incendio_vehiculo->getJefe(),
-        $incendio_vehiculo->getGral_servicios(),
-        $incendio_vehiculo->getJefe_deseccion(),
+        $incendio_vehiculo->getJefeComision(), 
+        $incendio_vehiculo->getJefeGeneral(), 
+        $incendio_vehiculo->getJefeSeccion(), 
         $incendio_vehiculo->getComandante(),
         $incendio_vehiculo->getCi_pnb(),
         $incendio_vehiculo->getCi_gnb(),

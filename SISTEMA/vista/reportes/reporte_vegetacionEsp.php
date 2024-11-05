@@ -167,9 +167,9 @@ $preparado3->execute();
         <!-- Información General -->
         <table>
             <tr>
-                <td colspan="1">FECHA: <input type="text" name="fecha" value="<?=$reporte['fecha'];?>"></td>
-                <td colspan="2">SECCIÓN: <input type="text" name="seccion" value="<?=$reporte['seccion'];?>"></td>
-                <td colspan="3">ESTACIÓN: <input type="text" name="estacion" value="<?=$reporte['estacion'];?>"></td>
+                <td>FECHA: <input type="text" name="fecha" value="<?=$reporte['fecha'];?>"></td>
+                <td>SECCIÓN: <input type="text" name="seccion" value="<?=$reporte['seccion'];?>"></td>
+                <td>ESTACIÓN: <input type="text" name="estacion" value="<?=$reporte['estacion'];?>"></td>
             </tr>
         </table>
 

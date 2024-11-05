@@ -3,7 +3,7 @@
 class Incendio_vehiculo {
     private $id, $fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso, $lugar, $direccion, $modelo, $marca, $año, $placa, 
     $serial, $color, $puestos, $propietario, $ci_propietario, $valor, $conductor, $ci_conductor, $aseguradora, $vigencia, $inicio, $ignicion, $culmino, 
-    $causa, $h_reignicion, $clase, $declaracion, $h_lesionados, $lesionados, $acta, $observaciones, $jefe, $gral_servicios, $jefe_deseccion, $comandante,  $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro;
+    $causa, $h_reignicion, $clase, $declaracion, $h_lesionados, $lesionados, $acta, $observaciones, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro;
 
     public function __construct(){
 	}
@@ -154,19 +154,19 @@ class Incendio_vehiculo {
         $this->observaciones = $observaciones;
     }
 
-    public function setJefe($jefe){
-        $this->jefe = $jefe;
+    public function setJefeComision($jefe_comision) {
+        $this->jefe_comision = $jefe_comision;
     }
-
-    public function setGral_servicios($gral_servicios){
-        $this->gral_servicios = $gral_servicios;
+    
+    public function setJefeGeneral($jefe_general) {
+        $this->jefe_general = $jefe_general;
     }
-
-    public function setJefe_deseccion($jefe_deseccion){
-        $this->jefe_deseccion = $jefe_deseccion;
+    
+    public function setJefeSeccion($jefe_seccion) {
+        $this->jefe_seccion = $jefe_seccion;
     }
-
-    public function setComandante($comandante){
+    
+    public function setComandante($comandante) {
         $this->comandante = $comandante;
     }
 
@@ -342,21 +342,22 @@ class Incendio_vehiculo {
         return $this->observaciones;
     }
 
-    public function getJefe(){
-        return $this->jefe;
+    public function getJefeComision() {
+        return $this->jefe_comision;
     }
-
-    public function getGral_servicios(){
-        return $this->gral_servicios;
+    
+    public function getJefeGeneral() {
+        return $this->jefe_general;
     }
-
-    public function getJefe_deseccion(){
-        return $this->jefe_deseccion;
+    
+    public function getJefeSeccion() {
+        return $this->jefe_seccion;
     }
-
-    public function getComandante(){
+    
+    public function getComandante() {
         return $this->comandante;
     }
+
 
     public function getCi_pnb(){
         return $this->ci_pnb;
@@ -386,7 +387,7 @@ class Incendio_vehiculo {
         public function registrarIncendio_vehiculo($fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso,
         $lugar, $direccion, $modelo, $marca, $año, $placa, $serial, $color, $puestos, $propietario, $ci_propietario, $valor,
          $conductor, $ci_conductor, $aseguradora, $vigencia, $inicio, $ignicion, $culmino, $causa, $h_reignicion, $clase, 
-         $declaracion, $h_lesionados, $lesionados,  $acta, $observaciones, $jefe, $gral_servicios, $jefe_deseccion, $comandante,
+         $declaracion, $h_lesionados, $lesionados,  $acta, $observaciones,  $jefe_comision, $jefe_general, $jefe_seccion, $comandante,
          $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro){
         include("conexion.php");
 
@@ -395,7 +396,7 @@ class Incendio_vehiculo {
         $preparado->execute([null,$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso,
         $lugar, $direccion, $modelo, $marca, $año, $placa, $serial, $color, $puestos, $propietario, $ci_propietario, $valor, 
         $conductor, $ci_conductor, $aseguradora, $vigencia, $inicio, $ignicion, $culmino, $causa, $h_reignicion, $clase, 
-        $declaracion, $h_lesionados, $lesionados,  $acta, $observaciones, $jefe, $gral_servicios, $jefe_deseccion, $comandante,
+        $declaracion, $h_lesionados, $lesionados,  $acta, $observaciones,  $jefe_comision, $jefe_general, $jefe_seccion, $comandante,
         $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro]);
         
         return array($preparado,$conexion->lastInsertId());
@@ -406,21 +407,20 @@ class Incendio_vehiculo {
      public function modificarIncendio_vehiculo($id, $fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso,
      $lugar, $direccion, $modelo, $marca, $año, $placa, $serial, $color, $puestos, $propietario, $ci_propietario, $valor,
      $conductor, $ci_conductor, $aseguradora, $vigencia, $inicio, $ignicion, $culmino, $causa, $h_reignicion, $clase, 
-     $declaracion, $h_lesionados, $lesionados,  $acta, $observaciones, $jefe, $gral_servicios, $jefe_deseccion, $comandante,
+     $declaracion, $h_lesionados, $lesionados,  $acta, $observaciones, $jefe_comision, $jefe_general, $jefe_seccion, $comandante,
      $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro ){
          include("conexion.php");
  
          $SQL = "UPDATE incendio_vehiculo SET fecha = ?, seccion = ?, estacion = ?, aviso = ?, hora = ?, salida = ?, llegada = ?, regreso = ?, 
          lugar = ?, direccion = ?, modelo = ?, marca = ?, año= ?, placa = ?, serial = ?, color = ?, puestos= ?, propietario = ?, ci_propietario = ?,
          valor = ?, conductor = ?, ci_conductor = ?, aseguradora = ?, vigencia = ?, inicio = ?, ignicion = ?, culmino = ?, causa = ?, h_reignicion = ?,
-         clase = ?, declaracion = ?,  h_lesionados = ?, lesionados = ?, acta= ?, observaciones= ?, jefe = ?, gral_servicios= ?, jefe_deseccion= ?,  
-         comandante= ?,   ci_pnb = ?, ci_gnb = ?, ci_intt = ?, ci_invity = ?, ci_pc = ?, ci_otro = ? WHERE id = ?";
+         clase = ?, declaracion = ?,  h_lesionados = ?, lesionados = ?, acta= ?, observaciones= ?, jefe_comision = ?, jefe_general = ?, jefe_seccion = ?, comandante = ?,  ci_pnb = ?, ci_gnb = ?, ci_intt = ?, ci_invity = ?, ci_pc = ?, ci_otro = ? WHERE id = ?";
        
        $preparado = $conexion->prepare($SQL);
          $preparado->execute([$fecha, $seccion, $estacion, $aviso, $haviso, $hsalida, $hllegada, $hregreso,
          $lugar, $direccion, $modelo, $marca, $año, $placa, $serial, $color, $puestos, $propietario, $ci_propietario, $valor,
          $conductor, $ci_conductor, $aseguradora, $vigencia, $inicio, $ignicion, $culmino, $causa, $h_reignicion, $clase, 
-         $declaracion, $h_lesionados, $lesionados,  $acta, $observaciones, $jefe, $gral_servicios, $jefe_deseccion, $comandante,
+         $declaracion, $h_lesionados, $lesionados,  $acta, $observaciones, $jefe_comision, $jefe_general, $jefe_seccion, $comandante,
          $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $id]);
  
          return $preparado;
