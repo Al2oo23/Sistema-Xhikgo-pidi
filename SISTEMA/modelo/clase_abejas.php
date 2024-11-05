@@ -281,43 +281,5 @@ class Abejas{
         $sentencia = $conexion->prepare("DELETE FROM efectivo_asignado WHERE id_incidente = ?");
         $sentencia->execute([$id]);
     }
-    
-    
-
-    public function reporte($id){
-        include("conexion.php");
-        
-        $sentencia = $conexion->prepare("SELECT * FROM abejas WHERE id = ?");
-        $sentencia->execute([$id]);
-        $abejas = $sentencia->fetchAll(PDO::FETCH_ASSOC)[0];
-        // print_r($abejas);
-
-        $SQL = " SELECT * FROM persona WHERE cedula = ?";
-        $propietario = $conexion->prepare($SQL);
-        $propietario->execute([$abejas['inmueble']]);
-        $inmu = $propietario->fetchAll(PDO::FETCH_ASSOC)[0];
-
-        $SQL = " SELECT * FROM persona WHERE cedula = ?";
-        $jefe_com = $conexion->prepare($SQL);
-        $jefe_com->execute([$abejas['jefe_comision']]);
-        $jcomision = $jefe_com->fetchAll(PDO::FETCH_ASSOC)[0];
-       
-         $SQL = " SELECT * FROM persona WHERE cedula = ?";
-        $jefe_gen = $conexion->prepare($SQL);
-        $jefe_gen->execute([$abejas['jefe_general']]);
-        $jgeneral = $jefe_gen->fetchAll(PDO::FETCH_ASSOC)[0];
-
-         $SQL = " SELECT * FROM persona WHERE cedula = ?";
-        $jefe_sec = $conexion->prepare($SQL);
-        $jefe_sec->execute([$abejas['jefe_seccion']]);
-        $jseccion = $jefe_sec->fetchAll(PDO::FETCH_ASSOC)[0];
-
-         $SQL = " SELECT * FROM persona WHERE cedula = ?";
-        $comando = $conexion->prepare($SQL);
-        $comando->execute([$abejas['comandante']]);
-        $com = $comando->fetchAll(PDO::FETCH_ASSOC)[0];
-
-         return [$abejas,$inmu,$jcomision,$jgeneral,$jseccion,$com];
-    }
 }
 ?>

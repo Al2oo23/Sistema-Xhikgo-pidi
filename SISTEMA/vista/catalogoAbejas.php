@@ -168,7 +168,7 @@ include ("modal/modalAbejasM.php");
                                         </div>
                                     </td>
                                     <td>
-                                    <a href="../controlador/ctl_abejas.php?txtIDreporte=<?= $abej['id'];?>" class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
+                                    <a href="../vista/reportes/reporte_abejasEsp.php?txtIDreporte=<?=$abej['id'];?>" class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
                                     </td>
                                 </tr>
 
