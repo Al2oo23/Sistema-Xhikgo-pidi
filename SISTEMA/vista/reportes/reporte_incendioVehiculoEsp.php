@@ -31,7 +31,7 @@ $sqlRecursoAsignado = "SELECT ra.cantidad, r.nombre
 $stmtRecursoAsignado = $conexion->prepare($sqlRecursoAsignado);
 $stmtRecursoAsignado->bindParam(":id", $IDreporte, PDO::PARAM_INT);
 $stmtRecursoAsignado->execute();
-$recurso = $stmtRecursoAsignado->fetch(PDO::FETCH_ASSOC);
+$recurso = $stmtRecursoAsignado->fetchAll(PDO::FETCH_ASSOC);
 
 // Consulta para obtener datos de efectivo_asignado y persona
 $sqlEfectivoAsignado = "SELECT * FROM efectivo_asignado ea 
@@ -42,12 +42,6 @@ $stmtEfectivoAsignado->bindParam(":id", $IDreporte, PDO::PARAM_INT);
 $stmtEfectivoAsignado->execute();
 $efectivo = $stmtEfectivoAsignado->fetchAll(PDO::FETCH_ASSOC);
 
-// Consulta para obtener datos de unidad_asignada
-// $sqlUnidadAsignada = "SELECT * FROM unidad_asignada WHERE id_incidente = :id";
-// $stmtUnidadAsignada = $conexion->prepare($sqlUnidadAsignada);
-// $stmtUnidadAsignada->bindParam(":id", $IDreporte, PDO::PARAM_INT);
-// $stmtUnidadAsignada->execute();
-// $unidad = $stmtUnidadAsignada->fetchAll(PDO::FETCH_ASSOC);
 
 // Consulta para obtener datos del propietario del vehiculo
 $sqlPvehiculo = "SELECT * FROM unidad_asignada ua INNER JOIN vehiculo v ON ua.niv = v.unidad INNER JOIN persona p ON v.cedula = p.cedula WHERE id_incidente = :id";
@@ -363,7 +357,9 @@ ob_start(); // Iniciar el buffer de salida
             <tr>
 
                 <td>
-                    <input type="text" value="<?= $recurso['nombre'] ?>" size="10px">:<input type="text" value="<?= $recurso['cantidad'] ?>" size="1px">
+                <?php foreach ($recurso as $rec) :?>
+                    <input type="text" value="<?= $rec['nombre'] ?>" size="10px">:<input type="text" value="<?= $rec['cantidad'] ?>" size="1px">
+                    <?php endforeach;?>
                 </td>
 
             </tr>

@@ -13,6 +13,9 @@ if (isset($_POST['agregar']) && $_POST['agregar'] == 'agregar') {
     $usuario->setPregunta($_POST["pregunta"]);
     $usuario->setRespuesta($_POST["respuesta"]);
 
+    // Inicializar $cedula con el valor de la sesión
+    $cedula = $_SESSION["datosUsuarioR"]["cedula"];
+
     $sql = "SELECT * FROM persona WHERE cedula = :cedula";
     $preparado = $conexion->prepare($sql);
     $preparado->bindParam(':cedula', $cedula, PDO::PARAM_STR);
