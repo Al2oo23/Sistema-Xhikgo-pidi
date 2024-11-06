@@ -171,7 +171,6 @@ include ("modal/modalAbejasM.php");
                                     <a href="../vista/reportes/reporte_abejasEsp.php?txtIDreporte=<?=$abej['id'];?>" class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
                                     </td>
                                 </tr>
-
                             <?php endforeach; ?>
                         </tbody>
                     </table>

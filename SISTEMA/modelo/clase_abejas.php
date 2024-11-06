@@ -228,22 +228,6 @@ class Abejas{
         $preparado->execute([null,$fecha, $seccion, $estacion, $aviso, $solicitante, $haviso, $hsalida, $hllegada, $hregreso, $panal, $direccion,
         $lugar, $inmueble, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $acta, $observaciones]);
         
-        //  // BITACORA
-        //         // Fecha y hora actual
-        //         $fecha = date('Y-m-d H:i:s');
-            
-        //         // Preparar la consulta SQL
-        //         $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-        //         $resultado2 = $conexion->prepare($sql);
-
-        //         // Ejecutar la consulta
-        //         $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró Abejas", $fecha]);
-
-
-        // $SQL = "INSERT INTO mantenimiento VALUES (?,?,?,?,?)";
-        // $preparado = $conexion->prepare($SQL);
-        // $preparado->execute([null, $unidad,"abejas", $fecha,"pendiente"]);
-        
         return array($preparado,$conexion->lastInsertId());
         
     }

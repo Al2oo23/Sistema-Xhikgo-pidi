@@ -44,7 +44,7 @@ $lugar = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 $sentencia = $conexion->prepare("SELECT unidad FROM vehiculo");
 $sentencia->execute();
-$n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
+$n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -284,7 +284,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                <label for="">Efectivo</label>
                                <div class="plus-container">
                                    <div class="position-relative first-sibling">
-                                       <input type="text" id="efectivo" name="efectivos[]" class="form-control" placeholder="Efectivo">
+                                       <input type="text" id="efectivo" name="efectivos[]" class="form-control" placeholder="Cedula del Efectivo">
                                        <div class="form-control-icon">
                                            <i class="bi bi-person-x"></i>
                                        </div>

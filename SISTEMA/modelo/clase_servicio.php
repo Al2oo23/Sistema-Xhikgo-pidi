@@ -210,22 +210,6 @@ public function getObservaciones() {
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([null, $fecha, $seccion, $estacion, $taviso, $solicitante, $hora, $salida, $llegada, $regreso, $causa, $direccion, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $acta, $observaciones]);
         
-         // BITACORA
-                // // Fecha y hora actual
-                // $fecha = date('Y-m-d H:i:s');
-            
-                // // Preparar la consulta SQL
-                // $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                // $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                // $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Registró Servicio", $fecha]);
-
-
-        // $SQL = "INSERT INTO mantenimiento VALUES (?,?,?,?,?)";
-        // $preparado = $conexion->prepare($SQL);
-        // $preparado->execute([null, $unidad,"abejas", $fecha,"pendiente"]);
-        
         return array($preparado,$conexion->lastInsertId());
         
     }
@@ -240,29 +224,26 @@ public function getObservaciones() {
         $preparado = $conexion->prepare($SQL);
         $preparado->execute([$fecha, $seccion, $estacion, $taviso, $solicitante, $hora, $salida, $llegada, $regreso, $causa, $direccion, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $acta, $observaciones, $id]);
 
-        //  // BITACORA
-        //         // Fecha y hora actual
-        //         $fecha = date('Y-m-d H:i:s');
-            
-        //         // Preparar la consulta SQL
-        //         $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-        //         $resultado2 = $conexion->prepare($sql);
-
-        //         // Ejecutar la consulta
-        //         $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Modificó Servicio", $fecha]);
-
         return $preparado;
     }
 
-    public function reporte($id){
+    public function errorRegistro($id){
         include("conexion.php");
-        
-        $SQL = "SELECT * FROM servicios WHERE id = :id";
-        $preparado = $conexion->prepare($SQL);
-        $preparado->bindParam(':id', $id, PDO::PARAM_INT); 
-        $preparado->execute();
+        // ELIMINAR INCIDENTE DE SERVICIOS ESPECIALES
+        $sentencia = $conexion->prepare("DELETE FROM servicios WHERE id = ?");
+        $sentencia->execute([$id]);
 
-        return $preparado->fetch(PDO::FETCH_ASSOC);
+        // ELIMINAR RECURSO ASIGNADO
+        $sentencia = $conexion->prepare("DELETE FROM recurso_asignado WHERE id_incidente = ?");
+        $sentencia->execute([$id]);
+
+        // ELIMINAR UNIDAD ASIGNADA
+        $sentencia = $conexion->prepare("DELETE FROM unidad_asignada WHERE id_incidente = ?");
+        $sentencia->execute([$id]);
+        
+        // ELIMINAR EFECTIVO ASIGNADO
+        $sentencia = $conexion->prepare("DELETE FROM efectivo_asignado WHERE id_incidente = ?");
+        $sentencia->execute([$id]);
     }
 }
 ?>
