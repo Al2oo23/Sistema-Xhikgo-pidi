@@ -257,23 +257,23 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
 
     $recurso->restauradorRecurso(
         $_POST['id'],
-        "Abejas"
+        "S.E"
+    );
+
+    $recurso->eliminarRecurso(
+         $_POST['id'],
+        "S.E"
     );
 
     for($i = 0; $i<count($_POST['recurso']);$i++){
-        //setters vehiculo incidente
+        //setters recurso
 
-    $recurso->setIdIncidente($_POST['id']);
-        $recurso->setTipo("Abejas");
+        $recurso->setIdIncidente($_POST['id']);
+        $recurso->setTipo("S.E");
         $recurso->setIdRecurso($_POST['recurso'][$i]);
         $recurso->setCantidad($_POST['cantidad'][$i]);
-
-        // getters vehiculo incidente
-
-        $recurso->eliminarRecurso(
-            $recurso->getIdIncidente(),
-            $recurso->getTipo("Abejas")
-        );
+        
+        // getters recurso
 
         $resultadoRecurso = $recurso->agregarRecurso(
             $recurso->getIdIncidente(),

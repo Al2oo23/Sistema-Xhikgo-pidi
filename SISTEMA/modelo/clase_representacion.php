@@ -13,8 +13,6 @@ class representacion
     private $hora_regreso;
     private $causa;
     private $direccion;
-    private $num_efectivos;
-    private $maletin;
     private $explicacion;
     private $ci_pnb;
     private $ci_gnb;
@@ -26,6 +24,7 @@ class representacion
     private $jefe_general;
     private $jefe_seccion;
     private $comandante;
+    private $acta;
 
     public function __construct() {}
 
@@ -85,16 +84,6 @@ class representacion
         $this->direccion = $direccion;
     }
 
-    public function setNumEfectivos($num_efectivos)
-    {
-        $this->num_efectivos = $num_efectivos;
-    }
-
-    public function setMaletin($maletin)
-    {
-        $this->maletin = $maletin;
-    }
-
     public function setExplicacion($explicacion)
     {
         $this->explicacion = $explicacion;
@@ -148,6 +137,11 @@ class representacion
     public function setComandante($comandante)
     {
         $this->comandante = $comandante;
+    }
+
+    public function setActa($acta)
+    {
+        $this->acta = $acta;
     }
 
     // Getters
@@ -206,15 +200,6 @@ class representacion
         return $this->direccion;
     }
 
-    public function getNumEfectivos()
-    {
-        return $this->num_efectivos;
-    }
-
-    public function getMaletin()
-    {
-        return $this->maletin;
-    }
     public function getExplicacion()
     {
         return $this->explicacion;
@@ -270,17 +255,22 @@ class representacion
         return $this->comandante;
     }
 
+    public function getActa()
+    {
+        return $this->acta;
+    }
+
 
 
 
 
     //REGISTRAR
-    public function registrarRepresentacion($fecha, $seccion, $estacion, $tipo_aviso, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, $causa, $direccion, $num_efectivos, $maletin, $explicacion, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $jefe_comision, $jefe_general, $jefe_seccion, $comandante)
+    public function registrarRepresentacion($fecha, $seccion, $estacion, $tipo_aviso, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, $causa, $direccion, $explicacion, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $acta)
     {
 
         include("conexion.php");
 
-        $SQL = "INSERT INTO representacion_institucional VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $SQL = "INSERT INTO representacion_institucional VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $preparado = $conexion->prepare($SQL);
 
@@ -296,8 +286,6 @@ class representacion
             $hora_regreso,
             $causa,
             $direccion,
-            $num_efectivos,
-            $maletin,
             $explicacion,
             $ci_pnb,
             $ci_gnb,
@@ -308,7 +296,8 @@ class representacion
             $jefe_comision,
             $jefe_general,
             $jefe_seccion,
-            $comandante
+            $comandante,
+            $acta
         ]);
 
         return $preparado;
@@ -316,16 +305,16 @@ class representacion
 
 
     //MODIFICAR
-    public function modificarRepresentacion($id, $fecha, $seccion, $estacion, $tipo_aviso, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, $causa, $direccion, $num_efectivos, $maletin, $explicacion, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $jefe_comision, $jefe_general, $jefe_seccion, $comandante)
+    public function modificarRepresentacion($id, $fecha, $seccion, $estacion, $tipo_aviso, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, $causa, $direccion, $explicacion, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $acta)
     {
 
         include("conexion.php");
 
-        $SQL = "UPDATE representacion_institucional SET fecha = ?, seccion = ?, estacion = ?, aviso = ?, hora = ?, salida = ?, llegada = ?, regreso = ?, causa = ?, direccion = ?, num_efectivos = ?, material = ?, explicacion = ?, ci_pnb = ?, ci_gnb = ?, ci_intt = ?, ci_invity = ?, ci_pc = ?, ci_otro = ?, jefe_comision = ?, jefe_generales = ?, jefe_seccion = ?, comandante = ? WHERE id = ?";
+        $SQL = "UPDATE representacion_institucional SET fecha = ?, seccion = ?, estacion = ?, aviso = ?, hora = ?, salida = ?, llegada = ?, regreso = ?, causa = ?, direccion = ?, explicacion = ?, ci_pnb = ?, ci_gnb = ?, ci_intt = ?, ci_invity = ?, ci_pc = ?, ci_otro = ?, jefe_comision = ?, jefe_generales = ?, jefe_seccion = ?, comandante = ?, acta = ? WHERE id = ?";
 
         $preparado = $conexion->prepare($SQL);
 
-        $preparado->execute([$fecha, $seccion, $estacion, $tipo_aviso, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, $causa, $direccion, $num_efectivos, $maletin, $explicacion, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $id]);
+        $preparado->execute([$fecha, $seccion, $estacion, $tipo_aviso, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, $causa, $direccion, $explicacion, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $acta, $id]);
 
         return $preparado;
     }

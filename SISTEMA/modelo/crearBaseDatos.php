@@ -50,8 +50,6 @@ try {
             regreso VARCHAR(20) NOT NULL,
             causa VARCHAR(100) NOT NULL,
             direccion VARCHAR(100) NOT NULL,
-            num_efectivos VARCHAR (20) NOT NULL,
-            material VARCHAR (255) NOT NULL,
             explicacion VARCHAR(255) NOT NULL,
             ci_pnb varchar(100) DEFAULT NULL,
             ci_gnb varchar(100) DEFAULT NULL,

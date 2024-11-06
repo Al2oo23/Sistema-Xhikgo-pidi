@@ -199,21 +199,20 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
         "S.E"
     );
 
-    for($i = 0; $i<count($_POST['recurso']);$i++){
-        //setters vehiculo incidente
+    $recurso->eliminarRecurso(
+         $_POST['id'],
+        "S.E"
+    );
 
-        print_r($_POST['recurso']);
+    for($i = 0; $i<count($_POST['recurso']);$i++){
+        //setters recurso
+
         $recurso->setIdIncidente($_POST['id']);
         $recurso->setTipo("S.E");
         $recurso->setIdRecurso($_POST['recurso'][$i]);
         $recurso->setCantidad($_POST['cantidad'][$i]);
         
-        // getters vehiculo incidente
-
-        $recurso->eliminarRecurso(
-            $recurso->getIdIncidente(),
-            $recurso->getTipo("S.E")
-        );
+        // getters recurso
 
         $resultadoRecurso = $recurso->agregarRecurso(
             $recurso->getIdIncidente(),
@@ -245,20 +244,23 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
         );
     }
    
-    // if(!$datos){
-    //     echo "<script>alert('No se pudo Modificar el Incidente')</script>";
-	// 	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoSE.php'>"; 
-    // }else{
-    //     echo "<script>alert('Incidente Modificado con Éxito')</script>";
-	// 	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoSE.php'>"; 
-    // }
+    if(!$datos){
+        echo "<script>alert('No se pudo Modificar el Incidente')</script>";
+		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoSE.php'>"; 
+    }else{
+        echo "<script>alert('Incidente Modificado con Éxito')</script>";
+		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoSE.php'>"; 
+    }
 }
 
 // ELIMINAR
+if (isset($_GET['txtID'])) {
 
-if (isset($_POST['eliminar']) && $_POST['eliminar'] == "eliminar") {
-
-    $servicio->errorRegistro($datos[1]);
+    $txtID = (isset($_GET['txtID'])) ? $_GET['txtID'] : '';
+    
+    $datos = $recurso->restauradorRecurso($txtID, 'S.E');
+    
+    $datos2 = $servicio->errorRegistro($txtID);
 
     echo "<script>alert('Servicio Eliminado con Éxito')</script>";
 	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoSE.php'>"; 

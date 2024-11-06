@@ -16,8 +16,6 @@ if(isset($_POST['registrar']) && $_POST['registrar'] == "registrar"){
     $representacion->setHoraRegreso($_POST['hora_regreso']);
     $representacion->setCausa($_POST['causa']);
     $representacion->setDireccion($_POST['direccion']);
-    $representacion->setNumEfectivos($_POST['num_efectivos']);
-    $representacion->setMaletin($_POST['maletin']);
     $representacion->setExplicacion($_POST['explicacion']);
     $representacion->setCIPnb($_POST['ci_pnb']);
     $representacion->setCIGnb($_POST['ci_gnb']);
@@ -29,8 +27,9 @@ if(isset($_POST['registrar']) && $_POST['registrar'] == "registrar"){
     $representacion->setJefeGeneral($_POST['jefe_general']);
     $representacion->setJefeSeccion($_POST['jefe_seccion']);
     $representacion->setComandante($_POST['comandante']);
+    $representacion->setActa($_POST['acta']);
 
-    $datos = $representacion->registrarRepresentacion($representacion->getFecha(), $representacion->getSeccion(), $representacion->getEstacion(), $representacion->getTipoAviso(), $representacion->getHoraAviso(), $representacion->getHoraSalida(), $representacion->getHoraLlegada(), $representacion->getHoraRegreso(), $representacion->getCausa(), $representacion->getDireccion(), $representacion->getNumEfectivos(), $representacion->getMaletin(), $representacion->getExplicacion(), $representacion->getCIPNB(), $representacion->getCIGNB(), $representacion->getCIINTT(), $representacion->getCIINVITY(), $representacion->getCIPC(), $representacion->getCIOtro(), $representacion->getJefeComision(), $representacion->getJefeGeneral(), $representacion->getJefeSeccion(), $representacion->getComandante());
+    $datos = $representacion->registrarRepresentacion($representacion->getFecha(), $representacion->getSeccion(), $representacion->getEstacion(), $representacion->getTipoAviso(), $representacion->getHoraAviso(), $representacion->getHoraSalida(), $representacion->getHoraLlegada(), $representacion->getHoraRegreso(), $representacion->getCausa(), $representacion->getDireccion(), $representacion->getExplicacion(), $representacion->getCIPNB(), $representacion->getCIGNB(), $representacion->getCIINTT(), $representacion->getCIINVITY(), $representacion->getCIPC(), $representacion->getCIOtro(), $representacion->getJefeComision(), $representacion->getJefeGeneral(), $representacion->getJefeSeccion(), $representacion->getComandante(), $representacion->getActa());
 
     if(!$datos){
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoRepresentacion.php'>"; 
@@ -53,8 +52,6 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
     $representacion->setHoraRegreso($_POST['hora_regresoM']);
     $representacion->setCausa($_POST['causaM']);
     $representacion->setDireccion($_POST['direccionM']);
-    $representacion->setNumEfectivos($_POST['num_efectivosM']);
-    $representacion->setMaletin($_POST['maletinM']);
     $representacion->setExplicacion($_POST['explicacionM']);
     $representacion->setCIPnb($_POST['ci_pnbM']);
     $representacion->setCIGnb($_POST['ci_gnbM']);
@@ -67,7 +64,7 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
     $representacion->setJefeSeccion($_POST['jefe_seccionM']);
     $representacion->setComandante($_POST['comandanteM']);
 
-    $datos = $representacion->modificarRepresentacion($representacion->getId(), $representacion->getFecha(), $representacion->getSeccion(), $representacion->getEstacion(), $representacion->getTipoAviso(), $representacion->getHoraAviso(), $representacion->getHoraSalida(), $representacion->getHoraLlegada(), $representacion->getHoraRegreso(), $representacion->getCausa(), $representacion->getDireccion(), $representacion->getNumEfectivos(), $representacion->getMaletin(), $representacion->getExplicacion(), $representacion->getCIPNB(), $representacion->getCIGNB(), $representacion->getCIINTT(), $representacion->getCIINVITY(), $representacion->getCIPC(), $representacion->getCIOtro(), $representacion->getJefeComision(), $representacion->getJefeGeneral(), $representacion->getJefeSeccion(), $representacion->getComandante());
+    $datos = $representacion->modificarRepresentacion($representacion->getId(), $representacion->getFecha(), $representacion->getSeccion(), $representacion->getEstacion(), $representacion->getTipoAviso(), $representacion->getHoraAviso(), $representacion->getHoraSalida(), $representacion->getHoraLlegada(), $representacion->getHoraRegreso(), $representacion->getCausa(), $representacion->getDireccion(), $representacion->getExplicacion(), $representacion->getCIPNB(), $representacion->getCIGNB(), $representacion->getCIINTT(), $representacion->getCIINVITY(), $representacion->getCIPC(), $representacion->getCIOtro(), $representacion->getJefeComision(), $representacion->getJefeGeneral(), $representacion->getJefeSeccion(), $representacion->getComandante(), $representacion->getActa());
 
     if(!$datos){
         echo "<script>alert('No se pudo Modificar la Representación')</script>";

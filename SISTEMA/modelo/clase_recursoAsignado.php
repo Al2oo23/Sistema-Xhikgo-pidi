@@ -150,12 +150,16 @@ class recursoAsignado{
         $consultaTipo = "SELECT tipo FROM recurso WHERE id = ?";
         $preparado = $conexion->prepare($consultaTipo);
         $preparado->execute([$recurso['id_recurso']]);
-        $tipo = $preparado->fetchColumn();
-    
-        // Si el recurso es no reutilizable, restar la cantidad
-        if ($tipo === 'NO') {
+        $tipo = $preparado->fetchAll(PDO::FETCH_ASSOC)[0];
+        print_r($tipo);
+        echo "<br>";
+        // Si el recurso es no reutilizable, sumar la cantidad
+        if ($tipo['tipo'] == "NO") {
+            echo "hola";
             $this->SumarRecurso($recurso['id_recurso'], $recurso['cantidad']);
+ 
         }
+        
         }
     }
 
