@@ -353,10 +353,10 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                     <label for="">Se Levanto Acta en el sitio</label>
                                     <div class="position-relative">
                                         <label class="form-check-label" for="">SI</label>
-                                        <input type="radio" class="form-check-input" name="acta" value="Si" id="acta">
+                                        <input type="radio" class="form-check-input" name="acta" value="SI" id="acta">
 
                                         <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="acta" value="No" id="acta">
+                                        <input type="radio" class="form-check-input" name="acta" value="NO" id="acta">
                                     </div>
                                 </div>
                             </div>

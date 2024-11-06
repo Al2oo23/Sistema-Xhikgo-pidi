@@ -80,13 +80,11 @@ $vehiculo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <tr>
                         <th>NIV</th>
                         <th>Tipo</th>
+                        <th>Propiedad de la Institucion</th>
                         <th>N° Unidad</th>
                         <th>Marca</th>
                         <th>Modelo</th>
-                        <th>Serial</th>
-                        <th>Cilindrada</th>
                         <th>Carburante</th>
-                        <th>Seguro</th>
                         <th>CI Propietario</th>
                         <th>Nombre</th>
                     </tr>
@@ -96,13 +94,11 @@ $vehiculo = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <tr>
                             <td><?= $vehic['niv'] ?></td>
                             <td><?= $vehic['tipo'] ?></td>
+                            <td><?= $vehic['propiedad'] ?></td>
                             <td><?= $vehic['unidad'] ?></td>
                             <td><?= $vehic['marca'] ?></td>
                             <td><?= $vehic['modelo'] ?></td>
-                            <td><?= $vehic['serial_vehiculo'] ?></td>
-                            <td><?= $vehic['cilindrada'] ?></td>
                             <td><?= $vehic['carburante'] ?></td>
-                            <td><?= $vehic['seguro'] ?></td>
                             <td><?= $vehic['cedula'] ?></td>
                             <td><?= $vehic['nombre'] ?></td>
                         </tr>

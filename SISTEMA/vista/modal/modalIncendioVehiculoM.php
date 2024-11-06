@@ -373,10 +373,10 @@ $modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             <label for="">Aseguradora</label>
                             <div class="position-relative">
                                 <label class="form-check-label" for="">SI</label>
-                                <input type="radio" class="form-check-input" name="aseguradora" value="aseguradora" id="aseguradora">
+                                <input type="radio" class="form-check-input" name="aseguradora" value="SI" id="aseguradora">
 
                                 <label class="form-check-label ms-3" for="">NO</label>
-                                <input type="radio" class="form-check-input" name="aseguradora" value="no-aseguradora"  id="no_asegurado">
+                                <input type="radio" class="form-check-input" name="aseguradora" value="NO"  id="no_asegurado">
                             </div>
                         </div>
                     </div>
@@ -446,10 +446,10 @@ $modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="">Hubo Reignicion</label>
                                     <div class="position-relative">
                                         <label class="form-check-label" for="">SI</label>
-                                        <input type="radio" class="form-check-input" name="h_reignicion" value="Si" id="h_reignicion">
+                                        <input type="radio" class="form-check-input" name="h_reignicion" value="SI" id="h_reignicion">
 
                                         <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="h_reignicion" value="No" id="h_reignicion">
+                                        <input type="radio" class="form-check-input" name="h_reignicion" value="NO" id="h_reignicion">
                                     </div>
                                 </div>
                             </div>
@@ -483,10 +483,10 @@ $modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="">Hubo Lesionados </label>
                                     <div class="position-relative">
                                         <label class="form-check-label" for="">SI</label>
-                                        <input type="radio" class="form-check-input" name="h_lesionados" value="Si" id="h_lesionados">
+                                        <input type="radio" class="form-check-input" name="h_lesionados" value="SI" id="h_lesionados">
 
                                         <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="h_lesionados" value="No" id="h_lesionados">
+                                        <input type="radio" class="form-check-input" name="h_lesionados" value="NO" id="h_lesionados">
                                     </div>
                                 </div>
                             </div>
@@ -508,10 +508,10 @@ $modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="">Se Levanto Acta en el sitio</label>
                                     <div class="position-relative">
                                         <label class="form-check-label" for="">SI</label>
-                                        <input type="radio" class="form-check-input" name="acta" value="Si" id="acta">
+                                        <input type="radio" class="form-check-input" name="acta" value="SI" id="acta">
 
                                         <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="acta" value="No" id="acta">
+                                        <input type="radio" class="form-check-input" name="acta" value="NO" id="acta">
                                     </div>
                                 </div>
                             </div>

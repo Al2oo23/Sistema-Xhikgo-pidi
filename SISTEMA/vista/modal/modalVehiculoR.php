@@ -58,6 +58,17 @@ $MarcaModelos[$row["marca"]] = $row["nombre"];
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
+                                    <label for="first-name-icon"> Propiedad de  la Institucion </label>
+                                    <select class="form-select" name="propiedad" id="propiedad_institucion">
+                                        <option value=""> Seleccione Si Es Propiedad de la Institucion </option>
+                                        <option value="SI">Si</option>
+                                        <option value="NO">No</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
                                     <label for="">Numero de Unidad:</label>
                                     <div class="position-relative">
                                         <input type="text" class="form-control" name="unidad" id="nunidad" placeholder="Numero de Unidad">

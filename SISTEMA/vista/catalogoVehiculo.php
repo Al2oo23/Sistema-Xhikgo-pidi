@@ -117,6 +117,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                         <tr style="text-align: center;">
                             <th class="columna">NIV</th>
                             <th class="columna">Tipo</th>
+                            <th class="columna">Propiedad</th>
                             <th class="columna">N° Unidad</th>
                             <th class="columna">Marca</th>
                             <th class="columna">Modelo</th>
@@ -132,6 +133,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                             <tr class="fila">
                                 <td class="columna"><?= $vehiculo['niv'] ?></td>
                                 <td class="columna"><?= $vehiculo['tipo'] ?></td>
+                                <td class="columna"><?= $vehiculo['propiedad'] ?></td>
                                 <td class="columna"><?= $vehiculo['unidad'] ?></td>
                                 <td class="columna"><?= $vehiculo['marca'] ?></td>
                                 <td class="columna"><?= $vehiculo['modelo'] ?></td>

@@ -58,6 +58,17 @@ $modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">
+                                    <label for="first-name-icon"> Propiedad de Institucion </label>
+                                    <select class="form-select" name="propiedad" id="propiedad">
+                                        <option value=""> Seleccione </option>
+                                        <option value="SI">Si</option>
+                                        <option value="NO">No</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group has-icon-left">
                                     <label for="">Numero de Unidad:</label>
                                     <div class="position-relative">
                                         <input type="text" class="form-control" name="unidad" id="nunidadM" placeholder="Numero de Unidad">
@@ -67,6 +78,8 @@ $modelo = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     </div>
                                 </div>
                             </div>  
+
+
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">

@@ -179,7 +179,7 @@ $conexion->exec($SQL);
     $SQL = "CREATE TABLE IF NOT EXISTS tipo_persona (
         id INT PRIMARY KEY AUTO_INCREMENT,
         tipo VARCHAR(20) NOT NULL,
-        descripcion VARCHAR(20) NOT NULL
+        descripcion VARCHAR(100) NOT NULL
     )";
     $conexion->exec($SQL);
 
@@ -299,7 +299,7 @@ $conexion->exec($SQL);
 
     $SQL = "CREATE TABLE IF NOT EXISTS seguro (
         id INT PRIMARY KEY AUTO_INCREMENT,
-        nombre VARCHAR(20) NOT NULL,
+        nombre VARCHAR(40) NOT NULL,
         tipo VARCHAR(20) NOT NULL
     )";
     $conexion->exec($SQL);
@@ -320,6 +320,7 @@ $conexion->exec($SQL);
         niv INT(100) PRIMARY KEY,
         tipo VARCHAR(20) NOT NULL,
         unidad VARCHAR(20) NOT NULL,
+        propiedad VARCHAR(20) NOT NULL,
         marca VARCHAR(20) NOT NULL,
         modelo VARCHAR(20) NOT NULL,
         carburante VARCHAR(20) NOT NULL,

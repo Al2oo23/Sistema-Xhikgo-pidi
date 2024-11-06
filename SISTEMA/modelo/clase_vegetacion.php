@@ -262,36 +262,24 @@ class Vegetacion{
         return $preparado;
     }
 
-    public function reporte($id){
+    public function errorRegistro($id){
         include("conexion.php");
-      
-        $sentencia = $conexion->prepare("SELECT * FROM vegetacion WHERE id = ?");
+        // ELIMINAR INCIDENTE DE Vegetacion
+        $sentencia = $conexion->prepare("DELETE FROM vegetacion WHERE id = ?");
         $sentencia->execute([$id]);
-        $vegetacion = $sentencia->fetchAll(PDO::FETCH_ASSOC)[0];
+
+        // ELIMINAR RECURSO ASIGNADO
+        $sentencia = $conexion->prepare("DELETE FROM recurso_asignado WHERE id_incidente = ?");
+        $sentencia->execute([$id]);
+
+        // ELIMINAR UNIDAD ASIGNADA
+        $sentencia = $conexion->prepare("DELETE FROM unidad_asignada WHERE id_incidente = ?");
+        $sentencia->execute([$id]);
         
-
-
-        $SQL = " SELECT * FROM persona WHERE cedula = ?";
-        $jefe_com = $conexion->prepare($SQL);
-        $jefe_com->execute([$vegetacion['jefe_comision']]);
-        $jcomision = $jefe_com->fetchAll(PDO::FETCH_ASSOC)[0];
-       
-         $SQL = " SELECT * FROM persona WHERE cedula = ?";
-        $jefe_gen = $conexion->prepare($SQL);
-        $jefe_gen->execute([$vegetacion['jefe_general']]);
-        $jgeneral = $jefe_gen->fetchAll(PDO::FETCH_ASSOC)[0];
-
-         $SQL = " SELECT * FROM persona WHERE cedula = ?";
-        $jefe_sec = $conexion->prepare($SQL);
-        $jefe_sec->execute([$vegetacion['jefe_seccion']]);
-        $jseccion = $jefe_sec->fetchAll(PDO::FETCH_ASSOC)[0];
-
-         $SQL = " SELECT * FROM persona WHERE cedula = ?";
-        $comando = $conexion->prepare($SQL);
-        $comando->execute([$vegetacion['comandante']]);
-        $com = $comando->fetchAll(PDO::FETCH_ASSOC)[0];
-
-         return [$vegetacion,$jcomision,$jgeneral,$jseccion,$com];
+        // ELIMINAR EFECTIVO ASIGNADO
+        $sentencia = $conexion->prepare("DELETE FROM efectivo_asignado WHERE id_incidente = ?");
+        $sentencia->execute([$id]);
     }
+
 }
 ?>
