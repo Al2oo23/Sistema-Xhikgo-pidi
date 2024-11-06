@@ -277,6 +277,14 @@ $conexion->exec($SQL);
         )";
     $conexion->exec($SQL);
 
+    //------------------ TIPO DE VEHICULO------------------
+
+    $SQL = "CREATE TABLE IF NOT EXISTS tipo_vehiculo (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        vehiculo VARCHAR(20) NOT NULL 
+        )";
+    $conexion->exec($SQL);
+
     //------------------ ESTADO CADAVER------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS estado_cadaver (

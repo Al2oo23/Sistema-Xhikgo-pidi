@@ -342,6 +342,10 @@
                                                 <a href="catalogoVegetacion.php" class='subsubmenu-link'>Incendio de Vegetacion</a>
                                             </li>
 
+                                            <li class="subsubmenu-item  ">
+                                                <a href="catalogoLevantamiento.php" class='subsubmenu-link'>Levantamiento de Cadaver</a>
+                                            </li>
+
                                             <!-- <li class="subsubmenu-item  ">
                                                 <a href="catalogoIncendioVehiculo.php" class='subsubmenu-link'>Incendio de Vehiculo</a>
                                             </li> -->

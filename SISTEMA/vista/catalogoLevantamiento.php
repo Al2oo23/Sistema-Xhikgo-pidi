@@ -51,11 +51,8 @@ include ("modal/modalLevantamientoM.php");
                                 <th class="columnas">Municipio</th>
                                 <th class="columnas">Lugar</th>
                                 <th class="columnas">Estado Encontrado</th>
-                                <th class="columnas">Desmembrado</th>
                                 <th class="columnas">Causa</th>
-                                <th class="columnas">Putrefacto</th>
                                 <th class="columnas">Accion</th>
-                                <th class="columnas" hidden>Hora Regreso</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,9 +64,7 @@ include ("modal/modalLevantamientoM.php");
                                     <td class="columnas"><?= $levantamiento['municipio'];?></td>
                                     <td class="columnas"><?= $levantamiento['lugar'];?></td>
                                     <td class="columnas"><?= $levantamiento['estado_encontrado'];?></td>
-                                    <td class="columnas"><?= $levantamiento['desmembrado'];?></td>
                                     <td class="columnas"><?= $levantamiento['causa'];?></td>
-                                    <td class="columnas"><?= $levantamiento['putrefacto'];?></td>
                                     <td>
                                         <div class="botones" style="justify-content:space-evenly;">
                                         <button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm"><i class="bi bi-pencil"></i></button>

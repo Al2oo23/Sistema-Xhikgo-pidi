@@ -1,7 +1,7 @@
 <?php
 
-class cadaver{
-    private $id, $cadaver;
+class vehiculo{
+    private $id, $vehiculo;
 
     public function __construct(){
 	}
@@ -10,8 +10,8 @@ class cadaver{
     public function setId($id){
         $this->id = $id;
     }
-    public function setCadaver($cadaver){
-        $this->cadaver = $cadaver;
+    public function setVehiculo($vehiculo){
+        $this->vehiculo = $vehiculo;
     }
    
     //getters
@@ -20,29 +20,29 @@ class cadaver{
     }
 
 
-    public function getCadaver(){
-        return $this->cadaver;
+    public function getVehiculo(){
+        return $this->vehiculo;
     }
   
 
     //Registrar
-    public function agregarCadaver($cadaver){
+    public function agregarVehiculo($vehiculo){
         include("conexion.php");
 
-        $SQL = "INSERT INTO estado_cadaver VALUES (?,?)";
+        $SQL = "INSERT INTO tipo_vehiculo VALUES (?,?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([null,$cadaver]);
+        $preparado->execute([null,$vehiculo]);
 
         return $preparado;
     }
 
     // //Modificar
-    public function modificarCadaver($id,$cadaver ){
+    public function modificarVehiculo($id,$vehiculo ){
         include("conexion.php");
 
-        $SQL = "UPDATE estado_cadaver SET ecadaver = ? WHERE id = ?";
+        $SQL = "UPDATE tipo_vehiculo SET vehiculo = ? WHERE id = ?";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$cadaver,$id]);
+        $preparado->execute([$vehiculo,$id]);
 
         return $preparado;
     }
@@ -50,10 +50,10 @@ class cadaver{
     
 
     //ELIMINAR
-    public function eliminarCadaver ($id){
+    public function eliminarVehiculo ($id){
         include ("conexion.php");
 
-        $SQL = $conexion->prepare("DELETE FROM estado_cadaver WHERE id = ?");
+        $SQL = $conexion->prepare("DELETE FROM tipo_vehiculo WHERE id = ?");
         $SQL->bindParam(1, $id, PDO::PARAM_INT);
         $preparado = $SQL->execute();
 

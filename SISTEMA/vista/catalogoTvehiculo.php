@@ -1,9 +1,9 @@
 <?php
-$nombrePagina = 'Catálogo Estado de Cadaver';
+$nombrePagina = 'Catálogo de Tipo de Vehiculo';
 require('../header.php');
 include('../modelo/conexion.php');
 
-$sentencia = $conexion->prepare("SELECT * FROM estado_cadaver");
+$sentencia = $conexion->prepare("SELECT * FROM tipo_vehiculo");
 $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -18,17 +18,17 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" action="reportes/reporte_estado_cadaver.php">
+                        <form class="form" method="post" action="reportes/reporte_tipo_vehiculo.php">
                             <div class="row">
 
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-4 col-12">
                                     <div class="form-group">
-                                        <label for="incendio">Estado de Cadaver</label>
-                                        <input type="text" id="estado_cadaver_buscador" class="form-control"
-                                            placeholder="Estado de Cadaver" name="estado_cadaver_buscador">
+                                        <label for="vehiculo">Tipo de Vehiculo</label>
+                                        <input type="text" id="tipo_vehiculo_buscador" class="form-control"
+                                            placeholder="Tipo de Vehiculo" name="tipo_vehiculo_buscador">
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-14 form-group d-flex justify-content-between">
                                     <form>
                                         <div class="col-6">
@@ -54,29 +54,29 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                     <div class="card">
                         <div class="card-content">
                             <div class="card-header">
-                                <h4 class="card-title">Estado de Cadaver</h4>
-                                <?php include("modal/modalEcadaverR.php"); ?>
+                                <h4 class="card-title">Tipo de Vehiculo</h4>
+                                <?php include("modal/modalTvehiculoR.php"); ?>
                             </div>
                             <!-- table hover -->
                             <div class="table-responsive">
-                                <table class="table table-hover mb-0" id="tabla_estado_cadaver">
+                                <table class="table table-hover mb-0" id="tabla_tipo_vehiculo">
                                     <thead>
                                         <tr class="fila">
-                                            <th class="columnas">Estado de Cadaver</th>
+                                            <th class="columnas">Tipo de Vehiculo</th>
                                             <th class="columnas">Accion</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                         <?php if (isset($resultado)): ?>
-                                            <?php foreach ($resultado as $estado_cadaver): ?>
+                                            <?php foreach ($resultado as $tipo_vehiculo): ?>
                                                 <tr class="fila">
-                                                    <td class="columnas" hidden><?= $estado_cadaver['id'] ?></td>
-                                                    <td class="columnas"><?= $estado_cadaver['ecadaver']; ?></td>
+                                                    <td class="columnas" hidden><?= $tipo_vehiculo['id'] ?></td>
+                                                    <td class="columnas"><?= $tipo_vehiculo['vehiculo']; ?></td>
                                                     <td>
                                                         <div class="botones" style="justify-content:space-evenly;">
-                                                            <?php include("modal/modalEcadaverM.php"); ?>
-                                                            <div><a href='../controlador/ctl_Ecadaver.php?txtID=<?= $estado_cadaver['id']; ?>'
+                                                            <?php include("modal/modalTvehiculoM.php"); ?>
+                                                            <div><a href='../controlador/ctl_Tvehiculo.php?txtID=<?= $tipo_vehiculo['id']; ?>'
                                                                     class="btn icon btn-danger"><i class="bi bi-x"></i></a>
                                                             </div>
                                                         </div>
@@ -95,11 +95,11 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
-    <form action="../controlador/ctl_Ecadaver.php" method="POST" style="display: none;">
+    <form action="../controlador/ctl_Tvehiculo.php" method="POST" style="display: none;">
         <input type="hidden" id="idBorrar" name="id">
     </form>
 
-    <script src="Javascript/EcadaverModal.js"></script>
+    <script src="Javascript/TvehiculoModal.js"></script>
 
     <?php
     require('../footer.php');

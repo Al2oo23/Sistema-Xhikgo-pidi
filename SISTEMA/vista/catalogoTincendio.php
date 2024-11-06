@@ -28,7 +28,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                             placeholder="Tipo de Incendio" name="tipo_incendio_buscador">
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-14 form-group d-flex justify-content-between">
                                     <form>
                                         <div class="col-6">
@@ -94,6 +94,10 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
+
+    <form action="../controlador/ctl_Tincendio.php" method="POST" style="display: none;">
+        <input type="hidden" id="idBorrar" name="id">
+    </form>
 
     <script src="Javascript/TincendioModal.js"></script>
 
