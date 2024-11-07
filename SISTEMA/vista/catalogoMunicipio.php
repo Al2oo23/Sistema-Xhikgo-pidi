@@ -1,7 +1,7 @@
 <?php
 $nombrePagina = 'Catálogo de Municipio';
-require ('../header.php');
-include ('../modelo/conexion.php');
+require('../header.php');
+include('../modelo/conexion.php');
 
 
 $sentencia = $conexion->prepare("SELECT * FROM municipio");
@@ -50,14 +50,14 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     </div>
                                 </form>
                                 <div>
-                                    <?php include ('modal/modalCriterio.php'); ?>
                                     <button type="submit" class="btn btn-primary">Generar PDF</button>
+                                    <?php include("modal/criterioMunicipio.php"); ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
-                
+
             </div>
         </div>
 
@@ -65,7 +65,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             <div class="card-content">
                 <div class="card-header">
                     <h4 class="card-title">Municipio</h4>
-                    <?php include ("modal/modalMunicipioR.php"); ?>
+                    <?php include("modal/modalMunicipioR.php"); ?>
                 </div>
                 <!-- table hover -->
                 <div class="table-responsive">
@@ -88,7 +88,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                         <td class="columna"><?= $municipio["codigo"]; ?></td>
                                         <td>
                                             <div class="botones" style="justify-content:space-evenly;">
-                                                <?php include ("modal/modalMunicipioM.php"); ?>
+                                                <?php include("modal/modalMunicipioM.php"); ?>
                                                 <div><a name='eliminar' id='eliminar'
                                                         href='../controlador/ctl_municipio.php?txtID=<?= $municipio['id']; ?>'
                                                         class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
@@ -113,5 +113,5 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 <script src="Javascript/municipioModal.js"></script>
 
 <?php
-require ('../footer.php');
+require('../footer.php');
 ?>

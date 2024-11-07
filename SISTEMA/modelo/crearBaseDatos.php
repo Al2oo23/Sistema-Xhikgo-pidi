@@ -65,8 +65,8 @@ try {
         )";
     $conexion->exec($SQL);
 
-     // //------------------ SERVICIOS ESPECIALES ------------------
-     $SQL = "CREATE TABLE IF NOT EXISTS servicios (
+    // //------------------ SERVICIOS ESPECIALES ------------------
+    $SQL = "CREATE TABLE IF NOT EXISTS servicios (
         id INT PRIMARY KEY AUTO_INCREMENT,
         fecha VARCHAR(100) NOT NULL,
         seccion VARCHAR(20) NOT NULL,
@@ -92,7 +92,7 @@ try {
         acta VARCHAR(5) NOT NULL,
         observaciones VARCHAR(200) NOT NULL
     )";
-$conexion->exec($SQL);
+    $conexion->exec($SQL);
 
     //------------------ MUNICIPIO ------------------
     $SQL = "CREATE TABLE IF NOT EXISTS municipio (
@@ -376,7 +376,7 @@ $conexion->exec($SQL);
         acta VARCHAR(5) NOT NULL,
         observaciones VARCHAR(200) NOT NULL
     )";
-$conexion->exec($SQL);
+    $conexion->exec($SQL);
     //-------------- Vegetacion ----------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS vegetacion (
@@ -662,11 +662,11 @@ $conexion->exec($SQL);
     $SQL = "INSERT IGNORE INTO criterio VALUES(?,?,?)";
     $preparado = $conexion->prepare($SQL);
     $preparado->execute(["persona", "persona", "SELECT * FROM persona"]);
-    
+
     $SQL = "INSERT IGNORE INTO criterio VALUES(?,?,?)";
     $preparado = $conexion->prepare($SQL);
     $preparado->execute(["vehiculo", "vehiculo", "SELECT * FROM vehiculo"]);
-    
+
     $SQL = "INSERT IGNORE INTO criterio VALUES(?,?,?)";
     $preparado = $conexion->prepare($SQL);
     $preparado->execute(["modelo", "modelo", "SELECT * FROM modelo"]);
@@ -675,7 +675,19 @@ $conexion->exec($SQL);
     $preparado = $conexion->prepare($SQL);
     $preparado->execute(["recurso", "recurso", "SELECT * FROM recurso"]);
 
-//     //------------------ BITÁCORA -------------------
+    $SQL = "INSERT IGNORE INTO criterio VALUES(?,?,?)";
+    $preparado = $conexion->prepare($SQL);
+    $preparado->execute(["marca", "marca", "SELECT * FROM marca"]);
+
+    $SQL = "INSERT IGNORE INTO criterio VALUES(?,?,?)";
+    $preparado = $conexion->prepare($SQL);
+    $preparado->execute(["municipio", "municipio", "SELECT * FROM municipio"]);
+
+    $SQL = "INSERT IGNORE INTO criterio VALUES(?,?,?)";
+    $preparado = $conexion->prepare($SQL);
+    $preparado->execute(["lugar", "lugar", "SELECT * FROM lugar"]);
+
+    //     //------------------ BITÁCORA -------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS bitacora (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -688,7 +700,7 @@ $conexion->exec($SQL);
 )";
     $conexion->exec($SQL);
 
-     //------------------ TRIGGER REGISTRO PERSONA -------------------
+    //------------------ TRIGGER REGISTRO PERSONA -------------------
 
     // Eliminar el trigger si ya existe para poder crearlo nuevamente.
     $SQL = "DROP TRIGGER IF EXISTS bitacora_persona_registro";
@@ -998,7 +1010,7 @@ END;";
     $conexion->exec($SQL);
 
 
-//------------------ TRIGGER REGISTRO LUGAR -------------------
+    //------------------ TRIGGER REGISTRO LUGAR -------------------
 
     // Eliminar el trigger si ya existe para poder crearlo nuevamente.
     $SQL = "DROP TRIGGER IF EXISTS bitacora_lugar_registro";
@@ -1039,7 +1051,7 @@ BEGIN
 END;";
     $conexion->exec($SQL);
 
-        //------------------ TRIGGER ELIMINACIÓN LUGAR -------------------
+    //------------------ TRIGGER ELIMINACIÓN LUGAR -------------------
 
     // Eliminar el trigger si ya existe para poder crearlo nuevamente.
     $SQL = "DROP TRIGGER IF EXISTS bitacora_lugar_eliminar";
@@ -1058,7 +1070,7 @@ BEGIN
 END;";
     $conexion->exec($SQL);
 
-     //------------------ TRIGGER REGISTRO SECCIÓN -------------------
+    //------------------ TRIGGER REGISTRO SECCIÓN -------------------
 
     // Eliminar el trigger si ya existe para poder crearlo nuevamente.
     $SQL = "DROP TRIGGER IF EXISTS bitacora_seccion_registro";
@@ -1099,7 +1111,7 @@ BEGIN
 END;";
     $conexion->exec($SQL);
 
-     //------------------ TRIGGER ELIMINACIÓN SECCIÓN -------------------
+    //------------------ TRIGGER ELIMINACIÓN SECCIÓN -------------------
 
     // Eliminar el trigger si ya existe para poder crearlo nuevamente.
     $SQL = "DROP TRIGGER IF EXISTS bitacora_seccion_eliminar";
@@ -1338,7 +1350,7 @@ BEGIN
     END IF;
 END;";
     $conexion->exec($SQL);
-    
+
     //------------------ TRIGGER ELIMINACIÓN RECURSO ASIGNADO -------------------
 
     // Eliminar el trigger si ya existe para poder crearlo nuevamente.
@@ -1398,7 +1410,7 @@ BEGIN
     END IF;
 END;";
     $conexion->exec($SQL);
-    
+
     //------------------ TRIGGER ELIMINACIÓN MARCA -------------------
 
     // Eliminar el trigger si ya existe para poder crearlo nuevamente.
@@ -1418,7 +1430,7 @@ BEGIN
 END;";
     $conexion->exec($SQL);
 
-        //------------------ TRIGGER REGISTRO MODELO -------------------
+    //------------------ TRIGGER REGISTRO MODELO -------------------
 
     // Eliminar el trigger si ya existe para poder crearlo nuevamente.
     $SQL = "DROP TRIGGER IF EXISTS bitacora_modelo_registro";
@@ -1458,7 +1470,7 @@ BEGIN
     END IF;
 END;";
     $conexion->exec($SQL);
-    
+
     //------------------ TRIGGER ELIMINACIÓN MODELO -------------------
 
     // Eliminar el trigger si ya existe para poder crearlo nuevamente.

@@ -1,7 +1,7 @@
 <?php
 $nombrePagina = 'Catálogo de Marca';
-require ('../header.php');
-include ('../modelo/conexion.php');
+require('../header.php');
+include('../modelo/conexion.php');
 
 $sentencia = $conexion->prepare("SELECT * FROM marca");
 $sentencia->execute();
@@ -41,7 +41,10 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </div>
                                 </form>
-                                <button type="submit" class="btn btn-primary">Generar PDF</button>
+                                <div>
+                                    <button type="submit" class="btn btn-primary">Generar PDF</button>
+                                    <?php include("modal/criterioMarca.php"); ?>
+                                </div>
                             </div>
 
                         </div>
@@ -54,7 +57,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             <div class="card-content">
                 <div class="card-header">
                     <h4 class="card-title">Marca de Vehiculo</h4>
-                    <?php include ("modal/modalMarcaR.php"); ?>
+                    <?php include("modal/modalMarcaR.php"); ?>
                 </div>
                 <!-- table hover -->
                 <div class="table-responsive">
@@ -74,7 +77,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                         <td class="columnas"><?= $filtrado['nombre']; ?></td>
                                         <td>
                                             <div class="botones" style="justify-content:space-evenly;">
-                                                <?php include ("modal/modalMarcaM.php"); ?>
+                                                <?php include("modal/modalMarcaM.php"); ?>
                                                 <div><a href='../controlador/ctl_marca.php?txtID=<?= $filtrado['id']; ?>'
                                                         class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                             </div>
@@ -93,5 +96,5 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 <script src="Javascript/marcaModal.js"></script>
 
 <?php
-require ('../footer.php');
+require('../footer.php');
 ?>

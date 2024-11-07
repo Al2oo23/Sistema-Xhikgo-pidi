@@ -1,7 +1,7 @@
 <?php
 $nombrePagina = 'Catálogo de Lugar';
-require ('../header.php');
-include ('../modelo/conexion.php');
+require('../header.php');
+include('../modelo/conexion.php');
 
 $sentencia = $conexion->prepare("SELECT * FROM lugar");
 $sentencia->execute();
@@ -55,7 +55,10 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </div>
                                 </form>
-                                <button type="submit" class="btn btn-primary">Generar PDF</button>
+                                <div>
+                                    <button type="submit" class="btn btn-primary">Generar PDF</button>
+                                    <?php include("modal/criterioLugar.php"); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -67,7 +70,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             <div class="card-content">
                 <div class="card-header">
                     <h4 class="card-title">Lugar</h4>
-                    <?php include ("modal/modalLugarR.php"); ?>
+                    <?php include("modal/modalLugarR.php"); ?>
                 </div>
                 <!-- table hover -->
                 <div class="table-responsive">
@@ -90,7 +93,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                         <td class="columna"><?= $lugar["distancia"] ?></td>
                                         <td>
                                             <div class="botones" style="justify-content:space-evenly;">
-                                                <?php include ("modal/modalLugarM.php"); ?>
+                                                <?php include("modal/modalLugarM.php"); ?>
                                                 <div><a name='eliminar' id='eliminar'
                                                         href='../controlador/ctl_lugar.php?txtID=<?= $lugar['id']; ?>'
                                                         class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
@@ -109,5 +112,5 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 <script src="Javascript/lugarModal.js"></script>
 
 <?php
-require ('../footer.php');
+require('../footer.php');
 ?>
