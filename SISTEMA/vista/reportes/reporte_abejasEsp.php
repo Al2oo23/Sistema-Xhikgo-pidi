@@ -21,7 +21,7 @@ $acta = $reporte['acta'];
 $sqlRecursoAsignado = "SELECT ra.cantidad, r.nombre 
                            FROM recurso_asignado ra 
                            INNER JOIN recurso r ON ra.id_recurso = r.id 
-                           WHERE id_incidente = :id";
+                           WHERE id_incidente = :id AND tipo_incidente = 'Abejas'";
 $stmtRecursoAsignado = $conexion->prepare($sqlRecursoAsignado);
 $stmtRecursoAsignado->bindParam(":id", $IDreporte, PDO::PARAM_INT);
 $stmtRecursoAsignado->execute();
@@ -30,18 +30,18 @@ $recurso = $stmtRecursoAsignado->fetchAll(PDO::FETCH_ASSOC);
 // Consulta para obtener datos de efectivo_asignado y persona
 $sqlEfectivoAsignado = "SELECT * FROM efectivo_asignado ea 
                             INNER JOIN persona p ON ea.cedula = p.cedula 
-                            WHERE id_incidente = :id";
+                            WHERE id_incidente = :id AND tipo_incidente = 'Abejas'";
 $stmtEfectivoAsignado = $conexion->prepare($sqlEfectivoAsignado);
 $stmtEfectivoAsignado->bindParam(":id", $IDreporte, PDO::PARAM_INT);
 $stmtEfectivoAsignado->execute();
 $efectivo = $stmtEfectivoAsignado->fetchAll(PDO::FETCH_ASSOC);
 
 // Consulta para obtener datos del propietario del vehiculo
-$sqlPvehiculo = "SELECT * FROM unidad_asignada ua INNER JOIN vehiculo v ON ua.niv = v.unidad INNER JOIN persona p ON v.cedula = p.cedula WHERE id_incidente = :id";
+$sqlPvehiculo = "SELECT * FROM unidad_asignada ua INNER JOIN vehiculo v ON ua.niv = v.unidad INNER JOIN persona p ON v.cedula = p.cedula WHERE id_incidente = :id AND tipo_incidente = 'Abejas'";
 $stmtPvehiculo = $conexion->prepare($sqlPvehiculo);
 $stmtPvehiculo->bindParam(":id", $IDreporte, PDO::PARAM_INT);
 $stmtPvehiculo->execute();
-$propietarioV = $stmtPvehiculo->fetchAll(PDO::FETCH_ASSOC); 
+$propietarioV = $stmtPvehiculo->fetchAll(PDO::FETCH_ASSOC);
 
 // Consulta para obtener datos del reporte junto con el nombre de la persona
 $sqlPersona = "SELECT a.inmueble, p.nombre AS nombre
@@ -276,7 +276,7 @@ ob_start(); // Iniciar el buffer de salida
                 <td colspan="2">DIRECCION: <input type="text" name="direccion" value="<?= $reporte['direccion']; ?>"></td>
                 <td colspan="2">LUGAR: <input type="text" size="10px" name="lugar" value="<?= $reporte['lugar']; ?>"></td>
             </tr>
-            <td colspan="6">PROPIETARIO DEL INMUEBLE: <input type="text" size="40px" name="propietario_inmueble" value="<?=$inmueble['nombre'].' ('.$inmueble['inmueble'].')';?>"></td>
+            <td colspan="6">PROPIETARIO DEL INMUEBLE: <input type="text" size="40px" name="propietario_inmueble" value="<?= $inmueble['nombre'] . ' (' . $inmueble['inmueble'] . ')'; ?>"></td>
 
             </tr>
         </table>
@@ -291,11 +291,10 @@ ob_start(); // Iniciar el buffer de salida
 
         <table>
             <tr>
-
                 <td>
-                    <?php foreach ($recurso as $rec) :?>
-                    <input type="text" value="<?= $rec['nombre'] ?>" size="10px">:<input type="text" value="<?= $rec['cantidad'] ?>" size="1px">
-                    <?php endforeach;?>
+                    <?php foreach ($recurso as $rec) : ?>
+                        <input type="text" value="<?= $rec['nombre'] ?>" size="10px">:<input type="text" value="<?= $rec['cantidad'] ?>" size="1px">
+                    <?php endforeach; ?>
                 </td>
 
             </tr>
@@ -317,14 +316,14 @@ ob_start(); // Iniciar el buffer de salida
                     EFECTIVOS ACTUANTES:<br>
 
                     <?php foreach ($efectivo as $efecto): ?>
-                    <input type="text" size="25px" name="efectivo" value="<?=$efecto['nombre'].' ('.$efecto['cedula'].')'?>"><br>
+                        <input type="text" size="25px" name="efectivo" value="<?= $efecto['nombre'] . ' (' . $efecto['cedula'] . ')' ?>"><br>
                     <?php endforeach; ?>
 
                 </td>
                 <td colspan="6">
                     PROPIETARIOS Y UNIDADES:<br>
                     <?php foreach ($propietarioV as $unidad): ?>
-                        <input type="text" size="25px" name="unidad" value="<?=$unidad['nombre'].' ('.$unidad['cedula'].'): '.$unidad['unidad']; ?>"><br>
+                        <input type="text" size="25px" name="unidad" value="<?= $unidad['nombre'] . ' (' . $unidad['cedula'] . '): ' . $unidad['unidad']; ?>"><br>
                     <?php endforeach; ?>
 
                 </td>
