@@ -6,7 +6,7 @@ include('../modelo/conexion.php');
 $sentencia = $conexion->prepare("SELECT * FROM representacion_institucional");
 $sentencia->execute();
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-include ("modal/modalRepresentacionM.php");
+include("modal/modalRepresentacionM.php");
 ?>
 
 <div class="col-12 m-auto" id="catalogo">
@@ -63,8 +63,6 @@ include ("modal/modalRepresentacionM.php");
                             <th class="columnas" hidden>Hora Regreso</th>
                             <th class="columnas" hidden>Causa</th>
                             <th class="columnas" hidden>Direccion</th>
-                            <th class="columnas">Número Efectivos</th>
-                            <th class="columnas" hidden>Maletín Primeros Auxilios</th>
                             <th class="columnas" hidden>Explicación</th>
                             <th class="columnas" hidden>CI PNB</th>
                             <th class="columnas" hidden>CI GNB</th>
@@ -77,6 +75,7 @@ include ("modal/modalRepresentacionM.php");
                             <th class="columnas">Jefe Sección</th>
                             <th class="columnas">Comandante</th>
                             <th class="columnas">Acción</th>
+                            <th class="columnas">Reporte</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -93,8 +92,6 @@ include ("modal/modalRepresentacionM.php");
                                 <th class="columnas" hidden><?= $representacion['regreso'] ?></th>
                                 <th class="columnas" hidden><?= $representacion['causa'] ?></th>
                                 <th class="columnas" hidden><?= $representacion['direccion'] ?></th>
-                                <th class="columnas"><?= $representacion['num_efectivos'] ?></th>
-                                <th class="columnas" hidden><?= $representacion['material'] ?></th>
                                 <th class="columnas" hidden><?= $representacion['explicacion'] ?></th>
                                 <th class="columnas" hidden><?= $representacion['ci_pnb'] ?></th>
                                 <th class="columnas" hidden><?= $representacion['ci_gnb'] ?></th>
@@ -108,11 +105,16 @@ include ("modal/modalRepresentacionM.php");
                                 <th class="columnas"><?= $representacion['comandante'] ?></th>
                                 <td>
                                     <div class="botones" style="justify-content:space-evenly;">
-                                        <button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm1"><i class="bi bi-pencil"></i></button>
+                                        <button type="button" class="btn icon btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#inlineForm1"><i class="bi bi-pencil"></i></button>
                                         <div class="flex-item"><a
                                                 href='../controlador/ctl_representacion.php?txtID=<?= $representacion['id']; ?>'
                                                 class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                     </div>
+                                </td>
+                                <td>
+                                    <a href="../vista/reportes/reporte_representacionEsp.php?txtIDreporte=<?= $representacion['id']; ?>"
+                                        class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -125,6 +127,7 @@ include ("modal/modalRepresentacionM.php");
 
 
 <script src="Javascript/representacionModal.js"></script>
+<script src="Javascript/plusRepresentacion.js"></script>
 
 <?php
 require('../footer.php');

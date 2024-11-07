@@ -132,7 +132,6 @@ include ("modal/modalIncendioM.php");
                                 <th class="columnas" hidden>Hora Salida</th>
                                 <th class="columnas" hidden>Hora Llegada</th>
                                 <th class="columnas" hidden>Hora Regreso</th>
-                                <th class="columnas">Municipio</th>
                                 <th class="columnas">Lugar</th>
                                 <th class="columnas" hidden>Direccion</th>
                                 <th class="columnas" hidden>Paredes</th>
@@ -143,7 +142,7 @@ include ("modal/modalIncendioM.php");
                                 <th class="columnas" hidden>Otros Materiales</th>
                                 <th class="columnas">Propietario Vivienda</th>
                                 <th class="columnas">Valor Inmueble</th>
-                                <th class="columnas">Numero Residenciados</th>
+                                <th class="columnas" hidden>Numero Residenciados</th>
                                 <th class="columnas" hidden>Ninos</th>
                                 <th class="columnas" hidden>Adolescentes</th>
                                 <th class="columnas" hidden>Adultos</th>
@@ -177,6 +176,7 @@ include ("modal/modalIncendioM.php");
                                 <th class="columnas" hidden>CI OTRO</th>
                                 <th class="columnas" hidden>Observaciones</th>
                                 <th class="columnas">Accion</th>
+                                <th class="columnas">Reporte</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -194,18 +194,16 @@ include ("modal/modalIncendioM.php");
                                     <td class="columnas" hidden><?= $incendio['hora_salida']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['hora_llegada']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['hora_regreso']; ?></td>
-                                    <td class="columnas"><?= $incendio['municipio']; ?></td>
-                                    <td class="columnas"><?= $incendio['localidad']; ?></td>
+                                    <td class="columnas"><?= $incendio['lugar']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['direccion']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['paredes']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['techo']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['piso']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['ventanas']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['puertas']; ?></td>
-                                    <td class="columnas" hidden><?= $incendio['otros_materiales']; ?></td>
                                     <td class="columnas"><?= $incendio['propietario']; ?></td>
                                     <td class="columnas"><?= $incendio['valor_inmueble']; ?></td>
-                                    <td class="columnas"><?= $incendio['num_residenciados']; ?></td>
+                                    <td class="columnas" hidden><?= $incendio['num_residenciados']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['ninos']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['adolescentes']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['adultos']; ?></td>
@@ -225,14 +223,17 @@ include ("modal/modalIncendioM.php");
                                     <td class="columnas" hidden><?= $incendio['declaracion']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['lesionados']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['num_lesionados']; ?></td>
-                                    <td class="columnas" hidden><?= $incendio['datos_lesionados']; ?></td>
-                                    <td class="columnas" hidden><?= $incendio['jefe_comision']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['ci_pnb']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['ci_gnb']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['ci_intt']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['ci_invity']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['ci_pc']; ?></td>
                                     <td class="columnas" hidden><?= $incendio['ci_otro']; ?></td>
+                                    <td class="columna" hidden><?= $incendio["jefe_comision"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio["jefe_general"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio["jefe_seccion"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio["comandante"]; ?></td>
+                                    <td class="columna" hidden><?= $incendio["acta"]; ?></td>
                                     <td class="columnas" hidden><?= $incendio['observaciones']; ?></td>
                                     <td>
                                         <div class="botones" style="justify-content:space-evenly;">
@@ -241,6 +242,9 @@ include ("modal/modalIncendioM.php");
                                                     href='../controlador/ctl_incendio.php?txtID=<?= $incendio['id']; ?>'
                                                     class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
+                                    </td>
+                                    <td>
+                                    <a href="../vista/reportes/reporte_incendioEsp.php?txtIDreporte=<?=$incendio['id'];?>" class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

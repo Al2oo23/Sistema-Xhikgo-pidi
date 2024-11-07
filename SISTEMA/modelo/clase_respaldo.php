@@ -37,7 +37,7 @@ class Respaldo{
     'efectivo_asignado',
     'estado_cadaver',
     'incendio_vehiculo',
-    'levantamineto',
+    'levantamiento',
     'recurso_asignado',
     'representacion_institucional',
     'servicios',

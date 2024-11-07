@@ -101,7 +101,7 @@ include ("modal/modalVegetacionM.php");
                                         </div>
                                         </td>
                                     <td>
-                                    <a href="../controlador/ctl_vegetacion.php?txtIDreporte=<?= $vegetacio['id'];?>" class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
+                                    <a href="../vista/reportes/reporte_vegetacionEsp.php?txtIDreporte=<?=$vegetacio['id'];?>" class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
                                     </td>
                                 </tr>
 

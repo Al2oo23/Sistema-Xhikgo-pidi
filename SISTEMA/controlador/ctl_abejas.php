@@ -62,7 +62,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
 
     if($_POST['ci_otro'] == ''){$abejas->setCi_otro("Ninguno");}
     else{$abejas->setCi_otro($_POST['ci_otro']);}
-    
+
     $datos = $abejas->registrarAbejas(
         $abejas->getFecha(),
         $abejas->getSeccion(),
@@ -156,13 +156,9 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
     }   
 }
 
-
-
 // MODIFICAR INCIDENTE DE ABEJAS -------------------------------------------
 
 if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
-
-    // print_r($_POST);
     
     $abejas->setId($_POST['id']);
     $abejas->setFecha($_POST['fecha']);
@@ -243,7 +239,7 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         //setters vehiculo incidente
 
         $efectivo->setIdIncidente($_POST['id']);
-        $efectivo->setTipo("S.E");
+        $efectivo->setTipo("Abejas");
         $efectivo->setCedula($cedula);
 
         //getters vehiculo incidente
@@ -261,23 +257,23 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
 
     $recurso->restauradorRecurso(
         $_POST['id'],
-        "S.E"
+        "Abejas"
+    );
+
+    $recurso->eliminarRecurso(
+         $_POST['id'],
+        "Abejas"
     );
 
     for($i = 0; $i<count($_POST['recurso']);$i++){
-        //setters vehiculo incidente
+        //setters recurso
 
-    $recurso->setIdIncidente($_POST['id']);
-        $recurso->setTipo("S.E");
+        $recurso->setIdIncidente($_POST['id']);
+        $recurso->setTipo("Abejas");
         $recurso->setIdRecurso($_POST['recurso'][$i]);
         $recurso->setCantidad($_POST['cantidad'][$i]);
-
-        // getters vehiculo incidente
-
-        $recurso->eliminarRecurso(
-            $recurso->getIdIncidente(),
-            $recurso->getTipo("S.E")
-        );
+        
+        // getters recurso
 
         $resultadoRecurso = $recurso->agregarRecurso(
             $recurso->getIdIncidente(),
@@ -292,7 +288,7 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         //setters vehiculo incidente
 
         $unidad->setIdIncidente($_POST['id']);
-        $unidad->setTipo("S.E");
+        $unidad->setTipo("Abejas");
         $unidad->setNiv($niv);
 
         //getters vehiculo incidente
@@ -325,37 +321,12 @@ if (isset($_GET['txtID'])) {
 
     $txtID = (isset($_GET['txtID'])) ? $_GET['txtID'] : '';
 
-    $sentencia = $conexion->prepare("DELETE FROM abejas WHERE id = ?");
-    $sentencia->bindParam(1, $txtID, PDO::PARAM_INT);
-    $sentencia->execute();
-
-    //  // BITACORA
-    //             // Fecha y hora actual
-    //             $fecha = date('Y-m-d H:i:s');
-            
-    //             // Preparar la consulta SQL
-    //             $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-    //             $resultado2 = $conexion->prepare($sql);
-
-    //             // Ejecutar la consulta
-    //             $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Elimino Abejas", $fecha]);
-
+    $datos = $recurso->restauradorRecurso($txtID, 'Abejas');
+    $datos2 = $abejas->errorRegistro($txtID);
 
     echo "<script>alert('Incidente Eliminado con Exito')</script>";
 	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoAbejas.php'>"; 
 }
-
-// GENERAR REPORTE INDIVIDUAL
-// if (isset($_GET['txtIDreporte'])) {
-
-//     $txtID = $_GET['txtIDreporte'];
-
-//     $resultado = $abejas->reporte($txtID);
-
-//     $_SESSION['reporte'] = $txtID;
-
-//      echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/reportes/reporte_abejasEsp.php?ID=$txtID'>";
-// }
 
 
 

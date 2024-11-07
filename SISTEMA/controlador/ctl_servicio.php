@@ -2,9 +2,18 @@
 session_start();
 include("../modelo/conexion.php");
 include("../modelo/clase_servicio.php");
+include("../modelo/clase_efectivo.php");
 include("../modelo/clase_recursoAsignado.php");
+include("../modelo/clase_unidadAsignada.php");
+
 $servicio = new Servicio();
+$efectivo = new efectivo();
 $recurso = new recursoAsignado();
+$unidad = new unidad();
+
+$caso1 = false;
+$caso2 = false;
+$caso3 = false;
 
 if(isset($_POST['registrar']) && $_POST['registrar'] == "registrar"){
     
@@ -52,18 +61,52 @@ if(isset($_POST['registrar']) && $_POST['registrar'] == "registrar"){
 
     $datos = $servicio->registrarServicio($servicio->getFecha(), $servicio->getSeccion(), $servicio->getEstacion(), $servicio->getTipoAviso(), $servicio->getSolicitante(), $servicio->getHoraAviso(), $servicio->getHoraSalida(), $servicio->getHoraLlegada(), $servicio->getHoraRegreso(), $servicio->getCausa(), $servicio->getDireccion(),  $servicio->getCIPNB(), $servicio->getCIGNB(), $servicio->getCIINTT(), $servicio->getCIINVITY(), $servicio->getCIPC(), $servicio->getCIOtro(), $servicio->getJefeComision(), $servicio->getJefeGeneral(), $servicio->getJefeSeccion(), $servicio->getComandante(), $servicio->getActa(), $servicio->getObservaciones());
 
-     //RECURSOS
-     for($i = 0; $i<count($_POST['recurso']);$i++){
+     //EFECTIVOS
+     foreach ($_POST['efectivos'] as $cedula) {
+        //setters efectivo incidente
+
+        $efectivo->setIdIncidente($datos[1]);
+        $efectivo->setTipo("S.E");
+        $efectivo->setCedula($cedula);
+
+        //getters efectivo incidente
+       
+            $caso1 = $efectivo->agregarEfectivo(
+            $efectivo->getIdIncidente(),
+            $efectivo->getTipo(),
+            $efectivo->getCedula()
+        );
+    }
+
+    //UNIDAD
+    foreach ($_POST['unidad'] as $niv) {
         //setters vehiculo incidente
 
-    $recurso->setIdIncidente($datos[1]);
+        $unidad->setIdIncidente($datos[1]);
+        $unidad->setTipo("S.E");
+        $unidad->setNiv($niv);
+
+        //getters vehiculo incidente
+
+            $caso2 = $unidad->agregarUnidad(
+            $unidad->getIdIncidente(),
+            $unidad->getTipo(),
+            $unidad->getNiv()
+        );
+    }
+
+    //RECURSOS
+    for($i = 0; $i<count($_POST['recurso']);$i++){
+        //setters vehiculo incidente
+
+        $recurso->setIdIncidente($datos[1]);
         $recurso->setTipo("S.E");
         $recurso->setIdRecurso($_POST['recurso'][$i]);
         $recurso->setCantidad($_POST['cantidad'][$i]);
 
         //getters vehiculo incidente
 
-        $resultadoRecurso = $recurso->agregarRecurso(
+            $caso3 = $recurso->agregarRecurso(
             $recurso->getIdIncidente(),
             $recurso->getTipo(),
             $recurso->getIdRecurso(),
@@ -71,11 +114,14 @@ if(isset($_POST['registrar']) && $_POST['registrar'] == "registrar"){
         );
     }
 
+    if (empty($datos[0]) || !$caso1 || !$caso2 || !$caso3) {
 
-    if(!$datos[0]){
+        $abejas->errorRegistro($datos[1]);
+
+        echo "<script>alert('No se pudo registrar el Incidente')</script>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoSE.php'>"; 
     }else{
-        echo "<script>alert('Servicio Especial Registrado con Éxito')</script>";
+        echo "<script>alert('Incidente Registrado con Éxito')</script>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoSE.php'>"; 
     }
 }
@@ -126,49 +172,96 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
     else{$servicio->setCIOtro($_POST['ci_otrosM']);}
 
     $datos = $servicio->modificarServicio($servicio->getId(), $servicio->getFecha(), $servicio->getSeccion(), $servicio->getEstacion(), $servicio->getTipoAviso(), $servicio->getSolicitante(), $servicio->getHoraAviso(), $servicio->getHoraSalida(), $servicio->getHoraLlegada(), $servicio->getHoraRegreso(), $servicio->getCausa(), $servicio->getDireccion(),  $servicio->getCIPNB(), $servicio->getCIGNB(), $servicio->getCIINTT(), $servicio->getCIINVITY(), $servicio->getCIPC(), $servicio->getCIOtro(), $servicio->getJefeComision(), $servicio->getJefeGeneral(), $servicio->getJefeSeccion(), $servicio->getComandante(), $servicio->getActa(), $servicio->getObservaciones());
+
+    //EFECTIVOS
+    foreach ($_POST['efectivos'] as $cedula) {
+        //setters vehiculo incidente
+
+        $efectivo->setIdIncidente($_POST['id']);
+        $efectivo->setTipo("S.E");
+        $efectivo->setCedula($cedula);
+
+        //getters vehiculo incidente
+
+        $efectivo->eliminarEfectivo($efectivo->getIdIncidente(), $efectivo->getTipo());
+
+        $resultadoEfectivo = $efectivo->agregarEfectivo(
+            $efectivo->getIdIncidente(),
+            $efectivo->getTipo(),
+            $efectivo->getCedula()
+        );
+    }
+
+    //RECURSOS
+
+    $recurso->restauradorRecurso(
+        $_POST['id'],
+        "S.E"
+    );
+
+    $recurso->eliminarRecurso(
+         $_POST['id'],
+        "S.E"
+    );
+
+    for($i = 0; $i<count($_POST['recurso']);$i++){
+        //setters recurso
+
+        $recurso->setIdIncidente($_POST['id']);
+        $recurso->setTipo("S.E");
+        $recurso->setIdRecurso($_POST['recurso'][$i]);
+        $recurso->setCantidad($_POST['cantidad'][$i]);
+        
+        // getters recurso
+
+        $resultadoRecurso = $recurso->agregarRecurso(
+            $recurso->getIdIncidente(),
+            $recurso->getTipo(),
+            $recurso->getIdRecurso(),
+            $recurso->getCantidad()
+        );
+    }
+
+    //UNIDAD
+    foreach ($_POST['unidad'] as $niv) {
+        //setters vehiculo incidente
+
+        $unidad->setIdIncidente($_POST['id']);
+        $unidad->setTipo("S.E");
+        $unidad->setNiv($niv);
+
+        //getters vehiculo incidente
+
+        $unidad->eliminarUnidad(
+            $unidad->getIdIncidente(),
+            $unidad->getTipo()
+        );
+
+        $resultadoUnidad = $unidad->agregarUnidad(
+            $unidad->getIdIncidente(),
+            $unidad->getTipo(),
+            $unidad->getNiv()
+        );
+    }
    
     if(!$datos){
-        echo "<script>alert('No se pudo Modificar el Servicio')</script>";
+        echo "<script>alert('No se pudo Modificar el Incidente')</script>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoSE.php'>"; 
     }else{
-        echo "<script>alert('Servicio Especial Modificado con Éxito')</script>";
+        echo "<script>alert('Incidente Modificado con Éxito')</script>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoSE.php'>"; 
     }
 }
 
 // ELIMINAR
-
 if (isset($_GET['txtID'])) {
 
     $txtID = (isset($_GET['txtID'])) ? $_GET['txtID'] : '';
-
-    $sentencia = $conexion->prepare("DELETE FROM servicios WHERE id = ?");
-    $sentencia->bindParam(1, $txtID, PDO::PARAM_INT);
-    $sentencia->execute();
-
-    //  // BITACORA
-
-    //             // Fecha y hora actual
-    //             $fecha = date('Y-m-d H:i:s');
-            
-    //             // Preparar la consulta SQL
-    //             $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-    //             $resultado2 = $conexion->prepare($sql);
-
-    //             // Ejecutar la consulta
-    //             $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Eliminó  Representación institucional ".$nombre." el día ",$fecha]);
+    
+    $datos = $recurso->restauradorRecurso($txtID, 'S.E');
+    $datos2 = $servicio->errorRegistro($txtID);
 
     echo "<script>alert('Servicio Eliminado con Éxito')</script>";
 	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoSE.php'>"; 
-}
-
-// GENERAR REPORTE INDIVIDUAL
-if (isset($_GET['txtIDreporte'])) {
-
-    $txtID = $_GET['txtIDreporte'];
-    $resultado = $servicio->reporte($txtID);
-    $_SESSION['reporte'] = $txtID;
-
-    echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/reportes/reporte_SEEsp.php?ID=$txtID'>";
 }
 ?>

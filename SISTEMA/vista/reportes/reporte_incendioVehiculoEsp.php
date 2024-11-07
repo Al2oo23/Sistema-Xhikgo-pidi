@@ -2,20 +2,26 @@
 session_start();
 
 require_once '../../modelo/conexion.php';
-require_once '../../modelo/clase_vegetacion.php';
+require_once '../../modelo/clase_incendioVehiculo.php';
 
 // Crear variable
 
 
 $IDreporte = $_GET['txtIDreporte'];
 
-// Consulta para obtener datos de la tabla vegetacion
-$sqlVegetacion = "SELECT * FROM vegetacion WHERE id = :id";
-$stmtVegetacion = $conexion->prepare($sqlVegetacion);
-$stmtVegetacion->bindParam(":id", $IDreporte, PDO::PARAM_INT);
-$stmtVegetacion->execute();
-$reporte = $stmtVegetacion->fetch(PDO::FETCH_ASSOC);
+// Consulta para obtener datos de la tabla incendio vehiculo
+$sqlIncendio_vehiculo = "SELECT * FROM incendio_vehiculo WHERE id = :id";
+$stmtIncendio_vehiculo = $conexion->prepare($sqlIncendio_vehiculo);
+$stmtIncendio_vehiculo->bindParam(":id", $IDreporte, PDO::PARAM_INT);
+$stmtIncendio_vehiculo->execute();
+$reporte = $stmtIncendio_vehiculo->fetch(PDO::FETCH_ASSOC);
+$aseguradora = $reporte['aseguradora'];
+$h_reignicion = $reporte['h_reignicion'];
+$h_lesionados = $reporte['h_lesionados'];
 $acta = $reporte['acta'];
+
+
+
 
 // Consulta para obtener datos de recurso_asignado y recurso
 $sqlRecursoAsignado = "SELECT ra.cantidad, r.nombre 
@@ -36,6 +42,7 @@ $stmtEfectivoAsignado->bindParam(":id", $IDreporte, PDO::PARAM_INT);
 $stmtEfectivoAsignado->execute();
 $efectivo = $stmtEfectivoAsignado->fetchAll(PDO::FETCH_ASSOC);
 
+
 // Consulta para obtener datos del propietario del vehiculo
 $sqlPvehiculo = "SELECT * FROM unidad_asignada ua INNER JOIN vehiculo v ON ua.niv = v.unidad INNER JOIN persona p ON v.cedula = p.cedula WHERE id_incidente = :id";
 $stmtPvehiculo = $conexion->prepare($sqlPvehiculo);
@@ -45,7 +52,7 @@ $propietarioV = $stmtPvehiculo->fetchAll(PDO::FETCH_ASSOC);
 
 // Consulta para obtener datos del reporte junto con el nombre de la persona
 $sqlPersona = "SELECT a.jefe_comision, p.nombre AS nombre
-               FROM vegetacion a 
+               FROM incendio_vehiculo a 
                INNER JOIN persona p ON a.jefe_comision = p.cedula 
                WHERE a.id = :id";
 $stmtPersona = $conexion->prepare($sqlPersona);
@@ -55,7 +62,7 @@ $jefe_com = $stmtPersona->fetch(PDO::FETCH_ASSOC);
 
 // Consulta para obtener datos del reporte junto con el nombre de la persona
 $sqlPersona = "SELECT a.jefe_general, p.nombre AS nombre
-               FROM vegetacion a 
+               FROM incendio_vehiculo a 
                INNER JOIN persona p ON a.jefe_general = p.cedula 
                WHERE a.id = :id";
 $stmtPersona = $conexion->prepare($sqlPersona);
@@ -65,7 +72,7 @@ $jefe_gen = $stmtPersona->fetch(PDO::FETCH_ASSOC);
 
 // Consulta para obtener datos del reporte junto con el nombre de la persona
 $sqlPersona = "SELECT a.jefe_seccion, p.nombre AS nombre
-               FROM vegetacion a 
+               FROM incendio_vehiculo a 
                INNER JOIN persona p ON a.jefe_seccion = p.cedula 
                WHERE a.id = :id";
 $stmtPersona = $conexion->prepare($sqlPersona);
@@ -75,7 +82,7 @@ $jefe_sec = $stmtPersona->fetch(PDO::FETCH_ASSOC);
 
 // Consulta para obtener datos del nombre de la persona
 $sqlPersona = "SELECT a.comandante, p.nombre AS nombre
-               FROM vegetacion a 
+               FROM incendio_vehiculo a 
                INNER JOIN persona p ON a.comandante = p.cedula 
                WHERE a.id = :id";
 $stmtPersona = $conexion->prepare($sqlPersona);
@@ -93,7 +100,7 @@ $path3 = 'imagenes/Escudo_Yaracuy.jpg';
 $logo2 = "data:image/jpg;base64," . base64_encode(file_get_contents($path3));
 ob_start(); // Iniciar el buffer de salida
 
-// Construir el HTML del reporte de vegetacion
+// Construir el HTML del reporte de incendio vehiculo
 ?>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -102,7 +109,7 @@ ob_start(); // Iniciar el buffer de salida
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Incendio de Vegetacion </title>
+    <title>Reporte de Incendio de Vehiculo</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -212,7 +219,7 @@ ob_start(); // Iniciar el buffer de salida
         <table>
             <tr>
                 <td style="padding:0;">
-                    <h2 align="center">REPORTE DE INCENDIO DE VEGETACION</h2>
+                    <h2 align="center">REPORTE DE INCENDIO DE VEHICULO </h2>
                 </td>
             </tr>
         </table>
@@ -247,46 +254,97 @@ ob_start(); // Iniciar el buffer de salida
         <table>
             <tr>
                 <td colspan="2">TIPO DE AVISO: <input type="text" size="22px" name="aviso" value="<?= $reporte['aviso']; ?>"></td>
-            
-            </tr>
-        </table>
-        <!-- Datos del Servicio -->
-
-        <table>
-            <tr>
-                <td style="padding: 0;;">
-                    <h3 align="center">2) DATOS DEL SERVICIO:</h3>
-                </td>
-            </tr>
-        </table>
-
-        <table>
-            <tr>
-                <td colspan="2">TIPO DE INCENDIO: <input type="text" size="10px" name="incendio" value="<?= $reporte['incendio']; ?>"></td>
                 <td colspan="2">DIRECCION: <input type="text" name="direccion" value="<?= $reporte['direccion']; ?>"></td>
                 <td colspan="2">LUGAR: <input type="text" size="10px" name="lugar" value="<?= $reporte['lugar']; ?>"></td>
             </tr>
         </table>
-
-        <!-- AREAS ADYACENTES -->
+        <!-- informacion de vehiculo -->
 
         <table>
             <tr>
                 <td style="padding: 0;;">
-                    <h3 align="center">2) AREAS ADYACENTES :</h3>
+                    <h3 align="center">2) INFORMACION DE VEHICULO:</h3>
                 </td>
             </tr>
         </table>
 
         <table>
             <tr>
-                <td colspan="2">NORTE: <input type="text" size="10px" name="norte" value="<?= $reporte['norte']; ?>"></td>
-                <td colspan="2">SUR: <input type="text" name="sur" value="<?= $reporte['sur']; ?>"></td>
-                <td colspan="2">ESTE: <input type="text" size="10px" name="este" value="<?= $reporte['este']; ?>"></td>
-                <td colspan="2">OESTE: <input type="text" size="10px" name="oeste" value="<?= $reporte['oeste']; ?>"></td>
+            <td colspan="2">MODELO: <input type="text" name="modelo" value="<?= $reporte['modelo']; ?>"></td>
+            <td colspan="2">MARCA: <input type="text" name="marca" value="<?= $reporte['marca']; ?>"></td>
+            <td colspan="2">AÑO: <input type="text" name="año" value="<?= $reporte['año']; ?>"></td>
+            <td colspan="2">PLACA: <input type="text"  name="placa" value="<?= $reporte['placa']; ?>"></td>
+            <td colspan="2">SERIAL DE CARROCERIA: <input type="text" name="serial" value="<?= $reporte['serial']; ?>"></td>
+        </tr>
+        </table>
+
+        <table>
+            <tr>
+            <td colspan="2">COLOR: <input type="text" name="color" value="<?= $reporte['color']; ?>"></td>
+            <td colspan="2">PROPIETARIO: <input type="text" name="propietario" value="<?= $reporte['propietario']; ?>"></td>
+            <td colspan="2">CECULA: <input type="text" name="ci_propietario" value="<?= $reporte['ci_propietario']; ?>"></td>
+            <td colspan="2">VALOR DEL VEHICULO: <input type="text" name="valor" value="<?= $reporte['valor']; ?>"></td>
+        </tr>
+        </table>
+
+        <table>
+        <tr>
+            <td colspan="2">N° DE PUESTOS: <input type="text" name="puestos" value="<?= $reporte['puestos']; ?>"></td>
+            <td colspan="2">CONDUCTOR: <input type="text" name="conductor" value="<?= $reporte['conductor']; ?>"></td>
+            <td colspan="2">CEDULA: <input type="text" name="ci_conductor" value="<?= $reporte['ci_conductor']; ?>"></td>
+            <td colspan="2"> ASEGURADORA: SI <input type="checkbox" name="SI" <?php if ($aseguradora === 'SI') echo 'checked'; ?>> NO <input type="checkbox" name="NO" <?php if ($aseguradora=== 'NO') echo 'checked'; ?>> </td>
+            <td colspan="2">FECHA DE VIGENCIA: <input type="text" name="vigencia" value="<?= $reporte['vigencia']; ?>"></td>
+        </tr>
+        </table>
+       
+        <!-- INFORMACION DEL SERVICIO -->
+
+        <table>
+            <tr>
+                <td style="padding: 0;;">
+                    <h3 align="center">2) INFORMACION DEL SERVICIO :</h3>
+                </td>
             </tr>
         </table>
+
+        <table>
+            <tr>
+                <td colspan="2">LUGAR DONDE COMENZO EL SERVICIO: <input type="text" name="inicio" value="<?= $reporte['inicio']; ?>"></td>
+                <td colspan="2">POSIBLE FUENTE DE IGNICION: <input type="text" name="ignicion" value="<?= $reporte['ignicion']; ?>"></td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td colspan="2">LUGAR DONDE CULMINO EL SERVICIO: <input type="text" name="culmino" value="<?= $reporte['culmino']; ?>"></td>
+                <td colspan="2">POSIBLE CAUSA DEL INCENDIO <input type="text" name="causa" value="<?= $reporte['causa']; ?>"></td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+            <td colspan="2"> HUBO REIGNICION: SI <input type="checkbox" name="SI" <?php if ($h_reignicion === 'SI') echo 'checked'; ?>> NO <input type="checkbox" name="NO" <?php if ($h_reignicion=== 'NO') echo 'checked'; ?> </td>
+                <td colspan="2">CLASE DE COMBUSTIBLE <input type="text" name="clase" value="<?= $reporte['clase']; ?>"></td>
+                <td colspan="2">DECLARACION DEL INCENDIO <input type="text" name="declaracion" value="<?= $reporte['declaracion']; ?>"></td>
+            </tr>
+        </table>
+
         
+        <table>
+            <tr>
+                <td style="padding: 0;;">
+                    <h3 align="center">3) INFORMACION DE LESIONADOS:</h3>
+                </td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+            <td colspan="2"> HUBO LESIONADOS: SI <input type="checkbox" name="SI" <?php if ($h_lesionados === 'SI') echo 'checked'; ?>> NO <input type="checkbox" name="NO" <?php if ($h_lesionados=== 'NO') echo 'checked'; ?> </td>
+                <td colspan="2">NUMERO DE LESIONADOS <input type="text" name="lesionados" value="<?= $reporte['lesionados']; ?>"></td>
+            </tr>
+        </table>
+
         <table>
             <tr>
                 <td style="padding: 0;;">
@@ -303,6 +361,7 @@ ob_start(); // Iniciar el buffer de salida
                     <input type="text" value="<?= $rec['nombre'] ?>" size="10px">:<input type="text" value="<?= $rec['cantidad'] ?>" size="1px">
                     <?php endforeach;?>
                 </td>
+
             </tr>
         </table>
 
@@ -374,6 +433,7 @@ ob_start(); // Iniciar el buffer de salida
                                                                                                     } ?>></td>
             </tr>
         </table>
+          
         <table>
             <tr>
                 <td style="padding: 0;">
@@ -394,6 +454,8 @@ ob_start(); // Iniciar el buffer de salida
             </tr>
 
         </table>
+
+          
 
 
         <table style="font-size:10px;">

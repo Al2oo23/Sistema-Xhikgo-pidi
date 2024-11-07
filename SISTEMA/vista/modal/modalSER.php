@@ -28,6 +28,10 @@ $sentencia = $conexion->prepare("SELECT * FROM recurso");
 $sentencia->execute();
 $n_recurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
+$sentencia = $conexion->prepare("SELECT unidad FROM vehiculo");
+$sentencia->execute();
+$n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
+
 ?>
 
 <!-- Button trigger for login form modal -->
@@ -233,6 +237,50 @@ $n_recurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                    </div>
                                </div>
                            </div>
+                       </div>
+
+                       <div class="col-12">
+                           
+                           <div class="form-group has-icon-left grand-plus_Container-efectivo">
+                               <label for="">Efectivo</label>
+                               <div class="plus-container">
+                                   <div class="position-relative first-sibling">
+                                       <input type="text" id="efectivo" name="efectivos[]" class="form-control" placeholder="Cedula del Efectivo">
+                                       <div class="form-control-icon">
+                                           <i class="bi bi-person-x"></i>
+                                       </div>
+                                   </div>
+                                   <div id="plus-efectivo" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i>
+                                   </div>
+                               </div>
+                               
+                           </div>
+                           
+                       </div>
+
+                       <div class="col-12">
+                           
+                           <div class="form-group has-icon-left grand-plus_Container-unidad">
+                               <label for="">Unidad</label>
+                               <div class="plus-container">
+                                   <div class="position-relative second-sibling">
+                                       <select name="unidad[]" class="form-select" id="unidad">
+                                           <option value="">Seleccione la Unidad que asistió</option>
+                                       <?php foreach ($n_unidad as $unidad) : 
+                                           $n_unidad = $unidad["unidad"];
+                                       ?>
+                                           <option value="<?=$n_unidad?>"><?=$n_unidad?></option>
+
+                                       <?php endforeach;?>
+                                       </select>
+                                   </div>
+                                   <div id="plus-unidad" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i>
+
+                                   </div>
+                               </div>
+                               
+                           </div>
+                           
                        </div>
 
                             <div class="col-12">

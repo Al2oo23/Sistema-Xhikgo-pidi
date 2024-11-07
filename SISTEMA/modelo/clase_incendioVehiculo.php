@@ -425,6 +425,26 @@ class Incendio_vehiculo {
  
          return $preparado;
         }
+
+
+    public function errorRegistro($id){
+        include("conexion.php");
+        // ELIMINAR INCIDENTE DE INCENDIO VEHICULO
+        $sentencia = $conexion->prepare("DELETE FROM incendio_vehiculo WHERE id = ?");
+        $sentencia->execute([$id]);
+
+        // ELIMINAR RECURSO ASIGNADO
+        $sentencia = $conexion->prepare("DELETE FROM recurso_asignado WHERE id_incidente = ?");
+        $sentencia->execute([$id]);
+
+        // ELIMINAR UNIDAD ASIGNADA
+        $sentencia = $conexion->prepare("DELETE FROM unidad_asignada WHERE id_incidente = ?");
+        $sentencia->execute([$id]);
+        
+        // ELIMINAR EFECTIVO ASIGNADO
+        $sentencia = $conexion->prepare("DELETE FROM efectivo_asignado WHERE id_incidente = ?");
+        $sentencia->execute([$id]);
     }
 
+}
 ?>

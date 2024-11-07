@@ -82,7 +82,6 @@ $incendio = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>ID</th>
                         <th>Fecha</th>
                         <th>Seccion</th>
-                        <th>Municipio</th>
                         <th>Lugar</th>
                         <th>Propietario Vivienda</th>
                         <th>Valor Inmueble</th>
@@ -95,6 +94,7 @@ $incendio = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>CI_INVITY</th>
                         <th>CI_PC</th>
                         <th>CI_OTRO</th>
+                        <th>Acta</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -103,19 +103,20 @@ $incendio = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td><?= $incen['id'] ?></td>
                             <td><?= $incen['fecha']; ?></td>
                             <td><?= $incen['seccion']; ?></td>
-                            <td><?= $incen['municipio']; ?></td>
-                            <td><?= $incen['localidad']; ?></td>
+                            <td><?= $incen['lugar']; ?></td>
                             <td><?= $incen['propietario']; ?></td>
                             <td><?= $incen['valor_inmueble']; ?></td>
                             <td><?= $incen['num_residenciados']; ?></td>
                             <td><?= $incen['fuente_ignicion']; ?></td>
                             <td><?= $incen['causa_incendio']; ?></td>
-                            <td><?php if(!isset($incen["ci_pnb"])){ echo $incen["ci_pnb"];}else{echo "Ninguno";}?></td>
-                            <td><?php if(!isset($incen["ci_gnb"])){ echo $incen["ci_gnb"];}else{echo "Ninguno";}?></td>
-                            <td><?php if(!isset($incen["ci_intt"])){ echo $incen["ci_intt"];}else{echo "Ninguno";}?></td>
-                            <td><?php if(!isset($incen["ci_invity"])){ echo $incen["ci_invity"];}else{echo "Ninguno";}?></td>
-                            <td><?php if(!isset($incen["ci_pc"])){ echo $incen["ci_pc"];}else{echo "Ninguno";}?></td>
-                            <td><?php if(!isset($incen["ci_otro"])){ echo $incen["ci_otro"];}else{echo "Ninguno";}?></td>
+                            <td><?= $incen["ci_pnb"];?></td>
+                            <td><?= $incen["ci_gnb"];?></td>
+                            <td><?= $incen["ci_intt"];?></td>
+                            <td><?= $incen["ci_invity"];?></td>
+                            <td><?= $incen["ci_pc"];?></td>
+                            <td><?= $incen["ci_otro"];?></td>
+                            <td><?= $incen["acta"];?></td>
+                            
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

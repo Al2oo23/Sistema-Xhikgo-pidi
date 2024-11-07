@@ -58,12 +58,24 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
     $incendio_vehiculo->setJefeGeneral($_POST['jefe_general']);
     $incendio_vehiculo->setJefeSeccion($_POST['jefe_seccion']);
     $incendio_vehiculo->setComandante($_POST['comandante']);
-    $incendio_vehiculo->setCi_pnb($_POST['ci_pnb']);
-    $incendio_vehiculo->setCi_gnb($_POST['ci_gnb']);
-    $incendio_vehiculo->setCi_intt($_POST['ci_intt']);
-    $incendio_vehiculo->setCi_invity($_POST['ci_invity']);
-    $incendio_vehiculo->setCi_pc($_POST['ci_pc']);
-    $incendio_vehiculo->setCi_otro($_POST['ci_otro']);
+
+    if($_POST['ci_pnb'] == ''){$incendio_vehiculo->setCi_pnb("Ninguno");}
+    else{$incendio_vehiculo->setCi_pnb($_POST['ci_pnb']);}
+    
+    if($_POST['ci_gnb'] == ''){$incendio_vehiculo->setCi_gnb("Ninguno");
+    }else{$incendio_vehiculo->setCi_gnb($_POST['ci_gnb']);}
+
+    if($_POST['ci_intt'] == ''){$incendio_vehiculo->setCi_intt('Ninguno');}
+    else{$incendio_vehiculo->setCi_intt($_POST['ci_intt']);}
+    
+    if($_POST['ci_invity'] == ''){$incendio_vehiculo->setCi_invity("Ninguno");}
+    else{$incendio_vehiculo->setCi_invity($_POST['ci_invity']);}
+
+    if($_POST['ci_pc'] == ''){$incendio_vehiculo->setCi_pc("Ninguno");}
+    else{$incendio_vehiculo->setCi_pc($_POST['ci_pc']);}
+
+    if($_POST['ci_otro'] == ''){$incendio_vehiculo->setCi_otro("Ninguno");}
+    else{$incendio_vehiculo->setCi_otro($_POST['ci_otro']);}
     
     $datos = $incendio_vehiculo->registrarIncendio_vehiculo(
         $incendio_vehiculo->getFecha(),
@@ -121,34 +133,15 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         $efectivo->setCedula($cedula);
 
         //getters vehiculo incidente
-
-        $resultadoEfectivo = $efectivo->agregarEfectivo(
+ 
+         $caso1 = $efectivo->agregarEfectivo(
             $efectivo->getIdIncidente(),
             $efectivo->getTipo(),
             $efectivo->getCedula()
         );
-
-
+    
     }
 
-    //RECURSOS
-    for($i = 0; $i<count($_POST['recurso']);$i++){
-        //setters vehiculo incidente
-
-    $recurso->setIdIncidente($datos[1]);
-        $recurso->setTipo("Incendio vehiculo");
-        $recurso->setIdRecurso($_POST['recurso'][$i]);
-        $recurso->setCantidad($_POST['cantidad'][$i]);
-
-        //getters vehiculo incidente
-
-        $resultadoRecurso = $recurso->agregarRecurso(
-            $recurso->getIdIncidente(),
-            $recurso->getTipo(),
-            $recurso->getIdRecurso(),
-            $recurso->getCantidad()
-        );
-    }
 
     //UNIDAD
     foreach ($_POST['unidad'] as $niv) {
@@ -160,15 +153,36 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
 
         //getters vehiculo incidente
 
-        $resultadoUnidad = $unidad->agregarUnidad(
+        $caso2 = $unidad->agregarUnidad(
             $unidad->getIdIncidente(),
             $unidad->getTipo(),
             $unidad->getNiv()
         );
     }
 
+    //RECURSOS
+    for($i = 0; $i<count($_POST['recurso']);$i++){
+        //setters vehiculo incidente
 
-    if (empty($datos[0])) {
+        $recurso->setIdIncidente($datos[1]);
+        $recurso->setTipo("Incendio vehiculo");
+        $recurso->setIdRecurso($_POST['recurso'][$i]);
+        $recurso->setCantidad($_POST['cantidad'][$i]);
+
+        //getters vehiculo incidente
+
+        $caso3 = $recurso->agregarRecurso(
+            $recurso->getIdIncidente(),
+            $recurso->getTipo(),
+            $recurso->getIdRecurso(),
+            $recurso->getCantidad()
+        );
+    }
+
+    if (empty($datos[0]) || !$caso1 || !$caso2 || !$caso3) {
+
+        $incendio_vehiculo->errorRegistro($datos[1]);
+
         echo "<script>alert('No se pudo registrar el Incidente')</script>";
         echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoIncendioVehiculo.php'>";
     } else {
@@ -176,8 +190,6 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
         echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoIncendioVehiculo.php'>";
     }   
 }
-
-
 
 // MODIFICAR INCIDENTE DE incendio Vehiculo------------------------------------------
 
@@ -223,12 +235,24 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
     $incendio_vehiculo->setJefeGeneral($_POST['jefe_general']);
     $incendio_vehiculo->setJefeSeccion($_POST['jefe_seccion']);
     $incendio_vehiculo->setComandante($_POST['comandante']);
-    $incendio_vehiculo->setCi_pnb($_POST['ci_pnb']);
-    $incendio_vehiculo->setCi_gnb($_POST['ci_gnb']);
-    $incendio_vehiculo->setCi_intt($_POST['ci_intt']);
-    $incendio_vehiculo->setCi_invity($_POST['ci_invity']);
-    $incendio_vehiculo->setCi_pc($_POST['ci_pc']);
-    $incendio_vehiculo->setCi_otro($_POST['ci_otro']);
+
+    if($_POST['ci_pnb'] == ''){$incendio_vehiculo->setCi_pnb("Ninguno");}
+    else{$incendio_vehiculo->setCi_pnb($_POST['ci_pnb']);}
+    
+    if($_POST['ci_gnb'] == ''){$incendio_vehiculo->setCi_gnb("Ninguno");
+    }else{$incendio_vehiculo->setCi_gnb($_POST['ci_gnb']);}
+
+    if($_POST['ci_intt'] == ''){$incendio_vehiculo->setCi_intt('Ninguno');}
+    else{$incendio_vehiculo->setCi_intt($_POST['ci_intt']);}
+    
+    if($_POST['ci_invity'] == ''){$incendio_vehiculo->setCi_invity("Ninguno");}
+    else{$incendio_vehiculo->setCi_invity($_POST['ci_invity']);}
+
+    if($_POST['ci_pc'] == ''){$incendio_vehiculo->setCi_pc("Ninguno");}
+    else{$incendio_vehiculo->setCi_pc($_POST['ci_pc']);}
+
+    if($_POST['ci_otro'] == ''){$incendio_vehiculo->setCi_otro("Ninguno");}
+    else{$incendio_vehiculo->setCi_otro($_POST['ci_otro']);}
     
     $datos = $incendio_vehiculo->modificarIncendio_vehiculo(
         $incendio_vehiculo->getId(),
@@ -298,6 +322,29 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         );
     }
 
+
+      //UNIDAD
+      foreach ($_POST['unidad'] as $niv) {
+        //setters vehiculo incidente
+
+        $unidad->setIdIncidente($_POST['id']);
+        $unidad->setTipo("incendio_vehiculo");
+        $unidad->setNiv($niv);
+
+        //getters vehiculo incidente
+
+        $unidad->eliminarUnidad(
+            $unidad->getIdIncidente(),
+            $unidad->getTipo()
+        );
+
+        $resultadoUnidad = $unidad->agregarUnidad(
+            $unidad->getIdIncidente(),
+            $unidad->getTipo(),
+            $unidad->getNiv()
+        );
+    }
+    
     //RECURSOS
 
     $recurso->restauradorRecurso(
@@ -328,28 +375,6 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         );
     }
 
-    //UNIDAD
-    foreach ($_POST['unidad'] as $niv) {
-        //setters vehiculo incidente
-
-        $unidad->setIdIncidente($_POST['id']);
-        $unidad->setTipo("incendio_vehiculo");
-        $unidad->setNiv($niv);
-
-        //getters vehiculo incidente
-
-        $unidad->eliminarUnidad(
-            $unidad->getIdIncidente(),
-            $unidad->getTipo()
-        );
-
-        $resultadoUnidad = $unidad->agregarUnidad(
-            $unidad->getIdIncidente(),
-            $unidad->getTipo(),
-            $unidad->getNiv()
-        );
-    }
-
 
 
     if (!$datos) {
@@ -360,9 +385,6 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoIncendioVehiculo.php'>";
     }   
 }
-
-
-
 
 // ELIMINAR
 if (isset($_GET['txtID'])) {
@@ -375,4 +397,5 @@ if (isset($_GET['txtID'])) {
 
     echo "<script>alert('Incidente Eliminado con Exito')</script>";
 	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoIncendioVehiculo.php'>"; 
+
 }

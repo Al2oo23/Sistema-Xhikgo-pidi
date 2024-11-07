@@ -1,7 +1,7 @@
 <?php 
 
 class Vehiculo{
-    private $niv, $tipo, $unidad, $marca, $modelo, $carburante, $seguro, $propietario;
+    private $niv, $tipo, $propiedad, $unidad, $marca, $modelo, $carburante, $seguro, $propietario;
 
     public function __construct(){
 	}
@@ -13,6 +13,10 @@ class Vehiculo{
 
     public function setTipo($tipo){
         $this->tipo = $tipo;
+    }
+
+    public function setPropiedad($propiedad){
+        $this->propiedad = $propiedad;
     }
 
     public function setUnidad($unidad){
@@ -48,6 +52,10 @@ class Vehiculo{
         return $this->tipo;
     }
 
+    public function getPropiedad(){
+        return $this->propiedad;
+    }
+
     public function getUnidad(){
         return $this->unidad;
     }
@@ -74,24 +82,24 @@ class Vehiculo{
     
 
     //REGISTRAR 
-    public function registrarVehiculo($niv, $tipo, $unidad, $marca, $modelo, $carburante, $seguro, $propietario){
+    public function registrarVehiculo($niv, $tipo, $unidad, $propiedad, $marca, $modelo, $carburante, $seguro, $propietario){
         include("conexion.php");
 
-        $SQL = "INSERT INTO vehiculo VALUES (?,?,?,?,?,?,?,?)";
+        $SQL = "INSERT INTO vehiculo VALUES (?,?,?,?,?,?,?,?,?)";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$niv, $tipo, $unidad, $marca, $modelo, $carburante, $seguro, $propietario]);
+        $preparado->execute([$niv, $tipo, $unidad, $propiedad ,$marca, $modelo, $carburante, $seguro, $propietario]);
 
 
         return $preparado;
     }
 
     //MODIFICAR
-    public function modificarVehiculo($niv, $tipo, $unidad, $marca, $modelo, $carburante, $seguro, $propietario){
+    public function modificarVehiculo($niv, $tipo, $unidad, $propiedad, $marca, $modelo, $carburante, $seguro, $propietario){
         include("conexion.php");
     
-        $SQL = "UPDATE vehiculo SET tipo = ?, unidad = ?, marca = ?, modelo = ?, carburante = ?, seguro = ?, cedula = ? WHERE niv = ?";
+        $SQL = "UPDATE vehiculo SET tipo = ?, unidad = ?, propiedad = ?, marca = ?, modelo = ?, carburante = ?, seguro = ?, cedula = ? WHERE niv = ?";
         $preparado = $conexion->prepare($SQL);
-        $preparado->execute([$tipo, $unidad, $marca, $modelo, $carburante, $seguro, $propietario, $niv]);
+        $preparado->execute([$tipo, $unidad, $propiedad, $marca, $modelo, $carburante, $seguro, $propietario, $niv]);
 
     
         return $preparado;

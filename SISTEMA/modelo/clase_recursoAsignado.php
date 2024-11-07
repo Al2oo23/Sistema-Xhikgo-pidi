@@ -50,8 +50,7 @@ class recursoAsignado{
          // Verificar si el recurso es no reutilizable y restar la cantidad
          $this->RecursoNoReutilizable($idRecurso, $cantidad);
          $this->RecursoReutilizable($idRecurso, $cantidad);
-         
-
+        
         return $preparado;
 
     }
@@ -146,27 +145,18 @@ class recursoAsignado{
         $preparado->execute([$idIncidente, $tipo]);
         $resultado = $preparado->fetchAll(PDO::FETCH_ASSOC);
 
-        print_r($resultado);
-
         foreach($resultado as $recurso){
              // Verificar el tipo de recurso
         $consultaTipo = "SELECT tipo FROM recurso WHERE id = ?";
         $preparado = $conexion->prepare($consultaTipo);
         $preparado->execute([$recurso['id_recurso']]);
-        $tipo = $preparado->fetchColumn();
-    
-        // Si el recurso es no reutilizable, restar la cantidad
-        if ($tipo === 'NO') {
+        $tipo = $preparado->fetchAll(PDO::FETCH_ASSOC)[0];
+       
+        // Si el recurso es no reutilizable, sumar la cantidad
+        if ($tipo['tipo'] == "NO") {
             $this->SumarRecurso($recurso['id_recurso'], $recurso['cantidad']);
         }
         }
-
-        // $SQL = "DELETE FROM recurso_asignado WHERE id_incidente = ?";
-        // $preparado = $conexion->prepare($SQL);
-        // $preparado->execute([$idIncidente]);
-
-        // return $preparado;
-
     }
 
     private function SumarRecurso($idRecurso, $cantidad) {

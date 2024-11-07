@@ -124,6 +124,9 @@ include ("modal/modalIncendioVehiculoM.php");
                                                     href='../controlador/ctl_incendioVehiculo.php?txtID=<?= $incendio_vehicu['id']; ?>'
                                                     class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
+                                        </td>
+                                    <td>
+                                    <a href="../vista/reportes/reporte_incendioVehiculoEsp.php?txtIDreporte=<?=$incendio_vehicu['id'];?>" class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
                                     </td>
                                 </tr>
 
@@ -135,6 +138,7 @@ include ("modal/modalIncendioVehiculoM.php");
         </div>
     </div>
 </div>
+
 
 <script src="Javascript/incendioVehiculoModal.js"></script>
 <script src="Javascript/plusIncendiovehiculo.js"></script>

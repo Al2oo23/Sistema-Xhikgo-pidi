@@ -48,18 +48,6 @@ if (isset($_GET['txtID'])) {
     $sentencia->bindParam(1, $txtID, PDO::PARAM_INT);
     $sentencia->execute();
 
-     // BITACORA
-
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
-            
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Eliminó  Aseguradora con el txtID ".$txtID." el día ",$fecha]);
-
     echo "<script>alert('Aseguradora Eliminada con Exito')</script>";
 	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoAseguradora.php'>"; 
 }

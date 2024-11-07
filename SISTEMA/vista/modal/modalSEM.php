@@ -28,6 +28,10 @@ $sentencia = $conexion->prepare("SELECT * FROM recurso");
 $sentencia->execute();
 $n_recurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
+$sentencia = $conexion->prepare("SELECT unidad FROM vehiculo");
+$sentencia->execute();
+$n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!-- Button trigger for login form modal -->
@@ -215,11 +219,14 @@ $n_recurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                    <div class="position-relative zero-siblingM">
                                        <select name="recurso[]" class="form-select" id="recurso_utilizado">
                                            <option value="">Seleccione el Material Utilizado...</option>
-                                           <?php foreach ($n_recurso as $recurso) : ?>
+                                           <?php
+                                            
+                                            foreach ($n_recurso as $recurso) : ?>
 
                                                <option value="<?=$recurso["id"]?>"><?=$recurso["nombre"]?></option>
 
                                            <?php endforeach;?>
+                                          
                                        </select>
 
                                        <div class="form-group has-icon-left">
@@ -236,6 +243,46 @@ $n_recurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                </div>
                            </div>
                        </div>
+
+                       <div class="col-12">
+                           
+                                <div class="form-group has-icon-left grand-plus_Container-efectivoM">
+                                    <label for="">Efectivo</label>
+                                    <div class="plus-container">
+                                        <div class="position-relative first-siblingM">
+                                            <input type="text" id="efectivo" name="efectivos[]" class="form-control" placeholder="Efectivo">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-person-x"></i>
+                                            </div>
+                                        </div>
+                                        <div id="plus-efectivoM" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i></div>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+
+                            <div class="col-12">
+                           
+                                <div class="form-group has-icon-left grand-plus_Container-unidadM">
+                                    <label for="">Unidad</label>
+                                    <div class="plus-container">
+                                        <div class="position-relative second-siblingM">
+                                            <select name="unidad[]" class="form-select" id="unidad">
+                                            <?php foreach ($n_unidad as $unidad) : 
+                                                $n_unidad = $unidad["unidad"];
+                                            ?>
+                                                <option value="<?=$n_unidad?>"><?=$n_unidad?></option>
+
+                                            <?php endforeach;?>
+                                            </select>
+                                        </div>
+                                        <div id="plus-unidadM" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i></div>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
 
                             <div class="col-12">
                                 <div class="form-group has-icon-left">

@@ -40,12 +40,24 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
     $vegetacion->setJefeGeneral($_POST['jefe_general']);
     $vegetacion->setJefeSeccion($_POST['jefe_seccion']);
     $vegetacion->setComandante($_POST['comandante']);
-    $vegetacion->setCi_pnb($_POST['ci_pnb']);
-    $vegetacion->setCi_gnb($_POST['ci_gnb']);
-    $vegetacion->setCi_intt($_POST['ci_intt']);
-    $vegetacion->setCi_invity($_POST['ci_invity']);
-    $vegetacion->setCi_pc($_POST['ci_pc']);
-    $vegetacion->setCi_otro($_POST['ci_otro']);
+    
+    if($_POST['ci_pnb'] == ''){$vegetacion->setCi_pnb("Ninguno");}
+    else{$vegetacion->setCi_pnb($_POST['ci_pnb']);}
+    
+    if($_POST['ci_gnb'] == ''){$vegetacion->setCi_gnb("Ninguno");
+    }else{$vegetacion->setCi_gnb($_POST['ci_gnb']);}
+
+    if($_POST['ci_intt'] == ''){$vegetacion->setCi_intt('Ninguno');}
+    else{$vegetacion->setCi_intt($_POST['ci_intt']);}
+    
+    if($_POST['ci_invity'] == ''){$vegetacion->setCi_invity("Ninguno");}
+    else{$vegetacion->setCi_invity($_POST['ci_invity']);}
+
+    if($_POST['ci_pc'] == ''){$vegetacion->setCi_pc("Ninguno");}
+    else{$vegetacion->setCi_pc($_POST['ci_pc']);}
+
+    if($_POST['ci_otro'] == ''){$vegetacion->setCi_otro("Ninguno");}
+    else{$vegetacion->setCi_otro($_POST['ci_otro']);}
     
     $datos = $vegetacion->registrarVegetacion(
         $vegetacion->getFecha(),
@@ -86,7 +98,7 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
 
         //getters vehiculo incidente
 
-        $resultadoEfectivo = $efectivo->agregarEfectivo(
+            $caso1 = $efectivo->agregarEfectivo(
             $efectivo->getIdIncidente(),
             $efectivo->getTipo(),
             $efectivo->getCedula()
@@ -95,27 +107,8 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
 
     }
 
-    //RECURSOS
-    for($i = 0; $i<count($_POST['recurso']);$i++){
-        //setters vehiculo incidente
-
-    $recurso->setIdIncidente($datos[1]);
-        $recurso->setTipo("Vegetacion");
-        $recurso->setIdRecurso($_POST['recurso'][$i]);
-        $recurso->setCantidad($_POST['cantidad'][$i]);
-
-        //getters vehiculo incidente
-
-        $resultadoRecurso = $recurso->agregarRecurso(
-            $recurso->getIdIncidente(),
-            $recurso->getTipo(),
-            $recurso->getIdRecurso(),
-            $recurso->getCantidad()
-        );
-    }
-
-    //UNIDAD
-    foreach ($_POST['unidad'] as $niv) {
+     //UNIDAD
+     foreach ($_POST['unidad'] as $niv) {
         //setters vehiculo incidente
 
         $unidad->setIdIncidente($datos[1]);
@@ -124,15 +117,36 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
 
         //getters vehiculo incidente
 
-        $resultadoUnidad = $unidad->agregarUnidad(
+            $caso2 = $unidad->agregarUnidad(
             $unidad->getIdIncidente(),
             $unidad->getTipo(),
             $unidad->getNiv()
         );
     }
 
+    //RECURSOS
+    for($i = 0; $i<count($_POST['recurso']);$i++){
+        //setters vehiculo incidente
 
-    if (empty($datos[0])) {
+        $recurso->setIdIncidente($datos[1]);
+        $recurso->setTipo("Vegetacion");
+        $recurso->setIdRecurso($_POST['recurso'][$i]);
+        $recurso->setCantidad($_POST['cantidad'][$i]);
+
+        //getters vehiculo incidente
+
+             $caso3 = $recurso->agregarRecurso(
+            $recurso->getIdIncidente(),
+            $recurso->getTipo(),
+            $recurso->getIdRecurso(),
+            $recurso->getCantidad()
+        );
+    }
+
+    if (empty($datos[0]) || !$caso1 || !$caso2 || !$caso3) {
+
+        $vegetacion->errorRegistro($datos[1]);
+
         echo "<script>alert('No se pudo registrar el Incidente')</script>";
         echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoVegetacion.php'>";
     } else {
@@ -147,10 +161,6 @@ if (isset($_POST['registrar']) && $_POST['registrar'] == 'registrar') {
 
 if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
 
-    // print_r($_POST);
-
-        // print_r($_POST);
-        
         $vegetacion->setId($_POST['id']);
         $vegetacion->setFecha($_POST['fecha']);
         $vegetacion->setSeccion($_POST['seccion']);
@@ -173,12 +183,25 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         $vegetacion->setJefeGeneral($_POST['jefe_general']);
         $vegetacion->setJefeSeccion($_POST['jefe_seccion']);
         $vegetacion->setComandante($_POST['comandante']);
-        $vegetacion->setCi_pnb($_POST['ci_pnb']);
-        $vegetacion->setCi_gnb($_POST['ci_gnb']);
-        $vegetacion->setCi_intt($_POST['ci_intt']);
-        $vegetacion->setCi_invity($_POST['ci_invity']);
-        $vegetacion->setCi_pc($_POST['ci_pc']);
-        $vegetacion->setCi_otro($_POST['ci_otro']);
+        
+        if($_POST['ci_pnb'] == ''){$vegetacion->setCi_pnb("Ninguno");}
+        else{$vegetacion->setCi_pnb($_POST['ci_pnb']);}
+        
+        if($_POST['ci_gnb'] == ''){$vegetacion->setCi_gnb("Ninguno");
+        }else{$vegetacion->setCi_gnb($_POST['ci_gnb']);}
+    
+        if($_POST['ci_intt'] == ''){$vegetacion->setCi_intt('Ninguno');}
+        else{$vegetacion->setCi_intt($_POST['ci_intt']);}
+        
+        if($_POST['ci_invity'] == ''){$vegetacion->setCi_invity("Ninguno");}
+        else{$vegetacion->setCi_invity($_POST['ci_invity']);}
+    
+        if($_POST['ci_pc'] == ''){$vegetacion->setCi_pc("Ninguno");}
+        else{$vegetacion->setCi_pc($_POST['ci_pc']);}
+    
+        if($_POST['ci_otro'] == ''){$vegetacion->setCi_otro("Ninguno");}
+        else{$vegetacion->setCi_otro($_POST['ci_otro']);}
+        
         
         $datos = $vegetacion->modificarVegetacion(
         $vegetacion->getId(),
@@ -230,11 +253,33 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
         );
     }
 
+     //UNIDAD
+     foreach ($_POST['unidad'] as $niv) {
+        //setters vehiculo incidente
+
+        $unidad->setIdIncidente($_POST['id']);
+        $unidad->setTipo("Vegetacion");
+        $unidad->setNiv($niv);
+
+        //getters vehiculo incidente
+
+        $unidad->eliminarUnidad(
+            $unidad->getIdIncidente(),
+            $unidad->getTipo()
+        );
+
+        $resultadoUnidad = $unidad->agregarUnidad(
+            $unidad->getIdIncidente(),
+            $unidad->getTipo(),
+            $unidad->getNiv()
+        );
+    }
+
     //RECURSOS
 
     $recurso->restauradorRecurso(
         $_POST['id'],
-        "S.E"
+        "Vegetacion"
     );
 
     for($i = 0; $i<count($_POST['recurso']);$i++){
@@ -259,29 +304,6 @@ if (isset($_POST['modificar']) && $_POST['modificar'] == 'modificar') {
             $recurso->getCantidad()
         );
     }
-
-    //UNIDAD
-    foreach ($_POST['unidad'] as $niv) {
-        //setters vehiculo incidente
-
-        $unidad->setIdIncidente($_POST['id']);
-        $unidad->setTipo("Vegetacion");
-        $unidad->setNiv($niv);
-
-        //getters vehiculo incidente
-
-        $unidad->eliminarUnidad(
-            $unidad->getIdIncidente(),
-            $unidad->getTipo()
-        );
-
-        $resultadoUnidad = $unidad->agregarUnidad(
-            $unidad->getIdIncidente(),
-            $unidad->getTipo(),
-            $unidad->getNiv()
-        );
-    }
-
 
 
     if (!$datos) {
@@ -321,16 +343,16 @@ if (isset($_GET['txtID'])) {
 }
 
 // GENERAR REPORTE INDIVIDUAL
-if (isset($_GET['txtIDreporte'])) {
+// if (isset($_GET['txtIDreporte'])) {
 
-    $txtID = $_GET['txtIDreporte'];
+//     $txtID = $_GET['txtIDreporte'];
 
-    $resultado = $vegetacion->reporte($txtID);
+//     $resultado = $vegetacion->reporte($txtID);
 
-    $_SESSION['reporte'] = $txtID;
+//     $_SESSION['reporte'] = $txtID;
 
-    echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/reportes/reporte_vegetacionEsp.php?ID=$txtID'>";
-}
+//     echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/reportes/reporte_vegetacionEsp.php?ID=$txtID'>";
+// }
 
 
 

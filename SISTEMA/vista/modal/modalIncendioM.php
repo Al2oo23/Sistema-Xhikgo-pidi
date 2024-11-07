@@ -32,14 +32,13 @@ $n_recurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 $sentencia = $conexion->prepare("SELECT unidad FROM vehiculo");
 $sentencia->execute();
-$n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
+$n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+$sentencia = $conexion->prepare("SELECT nombre FROM seguro WHERE tipo = 'Hogar'");
+$sentencia->execute();
+$seguro = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-
-<!-- Button trigger for login form modal -->
-<!-- <button type="button" class="btn icon btn-primary" data-bs-toggle="modal" data-bs-target="#inlineForm">
-    <i class="bi bi-pencil"></i>
-</button> -->
 
 <!--login form Modal -->
 <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
@@ -55,7 +54,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                 </button>
             </div>
             <!-- Contenido del Modal:--------------------------->
-            <form action="../controlador/ctl_incendio.php" method="POST" style="text-align: left;" onsubmit="return validarIncendioM()">
+            <form action="../controlador/ctl_incendio.php" method="POST" style="text-align: left;">
                 <div class="modal-body">
 
                     <input type="hidden" id="id" name="id">
@@ -211,32 +210,15 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
 
                     <div class="col-12">
                         <div class="form-group has-icon-left">
-                            <label for="">Municipio</label>
+                            <label for="">Lugar</label>
                             <div class="position-relative">
-                                <select name="municipio" class="form-select" id="municipioM">
-                                    <option value="default">Seleccione el Municipio...</option>
-                                    <?php foreach ($lugar as $muni) :
-                                        $municipio = $muni['municipio'];
+                                <select name="lugar" class="form-select" id="lugarM">
+                                    <?php foreach ($lugar as $lug):
+                                        $lugar = $lug['nombre'];
                                     ?>
-                                        <option value="<?= $municipio ?>"><?= $municipio ?></option>
-
-                                    <?php endforeach; ?>
-
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="">Localidad</label>
-                            <div class="position-relative">
-                                <select name="localidad" class="form-select" id="localidadM">
-                                    <option value="default">Seleccione la Localidad...</option>
-                                    <?php foreach ($lugar as $locali) :
-                                        $localidad = $locali['nombre'];
-                                    ?>
-                                        <option value="<?= $localidad ?>"><?= $localidad ?></option>
+                                        <option value="<?= $lugar ?>">
+                                            <?= $lugar ?>
+                                        </option>
 
                                     <?php endforeach; ?>
 
@@ -256,8 +238,11 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                             <label for="">Material de Paredes</label>
                             <div class="position-relative">
                                 <select name="material_paredes" class="form-select" id="material_paredesM">
-                                    <option value="">Seleccione el Material de las Paredes...</option>
-                                    <option value="1">1</option>
+                                    <option value="bloques">Bloques de Concreto</option>
+                                    <option value="ladrillos">Ladrillos de Arcilla</option>
+                                    <option value="paneles">Paneles Prefabricados</option>
+                                    <option value="yeso">Yeso</option>
+                                    <option value="madera">Madera</option>
                                 </select>
                             </div>
                         </div>
@@ -268,8 +253,11 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                             <label for="">Material de Techo</label>
                             <div class="position-relative">
                                 <select name="material_techo" class="form-select" id="material_techoM">
-                                    <option value="">Seleccione el Material de los Techos...</option>
-                                    <option value="1">1</option>
+                                    <option value="laminas">Láminas de Zinc o Acerolit</option>
+                                    <option value="tejas_arcilla">Tejas de Arcilla</option>
+                                    <option value="concreto_armado">Concreto Armado</option>
+                                    <option value="tejas_asfalticas">Tejas Asfálticas</option>
+                                    <option value="policarbonato">Policarbonato</option>
                                 </select>
                             </div>
                         </div>
@@ -280,8 +268,12 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                             <label for="">Material de Piso</label>
                             <div class="position-relative">
                                 <select name="material_piso" class="form-select" id="material_pisoM">
-                                    <option value="">Seleccione el Material de los Pisos...</option>
-                                    <option value="1">1</option>
+                                    <option value="ceramica">Cerámica</option>
+                                    <option value="porcelanato">Porcelanato</option>
+                                    <option value="granito">Granito</option>
+                                    <option value="cemento_pulido">Cemento Pulido</option>
+                                    <option value="madera">Madera</option>
+                                    <option value="marmol">Mármol</option>
                                 </select>
                             </div>
                         </div>
@@ -292,8 +284,10 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                             <label for="">Material de Ventanas</label>
                             <div class="position-relative">
                                 <select name="material_ventanas" class="form-select" id="material_ventanasM">
-                                    <option value="">Seleccione el Material de las Ventanas...</option>
-                                    <option value="1">1</option>
+                                    <option value="aluminio">Aluminio</option>
+                                    <option value="pvc">PVC</option>
+                                    <option value="hierro">Hierro</option>
+                                    <option value="vidrio">Vidrio</option>
                                 </select>
                             </div>
                         </div>
@@ -304,20 +298,11 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                             <label for="">Material de Puertas</label>
                             <div class="position-relative">
                                 <select name="material_puertas" class="form-select" id="material_puertasM">
-                                    <option value="">Seleccione el Material de las Puertas...</option>
-                                    <option value="1">1</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="">Otros Materiales</label>
-                            <div class="position-relative">
-                                <select name="otros_materiales" class="form-select" id="otros_materialesM">
-                                    <option value="">Seleccione Otros Materiales que desee agregar...</option>
-                                    <option value="1">1</option>
+                                    <option value="madera">Madera</option>
+                                    <option value="metal">Metal (Hierro o Acero)</option>
+                                    <option value="pvc">PVC</option>
+                                    <option value="vidrio_templado">Vidrio Templado</option>
+                                    <option value="aluminio">Aluminio</option>
                                 </select>
                             </div>
                         </div>
@@ -405,45 +390,55 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                             <label for="">Asegurado</label>
                             <div class="position-relative">
                                 <label class="form-check-label" for="">SI</label>
-                                <input type="radio" class="form-check-input" name="asegurado" value="asegurado" id="aseguradoM">
+                                <input type="radio" class="form-check-input" name="asegurado" value="asegurado"
+                                    id="aseguradoM" onclick="ocultarInputM(true)">
 
                                 <label class="form-check-label ms-3" for="">NO</label>
-                                <input type="radio" class="form-check-input" name="asegurado" value="no-asegurado" id="no_aseguradoM">
+                                <input type="radio" class="form-check-input" name="asegurado" value="no-asegurado"
+                                    id="no_aseguradoM" onclick="ocultarInputM(false)">
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="">Aseguradora</label>
-                            <div class="position-relative">
-                                <select name="aseguradora" class="form-select" id="aseguradoraM">
-                                    <option value="">Seleccione la Aseguradora...</option>
-                                    <option value="1">1</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="">Número de Poliza de Seguro</label>
-                            <div class="position-relative">
-                                <input type="text" id="numero_polizaM" name="numero_poliza" class="form-control" placeholder="Número de Poliza de Seguro">
-                                <div class="form-control-icon">
-                                    <i class="bi bi-hourglass-split"></i>
+                    <div id="inputAseguradoM" style="display: none;">
+                        <div class="col-12">
+                            <div class="form-group has-icon-left">
+                                <label for="">Aseguradora</label>
+                                <div class="position-relative">
+                                    <select name="aseguradora" class="form-select" id="aseguradoraM">
+                                    <option value="Ninguno">Ninguno</option>
+                                        <?php foreach ($seguro as $segu):
+                                            $seguro = $segu['nombre'];
+                                        ?>
+                                            <option value="<?=$seguro?>"><?=$seguro?></option>
+                                            
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="">Valor Asegurado</label>
-                            <div class="position-relative">
-                                <input type="text" id="valor_aseguradoM" name="valor_asegurado" class="form-control" placeholder="Valor Asegurado">
-                                <div class="form-control-icon">
-                                    <i class="bi bi-person-x"></i>
+                        <div class="col-12">
+                            <div class="form-group has-icon-left">
+                                <label for="">Número de Poliza de Seguro</label>
+                                <div class="position-relative">
+                                    <input type="text" id="numero_polizaM" name="numero_poliza" class="form-control"
+                                        placeholder="Número de Poliza de Seguro">
+                                    <div class="form-control-icon">
+                                        <i class="bi bi-hourglass-split"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-group has-icon-left">
+                                <label for="">Valor Asegurado</label>
+                                <div class="position-relative">
+                                    <input type="text" id="valor_aseguradoM" name="valor_asegurado" class="form-control"
+                                        placeholder="Valor Asegurado">
+                                    <div class="form-control-icon">
+                                        <i class="bi bi-person-x"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -555,33 +550,21 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                             <label for="">Hubo Lesionados</label>
                             <div class="position-relative">
                                 <label class="form-check-label" for="">SI</label>
-                                <input type="radio" class="form-check-input" name="lesion" value="lesion" id="lesionM">
+                                <input type="radio" class="form-check-input" name="lesion" value="lesion" id="lesionM" onclick="ocultarInputM2(true)">
 
                                 <label class="form-check-label ms-3" for="">NO</label>
-                                <input type="radio" class="form-check-input" name="lesion" value="no-lesion" id="no_lesionM">
+                                <input type="radio" class="form-check-input" name="lesion" value="no-lesion"
+                                    id="no_lesionM" onclick="ocultarInputM2(false)">
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12" id="inputLesionadoM" style="display: none;">
                         <div class="form-group has-icon-left">
                             <label for="">Número de Lesionados</label>
                             <div class="position-relative">
-                                <input type="text" id="numero_lesionadosM" name="numero_lesionados" class="form-control" placeholder="Número de Lesionados">
-                                <div class="form-control-icon">
-                                    <i class="bi bi-person-x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- AQUI DEBE IR UN FOREACH PARA QUE SE AGREGUEN TANTOS INPUTS COMO CANTIDAD DE LESIONADOS HAYA -->
-
-                    <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="">Datos del Lesionado</label>
-                            <div class="position-relative">
-                                <input type="text" id="cedula_lesionadoM" name="cedula_lesionado" class="form-control" placeholder="Datos de Lesionado">
+                                <input type="text" id="numero_lesionadosM" name="numero_lesionados" class="form-control"
+                                    placeholder="Número de Lesionados">
                                 <div class="form-control-icon">
                                     <i class="bi bi-person-x"></i>
                                 </div>
@@ -597,7 +580,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                <label for="">Recurso Utilizado</label>
                                <div class="plus-container">
                                    <div class="position-relative zero-siblingM">
-                                       <select name="recurso[]" class="form-select" id="recurso_utilizado">
+                                       <select name="recurso[]" class="form-select" id="recurso_utilizadoM">
                                            <?php foreach ($n_recurso as $recurso) : ?>
 
                                                <option value="<?=$recurso["id"]?>"><?=$recurso["nombre"]?></option>
@@ -608,13 +591,13 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                        <div class="form-group has-icon-left">
                                            
                                            <div class="position-relative">
-                                               <input type="text" id="cantidad_recurso" name="cantidad[]" class="form-control" placeholder="Cantidad">
+                                               <input type="text" id="cantidad_recursoM" name="cantidad[]" class="form-control" placeholder="Cantidad">
                                                <div class="form-control-icon"></div>
                                            </div>
                                        </div>
 
                                    </div>
-                                   <div id="plus-recursoM" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
+                                   <div id="plus-recursoM" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i></div>
                                </div>
                                
                            </div>
@@ -627,7 +610,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                     <label for="">Unidad</label>
                                     <div class="plus-container">
                                         <div class="position-relative second-siblingM">
-                                            <select name="unidad[]" class="form-select" id="unidad">
+                                            <select name="unidad[]" class="form-select" id="unidadM">
                                             <?php foreach ($n_unidad as $unidad) : 
                                                 $n_unidad = $unidad["unidad"];
                                             ?>
@@ -636,7 +619,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                             <?php endforeach;?>
                                             </select>
                                         </div>
-                                        <div id="plus-unidadM" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
+                                        <div id="plus-unidadM" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i></div>
                                     </div>
                                     
                                 </div>
@@ -644,29 +627,17 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                             </div>
 
                     <div class="col-12">
-                        <div class="form-group has-icon-left">
-                            <label for="">Jefe de Comisión</label>
-                            <div class="position-relative">
-                                <select name="jefe_comision" class="form-select" id="jefe_comisionM">
-                                    <option value="">Seleccione el Jefe de comision...</option>
-                                    <option value="1">1</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
                            
                            <div class="form-group has-icon-left grand-plus_Container-efectivoM">
                                <label for="">Efectivo</label>
                                <div class="plus-container">
                                    <div class="position-relative first-siblingM">
-                                       <input type="text" id="efectivo" name="efectivos[]" class="form-control" placeholder="Efectivo">
+                                       <input type="text" id="efectivoM" name="efectivos[]" class="form-control" placeholder="Efectivo">
                                        <div class="form-control-icon">
                                            <i class="bi bi-person-x"></i>
                                        </div>
                                    </div>
-                                   <div id="plus-efectivoM" class="btn icon btn-primary"><i class="bi bi-pencil"></i></div>
+                                   <div id="plus-efectivoM" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i></div>
                                </div>
                                
                            </div>
@@ -766,6 +737,73 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                 <div class="form-control-icon">
                                     <i class="bi bi-people"></i>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group has-icon-left">
+                            <label for="">Jefe de Comisión</label>
+                            <div class="position-relative">
+                                <input type="text" id="jefe_comisionM" name="jefe_comision" class="form-control"
+                                    placeholder="Ingrese la Cedula del Jefe de Comision">
+                                <div class="form-control-icon">
+                                    <i class="bi bi-person-video2"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group has-icon-left">
+                            <label for="">Jefe General</label>
+                            <div class="position-relative">
+                                <input type="text" id="jefe_generalM" name="jefe_general" class="form-control"
+                                    placeholder="Ingrese la Cedula del Jefe General">
+                                <div class="form-control-icon">
+                                    <i class="bi bi-person-video2"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group has-icon-left">
+                            <label for="">Jefe de Sección</label>
+                            <div class="position-relative">
+                                <input type="text" id="jefe_seccionM" name="jefe_seccion" class="form-control"
+                                    placeholder="Ingrese la Cedula del Jefe de Sección">
+                                <div class="form-control-icon">
+                                    <i class="bi bi-person-video2"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group has-icon-left">
+                            <label for="">Comandante</label>
+                            <div class="position-relative">
+                                <input type="text" id="comandanteM" name="comandante" class="form-control"
+                                    placeholder="Ingrese la Cedula del Comandante">
+                                <div class="form-control-icon">
+                                    <i class="bi bi-person-video2"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group has-icon-left">
+                            <label for="">Se Levantó Acta:</label>
+                            <div class="position-relative">
+                                <label class="form-check-label" for="">SI</label>
+                                <input type="radio" class="form-check-input" name="acta" value="SI"
+                                    id="actaM">
+
+                                <label class="form-check-label ms-3" for="">NO</label>
+                                <input type="radio" class="form-check-input" name="acta" value="NO"
+                                    id="no_actaM">
                             </div>
                         </div>
                     </div>
