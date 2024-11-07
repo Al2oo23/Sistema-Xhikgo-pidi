@@ -659,6 +659,22 @@ $conexion->exec($SQL);
     $preparado = $conexion->prepare($SQL);
     $preparado->execute(["usuario", "usuario", "SELECT * FROM usuario"]);
 
+    $SQL = "INSERT IGNORE INTO criterio VALUES(?,?,?)";
+    $preparado = $conexion->prepare($SQL);
+    $preparado->execute(["persona", "persona", "SELECT * FROM persona"]);
+    
+    $SQL = "INSERT IGNORE INTO criterio VALUES(?,?,?)";
+    $preparado = $conexion->prepare($SQL);
+    $preparado->execute(["vehiculo", "vehiculo", "SELECT * FROM vehiculo"]);
+    
+    $SQL = "INSERT IGNORE INTO criterio VALUES(?,?,?)";
+    $preparado = $conexion->prepare($SQL);
+    $preparado->execute(["modelo", "modelo", "SELECT * FROM modelo"]);
+
+    $SQL = "INSERT IGNORE INTO criterio VALUES(?,?,?)";
+    $preparado = $conexion->prepare($SQL);
+    $preparado->execute(["recurso", "recurso", "SELECT * FROM recurso"]);
+
 //     //------------------ BITÁCORA -------------------
 
     $SQL = "CREATE TABLE IF NOT EXISTS bitacora (

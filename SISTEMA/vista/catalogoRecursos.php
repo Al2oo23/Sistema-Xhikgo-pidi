@@ -1,7 +1,7 @@
 <?php
 $nombrePagina = 'Catálogo de Recurso';
-require ('../header.php');
-include ('../modelo/conexion.php');
+require('../header.php');
+include('../modelo/conexion.php');
 
 $sentencia = $conexion->prepare("SELECT * FROM recurso");
 $sentencia->execute();
@@ -56,10 +56,12 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </div>
                                 </form>
-                                <button type="submit" class="btn btn-primary">Generar PDF</button>
+                                <div>
+                                    <button type="submit" class="btn btn-primary">Generar PDF</button>
+                                    <?php include("modal/criterioRecurso.php"); ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </form>
             </div>
         </div>
@@ -69,9 +71,9 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                 <div class="card-header">
                     <h4 class="card-title">Recurso</h4>
                     <div>
-                        <?php include ("modal/modalRecursoR.php"); ?>
-                        <?php include ("modal/modalRecursoAgreg.php"); ?>
-                        <?php include ("modal/modalRecursoInop.php"); ?>
+                        <?php include("modal/modalRecursoR.php"); ?>
+                        <?php include("modal/modalRecursoAgreg.php"); ?>
+                        <?php include("modal/modalRecursoInop.php"); ?>
                     </div>
                 </div>
                 <!-- table hover -->
@@ -94,7 +96,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <td class="columnas"><?= $recurso['cantidad']; ?></td>
                                     <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <?php include ("modal/modalRecursoM.php"); ?>
+                                            <?php include("modal/modalRecursoM.php"); ?>
                                             <div><a href='../controlador/ctl_recurso.php?txtID=<?= $recurso['id']; ?>'
                                                     class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
                                         </div>
@@ -112,5 +114,5 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 <script src="Javascript/recursoModal.js"></script>
 
 <?php
-require ('../footer.php');
+require('../footer.php');
 ?>

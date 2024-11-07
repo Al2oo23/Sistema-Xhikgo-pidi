@@ -1,7 +1,7 @@
 <?php
 $nombrePagina = 'Catálogo de Vehiculo';
-require ('../header.php');
-include ('../modelo/conexion.php');
+require('../header.php');
+include('../modelo/conexion.php');
 
 $sentencia = $conexion->prepare("SELECT * FROM vehiculo v INNER JOIN persona p ON v.cedula = p.cedula");
 $sentencia->execute();
@@ -90,14 +90,17 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                                 onchange="cambiarTamano()">
                                                 <option value="pequeno">Pequeño</option>
                                                 <option value="mediano">Mediano</option>
-                                                <option value="grande" >Grande</option>
+                                                <option value="grande">Grande</option>
                                                 <option value="extragrande" selected>Extra Grande</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </form>
-                            <button type="submit" class="btn btn-primary">Generar PDF</button>
+                            <div>
+                                <button type="submit" class="btn btn-primary">Generar PDF</button>
+                                <?php include("modal/criterioVehiculo.php"); ?>
+                            </div>
                         </div>
                 </form>
             </div>
@@ -108,7 +111,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         <div class="card-content">
             <div class="card-header">
                 <h4 class="card-title">Vehiculo</h4>
-                <?php include ("modal/modalVehiculoR.php"); ?>
+                <?php include("modal/modalVehiculoR.php"); ?>
             </div>
             <!-- table hover -->
             <div class="table-responsive">
@@ -143,7 +146,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <td class="columna"><?= $vehiculo['nombre'] ?></td>
                                 <td>
                                     <div class="botones">
-                                        <?php include ("modal/modalVehiculoM.php"); ?>
+                                        <?php include("modal/modalVehiculoM.php"); ?>
                                         <div><a name='eliminar' id='eliminar'
                                                 href='../controlador/ctl_vehiculo.php?txtID=<?= $vehiculo['niv']; ?>'
                                                 class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
@@ -165,5 +168,5 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 <script src="Javascript/vehiculoModal.js"></script>
 
 <?php
-require ('../footer.php');
+require('../footer.php');
 ?>

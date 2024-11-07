@@ -1,7 +1,7 @@
 <?php
 $nombrePagina = "Catálogo de Persona";
-require ('../header.php');
-include ('../modelo/conexion.php');
+require('../header.php');
+include('../modelo/conexion.php');
 
 // Obtener resultados iniciales
 $sentencia = $conexion->prepare("SELECT * FROM persona WHERE cedula != '0'");
@@ -16,18 +16,21 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="card-content">
             <div class="card-body">
-               
-                    <div class="form-group has-icon-left">
-                        <div class="position-relative col-4">
-                            <select class="form-select" name="id_criterio" id="id_criterio"
-                                style="width:200px; display:inline-block;">
-                                
-                            </select>
+
+                <div class="form-group has-icon-left">
+                    <div class="position-relative col-4">
+                        <select class="form-select" name="id_criterio" id="id_criterio"
+                            style="width:200px; display:inline-block;">
+
+                        </select>
+                        <div>
                             <a href="reportes/reporte_persona.php" class="btn btn-primary" style="text-decoration: none;
                                     color:white;">Generar Reporte</a>
+                            <?php include ("modal/criterioPersona.php"); ?>
                         </div>
                     </div>
-               
+                </div>
+
             </div>
         </div>
     </div>
@@ -37,7 +40,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Persona</h4>
-                    <?php include ("modal/modalPersonaR.php"); ?>
+                    <?php include("modal/modalPersonaR.php"); ?>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover mb-0" id="tabla_persona">
@@ -74,7 +77,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <td class="columnas" hidden><?= $persona['estado']; ?></td>
                                     <td>
                                         <div class="botones" style="justify-content:space-evenly;">
-                                            <?php include ("modal/modalPersonaM.php"); ?>
+                                            <?php include("modal/modalPersonaM.php"); ?>
                                         </div>
                                     </td>
                                 </tr>
@@ -145,7 +148,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     function generateModalHTML(cedula) {
         return `
         <?php ob_start(); ?>
-        <?php include ("modal/modalPersonaM.php"); ?>
+        <?php include("modal/modalPersonaM.php"); ?>
         <?php $modalContent = ob_get_clean(); ?>
         ${modalContent.replace(/modalPersonaM/g, "modalPersonaM" + cedula)}
     `;
@@ -155,5 +158,5 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 <script src="Javascript/personaModal.js"></script>
 
 <?php
-require ('../footer.php');
+require('../footer.php');
 ?>

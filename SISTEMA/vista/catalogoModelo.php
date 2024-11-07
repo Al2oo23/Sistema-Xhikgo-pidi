@@ -1,7 +1,7 @@
 <?php
 $nombrePagina = 'Catálogo de Modelo';
-require ('../header.php');
-include ('../modelo/conexion.php');
+require('../header.php');
+include('../modelo/conexion.php');
 
 $sentencia = $conexion->prepare("SELECT * FROM modelo");
 $sentencia->execute();
@@ -50,7 +50,11 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </div>
                                 </form>
-                                <button type="submit" class="btn btn-primary">Generar PDF</button>
+
+                                <div>
+                                    <button type="submit" class="btn btn-primary">Generar PDF</button>
+                                    <?php include("modal/criterioModelo.php"); ?>
+                                </div>
                             </div>
                         </div>
                 </form>
@@ -62,7 +66,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         <div class="card-content">
             <div class="card-header">
                 <h4 class="card-title">Modelo de Vehiculo</h4>
-                <?php include ("modal/modalModeloR.php"); ?>
+                <?php include("modal/modalModeloR.php"); ?>
             </div>
             <!-- table hover -->
             <div class="table-responsive">
@@ -83,10 +87,12 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <td class="columnas"><?php echo $modelo["nombre"] ?></td>
                                 <td>
                                     <div class="botones" style="justify-content:space-evenly;">
-                                        <?php include ("modal/modalModeloM.php"); ?>
-                                        <div><a name='eliminar' id='eliminar'
+                                        <?php include("modal/modalModeloM.php"); ?>
+                                        <div>
+                                            <a name='eliminar' id='eliminar'
                                                 href='../controlador/ctl_modelo.php?txtID=<?= $modelo['id']; ?>'
-                                                class="btn icon btn-danger"><i class="bi bi-x"></i></a></div>
+                                                class="btn icon btn-danger"><i class="bi bi-x"></i></a>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -101,5 +107,5 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 <script src="Javascript/modeloModal.js"></script>
 
 <?php
-require ('../footer.php');
+require('../footer.php');
 ?>
