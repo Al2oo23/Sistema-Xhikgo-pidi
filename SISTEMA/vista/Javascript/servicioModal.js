@@ -18,7 +18,7 @@ const ci_gnb = document.getElementById("ci_gnbM");
 const ci_intt = document.getElementById("ci_inttM");
 const ci_invity = document.getElementById("ci_invityM");
 const ci_pc = document.getElementById("ci_pcM");
-const ci_otro = document.getElementById("ci_otroM");
+const ci_otro = document.getElementById("ci_otrosM");
 const jefe_comision = document.getElementById("jefe_comisionM");
 const jefe_general = document.getElementById("jefe_generalM");
 const jefe_seccion = document.getElementById("jefe_seccionM");
@@ -54,8 +54,8 @@ filas.forEach(fila => {
        jefe_general.value = columnas[19].textContent
        jefe_seccion.value = columnas[20].textContent
        comandante.value = columnas[21].textContent
-       acta.value = columnas[21].textContent
-       observaciones.value = columnas[22].textContent
+       acta.value = columnas[22].textContent
+       observaciones.value = columnas[23].textContent
        
        console.log(columnas);
     });

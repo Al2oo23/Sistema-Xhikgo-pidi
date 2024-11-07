@@ -4,18 +4,81 @@ session_start();
 require_once '../../modelo/conexion.php';
 require_once '../../modelo/clase_servicio.php';
 
-if (isset($_GET['ID'])) {
-    $idReporte = $_GET['ID'];
-    $servicio = new Servicio();
-    $reporte = $servicio->reporte($idReporte); // Obtenemos los datos del reporte
-    $acta = $reporte['acta'];
-    
-}
-    
-    // LLAMAR RECURSOS POR INCIDENTE
-    $SQL = "SELECT * FROM recurso_asignado WHERE id_incidente = $idReporte";
-    $preparado = $conexion->prepare($SQL);
-    $preparado->execute();
+$IDreporte = $_GET['txtIDreporte'];
+
+// Consulta para obtener datos de la tabla servicios
+$sqlservicios = "SELECT * FROM servicios WHERE id = :id";
+$stmtservicios = $conexion->prepare($sqlservicios);
+$stmtservicios->bindParam(":id", $IDreporte, PDO::PARAM_INT);
+$stmtservicios->execute();
+$reporte = $stmtservicios->fetch(PDO::FETCH_ASSOC);
+$acta = $reporte['acta'];
+
+// Consulta para obtener datos de recurso_asignado y recurso
+$sqlRecursoAsignado = "SELECT ra.cantidad, r.nombre 
+                           FROM recurso_asignado ra 
+                           INNER JOIN recurso r ON ra.id_recurso = r.id 
+                           WHERE id_incidente = :id AND tipo_incidente = 'S.E'";
+$stmtRecursoAsignado = $conexion->prepare($sqlRecursoAsignado);
+$stmtRecursoAsignado->bindParam(":id", $IDreporte, PDO::PARAM_INT);
+$stmtRecursoAsignado->execute();
+$recurso = $stmtRecursoAsignado->fetchAll(PDO::FETCH_ASSOC);
+
+// Consulta para obtener datos de efectivo_asignado y persona
+$sqlEfectivoAsignado = "SELECT * FROM efectivo_asignado ea 
+                            INNER JOIN persona p ON ea.cedula = p.cedula 
+                            WHERE id_incidente = :id AND tipo_incidente = 'S.E'";
+$stmtEfectivoAsignado = $conexion->prepare($sqlEfectivoAsignado);
+$stmtEfectivoAsignado->bindParam(":id", $IDreporte, PDO::PARAM_INT);
+$stmtEfectivoAsignado->execute();
+$efectivo = $stmtEfectivoAsignado->fetchAll(PDO::FETCH_ASSOC);
+
+// Consulta para obtener datos del propietario del vehiculo
+$sqlPvehiculo = "SELECT * FROM unidad_asignada ua INNER JOIN vehiculo v ON ua.niv = v.unidad INNER JOIN persona p ON v.cedula = p.cedula WHERE id_incidente = :id AND tipo_incidente = 'S.E'";
+$stmtPvehiculo = $conexion->prepare($sqlPvehiculo);
+$stmtPvehiculo->bindParam(":id", $IDreporte, PDO::PARAM_INT);
+$stmtPvehiculo->execute();
+$propietarioV = $stmtPvehiculo->fetchAll(PDO::FETCH_ASSOC); 
+
+// Consulta para obtener datos del reporte junto con el nombre de la persona
+$sqlPersona = "SELECT s.jefe_comision, p.nombre AS nombre
+               FROM servicios s 
+               INNER JOIN persona p ON s.jefe_comision = p.cedula 
+               WHERE s.id = :id";
+$stmtPersona = $conexion->prepare($sqlPersona);
+$stmtPersona->bindParam(":id", $IDreporte, PDO::PARAM_INT);
+$stmtPersona->execute();
+$jefe_com = $stmtPersona->fetch(PDO::FETCH_ASSOC);
+
+// Consulta para obtener datos del reporte junto con el nombre de la persona
+$sqlPersona = "SELECT s.jefe_general, p.nombre AS nombre
+               FROM servicios s 
+               INNER JOIN persona p ON s.jefe_general = p.cedula 
+               WHERE s.id = :id";
+$stmtPersona = $conexion->prepare($sqlPersona);
+$stmtPersona->bindParam(":id", $IDreporte, PDO::PARAM_INT);
+$stmtPersona->execute();
+$jefe_gen = $stmtPersona->fetch(PDO::FETCH_ASSOC);
+
+// Consulta para obtener datos del reporte junto con el nombre de la persona
+$sqlPersona = "SELECT s.jefe_seccion, p.nombre AS nombre
+               FROM servicios s 
+               INNER JOIN persona p ON s.jefe_seccion = p.cedula 
+               WHERE s.id = :id";
+$stmtPersona = $conexion->prepare($sqlPersona);
+$stmtPersona->bindParam(":id", $IDreporte, PDO::PARAM_INT);
+$stmtPersona->execute();
+$jefe_sec = $stmtPersona->fetch(PDO::FETCH_ASSOC);
+
+// Consulta para obtener datos del nombre de la persona
+$sqlPersona = "SELECT s.comandante, p.nombre AS nombre
+               FROM servicios s 
+               INNER JOIN persona p ON s.comandante = p.cedula 
+               WHERE s.id = :id";
+$stmtPersona = $conexion->prepare($sqlPersona);
+$stmtPersona->bindParam(":id", $IDreporte, PDO::PARAM_INT);
+$stmtPersona->execute();
+$comando = $stmtPersona->fetch(PDO::FETCH_ASSOC);
 
 
     $path = 'imagenes/logo_bomberos.jpg';
@@ -24,16 +87,8 @@ if (isset($_GET['ID'])) {
     $path2 = 'imagenes/firma.jpg';
     $firma = "data:image/jpg;base64," . base64_encode(file_get_contents($path2));
     ob_start(); // Iniciar el buffer de salida
-// 
 
-// 
-
-// 
-
-    // Preparar y ejecutar la consulta SQL con los filtros aplicados
-   
-
-        // Construir el HTML del reporte de municipio
+        // Construir el HTML del reporte de servicios especiales
 ?>
       <!DOCTYPE html>
       <!DOCTYPE html>
@@ -91,7 +146,10 @@ if (isset($_GET['ID'])) {
             border-top: none;
             border-left: none;
             border-right: none;
+            height: 10px;
+            margin: 0;
             margin-bottom: -2px;
+            text-align: left;
         }
 
         input[type="checkbox"]{
@@ -172,32 +230,44 @@ if (isset($_GET['ID'])) {
             </tr>
         </table>
         
-        <!-- Ejecución del Servicio -->
-        
+        <!-- Ejecución del Servicios -->
         <table>
         <tr>
-            <td style="padding: 0;"><h3 align="center">2) EJECUCIÓN DEL SERVICIO:</h3></td>
+            <td style="padding: 0;"><h3 align="center">2) MATERIALES UTILIZADO:</h3></td>
         </tr>
       </table>
         <table>
             <tr>
-                <td>JEFE DE COMISIÓN: <input type="text" size="40px"></td>
-                <td>C.I.: <input type="text" value="<?=$reporte['jefe_comision'];?>" size="10px"></td>
+            <td>
+                    <?php foreach ($recurso as $rec) :?>
+                    <input type="text" value="<?= $rec['nombre'] ?>" size="10px">:<input type="text" value="<?= $rec['cantidad'] ?>" size="1px">
+                    <?php endforeach;?>
+                </td>
             </tr>
         </table>
 
         <table>
         <tr>
-            <td style="padding: 0;"><h3 align="center">3) MATERIALES UTILIZADO:</h3></td>
-        </tr>
-      </table>
-        <table>
-            <tr>
-                <?php foreach ($preparado as $recurso):?>
-                <td><input type="text" value="<?=$recurso['id_recurso']?>" size="1px">:<input type="text" value="<?=$recurso['cantidad']?>" size="1px"></td>
-                <?php endforeach;?>
+                <td colspan="6">JEFE DE COMISION:<br><input type="text" size="20px" name="jefe_comision" value="<?= $jefe_com['nombre']; ?>"></td>
+                <td colspan="6">
+                    EFECTIVOS ACTUANTES:<br>
+
+                    <?php foreach ($efectivo as $efecto): ?>
+                    <input type="text" size="25px" name="efectivo" value="<?=$efecto['nombre'].' ('.$efecto['cedula'].')'?>"><br>
+                    <?php endforeach; ?>
+
+                </td>
+                <td colspan="6">
+                    PROPIETARIOS Y UNIDADES:<br>
+                    <?php foreach ($propietarioV as $unidad): ?>
+                        <input type="text" size="25px" name="unidad" value="<?=$unidad['nombre'].' ('.$unidad['cedula'].'): '.$unidad['unidad']; ?>"><br>
+                    <?php endforeach; ?>
+
+                </td>
             </tr>
         </table>
+
+        
 
         <!-- Otras Autoridades -->
         <table>
@@ -243,40 +313,40 @@ if (isset($_GET['ID'])) {
             </table>
             
            
-            <table>
-                <tr>
-                    <td>
-                      <b> JEFE DE COMISION:</b><br> <br>
-                       NOMBRE Y APELLIDO: <input type="text" name="" id=""> <br> <br>
+            <table style="font-size:10px;">
+            <tr>
+                <td style="text-align: center;">
+                    <b> JEFE DE COMISION:</b><br> <br>
+                    NOMBRE Y APELLIDO: <input type="text" id="" value="<?= $jefe_com['nombre'] ?>" size="30px"> <br> <br>
 
-                       CI: <input type="text" name="" id="">  FIRMA: <input type="text" name="" id="" size="10px">
-                    
-                    </td>
-                    <td>
-                       <b>JEFE DE SERVICIOS GENERALES:</b> <br> <br>
-                       NOMBRE Y APELLIDO: <input type="text" name="" id=""> <br> <br>
+                    CI: <input type="text" id="" value="<?= $reporte['jefe_comision'] ?>"> FIRMA: <input type="text" id="" size="10px">
 
-                       CI: <input type="text" name="" id="">  FIRMA: <input type="text" name="" id="" size="10px">
-                    
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                       <b>JEFE DE SECCION:</b> <br> <br>
-                       NOMBRE Y APELLIDO: <input type="text" name="" id=""> <br> <br>
+                </td>
+                <td style="text-align: center;">
+                    <b>JEFE DE SERVICIOS GENERALES:</b> <br> <br>
+                    NOMBRE Y APELLIDO: <input type="text" id="" size="30px" value="<?= $jefe_gen['nombre'] ?>"> <br> <br>
 
-                       CI: <input type="text" name="" id="">  FIRMA: <input type="text" name="" id="" size="10px">
-                    
-                    </td>
-                    <td>
-                       <b>COMANDANTE:</b> <br> <br>
-                       NOMBRE Y APELLIDO: <input type="text" name="" id=""> <br> <br>
+                    CI: <input type="text" id="" value="<?= $jefe_gen['jefe_general'] ?>"> FIRMA: <input type="text" id="" size="10px">
 
-                       CI: <input type="text" name="" id=""> FIRMA: <input type="text" name="" id="" size="10px">
-                    
-                    </td>
-                </tr>
-            </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">
+                    <b>JEFE DE SECCION:</b> <br> <br>
+                    NOMBRE Y APELLIDO: <input type="text" id="" value="<?= $jefe_sec['nombre'] ?>" size="30px"> <br> <br>
+
+                    CI: <input type="text" id="" value="<?= $reporte['jefe_seccion'] ?>"> FIRMA: <input type="text" id="" size="10px">
+
+                </td>
+                <td style="text-align: center;">
+                    <b>COMANDANTE:</b> <br> <br>
+                    NOMBRE Y APELLIDO: <input type="text" id="" value="<?= $comando['nombre'] ?>" size="30px"> <br> <br>
+
+                    CI: <input type="text" id="" value="<?= $reporte['comandante'] ?>"> FIRMA: <input type="text" id="" size="10px">
+
+                </td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

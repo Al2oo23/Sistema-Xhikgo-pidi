@@ -166,7 +166,7 @@ include ("modal/modalSEM.php");
                                         </div>
                                     </td>
                                     <td>
-                                    <a href="../controlador/ctl_servicio.php?txtIDreporte=<?= $se['id'];?>" class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
+                                    <a href="../vista/reportes/reporte_SEesp.php?txtIDreporte=<?= $se['id'];?>" class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
                                     </td>
                                 </tr>
 

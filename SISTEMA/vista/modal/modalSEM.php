@@ -66,7 +66,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Fecha</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" name="fechaM" id="fechaM"
+                                        <input type="text" class="form-control" name="fecha" id="fechaM"
                                             placeholder="Fecha">
                                         <div class="form-control-icon">
                                             <i class="bi bi-calendar-date"></i>
@@ -79,7 +79,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Sección de Bomberos</label>
                                     <div class="position-relative">
-                                        <select name="seccionM" class="form-select" id="seccionM">
+                                        <select name="seccion" class="form-select" id="seccionM">
                                             <option value="default">Seleccione la Sección...</option>
                                             <?php foreach ($seccion as $sec):
                                                 $seccion = $sec['numero'];
@@ -97,7 +97,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Estación de Bomberos</label>
                                     <div class="position-relative">
-                                        <select name="estacionM" class="form-select" id="estacionM">
+                                        <select name="estacion" class="form-select" id="estacionM">
                                             <option value="default">Seleccione la Estación...</option>
                                             <?php foreach ($estacion as $estac):
                                                 $estacion = $estac['nombre'];
@@ -115,7 +115,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Tipo de Aviso</label>
                                     <div class="position-relative">
-                                        <select name="tipo_avisoM" class="form-select" id="tipo_avisoM">
+                                        <select name="tipo_aviso" class="form-select" id="tipo_avisoM">
                                             <option value="">Seleccione el Tipo de Aviso...</option>
                                             <?php foreach ($aviso as $avis):
                                                 $aviso = $avis['nombre'];
@@ -133,7 +133,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Solicitante</label>
                                     <div class="position-relative">
-                                        <input type="text" id="solicitanteM" name="solicitanteM" class="form-control"
+                                        <input type="text" id="solicitanteM" name="solicitante" class="form-control"
                                             placeholder="Solicitante">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass"></i>
@@ -146,7 +146,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Aviso</label>
                                     <div class="position-relative">
-                                        <input type="text" id="hora_avisoM" name="hora_avisoM" class="form-control"
+                                        <input type="text" id="hora_avisoM" name="hora_aviso" class="form-control"
                                             placeholder="Hora de Aviso">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass"></i>
@@ -159,7 +159,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Salida</label>
                                     <div class="position-relative">
-                                        <input type="text" id="hora_salidaM" name="hora_salidaM" class="form-control"
+                                        <input type="text" id="hora_salidaM" name="hora_salida" class="form-control"
                                             placeholder="Hora de Salida">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-top"></i>
@@ -172,7 +172,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Llegada</label>
                                     <div class="position-relative">
-                                        <input type="text" id="hora_llegadaM" name="hora_llegadaM" class="form-control"
+                                        <input type="text" id="hora_llegadaM" name="hora_llegada" class="form-control"
                                             placeholder="Hora de Llegada">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-split"></i>
@@ -185,7 +185,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Hora de Regreso</label>
                                     <div class="position-relative">
-                                        <input type="text" id="hora_regresoM" name="hora_regresoM" class="form-control"
+                                        <input type="text" id="hora_regresoM" name="hora_regreso" class="form-control"
                                             placeholder="Hora de Regreso">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-bottom"></i>
@@ -198,7 +198,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Causa del Servicio</label>
                                     <div class="position-relative">
-                                        <input type="text" id="causaM" name="causaM" class="form-control"
+                                        <input type="text" id="causaM" name="causa" class="form-control"
                                             placeholder="Causa">
                                         <div class="form-control-icon">
                                             <i class="bi bi-hourglass-bottom"></i>
@@ -209,7 +209,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
                             <div class="form-group">
                                 <label for="" class="form-label">Dirección</label>
-                                <textarea class="form-control no-resize" id="direccionM" name="direccionM" rows="4"></textarea>
+                                <textarea class="form-control no-resize" id="direccionM" name="direccion" rows="4"></textarea>
                             </div>
                             
                         <div class="col-12">
@@ -217,8 +217,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                <label for="">Materiales Utilizados</label>
                                <div class="plus-container">
                                    <div class="position-relative zero-siblingM">
-                                       <select name="recurso[]" class="form-select" id="recurso_utilizado">
-                                           <option value="">Seleccione el Material Utilizado...</option>
+                                       <select name="recurso[]" class="form-select" id="recurso_utilizadoM">
                                            <?php
                                             
                                             foreach ($n_recurso as $recurso) : ?>
@@ -232,7 +231,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                        <div class="form-group has-icon-left">
                                            
                                            <div class="position-relative">
-                                               <input type="text" id="cantidad_recurso" name="cantidad[]" class="form-control" placeholder="Cantidad">
+                                               <input type="text" id="cantidad_recursoM" name="cantidad[]" class="form-control" placeholder="Cantidad">
                                                <div class="form-control-icon"></div>
                                            </div>
                                        </div>
@@ -250,7 +249,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="">Efectivo</label>
                                     <div class="plus-container">
                                         <div class="position-relative first-siblingM">
-                                            <input type="text" id="efectivo" name="efectivos[]" class="form-control" placeholder="Efectivo">
+                                            <input type="text" id="efectivoM" name="efectivos[]" class="form-control" placeholder="Efectivo">
                                             <div class="form-control-icon">
                                                 <i class="bi bi-person-x"></i>
                                             </div>
@@ -268,7 +267,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="">Unidad</label>
                                     <div class="plus-container">
                                         <div class="position-relative second-siblingM">
-                                            <select name="unidad[]" class="form-select" id="unidad">
+                                            <select name="unidad[]" class="form-select" id="unidadM">
                                             <?php foreach ($n_unidad as $unidad) : 
                                                 $n_unidad = $unidad["unidad"];
                                             ?>
@@ -318,7 +317,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I PNB</label>
                                     <div class="position-relative">
-                                        <input type="text" name="ci_pnbM" class="form-control" placeholder="C.I PNB">
+                                        <input type="text" name="ci_pnb" id="ci_pnbM" class="form-control" placeholder="C.I PNB">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -330,7 +329,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I GNB</label>
                                     <div class="position-relative">
-                                        <input type="text" name="ci_gnbM" class="form-control" placeholder="C.I GNB">
+                                        <input type="text" name="ci_gnb" id="ci_gnbM" class="form-control" placeholder="C.I GNB">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -342,7 +341,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I INTT</label>
                                     <div class="position-relative">
-                                        <input type="text" name="ci_inttM" class="form-control" placeholder="C.I INTT">
+                                        <input type="text" name="ci_intt" id="ci_inttM" class="form-control" placeholder="C.I INTT">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -354,7 +353,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I INVITY</label>
                                     <div class="position-relative">
-                                        <input type="text" name="ci_invityM" class="form-control" placeholder="C.I INVITY">
+                                        <input type="text" name="ci_invity"  id="ci_invityM" class="form-control" placeholder="C.I INVITY">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -366,7 +365,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I PC</label>
                                     <div class="position-relative">
-                                        <input type="text" name="ci_pcM" class="form-control" placeholder="C.I PC">
+                                        <input type="text" name="ci_pc" id="ci_pcM" class="form-control" placeholder="C.I PC">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -378,7 +377,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">C.I OTROS</label>
                                     <div class="position-relative">
-                                        <input type="text" name="ci_otrosM" class="form-control" placeholder="C.I OTROS">
+                                        <input type="text" name="ci_otros" id="ci_otrosM" class="form-control" placeholder="C.I OTROS">
                                         <div class="form-control-icon">
                                             <i class="bi bi-people"></i>
                                         </div>
@@ -390,7 +389,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Jefe de Comisión</label>
                                     <div class="position-relative">
-                                        <input type="text" id="jefe_comisionM" name="jefe_comisionM" class="form-control"
+                                        <input type="text" id="jefe_comisionM" name="jefe_comision" class="form-control"
                                             placeholder="Ingrese la Cedula del Jefe de Comision">
                                         <div class="form-control-icon">
                                         <i class="bi bi-person-video2"></i>
@@ -403,7 +402,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Jefe General</label>
                                     <div class="position-relative">
-                                        <input type="text" id="jefe_generalM" name="jefe_generalM" class="form-control"
+                                        <input type="text" id="jefe_generalM" name="jefe_general" class="form-control"
                                             placeholder="Ingrese la Cedula del Jefe General">
                                         <div class="form-control-icon">
                                         <i class="bi bi-person-video2"></i>
@@ -416,7 +415,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Jefe de Sección</label>
                                     <div class="position-relative">
-                                        <input type="text" id="jefe_seccionM" name="jefe_seccionM" class="form-control"
+                                        <input type="text" id="jefe_seccionM" name="jefe_seccion" class="form-control"
                                             placeholder="Ingrese la Cedula del Jefe de Sección">
                                         <div class="form-control-icon">
                                         <i class="bi bi-person-video2"></i>
@@ -429,7 +428,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="form-group has-icon-left">
                                     <label for="">Comandante</label>
                                     <div class="position-relative">
-                                        <input type="text" id="comandanteM" name="comandanteM" class="form-control"
+                                        <input type="text" id="comandanteM" name="comandante" class="form-control"
                                             placeholder="Ingrese la Cedula del Comandante">
                                         <div class="form-control-icon">
                                         <i class="bi bi-person-video2"></i>
@@ -443,19 +442,19 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <label for="">Se Levantó Acta</label>
                                     <div class="position-relative">
                                         <label class="form-check-label" for="">SI</label>
-                                        <input type="radio" class="form-check-input" name="actaM" value="SI"
-                                            id="acta">
+                                        <input type="radio" class="form-check-input" name="acta" value="SI"
+                                            id="actaM">
 
                                         <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="actaM" value="NO"
-                                            id="no_acta">
+                                        <input type="radio" class="form-check-input" name="acta" value="NO"
+                                            id="no_actaM">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="" class="form-label">Observaciones</label>
-                                <textarea class="form-control no-resize" name="observacionesM" id="observaciones"
+                                <textarea class="form-control no-resize" name="observaciones" id="observacionesM"
                                 rows="4"></textarea>
                             </div>
 
