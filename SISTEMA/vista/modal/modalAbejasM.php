@@ -415,7 +415,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                 <div class="form-group has-icon-left">
                                     <label for="">Jefe de Comisión</label>
                                     <div class="position-relative">
-                                        <input type="text" id="jefe_comisionM" name="jefe_comisionM" class="form-control"
+                                        <input type="text" id="jefe_comisionM" name="jefe_comision" class="form-control"
                                             placeholder="Ingrese la Cedula del Jefe de Comision">
                                         <div class="form-control-icon">
                                         <i class="bi bi-person-video2"></i>
@@ -428,7 +428,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                 <div class="form-group has-icon-left">
                                     <label for="">Jefe General</label>
                                     <div class="position-relative">
-                                        <input type="text" id="jefe_generalM" name="jefe_generalM" class="form-control"
+                                        <input type="text" id="jefe_generalM" name="jefe_general" class="form-control"
                                             placeholder="Ingrese la Cedula del Jefe General">
                                         <div class="form-control-icon">
                                         <i class="bi bi-person-video2"></i>
@@ -441,7 +441,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                 <div class="form-group has-icon-left">
                                     <label for="">Jefe de Sección</label>
                                     <div class="position-relative">
-                                        <input type="text" id="jefe_seccionM" name="jefe_seccionM" class="form-control"
+                                        <input type="text" id="jefe_seccionM" name="jefe_seccion" class="form-control"
                                             placeholder="Ingrese la Cedula del Jefe de Sección">
                                         <div class="form-control-icon">
                                         <i class="bi bi-person-video2"></i>
@@ -454,7 +454,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                                 <div class="form-group has-icon-left">
                                     <label for="">Comandante</label>
                                     <div class="position-relative">
-                                        <input type="text" id="comandanteM" name="comandanteM" class="form-control"
+                                        <input type="text" id="comandanteM" name="comandante" class="form-control"
                                             placeholder="Ingrese la Cedula del Comandante">
                                         <div class="form-control-icon">
                                         <i class="bi bi-person-video2"></i>

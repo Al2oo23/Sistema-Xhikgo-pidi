@@ -40,6 +40,12 @@ $sentencia = $conexion->prepare("SELECT * FROM lugar");
 $sentencia->execute();
 $lugares = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
+// LLAMAR AL ESTADO DEL CADAVER:
+
+$sentencia = $conexion->prepare("SELECT * FROM estado_cadaver");
+$sentencia->execute();
+$cadaver = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
 // LLAMAR UNIDAD 
 
 $sentencia = $conexion->prepare("SELECT unidad FROM vehiculo WHERE tipo = 'Unidad'");
@@ -62,7 +68,7 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             <!-- Header del Modal: ----------------------------->
 
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel33">Registrar Incidente de Abejas</h4>
+                        <h4 class="modal-title" id="myModalLabel33">Registrar Incidente de Levantamiento</h4>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <i data-feather="x"></i>
                         </button>
@@ -347,7 +353,11 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="position-relative">
                                         <select name="estadoEncontrado" class="form-select" id="estadoEncontrado">
                                             <option value="">Seleccione</option>
-                                            <option value="Muerto">Muerto</option>
+                                            <?php foreach ($cadaver as $cad) :
+                                                $cadaver = $cad["ecadaver"];
+                                        ?>
+                                            <option value="<?= $cadaver ?>"><?= $cadaver ?></option>
+                                            <?php endforeach;?>
                                         </select>
                                     </div>
                                 </div>

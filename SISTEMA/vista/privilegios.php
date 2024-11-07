@@ -1,5 +1,4 @@
 <?php
-session_start();
 $nombrePagina = 'Privilegios';
 require('../header.php');
 include('../modelo/conexion.php');
@@ -50,6 +49,8 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                         </thead>
                         <tbody>
                             <?php foreach ($resultado as $usuario) :
+
+                             if($usuario['nombre'] != 'Cofla'):
                             ?>
                                 <tr class="fila">
                                     <td class="columnas"><?= $usuario['cedula']; ?></td>
@@ -64,6 +65,7 @@ $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </td>
                                 </tr>
+                                <?php endif;?>
                             <?php endforeach;
                             ?>
                         </tbody>

@@ -259,7 +259,6 @@ if (isset($_GET['txtID'])) {
     $txtID = (isset($_GET['txtID'])) ? $_GET['txtID'] : '';
     
     $datos = $recurso->restauradorRecurso($txtID, 'S.E');
-    
     $datos2 = $servicio->errorRegistro($txtID);
 
     echo "<script>alert('Servicio Eliminado con Éxito')</script>";

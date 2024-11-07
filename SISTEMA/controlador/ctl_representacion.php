@@ -2,7 +2,15 @@
 session_start();
 include("../modelo/conexion.php");
 include("../modelo/clase_representacion.php");
-$representacion = new representacion();
+include("../modelo/clase_efectivo.php");
+include("../modelo/clase_recursoAsignado.php");
+
+$representacion = new Representacion();
+$efectivo = new efectivo();
+$recurso = new recursoAsignado();
+
+$caso1 = false;
+$caso2 = false;
 
 if(isset($_POST['registrar']) && $_POST['registrar'] == "registrar"){
     
@@ -29,9 +37,67 @@ if(isset($_POST['registrar']) && $_POST['registrar'] == "registrar"){
     $representacion->setComandante($_POST['comandante']);
     $representacion->setActa($_POST['acta']);
 
+    if($_POST['ci_pnb'] == ''){$representacion->setCIPnb("Ninguno");}
+    else{$representacion->setCIPnb($_POST['ci_pnb']);}
+    
+    if($_POST['ci_gnb'] == ''){$representacion->setCIGnb("Ninguno");
+    }else{$representacion->setCIGnb($_POST['ci_gnb']);}
+
+    if($_POST['ci_intt'] == ''){$representacion->setCIIntt('Ninguno');}
+    else{$representacion->setCIIntt($_POST['ci_intt']);}
+    
+    if($_POST['ci_invity'] == ''){$representacion->setCIInvity("Ninguno");}
+    else{$representacion->setCIInvity($_POST['ci_invity']);}
+
+    if($_POST['ci_pc'] == ''){$representacion->setCIPc("Ninguno");}
+    else{$representacion->setCIPc($_POST['ci_pc']);}
+
+    if($_POST['ci_otros'] == ''){$representacion->setCIOtro("Ninguno");}
+    else{$representacion->setCIOtro($_POST['ci_otros']);}
+
     $datos = $representacion->registrarRepresentacion($representacion->getFecha(), $representacion->getSeccion(), $representacion->getEstacion(), $representacion->getTipoAviso(), $representacion->getHoraAviso(), $representacion->getHoraSalida(), $representacion->getHoraLlegada(), $representacion->getHoraRegreso(), $representacion->getCausa(), $representacion->getDireccion(), $representacion->getExplicacion(), $representacion->getCIPNB(), $representacion->getCIGNB(), $representacion->getCIINTT(), $representacion->getCIINVITY(), $representacion->getCIPC(), $representacion->getCIOtro(), $representacion->getJefeComision(), $representacion->getJefeGeneral(), $representacion->getJefeSeccion(), $representacion->getComandante(), $representacion->getActa());
 
-    if(!$datos){
+     //EFECTIVOS
+     foreach ($_POST['efectivos'] as $cedula) {
+        //setters efectivo incidente
+
+        $efectivo->setIdIncidente($datos[1]);
+        $efectivo->setTipo("Representacion");
+        $efectivo->setCedula($cedula);
+
+        //getters efectivo incidente
+       
+            $caso1 = $efectivo->agregarEfectivo(
+            $efectivo->getIdIncidente(),
+            $efectivo->getTipo(),
+            $efectivo->getCedula()
+        );
+    }
+
+    //RECURSOS
+    for($i = 0; $i<count($_POST['recurso']);$i++){
+        //setters vehiculo incidente
+
+        $recurso->setIdIncidente($datos[1]);
+        $recurso->setTipo("Representacion");
+        $recurso->setIdRecurso($_POST['recurso'][$i]);
+        $recurso->setCantidad($_POST['cantidad'][$i]);
+
+        //getters vehiculo incidente
+
+            $caso2 = $recurso->agregarRecurso(
+            $recurso->getIdIncidente(),
+            $recurso->getTipo(),
+            $recurso->getIdRecurso(),
+            $recurso->getCantidad()
+        );
+    }
+
+    if(empty($datos[0]) || !$caso1 || !$caso2){
+        
+        $representacion->errorRegistro($datos[1]);
+
+        echo "<script>alert('No se pudo registrar el Incidente')</script>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoRepresentacion.php'>"; 
     }else{
         echo "<script>alert('Representación Institucional Registrada con Éxito')</script>";
@@ -66,6 +132,55 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
 
     $datos = $representacion->modificarRepresentacion($representacion->getId(), $representacion->getFecha(), $representacion->getSeccion(), $representacion->getEstacion(), $representacion->getTipoAviso(), $representacion->getHoraAviso(), $representacion->getHoraSalida(), $representacion->getHoraLlegada(), $representacion->getHoraRegreso(), $representacion->getCausa(), $representacion->getDireccion(), $representacion->getExplicacion(), $representacion->getCIPNB(), $representacion->getCIGNB(), $representacion->getCIINTT(), $representacion->getCIINVITY(), $representacion->getCIPC(), $representacion->getCIOtro(), $representacion->getJefeComision(), $representacion->getJefeGeneral(), $representacion->getJefeSeccion(), $representacion->getComandante(), $representacion->getActa());
 
+    //EFECTIVOS
+    foreach ($_POST['efectivos'] as $cedula) {
+        //setters vehiculo incidente
+
+        $efectivo->setIdIncidente($_POST['id']);
+        $efectivo->setTipo("Representacion");
+        $efectivo->setCedula($cedula);
+
+        //getters vehiculo incidente
+
+        $efectivo->eliminarEfectivo($efectivo->getIdIncidente(), $efectivo->getTipo());
+
+        $resultadoEfectivo = $efectivo->agregarEfectivo(
+            $efectivo->getIdIncidente(),
+            $efectivo->getTipo(),
+            $efectivo->getCedula()
+        );
+    }
+
+    //RECURSOS
+
+    $recurso->restauradorRecurso(
+        $_POST['id'],
+        "Representacion"
+    );
+
+    $recurso->eliminarRecurso(
+         $_POST['id'],
+        "Representacion"
+    );
+
+    for($i = 0; $i<count($_POST['recurso']);$i++){
+        //setters recurso
+
+        $recurso->setIdIncidente($_POST['id']);
+        $recurso->setTipo("Representacion");
+        $recurso->setIdRecurso($_POST['recurso'][$i]);
+        $recurso->setCantidad($_POST['cantidad'][$i]);
+        
+        // getters recurso
+
+        $resultadoRecurso = $recurso->agregarRecurso(
+            $recurso->getIdIncidente(),
+            $recurso->getTipo(),
+            $recurso->getIdRecurso(),
+            $recurso->getCantidad()
+        );
+    }
+
     if(!$datos){
         echo "<script>alert('No se pudo Modificar la Representación')</script>";
 		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoRepresentacion.php'>"; 
@@ -76,28 +191,14 @@ if(isset($_POST['modificar']) && $_POST['modificar'] == "modificar"){
 }
 
 // ELIMINAR
-
 if (isset($_GET['txtID'])) {
 
     $txtID = (isset($_GET['txtID'])) ? $_GET['txtID'] : '';
 
-    $sentencia = $conexion->prepare("DELETE FROM representacion_institucional WHERE id = ?");
-    $sentencia->bindParam(1, $txtID, PDO::PARAM_INT);
-    $sentencia->execute();
+    $datos = $recurso->restauradorRecurso($txtID, 'Representacion');
+    $datos2 = $representacion->errorRegistro($txtID);
 
-     // BITACORA
-
-                // Fecha y hora actual
-                $fecha = date('Y-m-d H:i:s');
-            
-                // Preparar la consulta SQL
-                $sql = "INSERT INTO bitacora VALUES (?,?,?,?)";
-                $resultado2 = $conexion->prepare($sql);
-
-                // Ejecutar la consulta
-                $resultado2->execute([null, $_SESSION['usuarioDatos'][0]['nombre'], "Eliminó  Representación institucional ".$nombre." el día ",$fecha]);
-
-    echo "<script>alert('Representación Institucional Eliminada con Éxito')</script>";
-	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogorepresentacion.php'>"; 
+    echo "<script>alert('Incidente Eliminado con Exito')</script>";
+	echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../vista/catalogoRepresentacion.php'>"; 
 }
 ?>

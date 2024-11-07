@@ -1,5 +1,5 @@
 <?php
-$nombrePagina = "Catálogo de Abejas";
+$nombrePagina = "Catálogo de Levantamiento";
 require ('../header.php');
 include ('../modelo/conexion.php');
 

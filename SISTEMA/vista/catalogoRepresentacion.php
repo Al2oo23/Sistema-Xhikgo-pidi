@@ -56,12 +56,12 @@ include("modal/modalRepresentacionM.php");
                             <th class="columnas">Fecha</th>
                             <th class="columnas">Sección</th>
                             <th class="columnas">Estación</th>
-                            <th class="columnas">Tipo de Aviso</th>
+                            <th class="columnas" hidden>Tipo de Aviso</th>
                             <th class="columnas" hidden>Hora Aviso</th>
                             <th class="columnas" hidden>Hora Salida</th>
                             <th class="columnas" hidden>Hora Llegada</th>
                             <th class="columnas" hidden>Hora Regreso</th>
-                            <th class="columnas">Causa</th>
+                            <th class="columnas" hidden>Causa</th>
                             <th class="columnas" hidden>Direccion</th>
                             <th class="columnas" hidden>Explicación</th>
                             <th class="columnas" hidden>CI PNB</th>
@@ -75,6 +75,7 @@ include("modal/modalRepresentacionM.php");
                             <th class="columnas">Jefe Sección</th>
                             <th class="columnas">Comandante</th>
                             <th class="columnas">Acción</th>
+                            <th class="columnas">Reporte</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -112,7 +113,7 @@ include("modal/modalRepresentacionM.php");
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="../vista/reportes/reporte_representacion.php?txtIDreporte=<?= $representacion['id']; ?>"
+                                    <a href="../vista/reportes/reporte_representacionEsp.php?txtIDreporte=<?= $representacion['id']; ?>"
                                         class="btn icon btn-danger"><i class="bi bi-file-earmark-pdf-fill"></i></a>
                                 </td>
                             </tr>

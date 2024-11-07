@@ -300,7 +300,7 @@ class representacion
             $acta
         ]);
 
-        return $preparado;
+        return array($preparado,$conexion->lastInsertId());
     }
 
 
@@ -317,5 +317,24 @@ class representacion
         $preparado->execute([$fecha, $seccion, $estacion, $tipo_aviso, $hora_aviso, $hora_salida, $hora_llegada, $hora_regreso, $causa, $direccion, $explicacion, $ci_pnb, $ci_gnb, $ci_intt, $ci_invity, $ci_pc, $ci_otro, $jefe_comision, $jefe_general, $jefe_seccion, $comandante, $acta, $id]);
 
         return $preparado;
+    }
+
+    public function errorRegistro($id){
+        include("conexion.php");
+        // ELIMINAR INCIDENTE DE ABEJAS
+        $sentencia = $conexion->prepare("DELETE FROM representacion_institucional WHERE id = ?");
+        $sentencia->execute([$id]);
+
+        // ELIMINAR RECURSO ASIGNADO
+        $sentencia = $conexion->prepare("DELETE FROM recurso_asignado WHERE id_incidente = ?");
+        $sentencia->execute([$id]);
+
+        // ELIMINAR UNIDAD ASIGNADA
+        $sentencia = $conexion->prepare("DELETE FROM unidad_asignada WHERE id_incidente = ?");
+        $sentencia->execute([$id]);
+        
+        // ELIMINAR EFECTIVO ASIGNADO
+        $sentencia = $conexion->prepare("DELETE FROM efectivo_asignado WHERE id_incidente = ?");
+        $sentencia->execute([$id]);
     }
 }

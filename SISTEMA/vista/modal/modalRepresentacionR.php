@@ -201,29 +201,47 @@ $n_unidad = $sentencia->fetchAll(PDO::FETCH_ASSOC)
                             </div>
 
                             <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Número de Efectivos</label>
-                                    <div class="position-relative">
-                                        <input type="text" id="num_efectivos" name="num_efectivos" class="form-control"
-                                            placeholder="Número de Efectivos">
-                                        <div class="form-control-icon">
-                                            <i class="bi bi-hourglass-bottom"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           
+                           <div class="form-group has-icon-left grand-plus_Container-efectivo">
+                               <label for="">Efectivo</label>
+                               <div class="plus-container">
+                                   <div class="position-relative first-sibling">
+                                       <input type="text" id="efectivo" name="efectivos[]" class="form-control" placeholder="Cedula del Efectivo">
+                                       <div class="form-control-icon">
+                                           <i class="bi bi-person-x"></i>
+                                       </div>
+                                   </div>
+                                   <div id="plus-efectivo" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
 
                             <div class="col-12">
-                                <div class="form-group has-icon-left">
-                                    <label for="">Maletín de Primeros Auxilios</label>
-                                    <div class="position-relative">
-                                        <label class="form-check-label" for="">SI</label>
-                                        <input type="radio" class="form-check-input" name="maletin" value="SI"
-                                            id="maletin">
+                                <div class="form-group has-icon-left grand-plus_Container-recurso">
+                                    <label for="">Recurso Utilizado</label>
+                                    <div class="plus-container">
+                                        <div class="position-relative zero-sibling">
+                                            <select name="recurso[]" class="form-select" id="recurso_utilizado">
+                                                <option value="">Seleccione el Recurso Utilizado...</option>
+                                                <?php foreach ($n_recurso as $recurso) : ?>
 
-                                        <label class="form-check-label ms-3" for="">NO</label>
-                                        <input type="radio" class="form-check-input" name="maletin" value="NO"
-                                            id="no_maletin">
+                                                    <option value="<?=$recurso["id"]?>"><?=$recurso["nombre"]?></option>
+
+                                                <?php endforeach;?>
+                                            </select>
+
+                                            <div class="form-group has-icon-left">
+                                                
+                                                <div class="position-relative">
+                                                    <input type="text" id="cantidad_recurso" name="cantidad[]" class="form-control" placeholder="Cantidad">
+                                                    <div class="form-control-icon"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div id="plus-recurso" class="btn icon btn-primary"><i class="bi bi-plus-lg"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -60,7 +60,8 @@ try {
             jefe_comision VARCHAR(255) NOT NULL,
             jefe_generales VARCHAR(255) NOT NULL,
             jefe_seccion VARCHAR(255) NOT NULL,
-            comandante VARCHAR(255) NOT NULL
+            comandante VARCHAR(255) NOT NULL,
+            acta VARCHAR(5) NOT NULL
         )";
     $conexion->exec($SQL);
 
@@ -178,7 +179,7 @@ $conexion->exec($SQL);
 
     $SQL = "CREATE TABLE IF NOT EXISTS tipo_persona (
         id INT PRIMARY KEY AUTO_INCREMENT,
-        tipo VARCHAR(20) NOT NULL,
+        tipo VARCHAR(40) NOT NULL,
         descripcion VARCHAR(100) NOT NULL
     )";
     $conexion->exec($SQL);
@@ -282,9 +283,6 @@ $conexion->exec($SQL);
         ecadaver VARCHAR(20) NOT NULL 
         )";
     $conexion->exec($SQL);
-
-
-
 
     //------------------ MODELO ------------------
 
@@ -596,15 +594,13 @@ $conexion->exec($SQL);
         hora_salida varchar(100) NOT NULL,
         hora_llegada varchar(100) NOT NULL,
         hora_regreso varchar(100) NOT NULL,
-        municipio varchar(100) NOT NULL,
-        localidad varchar(100) NOT NULL,
+        lugar varchar(100) NOT NULL,
         direccion varchar(100) NOT NULL,
         paredes varchar(100) NOT NULL,
         techo varchar(100) NOT NULL,
         piso varchar(100) NOT NULL,
         ventanas varchar(100) NOT NULL,
         puertas varchar(100) NOT NULL,
-        otros_materiales varchar(100) NOT NULL,
         propietario varchar(100) NOT NULL,
         valor_inmueble varchar(100) NOT NULL,
         num_residenciados varchar(100) NOT NULL,
@@ -612,29 +608,32 @@ $conexion->exec($SQL);
         adolescentes varchar(100) NOT NULL,
         adultos varchar(100) NOT NULL,
         info_adicional varchar(100) NOT NULL,
-        asegurado varchar(100) NOT NULL,
-        aseguradora varchar(100) NOT NULL,
-        num_poliza varchar(100) NOT NULL,
-        valor_asegurado varchar(100) NOT NULL,
+        asegurado VARCHAR(5) NOT NULL,
+        aseguradora varchar(100) DEFAULT NULL,
+        num_poliza varchar(100) DEFAULT NULL,
+        valor_asegurado varchar(100) DEFAULT NULL,
         valor_perdido varchar(100) NOT NULL,
         valor_salvado varchar(100) NOT NULL,
         fuente_ignicion varchar(100) NOT NULL,
         causa_incendio varchar(100) NOT NULL,
         lugar_inicio varchar(100) NOT NULL,
         lugar_fin varchar(100) NOT NULL,
-        reignicion varchar(100) NOT NULL,
+        reignicion VARCHAR(5) NOT NULL,
         tipo_combustible varchar(100) NOT NULL,
         declaracion varchar(100) NOT NULL,
         lesionados varchar(100) NOT NULL,
-        num_lesionados varchar(100) NOT NULL,
-        datos_lesionados varchar(100) NOT NULL,
-        jefe_comision varchar(100) NOT NULL,
+        num_lesionados varchar(100) DEFAULT NULL,
         ci_pnb varchar(100) DEFAULT NULL,
         ci_gnb varchar(100) DEFAULT NULL,
         ci_intt varchar(100) DEFAULT NULL,
         ci_invity varchar(100) DEFAULT NULL,
         ci_pc varchar(100) DEFAULT NULL,
         ci_otro varchar(100) DEFAULT NULL,
+        jefe_comision VARCHAR(20) NOT NULL,
+        jefe_general VARCHAR(40) NOT NULL,
+        jefe_seccion VARCHAR(40) NOT NULL,
+        comandante VARCHAR(40) NOT NULL,
+        acta VARCHAR(5) NOT NULL,
         observaciones varchar(100) NOT NULL
       )";
     $conexion->exec($SQL);

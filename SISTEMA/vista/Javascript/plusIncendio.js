@@ -15,31 +15,31 @@ const grampUnidad = document.querySelector(".grand-plus_Container-unidad");
 const grampRecurso = document.querySelector(".zero-sibling");
 
 
-plusEfectivo.addEventListener("click",(e)=>{
+plusEfectivo.addEventListener("click", (e) => {
 
-    if(grampEfectivo.childElementCount <=8){
+    if (grampEfectivo.childElementCount <= 8) {
         let clon = firtsSibling.cloneNode(true);    //El true es para copiar sus hijos tambien
         grampEfectivo.appendChild(clon);
     }
-    
+
 })
 
-plusUnidad.addEventListener("click",(e)=>{
+plusUnidad.addEventListener("click", (e) => {
 
-    if(grampUnidad.childElementCount <=8){
+    if (grampUnidad.childElementCount <= 8) {
         let clon = secondSibling.cloneNode(true);    //El true es para copiar sus hijos tambien
         grampUnidad.appendChild(clon);
     }
-    
+
 })
 
-plusRecurso.addEventListener("click",(e)=>{
+plusRecurso.addEventListener("click", (e) => {
 
-    if(grampRecurso.childElementCount <=8){
+    if (grampRecurso.childElementCount <= 8) {
         let clon = zeroSibling.cloneNode(true);    //El true es para copiar sus hijos tambien
         grampRecurso.appendChild(clon);
     }
-    
+
 })
 
 /*--------------------------------MODIFICAR--------------------------------- */
@@ -57,28 +57,50 @@ const secondSiblingM = document.querySelector(".second-siblingM");
 const grampUnidadM = document.querySelector(".grand-plus_Container-unidadM");
 
 
-plusRecursoM.addEventListener("click",(e)=>{
+plusRecursoM.addEventListener("click", (e) => {
 
-    if(grampRecursoM.childElementCount <=8){
+    if (grampRecursoM.childElementCount <= 8) {
         let clon = zeroSiblingM.cloneNode(true);    //El true es para copiar sus hijos tambien
         grampRecursoM.appendChild(clon);
     }
-    
-})
-plusEfectivoM.addEventListener("click",(e)=>{
 
-    if(grampEfectivoM.childElementCount <=8){
+})
+plusEfectivoM.addEventListener("click", (e) => {
+
+    if (grampEfectivoM.childElementCount <= 8) {
         let clon = firtsSiblingM.cloneNode(true);    //El true es para copiar sus hijos tambien
         grampEfectivoM.appendChild(clon);
     }
-    
+
 })
 
-plusUnidadM.addEventListener("click",(e)=>{
+plusUnidadM.addEventListener("click", (e) => {
 
-    if(grampUnidadM.childElementCount <=8){
+    if (grampUnidadM.childElementCount <= 8) {
         let clon = secondSiblingM.cloneNode(true);    //El true es para copiar sus hijos tambien
         grampUnidadM.appendChild(clon);
     }
-    
+
 })
+
+function ocultarInput(show) {
+    const inputsDiv = document.getElementById("inputAsegurado");
+    inputsDiv.style.display = show ? "block" : "none";
+}
+
+function ocultarInput2(show2) {
+    const inputsDiv = document.getElementById("inputLesionado");
+    inputsDiv.style.display = show2 ? "block" : "none";
+}
+
+// -----------------------MODIFICAR----------------------------
+
+function ocultarInputM(show) {
+    const inputsDiv = document.getElementById("inputAseguradoM");
+    inputsDiv.style.display = show ? "block" : "none";
+}
+
+function ocultarInputM2(show2) {
+    const inputsDiv = document.getElementById("inputLesionadoM");
+    inputsDiv.style.display = show2 ? "block" : "none";
+}
